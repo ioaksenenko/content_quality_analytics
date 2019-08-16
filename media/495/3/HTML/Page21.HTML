@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html" charset="utf-8" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script>
+    <link href="https://new-online.tusur.ru/theme/fdo/ims/course_style.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <div>
+        <h3>3.4.1 Поочередное использование</h3>
+        <p>Проблему, вызванную использованием комбинирующего оператора <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo>«</mo>
+                        <mo>|</mo>
+                        <mo>|</mo>
+                        <mo>»</mo>
+                    </mrow>
+                </mstyle>
+            </math>, можно избежать, используя параллелизм в форме чередования <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo stretchy="false">(</mo>
+                        <mi>P</mi>
+                        <mo>|</mo>
+                        <mo>|</mo>
+                        <mo>|</mo>
+                        <mi>Q</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>. Здесь&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">P</mi>
+                </mstyle>
+            </math> и <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">Q</mi>
+                </mstyle>
+            </math>&#160;имеют одинаковые алфавиты, а их взаимодействия с&#160;совместно используемыми внешними процессами произвольно чередуются.</p>
+        <div class="example">
+            <div class="ex_head">
+                <div class="smile">Пример 3.29</div>
+            </div>
+            <p style="margin-bottom: 5px">Совместно используемая подпрограмма:</p>
+            <table class="mathcenter">
+                <tr>
+                    <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mi>у</mi>
+                                    <mi>д</mi>
+                                    <mi>в</mi>
+                                    <mo>:</mo>
+                                    <mi>У</mi>
+                                    <mi>Д</mi>
+                                    <mi>В</mi>
+                                    <mtext> </mtext>
+                                    <mtext>//</mtext>
+                                    <mtext> </mtext>
+                                    <mo stretchy="false">(</mo>
+                                    <mi>P</mi>
+                                    <mtext> </mtext>
+                                    <mo>|</mo>
+                                    <mo>|</mo>
+                                    <mo>|</mo>
+                                    <mi>Q</mi>
+                                    <mo stretchy="false">)</mo>
+                                </mrow>
+                            </mstyle>
+                        </math>.</td>
+                </tr>
+            </table>
+            <p style="margin-bottom: 5px">Здесь и <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">P</mi>
+                    </mstyle>
+                </math>, и <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">Q</mi>
+                    </mstyle>
+                </math>&#160;могут содержать вызов подчиненного процесса</p>
+            <table class="mathcenter">
+                <tr>
+                    <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mo stretchy="false">(</mo>
+                                    <mi>у</mi>
+                                    <mi>д</mi>
+                                    <mi>в</mi>
+                                    <mo>.</mo>
+                                    <mi>л</mi>
+                                    <mi>е</mi>
+                                    <mi>в</mi>
+                                    <mo>!</mo>
+                                    <mi>v</mi>
+                                    <mo>→</mo>
+                                    <mi>у</mi>
+                                    <mi>д</mi>
+                                    <mi>в</mi>
+                                    <mo>.</mo>
+                                    <mi>п</mi>
+                                    <mi>р</mi>
+                                    <mi>а</mi>
+                                    <mi>в</mi>
+                                    <mo>?</mo>
+                                    <mi>x</mi>
+                                    <mo>→</mo>
+                                    <mi>П</mi>
+                                    <mi>Р</mi>
+                                    <mi>О</mi>
+                                    <mi>П</mi>
+                                    <mi>У</mi>
+                                    <mi>С</mi>
+                                    <mi>К</mi>
+                                    <mo stretchy="false">)</mo>
+                                </mrow>
+                            </mstyle>
+                        </math>,</td>
+                </tr>
+            </table>
+            <p>где 
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mi>П</mi>
+                                    <mi>Р</mi>
+                                    <mi>О</mi>
+                                    <mi>П</mi>
+                                    <mi>У</mi>
+                                    <mi>С</mi>
+                                    <mi>К</mi>
+                                </mrow>
+                            </mstyle>
+                        </math>
+            &#160;– процесс, который ничего не делает, но благополучно завершается.</p>
+        </div>
+        <div class="example">
+            <div class="ex_head">
+                <div class="smile">Пример 3.30</div>
+            </div>
+            <p>Совместно используемое алфавитно-цифровое печатающее устройство:</p>
+            <p align="center">
+                <table class="mathcenter">
+                    <tr>
+                        <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mi>А</mi>
+                                        <mi>Ц</mi>
+                                        <mi>П</mi>
+                                        <mi>У</mi>
+                                        <mo>=</mo>
+                                        <mi>з</mi>
+                                        <mi>а</mi>
+                                        <mi>н</mi>
+                                        <mi>я</mi>
+                                        <mi>т</mi>
+                                        <mtext> </mtext>
+                                        <mo>→</mo>
+                                        <mtext>μ</mtext>
+                                        <mi>X</mi>
+                                        <mo>.</mo>
+                                        <mo stretchy="false">(</mo>
+                                        <mi>л</mi>
+                                        <mi>е</mi>
+                                        <mi>в</mi>
+                                        <mo>?</mo>
+                                        <mi>s</mi>
+                                        <mo>→</mo>
+                                        <mi>h</mi>
+                                        <mo>!</mo>
+                                        <mi>s</mi>
+                                        <mo>→</mo>
+                                        <mi>X</mi>
+                                        <mo>|</mo>
+                                        <mi>с</mi>
+                                        <mi>в</mi>
+                                        <mi>о</mi>
+                                        <mi>б</mi>
+                                        <mi>о</mi>
+                                        <mi>д</mi>
+                                        <mi>е</mi>
+                                        <mi>н</mi>
+                                        <mo>→</mo>
+                                        <mi>А</mi>
+                                        <mi>Ц</mi>
+                                        <mi>П</mi>
+                                        <mi>У</mi>
+                                        <mo stretchy="false">)</mo>
+                                    </mrow>
+                                </mstyle>
+                            </math>.</td>
+                    </tr>
+                </table>
+            </p>
+            <p>Здесь <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">h</mi>
+                    </mstyle>
+                </math>&#160;–&#160;канал, соединяющий <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mi>А</mi>
+                                        <mi>Ц</mi>
+                                        <mi>П</mi>
+                                        <mi>У</mi>
+                                        </mrow>
+                                        </mstyle>
+                                        </math> с аппаратной частью устройства. После наступления события <i>занят</i> <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mi>А</mi>
+                                        <mi>Ц</mi>
+                                        <mi>П</mi>
+                                        <mi>У</mi>
+                                        </mrow>
+                                        </mstyle>
+                                        </math> копирует в аппаратную часть последовательно поступающие по левому каналу строки, пока сигнал <i>свободен</i> не приведет его в исходное состояние, в котором он доступен для использования другими процессами. Этот процесс используется как разделяемый ресурс:</p>
+            <p align="center">
+                <table class="mathcenter">
+                    <tr>
+                        <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mi>а</mi>
+                                        <mi>ц</mi>
+                                        <mi>п</mi>
+                                        <mi>у</mi>
+                                        <mo>:</mo>
+                                        <mi>А</mi>
+                                        <mi>Ц</mi>
+                                        <mi>П</mi>
+                                        <mi>У</mi>
+                                        <mtext> </mtext>
+                                        <mtext>//</mtext>
+                                        <mtext> </mtext>
+                                        <mo>…</mo>
+                                        <mtext> </mtext>
+                                        <mo stretchy="false">(</mo>
+                                        <mi>P</mi>
+                                        <mo>|</mo>
+                                        <mo>|</mo>
+                                        <mo>|</mo>
+                                        <mi>Q</mi>
+                                        <mo stretchy="false">)</mo>
+                                        <mtext> </mtext>
+                                        <mo>…</mo>
+                                    </mrow>
+                                </mstyle>
+                            </math></td>
+                    </tr>
+                </table>
+            </p>
+            <p>Внутри <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">P</mi>
+                    </mstyle>
+                </math>&#160;или <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">Q</mi>
+                    </mstyle>
+                </math>&#160;вывод последовательности строк, образующей файл, заключен между событиями <i>ацпу</i>.<i>занят</i> и <i>ацпу</i>.<i>свободен</i>:</p>
+            <table class="mathcenter">
+                <tr>
+                    <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mi>а</mi>
+                                    <mi>ц</mi>
+                                    <mi>п</mi>
+                                    <mi>у</mi>
+                                    <mo>.</mo>
+                                    <mi>з</mi>
+                                    <mi>а</mi>
+                                    <mi>н</mi>
+                                    <mi>я</mi>
+                                    <mi>т</mi>
+                                    <mo>→</mo>
+                                    <mtext> </mtext>
+                                    <mo>…</mo>
+                                    <mi>а</mi>
+                                    <mi>ц</mi>
+                                    <mi>п</mi>
+                                    <mi>у</mi>
+                                    <mo>.</mo>
+                                    <mi>л</mi>
+                                    <mi>е</mi>
+                                    <mi>в</mi>
+                                    <mo>!</mo>
+                                    <mo>«</mo>
+                                    <mi>В</mi>
+                                    <mi>а</mi>
+                                    <mi>с</mi>
+                                    <mi>я</mi>
+                                    <mo>»</mo>
+                                    <mtext> </mtext>
+                                    <mo>→</mo>
+                                    <mtext> </mtext>
+                                    <mo>…</mo>
+                                    <mi>а</mi>
+                                    <mi>ц</mi>
+                                    <mi>п</mi>
+                                    <mi>у</mi>
+                                    <mo>.</mo>
+                                    <mi>л</mi>
+                                    <mi>е</mi>
+                                    <mi>в</mi>
+                                    <mo>!</mo>
+                                    <mi>с</mi>
+                                    <mi>л</mi>
+                                    <mi>е</mi>
+                                    <mi>д</mi>
+                                    <mi>с</mi>
+                                    <mi>т</mi>
+                                    <mi>р</mi>
+                                    <mo>→</mo>
+                                    <mtext> </mtext>
+                                    <mo>…</mo>
+                                </mrow>
+                                <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mo>→</mo>
+                                    <mi>а</mi>
+                                    <mi>ц</mi>
+                                    <mi>п</mi>
+                                    <mi>у</mi>
+                                    <mo>.</mo>
+                                    <mi>с</mi>
+                                    <mi>в</mi>
+                                    <mi>о</mi>
+                                    <mi>б</mi>
+                                    <mi>о</mi>
+                                    <mi>д</mi>
+                                    <mi>е</mi>
+                                    <mi>н</mi>
+                                </mrow>
+                            </mstyle>
+                        </math></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+version: '3.0'
+
+services:
+  content_quality_analytics:
+    restart: always
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html" charset="utf-8" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script>
+    <link href="https://new-online.tusur.ru/theme/fdo/ims/course_style.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <div>
+        <h2>2.3 Аксиоматическая семантика</h2>
+        <div class="definition">
+            <div>
+                <p><b><i>Аксиоматическая семантика</i></b><i> была создана в процессе разработки метода доказательства правильности программ. Семантику каждой синтаксической конструкции языка можно определить как некий набор аксиом или правил вывода, который можно использовать для вывода результатов выполнения этой конструкции. Чтобы понять смысл всей программы, эти аксиомы и правила вывода следует использовать так же, как при доказательстве обычных математических теорем.</i></p>
+            </div>
+        </div>
+        <p>В&#160;предположении, что значения входных переменных удовлетворяют некоторым ограничениям, аксиомы и правила вывода могут быть использованы для получения ограничений на значения других переменных после выполнения каждого оператора программы. Когда программа выполнена, получаем доказательство того, что вычисленные результаты удовлетворяют необходимым ограничениям на их значения относительно входных значений. То&#160;есть доказано, что выходные данные представляют значения соответствующей функции, вычисленной по значениям входных данных&#160;[6].</p>
+        <p>Такие доказательства показывают, что программа выполняет вычисления, описанные ее спецификацией. В&#160;доказательстве каждый оператор программы сопровождается предшествующим и последующим логическими выражениями, устанавливающими ограничения на переменные в программе. Эти выражения используются для определения смысла оператора вместо полного описания состояния абстрактной машины.</p>
+        <p>Аксиоматическая семантика основана на математической логике. Будем называть предикат, помещенный в программу, <i>утверждением</i>. Утверждение, непосредственно предшествующее оператору программы, описывает ограничения, наложенные на переменные в данном месте программы. Утверждение, следующее непосредственно за оператором программы, описывает новые ограничения на те&#160;же (а&#160;возможно, и другие) переменные после выполнения оператора.</p>
+        <p>Введем обозначение (<i>триада</i> Хоара):</p>
+        <p align="center">
+            <table class="mathcenter">
+                <tr>
+                    <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mo>{</mo>
+                                    <mi>Q</mi>
+                                    <mo>}</mo>
+                                    <mtext> </mtext>
+                                    <mi>S</mi>
+                                    <mtext> </mtext>
+                                    <mo>{</mo>
+                                    <mi>R</mi>
+                                    <mo>}</mo>
+                                </mrow>
+                            </mstyle>
+                        </math>,</td>
+                </tr>
+            </table>
+        </p>
+        <p>где <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">Q</mi>
+                </mstyle>
+            </math>, <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">R</mi>
+                </mstyle>
+            </math>&#160;–&#160;предикаты, <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">S</mi>
+                </mstyle>
+            </math>&#160;–&#160;программа (оператор или последовательность операторов)&#160;[7]. Обозначение определяет следующий смысл: «Если выполнение&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">S</mi>
+                </mstyle>
+            </math> началось в состоянии, удовлетворяющем <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">Q</mi>
+                </mstyle>
+            </math>, то имеется гарантия, что оно завершится через конечное время в состоянии, удовлетворяющем <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">R</mi>
+                </mstyle>
+            </math>».</p>
+        <div class="definition">
+            <div>
+                <p><i>Предикат </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mi xmlns="http://www.w3.org/1998/Math/MathML">Q</mi>
+                        </mstyle>
+                    </math><i>&#160;называется <b>предусловием</b> или входным утверждением </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mi xmlns="http://www.w3.org/1998/Math/MathML">S</mi>
+                        </mstyle>
+                    </math><i>, предикат </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mi xmlns="http://www.w3.org/1998/Math/MathML">R</mi>
+                        </mstyle>
+                    </math>&#160;–<i>&#160;<b>постусловием</b> или выходным утверждением, </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mi xmlns="http://www.w3.org/1998/Math/MathML">R</mi>
+                        </mstyle>
+                    </math><i>&#160;определяет то, что нужно установить <span class="textnormal">(</span><math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <mi xmlns="http://www.w3.org/1998/Math/MathML">R</mi>
+                            </mstyle>
+                        </math>&#160;определяет спецификацию задачи<span class="textnormal">)</span>. В&#160;предусловии </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mi xmlns="http://www.w3.org/1998/Math/MathML">Q</mi>
+                        </mstyle>
+                    </math><i>&#160;нужно отражать тот факт, что входные переменные получили начальные значения.</i></p>
+            </div>
+        </div>
+        <div class="example">
+            <div class="ex_head">
+                <div class="smile">Пример 2.3</div>
+            </div>
+            <p>Рассмотрим оператор присваивания для целочисленных переменных и постусловие:</p>
+            <p align="center" class="program">Sum&#160;:=&#160;2*х+1 {sum&gt;1}</p>
+            <p>Одним из возможных предусловий данного оператора может быть <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mo>{</mo>
+                            <mi>x</mi>
+                            <mtext> </mtext>
+                            <mo>&gt;</mo>
+                            <mtext> </mtext>
+                            <mn>10</mn>
+                            <mo>}</mo>
+                        </mrow>
+                    </mstyle>
+                </math>.</p>
+        </div>
+        <div class="definition">
+            <div>
+                <p><b><i>Слабейшими предусловиями</i></b><i> называются наименьшие предусловия, обеспечивающие выполнение соответствующего постусловия.</i></p>
+            </div>
+        </div>
+        <div class="example">
+            <div class="ex_head">
+                <div class="smile">Пример 2.4</div>
+            </div>
+            <p>Для приведенного выше оператора и его постусловия предусловия <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mo>{</mo>
+                            <mi>x</mi>
+                            <mtext> </mtext>
+                            <mo>&gt;</mo>
+                            <mtext> </mtext>
+                            <mn>10</mn>
+                            <mo>}</mo>
+                        </mrow>
+                    </mstyle>
+                </math>, <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mo>{</mo>
+                            <mi>x</mi>
+                            <mtext> </mtext>
+                            <mo>&gt;</mo>
+                            <mtext> </mtext>
+                            <mn>50</mn>
+                            <mo>}</mo>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;и <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mo>{</mo>
+                            <mi>x</mi>
+                            <mtext> </mtext>
+                            <mo>&gt;</mo>
+                            <mtext> </mtext>
+                            <mn>1000</mn>
+                            <mo>}</mo>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;являются правильными. Слабейшим из всех предусловий в данном случае будет <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mo>{</mo>
+                            <mi>x</mi>
+                            <mtext> </mtext>
+                            <mo>&gt;</mo>
+                            <mtext> </mtext>
+                            <mn>0</mn>
+                            <mo>}</mo>
+                        </mrow>
+                    </mstyle>
+                </math>.</p>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html" charset="utf-8" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script>
+    <link href="https://new-online.tusur.ru/theme/fdo/ims/course_style.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <div>
+        <h3>3.2.4 Помеченные процессы</h3>
+        <p>Помечать процессы особенно полезно при создании групп сходных процессов, которые в режиме параллельной работы представляют некоторые идентичные услуги их общему окружению, но никак не взаимодействуют друг с&#160;другом. Это означает, что все они должны иметь взаимно непересекающиеся алфавиты. Чтобы этого достичь, снабдим каждый процесс отдельным именем; каждое событие помеченного процесса помечено тем же именем. Помеченное событие <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>l</mi>
+                        <mo>.</mo>
+                        <mi>x</mi>
+                    </mrow>
+                </mstyle>
+            </math>, где <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">x</mi>
+                </mstyle>
+            </math>&#160;–&#160;его имя, а <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">l</mi>
+                </mstyle>
+            </math>&#160;–&#160;метка.</p>
+        <p>Процесс <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">P</mi>
+                </mstyle>
+            </math>&#160;с меткой <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">l</mi>
+                </mstyle>
+            </math>&#160;обозначают <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>l</mi>
+                        <mo>:</mo>
+                        <mi>P</mi>
+                    </mrow>
+                </mstyle>
+            </math>. Он участвует в событии <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>l</mi>
+                        <mo>.</mo>
+                        <mi>x</mi>
+                    </mrow>
+                </mstyle>
+            </math>, когда по определению <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">P</mi>
+                </mstyle>
+            </math>&#160;участвует в <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">x</mi>
+                </mstyle>
+            </math>.</p>
+        <div class="example">
+            <div class="ex_head">
+                <div class="smile">Пример 3.20</div>
+            </div>
+            <p>Два работающих рядом торговых автомата</p>
+            <p align="center">
+                <table class="mathcenter">
+                    <tr>
+                        <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mo stretchy="false">(</mo>
+                                        <mi>л</mi>
+                                        <mi>е</mi>
+                                        <mi>в</mi>
+                                        <mo>:</mo>
+                                        <mi>Т</mi>
+                                        <mi>А</mi>
+                                        <mi>П</mi>
+                                        <mo stretchy="false">)</mo>
+                                        <mtext> </mtext>
+                                        <mo>|</mo>
+                                        <mo>|</mo>
+                                        <mo stretchy="false">(</mo>
+                                        <mi>п</mi>
+                                        <mi>р</mi>
+                                        <mi>а</mi>
+                                        <mi>в</mi>
+                                        <mo>:</mo>
+                                        <mi>Т</mi>
+                                        <mi>А</mi>
+                                        <mi>П</mi>
+                                        <mo stretchy="false">)</mo>
+                                    </mrow>
+                                </mstyle>
+                            </math>.</td>
+                    </tr>
+                </table>
+            </p>
+            <p>Алфавиты этих процессов не пресекаются, и каждое происходящее событие помечено именем того устройства, на котором оно происходит. Если перед их параллельной установкой устройства не получили имен, каждое событие будет требовать участия их обоих, и тогда пара машин будет неотличима от одной. Это является следствием того, что <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mtext>(</mtext>
+                            <mi>Т</mi>
+                            <mi>А</mi>
+                            <mi>П</mi>
+                            <mo>|</mo>
+                            <mo>|</mo>
+                            <mi>Т</mi>
+                            <mi>А</mi>
+                            <mi>П</mi>
+                            <mtext>)</mtext>
+                            <mo>=</mo>
+                            <mi>Т</mi>
+                            <mi>А</mi>
+                            <mi>П</mi>
+                        </mrow>
+                    </mstyle>
+                </math>.</p>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,1493 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html" charset="utf-8" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script>
+    <link href="https://new-online.tusur.ru/theme/fdo/ims/course_style.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <div>
+        <h3>3.1.5 Операции над протоколами</h3>
+        <p>Протоколам принадлежит основная роль в&#160;фиксировании, описании и понимании поведения процессов. Введем следующие обозначения:</p>
+        <ul type="disc">
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>s</mi>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <mi>t</mi>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <mi>u</mi>
+                        </mrow>
+                    </mstyle>
+                </math>
+                &#160;–&#160;протоколы;
+            </li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>S</mi>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <mi>T</mi>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <mi>U</mi>
+                        </mrow>
+                    </mstyle>
+                </math>
+                &#160;–&#160;множества протоколов;
+            </li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>f</mi>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <mi>g</mi>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <mi>h</mi>
+                        </mrow>
+                    </mstyle>
+                </math>
+                &#160;–&#160;функции.
+            </li>
+        </ul>
+        <p><i>Конкатенация</i>. Наиболее важной операцией над протоколами является конкатенация <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msup>
+                            <mi>s</mi>
+                            <mo>∧</mo>
+                        </msup>
+                        <mi>t</mi>
+                    </mrow>
+                </mstyle>
+            </math>, которая строит новый протокол из пары протоколов <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">s</mi>
+                </mstyle>
+            </math>&#160;и&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">t</mi>
+                </mstyle>
+            </math>, просто соединяя их в&#160;указанном порядке.</p>
+        <div class="example">
+            <div class="ex_head">
+                <div class="smile">Пример 3.12</div>
+            </div>
+            <p>Пример конкатенации:</p>
+            <p align="center">
+                <table class="mathcenter">
+                    <tr>
+                        <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <msup>
+                                            <mrow>
+                                                <mo>〈</mo>
+                                                <mi>м</mi>
+                                                <mi>о</mi>
+                                                <mi>н</mi>
+                                                <mo>,</mo>
+                                                <mtext> </mtext>
+                                                <mi>ш</mi>
+                                                <mi>о</mi>
+                                                <mi>к</mi>
+                                                <mo>〉</mo>
+                                            </mrow>
+                                            <mo>∧</mo>
+                                        </msup>
+                                        <mo>〈</mo>
+                                        <mi>м</mi>
+                                        <mi>о</mi>
+                                        <mi>н</mi>
+                                        <mo>〉</mo>
+                                        <mtext> </mtext>
+                                        <mo>=</mo>
+                                        <mtext> </mtext>
+                                        <mo>〈</mo>
+                                        <mi>м</mi>
+                                        <mi>о</mi>
+                                        <mi>н</mi>
+                                        <mo>,</mo>
+                                        <mtext> </mtext>
+                                        <mi>ш</mi>
+                                        <mi>о</mi>
+                                        <mi>к</mi>
+                                        <mo>,</mo>
+                                        <mtext> </mtext>
+                                        <mi>м</mi>
+                                        <mi>о</mi>
+                                        <mi>н</mi>
+                                        <mo>〉</mo>
+                                    </mrow>
+                                </mstyle>
+                            </math>.</td>
+                    </tr>
+                </table>
+            </p>
+        </div>
+        <p>Самые важные свойства конкатенации&#160;– это ее ассоциативность и то, что пустой протокол <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo>〈</mo>
+                        <mo>〉</mo>
+                    </mrow>
+                </mstyle>
+            </math>&#160;служит для нее единицей:</p>
+        <p style="margin-left: 3em"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msup>
+                            <mi>s</mi>
+                            <mo>∧</mo>
+                        </msup>
+                        <mrow>
+                            <mo>(</mo>
+                            <mrow>
+                                <msup>
+                                    <mi>t</mi>
+                                    <mo>∧</mo>
+                                </msup>
+                                <mi>u</mi>
+                            </mrow>
+                            <mo>)</mo>
+                        </mrow>
+                        <mo>=</mo>
+                        <msup>
+                            <mrow>
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mrow>
+                                        <msup>
+                                            <mi>s</mi>
+                                            <mo>∧</mo>
+                                        </msup>
+                                        <mi>t</mi>
+                                    </mrow>
+                                    <mo>)</mo>
+                                </mrow>
+                            </mrow>
+                            <mo>∧</mo>
+                        </msup>
+                        <mi>u</mi>
+                        <mo>;</mo>
+                    </mrow>
+                </mstyle>
+            </math></p>
+        <p style="margin-left: 3em"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msup>
+                            <mi>s</mi>
+                            <mo>∧</mo>
+                        </msup>
+                        <mo>〈</mo>
+                        <mo>〉</mo>
+                        <mo>=</mo>
+                        <msup>
+                            <mrow>
+                                <mo>〈</mo>
+                                <mo>〉</mo>
+                            </mrow>
+                            <mo>∧</mo>
+                        </msup>
+                        <mi>s</mi>
+                        <mo>=</mo>
+                        <mi>s</mi>
+                        <mo>.</mo>
+                    </mrow>
+                </mstyle>
+            </math>
+            &#160;
+        </p>
+        <p>Пусть <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">f</mi>
+                </mstyle>
+            </math>&#160;–&#160;функция, отображающая протоколы в протоколы. Будем говорить, что функция <i>строгая</i>, если она отображает пустой протокол в&#160;пустой протокол: <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msup>
+                            <mi>f</mi>
+                        </msup>
+                        <mrow>
+                            <mo>(</mo>
+                            <mrow>
+                                <mo>〈</mo>
+                                <mo>〉</mo>
+                            </mrow>
+                            <mo>)</mo>
+                        </mrow>
+                        <mo>=</mo>
+                        <mo>〈</mo>
+                        <mo>〉</mo>
+                    </mrow>
+                </mstyle>
+            </math>.</p>
+        <p>Будем говорить, что функция <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">f</mi>
+                </mstyle>
+            </math>&#160;<i>дистрибутивна</i>, если <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>f</mi>
+                        <mrow>
+                            <mo>(</mo>
+                            <mrow>
+                                <msup>
+                                    <mi>s</mi>
+                                    <mo>∧</mo>
+                                </msup>
+                                <mi>t</mi>
+                            </mrow>
+                            <mo>)</mo>
+                        </mrow>
+                        <mtext> </mtext>
+                        <mo>=</mo>
+                        <mi>f</mi>
+                        <msup>
+                            <mrow>
+                                <mo stretchy="false">(</mo>
+                                <mi>s</mi>
+                                <mo stretchy="false">)</mo>
+                            </mrow>
+                            <mo>∧</mo>
+                        </msup>
+                        <mi>f</mi>
+                        <mo stretchy="false">(</mo>
+                        <mi>t</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>. Все дистрибутивные функции являются строгими.</p>
+        <p>Если <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">n</mi>
+                </mstyle>
+            </math>&#160;–&#160;натуральное число, то <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msup>
+                            <mi>t</mi>
+                            <mi>n</mi>
+                        </msup>
+                    </mrow>
+                </mstyle>
+            </math>&#160;будет обозначать конкатенацию <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">n</mi>
+                </mstyle>
+            </math>&#160;копий протокола <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">t</mi>
+                </mstyle>
+            </math>. Отсюда следует:</p>
+        <p style="margin-left: 3em"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msup>
+                            <mi>t</mi>
+                            <mrow>
+                                <mi>n</mi>
+                                <mtext> </mtext>
+                                <mo>+</mo>
+                                <mtext> </mtext>
+                                <mn>1</mn>
+                            </mrow>
+                        </msup>
+                        <mtext> </mtext>
+                        <mo>=</mo>
+                        <mtext> </mtext>
+                        <msup>
+                            <mi>t</mi>
+                            <mo>∧</mo>
+                        </msup>
+                        <msup>
+                            <mi>t</mi>
+                            <mi>n</mi>
+                        </msup>
+                    </mrow>
+                </mstyle>
+            </math>;
+        </p>
+        <p style="margin-left: 3em"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msup>
+                            <mrow>
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mrow>
+                                        <msup>
+                                            <mi>s</mi>
+                                            <mo>∧</mo>
+                                        </msup>
+                                        <mi>t</mi>
+                                    </mrow>
+                                    <mo>)</mo>
+                                </mrow>
+                            </mrow>
+                            <mrow>
+                                <mi>n</mi>
+                                <mtext> </mtext>
+                                <mo>+</mo>
+                                <mtext> </mtext>
+                                <mn>1</mn>
+                            </mrow>
+                        </msup>
+                        <mtext> </mtext>
+                        <mo>=</mo>
+                        <mtext> </mtext>
+                        <msup>
+                            <mi>s</mi>
+                            <mo>∧</mo>
+                        </msup>
+                        <msup>
+                            <mrow>
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mrow>
+                                        <msup>
+                                            <mi>s</mi>
+                                            <mo>∧</mo>
+                                        </msup>
+                                        <mi>t</mi>
+                                    </mrow>
+                                    <mo>)</mo>
+                                </mrow>
+                            </mrow>
+                            <mi>n</mi>
+                        </msup>
+                        <msup>
+                            <mrow>
+                                <mtext> </mtext>
+                            </mrow>
+                            <mo>∧</mo>
+                        </msup>
+                        <mi>t</mi>
+                    </mrow>
+                </mstyle>
+            </math>.
+        </p>
+        <p><i>Сужение</i>. Выражение <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mo>(</mo>
+                            <mrow>
+                                <mi>t</mi>
+                                <mtext> </mtext>
+                                <mo>↑</mo>
+                                <mi>A</mi>
+                            </mrow>
+                            <mo>)</mo>
+                        </mrow>
+                    </mrow>
+                </mstyle>
+            </math>&#160;обозначает протокол <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">t</mi>
+                </mstyle>
+            </math>, суженный на множество символов <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">A</mi>
+                </mstyle>
+            </math>; он строится из <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">t</mi>
+                </mstyle>
+            </math>&#160;отбрасыванием всех символов, не принадлежащих <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">A</mi>
+                </mstyle>
+            </math>.</p>
+        <p>Сужение дистрибутивно и поэтому строго:</p>
+        <p style="margin-left: 3em"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo>〈</mo>
+                        <mo>〉</mo>
+                        <mo>↑</mo>
+                        <mi>A</mi>
+                        <mo>=</mo>
+                        <mo>〈</mo>
+                        <mo>〉</mo>
+                    </mrow>
+                </mstyle>
+            </math>;
+        </p>
+        <p style="margin-left: 3em"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mo>(</mo>
+                            <mrow>
+                                <msup>
+                                    <mi>s</mi>
+                                    <mo>∧</mo>
+                                </msup>
+                                <mi>t</mi>
+                            </mrow>
+                            <mo>)</mo>
+                        </mrow>
+                        <mo>↑</mo>
+                        <mi>A</mi>
+                        <mo>=</mo>
+                        <msup>
+                            <mrow>
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mrow>
+                                        <mi>s</mi>
+                                        <mo>↑</mo>
+                                        <mi>A</mi>
+                                    </mrow>
+                                    <mo>)</mo>
+                                </mrow>
+                            </mrow>
+                            <mo>∧</mo>
+                        </msup>
+                        <mrow>
+                            <mo>(</mo>
+                            <mrow>
+                                <mi>t</mi>
+                                <mo>↑</mo>
+                                <mi>A</mi>
+                            </mrow>
+                            <mo>)</mo>
+                        </mrow>
+                    </mrow>
+                </mstyle>
+            </math>.
+        </p>
+        <p>Эффект сужения на одноэлементных последовательностях очевиден:</p>
+        <p style="margin-left: 3em"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo>〈</mo>
+                        <mi>x</mi>
+                        <mo>〉</mo>
+                        <mo>↑</mo>
+                        <mi>A</mi>
+                        <mo>=</mo>
+                        <mo>〈</mo>
+                        <mi>x</mi>
+                        <mo>〉</mo>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <mtext>если</mtext>
+                        <mtext> </mtext>
+                        <mi>x</mi>
+                        <mo>∉</mo>
+                        <mi>A</mi>
+                    </mrow>
+                </mstyle>
+            </math>;
+        </p>
+        <p style="margin-left: 3em"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo>〈</mo>
+                        <mi>y</mi>
+                        <mo>〉</mo>
+                        <mo>↑</mo>
+                        <mi>A</mi>
+                        <mo>=</mo>
+                        <mo>〈</mo>
+                        <mo>〉</mo>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <mtext>если</mtext>
+                        <mtext> </mtext>
+                        <mi>y</mi>
+                        <mo>∉</mo>
+                        <mi>A</mi>
+                    </mrow>
+                </mstyle>
+            </math>.
+        </p>
+        <p>Приведенные ниже законы раскрывают взаимосвязь сужения <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo>«</mo>
+                        <mo>↑</mo>
+                        <mo>»</mo>
+                    </mrow>
+                </mstyle>
+            </math>&#160;и операций над множествами:</p>
+        <p style="margin-left: 3em"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>s</mi>
+                        <mo>↑</mo>
+                        <mstyle mathvariant="bold" mathsize="normal">
+                            <mtext>∅</mtext>
+                        </mstyle>
+                        <mo>=</mo>
+                        <mo>〈</mo>
+                        <mo>〉</mo>
+                    </mrow>
+                </mstyle>
+            </math>;
+        </p>
+        <p style="margin-left: 3em"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mo>(</mo>
+                            <mrow>
+                                <mi>s</mi>
+                                <mo>↑</mo>
+                                <mi>A</mi>
+                            </mrow>
+                            <mo>)</mo>
+                        </mrow>
+                        <mo>↑</mo>
+                        <mi>B</mi>
+                        <mo>=</mo>
+                        <mi>s</mi>
+                        <mo>↑</mo>
+                        <mo stretchy="false">(</mo>
+                        <mi>A</mi>
+                        <mo>∪</mo>
+                        <mi>B</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>.
+        </p>
+        <p><i>Голова и хвост</i>. Если <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">s</mi>
+                </mstyle>
+            </math>&#160;–&#160;непустая последовательность, обозначим ее первый элемент <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mi>s</mi>
+                            <mn>0</mn>
+                        </msub>
+                    </mrow>
+                </mstyle>
+            </math>, а результат, полученный после его удаления,&#160;– <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <msup xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>s</mi>
+                        <mo>′</mo>
+                    </msup>
+                </mstyle>
+            </math>.
+            Например, <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mrow>
+                                <mo>〈</mo>
+                                <mi>x</mi>
+                                <mo>,</mo>
+                                <mtext> </mtext>
+                                <mi>y</mi>
+                                <mo>,</mo>
+                                <mtext> </mtext>
+                                <mi>x</mi>
+                                <mo>〉</mo>
+                            </mrow>
+                            <mn>0</mn>
+                        </msub>
+                        <mo>=</mo>
+                        <mi>x</mi>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <mo>〈</mo>
+                        <mi>x</mi>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <mi>y</mi>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <mi>x</mi>
+                        <msup>
+                            <mo>〉</mo>
+                            <mo>′</mo>
+                        </msup>
+                        <mo>=</mo>
+                        <mi>y</mi>
+                    </mrow>
+                </mstyle>
+            </math>. Обе эти операции не определены для пустой последовательности:</p>
+        <p style="margin-left: 3em"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mrow>
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mrow>
+                                        <msup>
+                                            <mrow>
+                                                <mo>〈</mo>
+                                                <mi>x</mi>
+                                                <mo>〉</mo>
+                                            </mrow>
+                                            <mo>∧</mo>
+                                        </msup>
+                                        <mi>s</mi>
+                                    </mrow>
+                                    <mo>)</mo>
+                                </mrow>
+                            </mrow>
+                            <mn>0</mn>
+                        </msub>
+                        <mo>=</mo>
+                        <mi>x</mi>
+                    </mrow>
+                </mstyle>
+            </math>;
+        </p>
+        <p style="margin-left: 3em"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msup>
+                            <mrow>
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mrow>
+                                        <msup>
+                                            <mrow>
+                                                <mo>〈</mo>
+                                                <mi>x</mi>
+                                                <mo>〉</mo>
+                                            </mrow>
+                                            <mo>∧</mo>
+                                        </msup>
+                                        <mi>s</mi>
+                                    </mrow>
+                                    <mo>)</mo>
+                                </mrow>
+                            </mrow>
+                            <mo>′</mo>
+                        </msup>
+                        <mo>=</mo>
+                        <mi>s</mi>
+                    </mrow>
+                </mstyle>
+            </math>;
+        </p>
+        <p style="margin-left: 3em"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>s</mi>
+                        <mo>=</mo>
+                        <mrow>
+                            <mo>(</mo>
+                            <mrow>
+                                <msup>
+                                    <mrow>
+                                        <mrow>
+                                            <mo>〈</mo>
+                                            <mrow>
+                                                <msub>
+                                                    <mi>s</mi>
+                                                    <mn>0</mn>
+                                                </msub>
+                                            </mrow>
+                                            <mo>〉</mo>
+                                        </mrow>
+                                    </mrow>
+                                    <mo>∧</mo>
+                                </msup>
+                                <msup>
+                                    <mi>s</mi>
+                                    <mo>′</mo>
+                                </msup>
+                            </mrow>
+                            <mo>)</mo>
+                        </mrow>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <mtext>если</mtext>
+                        <mtext> </mtext>
+                        <mi>s</mi>
+                        <mo>≠</mo>
+                        <mo>〈</mo>
+                        <mo>〉</mo>
+                    </mrow>
+                </mstyle>
+            </math>.
+        </p>
+        <p>Закон равенства или неравенства двух протоколов:</p>
+        <p align="center">
+            <table class="mathcenter">
+                <tr>
+                    <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mi>s</mi>
+                                    <mo>=</mo>
+                                    <mi>t</mi>
+                                    <mo>≡</mo>
+                                    <mrow>
+                                        <mo>(</mo>
+                                        <mrow>
+                                            <mi>s</mi>
+                                            <mo>=</mo>
+                                            <mi>t</mi>
+                                            <mo>=</mo>
+                                            <mo>〈</mo>
+                                            <mo>〉</mo>
+                                            <mtext> </mtext>
+                                            <mstyle mathvariant="bold" mathsize="normal">
+                                                <mi>O</mi>
+                                                <mi>R</mi>
+                                            </mstyle>
+                                            <mtext> </mtext>
+                                            <mrow>
+                                                <mo>(</mo>
+                                                <mrow>
+                                                    <msub>
+                                                        <mi>s</mi>
+                                                        <mn>0</mn>
+                                                    </msub>
+                                                    <mo>=</mo>
+                                                    <mtext> </mtext>
+                                                    <msub>
+                                                        <mi>t</mi>
+                                                        <mn>0</mn>
+                                                    </msub>
+                                                    <mtext> </mtext>
+                                                    <mstyle mathvariant="bold" mathsize="normal">
+                                                        <mi>A</mi>
+                                                        <mi>N</mi>
+                                                        <mi>D</mi>
+                                                    </mstyle>
+                                                    <mtext> </mtext>
+                                                    <msup>
+                                                        <mi>s</mi>
+                                                        <mo>′</mo>
+                                                    </msup>
+                                                    <mo>=</mo>
+                                                    <msup>
+                                                        <mi>t</mi>
+                                                        <mo>′</mo>
+                                                    </msup>
+                                                </mrow>
+                                                <mo>)</mo>
+                                            </mrow>
+                                        </mrow>
+                                        <mo>)</mo>
+                                    </mrow>
+                                </mrow>
+                            </mstyle>
+                        </math>.</td>
+                </tr>
+            </table>
+        </p>
+        <p><i>Звездочка</i>. Множество <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msup>
+                            <mi>A</mi>
+                            <mo>∗</mo>
+                        </msup>
+                    </mrow>
+                </mstyle>
+            </math>&#160;–&#160;это набор всех конечных протоколов (включая <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo>〈</mo>
+                        <mo>〉</mo>
+                    </mrow>
+                </mstyle>
+            </math>), составленных из элементов множества <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">A</mi>
+                </mstyle>
+            </math>. После сужения на <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">A</mi>
+                </mstyle>
+            </math>&#160;такие протоколы остаются неизменными, Отсюда следует простое определение:</p>
+        <p align="center">
+            <table class="mathcenter">
+                <tr>
+                    <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <msup>
+                                        <mi>A</mi>
+                                        <mo>∗</mo>
+                                    </msup>
+                                    <mo>=</mo>
+                                    <mtext>&#160;</mtext>
+                                    <mrow>
+                                        <mo>{</mo>
+                                        <mrow>
+                                            <mi>s</mi>
+                                            <mo>|</mo>
+                                            <mrow>
+                                                <mo>(</mo>
+                                                <mrow>
+                                                    <mi>s</mi>
+                                                    <mo>↑</mo>
+                                                    <mi>A</mi>
+                                                </mrow>
+                                                <mo>)</mo>
+                                            </mrow>
+                                            <mtext> </mtext>
+                                            <mo>=</mo>
+                                            <mi>s</mi>
+                                        </mrow>
+                                        <mo>}</mo>
+                                    </mrow>
+                                </mrow>
+                            </mstyle>
+                        </math>.</td>
+                </tr>
+            </table>
+        </p>
+        <p>Следствиями этого определения являются законы:</p>
+        <p style="margin-left: 3em"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo>〈</mo>
+                        <mo>〉</mo>
+                        <mo>∈</mo>
+                        <msup>
+                            <mi>A</mi>
+                            <mo>∗</mo>
+                        </msup>
+                    </mrow>
+                </mstyle>
+            </math>;
+        </p>
+        <p style="margin-left: 3em"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo>〈</mo>
+                        <mi>x</mi>
+                        <mo>〉</mo>
+                        <mo>∈</mo>
+                        <msup>
+                            <mi>A</mi>
+                            <mo>∗</mo>
+                        </msup>
+                        <mo>≡</mo>
+                        <mi>x</mi>
+                        <mo>∈</mo>
+                        <mi>A</mi>
+                    </mrow>
+                </mstyle>
+            </math>;
+        </p>
+        <p style="margin-left: 3em"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mo>(</mo>
+                            <mrow>
+                                <msup>
+                                    <mi>s</mi>
+                                    <mo>∧</mo>
+                                </msup>
+                                <mi>t</mi>
+                            </mrow>
+                            <mo>)</mo>
+                        </mrow>
+                        <mo>∈</mo>
+                        <msup>
+                            <mi>A</mi>
+                            <mo>∗</mo>
+                        </msup>
+                        <mo>≡</mo>
+                        <mi>s</mi>
+                        <mo>∈</mo>
+                        <msup>
+                            <mi>A</mi>
+                            <mo>∗</mo>
+                        </msup>
+                        <mtext> </mtext>
+                        <mstyle mathvariant="bold" mathsize="normal">
+                            <mi>A</mi>
+                            <mi>N</mi>
+                            <mi>D</mi>
+                        </mstyle>
+                        <mtext> </mtext>
+                        <mi>t</mi>
+                        <mo>∈</mo>
+                        <msup>
+                            <mi>A</mi>
+                            <mo>∗</mo>
+                        </msup>
+                    </mrow>
+                </mstyle>
+            </math>.
+        </p>
+        <p>Они обладают достаточной мощностью, чтобы определить, принадлежит ли протокол множеству <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msup>
+                            <mi>A</mi>
+                            <mo>∗</mo>
+                        </msup>
+                    </mrow>
+                </mstyle>
+            </math>.</p>
+        <div class="example">
+            <div class="ex_head">
+                <div class="smile">Пример 3.13</div>
+            </div>
+            <p>Если <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>x</mi>
+                            <mo>∈</mo>
+                            <mi>A</mi>
+                        </mrow>
+                    </mstyle>
+                </math>, а <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>y</mi>
+                            <mo>∉</mo>
+                            <mi>A</mi>
+                        </mrow>
+                    </mstyle>
+                </math>, то</p>
+            <p align="center">
+                <table class="mathcenter">
+                    <tr>
+                        <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mo>〈</mo>
+                                        <mi>x</mi>
+                                        <mo>,</mo>
+                                        <mtext> </mtext>
+                                        <mi>y</mi>
+                                        <mo>〉</mo>
+                                        <mo>∈</mo>
+                                        <msup>
+                                            <mi>A</mi>
+                                            <mo>∗</mo>
+                                        </msup>
+                                        <mo>≡</mo>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mrow>
+                                                <msup>
+                                                    <mrow>
+                                                        <mo>〈</mo>
+                                                        <mi>x</mi>
+                                                        <mo>〉</mo>
+                                                    </mrow>
+                                                    <mo>∧</mo>
+                                                </msup>
+                                                <mo>〈</mo>
+                                                <mi>y</mi>
+                                                <mo>〉</mo>
+                                            </mrow>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mo>∈</mo>
+                                        <msup>
+                                            <mi>A</mi>
+                                            <mo>∗</mo>
+                                        </msup>
+                                        <mo>≡</mo>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mrow>
+                                                <mo>〈</mo>
+                                                <mi>x</mi>
+                                                <mo>〉</mo>
+                                                <mo>∈</mo>
+                                                <msup>
+                                                    <mi>A</mi>
+                                                    <mo>∗</mo>
+                                                </msup>
+                                            </mrow>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mtext> </mtext>
+                                        <mstyle mathvariant="bold" mathsize="normal">
+                                            <mi>A</mi>
+                                            <mi>N</mi>
+                                            <mi>D</mi>
+                                        </mstyle>
+                                        <mtext> </mtext>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mrow>
+                                                <mo>〈</mo>
+                                                <mi>y</mi>
+                                                <mo>〉</mo>
+                                                <mo>∈</mo>
+                                                <msup>
+                                                    <mi>A</mi>
+                                                    <mo>∗</mo>
+                                                </msup>
+                                            </mrow>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mo>=</mo>
+                                        <mstyle mathvariant="bold" mathsize="normal">
+                                            <mi>T</mi>
+                                        </mstyle>
+                                        <mtext> </mtext>
+                                        <mstyle mathvariant="bold" mathsize="normal">
+                                            <mi>A</mi>
+                                            <mi>N</mi>
+                                            <mi>D</mi>
+                                        </mstyle>
+                                        <mtext> </mtext>
+                                        <mstyle mathvariant="bold" mathsize="normal">
+                                            <mi>F</mi>
+                                        </mstyle>
+                                        <mo>=</mo>
+                                        <mstyle mathvariant="bold" mathsize="normal">
+                                            <mi>F</mi>
+                                        </mstyle>
+                                    </mrow>
+                                </mstyle>
+                            </math>.</td>
+                    </tr>
+                </table>
+            </p>
+        </div>
+        <p><i>Порядок</i>. Если <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">s</mi>
+                </mstyle>
+            </math>&#160;–&#160;копия некоторого начального отрезка <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">t</mi>
+                </mstyle>
+            </math>, то можно найти такое продолжение <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">u</mi>
+                </mstyle>
+            </math>&#160;последовательности <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">s</mi>
+                </mstyle>
+            </math>, что <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msup>
+                            <mi>s</mi>
+                            <mo>∧</mo>
+                        </msup>
+                        <mi>u</mi>
+                        <mtext> </mtext>
+                        <mo>=</mo>
+                        <mtext> </mtext>
+                        <mi>t</mi>
+                    </mrow>
+                </mstyle>
+            </math>. Определим отношение порядка:</p>
+        <p align="center">
+            <table class="mathcenter">
+                <tr>
+                    <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mi>s</mi>
+                                    <mo>≤</mo>
+                                    <mi>t</mi>
+                                    <mo>=</mo>
+                                    <mrow>
+                                        <mo>(</mo>
+                                        <mrow>
+                                            <mo>∃</mo>
+                                            <mi>u</mi>
+                                            <mo>.</mo>
+                                            <msup>
+                                                <mi>s</mi>
+                                                <mo>∧</mo>
+                                            </msup>
+                                            <mi>u</mi>
+                                            <mo>=</mo>
+                                            <mi>t</mi>
+                                        </mrow>
+                                        <mo>)</mo>
+                                    </mrow>
+                                </mrow>
+                            </mstyle>
+                        </math></td>
+                </tr>
+            </table>
+        </p>
+        <p>и будем говорить, что <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                    
+                        <mi>s</mi>
+                        </mrow>
+                        </mstyle>
+                        </math> является <i>префиксом</i>&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">t</mi>
+                </mstyle>
+            </math>. Например: <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo>〈</mo>
+                        <mi>x</mi>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <mi>y</mi>
+                        <mo>〉</mo>
+                        <mo>≤</mo>
+                        <mtext> </mtext>
+                        <mo>〈</mo>
+                        <mi>x</mi>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <mi>y</mi>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <mi>z</mi>
+                        <mo>〉</mo>
+                    </mrow>
+                </mstyle>
+            </math>. Отношение <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo>«</mo>
+                        <mo>≤</mo>
+                        <mo>»</mo>
+                    </mrow>
+                </mstyle>
+            </math>&#160;является частичным упорядочением и имеет своим наименьшим элементом <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo>〈</mo>
+                        <mo>〉</mo>
+                    </mrow>
+                </mstyle>
+            </math>. Об этом говорят законы:</p>
+        <ul type="disc">
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mo>〈</mo>
+                            <mo>〉</mo>
+                            <mo>≤</mo>
+                            <mi>s</mi>
+                        </mrow>
+                    </mstyle>
+                </math>
+                &#160;–&#160;наименьший элемент;
+            </li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>s</mi>
+                            <mo>≤</mo>
+                            <mi>s</mi>
+                        </mrow>
+                    </mstyle>
+                </math>
+                &#160;–&#160;рефлексивность;
+            </li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>s</mi>
+                            <mo>≤</mo>
+                            <mi>t</mi>
+                            <mtext> </mtext>
+                            <mstyle mathvariant="bold" mathsize="normal">
+                                <mi>A</mi>
+                                <mi>N</mi>
+                                <mi>D</mi>
+                            </mstyle>
+                            <mtext> </mtext>
+                            <mi>t</mi>
+                            <mo>≤</mo>
+                            <mi>s</mi>
+                            <mo>⇒</mo>
+                            <mi>t</mi>
+                            <mo>=</mo>
+                            <mi>s</mi>
+                        </mrow>
+                    </mstyle>
+                </math>
+                &#160;–&#160;антисимметричность;
+            </li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>s</mi>
+                            <mo>≤</mo>
+                            <mi>t</mi>
+                            <mtext> </mtext>
+                            <mstyle mathvariant="bold" mathsize="normal">
+                                <mi>A</mi>
+                                <mi>N</mi>
+                                <mi>D</mi>
+                            </mstyle>
+                            <mtext> </mtext>
+                            <mi>t</mi>
+                            <mo>≤</mo>
+                            <mi>u</mi>
+                            <mo>⇒</mo>
+                            <mi>s</mi>
+                            <mo>≤</mo>
+                            <mi>u</mi>
+                        </mrow>
+                    </mstyle>
+                </math>
+                &#160;–&#160;транзитивность.
+            </li>
+        </ul>
+        <p>Следующий закон позволяет определить, является ли справедливым отношение <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>s</mi>
+                        <mtext> </mtext>
+                        <mo>≤</mo>
+                        <mi>t</mi>
+                    </mrow>
+                </mstyle>
+            </math>:</p>
+        <p align="center">
+            <table class="mathcenter">
+                <tr>
+                    <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mrow>
+                                        <mo>(</mo>
+                                        <mrow>
+                                            <msup>
+                                                <mrow>
+                                                    <mo>〈</mo>
+                                                    <mi>x</mi>
+                                                    <mo>〉</mo>
+                                                </mrow>
+                                                <mo>∧</mo>
+                                            </msup>
+                                            <mi>s</mi>
+                                        </mrow>
+                                        <mo>)</mo>
+                                    </mrow>
+                                    <mo>≤</mo>
+                                    <mi>t</mi>
+                                    <mo>≡</mo>
+                                    <mi>t</mi>
+                                    <mo>≠</mo>
+                                    <mtext> </mtext>
+                                    <mo>〈</mo>
+                                    <mo>〉</mo>
+                                    <mtext> </mtext>
+                                    <mstyle mathvariant="bold" mathsize="normal">
+                                        <mi>A</mi>
+                                        <mi>N</mi>
+                                        <mi>D</mi>
+                                    </mstyle>
+                                    <mtext> </mtext>
+                                    <mi>x</mi>
+                                    <mo>=</mo>
+                                    <msub>
+                                        <mi>t</mi>
+                                        <mn>0</mn>
+                                    </msub>
+                                    <mtext> </mtext>
+                                    <mstyle mathvariant="bold" mathsize="normal">
+                                        <mi>A</mi>
+                                        <mi>N</mi>
+                                        <mi>D</mi>
+                                    </mstyle>
+                                    <mtext> </mtext>
+                                    <mi>s</mi>
+                                    <mo>≤</mo>
+                                    <msup>
+                                        <mi>t</mi>
+                                        <mo>′</mo>
+                                    </msup>
+                                </mrow>
+                            </mstyle>
+                        </math>.</td>
+                </tr>
+            </table>
+        </p>
+        <p>Будем говорить, что функция <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">f</mi>
+                </mstyle>
+            </math>&#160;из множества протоколов во множество протоколов <i>монотонна</i>, если она сохраняет отношение порядка <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo>«</mo>
+                        <mo>≤</mo>
+                        <mo>»</mo>
+                    </mrow>
+                </mstyle>
+            </math>, т.&#160;е. <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>f</mi>
+                        <mo stretchy="false">(</mo>
+                        <mi>s</mi>
+                        <mo stretchy="false">)</mo>
+                        <mo>≤</mo>
+                        <mi>f</mi>
+                        <mo stretchy="false">(</mo>
+                        <mi>t</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>&#160;всякий раз, когда <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>s</mi>
+                        <mtext> </mtext>
+                        <mo>≤</mo>
+                        <mi>t</mi>
+                    </mrow>
+                </mstyle>
+            </math>.</p>
+        <p><i>Длина</i>. Длину протокола <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">t</mi>
+                </mstyle>
+            </math>&#160;будем обозначать <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo>#</mo>
+                        <mi>t</mi>
+                    </mrow>
+                </mstyle>
+            </math>. Например, <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo>#</mo>
+                        <mtext> </mtext>
+                        <mo>〈</mo>
+                        <mi>x</mi>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <mi>y</mi>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <mi>z</mi>
+                        <mo>〉</mo>
+                        <mo>=</mo>
+                        <mn>3</mn>
+                    </mrow>
+                </mstyle>
+            </math>. Следующие законы определяют операцию <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo>«</mo>
+                        <mo>#</mo>
+                        <mo>»</mo>
+                    </mrow>
+                </mstyle>
+            </math>:</p>
+        <p style="margin-left: 3em"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo>#</mo>
+                        <mtext> </mtext>
+                        <mo>〈</mo>
+                        <mo>〉</mo>
+                        <mo>=</mo>
+                        <mn>0</mn>
+                    </mrow>
+                </mstyle>
+            </math>;
+        </p>
+        <p style="margin-left: 3em"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo>#</mo>
+                        <mtext> </mtext>
+                        <mo>〈</mo>
+                        <mi>x</mi>
+                        <mo>〉</mo>
+                        <mo>=</mo>
+                        <mn>1</mn>
+                    </mrow>
+                </mstyle>
+            </math>;
+        </p>
+        <p style="margin-left: 3em"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo>#</mo>
+                        <mtext> </mtext>
+                        <mrow>
+                            <mo>〈</mo>
+                            <mrow>
+                                <msup>
+                                    <mi>s</mi>
+                                    <mo>∧</mo>
+                                </msup>
+                                <mi>t</mi>
+                            </mrow>
+                            <mo>〉</mo>
+                        </mrow>
+                        <mo>=</mo>
+                        <mo>#</mo>
+                        <mi>s</mi>
+                        <mtext> </mtext>
+                        <mo>+</mo>
+                        <mtext> </mtext>
+                        <mo>#</mo>
+                        <mi>t</mi>
+                    </mrow>
+                </mstyle>
+            </math>.
+        </p>
+        <p>Число вхождений символа <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">x</mi>
+                </mstyle>
+            </math>&#160;в протокол <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">s</mi>
+                </mstyle>
+            </math>&#160;определяется как <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>s</mi>
+                        <mo>↓</mo>
+                        <mi>x</mi>
+                        <mo>=</mo>
+                        <mtext> </mtext>
+                    </mrow>
+                </mstyle>
+            </math><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo>#</mo>
+                        <mtext> </mtext>
+                        <mrow>
+                            <mo>(</mo>
+                            <mrow>
+                                <mi>s</mi>
+                                <mo>↑</mo>
+                                <mo>{</mo>
+                                <mi>x</mi>
+                                <mo>}</mo>
+                            </mrow>
+                            <mo>)</mo>
+                        </mrow>
+                    </mrow>
+                </mstyle>
+            </math>.
+        </p>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,1810 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html" charset="utf-8" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script>
+    <link href="https://new-online.tusur.ru/theme/fdo/ims/course_style.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <div>
+        <h3>2.3.2 Аксиоматическое определение операторов языка программирования</h3>
+        <p>Определим слабейшее предусловие для основных операторов: оператора присваивания, составного оператора, оператора выбора и оператора цикла.</p>
+        <p><i>Оператор присваивания</i> имеет вид <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>x</mi>
+                        <mtext> </mtext>
+                        <mo>:</mo>
+                        <mo>=</mo>
+                        <mtext> </mtext>
+                        <mi>E</mi>
+                    </mrow>
+                </mstyle>
+            </math>, где <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">x</mi>
+                </mstyle>
+            </math>&#160;–&#160;простая переменная, <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">E</mi>
+                </mstyle>
+            </math>&#160;– выражение.</p>
+        <p>Слабейшее предусловие оператора присваивания <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>Q</mi>
+                        <mtext> </mtext>
+                        <mo>=</mo>
+                        <mtext> </mtext>
+                        <mi>w</mi>
+                        <mi>p</mi>
+                        <mtext> </mtext>
+                        <mo stretchy="false">(</mo>
+                        <mi>x</mi>
+                        <mtext> </mtext>
+                        <mo>:</mo>
+                        <mo>=</mo>
+                        <mtext> </mtext>
+                        <mi>E</mi>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <mi>R</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>&#160;получается из <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">R</mi>
+                </mstyle>
+            </math>&#160;заменой каждого вхождения <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">x</mi>
+                </mstyle>
+            </math>&#160;на <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>E</mi>
+                        <mrow>
+                            <mo>(</mo>
+                            <mrow>
+                                <mi>Q</mi>
+                                <mtext> </mtext>
+                                <mo>=</mo>
+                                <mtext> </mtext>
+                                <msubsup>
+                                    <mi>R</mi>
+                                    <mi>E</mi>
+                                    <mi>x</mi>
+                                </msubsup>
+                            </mrow>
+                            <mo>)</mo>
+                        </mrow>
+                    </mrow>
+                </mstyle>
+            </math>.</p>
+        <p>Предполагается, что значение <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">E</mi>
+                </mstyle>
+            </math>&#160;определено и вычисление выражения&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">E</mi>
+                </mstyle>
+            </math> не может изменить значения ни одной переменной. Следовательно, можно использовать обычные свойства выражений, такие как ассоциативность, коммутативность и логические законы.</p>
+        <p style="margin-bottom: 5px"><i>Составной оператор</i> имеет вид:</p>
+        <table class="mathcenter">
+            <tr>
+                <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathvariant="bold" mathsize="normal">
+                                    <mi>b</mi>
+                                    <mi>e</mi>
+                                    <mi>g</mi>
+                                    <mi>i</mi>
+                                    <mi>n</mi>
+                                </mstyle>
+                                <mtext> </mtext>
+                                <msub>
+                                    <mi>S</mi>
+                                    <mn>1</mn>
+                                </msub>
+                                <mo>;</mo>
+                                <mtext> </mtext>
+                                <msub>
+                                    <mi>S</mi>
+                                    <mn>2</mn>
+                                </msub>
+                                <mo>;</mo>
+                                <mtext> </mtext>
+                                <mn>...</mn>
+                                <mo>;</mo>
+                                <mtext> </mtext>
+                                <msub>
+                                    <mi>S</mi>
+                                    <mi>n</mi>
+                                </msub>
+                                <mtext> </mtext>
+                                <mstyle mathvariant="bold" mathsize="normal">
+                                    <mi>e</mi>
+                                    <mi>n</mi>
+                                    <mi>d</mi>
+                                </mstyle>
+                            </mrow>
+                        </mstyle>
+                    </math>.</td>
+            </tr>
+        </table>
+        <p style="margin-bottom: 5px">Слабейшее предусловие для последовательности двух операторов:</p>
+        <table class="mathcenter">
+            <tr>
+                <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mi>w</mi>
+                                <mi>p</mi>
+                                <mtext> </mtext>
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mrow>
+                                        <msub>
+                                            <mi>S</mi>
+                                            <mn>1</mn>
+                                        </msub>
+                                        <mo>;</mo>
+                                        <mtext> </mtext>
+                                        <msub>
+                                            <mi>S</mi>
+                                            <mn>2</mn>
+                                        </msub>
+                                        <mo>,</mo>
+                                        <mtext> </mtext>
+                                        <mi>R</mi>
+                                    </mrow>
+                                    <mo>)</mo>
+                                </mrow>
+                                <mtext> </mtext>
+                                <mo>=</mo>
+                                <mtext> </mtext>
+                                <mi>w</mi>
+                                <mi>p</mi>
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mrow>
+                                        <msub>
+                                            <mi>S</mi>
+                                            <mn>1</mn>
+                                        </msub>
+                                        <mo>,</mo>
+                                        <mtext> </mtext>
+                                        <mi>w</mi>
+                                        <mi>p</mi>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mrow>
+                                                <msub>
+                                                    <mi>S</mi>
+                                                    <mn>2</mn>
+                                                </msub>
+                                                <mo>,</mo>
+                                                <mtext> </mtext>
+                                                <mi>R</mi>
+                                            </mrow>
+                                            <mo>)</mo>
+                                        </mrow>
+                                    </mrow>
+                                    <mo>)</mo>
+                                </mrow>
+                            </mrow>
+                        </mstyle>
+                    </math>.</td>
+            </tr>
+        </table>
+        <p>Аналогично слабейшее предусловие определяется для последовательности из <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>n</mi>
+                    </mrow>
+                </mstyle>
+            </math> операторов.</p>
+        <p style="margin-bottom: 5px"><i>Оператор выбора</i> определяется следующим образом:</p>
+        <table class="mathcenter">
+            <tr>
+                <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathvariant="bold" mathsize="normal">
+                                    <mi>i</mi>
+                                    <mi>f</mi>
+                                </mstyle>
+                                <mtext> </mtext>
+                                <msub>
+                                    <mi>B</mi>
+                                    <mn>1</mn>
+                                </msub>
+                                <mtext> </mtext>
+                                <mo>→</mo>
+                                <mtext> </mtext>
+                                <msub>
+                                    <mi>S</mi>
+                                    <mn>1</mn>
+                                </msub>
+                                <mtext> </mtext>
+                                <mtext>Π</mtext>
+                                <mtext> </mtext>
+                                <msub>
+                                    <mi>B</mi>
+                                    <mn>2</mn>
+                                </msub>
+                                <mtext> </mtext>
+                                <mo>→</mo>
+                                <mtext> </mtext>
+                                <msub>
+                                    <mi>S</mi>
+                                    <mn>2</mn>
+                                </msub>
+                                <mtext> </mtext>
+                                <mtext>Π</mtext>
+                                <mtext> </mtext>
+                                <mo>…</mo>
+                                <mtext> </mtext>
+                                <mtext>Π</mtext>
+                                <mtext> </mtext>
+                                <msub>
+                                    <mi>B</mi>
+                                    <mi>n</mi>
+                                </msub>
+                                <mtext> </mtext>
+                                <mo>→</mo>
+                                <mtext> </mtext>
+                                <msub>
+                                    <mi>S</mi>
+                                    <mi>n</mi>
+                                </msub>
+                                <mtext> </mtext>
+                                <mstyle mathvariant="bold" mathsize="normal">
+                                    <mi>f</mi>
+                                    <mi>i</mi>
+                                </mstyle>
+                            </mrow>
+                        </mstyle>
+                    </math>.</td>
+            </tr>
+        </table>
+        <p>Здесь <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>n</mi>
+                        <mtext> </mtext>
+                        <mo>≥</mo>
+                        <mtext> </mtext>
+                        <mn>0</mn>
+                    </mrow>
+                </mstyle>
+            </math>, <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mi>B</mi>
+                            <mn>1</mn>
+                        </msub>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <msub>
+                            <mi>B</mi>
+                            <mn>2</mn>
+                        </msub>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <mo>…</mo>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <msub>
+                            <mi>B</mi>
+                            <mi>n</mi>
+                        </msub>
+                    </mrow>
+                </mstyle>
+            </math>&#160;–&#160;логические выражения, называемые охранами, <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mi>S</mi>
+                            <mn>1</mn>
+                        </msub>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <msub>
+                            <mi>S</mi>
+                            <mn>2</mn>
+                        </msub>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <mo>…</mo>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <msub>
+                            <mi>S</mi>
+                            <mi>n</mi>
+                        </msub>
+                    </mrow>
+                </mstyle>
+            </math>&#160;–&#160;операторы, пара <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mi>B</mi>
+                            <mi>i</mi>
+                        </msub>
+                        <mtext> </mtext>
+                        <mo>→</mo>
+                        <mtext> </mtext>
+                        <msub>
+                            <mi>S</mi>
+                            <mi>i</mi>
+                        </msub>
+                    </mrow>
+                </mstyle>
+            </math>&#160;называется охраняемой командой, <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mtext>Π</mtext>
+                </mstyle>
+            </math>&#160;– разделитель, <b>if</b> и <b>fi</b> играют роль операторных скобок.</p>
+        <p>Выполняется оператор следующим образом. Проверяются все <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mi>B</mi>
+                            <mi>i</mi>
+                        </msub>
+                    </mrow>
+                </mstyle>
+            </math>. Если одна из охран не определена, то происходит аварийное завершение. Далее, по крайней мере одна из охран должна иметь значение «истина», иначе выполнение завершается аварийно. Выбирается одна из охраняемых команд <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mi>B</mi>
+                            <mi>i</mi>
+                        </msub>
+                        <mtext> </mtext>
+                        <mo>→</mo>
+                        <mtext> </mtext>
+                        <msub>
+                            <mi>S</mi>
+                            <mi>i</mi>
+                        </msub>
+                    </mrow>
+                </mstyle>
+            </math>, у которой значение <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mi>B</mi>
+                            <mi>i</mi>
+                        </msub>
+                    </mrow>
+                </mstyle>
+            </math>&#160;«истина», и выполняется <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mi>S</mi>
+                            <mi>i</mi>
+                        </msub>
+                    </mrow>
+                </mstyle>
+            </math>.</p>
+        <p>Слабейшее предусловие для этого оператора:</p>
+        <p align="center">
+            <table class="mathcenter">
+                <tr>
+                    <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mi>w</mi>
+                                    <mi>p</mi>
+                                    <mtext> </mtext>
+                                    <mo stretchy="false">(</mo>
+                                    <mstyle mathvariant="bold" mathsize="normal">
+                                        <mi>i</mi>
+                                        <mi>f</mi>
+                                    </mstyle>
+                                    <mo>,</mo>
+                                    <mtext> </mtext>
+                                    <mi>R</mi>
+                                    <mo stretchy="false">)</mo>
+                                    <mtext> </mtext>
+                                    <mo>=</mo>
+                                    <mtext> </mtext>
+                                    <mi>B</mi>
+                                    <mi>B</mi>
+                                    <mtext> </mtext>
+                                    <mstyle mathvariant="bold" mathsize="normal">
+                                        <mi>A</mi>
+                                        <mi>N</mi>
+                                        <mi>D</mi>
+                                    </mstyle>
+                                    <mtext> </mtext>
+                                    <mrow>
+                                        <mo>(</mo>
+                                        <mrow>
+                                            <msub>
+                                                <mi>B</mi>
+                                                <mn>1</mn>
+                                            </msub>
+                                            <mtext> </mtext>
+                                            <mo>⇒</mo>
+                                            <mtext> </mtext>
+                                            <mi>w</mi>
+                                            <mi>p</mi>
+                                            <mtext> </mtext>
+                                            <mo stretchy="false">(</mo>
+                                            <msub>
+                                                <mi>S</mi>
+                                                <mn>1</mn>
+                                            </msub>
+                                            <mo>,</mo>
+                                            <mtext> </mtext>
+                                            <mi>R</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                        <mo>)</mo>
+                                    </mrow>
+                                    <mtext> </mtext>
+                                    <mstyle mathvariant="bold" mathsize="normal">
+                                        <mi>A</mi>
+                                        <mi>N</mi>
+                                        <mi>D</mi>
+                                    </mstyle>
+                                    <mtext> </mtext>
+                                    <mo>…</mo>
+                                    <mtext> </mtext>
+                                    <mstyle mathvariant="bold" mathsize="normal">
+                                        <mi>A</mi>
+                                        <mi>N</mi>
+                                        <mi>D</mi>
+                                    </mstyle>
+                                    <mtext> </mtext>
+                                    <mrow>
+                                        <mo>(</mo>
+                                        <mrow>
+                                            <msub>
+                                                <mi>B</mi>
+                                                <mi>n</mi>
+                                            </msub>
+                                            <mtext> </mtext>
+                                            <mo>⇒</mo>
+                                            <mtext> </mtext>
+                                            <mi>w</mi>
+                                            <mi>p</mi>
+                                            <mrow>
+                                                <mo>(</mo>
+                                                <mrow>
+                                                    <msub>
+                                                        <mi>S</mi>
+                                                        <mi>n</mi>
+                                                    </msub>
+                                                    <mo>,</mo>
+                                                    <mtext> </mtext>
+                                                    <mi>R</mi>
+                                                </mrow>
+                                                <mo>)</mo>
+                                            </mrow>
+                                        </mrow>
+                                        <mo>)</mo>
+                                    </mrow>
+                                </mrow>
+                            </mstyle>
+                        </math>,</td>
+                </tr>
+            </table>
+        </p>
+        <p>где <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>B</mi>
+                        <mi>B</mi>
+                        <mo>=</mo>
+                        <msub>
+                            <mi>B</mi>
+                            <mn>1</mn>
+                        </msub>
+                        <mtext> </mtext>
+                        <mstyle mathvariant="bold" mathsize="normal">
+                            <mi>O</mi>
+                            <mi>R</mi>
+                        </mstyle>
+                        <mtext>​</mtext>
+                        <mtext> </mtext>
+                        <msub>
+                            <mi>B</mi>
+                            <mn>2</mn>
+                        </msub>
+                        <mtext> </mtext>
+                        <mstyle mathvariant="bold" mathsize="normal">
+                            <mi>O</mi>
+                            <mi>R</mi>
+                        </mstyle>
+                        <mtext> </mtext>
+                        <mo>…</mo>
+                        <mtext> </mtext>
+                        <mstyle mathvariant="bold" mathsize="normal">
+                            <mi>O</mi>
+                            <mi>R</mi>
+                        </mstyle>
+                        <mtext> </mtext>
+                        <msub>
+                            <mi>B</mi>
+                            <mi>n</mi>
+                        </msub>
+                    </mrow>
+                </mstyle>
+            </math>.</p>
+        <p>Естественно определить <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>w</mi>
+                        <mi>p</mi>
+                        <mo stretchy="false">(</mo>
+                        <mstyle mathvariant="bold" mathsize="normal">
+                            <mi>i</mi>
+                            <mi>f</mi>
+                        </mstyle>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <mi>R</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>&#160;с помощью кванторов:</p>
+        <p align="center">
+            <table class="mathcenter">
+                <tr>
+                    <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mi>w</mi>
+                                    <mi>p</mi>
+                                    <mtext> </mtext>
+                                    <mo stretchy="false">(</mo>
+                                    <mstyle mathvariant="bold" mathsize="normal">
+                                        <mi>i</mi>
+                                        <mi>f</mi>
+                                    </mstyle>
+                                    <mo>,</mo>
+                                    <mtext> </mtext>
+                                    <mi>R</mi>
+                                    <mo stretchy="false">)</mo>
+                                    <mtext> </mtext>
+                                    <mo>=</mo>
+                                    <mtext> </mtext>
+                                    <mrow>
+                                        <mo>(</mo>
+                                        <mrow>
+                                            <mo>∃</mo>
+                                            <mi>i</mi>
+                                            <mtext> </mtext>
+                                            <mo>:</mo>
+                                            <mtext> </mtext>
+                                            <mn>1</mn>
+                                            <mtext> </mtext>
+                                            <mo>≤</mo>
+                                            <mtext> </mtext>
+                                            <mi>i</mi>
+                                            <mo>≤</mo>
+                                            <mi>n</mi>
+                                            <mtext> </mtext>
+                                            <mo>:</mo>
+                                            <msub>
+                                                <mi>B</mi>
+                                                <mi>i</mi>
+                                            </msub>
+                                        </mrow>
+                                        <mo>)</mo>
+                                    </mrow>
+                                    <mtext> </mtext>
+                                    <mstyle mathvariant="bold" mathsize="normal">
+                                        <mi>A</mi>
+                                        <mi>N</mi>
+                                        <mi>D</mi>
+                                    </mstyle>
+                                    <mtext> </mtext>
+                                    <mrow>
+                                        <mo>(</mo>
+                                        <mrow>
+                                            <mo>∀</mo>
+                                            <mi>i</mi>
+                                            <mtext> </mtext>
+                                            <mo>:</mo>
+                                            <mtext> </mtext>
+                                            <mn>1</mn>
+                                            <mtext> </mtext>
+                                            <mo>≤</mo>
+                                            <mi>i</mi>
+                                            <mo>≤</mo>
+                                            <mi>n</mi>
+                                            <mtext> </mtext>
+                                            <mo>:</mo>
+                                            <msub>
+                                                <mi>B</mi>
+                                                <mi>i</mi>
+                                            </msub>
+                                            <mtext> </mtext>
+                                            <mo>⇒</mo>
+                                            <mi>w</mi>
+                                            <mi>p</mi>
+                                            <mrow>
+                                                <mo>(</mo>
+                                                <mrow>
+                                                    <msub>
+                                                        <mi>S</mi>
+                                                        <mi>i</mi>
+                                                    </msub>
+                                                    <mo>,</mo>
+                                                    <mtext> </mtext>
+                                                    <mi>R</mi>
+                                                </mrow>
+                                                <mo>)</mo>
+                                            </mrow>
+                                        </mrow>
+                                        <mo>)</mo>
+                                    </mrow>
+                                </mrow>
+                            </mstyle>
+                        </math>.</td>
+                </tr>
+            </table>
+        </p>
+        <div class="example">
+            <div class="ex_head">
+                <div class="smile">Пример 2.5</div>
+            </div>
+            <p>Выполним аксиоматическое определение <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>z</mi>
+                            <mo>=</mo>
+                            <mtext> </mtext>
+                            <mo>|</mo>
+                            <mi>x</mi>
+                            <mo>|</mo>
+                        </mrow>
+                    </mstyle>
+                </math>. С&#160;использованием оператора выбора это можно сделать следующим образом:</p>
+            <p align="center">
+                <table class="mathcenter">
+                    <tr>
+                        <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mstyle mathvariant="bold" mathsize="normal">
+                                            <mi>i</mi>
+                                            <mi>f</mi>
+                                        </mstyle>
+                                        <mtext> </mtext>
+                                        <mi>x</mi>
+                                        <mo>≥</mo>
+                                        <mtext> </mtext>
+                                        <mn>0</mn>
+                                        <mtext> </mtext>
+                                        <mo>→</mo>
+                                        <mi>z</mi>
+                                        <mo>:</mo>
+                                        <mo>=</mo>
+                                        <mi>x</mi>
+                                        <mtext> </mtext>
+                                        <mtext>Π</mtext>
+                                        <mtext> </mtext>
+                                        <mi>x</mi>
+                                        <mo>&lt;</mo>
+                                        <mtext> </mtext>
+                                        <mn>0</mn>
+                                        <mtext> </mtext>
+                                        <mo>→</mo>
+                                        <mi>z</mi>
+                                        <mo>:</mo>
+                                        <mo>=</mo>
+                                        <mtext> </mtext>
+                                        <mo>−</mo>
+                                        <mi>x</mi>
+                                        <mtext> </mtext>
+                                        <mstyle mathvariant="bold" mathsize="normal">
+                                            <mi>f</mi>
+                                            <mi>i</mi>
+                                        </mstyle>
+                                    </mrow>
+                                </mstyle>
+                            </math>.</td>
+                    </tr>
+                </table>
+            </p>
+        </div>
+        <p>К&#160;особенностям оператора выбора следует отнести, <i>во-первых</i>, тот факт, что он включает условный оператор <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo stretchy="false">(</mo>
+                        <mstyle mathvariant="bold" mathsize="normal">
+                            <mi>i</mi>
+                            <mi>f</mi>
+                        </mstyle>
+                        <mtext> </mtext>
+                        <mo>…</mo>
+                        <mtext> </mtext>
+                        <mstyle mathvariant="bold" mathsize="normal">
+                            <mi>t</mi>
+                            <mi>h</mi>
+                            <mi>e</mi>
+                            <mi>n</mi>
+                        </mstyle>
+                        <mtext> </mtext>
+                        <mo>…</mo>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>, альтернативный оператор <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo stretchy="false">(</mo>
+                        <mstyle mathvariant="bold" mathsize="normal">
+                            <mi>i</mi>
+                            <mi>f</mi>
+                        </mstyle>
+                        <mtext> </mtext>
+                        <mo>…</mo>
+                        <mtext> </mtext>
+                        <mstyle mathvariant="bold" mathsize="normal">
+                            <mi>t</mi>
+                            <mi>h</mi>
+                            <mi>e</mi>
+                            <mi>n</mi>
+                        </mstyle>
+                        <mtext> </mtext>
+                        <mo>…</mo>
+                        <mtext> </mtext>
+                        <mstyle mathvariant="bold" mathsize="normal">
+                            <mi>e</mi>
+                            <mi>l</mi>
+                            <mi>s</mi>
+                            <mi>e</mi>
+                        </mstyle>
+                        <mtext> </mtext>
+                        <mo>…</mo>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>&#160;и оператор выбора <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo stretchy="false">(</mo>
+                        <mstyle mathvariant="bold" mathsize="normal">
+                            <mi>c</mi>
+                            <mi>a</mi>
+                            <mi>s</mi>
+                            <mi>e</mi>
+                        </mstyle>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>. <i>Во-вторых</i>, оператор выбора не допускает умолчаний, что помогает при разработке сложных программ, так как каждая альтернатива представлена подробно и возможность что-либо упустить уменьшается. <i>В-третьих</i>, благодаря отсутствию умолчаний запись оператора выбора представлена в симметричном виде.</p>
+        <p style="margin-bottom: 5px"><i>Оператор цикла</i> имеет вид:</p>
+        <table class="mathcenter">
+            <tr>
+                <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathvariant="bold" mathsize="normal">
+                                    <mi>d</mi>
+                                    <mi>o</mi>
+                                </mstyle>
+                                <mtext> </mtext>
+                                <mi>B</mi>
+                                <mo>→</mo>
+                                <mi>S</mi>
+                                <mtext> </mtext>
+                                <mstyle mathvariant="bold" mathsize="normal">
+                                    <mi>o</mi>
+                                    <mi>d</mi>
+                                </mstyle>
+                            </mrow>
+                        </mstyle>
+                    </math>.</td>
+            </tr>
+        </table>
+        <p style="margin-bottom: 5px">Обозначим это соотношение через <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>D</mi>
+                        <mi>O</mi>
+                    </mrow>
+                </mstyle>
+            </math> и представим его в следующем виде:</p>
+        <table class="mathcenter">
+            <tr>
+                <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mi>D</mi>
+                                <mi>O</mi>
+                                <mo>:</mo>
+                                <mtext> </mtext>
+                                <mtext> </mtext>
+                                <mstyle mathvariant="bold" mathsize="normal">
+                                    <mi>d</mi>
+                                    <mi>o</mi>
+                                </mstyle>
+                                <mtext> </mtext>
+                                <msub>
+                                    <mi>B</mi>
+                                    <mn>1</mn>
+                                </msub>
+                                <mtext> </mtext>
+                                <mo>→</mo>
+                                <mtext> </mtext>
+                                <msub>
+                                    <mi>S</mi>
+                                    <mn>1</mn>
+                                </msub>
+                                <mtext> </mtext>
+                                <mtext>Π</mtext>
+                                <mtext> </mtext>
+                                <msub>
+                                    <mi>B</mi>
+                                    <mn>2</mn>
+                                </msub>
+                                <mo>→</mo>
+                                <msub>
+                                    <mi>S</mi>
+                                    <mn>2</mn>
+                                </msub>
+                                <mtext> </mtext>
+                                <mtext>Π</mtext>
+                                <mtext> </mtext>
+                                <mo>…</mo>
+                                <mtext> </mtext>
+                                <mtext>Π</mtext>
+                                <mtext> </mtext>
+                                <msub>
+                                    <mi>B</mi>
+                                    <mi>n</mi>
+                                </msub>
+                                <mo>→</mo>
+                                <msub>
+                                    <mi>S</mi>
+                                    <mi>n</mi>
+                                </msub>
+                                <mtext> </mtext>
+                                <mstyle mathvariant="bold" mathsize="normal">
+                                    <mi>o</mi>
+                                    <mi>d</mi>
+                                </mstyle>
+                            </mrow>
+                        </mstyle>
+                    </math>,</td>
+            </tr>
+        </table>
+        <p>где <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>n</mi>
+                        <mo>≥</mo>
+                        <mtext> </mtext>
+                        <mn>0</mn>
+                    </mrow>
+                </mstyle>
+            </math>, <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mi>B</mi>
+                            <mi>i</mi>
+                        </msub>
+                        <mo>→</mo>
+                        <msub>
+                            <mi>S</mi>
+                            <mi>i</mi>
+                        </msub>
+                    </mrow>
+                </mstyle>
+            </math>&#160;–&#160;охраняемые команды.</p>
+        <p>Пока возможно, выбирается охрана <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mi>B</mi>
+                            <mi>i</mi>
+                        </msub>
+                    </mrow>
+                </mstyle>
+            </math>&#160;со значением «истина» и выполняется соответствующий оператор <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mi>S</mi>
+                            <mi>i</mi>
+                        </msub>
+                    </mrow>
+                </mstyle>
+            </math>. Как только все охраны будут иметь значение «ложь», выполнение <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>D</mi>
+                        <mi>O</mi>
+                    </mrow>
+                </mstyle>
+            </math>&#160;завершится.</p>
+        <p>Выбор охраны со значением «истина» и выполнение соответствующего оператора называется выполнением шага цикла. Если истинными являются несколько охран, то выбирается любая из них. Следовательно, оператор <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>D</mi>
+                        <mi>O</mi>
+                    </mrow>
+                </mstyle>
+            </math>&#160;эквивалентен оператору</p>
+        <p align="center"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathvariant="bold" mathsize="normal">
+                            <mi>d</mi>
+                            <mi>o</mi>
+                        </mstyle>
+                        <mtext> </mtext>
+                        <mi>B</mi>
+                        <mi>B</mi>
+                        <mo>→</mo>
+                        <mstyle mathvariant="bold" mathsize="normal">
+                            <mi>i</mi>
+                            <mi>f</mi>
+                        </mstyle>
+                        <mtext> </mtext>
+                        <msub>
+                            <mi>B</mi>
+                            <mn>1</mn>
+                        </msub>
+                        <mo>→</mo>
+                        <mtext> </mtext>
+                        <msub>
+                            <mi>S</mi>
+                            <mn>1</mn>
+                        </msub>
+                        <mtext> </mtext>
+                        <mtext>Π</mtext>
+                        <mtext> </mtext>
+                        <msub>
+                            <mi>B</mi>
+                            <mn>2</mn>
+                        </msub>
+                        <mo>→</mo>
+                        <msub>
+                            <mi>S</mi>
+                            <mn>2</mn>
+                        </msub>
+                        <mtext> </mtext>
+                        <mtext>Π</mtext>
+                        <mtext> </mtext>
+                        <mo>…</mo>
+                        <mtext> </mtext>
+                        <mtext>Π</mtext>
+                        <mtext> </mtext>
+                        <msub>
+                            <mi>B</mi>
+                            <mi>n</mi>
+                        </msub>
+                        <mo>→</mo>
+                        <msub>
+                            <mi>S</mi>
+                            <mi>n</mi>
+                        </msub>
+                        <mtext> </mtext>
+                        <mstyle mathvariant="bold" mathsize="normal">
+                            <mi>f</mi>
+                            <mi>i</mi>
+                        </mstyle>
+                        <mtext> </mtext>
+                        <mstyle mathvariant="bold" mathsize="normal">
+                            <mi>o</mi>
+                            <mi>d</mi>
+                        </mstyle>
+                    </mrow>
+                </mstyle>
+            </math>
+            &#160;или <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathvariant="bold" mathsize="normal">
+                            <mi>d</mi>
+                            <mi>o</mi>
+                        </mstyle>
+                        <mtext> </mtext>
+                        <mi>B</mi>
+                        <mi>B</mi>
+                        <mo>→</mo>
+                        <mi>I</mi>
+                        <mi>F</mi>
+                        <mtext> </mtext>
+                        <mstyle mathvariant="bold" mathsize="normal">
+                            <mi>o</mi>
+                            <mi>d</mi>
+                        </mstyle>
+                    </mrow>
+                </mstyle>
+            </math>,
+        </p>
+        <p>где <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>B</mi>
+                        <mi>B</mi>
+                    </mrow>
+                </mstyle>
+            </math>&#160;–&#160;дизъюнкция охран, <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>I</mi>
+                        <mi>F</mi>
+                    </mrow>
+                </mstyle>
+            </math>&#160;–&#160;оператор выбора.</p>
+        <div class="example">
+            <div class="ex_head">
+                <div class="smile">Пример 2.6</div>
+            </div>
+            <p><i>Алгоритм Евклида</i></p>
+            <p align="center">Вариант 1</p>
+            <p>задать <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mo stretchy="false">(</mo>
+                            <mi>N</mi>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <mi>M</mi>
+                            <mo stretchy="false">)</mo>
+                        </mrow>
+                    </mstyle>
+                </math>;<br /><math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathvariant="bold" mathsize="normal">
+                                <mi>i</mi>
+                                <mi>f</mi>
+                            </mstyle>
+                            <mtext> </mtext>
+                            <mi>N</mi>
+                            <mo>&gt;</mo>
+                            <mtext> </mtext>
+                            <mn>0</mn>
+                            <mtext> </mtext>
+                            <mstyle mathvariant="bold" mathsize="normal">
+                                <mi>A</mi>
+                                <mi>N</mi>
+                                <mi>D</mi>
+                            </mstyle>
+                            <mtext> </mtext>
+                            <mi>M</mi>
+                            <mtext> </mtext>
+                            <mo>&gt;</mo>
+                            <mtext> </mtext>
+                            <mn>0</mn>
+                            <mtext> </mtext>
+                            <mo>→</mo>
+                            <mi>n</mi>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <mi>m</mi>
+                            <mo>:</mo>
+                            <mo>=</mo>
+                            <mtext> </mtext>
+                            <mi>N</mi>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <mi>M</mi>
+                        </mrow>
+                    </mstyle>
+                </math>;<br />
+                &#160;&#160;&#160;&#160;&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathvariant="bold" mathsize="normal">
+                                <mi>d</mi>
+                                <mi>o</mi>
+                            </mstyle>
+                            <mtext> </mtext>
+                            <mi>n</mi>
+                            <mo>≠</mo>
+                            <mtext> </mtext>
+                            <mi>m</mi>
+                            <mtext> </mtext>
+                            <mo>→</mo>
+                            <mstyle mathvariant="bold" mathsize="normal">
+                                <mi>i</mi>
+                                <mi>f</mi>
+                            </mstyle>
+                            <mtext> </mtext>
+                            <mi>n</mi>
+                            <mo>&gt;</mo>
+                            <mi>m</mi>
+                            <mo>→</mo>
+                            <mi>n</mi>
+                            <mo>:</mo>
+                            <mo>=</mo>
+                            <mi>n</mi>
+                            <mo>–</mo>
+                            <mi>m</mi>
+                            <mtext> </mtext>
+                            <mtext>Π</mtext>
+                            <mtext> </mtext>
+                            <mi>m</mi>
+                            <mo>&gt;</mo>
+                            <mtext> </mtext>
+                            <mi>n</mi>
+                            <mtext> </mtext>
+                            <mo>→</mo>
+                            <mtext> </mtext>
+                            <mi>m</mi>
+                            <mo>:</mo>
+                            <mo>=</mo>
+                            <mi>m</mi>
+                            <mo>–</mo>
+                            <mi>n</mi>
+                            <mtext> </mtext>
+                            <mstyle mathvariant="bold" mathsize="normal">
+                                <mi>f</mi>
+                                <mi>i</mi>
+                            </mstyle>
+                            <mtext> </mtext>
+                            <mstyle mathvariant="bold" mathsize="normal">
+                                <mi>o</mi>
+                                <mi>d</mi>
+                            </mstyle>
+                        </mrow>
+                    </mstyle>
+                </math>;<br />
+                &#160;&#160;&#160;&#160;&#160;выдать <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mo stretchy="false">(</mo>
+                            <mi>n</mi>
+                            <mo stretchy="false">)</mo>
+                        </mrow>
+                    </mstyle>
+                </math><br /><math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathvariant="bold" mathsize="normal">
+                                <mi>f</mi>
+                                <mi>i</mi>
+                            </mstyle>
+                        </mrow>
+                    </mstyle>
+                </math></p>
+            <p align="center">Вариант 2</p>
+            <p>задать <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mo stretchy="false">(</mo>
+                            <mi>N</mi>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <mi>M</mi>
+                            <mo stretchy="false">)</mo>
+                        </mrow>
+                    </mstyle>
+                </math>;<br /><math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathvariant="bold" mathsize="normal">
+                                <mi>i</mi>
+                                <mi>f</mi>
+                            </mstyle>
+                            <mtext> </mtext>
+                            <mi>N</mi>
+                            <mo>&gt;</mo>
+                            <mtext> </mtext>
+                            <mn>0</mn>
+                            <mtext> </mtext>
+                            <mstyle mathvariant="bold" mathsize="normal">
+                                <mi>A</mi>
+                                <mi>N</mi>
+                                <mi>D</mi>
+                            </mstyle>
+                            <mtext> </mtext>
+                            <mi>M</mi>
+                            <mtext> </mtext>
+                            <mo>&gt;</mo>
+                            <mtext> </mtext>
+                            <mn>0</mn>
+                            <mtext> </mtext>
+                            <mo>→</mo>
+                            <mtext> </mtext>
+                            <mi>n</mi>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <mi>m</mi>
+                            <mo>:</mo>
+                            <mo>=</mo>
+                            <mtext> </mtext>
+                            <mi>N</mi>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <mi>M</mi>
+                        </mrow>
+                    </mstyle>
+                </math>;<br />
+                &#160;&#160;&#160;&#160;&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathvariant="bold" mathsize="normal">
+                                <mi>d</mi>
+                                <mi>o</mi>
+                            </mstyle>
+                            <mtext> </mtext>
+                            <mi>n</mi>
+                            <mo>&gt;</mo>
+                            <mtext> </mtext>
+                            <mi>m</mi>
+                            <mo>→</mo>
+                            <mi>n</mi>
+                            <mo>:</mo>
+                            <mo>=</mo>
+                            <mi>n</mi>
+                            <mo>–</mo>
+                            <mi>m</mi>
+                            <mtext> </mtext>
+                            <mtext>Π</mtext>
+                            <mtext> </mtext>
+                            <mi>m</mi>
+                            <mo>&gt;</mo>
+                            <mi>n</mi>
+                            <mo>→</mo>
+                            <mi>m</mi>
+                            <mo>:</mo>
+                            <mo>=</mo>
+                            <mi>m</mi>
+                            <mo>–</mo>
+                            <mi>n</mi>
+                            <mtext> </mtext>
+                            <mstyle mathvariant="bold" mathsize="normal">
+                                <mi>o</mi>
+                                <mi>d</mi>
+                            </mstyle>
+                        </mrow>
+                    </mstyle>
+                </math>;<br />
+                &#160;&#160;&#160;&#160;&#160;выдать <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mo stretchy="false">(</mo>
+                            <mi>n</mi>
+                            <mo stretchy="false">)</mo>
+                        </mrow>
+                    </mstyle>
+                </math><br /><math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathvariant="bold" mathsize="normal">
+                                <mi>f</mi>
+                                <mi>i</mi>
+                            </mstyle>
+                        </mrow>
+                    </mstyle>
+                </math></p>
+        </div>
+        <p>Пусть предикат <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mi>H</mi>
+                            <mn>0</mn>
+                        </msub>
+                        <mo stretchy="false">(</mo>
+                        <mi>R</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>&#160;определяет множество состояний, в&#160;которых выполнение <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>D</mi>
+                        <mi>O</mi>
+                    </mrow>
+                </mstyle>
+            </math>&#160;завершается за 0&#160;шагов (в этом случае все охраны с самого начала ложны, после завершения <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">R</mi>
+                </mstyle>
+            </math>&#160;имеет значение «истина»):</p>
+        <p align="center">
+            <table class="mathcenter">
+                <tr>
+                    <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <msub>
+                                        <mi>H</mi>
+                                        <mn>0</mn>
+                                    </msub>
+                                    <mtext>(</mtext>
+                                    <mi>R</mi>
+                                    <mtext>)</mtext>
+                                    <mtext> </mtext>
+                                    <mo>=</mo>
+                                    <mstyle mathvariant="bold" mathsize="normal">
+                                        <mi>N</mi>
+                                        <mi>O</mi>
+                                        <mi>T</mi>
+                                    </mstyle>
+                                    <mtext> </mtext>
+                                    <mi>B</mi>
+                                    <mi>B</mi>
+                                    <mtext> </mtext>
+                                    <mstyle mathvariant="bold" mathsize="normal">
+                                        <mi>A</mi>
+                                        <mi>N</mi>
+                                        <mi>D</mi>
+                                    </mstyle>
+                                    <mtext> </mtext>
+                                    <mi>R</mi>
+                                </mrow>
+                            </mstyle>
+                        </math>.</td>
+                </tr>
+            </table>
+        </p>
+        <p>Чтобы оператор цикла <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>D</mi>
+                        <mi>O</mi>
+                    </mrow>
+                </mstyle>
+            </math>&#160;завершил работу, не производя выборки охраняемой команды, необходимо, чтобы <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathvariant="bold" mathsize="normal">
+                            <mi>N</mi>
+                            <mi>O</mi>
+                            <mi>T</mi>
+                        </mstyle>
+                        <mtext> </mtext>
+                        <mi>B</mi>
+                        <mi>B</mi>
+                        <mtext> </mtext>
+                        <mo>=</mo>
+                        <mstyle mathvariant="bold" mathsize="normal">
+                            <mi>T</mi>
+                        </mstyle>
+                    </mrow>
+                </mstyle>
+            </math>. При этом истинность <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">R</mi>
+                </mstyle>
+            </math>&#160;до выполнения <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>D</mi>
+                        <mi>O</mi>
+                    </mrow>
+                </mstyle>
+            </math>&#160;является необходимым условием для истинности <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">R</mi>
+                </mstyle>
+            </math>&#160;после выполнения <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>D</mi>
+                        <mi>O</mi>
+                    </mrow>
+                </mstyle>
+            </math>.</p>
+        <p>Определим предикат <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mi>H</mi>
+                            <mi>k</mi>
+                        </msub>
+                        <mo stretchy="false">(</mo>
+                        <mi>R</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>&#160;как множество состояний, в которых выполнение <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>D</mi>
+                        <mi>O</mi>
+                    </mrow>
+                </mstyle>
+            </math>&#160;заканчивается за <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">k</mi>
+                </mstyle>
+            </math>&#160;шагов, при значении <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">R</mi>
+                </mstyle>
+            </math>&#160;«истина» (<math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mi>H</mi>
+                            <mi>k</mi>
+                        </msub>
+                        <mo stretchy="false">(</mo>
+                        <mi>R</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>&#160;будет определяться через <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mi>H</mi>
+                            <mi>k</mi>
+                        </msub>
+                        <msub>
+                            <mtext> </mtext>
+                            <mo>–</mo>
+                        </msub>
+                        <msub>
+                            <mtext> </mtext>
+                            <mn>1</mn>
+                        </msub>
+                        <mo stretchy="false">(</mo>
+                        <mi>R</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>):</p>
+        <p align="center">
+            <table class="mathcenter">
+                <tr>
+                    <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <msub>
+                                        <mi>H</mi>
+                                        <mi>k</mi>
+                                    </msub>
+                                    <mo stretchy="false">(</mo>
+                                    <mi>R</mi>
+                                    <mo stretchy="false">)</mo>
+                                    <mtext> </mtext>
+                                    <mo>=</mo>
+                                    <msub>
+                                        <mi>H</mi>
+                                        <mn>0</mn>
+                                    </msub>
+                                    <mo stretchy="false">(</mo>
+                                    <mi>R</mi>
+                                    <mo stretchy="false">)</mo>
+                                    <mtext> </mtext>
+                                    <mstyle mathvariant="bold" mathsize="normal">
+                                        <mi>O</mi>
+                                        <mi>R</mi>
+                                    </mstyle>
+                                    <mtext> </mtext>
+                                    <mi>w</mi>
+                                    <mi>p</mi>
+                                    <mrow>
+                                        <mo>(</mo>
+                                        <mrow>
+                                            <mi>I</mi>
+                                            <mi>F</mi>
+                                            <mo>,</mo>
+                                            <mtext> </mtext>
+                                            <msub>
+                                                <mi>H</mi>
+                                                <mi>k</mi>
+                                            </msub>
+                                            <msub>
+                                                <mtext> </mtext>
+                                                <mo>–</mo>
+                                            </msub>
+                                            <msub>
+                                                <mtext> </mtext>
+                                                <mn>1</mn>
+                                            </msub>
+                                            <mo stretchy="false">(</mo>
+                                            <mi>R</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                        <mo>)</mo>
+                                    </mrow>
+                                    <mo>,</mo>
+                                    <mtext> </mtext>
+                                    <mtext> </mtext>
+                                    <mi>k</mi>
+                                    <mtext> </mtext>
+                                    <mo>&gt;</mo>
+                                    <mtext> </mtext>
+                                    <mn>0</mn>
+                                    <mtext> </mtext>
+                                    <mo>→</mo>
+                                    <mi>w</mi>
+                                    <mi>p</mi>
+                                    <mo stretchy="false">(</mo>
+                                    <mi>D</mi>
+                                    <mi>O</mi>
+                                    <mo>,</mo>
+                                    <mtext> </mtext>
+                                    <mi>R</mi>
+                                    <mo stretchy="false">)</mo>
+                                    <mtext> </mtext>
+                                    <mo>=</mo>
+                                    <mtext> </mtext>
+                                    <mrow>
+                                        <mo>(</mo>
+                                        <mrow>
+                                            <mo>∃</mo>
+                                            <mi>k</mi>
+                                            <mo>:</mo>
+                                            <mi>k</mi>
+                                            <mtext> </mtext>
+                                            <mo>≥</mo>
+                                            <mtext> </mtext>
+                                            <mn>0</mn>
+                                            <mtext> </mtext>
+                                            <mo>:</mo>
+                                            <mtext> </mtext>
+                                            <msub>
+                                                <mi>H</mi>
+                                                <mi>k</mi>
+                                            </msub>
+                                            <mo stretchy="false">(</mo>
+                                            <mi>R</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                        <mo>)</mo>
+                                    </mrow>
+                                </mrow>
+                            </mstyle>
+                        </math>.</td>
+                </tr>
+            </table>
+        </p>
+        <p>Это значит, что должно существовать такое значение <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">k</mi>
+                </mstyle>
+            </math>, что потребуется не более чем <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">k</mi>
+                </mstyle>
+            </math>&#160;шагов для обеспечения завершения работы в конечном состоянии, удовлетворяющем постусловию <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">R</mi>
+                </mstyle>
+            </math>.</p>
+        <div class="theorem">
+            <div>
+                <p><b>Теорема инвариантности для оператора цикла</b>. Пусть оператор выбора <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mi>I</mi>
+                                <mi>F</mi>
+                            </mrow>
+                        </mstyle>
+                    </math>&#160;и предикат <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mi xmlns="http://www.w3.org/1998/Math/MathML">P</mi>
+                        </mstyle>
+                    </math>&#160;таковы, что для всех состояний справедливо:</p>
+                <p align="center">
+                    <table class="mathcenter">
+                        <tr>
+                            <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mstyle mathsize="100%" displaystyle="true">
+                                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                            <mo stretchy="false">(</mo>
+                                            <mi>P</mi>
+                                            <mtext> </mtext>
+                                            <mstyle mathvariant="bold" mathsize="normal">
+                                                <mi>A</mi>
+                                                <mi>N</mi>
+                                                <mi>D</mi>
+                                            </mstyle>
+                                            <mtext> </mtext>
+                                            <mi>B</mi>
+                                            <mi>B</mi>
+                                            <mo stretchy="false">)</mo>
+                                            <mtext> </mtext>
+                                            <mo>⇒</mo>
+                                            <mtext> </mtext>
+                                            <mi>w</mi>
+                                            <mi>p</mi>
+                                            <mtext> </mtext>
+                                            <mo stretchy="false">(</mo>
+                                            <mi>I</mi>
+                                            <mi>F</mi>
+                                            <mo>,</mo>
+                                            <mtext> </mtext>
+                                            <mi>R</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </mstyle>
+                                </math>.</td>
+                        </tr>
+                    </table>
+                </p>
+                <p>Тогда для оператора цикла справедливо:</p>
+                <p align="center">
+                    <table class="mathcenter">
+                        <tr>
+                            <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mstyle mathsize="100%" displaystyle="true">
+                                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                            <mrow>
+                                                <mo>(</mo>
+                                                <mrow>
+                                                    <mi>P</mi>
+                                                    <mtext> </mtext>
+                                                    <mstyle mathvariant="bold" mathsize="normal">
+                                                        <mi>A</mi>
+                                                        <mi>N</mi>
+                                                        <mi>D</mi>
+                                                    </mstyle>
+                                                    <mtext> </mtext>
+                                                    <mi>w</mi>
+                                                    <mi>p</mi>
+                                                    <mtext> </mtext>
+                                                    <mo stretchy="false">(</mo>
+                                                    <mi>D</mi>
+                                                    <mi>O</mi>
+                                                    <mo>,</mo>
+                                                    <mtext> </mtext>
+                                                    <mstyle mathvariant="bold" mathsize="normal">
+                                                        <mi>T</mi>
+                                                    </mstyle>
+                                                    <mo stretchy="false">)</mo>
+                                                </mrow>
+                                                <mo>)</mo>
+                                            </mrow>
+                                            <mtext> </mtext>
+                                            <mo>⇒</mo>
+                                            <mtext> </mtext>
+                                            <mi>w</mi>
+                                            <mi>p</mi>
+                                            <mtext> </mtext>
+                                            <mo stretchy="false">(</mo>
+                                            <mi>D</mi>
+                                            <mi>O</mi>
+                                            <mo>,</mo>
+                                            <mtext> </mtext>
+                                            <mi>P</mi>
+                                            <mtext> </mtext>
+                                            <mstyle mathvariant="bold" mathsize="normal">
+                                                <mi>A</mi>
+                                                <mi>N</mi>
+                                                <mi>D</mi>
+                                            </mstyle>
+                                            <mtext> </mtext>
+                                            <mstyle mathvariant="bold" mathsize="normal">
+                                                <mi>N</mi>
+                                                <mi>O</mi>
+                                                <mi>T</mi>
+                                            </mstyle>
+                                            <mtext> </mtext>
+                                            <mi>B</mi>
+                                            <mi>B</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </mstyle>
+                                </math>.</td>
+                        </tr>
+                    </table>
+                </p>
+            </div>
+        </div>
+        <div class="definition">
+            <div>
+                <p><i>Предикат </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mi xmlns="http://www.w3.org/1998/Math/MathML">P</mi>
+                        </mstyle>
+                    </math><i>, истинный перед выполнением и после выполнения каждого шага цикла, называется <b>инвариантным отношением</b> или просто <b>инвариантом цикла</b>.</i></p>
+            </div>
+        </div>
+        <p>Это условие означает, что если предикат <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">P</mi>
+                </mstyle>
+            </math>&#160;первоначально истинен и одна из охраняемых команд выбирается для выполнения, то после ее выполнения&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">P</mi>
+                </mstyle>
+            </math> сохранит значение истинности. После завершения оператора, когда ни одна из охран не является истиной, будем иметь:</p>
+        <p align="center">
+            <table class="mathcenter">
+                <tr>
+                    <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mi>P</mi>
+                                    <mtext> </mtext>
+                                    <mstyle mathvariant="bold" mathsize="normal">
+                                        <mi>A</mi>
+                                        <mi>N</mi>
+                                        <mi>D</mi>
+                                    </mstyle>
+                                    <mtext> </mtext>
+                                    <mstyle mathvariant="bold" mathsize="normal">
+                                        <mi>N</mi>
+                                        <mi>O</mi>
+                                        <mi>T</mi>
+                                    </mstyle>
+                                    <mtext> </mtext>
+                                    <mi>B</mi>
+                                    <mi>B</mi>
+                                </mrow>
+                            </mstyle>
+                        </math>.</td>
+                </tr>
+            </table>
+        </p>
+        <p>Работа завершится правильно, если условие <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>w</mi>
+                        <mi>p</mi>
+                        <mtext> </mtext>
+                        <mo stretchy="false">(</mo>
+                        <mi>D</mi>
+                        <mi>O</mi>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <mstyle mathvariant="bold" mathsize="normal">
+                            <mi>T</mi>
+                        </mstyle>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>&#160;справедливо и до выполнения <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>D</mi>
+                        <mi>O</mi>
+                    </mrow>
+                </mstyle>
+            </math>. Так как любое состояние удовлетворяет <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mstyle mathvariant="bold" mathsize="normal" xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>T</mi>
+                    </mstyle>
+                </mstyle>
+            </math>, то <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>w</mi>
+                        <mi>p</mi>
+                        <mtext> </mtext>
+                        <mo stretchy="false">(</mo>
+                        <mi>D</mi>
+                        <mi>O</mi>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <mstyle mathvariant="bold" mathsize="normal">
+                            <mi>T</mi>
+                        </mstyle>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>&#160;является слабейшим предусловием для начального состояния, такого, что запуск оператора цикла <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>D</mi>
+                        <mi>O</mi>
+                    </mrow>
+                </mstyle>
+            </math>&#160;приведет к правильно завершаемой работе.</p>
+        <p>При определении семантики полного языка программирования с использованием аксиоматического метода для каждого вида операторов языка должны быть сформулированы аксиома или правило логического вывода. Но определение аксиом и правил логического вывода для некоторых операторов языков программирования&#160;– очень сложная задача. Трудно построить множество основных аксиом, достаточно ограниченное для того, чтобы избежать противоречий, но достаточно богатое для того, чтобы служить отправной точкой для доказательства утверждений о программах&#160;(Э.&#160;Дейкстра).</p>
+        <p>Решением такой проблемы является разработка языка, использующего аксиоматический метод, т.&#160;е. содержащего только те операторы, для которых могут быть написаны аксиомы или правила логического вывода. К&#160;сожалению, подобный язык оказался бы слишком маленьким и простым, что отражает нынешнее состояние аксиоматической семантики как науки.</p>
+        <p>Аксиоматическая семантика является мощным инструментом для исследований в области доказательств правильности программ, она также создает великолепную основу для анализа программ как во время их создания, так и позднее. Однако ее полезность при описании содержания языков программирования весьма ограничена как для пользователей языка, так и для разработчиков компиляторов.</p>
+    </div>
+</body>
+
+</html>

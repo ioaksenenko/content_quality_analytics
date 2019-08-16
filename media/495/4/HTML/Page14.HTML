@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html" charset="utf-8" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script>
+    <link href="https://new-online.tusur.ru/theme/fdo/ims/course_style.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <div>
+        <h3>4.4.3 Задача о взаимном исключении</h3>
+        <p>Пусть несколько процессов разделяют общую переменную, запись, файл или другой элемент данных. Для обновления разделяемого элемента данных процесс должен сначала считать старое значение, затем вычислить новое и, наконец, записать его на то&#160;же место. Если два процесса <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mi>P</mi>
+                            <mn>1</mn>
+                        </msub>
+                    </mrow>
+                </mstyle>
+            </math>&#160;и <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mi>P</mi>
+                            <mn>2</mn>
+                        </msub>
+                    </mrow>
+                </mstyle>
+            </math>&#160;в&#160;одно и то&#160;же время пытаются выполнить такую последовательность действий, то могут возникнуть искажения данных.</p>
+        <div class="example">
+            <div class="ex_head">
+                <div class="smile">Пример 4.9</div>
+            </div>
+            <p>Возможна следующая последовательность:</p>
+            <ol type="1" class="num_brackets">
+                <li> процесс <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <msub>
+                                    <mi>P</mi>
+                                    <mn>1</mn>
+                                </msub>
+                            </mrow>
+                        </mstyle>
+                    </math>&#160;считывает значение <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mi xmlns="http://www.w3.org/1998/Math/MathML">x</mi>
+                        </mstyle>
+                    </math>&#160;из разделяемого объекта;</li>
+                <li> процесс <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <msub>
+                                    <mi>P</mi>
+                                    <mn>2</mn>
+                                </msub>
+                            </mrow>
+                        </mstyle>
+                    </math>&#160;считывает значение <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mi xmlns="http://www.w3.org/1998/Math/MathML">x</mi>
+                        </mstyle>
+                    </math>&#160;из разделяемого объекта;</li>
+                <li> процесс <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <msub>
+                                    <mi>P</mi>
+                                    <mn>1</mn>
+                                </msub>
+                            </mrow>
+                        </mstyle>
+                    </math>&#160;вычисляет новое значение <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <msup>
+                                    <mi>x</mi>
+                                    <mo>′</mo>
+                                </msup>
+                                <mo>=</mo>
+                                <mi>f</mi>
+                                <mtext> </mtext>
+                                <mo stretchy="false">(</mo>
+                                <mi>x</mi>
+                                <mo stretchy="false">)</mo>
+                            </mrow>
+                        </mstyle>
+                    </math>;</li>
+                <li> процесс <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <msub>
+                                    <mi>P</mi>
+                                    <mn>2</mn>
+                                </msub>
+                            </mrow>
+                        </mstyle>
+                    </math>&#160;вычисляет новое значение <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <msup>
+                                    <mi>x</mi>
+                                    <mo>″</mo>
+                                </msup>
+                                <mo>=</mo>
+                                <mi>g</mi>
+                                <mtext> </mtext>
+                                <mo stretchy="false">(</mo>
+                                <mi>x</mi>
+                                <mo stretchy="false">)</mo>
+                            </mrow>
+                        </mstyle>
+                    </math>;</li>
+                <li> процесс <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <msub>
+                                    <mi>P</mi>
+                                    <mn>1</mn>
+                                </msub>
+                            </mrow>
+                        </mstyle>
+                    </math>&#160;записывает <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <msup xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mi>x</mi>
+                                <mo>′</mo>
+                            </msup>
+                        </mstyle>
+                    </math>&#160;в разделяемый объект;</li>
+                <li> процесс <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <msub>
+                                    <mi>P</mi>
+                                    <mn>2</mn>
+                                </msub>
+                            </mrow>
+                        </mstyle>
+                    </math>&#160;записывает <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <msup xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mi>x</mi>
+                                <mo>″</mo>
+                            </msup>
+                        </mstyle>
+                    </math>&#160;в&#160;разделяемый объект, уничтожая значение&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mi xmlns="http://www.w3.org/1998/Math/MathML">x</mi>
+                        </mstyle>
+                    </math>.</li>
+            </ol>
+            <p>Результат вычисления процесса <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mi>P</mi>
+                                <mn>1</mn>
+                            </msub>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;потерян.</p>
+        </div>
+        <p>Для исключения подобных проблем используется метод взаимного исключения, основанный на понятии «<i>критическая секция</i>». Критическая секция&#160;– это участок кода процесса, на котором он осуществляет доступ к разделяемому объекту данных. Прежде чем выполнить свою критическую секцию, процесс ждет, пока другой процесс не закончит выполнение собственной критической секции (если такое выполнение имеет место). Затем он входит в критическую секцию и блокирует доступ для любого другого процесса к&#160;своей критической секции. После выполнения процессом критической секции деблокируется доступ для других процессов к разделяемому объекту данных.</p>
+        <div class="example">
+            <div class="ex_head">
+                <div class="smile">Пример 4.10</div>
+            </div>
+            <p>Сеть Петри на рисунке&#160;4.8 моделирует механизм взаимного исключения для двух процессов, <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mi>P</mi>
+                                <mn>1</mn>
+                            </msub>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;и <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mi>P</mi>
+                                <mn>2</mn>
+                            </msub>
+                        </mrow>
+                    </mstyle>
+                </math>. Она легко обобщается на произвольное число процессов. </p>
+            
+            <p align="center" class="img"><img alt="4.8" src="processes.files/png/4.8.png" /></p>
+            <p class="imgcaption">Рис.&#160;4.8&#160;– Механизм взаимного исключения для двух процессов</p>
+            <p>Позиция <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">m</mi>
+                    </mstyle>
+                </math>&#160;представляет условие «критическая секция свободна», разрешающее вход в критическую секцию. Попытка процесса <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mi>P</mi>
+                                <mn>1</mn>
+                            </msub>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mo stretchy="false">(</mo>
+                            <msub>
+                                <mi>P</mi>
+                                <mn>2</mn>
+                            </msub>
+                            <mo stretchy="false">)</mo>
+                        </mrow>
+                    </mstyle>
+                </math>
+                &#160;войти в критическую секцию осуществляется после помещения фишки в его позицию&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mi>S</mi>
+                                <mn>1</mn>
+                            </msub>
+                        </mrow>
+                    </mstyle>
+                </math><math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mo stretchy="false">(</mo>
+                            <msub>
+                                <mi>S</mi>
+                                <mn>2</mn>
+                            </msub>
+                            <mo stretchy="false">)</mo>
+                        </mrow>
+                    </mstyle>
+                </math>.
+                Такая попытка может увенчаться успехом, если в позиции <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mi>m</mi>
+                                </mrow>
+                                </mstyle>
+                                </math> содержится фишка. Если оба процесса пытаются войти в критическую секцию одновременно, то переходы <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mi>t</mi>
+                                <mn>1</mn>
+                            </msub>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;и <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mi>t</mi>
+                                <mn>2</mn>
+                            </msub>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;вступят в конфликт, и только один из них сможет запуститься. Запуск <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mi>t</mi>
+                                <mn>1</mn>
+                            </msub>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;запретит запуск перехода <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mi>t</mi>
+                                <mn>2</mn>
+                            </msub>
+                        </mrow>
+                    </mstyle>
+                </math>, вынуждая процесс <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mi>P</mi>
+                                <mn>2</mn>
+                            </msub>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;ждать, пока процесс <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mi>P</mi>
+                                <mn>1</mn>
+                            </msub>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;выйдет из своей критической секции и возвратит фишку обратно в позицию <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">m</mi>
+                    </mstyle>
+                </math>.
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>

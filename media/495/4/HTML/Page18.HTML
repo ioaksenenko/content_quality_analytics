@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html" charset="utf-8" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script>
+    <link href="https://new-online.tusur.ru/theme/fdo/ims/course_style.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <div>
+        <h3>4.5.1 Свойства сетей Петри</h3>
+        <p>Позиция <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>p</mi>
+                        <mo>∈</mo>
+                        <mi>P</mi>
+                    </mrow>
+                </mstyle>
+            </math>&#160;сети Петри <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>N</mi>
+                        <mo>=</mo>
+                        <mo stretchy="false">(</mo>
+                        <mi>P</mi>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <mi>T</mi>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <mi>I</mi>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <mi>O</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>&#160;c начальной маркировкой&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mtext>μ</mtext>
+                </mstyle>
+            </math> является <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">k</mi>
+                </mstyle>
+            </math>-ограниченной, если <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msup>
+                            <mtext>μ</mtext>
+                            <mo>′</mo>
+                        </msup>
+                        <mo stretchy="false">(</mo>
+                        <mi>p</mi>
+                        <mo stretchy="false">)</mo>
+                        <mo>≤</mo>
+                        <mtext> </mtext>
+                        <mi>k</mi>
+                    </mrow>
+                </mstyle>
+            </math>. Позиция называется ограниченной, если она является <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">k</mi>
+                </mstyle>
+            </math>-ограниченной для некоторого целого значения <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">k</mi>
+                </mstyle>
+            </math>. Сеть Петри ограниченна, если все ее позиции ограниченны.</p>
+        <div class="definition">
+            <div>
+                <p><i>Позиция </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mi>p</mi>
+                                <mo>∈</mo>
+                                <mi>P</mi>
+                            </mrow>
+                        </mstyle>
+                    </math><i>&#160;сети Петри </i><i><math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mi>N</mi>
+                                    <mo>=</mo>
+                                    <mo stretchy="false">(</mo>
+                                    <mi>P</mi>
+                                    <mo>,</mo>
+                                    <mtext> </mtext>
+                                    <mi>T</mi>
+                                    <mo>,</mo>
+                                    <mtext> </mtext>
+                                    <mi>I</mi>
+                                    <mo>,</mo>
+                                    <mtext> </mtext>
+                                    <mi>O</mi>
+                                    <mo stretchy="false">)</mo>
+                                </mrow>
+                            </mstyle>
+                        </math>
+                        &#160;c начальной
+                    </i><i> маркировкой&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <mtext>μ</mtext>
+                            </mstyle>
+                        </math> является <b>безопасной</b>, если она является <span class="textnormal">1<span class="textnormal">-ограниченной. Сеть Петри <b>безопасна</b>, если безопасны все позиции сети.</i></p>
+                <p><i>Сеть Петри </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mi>N</mi>
+                                <mo>=</mo>
+                                <mo stretchy="false">(</mo>
+                                <mi>P</mi>
+                                <mo>,</mo>
+                                <mtext> </mtext>
+                                <mi>T</mi>
+                                <mo>,</mo>
+                                <mtext> </mtext>
+                                <mi>I</mi>
+                                <mo>,</mo>
+                                <mtext> </mtext>
+                                <mi>O</mi>
+                                <mo stretchy="false">)</mo>
+                            </mrow>
+                        </mstyle>
+                    </math><i>&#160;с начальной маркировкой </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mtext>μ</mtext>
+                        </mstyle>
+                    </math><i>&#160;является <b>сохраняющей</b>, если для любой достижимой маркировки </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <msup>
+                                    <mtext>μ</mtext>
+                                    <mo>′</mo>
+                                </msup>
+                                <mo>∈</mo>
+                                <mi>R</mi>
+                                <mtext> </mtext>
+                                <mo stretchy="false">(</mo>
+                                <mi>N</mi>
+                                <mo>,</mo>
+                                <mtext> </mtext>
+                                <mtext>μ</mtext>
+                                <mo stretchy="false">)</mo>
+                            </mrow>
+                        </mstyle>
+                    </math><i>&#160;справедливо следующее равенство:</i></p>
+                <table class="mathcenter">
+                    <tr>
+                        <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mstyle displaystyle="true">
+                                            <munder>
+                                                <mo>∑</mo>
+                                                <mrow>
+                                                    <mi>p</mi>
+                                                    <mtext> </mtext>
+                                                    <mo>∈</mo>
+                                                    <mtext> </mtext>
+                                                    <mi>P</mi>
+                                                </mrow>
+                                            </munder>
+                                            <mrow>
+                                                <mtext>
+                                                    <msup>
+                                                        <mtext>μ</mtext>
+                                                        <mo>′</mo>
+                                                    </msup>
+                                                </mtext>
+                                                <mo stretchy="false">(</mo>
+                                                <mi>p</mi>
+                                                <mo stretchy="false">)</mo>
+                                            </mrow>
+                                        </mstyle>
+                                        <mo>=</mo>
+                                        <mstyle displaystyle="true">
+                                            <munder>
+                                                <mo>∑</mo>
+                                                <mrow>
+                                                    <mi>p</mi>
+                                                    <mtext> </mtext>
+                                                    <mo>∈</mo>
+                                                    <mtext> </mtext>
+                                                    <mi>P</mi>
+                                                </mrow>
+                                            </munder>
+                                            <mrow>
+                                                <mtext>μ</mtext>
+                                                <mtext> </mtext>
+                                                <mo stretchy="false">(</mo>
+                                                <mi>p</mi>
+                                                <mo stretchy="false">)</mo>
+                                            </mrow>
+                                        </mstyle>
+                                        <mo>.</mo>
+                                    </mrow>
+                                </mstyle>
+                            </math></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <p><i>Тупик</i> в сети Петри&#160;– это один или множество переходов, которые не могут быть запущены. Определим для сети Петри <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">N</mi>
+                </mstyle>
+            </math>&#160;с&#160;начальной маркировкой&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mtext>μ</mtext>
+                </mstyle>
+            </math> следующие <i>уровни</i> активности переходов:</p>
+        <p><i>Уровень </i>0: переход <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">t</mi>
+                </mstyle>
+            </math>&#160;обладает <i>активностью уровня</i>&#160;0 и называется <i>мертвым</i>, если он никогда не может быть запущен.</p>
+        <p><i>Уровень </i>1: переход <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">t</mi>
+                </mstyle>
+            </math>&#160;обладает <i>активностью уровня&#160;</i>1 и называется <i>потенциально живым</i>, если существует такая маркировка <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msup>
+                            <mtext>μ</mtext>
+                            <mo>′</mo>
+                        </msup>
+                        <mo>∈</mo>
+                        <mi>R</mi>
+                        <mtext> </mtext>
+                        <mo stretchy="false">(</mo>
+                        <mi>N</mi>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <mtext>μ</mtext>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math> что <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">t</mi>
+                </mstyle>
+            </math>&#160;разрешен в&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <msup xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mtext>μ</mtext>
+                        <mo>′</mo>
+                    </msup>
+                </mstyle>
+            </math>.</p>
+        <p><i>Уровень </i>2: переход <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">t</mi>
+                </mstyle>
+            </math>&#160;обладает <i>активностью уровня </i>2 и называется <i>живым</i>, если для всякой <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msup>
+                            <mtext>μ</mtext>
+                            <mo>′</mo>
+                        </msup>
+                        <mo>∈</mo>
+                        <mi>R</mi>
+                        <mtext> </mtext>
+                        <mo stretchy="false">(</mo>
+                        <mi>N</mi>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <mtext>μ</mtext>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>&#160;переход <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">t</mi>
+                </mstyle>
+            </math>&#160;является потенциально живым для сети Петри <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">N</mi>
+                </mstyle>
+            </math>&#160;с&#160;начальной маркировкой <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mtext>μ</mtext>
+                </mstyle>
+            </math>.</p>
+        <div class="definition">
+            <div>
+                <p><i>Сеть Петри называется <b>живой</b>, если все ее переходы являются живыми.</i></p>
+            </div>
+        </div>
+        <p><i>Задача достижимости</i>. Для данной сети Петри с маркировкой <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mtext>μ</mtext>
+                </mstyle>
+            </math>&#160;и маркировки <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <msup xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mtext>μ</mtext>
+                        <mo>′</mo>
+                    </msup>
+                </mstyle>
+            </math>&#160;определить: <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msup>
+                            <mtext>μ</mtext>
+                            <mo>′</mo>
+                        </msup>
+                        <mo>∈</mo>
+                        <mi>R</mi>
+                        <mtext> </mtext>
+                        <mo stretchy="false">(</mo>
+                        <mi>N</mi>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <mtext>μ</mtext>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>.</p>
+        <p><i>Задача покрываемости</i>. Для данной сети Петри <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">N</mi>
+                </mstyle>
+            </math>&#160;с начальной маркировкой <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mtext>μ</mtext>
+                </mstyle>
+            </math>&#160;и маркировки <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <msup xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mtext>μ</mtext>
+                        <mo>′</mo>
+                    </msup>
+                </mstyle>
+            </math>&#160;определить, существует ли такая достижимая маркировка <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msup>
+                            <mtext>μ</mtext>
+                            <mo>″</mo>
+                        </msup>
+                        <mo>∈</mo>
+                        <mi>R</mi>
+                        <mtext> </mtext>
+                        <mo stretchy="false">(</mo>
+                        <mi>N</mi>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <mtext>μ</mtext>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>, что <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msup>
+                            <mtext>μ</mtext>
+                            <mo>″</mo>
+                        </msup>
+                        <mo>≥</mo>
+                        <msup>
+                            <mtext>μ</mtext>
+                            <mo>′</mo>
+                        </msup>
+                    </mrow>
+                </mstyle>
+            </math>&#160;(отношение <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msup>
+                            <mtext>μ</mtext>
+                            <mo>″</mo>
+                        </msup>
+                        <mo>≥</mo>
+                        <msup>
+                            <mtext>μ</mtext>
+                            <mo>′</mo>
+                        </msup>
+                    </mrow>
+                </mstyle>
+            </math>&#160;истинно, если каждый элемент маркировки <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <msup xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mtext>μ</mtext>
+                        <mo>″</mo>
+                    </msup>
+                </mstyle>
+            </math>&#160;не меньше соответствующего элемента маркировки <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <msup xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mtext>μ</mtext>
+                        <mo>′</mo>
+                    </msup>
+                </mstyle>
+            </math>).</p>
+        <p>Сети Петри присуще некоторое поведение, которое определяется множеством ее возможных последовательностей запусков переходов или ее множеством достижимых маркировок. Понятие эквивалентности сетей Петри определяется через равенство множеств достижимых маркировок.</p>
+        <div class="definition">
+            <div>
+                <p><i>Сеть Петри </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mi>N</mi>
+                                <mo>=</mo>
+                                <mo stretchy="false">(</mo>
+                                <mi>P</mi>
+                                <mo>,</mo>
+                                <mtext> </mtext>
+                                <mi>T</mi>
+                                <mo>,</mo>
+                                <mtext> </mtext>
+                                <mi>I</mi>
+                                <mo>,</mo>
+                                <mtext> </mtext>
+                                <mi>O</mi>
+                                <mo stretchy="false">)</mo>
+                            </mrow>
+                        </mstyle>
+                    </math><i>&#160;с начальной маркировкой </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mtext>μ</mtext>
+                        </mstyle>
+                    </math><i>&#160;и сеть Петри </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <msup>
+                                    <mi>N</mi>
+                                    <mo>′</mo>
+                                </msup>
+                                <mo>=</mo>
+                                <mo stretchy="false">(</mo>
+                                <msup>
+                                    <mi>P</mi>
+                                    <mo>′</mo>
+                                </msup>
+                                <mo>,</mo>
+                                <mtext> </mtext>
+                                <msup>
+                                    <mi>T</mi>
+                                    <mo>′</mo>
+                                </msup>
+                                <mo>,</mo>
+                                <mtext> </mtext>
+                                <msup>
+                                    <mi>I</mi>
+                                    <mo>′</mo>
+                                </msup>
+                                <mo>,</mo>
+                                <mtext> </mtext>
+                                <msup>
+                                    <mi>O</mi>
+                                    <mo>′</mo>
+                                </msup>
+                                <mo stretchy="false">)</mo>
+                            </mrow>
+                        </mstyle>
+                    </math>&#160;<i>с начальной маркировкой </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <msup xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mtext>μ</mtext>
+                                <mo>′</mo>
+                            </msup>
+                        </mstyle>
+                    </math><i>&#160;<b>эквивалентны</b>, если справедливо </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mi>R</mi>
+                                <mtext> </mtext>
+                                <mo stretchy="false">(</mo>
+                                <mi>N</mi>
+                                <mo>,</mo>
+                                <mtext> </mtext>
+                                <mtext>μ</mtext>
+                                <mo stretchy="false">)</mo>
+                                <mo>=</mo>
+                                <mi>R</mi>
+                                <mtext> </mtext>
+                                <mo stretchy="false">(</mo>
+                                <msup>
+                                    <mi>N</mi>
+                                    <mo>′</mo>
+                                </msup>
+                                <mo>,</mo>
+                                <mtext> </mtext>
+                                <msup>
+                                    <mtext>μ</mtext>
+                                    <mo>′</mo>
+                                </msup>
+                                <mo stretchy="false">)</mo>
+                            </mrow>
+                        </mstyle>
+                    </math><i>.</i></p>
+            </div>
+        </div>
+        <p>Понятие эквивалентности сетей Петри может быть определено также через равенство множеств возможных последовательностей запусков переходов.</p>
+        <p>Более слабым, по сравнению с эквивалентностью, является свойство <i>включения</i>, определение которого совпадает с определением эквивалентности, с&#160;точностью до замены <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo>«</mo>
+                        <mo>=</mo>
+                        <mo>»</mo>
+                    </mrow>
+                </mstyle>
+            </math>&#160;на <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo>«</mo>
+                        <mo>⊆</mo>
+                        <mo>»</mo>
+                    </mrow>
+                </mstyle>
+            </math>.</p>
+    </div>
+</body>
+
+</html>

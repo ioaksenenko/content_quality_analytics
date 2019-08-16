@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html" charset="utf-8" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script>
+    <link href="https://new-online.tusur.ru/theme/fdo/ims/course_style.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <div>
+        <h3>3.2.3 Задача об обедающих философах</h3>
+        <p>Рассмотрим трактовку задачиоб обедающих философах, предложенной Э.&#160;Дейкстрой, в терминах параллельных процессов&#160;[7, 14, 16, 18].</p>
+        <div class="citation">
+            <div>
+                <p><i>В&#160;некоем пансионе нашли пристанище пять философов. У&#160;каждого философа была своя комната. Была у них и общая столовая с круглым столом, вокруг которого стояли пять стульев. В&#160;центре стола стояла большая миска спагетти, содержимое которой постоянно пополнялось. На столе также лежало пять вилок, по одной между соседними посадочными местами. Звали философов </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mi>Ф</mi>
+                                <mi>И</mi>
+                                <msub>
+                                    <mi>Л</mi>
+                                    <mn>0</mn>
+                                </msub>
+                            </mrow>
+                        </mstyle>
+                    </math>, <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mi>Ф</mi>
+                                <mi>И</mi>
+                                <msub>
+                                    <mi>Л</mi>
+                                    <mn>1</mn>
+                                </msub>
+                            </mrow>
+                        </mstyle>
+                    </math>, <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mi>Ф</mi>
+                                <mi>И</mi>
+                                <msub>
+                                    <mi>Л</mi>
+                                    <mn>2</mn>
+                                </msub>
+                            </mrow>
+                        </mstyle>
+                    </math>, <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mi>Ф</mi>
+                                <mi>И</mi>
+                                <msub>
+                                    <mi>Л</mi>
+                                    <mn>3</mn>
+                                </msub>
+                            </mrow>
+                        </mstyle>
+                    </math>, <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mi>Ф</mi>
+                                <mi>И</mi>
+                                <msub>
+                                    <mi>Л</mi>
+                                    <mn>4</mn>
+                                </msub>
+                            </mrow>
+                        </mstyle>
+                    </math><i>&#160;и за столом они располагались в этом же порядке, по часовой стрелке. Почувствовав голод, философ шел в столовую, садился на свой стул, брал сначала слева от себя вилку, затем справа и приступал к еде. Закончив трапезу, он клал на место обе вилки, выходил из-за стола и уходил размышлять.</i></p>
+            </div>
+        </div>
+        <p><i>Алфавиты</i>. Теперь построим математическую модель этой системы. Сначала надо выбрать множества событий. Для <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>Ф</mi>
+                        <mi>И</mi>
+                        <msub>
+                            <mi>Л</mi>
+                            <mi>i</mi>
+                        </msub>
+                    </mrow>
+                </mstyle>
+            </math>&#160;определим это множество как</p>
+        <table class="mathcenter">
+            <tr>
+                <td>
+                    <mtr>
+                        <mtd><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mtext>α</mtext>
+                                        <mi>Ф</mi>
+                                        <mi>И</mi>
+                                        <msub>
+                                            <mi>Л</mi>
+                                            <mi>i</mi>
+                                        </msub>
+                                    </mrow>
+                                </mstyle>
+                            </math>
+                            &#160;= <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mrow>
+                                            <mo>{</mo>
+                                            <mrow>
+                                                <mi>i</mi>
+                                                <mo>.</mo>
+                                                <mi>с</mi>
+                                                <mi>а</mi>
+                                                <mi>д</mi>
+                                                <mi>и</mi>
+                                                <mi>т</mi>
+                                                <mi>с</mi>
+                                                <mi>я</mi>
+                                                <mo>,</mo>
+                                                <mtext> </mtext>
+                                                <mi>i</mi>
+                                                <mo>.</mo>
+                                                <mi>в</mi>
+                                                <mi>с</mi>
+                                                <mi>т</mi>
+                                                <mi>а</mi>
+                                                <mi>е</mi>
+                                                <mi>т</mi>
+                                                <mo>,</mo>
+                                                <mtext> </mtext>
+                                                <mi>i</mi>
+                                                <mo>.</mo>
+                                                <mi>б</mi>
+                                                <mi>е</mi>
+                                                <mi>р</mi>
+                                                <mi>е</mi>
+                                                <mi>т</mi>
+                                                <mo>_</mo>
+                                                <mi>в</mi>
+                                                <mi>и</mi>
+                                                <mi>л</mi>
+                                                <mo>.</mo>
+                                                <mi>i</mi>
+                                                <mo>,</mo>
+                                                <mtext> </mtext>
+                                                <mi>i</mi>
+                                                <mo>.</mo>
+                                                <mi>б</mi>
+                                                <mi>е</mi>
+                                                <mi>р</mi>
+                                                <mi>е</mi>
+                                                <mi>т</mi>
+                                                <mo>_</mo>
+                                                <mi>в</mi>
+                                                <mi>и</mi>
+                                                <mi>л</mi>
+                                                <mo>.</mo>
+                                                <mo stretchy="false">(</mo>
+                                                <mi>i</mi>
+                                                <mtext> </mtext>
+                                                <msub>
+                                                    <mo>+</mo>
+                                                    <mn>5</mn>
+                                                </msub>
+                                                <mn>1</mn>
+                                                <mo stretchy="false">)</mo>
+                                                <mo>,</mo>
+                                            </mrow>
+                                        </mrow>
+                                    </mrow>
+                                </mstyle>
+                            </math></mtd>
+                    </mtr>
+                </td>
+            </tr>
+            <mtr>
+                <mtd>
+                    <tr>
+                        <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mrow>
+                                            <mrow>
+                                                <mi>i</mi>
+                                                <mo>.</mo>
+                                                <mi>к</mi>
+                                                <mi>л</mi>
+                                                <mi>а</mi>
+                                                <mi>д</mi>
+                                                <mi>е</mi>
+                                                <mi>т</mi>
+                                                <mo>_</mo>
+                                                <mi>в</mi>
+                                                <mi>и</mi>
+                                                <mi>л</mi>
+                                                <mo>.</mo>
+                                                <mi>i</mi>
+                                                <mo>,</mo>
+                                                <mtext> </mtext>
+                                                <mi>i</mi>
+                                                <mo>.</mo>
+                                                <mi>к</mi>
+                                                <mi>л</mi>
+                                                <mi>а</mi>
+                                                <mi>д</mi>
+                                                <mi>е</mi>
+                                                <mi>т</mi>
+                                                <mo>_</mo>
+                                                <mi>в</mi>
+                                                <mi>и</mi>
+                                                <mi>л</mi>
+                                                <mo>.</mo>
+                                                <mo stretchy="false">(</mo>
+                                                <mi>i</mi>
+                                                <mtext> </mtext>
+                                                <msub>
+                                                    <mo>+</mo>
+                                                    <mn>5</mn>
+                                                </msub>
+                                                <mn>1</mn>
+                                                <mo stretchy="false">)</mo>
+                                            </mrow>
+                                            <mo>}</mo>
+                                        </mrow>
+                                    </mrow>
+                                </mstyle>
+                            </math>,</td>
+                    </tr>
+                </mtd>
+            </mtr>
+        </table>
+        <p>где <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo>«</mo>
+                        <msub>
+                            <mo>+</mo>
+                            <mn>5</mn>
+                        </msub>
+                        <mo>»</mo>
+                    </mrow>
+                </mstyle>
+            </math>&#160;–&#160;сложение по модулю 5.</p>
+        <p>Другие «действующие лица»&#160;– это пять вилок, каждая из которых имеет тот же номер, что и философ, которому она принадлежит. Вилку берет и кладет на место или сам этот философ, или его сосед слева. Алфавит <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">i</mi>
+                </mstyle>
+            </math>-й вилки определим как</p>
+        <table class="mathcenter">
+            <mtr>
+                <mtd>
+                    <tr>
+                        <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mtext>α</mtext>
+                                        <mi>В</mi>
+                                        <mi>И</mi>
+                                        <mi>Л</mi>
+                                        <mi>К</mi>
+                                        <msub>
+                                            <mi>А</mi>
+                                            <mi>i</mi>
+                                        </msub>
+                                        <mo>=</mo>
+                                        <mrow>
+                                            <mo>{</mo>
+                                            <mrow>
+                                                <mi>i</mi>
+                                                <mo>.</mo>
+                                                <mi>б</mi>
+                                                <mi>е</mi>
+                                                <mi>р</mi>
+                                                <mi>е</mi>
+                                                <mi>т</mi>
+                                                <mo>_</mo>
+                                                <mi>в</mi>
+                                                <mi>и</mi>
+                                                <mi>л</mi>
+                                                <mo>.</mo>
+                                                <mi>i</mi>
+                                                <mo>,</mo>
+                                                <mtext> </mtext>
+                                                <mo stretchy="false">(</mo>
+                                                <mi>i</mi>
+                                                <mtext> </mtext>
+                                                <msub>
+                                                    <mo>–</mo>
+                                                    <mn>5</mn>
+                                                </msub>
+                                                <mn>1</mn>
+                                                <mo stretchy="false">)</mo>
+                                                <mo>.</mo>
+                                                <mi>б</mi>
+                                                <mi>е</mi>
+                                                <mi>р</mi>
+                                                <mi>е</mi>
+                                                <mi>т</mi>
+                                                <mo>_</mo>
+                                                <mi>в</mi>
+                                                <mi>и</mi>
+                                                <mi>л</mi>
+                                                <mo>.</mo>
+                                                <mi>i</mi>
+                                                <mo>,</mo>
+                                            </mrow>
+                                        </mrow>
+                                    </mrow>
+                                </mstyle>
+                            </math></td>
+                    </tr>
+                </mtd>
+            </mtr>
+            <mtr>
+                <mtd>
+                    <tr>
+                        <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mrow>
+                                            <mrow>
+                                                <mi>i</mi>
+                                                <mo>.</mo>
+                                                <mi>к</mi>
+                                                <mi>л</mi>
+                                                <mi>а</mi>
+                                                <mi>д</mi>
+                                                <mi>е</mi>
+                                                <mi>т</mi>
+                                                <mo>_</mo>
+                                                <mi>в</mi>
+                                                <mi>и</mi>
+                                                <mi>л</mi>
+                                                <mo>.</mo>
+                                                <mi>i</mi>
+                                                <mo>,</mo>
+                                                <mtext> </mtext>
+                                                <mo stretchy="false">(</mo>
+                                                <mi>i</mi>
+                                                <mtext> </mtext>
+                                                <msub>
+                                                    <mo>–</mo>
+                                                    <mn>5</mn>
+                                                </msub>
+                                                <mn>1</mn>
+                                                <mo stretchy="false">)</mo>
+                                                <mo>.</mo>
+                                                <mi>к</mi>
+                                                <mi>л</mi>
+                                                <mi>а</mi>
+                                                <mi>д</mi>
+                                                <mi>е</mi>
+                                                <mi>т</mi>
+                                                <mo>_</mo>
+                                                <mi>в</mi>
+                                                <mi>и</mi>
+                                                <mi>л</mi>
+                                                <mo>.</mo>
+                                                <mi>i</mi>
+                                            </mrow>
+                                            <mo>}</mo>
+                                        </mrow>
+                                    </mrow>
+                                </mstyle>
+                            </math>,</td>
+                    </tr>
+                </mtd>
+            </mtr>
+        </table>
+        <p>где <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo>«</mo>
+                        <msub>
+                            <mo>−</mo>
+                            <mn>5</mn>
+                        </msub>
+                        <mo>»</mo>
+                    </mrow>
+                </mstyle>
+            </math>&#160;обозначает вычитание по модулю 5.</p>
+        <p>Таким образом, каждое событие, кроме «<i>садится</i>» и «<i>встает</i>», требует участия двух соседних действующих лиц&#160;– философа и вилки.</p>
+        <p style="margin-bottom: 5px"><i>Поведение</i>. Жизнь каждого философа представляет собой повторение цикла из шести событий:</p>
+        <table class="mathcenter">
+            <mtr>
+                <mtd>
+                    <tr>
+                        <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mi>Ф</mi>
+                                        <mi>И</mi>
+                                        <msub>
+                                            <mi>Л</mi>
+                                            <mi>i</mi>
+                                        </msub>
+                                        <mo>=</mo>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mrow>
+                                                <mi>i</mi>
+                                                <mo>.</mo>
+                                                <mi>с</mi>
+                                                <mi>а</mi>
+                                                <mi>д</mi>
+                                                <mi>и</mi>
+                                                <mi>т</mi>
+                                                <mi>с</mi>
+                                                <mi>я</mi>
+                                                <mo>→</mo>
+                                                <mi>i</mi>
+                                                <mo>.</mo>
+                                                <mi>б</mi>
+                                                <mi>е</mi>
+                                                <mi>р</mi>
+                                                <mi>е</mi>
+                                                <mi>т</mi>
+                                                <mo>_</mo>
+                                                <mi>в</mi>
+                                                <mi>и</mi>
+                                                <mi>л</mi>
+                                                <mo>.</mo>
+                                                <mi>i</mi>
+                                                <mo>→</mo>
+                                                <mi>i</mi>
+                                                <mo>.</mo>
+                                                <mi>б</mi>
+                                                <mi>е</mi>
+                                                <mi>р</mi>
+                                                <mi>е</mi>
+                                                <mi>т</mi>
+                                                <mo>_</mo>
+                                                <mi>в</mi>
+                                                <mi>и</mi>
+                                                <mi>л</mi>
+                                                <mo>.</mo>
+                                                <mo stretchy="false">(</mo>
+                                                <mi>i</mi>
+                                                <mtext> </mtext>
+                                                <msub>
+                                                    <mo>+</mo>
+                                                    <mn>5</mn>
+                                                </msub>
+                                                <mn>1</mn>
+                                                <mo stretchy="false">)</mo>
+                                                <mo>→</mo>
+                                            </mrow>
+                                        </mrow>
+                                    </mrow>
+                                </mstyle>
+                            </math></td>
+                    </tr>
+                </mtd>
+            </mtr>
+            <mtr>
+                <mtd>
+                    <tr>
+                        <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mrow>
+                                            <mrow>
+                                                <mo>→</mo>
+                                                <mi>i</mi>
+                                                <mo>.</mo>
+                                                <mi>к</mi>
+                                                <mi>л</mi>
+                                                <mi>а</mi>
+                                                <mi>д</mi>
+                                                <mi>е</mi>
+                                                <mi>т</mi>
+                                                <mo>_</mo>
+                                                <mi>в</mi>
+                                                <mi>и</mi>
+                                                <mi>л</mi>
+                                                <mo>.</mo>
+                                                <mi>i</mi>
+                                                <mo>→</mo>
+                                                <mi>i</mi>
+                                                <mo>.</mo>
+                                                <mi>к</mi>
+                                                <mi>л</mi>
+                                                <mi>а</mi>
+                                                <mi>д</mi>
+                                                <mi>е</mi>
+                                                <mi>т</mi>
+                                                <mo>_</mo>
+                                                <mi>в</mi>
+                                                <mi>и</mi>
+                                                <mi>л</mi>
+                                                <mo>.</mo>
+                                                <mo stretchy="false">(</mo>
+                                                <mi>i</mi>
+                                                <mtext> </mtext>
+                                                <msub>
+                                                    <mo>+</mo>
+                                                    <mn>5</mn>
+                                                </msub>
+                                                <mn>1</mn>
+                                                <mo stretchy="false">)</mo>
+                                                <mtext>&#160;</mtext>
+                                                <mo>→</mo>
+                                                <mi>i</mi>
+                                                <mo>.</mo>
+                                                <mi>в</mi>
+                                                <mi>с</mi>
+                                                <mi>т</mi>
+                                                <mi>а</mi>
+                                                <mi>е</mi>
+                                                <mi>т</mi>
+                                                <mo>→</mo>
+                                                <mi>Ф</mi>
+                                                <mi>И</mi>
+                                                <msub>
+                                                    <mi>Л</mi>
+                                                    <mi>i</mi>
+                                                </msub>
+                                            </mrow>
+                                            <mo>)</mo>
+                                        </mrow>
+                                    </mrow>
+                                </mstyle>
+                            </math>.</td>
+                    </tr>
+                </mtd>
+            </mtr>
+        </table>
+        <p style="margin-bottom: 5px">Вилку циклически берет и кладет на место кто-нибудь из соседних с&#160;ней философов:</p>
+        <table class="mathcenter">
+            <mtr>
+                <mtd>
+                    <tr>
+                        <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mi>В</mi>
+                                        <mi>И</mi>
+                                        <mi>Л</mi>
+                                        <mi>К</mi>
+                                        <msub>
+                                            <mi>А</mi>
+                                            <mi>i</mi>
+                                        </msub>
+                                        <mo>=</mo>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mrow>
+                                                <mi>i</mi>
+                                                <mo>.</mo>
+                                                <mi>б</mi>
+                                                <mi>е</mi>
+                                                <mi>р</mi>
+                                                <mi>е</mi>
+                                                <mi>т</mi>
+                                                <mo>_</mo>
+                                                <mi>в</mi>
+                                                <mi>и</mi>
+                                                <mi>л</mi>
+                                                <mo>.</mo>
+                                                <mi>i</mi>
+                                                <mo>→</mo>
+                                                <mi>i</mi>
+                                                <mo>.</mo>
+                                                <mi>к</mi>
+                                                <mi>л</mi>
+                                                <mi>а</mi>
+                                                <mi>д</mi>
+                                                <mi>е</mi>
+                                                <mi>т</mi>
+                                                <mo>_</mo>
+                                                <mi>в</mi>
+                                                <mi>и</mi>
+                                                <mi>л</mi>
+                                                <mo>.</mo>
+                                                <mi>i</mi>
+                                                <mo>→</mo>
+                                                <mi>В</mi>
+                                                <mi>И</mi>
+                                                <mi>Л</mi>
+                                                <mi>К</mi>
+                                                <msub>
+                                                    <mi>А</mi>
+                                                    <mi>i</mi>
+                                                </msub>
+                                                <mo>|</mo>
+                                            </mrow>
+                                        </mrow>
+                                        <mtext> </mtext>
+                                        <mo stretchy="false">(</mo>
+                                        <mi>i</mi>
+                                        <mtext> </mtext>
+                                        <msub>
+                                            <mo>–</mo>
+                                            <mn>5</mn>
+                                        </msub>
+                                        <mn>1</mn>
+                                        <mo stretchy="false">)</mo>
+                                        <mo>.</mo>
+                                        <mi>б</mi>
+                                        <mi>е</mi>
+                                        <mi>р</mi>
+                                        <mi>е</mi>
+                                        <mi>т</mi>
+                                        <mo>_</mo>
+                                        <mi>в</mi>
+                                        <mi>и</mi>
+                                        <mi>л</mi>
+                                        <mo>.</mo>
+                                        <mi>i</mi>
+                                        <mo>→</mo>
+                                    </mrow>
+                                </mstyle>
+                            </math></td>
+                    </tr>
+                </mtd>
+            </mtr>
+            <mtr>
+                <mtd>
+                    <tr>
+                        <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mrow>
+                                            <mrow>
+                                                <mo>→</mo>
+                                                <mtext>&#160;</mtext>
+                                                <mo stretchy="false">(</mo>
+                                                <mi>i</mi>
+                                                <mtext> </mtext>
+                                                <msub>
+                                                    <mo>–</mo>
+                                                    <mn>5</mn>
+                                                </msub>
+                                                <mn>1</mn>
+                                                <mo stretchy="false">)</mo>
+                                                <mo>.</mo>
+                                                <mi>к</mi>
+                                                <mi>л</mi>
+                                                <mi>а</mi>
+                                                <mi>д</mi>
+                                                <mi>е</mi>
+                                                <mi>т</mi>
+                                                <mo>_</mo>
+                                                <mi>в</mi>
+                                                <mi>и</mi>
+                                                <mi>л</mi>
+                                                <mo>.</mo>
+                                                <mi>i</mi>
+                                                <mo>→</mo>
+                                                <mi>В</mi>
+                                                <mi>И</mi>
+                                                <mi>Л</mi>
+                                                <mi>К</mi>
+                                                <msub>
+                                                    <mi>А</mi>
+                                                    <mi>i</mi>
+                                                </msub>
+                                            </mrow>
+                                            <mo>)</mo>
+                                        </mrow>
+                                    </mrow>
+                                </mstyle>
+                            </math>.</td>
+                    </tr>
+                </mtd>
+            </mtr>
+        </table>
+        <p style="margin-bottom: 5px">Поведение всего пансиона можно описать как параллельную комбинацию поведения компонент:</p>
+        <table class="mathcenter">
+            <mtr>
+                <mtd>
+                    <tr>
+                        <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mi>Ф</mi>
+                                        <mi>И</mi>
+                                        <mi>Л</mi>
+                                        <mi>О</mi>
+                                        <mi>С</mi>
+                                        <mi>О</mi>
+                                        <mi>Ф</mi>
+                                        <mi>Ы</mi>
+                                        <mo>=</mo>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mrow>
+                                                <mi>Ф</mi>
+                                                <mi>И</mi>
+                                                <msub>
+                                                    <mi>Л</mi>
+                                                    <mn>0</mn>
+                                                </msub>
+                                                <mtext> </mtext>
+                                                <mo>|</mo>
+                                                <mo>|</mo>
+                                                <mtext> </mtext>
+                                                <mi>Ф</mi>
+                                                <mi>И</mi>
+                                                <msub>
+                                                    <mi>Л</mi>
+                                                    <mn>1</mn>
+                                                </msub>
+                                                <mtext> </mtext>
+                                                <mo>|</mo>
+                                                <mo>|</mo>
+                                                <mtext> </mtext>
+                                                <mi>Ф</mi>
+                                                <mi>И</mi>
+                                                <msub>
+                                                    <mi>Л</mi>
+                                                    <mn>2</mn>
+                                                </msub>
+                                                <mtext> </mtext>
+                                                <mo>|</mo>
+                                                <mo>|</mo>
+                                                <mtext> </mtext>
+                                                <mi>Ф</mi>
+                                                <mi>И</mi>
+                                                <msub>
+                                                    <mi>Л</mi>
+                                                    <mn>3</mn>
+                                                </msub>
+                                                <mtext> </mtext>
+                                                <mo>|</mo>
+                                                <mo>|</mo>
+                                                <mtext> </mtext>
+                                                <mi>Ф</mi>
+                                                <mi>И</mi>
+                                                <msub>
+                                                    <mi>Л</mi>
+                                                    <mn>4</mn>
+                                                </msub>
+                                            </mrow>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mo>,</mo>
+                                    </mrow>
+                                </mstyle>
+                            </math></td>
+                    </tr>
+                </mtd>
+            </mtr>
+            <mtr>
+                <mtd>
+                    <tr>
+                        <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mi>В</mi>
+                                        <mi>И</mi>
+                                        <mi>Л</mi>
+                                        <mi>К</mi>
+                                        <mi>И</mi>
+                                        <mo>=</mo>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mrow>
+                                                <mi>В</mi>
+                                                <mi>И</mi>
+                                                <mi>Л</mi>
+                                                <mi>К</mi>
+                                                <msub>
+                                                    <mi>А</mi>
+                                                    <mn>0</mn>
+                                                </msub>
+                                                <mo>|</mo>
+                                                <mo>|</mo>
+                                                <mi>В</mi>
+                                                <mi>И</mi>
+                                                <mi>Л</mi>
+                                                <mi>К</mi>
+                                                <msub>
+                                                    <mi>А</mi>
+                                                    <mn>1</mn>
+                                                </msub>
+                                                <mo>|</mo>
+                                                <mo>|</mo>
+                                                <mi>В</mi>
+                                                <mi>И</mi>
+                                                <mi>Л</mi>
+                                                <mi>К</mi>
+                                                <msub>
+                                                    <mi>А</mi>
+                                                    <mn>2</mn>
+                                                </msub>
+                                                <mo>|</mo>
+                                                <mo>|</mo>
+                                                <mi>В</mi>
+                                                <mi>И</mi>
+                                                <mi>Л</mi>
+                                                <mi>К</mi>
+                                                <msub>
+                                                    <mi>А</mi>
+                                                    <mn>3</mn>
+                                                </msub>
+                                                <mo>|</mo>
+                                                <mo>|</mo>
+                                                <mi>В</mi>
+                                                <mi>И</mi>
+                                                <mi>Л</mi>
+                                                <mi>К</mi>
+                                                <msub>
+                                                    <mi>А</mi>
+                                                    <mn>4</mn>
+                                                </msub>
+                                            </mrow>
+                                            <mo>)</mo>
+                                        </mrow>
+                                    </mrow>
+                                </mstyle>
+                            </math>,</td>
+                    </tr>
+                </mtd>
+            </mtr>
+            <mtr>
+                <mtd>
+                    <tr>
+                        <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mi>П</mi>
+                                        <mi>А</mi>
+                                        <mi>Н</mi>
+                                        <mi>С</mi>
+                                        <mi>И</mi>
+                                        <mi>О</mi>
+                                        <mi>Н</mi>
+                                        <mo>=</mo>
+                                        <mo stretchy="false">(</mo>
+                                        <mi>Ф</mi>
+                                        <mi>И</mi>
+                                        <mi>Л</mi>
+                                        <mi>О</mi>
+                                        <mi>С</mi>
+                                        <mi>О</mi>
+                                        <mi>Ф</mi>
+                                        <mi>Ы</mi>
+                                        <mo>|</mo>
+                                        <mo>|</mo>
+                                        <mi>В</mi>
+                                        <mi>И</mi>
+                                        <mi>Л</mi>
+                                        <mi>К</mi>
+                                        <mi>И</mi>
+                                        <mo stretchy="false">)</mo>
+                                    </mrow>
+                                </mstyle>
+                            </math>.</td>
+                    </tr>
+                </mtd>
+            </mtr>
+        </table>
+        <p><i>Тупик</i>. Построенная математическая модель системы позволяет обнаружить опасность возникновения тупиковой ситуации, когда каждый из философов возьмет вилку в левую руку. Одним из решений этой проблемы явилось введение в&#160;систему слуги. Слуге дается указание следить за тем, чтобы за столом никогда не оказывалось больше четырех философов одновременно. Алфавит его определяется как <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>C</mi>
+                        <mtext> </mtext>
+                        <mo>∪</mo>
+                        <mtext> </mtext>
+                        <mi>B</mi>
+                    </mrow>
+                </mstyle>
+            </math>, где</p>
+        <table class="mathcenter">
+            <tr>
+                <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mi>C</mi>
+                                <mo>=</mo>
+                                <mrow>
+                                    <mo>{</mo>
+                                    <mrow>
+                                        <mn>0.</mn>
+                                        <mi>с</mi>
+                                        <mi>а</mi>
+                                        <mi>д</mi>
+                                        <mi>и</mi>
+                                        <mi>т</mi>
+                                        <mi>с</mi>
+                                        <mi>я</mi>
+                                        <mo>,</mo>
+                                        <mtext> </mtext>
+                                        <mo>…</mo>
+                                        <mo>,</mo>
+                                        <mtext> </mtext>
+                                        <mn>4.</mn>
+                                        <mi>с</mi>
+                                        <mi>а</mi>
+                                        <mi>д</mi>
+                                        <mi>и</mi>
+                                        <mi>т</mi>
+                                        <mi>с</mi>
+                                        <mi>я</mi>
+                                    </mrow>
+                                    <mo>}</mo>
+                                </mrow>
+                                <mo>,</mo>
+                                <mtext> </mtext>
+                                <mi>B</mi>
+                                <mo>=</mo>
+                                <mrow>
+                                    <mo>{</mo>
+                                    <mrow>
+                                        <mn>0.</mn>
+                                        <mi>в</mi>
+                                        <mi>с</mi>
+                                        <mi>т</mi>
+                                        <mi>а</mi>
+                                        <mi>е</mi>
+                                        <mi>т</mi>
+                                        <mo>,</mo>
+                                        <mtext> </mtext>
+                                        <mo>…</mo>
+                                        <mo>,</mo>
+                                        <mtext> </mtext>
+                                        <mn>4.</mn>
+                                        <mi>в</mi>
+                                        <mi>с</mi>
+                                        <mi>т</mi>
+                                        <mi>а</mi>
+                                        <mi>е</mi>
+                                        <mi>т</mi>
+                                    </mrow>
+                                    <mo>}</mo>
+                                </mrow>
+                            </mrow>
+                        </mstyle>
+                    </math>.</td>
+            </tr>
+        </table>
+        <p>Поведение слуги проще всего описать с помощью взаимной рекурсии. Пусть <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>С</mi>
+                        <mi>Л</mi>
+                        <mi>У</mi>
+                        <mi>Г</mi>
+                        <msub>
+                            <mi>А</mi>
+                            <mi>j</mi>
+                        </msub>
+                    </mrow>
+                </mstyle>
+            </math>&#160;определяет поведение слуги, когда за столом сидят <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">j</mi>
+                </mstyle>
+            </math>&#160;философов:</p>
+        <p style="margin-left: 3em"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>С</mi>
+                        <mi>Л</mi>
+                        <mi>У</mi>
+                        <mi>Г</mi>
+                        <msub>
+                            <mi>А</mi>
+                            <mn>0</mn>
+                        </msub>
+                        <mtext> </mtext>
+                        <mo>=</mo>
+                        <mrow>
+                            <mo>(</mo>
+                            <mrow>
+                                <mi>x</mi>
+                                <mo>:</mo>
+                                <mi>C</mi>
+                                <mo>→</mo>
+                                <mi>С</mi>
+                                <mi>Л</mi>
+                                <mi>У</mi>
+                                <mi>Г</mi>
+                                <msub>
+                                    <mi>А</mi>
+                                    <mn>1</mn>
+                                </msub>
+                            </mrow>
+                            <mo>)</mo>
+                        </mrow>
+                    </mrow>
+                </mstyle>
+            </math>;<br /><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>С</mi>
+                        <mi>Л</mi>
+                        <mi>У</mi>
+                        <mi>Г</mi>
+                        <msub>
+                            <mi>А</mi>
+                            <mi>j</mi>
+                        </msub>
+                        <mo>=</mo>
+                        <mrow>
+                            <mo>(</mo>
+                            <mrow>
+                                <mi>x</mi>
+                                <mo>:</mo>
+                                <mi>C</mi>
+                                <mo>→</mo>
+                                <mi>С</mi>
+                                <mi>Л</mi>
+                                <mi>У</mi>
+                                <mi>Г</mi>
+                                <msub>
+                                    <mi>А</mi>
+                                    <mi>j</mi>
+                                </msub>
+                                <mrow>
+                                    <msub>
+                                        <mtext> </mtext>
+                                        <mo>+</mo>
+                                    </msub>
+                                    <mrow>
+                                        <msub>
+                                            <mtext> </mtext>
+                                            <mn>1</mn>
+                                        </msub>
+                                    </mrow>
+                                </mrow>
+                                <mo>)</mo>
+                            </mrow>
+                            <mtext> </mtext>
+                            <mo>|</mo>
+                            <mrow>
+                                <mo>(</mo>
+                                <mrow>
+                                    <mi>y</mi>
+                                    <mo>:</mo>
+                                    <mi>B</mi>
+                                    <mo>→</mo>
+                                    <mi>С</mi>
+                                    <mi>Л</mi>
+                                    <mi>У</mi>
+                                    <mi>Г</mi>
+                                    <msub>
+                                        <mi>А</mi>
+                                        <mi>j</mi>
+                                    </msub>
+                                    <mrow>
+                                        <msub>
+                                            <mtext> </mtext>
+                                            <mo>+</mo>
+                                        </msub>
+                                        <mrow>
+                                            <msub>
+                                                <mtext> </mtext>
+                                                <mn>1</mn>
+                                            </msub>
+                                        </mrow>
+                                    </mrow>
+                                </mrow>
+                                <mo>)</mo>
+                            </mrow>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <mi>j</mi>
+                            <mo>∈</mo>
+                        </mrow>
+                        <mrow>
+                            <mo>{</mo>
+                            <mrow>
+                                <mn>1,</mn>
+                                <mtext> </mtext>
+                                <mn>2,</mn>
+                                <mtext> </mtext>
+                                <mtext> </mtext>
+                                <mn>3</mn>
+                            </mrow>
+                            <mo>}</mo>
+                        </mrow>
+                    </mrow>
+                </mstyle>
+            </math>;<br /><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>С</mi>
+                        <mi>Л</mi>
+                        <mi>У</mi>
+                        <mi>Г</mi>
+                        <msub>
+                            <mi>А</mi>
+                            <mn>4</mn>
+                        </msub>
+                        <mo>=</mo>
+                        <mrow>
+                            <mo>(</mo>
+                            <mrow>
+                                <mi>y</mi>
+                                <mo>:</mo>
+                                <mi>B</mi>
+                                <mo>→</mo>
+                                <mi>С</mi>
+                                <mi>Л</mi>
+                                <mi>У</mi>
+                                <mi>Г</mi>
+                                <msub>
+                                    <mi>А</mi>
+                                    <mn>3</mn>
+                                </msub>
+                            </mrow>
+                            <mo>)</mo>
+                        </mrow>
+                    </mrow>
+                </mstyle>
+            </math>.<br /></p>
+        <p>Пансион, свободный от тупика, определяется как</p>
+        <p align="center">
+            <table class="mathcenter">
+                <tr>
+                    <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mi>Н</mi>
+                                    <mi>О</mi>
+                                    <mi>В</mi>
+                                    <mi>П</mi>
+                                    <mi>А</mi>
+                                    <mi>Н</mi>
+                                    <mi>С</mi>
+                                    <mi>И</mi>
+                                    <mi>О</mi>
+                                    <mi>Н</mi>
+                                    <mo>=</mo>
+                                    <mrow>
+                                        <mo>(</mo>
+                                        <mrow>
+                                            <mi>П</mi>
+                                            <mi>А</mi>
+                                            <mi>Н</mi>
+                                            <mi>С</mi>
+                                            <mi>И</mi>
+                                            <mi>О</mi>
+                                            <mi>Н</mi>
+                                            <mtext> </mtext>
+                                            <mo>|</mo>
+                                            <mo>|</mo>
+                                            <mi>С</mi>
+                                            <mi>Л</mi>
+                                            <mi>У</mi>
+                                            <mi>Г</mi>
+                                            <msub>
+                                                <mi>А</mi>
+                                                <mn>0</mn>
+                                            </msub>
+                                        </mrow>
+                                        <mo>)</mo>
+                                    </mrow>
+                                </mrow>
+                            </mstyle>
+                        </math>.</td>
+                </tr>
+            </table>
+        </p>
+        <p><i>Бесконечный перехват</i>. Помимо тупика обедающего философа подстерегает опасность бесконечного перехвата инициативы. Предположим, что левая рука у сидящего философа очень медлительна, в то время как его левый сосед очень проворен.</p>
+        <p>Всякий раз, когда философ пытается дотянуться до своей левой вилки, его левый сосед мгновенно перехватывает вилку. Таким образом, может оказаться, что сидящий философ никогда не приступит к еде.</p>
+        <p>Таким образом, при реализации системы необходимо добиваться, чтобы любое желаемое и возможное событие обязательно наступило в&#160;пределах разумного интервала времени.</p>
+    </div>
+</body>
+
+</html>

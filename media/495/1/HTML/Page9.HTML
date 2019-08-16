@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html" charset="utf-8" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script>
+    <link href="https://new-online.tusur.ru/theme/fdo/ims/course_style.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <div>
+        <h3>1.2.3 Линейная форма стандартной схемы</h3>
+        <p>Для использования линейной формы ССП множество специальных символов расширим дополнительными символами {<b>:</b>, <b>goto</b>, <b>if</b>, <b>then</b>, <b>else</b>}. ССП в&#160;линейной форме представляет собой последовательность <i>инструкций</i>, которая строится следующим образом&#160;[3]:</p>
+        <ol type="1" class="num_brackets">
+            <li> если выходная дуга начальной вершины с оператором <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathvariant="bold" mathsize="normal">
+                                <mi>s</mi>
+                                <mi>t</mi>
+                                <mi>a</mi>
+                                <mi>r</mi>
+                                <mi>t</mi>
+                            </mstyle>
+                            <mrow>
+                                <mo>(</mo>
+                                <mrow>
+                                    <msub>
+                                        <mi>х</mi>
+                                        <mn>1</mn>
+                                    </msub>
+                                    <mo>,</mo>
+                                    <mtext>&#160;</mtext>
+                                    <mn>...,</mn>
+                                    <msub>
+                                        <mi>х</mi>
+                                        <mi>n</mi>
+                                    </msub>
+                                </mrow>
+                                <mo>)</mo>
+                            </mrow>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;ведет к вершине с меткой 
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                           
+                                <mi>L</mi>
+                         
+                        </mrow>
+                    </mstyle>
+                </math>
+                , то начальной вершине соответствует инструкция:
+                <p align="center" class="program">0: <b>start</b>(х<sub>1</sub>, ..., х<sub>n</sub>) <b>goto</b> L;</p>
+            </li>
+            <li> если вершина схемы <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">S</mi>
+                    </mstyle>
+                </math>&#160;с меткой <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">L</mi>
+                    </mstyle>
+                </math>&#160;– преобразователь с оператором присваивания <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>х</mi>
+                            <mo>:</mo>
+                            <mo>=</mo>
+                            <mtext>τ</mtext>
+                        </mrow>
+                    </mstyle>
+                </math>, выходная дуга которого ведет к вершине с меткой <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>L</mi>
+                            <mn>1</mn>
+                        </mrow>
+                    </mstyle>
+                </math>, то этому преобразователю соответствует инструкция:
+                <p align="center" class="program">L: x:= <b>τ&#160;goto</b> L1;</p>
+            </li>
+            <li> если вершина с меткой <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">L</mi>
+                    </mstyle>
+                </math>&#160;–&#160;заключительная вершина с оператором <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathvariant="bold" mathsize="normal">
+                                <mi>s</mi>
+                                <mi>t</mi>
+                                <mi>o</mi>
+                                <mi>p</mi>
+                            </mstyle>
+                            <mrow>
+                                <mo>(</mo>
+                                <mrow>
+                                    <msub>
+                                        <mtext>τ</mtext>
+                                        <mn>1</mn>
+                                    </msub>
+                                    <mo>,</mo>
+                                    <mtext> </mtext>
+                                    <mn>...,</mn>
+                                    <msub>
+                                        <mtext>τ</mtext>
+                                        <mi>m</mi>
+                                    </msub>
+                                </mrow>
+                                <mo>)</mo>
+                            </mrow>
+                        </mrow>
+                    </mstyle>
+                </math>, то ей соответствует инструкция:
+                <p align="center" class="program">
+                    L: <b>stop</b>(τ<sub>1</sub>, ..., τ<sub>m</sub>);
+                </p>
+            </li>
+            <li> если вершина с меткой <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">L</mi>
+                    </mstyle>
+                </math>&#160;–&#160;распознаватель с условием <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>p</mi>
+                            <mrow>
+                                <mo>(</mo>
+                                <mrow>
+                                    <msub>
+                                        <mtext>τ</mtext>
+                                        <mn>1</mn>
+                                    </msub>
+                                    <mo>,</mo>
+                                    <mtext> </mtext>
+                                    <mn>...,</mn>
+                                    <msub>
+                                        <mtext>τ</mtext>
+                                        <mi>k</mi>
+                                    </msub>
+                                </mrow>
+                                <mo>)</mo>
+                            </mrow>
+                        </mrow>
+                    </mstyle>
+                </math>, причем 1-дуга ведет к вершине с меткой <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>L</mi>
+                            <mn>1</mn>
+                        </mrow>
+                    </mstyle>
+                </math>, а 0-дуга&#160;– к вершине с&#160;меткой <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>L</mi>
+                            <mn>0</mn>
+                        </mrow>
+                    </mstyle>
+                </math>, то этому распознавателю соответствует инструкция:
+                <p align="center" class="program">L: <b>if </b>р(τ<sub>1</sub>, ..., τ<sub>k</sub>)<b> then </b>L1&#160;<b>else </b>L0;</p>
+            </li>
+            <li> если вершина с меткой <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">L</mi>
+                    </mstyle>
+                </math>&#160;–&#160;петля, то ей соответствует инструкция:</li>
+        </ol>
+        <p align="center" class="program">L: <b>loop</b>;</p>
+        <p>Обычно используется сокращенная запись (опускание меток).</p>
+        <div class="example">
+            <div class="ex_head">
+                <div class="smile">Пример 1.7</div>
+            </div>
+            <p>Полная и сокращенная линейные формы ССП:</p>
+            <table style="border-spacing: 1em 0;" align="center">
+                <tr>
+                    <td>
+                        <p class="program">
+                            0: <b>start</b>(х) <b>goto</b> 1;<br />
+                            1: у:=а <b>goto</b> 2;<br />
+                            2: <b>if </b>р(х) <b>then</b> 5&#160;<b>else</b> 3;<br />
+                            3: у:=g(x, y) <b>goto</b> 4;<br />
+                            4: х:=h(x) <b>goto</b> 2;<br />
+                            5: <b>stop</b>(у);
+                        </p>
+                    </td>
+                    <td>
+                        <p class="program">
+                            &#160;&#160;&#160;<b>start</b>(х);<br />
+                            &#160;&#160;&#160;у:=а;<br />
+                            2: <b>if </b>р(х) <b>then</b> 5&#160;<b>else</b> 3;<br />
+                            3: у:=g(x, y);<br />
+                            &#160;&#160;&#160;х:=h(x) <b>goto</b> 2;<br />
+                            5: <b>stop</b>(у);
+                        </p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

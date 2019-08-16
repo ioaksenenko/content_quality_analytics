@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html" charset="utf-8" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script>
+    <link href="https://new-online.tusur.ru/theme/fdo/ims/course_style.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <div>
+        <h3>4.5.2 Методы анализа</h3>
+        <p>Особый интерес вызывают методы анализа свойств сетей Петри, которые обеспечивают автоматический анализ моделируемых систем. Сначала рассмотрим метод анализа сетей Петри, который основан на использовании <i>дерева достижимости</i>&#160;[8].</p>
+        <div class="definition">
+            <div>
+                <p><b><i>Дерево достижимости</i></b><i> представляет все достижимые маркировки сети Петри, а также все возможные последовательности запусков ее переходов.</i></p>
+            </div>
+        </div>
+        <div class="example">
+            <div class="ex_head">
+                <div class="smile">Пример 4.13</div>
+            </div>
+            <p>На рисунке&#160;4.11 изображено частичное дерево достижимости маркированной сети Петри&#160;(<i>а</i>), а частичное дерево достижимости для трех шагов построения имеет вид&#160;(<i>б</i>).</p>
+            <p align="center" class="img"><img alt="4.11" src="processes.files/png/4.11.png" /></p>
+            <p class="imgcaption">Рис.&#160;4.11&#160;– Частное дерево достижимости (<i>б</i>) для маркированной сети Петри (<i>а</i>)</p>
+        </div>
+        <p>Для сети Петри с&#160;бесконечным множеством достижимых маркировок дерево достижимости является бесконечным. Сеть Петри с конечным множеством достижимых маркировок также может иметь бесконечное дерево достижимости. Для превращения бесконечного дерева в полезный инструмент анализа строится его конечное представление. При построении конечного дерева достижимости для обозначения бесконечного множества значений маркировки позиции используется символ <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mtext>ω</mtext>
+                </mstyle>
+            </math>. Также используются следующие ниже операции над <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mtext>ω</mtext>
+                </mstyle>
+            </math>, определяемые для любого постоянного <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">a</mi>
+                </mstyle>
+            </math>:</p>
+        <p align="center">
+            <table class="mathcenter">
+                <tr>
+                    <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mtext>ω</mtext>
+                                    <mtext> </mtext>
+                                    <mo>–</mo>
+                                    <mtext> </mtext>
+                                    <mi>a</mi>
+                                    <mo>=</mo>
+                                    <mtext>ω</mtext>
+                                    <mo>,</mo>
+                                    <mtext> </mtext>
+                                    <mtext> </mtext>
+                                    <mtext>ω</mtext>
+                                    <mtext> </mtext>
+                                    <mo>+</mo>
+                                    <mtext> </mtext>
+                                    <mi>a</mi>
+                                    <mo>=</mo>
+                                    <mtext>ω</mtext>
+                                    <mo>,</mo>
+                                    <mtext> </mtext>
+                                    <mtext> </mtext>
+                                    <mi>a</mi>
+                                    <mtext> </mtext>
+                                    <mo>&lt;</mo>
+                                    <mtext> </mtext>
+                                    <mtext>ω</mtext>
+                                    <mo>,</mo>
+                                    <mtext> </mtext>
+                                    <mtext>ω</mtext>
+                                    <mtext> </mtext>
+                                    <mo>≤</mo>
+                                    <mtext> </mtext>
+                                    <mtext>ω</mtext>
+                                </mrow>
+                            </mstyle>
+                        </math>.</td>
+                </tr>
+            </table>
+        </p>
+        <p><i>Алгоритм построения конечного дерева достижимости</i>. Каждая вершина дерева достижимости классифицируется алгоритмом или как <i>граничная </i>вершина, <i>терминальная</i> вершина, <i>дублирующая</i> вершина, или как <i>внутренняя</i> вершина. Алгоритм начинает работу с определения начальной маркировки корнем дерева и <i>граничной</i> вершиной. Один шаг алгоритма состоит в обработке граничной вершины. Пусть <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">x</mi>
+                </mstyle>
+            </math>&#160;–&#160;граничная вершина, тогда ее обработка заключается в&#160;следующем:</p>
+        <ol type="1">
+            <li> Если в дереве имеется другая вершина <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">y</mi>
+                    </mstyle>
+                </math>, не являющаяся граничной, и с&#160;ней связана та&#160;же маркировка, <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mtext>μ</mtext>
+                            <mtext> </mtext>
+                            <mo stretchy="false">[</mo>
+                            <mi>x</mi>
+                            <mo stretchy="false">]</mo>
+                            <mo>=</mo>
+                            <mtext>μ</mtext>
+                            <mtext> </mtext>
+                            <mo stretchy="false">[</mo>
+                            <mi>y</mi>
+                            <mo stretchy="false">]</mo>
+                        </mrow>
+                    </mstyle>
+                </math>, то вершина <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">x</mi>
+                    </mstyle>
+                </math>&#160;становится <i>дублирующей</i>.</li>
+            <li> Если для маркировки <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mtext>μ</mtext>
+                            <mtext> </mtext>
+                            <mo stretchy="false">[</mo>
+                            <mi>x</mi>
+                            <mo stretchy="false">]</mo>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;ни один из переходов не разрешен<a name="OCRUncertain1274">,</a> то&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">x</mi>
+                    </mstyle>
+                </math> становится <i>терминальной</i>.</li>
+            <li> В&#160;противном случае для всякого перехода <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>t</mi>
+                            <mo>∈</mo>
+                            <mi>T</mi>
+                        </mrow>
+                    </mstyle>
+                </math>, разрешенного в&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mtext>μ</mtext>
+                            <mtext> </mtext>
+                            <mo stretchy="false">[</mo>
+                            <mi>x</mi>
+                            <mo stretchy="false">]</mo>
+                        </mrow>
+                    </mstyle>
+                </math>,
+                создается новая вершина <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">z</mi>
+                    </mstyle>
+                </math>&#160;дерева достижимости. Маркировка <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mtext>μ</mtext>
+                            <mtext> </mtext>
+                            <mo stretchy="false">[</mo>
+                            <mi>z</mi>
+                            <mo stretchy="false">]</mo>
+                        </mrow>
+                    </mstyle>
+                </math>, связанная с этой вершиной, определяется для каждой позиции <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>p</mi>
+                            <mo>∈</mo>
+                            <mi>P</mi>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;следующим образом:
+                <ol type="а" class="cyrillic-list">
+                    <li>если <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mtext>μ</mtext>
+                                    <mtext> </mtext>
+                                    <mo stretchy="false">[</mo>
+                                    <mi>x</mi>
+                                    <mo stretchy="false">]</mo>
+                                    <mtext> </mtext>
+                                    <mo stretchy="false">(</mo>
+                                    <mi>p</mi>
+                                    <mo stretchy="false">)</mo>
+                                    <mo>=</mo>
+                                    <mtext>ω</mtext>
+                                    <mo>,</mo>
+                                    <mtext> </mtext>
+                                    <mtext>то</mtext>
+                                    <mtext> </mtext>
+                                    <mtext>μ</mtext>
+                                    <mtext> </mtext>
+                                    <mo stretchy="false">[</mo>
+                                    <mi>z</mi>
+                                    <mo stretchy="false">]</mo>
+                                    <mtext> </mtext>
+                                    <mo stretchy="false">(</mo>
+                                    <mi>p</mi>
+                                    <mo stretchy="false">)</mo>
+                                    <mo>=</mo>
+                                    <mtext>ω</mtext>
+                                </mrow>
+                            </mstyle>
+                        </math>;
+                    </li>
+                    <li>если на пути от корневой вершины к&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <mi xmlns="http://www.w3.org/1998/Math/MathML">x</mi>
+                            </mstyle>
+                        </math> существует вершина&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <mi xmlns="http://www.w3.org/1998/Math/MathML">y</mi>
+                            </mstyle>
+                        </math> с&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mtext>μ</mtext>
+                                    <mtext> </mtext>
+                                    <mo stretchy="false">[</mo>
+                                    <mi>y</mi>
+                                    <mo stretchy="false">]</mo>
+                                    <mo>&lt;</mo>
+                                    <msup>
+                                        <mtext>μ</mtext>
+                                        <mo>′</mo>
+                                    </msup>
+                                </mrow>
+                            </mstyle>
+                        </math>
+                        (где <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <msup xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mtext>μ</mtext>
+                                    <mo>′</mo>
+                                </msup>
+                            </mstyle>
+                        </math>&#160;–&#160;маркировка, непосредственно достижимая из&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mtext>μ</mtext>
+                                    <mtext> </mtext>
+                                    <mo stretchy="false">[</mo>
+                                    <mi>x</mi>
+                                    <mo stretchy="false">]</mo>
+                                </mrow>
+                            </mstyle>
+                        </math>
+                        посредством запуска перехода <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <mi xmlns="http://www.w3.org/1998/Math/MathML">t</mi>
+                            </mstyle>
+                        </math>) и <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mtext>μ</mtext>
+                                    <mtext> </mtext>
+                                    <mo stretchy="false">[</mo>
+                                    <mi>y</mi>
+                                    <mo stretchy="false">]</mo>
+                                    <mtext> </mtext>
+                                    <mo stretchy="false">(</mo>
+                                    <mi>p</mi>
+                                    <mo stretchy="false">)</mo>
+                                    <mo>&lt;</mo>
+                                    <msup>
+                                        <mtext>μ</mtext>
+                                        <mo>′</mo>
+                                    </msup>
+                                    <mo stretchy="false">(</mo>
+                                    <mi>p</mi>
+                                    <mo stretchy="false">)</mo>
+                                </mrow>
+                            </mstyle>
+                        </math>, то<math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mtext>μ</mtext>
+                                    <mtext> </mtext>
+                                    <mo stretchy="false">[</mo>
+                                    <mi>z</mi>
+                                    <mo stretchy="false">]</mo>
+                                    <mtext> </mtext>
+                                    <mo stretchy="false">(</mo>
+                                    <mi>p</mi>
+                                    <mo stretchy="false">)</mo>
+                                    <mo>=</mo>
+                                    <mtext>ω</mtext>
+                                </mrow>
+                            </mstyle>
+                        </math>. В&#160;этом случае последовательность запусков переходов, ведущая из маркировки <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mtext>μ</mtext>
+                                    <mtext> </mtext>
+                                    <mo stretchy="false">[</mo>
+                                    <mi>y</mi>
+                                    <mo stretchy="false">]</mo>
+                                </mrow>
+                            </mstyle>
+                        </math>&#160;в маркировку <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <msup xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mtext>μ</mtext>
+                                    <mo>′</mo>
+                                </msup>
+                            </mstyle>
+                        </math>, может неограниченно повторяться и неограниченно увеличивать значение маркировки в позиции <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <mi xmlns="http://www.w3.org/1998/Math/MathML">p</mi>
+                            </mstyle>
+                        </math>. В&#160;противном случае <math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mtext>μ</mtext>
+                                    <mtext> </mtext>
+                                    <mo stretchy="false">[</mo>
+                                    <mi>z</mi>
+                                    <mo stretchy="false">]</mo>
+                                    <mtext> </mtext>
+                                    <mo stretchy="false">(</mo>
+                                    <mi>p</mi>
+                                    <mo stretchy="false">)</mo>
+                                    <mo>=</mo>
+                                    <msup>
+                                        <mtext>μ</mtext>
+                                        <mo>′</mo>
+                                    </msup>
+                                    <mo stretchy="false">(</mo>
+                                    <mi>p</mi>
+                                    <mo stretchy="false">)</mo>
+                                </mrow>
+                            </mstyle>
+                        </math>.
+                    </li>
+                </ol>
+            </li>
+            <li>
+                <p>Строится дуга с пометкой <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mi xmlns="http://www.w3.org/1998/Math/MathML">t</mi>
+                        </mstyle>
+                    </math>, направленная от вершины <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mi xmlns="http://www.w3.org/1998/Math/MathML">x</mi>
+                        </mstyle>
+                    </math>&#160;к вершине&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mi xmlns="http://www.w3.org/1998/Math/MathML">z</mi>
+                        </mstyle>
+                    </math>. Вершина <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mi xmlns="http://www.w3.org/1998/Math/MathML">x</mi>
+                        </mstyle>
+                    </math>&#160;становится <i>внутренней</i>, а вершина <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mi xmlns="http://www.w3.org/1998/Math/MathML">z</mi>
+                        </mstyle>
+                    </math>&#160;–&#160;<i>граничной</i>.</p>
+            </li>
+        </ol>
+        <p>Такая обработка алгоритмом граничных вершин продолжается до&#160;тех пор, пока все вершины дерева не станут терминальными, дублирующими или внутренними. Затем алгоритм останавливается.</p>
+        <p>Важнейшим свойством алгоритма построения конечного дерева достижимости является то, что он за конечное число шагов заканчивает работу.</p>
+        <div class="example">
+            <div class="ex_head">
+                <div class="smile">Пример 4.14</div>
+            </div>
+            <p>Конечное дерево достижимости (<i>б</i>) сети Петри (<i>а</i>) изображено на рисунке&#160;4.12.</p>
+            <p align="center" class="img"><img alt="4.12" src="processes.files/png/4.12.png" /></p>
+            <p class="imgcaption">Рис&#160;4.12&#160;– Конечное дерево достижимости</p>
+        </div>
+        <p>Важнейшим свойством алгоритма построения конечного дерева достижимости является то, что он за конечное число шагов заканчивает работу. Доказательство основано на трех леммах.</p>
+        <div class="lemma">
+            <div>
+                <p><b>Лемма 1</b>. В&#160;любом бесконечном направленном дереве, в котором каждая вершина имеет только конечное число непосредственнопоследующих вершин, существует бесконечный путь, исходящий из корня.</p>
+            </div>
+        </div>
+        <p><i>Доказательство</i>. Пусть <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mi>x</mi>
+                            <mn>0</mn>
+                        </msub>
+                    </mrow>
+                </mstyle>
+            </math>&#160;–&#160;корневая вершина. Поскольку имеется только конечное число непосредственно следующих за <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mi>x</mi>
+                            <mn>0</mn>
+                        </msub>
+                    </mrow>
+                </mstyle>
+            </math>&#160;вершин, но общее число вершин в дереве бесконечно, по крайней мере одна из непосредственно следующих за <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mi>x</mi>
+                            <mn>0</mn>
+                        </msub>
+                    </mrow>
+                </mstyle>
+            </math>&#160;вершин должна быть корнем бесконечного поддерева. Выберем вершину <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mi>x</mi>
+                            <mn>1</mn>
+                        </msub>
+                    </mrow>
+                </mstyle>
+            </math>, непосредственно следующую за <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mi>x</mi>
+                            <mn>0</mn>
+                        </msub>
+                    </mrow>
+                </mstyle>
+            </math>, и являющуюся корнем бесконечного поддерева. Теперь одна из непосредственно следующих за ней вершин также является корнем бесконечного поддерева, выберем в качестве такой вершины <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mi>x</mi>
+                            <mn>2</mn>
+                        </msub>
+                    </mrow>
+                </mstyle>
+            </math>. Если продолжать этот процесс бесконечно, то получим бесконечный путь в дереве&#160;– <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mi>x</mi>
+                            <mn>0</mn>
+                        </msub>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <msub>
+                            <mi>x</mi>
+                            <mn>1</mn>
+                        </msub>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <msub>
+                            <mi>x</mi>
+                            <mn>2</mn>
+                        </msub>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <mo>…</mo>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <msub>
+                            <mi>x</mi>
+                            <mi>n</mi>
+                        </msub>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <mo>…</mo>
+                    </mrow>
+                </mstyle>
+            </math>&#160;.
+        </p>
+        <div class="lemma">
+            <div>
+                <p><b>Лемма 2</b>. Всякая бесконечная последовательность неотрицательных целых содержит бесконечную неубывающую последовательность.</p>
+            </div>
+        </div>
+        <p><i>Доказательство</i>. Возможны два случая:</p>
+        <ol type="1">
+            <li> Если какой-либо элемент последовательности встречается бесконечно часто, то пусть <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mi>x</mi>
+                                <mn>0</mn>
+                            </msub>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;является таким элементом. Тогда бесконечная подпоследовательность <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mi>x</mi>
+                                <mn>0</mn>
+                            </msub>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <msub>
+                                <mi>x</mi>
+                                <mn>0</mn>
+                            </msub>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <mo>…</mo>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <msub>
+                                <mi>x</mi>
+                                <mn>0</mn>
+                            </msub>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <mo>…</mo>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;является бесконечной неубывающей подпоследовательностью.</li>
+            <li> Если никакой элемент не встречается бесконечно часто, тогда каждый элемент встречается только конечное число раз. Пусть <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mi>x</mi>
+                                <mn>0</mn>
+                            </msub>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;–&#160;произвольный элемент последовательности. Существует самое большее&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mi>x</mi>
+                                <mn>0</mn>
+                            </msub>
+                        </mrow>
+                    </mstyle>
+                </math> целых, неотрицательных и меньших, чем <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mi>x</mi>
+                                <mn>0</mn>
+                            </msub>
+                            <mo stretchy="false">(</mo>
+                            <mn>0,</mn>
+                            <mtext> </mtext>
+                            <mo>…</mo>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <msub>
+                                <mi>x</mi>
+                                <mn>0</mn>
+                            </msub>
+                            <mo>−</mo>
+                            <mn>1</mn>
+                            <mo stretchy="false">)</mo>
+                        </mrow>
+                    </mstyle>
+                </math>, причем каждый из них присутствует в&#160;последовательности только конечное число раз. Следовательно, продвигаясь достаточно долго по последовательности, мы должны встретить элемент <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mi>x</mi>
+                                <mn>1</mn>
+                            </msub>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <msub>
+                                <mi>x</mi>
+                                <mn>1</mn>
+                            </msub>
+                            <mo>≥</mo>
+                            <msub>
+                                <mi>x</mi>
+                                <mn>0</mn>
+                            </msub>
+                        </mrow>
+                    </mstyle>
+                </math>. Аналогично должен существовать в последовательности <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mi>x</mi>
+                                <mn>2</mn>
+                            </msub>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <msub>
+                                <mi>x</mi>
+                                <mn>2</mn>
+                            </msub>
+                            <mo>≥</mo>
+                            <msub>
+                                <mi>x</mi>
+                                <mn>1</mn>
+                            </msub>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;и&#160;т.&#160;д. Это определяет бесконечную неубывающую последовательность <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mi>x</mi>
+                                <mn>0</mn>
+                            </msub>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <msub>
+                                <mi>x</mi>
+                                <mn>1</mn>
+                            </msub>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <msub>
+                                <mi>x</mi>
+                                <mn>2</mn>
+                            </msub>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <mo>…</mo>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <msub>
+                                <mi>x</mi>
+                                <mi>n</mi>
+                            </msub>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <mo>…</mo>
+                        </mrow>
+                    </mstyle>
+                </math>.</li>
+        </ol>
+        <p>Таким образом, в обоих случаях бесконечная неубывающая подпоследовательность существует.</p>
+        <div class="lemma">
+            <div>
+                <p><b>Лемма 3</b>. Всякая бесконечная последовательность <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mi xmlns="http://www.w3.org/1998/Math/MathML">n</mi>
+                        </mstyle>
+                    </math> над расширенными символом <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mtext>ω</mtext>
+                        </mstyle>
+                    </math> неотрицательными целыми содержит бесконечную неубывающую подпоследовательность.</p>
+            </div>
+        </div>
+        <p><i>Доказательство</i>. Доказываем индукцией по <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">n</mi>
+                </mstyle>
+            </math> где <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">n</mi>
+                </mstyle>
+            </math>&#160;– размерность векторного пространства.</p>
+        <ol type="1">
+            <li><i>Базовый случай </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mo stretchy="false">(</mo>
+                            <mi>n</mi>
+                            <mo>=</mo>
+                            <mn>1</mn>
+                            <mo stretchy="false">)</mo>
+                        </mrow>
+                    </mstyle>
+                </math>.
+                Если в последовательности имеется бесконечное число векторов вида <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mo>〈</mo>
+                            <mtext>ω</mtext>
+                            <mo>〉</mo>
+                        </mrow>
+                    </mstyle>
+                </math>, то они образуют бесконечную неубывающую последовательность (так как справедливо <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mtext>ω</mtext>
+                            <mo>≤</mo>
+                            <mtext>ω</mtext>
+                        </mrow>
+                    </mstyle>
+                </math>). В&#160;противном случае бесконечная последовательность, образованная удалением конечного числа экземпляров <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mo>〈</mo>
+                            <mtext>ω</mtext>
+                            <mo>〉</mo>
+                        </mrow>
+                    </mstyle>
+                </math>, имеет бесконечную неубывающую подпоследовательность.</li>
+            <li><i>Индуктивное предположение</i>. Допустим, что лемма верна для <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">n</mi>
+                    </mstyle>
+                </math>, докажем ее справедливость для <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>n</mi>
+                            <mo>+</mo>
+                            <mn>1</mn>
+                        </mrow>
+                    </mstyle>
+                </math>. Рассмотрим первую координату. Если существует бесконечно много векторов, имеющих в качестве первой координаты <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mtext>ω</mtext>
+                    </mstyle>
+                </math>, тогда выберем эту бесконечную подпоследовательность, которая не убывает (постоянна) по первой координате. Если только конечное число векторов имеют <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mtext>ω</mtext>
+                    </mstyle>
+                </math> в&#160;качестве первой координаты, то рассмотрим бесконечную последовательность целых, являющихся значениями первых координат. По лемме&#160;2 эта последовательность имеет бесконечную неубывающую подпоследовательность. Она определяет бесконечную последовательность векторов, которые не убывают по своей первой координате.</li>
+        </ol>
+        <p>В&#160;любом случае мы имеем последовательность векторов, неубывающих по первой координате. Применим индуктивное предположение к последовательности <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">n</mi>
+                </mstyle>
+            </math>-векторов, которая получается в результате отбрасывания первой компоненты <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                     <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>n</mi>
+                            <mo>+</mo>
+                            <mn>1</mn>
+                        </mrow>
+                    
+                </mstyle>
+            </math>-векторов. Полученная таким образом бесконечная подпоследовательность является неубывающей по каждой координате.</p>
+        <div class="theorem">
+            <div>
+                <p><b>Теорема</b>. Дерево достижимости сети Петри конечно.</p>
+            </div>
+        </div>
+        <p><i>Доказательство</i>. Докажем методом от противного. Допустим, что дерево достижимости бесконечно. Тогда по лемме&#160;1 (и так как число вершин, следующих за каждой вершиной в&#160;дереве, ограничено числом переходов <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">m</mi>
+                </mstyle>
+            </math>) в&#160;нем имеется бесконечный путь <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mi>x</mi>
+                            <mn>0</mn>
+                        </msub>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <msub>
+                            <mi>x</mi>
+                            <mn>1</mn>
+                        </msub>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <msub>
+                            <mi>x</mi>
+                            <mn>2</mn>
+                        </msub>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <mo>…</mo>
+                        <mo>,</mo>
+                    </mrow>
+                </mstyle>
+            </math> исходящий из корня <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mi>x</mi>
+                            <mn>0</mn>
+                        </msub>
+                    </mrow>
+                </mstyle>
+            </math>. Тогда <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mtext>μ</mtext>
+                        <mrow>
+                            <mo>[</mo>
+                            <mrow>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mn>0</mn>
+                                </msub>
+                            </mrow>
+                            <mo>]</mo>
+                        </mrow>
+                        <mo>,</mo>
+                    </mrow>
+                </mstyle>
+            </math>&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mtext>μ</mtext>
+                        <mrow>
+                            <mo>[</mo>
+                            <mrow>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mn>1</mn>
+                                </msub>
+                            </mrow>
+                            <mo>]</mo>
+                        </mrow>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <mtext>μ</mtext>
+                        <mrow>
+                            <mo>[</mo>
+                            <mrow>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mn>2</mn>
+                                </msub>
+                            </mrow>
+                            <mo>]</mo>
+                        </mrow>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <mo>…</mo>
+                    </mrow>
+                </mstyle>
+            </math>
+            &#160;– бесконечная последовательность <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">n</mi>
+                </mstyle>
+            </math>-векторов над <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>N</mi>
+                        <mi>a</mi>
+                        <mi>t</mi>
+                        <mo>∪</mo>
+                        <mo>{</mo>
+                        <mtext>ω</mtext>
+                        <mo>}</mo>
+                    </mrow>
+                </mstyle>
+            </math>, а&#160;по лемме&#160;3 она имеет бесконечную неубывающую подпоследовательность <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mtext>μ</mtext>
+                        <mrow>
+                            <mo>[</mo>
+                            <mrow>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mrow>
+                                        <mi>k</mi>
+                                        <mn>0</mn>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                            <mo>]</mo>
+                        </mrow>
+                        <mo>≤</mo>
+                        <mtext>μ</mtext>
+                        <mrow>
+                            <mo>[</mo>
+                            <mrow>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mrow>
+                                        <mi>k</mi>
+                                        <mn>1</mn>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                            <mo>]</mo>
+                        </mrow>
+                        <mo>≤</mo>
+                        <mtext>μ</mtext>
+                        <mrow>
+                            <mo>[</mo>
+                            <mrow>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mrow>
+                                        <mi>k</mi>
+                                        <mn>2</mn>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                            <mo>]</mo>
+                        </mrow>
+                        <mo>≤</mo>
+                        <mo>…</mo>
+                    </mrow>
+                </mstyle>
+            </math>. Но по построению дерева достижимости <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mtext>μ</mtext>
+                        <mrow>
+                            <mo>[</mo>
+                            <mrow>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mi>i</mi>
+                                </msub>
+                            </mrow>
+                            <mo>]</mo>
+                        </mrow>
+                        <mo>≠</mo>
+                    </mrow>
+                </mstyle>
+            </math>&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mtext>μ</mtext>
+                        <mrow>
+                            <mo>[</mo>
+                            <mrow>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mi>j</mi>
+                                </msub>
+                            </mrow>
+                            <mo>]</mo>
+                        </mrow>
+                    </mrow>
+                </mstyle>
+            </math> (для <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>i</mi>
+                        <mo>≠</mo>
+                        <mi>j</mi>
+                    </mrow>
+                </mstyle>
+            </math>&#160;), поскольку тогда одна из вершин была бы дублирующей и не имела следующих за собой вершин. Следовательно, это бесконечная строго возрастающая последовательность <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mtext>μ</mtext>
+                        <mrow>
+                            <mo>[</mo>
+                            <mrow>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mrow>
+                                        <mi>k</mi>
+                                        <mn>0</mn>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                            <mo>]</mo>
+                        </mrow>
+                        <mo>&lt;</mo>
+                        <mtext>μ</mtext>
+                        <mrow>
+                            <mo>[</mo>
+                            <mrow>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mrow>
+                                        <mi>k</mi>
+                                        <mn>1</mn>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                            <mo>]</mo>
+                        </mrow>
+                        <mo>&lt;</mo>
+                        <mtext>μ</mtext>
+                        <mrow>
+                            <mo>[</mo>
+                            <mrow>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mrow>
+                                        <mi>k</mi>
+                                        <mn>2</mn>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                            <mo>]</mo>
+                        </mrow>
+                        <mo>&lt;</mo>
+                        <mo>…</mo>
+                    </mrow>
+                </mstyle>
+            </math>. Но по построению, так как <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mtext>μ</mtext>
+                        <mrow>
+                            <mo>[</mo>
+                            <mrow>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mi>i</mi>
+                                </msub>
+                            </mrow>
+                            <mo>]</mo>
+                        </mrow>
+                        <mo>&lt;</mo>
+                        <mtext>μ</mtext>
+                        <mrow>
+                            <mo>[</mo>
+                            <mrow>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mi>j</mi>
+                                </msub>
+                            </mrow>
+                            <mo>]</mo>
+                        </mrow>
+                    </mrow>
+                </mstyle>
+            </math>, нам следовало бы заменить по крайней мере одну компоненту <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mtext>μ</mtext>
+                        <mrow>
+                            <mo>[</mo>
+                            <mrow>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mi>j</mi>
+                                </msub>
+                            </mrow>
+                            <mo>]</mo>
+                        </mrow>
+                    </mrow>
+                </mstyle>
+            </math> не являющуюся <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mtext xmlns="http://www.w3.org/1998/Math/MathML">ω</mtext>
+                </mstyle>
+            </math>, на <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mtext xmlns="http://www.w3.org/1998/Math/MathML">ω</mtext>
+                </mstyle>
+            </math> в&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mtext>μ</mtext>
+                        <mrow>
+                            <mo>[</mo>
+                            <mrow>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mi>j</mi>
+                                </msub>
+                            </mrow>
+                            <mo>]</mo>
+                        </mrow>
+                    </mrow>
+                </mstyle>
+            </math>.
+            Таким образом, <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mtext>μ</mtext>
+                        <mrow>
+                            <mo>[</mo>
+                            <mrow>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mrow>
+                                        <mi>k</mi>
+                                        <mn>1</mn>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                            <mo>]</mo>
+                        </mrow>
+                    </mrow>
+                </mstyle>
+            </math> имеет по крайней мере одну компоненту, являющуюся <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mtext xmlns="http://www.w3.org/1998/Math/MathML">ω</mtext>
+                </mstyle>
+            </math>, <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mtext>μ</mtext>
+                        <mrow>
+                            <mo>[</mo>
+                            <mrow>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mrow>
+                                        <mi>k</mi>
+                                        <mn>2</mn>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                            <mo>]</mo>
+                        </mrow>
+                    </mrow>
+                </mstyle>
+            </math> имеет по крайней мере две компоненты <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mtext xmlns="http://www.w3.org/1998/Math/MathML">ω</mtext>
+                </mstyle>
+            </math>, а <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mtext>μ</mtext>
+                        <mrow>
+                            <mo>[</mo>
+                            <mrow>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mrow>
+                                        <mi>k</mi>
+                                        <mi>n</mi>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                            <mo>]</mo>
+                        </mrow>
+                    </mrow>
+                </mstyle>
+            </math> имеет по крайней мере <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">n</mi>
+                </mstyle>
+            </math> компонент <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mtext xmlns="http://www.w3.org/1998/Math/MathML">ω</mtext>
+                </mstyle>
+            </math>. Поскольку маркировки <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">n</mi>
+                </mstyle>
+            </math>-мерные, <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mtext>μ</mtext>
+                        <mrow>
+                            <mo>[</mo>
+                            <mrow>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mrow>
+                                        <mi>k</mi>
+                                        <mi>n</mi>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                            <mo>]</mo>
+                        </mrow>
+                    </mrow>
+                </mstyle>
+            </math> имеет во всех компонентах <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mtext xmlns="http://www.w3.org/1998/Math/MathML">ω</mtext>
+                </mstyle>
+            </math>. Но тогда у <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mtext>μ</mtext>
+                        <mrow>
+                            <mo>[</mo>
+                            <mrow>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mrow>
+                                        <mi>k</mi>
+                                        <mi>n</mi>
+                                        <mo>+</mo>
+                                        <mn>1</mn>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                            <mo>]</mo>
+                        </mrow>
+                    </mrow>
+                </mstyle>
+            </math>
+            не может быть больше <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mtext>μ</mtext>
+                        <mrow>
+                            <mo>[</mo>
+                            <mrow>
+                                <msub>
+                                    <mi>x</mi>
+                                    <mrow>
+                                        <mi>k</mi>
+                                        <mi>n</mi>
+                                    </mrow>
+                                </msub>
+                            </mrow>
+                            <mo>]</mo>
+                        </mrow>
+                    </mrow>
+                </mstyle>
+            </math>. Пришли к противоречию, что доказывает теорему.</p>
+    </div>
+</body>
+
+</html>

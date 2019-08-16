@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html" charset="utf-8" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script>
+    <link href="https://new-online.tusur.ru/theme/fdo/ims/course_style.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <div>
+        <h3>2.7.2 Использование утверждений в программах</h3>
+        <p>Утверждения используются для доказательства правильности программ. Тогда утверждения необходимо формулировать в некоторой формальной логической системе. Обычно используется <i>исчисление предикатов первого порядка</i>.</p>
+        <div class="definition">
+            <div>
+                <p><b><i>Исчисление</i></b> –<i>&#160;это метод или процесс рассуждений посредством вычислений над символами.</i></p>
+            </div>
+        </div>
+        <p>В&#160;исчислении предикатов утверждения являются логическими переменными или выражениями, имеющими значение <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mstyle mathvariant="bold" mathsize="normal" xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>T</mi>
+                    </mstyle>
+                </mstyle>
+            </math>&#160;–&#160;истина или <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mstyle mathvariant="bold" mathsize="normal" xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>F</mi>
+                    </mstyle>
+                </mstyle>
+            </math>&#160;–&#160;ложь. При написании программы ставится задача&#160;– доказать истинность утверждения <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo>{</mo>
+                        <mi>Q</mi>
+                        <mo>}</mo>
+                        <mi>S</mi>
+                        <mo>{</mo>
+                        <mi>R</mi>
+                        <mo>}</mo>
+                    </mrow>
+                </mstyle>
+            </math>. Для этого нужно уметь записывать его в исчислении предикатов и формально доказывать его истинность.</p>
+        <div class="definition">
+            <div>
+                <p><b><i>Предикат</i></b><i>, помещенный в программу, называется <b>утверждением</b>.</i></p>
+            </div>
+        </div>
+        <p>Утверждается, что он истинен в соответствующий момент выполнения программы. В&#160;предусловии <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">Q</mi>
+                </mstyle>
+            </math>&#160;нужно отражать тот факт, что входные переменные получили начальные значения. Для обозначения начальных значений будем использовать большие буквы.</p>
+        <div class="example">
+            <div class="ex_head">
+                <div class="smile">Пример 2.8</div>
+            </div>
+            <p>Пусть надо определить приближенное значение квадратного корня: <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>s</mi>
+                            <mtext> </mtext>
+                            <mo>=</mo>
+                            <mtext>sqrt</mtext>
+                            <mo stretchy="false">(</mo>
+                            <mi>n</mi>
+                            <mo stretchy="false">)</mo>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <mtext>где</mtext>
+                            <mtext> </mtext>
+                            <mi>n</mi>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <mi>s</mi>
+                            <mo>∈</mo>
+                            <mi>N</mi>
+                            <mi>a</mi>
+                            <mi>t</mi>
+                        </mrow>
+                    </mstyle>
+                </math>. Определим постусловие в виде:</p>
+            <p align="center">
+                <table class="mathcenter">
+                    <tr>
+                        <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mi>R</mi>
+                                        <mtext> </mtext>
+                                        <mo>:</mo>
+                                        <mtext> </mtext>
+                                        <mi>s</mi>
+                                        <mo>×</mo>
+                                        <mi>s</mi>
+                                        <mtext> </mtext>
+                                        <mo>≤</mo>
+                                        <mtext> </mtext>
+                                        <mi>n</mi>
+                                        <mtext> </mtext>
+                                        <mo>≤</mo>
+                                        <mtext> </mtext>
+                                        <mo stretchy="false">(</mo>
+                                        <mi>s</mi>
+                                        <mtext> </mtext>
+                                        <mo>+</mo>
+                                        <mtext> </mtext>
+                                        <mn>1</mn>
+                                        <mo stretchy="false">)</mo>
+                                        <mtext> </mtext>
+                                        <mo>×</mo>
+                                        <mtext> </mtext>
+                                        <mo stretchy="false">(</mo>
+                                        <mi>s</mi>
+                                        <mtext> </mtext>
+                                        <mo>+</mo>
+                                        <mtext> </mtext>
+                                        <mn>1</mn>
+                                        <mo stretchy="false">)</mo>
+                                    </mrow>
+                                </mstyle>
+                            </math>.</td>
+                    </tr>
+                </table>
+            </p>
+        </div>
+        <div class="example">
+            <div class="ex_head">
+                <div class="smile">Пример 2.9</div>
+            </div>
+            <p>Даны целочисленные значения <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>n</mi>
+                            <mtext> </mtext>
+                            <mo>&gt;</mo>
+                            <mtext> </mtext>
+                            <mn>0</mn>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;и массив <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>a</mi>
+                            <mtext> </mtext>
+                            <mo stretchy="false">[</mo>
+                            <mn>1</mn>
+                            <mtext> </mtext>
+                            <mn>..</mn>
+                            <mtext> </mtext>
+                            <mi>n</mi>
+                            <mo stretchy="false">]</mo>
+                        </mrow>
+                    </mstyle>
+                </math>. Отсортировать массив&#160;– значит установить постусловие:</p>
+            <p align="center">
+                <table class="mathcenter">
+                    <tr>
+                        <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mi>R</mi>
+                                        <mo>:</mo>
+                                        <mtext> </mtext>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mrow>
+                                                <mo>∀</mo>
+                                                <mi>i</mi>
+                                                <mo>:</mo>
+                                                <mtext> </mtext>
+                                                <mn>1</mn>
+                                                <mtext> </mtext>
+                                                <mo>≤</mo>
+                                                <mtext> </mtext>
+                                                <mi>i</mi>
+                                                <mtext> </mtext>
+                                                <mo>&lt;</mo>
+                                                <mtext> </mtext>
+                                                <mi>n</mi>
+                                                <mtext> </mtext>
+                                                <mo>:</mo>
+                                                <mtext> </mtext>
+                                                <mi>a</mi>
+                                                <mtext> </mtext>
+                                                <mo stretchy="false">[</mo>
+                                                <mi>i</mi>
+                                                <mo stretchy="false">]</mo>
+                                                <mtext> </mtext>
+                                                <mo>≤</mo>
+                                                <mtext> </mtext>
+                                                <mi>a</mi>
+                                                <mtext> </mtext>
+                                                <mo stretchy="false">[</mo>
+                                                <mi>i</mi>
+                                                <mtext> </mtext>
+                                                <mo>+</mo>
+                                                <mtext> </mtext>
+                                                <mn>1</mn>
+                                                <mo stretchy="false">]</mo>
+                                            </mrow>
+                                            <mo>)</mo>
+                                        </mrow>
+                                    </mrow>
+                                </mstyle>
+                            </math>.</td>
+                    </tr>
+                </table>
+            </p>
+        </div>
+        <div class="example">
+            <div class="ex_head">
+                <div class="smile">Пример 2.10</div>
+            </div>
+            <p>Определить <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">x</mi>
+                    </mstyle>
+                </math>&#160;как максимальное значение массива <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>a</mi>
+                            <mtext> </mtext>
+                            <mo stretchy="false">[</mo>
+                            <mn>1</mn>
+                            <mtext> </mtext>
+                            <mn>..</mn>
+                            <mtext> </mtext>
+                            <mi>n</mi>
+                            <mo stretchy="false">]</mo>
+                        </mrow>
+                    </mstyle>
+                </math>. Определим постусловие:</p>
+            <p align="center">
+                <table class="mathcenter">
+                    <tr>
+                        <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mi>R</mi>
+                                        <mo>:</mo>
+                                        <mtext> </mtext>
+                                        <mrow>
+                                            <mo>{</mo>
+                                            <mrow>
+                                                <mi>x</mi>
+                                                <mtext> </mtext>
+                                                <mo>=</mo>
+                                                <mtext>max</mtext>
+                                                <mo stretchy="false">(</mo>
+                                                <mi>y</mi>
+                                                <mo>|</mo>
+                                                <mtext> </mtext>
+                                                <mi>y</mi>
+                                                <mo>∈</mo>
+                                                <mtext> </mtext>
+                                                <mi>a</mi>
+                                                <mo stretchy="false">)</mo>
+                                            </mrow>
+                                            <mo>}</mo>
+                                        </mrow>
+                                    </mrow>
+                                </mstyle>
+                            </math>.</td>
+                    </tr>
+                </table>
+            </p>
+            <p>Для построения программы следует определить математическое понятие max. Тогда:</p>
+            <p align="center">
+                <table class="mathcenter">
+                    <tr>
+                        <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mi>R</mi>
+                                        <mtext> </mtext>
+                                        <mo>:</mo>
+                                        <mtext> </mtext>
+                                        <mrow>
+                                            <mo>{</mo>
+                                            <mrow>
+                                                <mrow>
+                                                    <mo>(</mo>
+                                                    <mrow>
+                                                        <mo>∃</mo>
+                                                        <mi>i</mi>
+                                                        <mo>:</mo>
+                                                        <mtext> </mtext>
+                                                        <mn>1</mn>
+                                                        <mtext> </mtext>
+                                                        <mo>≤</mo>
+                                                        <mtext> </mtext>
+                                                        <mi>i</mi>
+                                                        <mtext> </mtext>
+                                                        <mo>≤</mo>
+                                                        <mtext> </mtext>
+                                                        <mi>n</mi>
+                                                        <mtext> </mtext>
+                                                        <mo>:</mo>
+                                                        <mtext> </mtext>
+                                                        <mi>x</mi>
+                                                        <mtext> </mtext>
+                                                        <mo>=</mo>
+                                                        <mtext> </mtext>
+                                                        <mi>a</mi>
+                                                        <mtext> </mtext>
+                                                        <mo stretchy="false">[</mo>
+                                                        <mi>i</mi>
+                                                        <mo stretchy="false">]</mo>
+                                                    </mrow>
+                                                    <mo>)</mo>
+                                                </mrow>
+                                                <mtext> </mtext>
+                                                <mstyle mathvariant="bold" mathsize="normal">
+                                                    <mi>A</mi>
+                                                    <mi>N</mi>
+                                                    <mi>D</mi>
+                                                </mstyle>
+                                                <mtext> </mtext>
+                                                <mrow>
+                                                    <mo>(</mo>
+                                                    <mrow>
+                                                        <mo>∀</mo>
+                                                        <mi>i</mi>
+                                                        <mtext> </mtext>
+                                                        <mo>:</mo>
+                                                        <mtext> </mtext>
+                                                        <mn>1</mn>
+                                                        <mtext> </mtext>
+                                                        <mo>≤</mo>
+                                                        <mi>i</mi>
+                                                        <mo>≤</mo>
+                                                        <mi>n</mi>
+                                                        <mo>:</mo>
+                                                        <mi>a</mi>
+                                                        <mtext> </mtext>
+                                                        <mo stretchy="false">[</mo>
+                                                        <mi>n</mi>
+                                                        <mo stretchy="false">]</mo>
+                                                        <mtext> </mtext>
+                                                        <mo>=</mo>
+                                                        <mtext> </mtext>
+                                                        <mi>x</mi>
+                                                    </mrow>
+                                                    <mo>)</mo>
+                                                </mrow>
+                                            </mrow>
+                                            <mo>}</mo>
+                                        </mrow>
+                                    </mrow>
+                                </mstyle>
+                            </math>.</td>
+                    </tr>
+                </table>
+            </p>
+        </div>
+        <div class="example">
+            <div class="ex_head">
+                <div class="smile">Пример 2.11</div>
+            </div>
+            <p>Пусть имеем программу <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">S</mi>
+                    </mstyle>
+                </math>&#160;обмена значениями двух целых переменных&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">a</mi>
+                    </mstyle>
+                </math> и <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">b</mi>
+                    </mstyle>
+                </math>. Сформулируем входное и выходное утверждения программы и представим программу <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">S</mi>
+                    </mstyle>
+                </math>&#160;в виде предиката:</p>
+            <p align="center">
+                <table class="mathcenter">
+                    <tr>
+                        <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mo>{</mo>
+                                        <mi>a</mi>
+                                        <mtext> </mtext>
+                                        <mo>=</mo>
+                                        <mi>A</mi>
+                                        <mtext> </mtext>
+                                        <mstyle mathvariant="bold" mathsize="normal">
+                                            <mi>A</mi>
+                                            <mi>N</mi>
+                                            <mi>D</mi>
+                                        </mstyle>
+                                        <mtext> </mtext>
+                                        <mi>b</mi>
+                                        <mtext> </mtext>
+                                        <mo>=</mo>
+                                        <mtext> </mtext>
+                                        <mi>B</mi>
+                                        <mo>}</mo>
+                                        <mtext> </mtext>
+                                        <mi>S</mi>
+                                        <mtext> </mtext>
+                                        <mo>{</mo>
+                                        <mi>a</mi>
+                                        <mtext> </mtext>
+                                        <mo>=</mo>
+                                        <mi>B</mi>
+                                        <mtext> </mtext>
+                                        <mstyle mathvariant="bold" mathsize="normal">
+                                            <mi>A</mi>
+                                            <mi>N</mi>
+                                            <mi>D</mi>
+                                        </mstyle>
+                                        <mtext> </mtext>
+                                        <mi>b</mi>
+                                        <mtext> </mtext>
+                                        <mo>=</mo>
+                                        <mtext> </mtext>
+                                        <mi>A</mi>
+                                        <mo>}</mo>
+                                    </mrow>
+                                </mstyle>
+                            </math>,</td>
+                    </tr>
+                </table>
+            </p>
+            <p>где <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">A</mi>
+                    </mstyle>
+                </math>, <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">B</mi>
+                    </mstyle>
+                </math>&#160;–&#160;конкретные значения переменных <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">a</mi>
+                    </mstyle>
+                </math>, <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">b</mi>
+                    </mstyle>
+                </math>.</p>
+        </div>
+        <div class="definition">
+            <div>
+                <p><i>Программа вместе с утверждениями между каждой парой соседних операторов называется <b>наброском доказательства</b>.</i></p>
+            </div>
+        </div>
+        <p>Последовательно, для каждого оператора программы формулируя предикат, можно доказать, что программа удовлетворяет своим спецификациям.</p>
+        <div class="example">
+            <div class="ex_head">
+                <div class="smile">Пример 2.12</div>
+            </div>
+            <p>Представим набросок доказательства для рассмотренной выше программы <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">S</mi>
+                    </mstyle>
+                </math>
+                        :</p>
+            <p><math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mtable columnalign="left" xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mtr>
+                                <mtd>
+                                    <mo>{</mo>
+                                    <mi>a</mi>
+                                    <mtext> </mtext>
+                                    <mo>=</mo>
+                                    <mi>A</mi>
+                                    <mtext> </mtext>
+                                    <mstyle mathvariant="bold" mathsize="normal">
+                                        <mi>A</mi>
+                                        <mi>N</mi>
+                                        <mi>D</mi>
+                                    </mstyle>
+                                    <mtext> </mtext>
+                                    <mi>b</mi>
+                                    <mtext> </mtext>
+                                    <mo>=</mo>
+                                    <mtext> </mtext>
+                                    <mi>B</mi>
+                                    <mo>}</mo>
+                                    <mo>;</mo>
+                                </mtd>
+                            </mtr>
+                            <mtr>
+                                <mtd>
+                                    <mtable columnalign="left">
+                                        <mtr columnalign="left">
+                                            <mtd columnalign="left">
+                                                <mrow>
+                                                    <mi>r</mi>
+                                                    <mo>=</mo>
+                                                    <mi>a</mi>
+                                                    <mo>;</mo>
+                                                    <mtext> </mtext>
+                                                    <mo>{</mo>
+                                                    <mi>r</mi>
+                                                    <mo>=</mo>
+                                                    <mi>a</mi>
+                                                    <mtext> </mtext>
+                                                    <mstyle mathvariant="bold" mathsize="normal">
+                                                        <mi>A</mi>
+                                                        <mi>N</mi>
+                                                        <mi>D</mi>
+                                                    </mstyle>
+                                                    <mtext> </mtext>
+                                                    <mi>a</mi>
+                                                    <mtext> </mtext>
+                                                    <mo>=</mo>
+                                                    <mi>a</mi>
+                                                    <mtext> </mtext>
+                                                    <mstyle mathvariant="bold" mathsize="normal">
+                                                        <mi>A</mi>
+                                                        <mi>N</mi>
+                                                        <mi>D</mi>
+                                                    </mstyle>
+                                                    <mtext> </mtext>
+                                                    <mi>b</mi>
+                                                    <mo>=</mo>
+                                                    <mi>B</mi>
+                                                    <mo>}</mo>
+                                                    <mo>;</mo>
+                                                </mrow>
+                                            </mtd>
+                                        </mtr>
+                                        <mtr columnalign="left">
+                                            <mtd columnalign="left">
+                                                <mrow>
+                                                    <mi>a</mi>
+                                                    <mo>=</mo>
+                                                    <mi>b</mi>
+                                                    <mo>;</mo>
+                                                    <mtext> </mtext>
+                                                    <mo>{</mo>
+                                                    <mi>r</mi>
+                                                    <mo>=</mo>
+                                                    <mi>a</mi>
+                                                    <mtext> </mtext>
+                                                    <mstyle mathvariant="bold" mathsize="normal">
+                                                        <mi>A</mi>
+                                                        <mi>N</mi>
+                                                        <mi>D</mi>
+                                                    </mstyle>
+                                                    <mtext> </mtext>
+                                                    <mi>a</mi>
+                                                    <mtext> </mtext>
+                                                    <mo>=</mo>
+                                                    <mi>B</mi>
+                                                    <mtext> </mtext>
+                                                    <mstyle mathvariant="bold" mathsize="normal">
+                                                        <mi>A</mi>
+                                                        <mi>N</mi>
+                                                        <mi>D</mi>
+                                                    </mstyle>
+                                                    <mtext> </mtext>
+                                                    <mi>b</mi>
+                                                    <mo>=</mo>
+                                                    <mtext> </mtext>
+                                                    <mi>B</mi>
+                                                    <mo>}</mo>
+                                                    <mo>;</mo>
+                                                </mrow>
+                                            </mtd>
+                                        </mtr>
+                                        <mtr columnalign="left">
+                                            <mtd columnalign="left">
+                                                <mrow>
+                                                    <mi>b</mi>
+                                                    <mo>=</mo>
+                                                    <mi>r</mi>
+                                                    <mo>;</mo>
+                                                    <mtext> </mtext>
+                                                    <mo>{</mo>
+                                                    <mi>a</mi>
+                                                    <mo>=</mo>
+                                                    <mi>B</mi>
+                                                    <mtext> </mtext>
+                                                    <mstyle mathvariant="bold" mathsize="normal">
+                                                        <mi>A</mi>
+                                                        <mi>N</mi>
+                                                        <mi>D</mi>
+                                                    </mstyle>
+                                                    <mtext> </mtext>
+                                                    <mi>b</mi>
+                                                    <mo>=</mo>
+                                                    <mi>A</mi>
+                                                    <mo>}</mo>
+                                                    <mo>.</mo>
+                                                </mrow>
+                                            </mtd>
+                                        </mtr>
+                                    </mtable>
+                                </mtd>
+                            </mtr>
+                        </mtable>
+                    </mstyle>
+                </math></p>
+        </div>
+        <p>Необязательно набросок доказательства должен быть настолько полным. Для документирования программы нужно вставить достаточно утверждений, чтобы программа стала понимаемой.</p>
+        <div class="definition">
+            <div>
+                <p><i>Программа, содержащая утверждения для ее документирования, называется <b>аннотированной программой</b>.</i></p>
+            </div>
+        </div>
+        <p>Чтобы использовать утверждения для доказательства правильности программы, необходимы соответствующие правила верификации.</p>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html" charset="utf-8" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script>
+    <link href="https://new-online.tusur.ru/theme/fdo/ims/course_style.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <div>
+        <h3>1.1.3 Программы и схемы программ</h3>
+        <p>Рассмотрим отличие программ от <i>схем программ</i>&#160;[2].</p>
+        <div class="definition">
+            <div>
+                <p><b><i>Схемы программ</i></b> –<i>&#160;это математические модели, описывающие строение программ или, точнее, строение множества программ, где конкретные операции и функции заменены абстрактными функциональными и предикатными символами.</i></p>
+            </div>
+        </div>
+        <div class="example">
+            <div class="ex_head">
+                <div class="smile">Пример 1.2</div>
+            </div>
+            <p>Приведем в качестве примера программы вычисления факториала <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>n</mi>
+                            <mo>!</mo>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;и переворачивания слов. Данный пример поясняет различие между программами и их схемой:</p>
+            <table style="border-spacing: 1em 0;" align="center">
+                <tr>
+                    <td>
+                        <p class="program"><b>begin</b><br /><b>&#160;integer</b> x,y;<br />
+                            &#160;ввод(x);<br />
+                            &#160;y:=1;<br />
+                            L:&#160;<b>if</b> x=0 <b>then</b><br />
+                            &#160;<b>goto</b> L1;<br />
+                            &#160;y:=x*y;<br />
+                            &#160;x:=x-1;<br />
+                            &#160;<b>goto</b> L;<br />
+                            L1:&#160;вывод(y);<br />
+                            &#160;<b>end</b></p>
+                    </td>
+                    <td>
+                        <p class="program"><b>begin</b><br />
+                            &#160;<b>string</b> x,y;<br />
+                            &#160;ввод(x);<br />
+                            &#160;y:=ε;<br />
+                            L:&#160;<b>if</b> x=0 <b>then</b><br />
+                            &#160;<b>goto</b> L1;<br />
+                            &#160;y:=CONSCAR(x,y);<br />
+                            &#160;x:=CDR(x);<br />
+                            &#160;<b>goto</b> L;<br />
+                            L1:&#160;вывод(y);<br />
+                            &#160;<b>end</b></p>
+                    </td>
+                    <td>
+                        <p class="program"><b>begin</b><br />
+                            &#160;ввод(x);<br />
+                            &#160;y:=a;<br />
+                            L:&#160;<b>if</b> p(x) <b>then</b><br />
+                            &#160;<b>goto</b> L1;<br />
+                            &#160;y:=g(x,y);<br />
+                            &#160;x:=h(x);<br />
+                            &#160;<b>goto</b> L;<br />
+                            L1:&#160;вывод(y);<br />
+                            &#160;<b>end</b></p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="notice">
+            <div>
+                <p>Функция <span class="program">CONSCAR</span> (суперпозиция функций <span class="program">CONS</span> и <span class="program">CAR</span> из языка Лисп) приписывает первую букву первого слова ко второму слову (т.&#160;е. <span class="program">CONSCAR(аб,в)=ав)</span>, а функция CDR стирает первую букву слова (т.&#160;е. <span class="program">CDR(аб)=б)</span>.</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

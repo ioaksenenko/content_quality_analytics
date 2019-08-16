@@ -1,0 +1,253 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load filters %}
+{% block head %}
+	{{ block.super }}
+	<link rel="stylesheet" type="text/css" href="{% static "css/analyze.css" %}" />
+{% endblock %}
+{% block main %}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col">
+            <ul class="nav nav-tabs" id="modules-tabs" role="tablist">
+                {% if modules %}
+                    {% for name, content, result in modules %}
+                        <li class="nav-item">
+                            <a class="nav-link {% if forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if forloop.counter == 1 %} true {% else %} false {% endif %}">{{ content }}</a>
+                        </li>
+                    {% endfor %}
+                {% endif %}
+            </ul>
+            <div class="tab-content" id="modules-tabs-content">
+                {% if modules %}
+                    {% for name, content, result in modules %}
+                        <div class="tab-pane fade {% if forloop.counter == 1 %} show active {% endif %}" id="tab-{{ name }}" role="tabpanel" aria-labelledby="{{ name }}-tab">
+                        <div class="container">
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <h1>Оценка качества текста</h1>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Информационная насыщенность</p>
+                                </div>
+                                <div class="col">
+                                    <div class="progress">
+                                        <div class="progress-bar {% if result.txt_ch.inf_saturation < 30 %} bg-danger {% elif result.txt_ch.inf_saturation < 60 %} bg-warning {% else %} bg-success {% endif %}" role="progressbar" style="width: {{ result.txt_ch.inf_saturation }}%" aria-valuenow="{{ result.txt_ch.inf_saturation }}" aria-valuemin="0" aria-valuemax="100">{{ result.txt_ch.inf_saturation }}%</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Абстрактность</p>
+                                </div>
+                                <div class="col">
+                                    <div class="progress">
+                                        <div class="progress-bar {% if result.txt_ch.abstractness >= 21 %} bg-danger {% elif result.txt_ch.abstractness < 21 and result.txt_ch.abstractness >= 16 %} bg-warning {% else %} bg-success {% endif %}" role="progressbar" style="width: {{ result.txt_ch.abstractness }}%" aria-valuenow="{{ result.txt_ch.abstractness }}" aria-valuemin="0" aria-valuemax="100">{{ result.txt_ch.abstractness }}%</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Удобочитаемость</p>
+                                </div>
+                                <div class="col">
+                                    <div class="progress">
+                                        <div class="progress-bar {% if result.txt_ch.ganning_index >= 17 %} bg-danger {% elif result.txt_ch.ganning_index < 17 and result.txt_ch.ganning_index >= 13 %} bg-warning {% else %} bg-success {% endif %}" role="progressbar" style="width: {{ result.txt_ch.ganning_index }}%" aria-valuenow="{{ result.txt_ch.ganning_index }}" aria-valuemin="0" aria-valuemax="100">{{ result.txt_ch.ganning_index }}%</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Водность</p>
+                                </div>
+                                <div class="col">
+                                    <div class="progress">
+                                        <div class="progress-bar {% if result.txt_ch.wateriness >= 60 %} bg-danger {% elif result.txt_ch.wateriness < 60 and result.txt_ch.wateriness >= 31 %} bg-warning {% else %} bg-success {% endif %}" role="progressbar" style="width: {{ result.txt_ch.wateriness }}%" aria-valuenow="{{ result.txt_ch.wateriness }}" aria-valuemin="0" aria-valuemax="100">{{ result.txt_ch.wateriness }}%</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Плотность ключевых слов</p>
+                                </div>
+                                <div class="col">
+                                    <div class="progress">
+                                        <div class="progress-bar {% if result.txt_ch.density >= 14 %} bg-danger {% elif result.txt_ch.density < 14 and result.txt_ch.density >= 7 %} bg-warning {% else %} bg-success {% endif %}" role="progressbar" style="width: {{ result.txt_ch.density }}%" aria-valuenow="{{ result.txt_ch.density }}" aria-valuemin="0" aria-valuemax="100">{{ result.txt_ch.density }}%</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <h1>Оценка крeoлизации текста</h1>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Количество выделений цветом фона:</p>
+                                </div>
+                                <div class="col">
+                                    <p>{{ result.txt_ch.creolization_vector|index:0 }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Количество выделений курсивом:</p>
+                                </div>
+                                <div class="col">
+                                    <p>{{ result.txt_ch.creolization_vector|index:1 }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Количество выделений жирным шрифтом:</p>
+                                </div>
+                                <div class="col">
+                                    <p>{{ result.txt_ch.creolization_vector|index:2 }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Количество выделений подчёркиванием:</p>
+                                </div>
+                                <div class="col">
+                                    <p>{{ result.txt_ch.creolization_vector|index:3 }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Количество выделений рамкой:</p>
+                                </div>
+                                <div class="col">
+                                    <p>{{ result.txt_ch.creolization_vector|index:4 }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Количество выделений пиктограммой:</p>
+                                </div>
+                                <div class="col">
+                                    <p>{{ result.txt_ch.creolization_vector|index:5 }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Количество выделений ссылкой:</p>
+                                </div>
+                                <div class="col">
+                                    <p>{{ result.txt_ch.creolization_vector|index:6 }}</p>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <h1>Оценка качества иллюстраций</h1>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Количество иллюстраций: </p>
+                                </div>
+                                <div class="col">
+                                    <p>{{ result.img_ch.img_number }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Среднее число иллюстраций на странице: </p>
+                                </div>
+                                <div class="col">
+                                    <p>{{ result.img_ch.aver_img_in_pg_num }}</p>
+                                </div>
+                            </div>
+                            {% for image in result.img_ch.images %}
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        <img src="{{ image.img_path }}" alt="" class="img-thumbnail">
+                                    </div>
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col">
+                                                <p>Яркость изображения: {{ image.brightness }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <p>Относительная яркость изображения: {{ image.rel_brightness }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <p>Контраст изображения: {{ image.contrast }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <p>Относительный контраст изображения: {{ image.rel_contrast }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <h1>Наличие справочной информации</h1>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Глоссарий:</p>
+                                </div>
+                                <div class="col">
+                                    <p>{% if result.san_ch.glossary == 1 %} есть {% else %} нет {% endif %}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Количество ссылок на таблицы:</p>
+                                </div>
+                                <div class="col">
+                                    <p>{{ result.san_ch.tables }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Количество ссылок на изображения:</p>
+                                </div>
+                                <div class="col">
+                                    <p>{{ result.san_ch.images }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Количество ссылок на источники литературы:</p>
+                                </div>
+                                <div class="col">
+                                    <p>{{ result.san_ch.literature }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Количество ссылок на формулы:</p>
+                                </div>
+                                <div class="col">
+                                    <p>{{ result.san_ch.formula }}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Список литературы:</p>
+                                </div>
+                                <div class="col">
+                                    <p>{% if result.san_ch.litlist == 1 %} есть {% else %} нет {% endif %}</p>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+		</div>
+	</div>
+</div>
+{% endblock %}

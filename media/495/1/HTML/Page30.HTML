@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html" charset="utf-8" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script>
+    <link href="https://new-online.tusur.ru/theme/fdo/ims/course_style.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <div>
+        <h3>1.7.3 Структурированные схемы</h3>
+        <p>Возрастающая сложность программ заставляет пересмотреть принципы организации программ, их структуру. Э.&#160;Дейкстра первым высказался против неупорядоченного использования переходов на метки, которое может привести к переусложнению структуры программы, затрудняющему ее понимание. Реализуя концепцию так называемого структурированного программирования, он предложил отказаться от использования переходов и ограничиться более дисциплинирующими средствами управления вычислениями, такими как условные операторы и операторы цикла.</p>
+        <p>Класс <i>структурированных схем&#160;</i><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>Y</mi>
+                        <mo stretchy="false">(</mo>
+                        <mi>S</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>
+            &#160;определяется в том базисе <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">B</mi>
+                </mstyle>
+            </math>, который был введен для ССП <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">Y</mi>
+                </mstyle>
+            </math>&#160;[2, 3].
+        </p>
+        <p>Различие между <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">Y</mi>
+                </mstyle>
+            </math>&#160;и <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>Y</mi>
+                        <mo stretchy="false">(</mo>
+                        <mi>S</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>&#160;проявляется на уровне структур схем. Вместо специальных символов <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">Y</mi>
+                </mstyle>
+            </math>&#160;вводятся специальные символы: <b>if</b>, <b>then</b>, <b>else</b>, <b>while</b>, <b>until</b>, <b>do</b>, <b>end</b>. Вместо инструкций с метками вводятся три типа <i>схемных операторов</i> в базисе <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">B</mi>
+                </mstyle>
+            </math>: простой оператор, условный оператор и оператор цикла.</p>
+        <p><i>Простой оператор</i>&#160;– это начальный (заключительный) оператор и оператор присваивания.</p>
+        <p><i>Условный оператор</i>&#160;– это оператор вида</p>
+        <p align="center"><b>if </b><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mtext>π</mtext>
+                </mstyle>
+            </math>&#160;<b>then </b><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mtext>σ</mtext>
+                            <mn>1</mn>
+                        </msub>
+                    </mrow>
+                </mstyle>
+            </math>
+            &#160;<b>else </b><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mtext>σ</mtext>
+                            <mn>0</mn>
+                        </msub>
+                    </mrow>
+                </mstyle>
+            </math>
+            &#160;<b>end</b>,
+        </p>
+        <p>где <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mtext>π</mtext>
+                </mstyle>
+            </math>&#160;–&#160;логическое выражение, <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mtext>σ</mtext>
+                            <mn>0</mn>
+                        </msub>
+                    </mrow>
+                </mstyle>
+            </math>&#160;и <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mtext>σ</mtext>
+                            <mn>1</mn>
+                        </msub>
+                    </mrow>
+                </mstyle>
+            </math>&#160;–&#160;последовательности (может быть, пустые) схемных операторов, среди которых нет ни начального, ни заключительного.</p>
+        <p><i>Операторы цикла</i> имеют вид:</p>
+        <p align="center"><b>while </b><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mtext>π</mtext>
+                </mstyle>
+            </math>&#160;<b>do </b><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mtext>σ</mtext>
+                </mstyle>
+            </math><b>&#160;end </b>или<b> until </b><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">π</mi>
+                </mstyle>
+            </math>&#160;<b>do </b><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mtext>σ</mtext>
+                </mstyle>
+            </math>&#160;<b>end</b>,</p>
+        <p>где <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mtext>π</mtext>
+                </mstyle>
+            </math>&#160;и <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mtext>σ</mtext>
+                </mstyle>
+            </math>&#160;имеют тот же смысл, что и выше.</p>
+        <div class="example">
+            <div class="ex_head">
+                <div class="smile">Пример 1.23</div>
+            </div>
+            <p>Пример эквивалентных схем <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">Y</mi>
+                    </mstyle>
+                </math>&#160;и <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>Y</mi>
+                            <mo stretchy="false">(</mo>
+                            <mi>S</mi>
+                            <mo stretchy="false">)</mo>
+                        </mrow>
+                    </mstyle>
+                </math>.</p>
+            <table class="text">
+                <tr>
+                    <td align="center" style="border-left: none;"><b>Стандартная схема программ</b></td>
+                    <td align="center" style="border-right: none;"><b>Структурированная схема программ</b></td>
+                </tr>
+                <tr>
+                    <td style="border-left: none; vertical-align: top;"><span class="program">
+                            0: <b>start</b>(х),<br />
+                            1: y&#160;:=&#160;f(x),<br />
+                            2: <b>if </b>p(y) <b>then </b>7 <b>else</b> 3,<br />
+                            3: y&#160;:=&#160;f(y),<br />
+                            4: <b>if </b>p(y) <b>then</b> 5 <b>else</b> 7,<br />
+                            5: <b>if </b>p(x) <b>then</b> 6 <b>else</b> 7,<br />
+                            6: x&#160;:=&#160;h(x) <b>goto</b> 5,<br />
+                            7: <b>stop</b>(х,y).
+                        </span></td>
+                    <td style="border-right: none;"><span class="program"><b>start</b>(х),<br />
+                            y&#160;:=&#160;f(x),<br /><b>if </b>p(y) <b>then else</b><br />
+                            &#160;&#160;&#160;y&#160;:=&#160;f(y),<br />
+                            &#160;&#160;&#160;<b>if </b>p(y) <b>then</b><br />
+                            &#160;&#160;&#160;&#160;&#160;<b>while</b> p(x) <b>do</b><br />
+                            &#160;&#160;&#160;&#160;&#160;&#160;&#160;x&#160;:=&#160;h(x<b>)</b><br />
+                            &#160;&#160;&#160;&#160;&#160;<b>end</b><br />
+                            &#160;&#160;&#160;<b>else</b><br />
+                            &#160;&#160;&#160;<b>end</b><br /><b>end,</b><br /><b>stop</b>(х,y).
+                        </span></td>
+                </tr>
+            </table>
+        </div>
+        <p>Доказано, что класс <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">Y</mi>
+                </mstyle>
+            </math>&#160;мощнее класса <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>Y</mi>
+                        <mo stretchy="false">(</mo>
+                        <mi>S</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>, т.&#160;е. схемы <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>Y</mi>
+                        <mo stretchy="false">(</mo>
+                        <mi>S</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>&#160;транслируемы в&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">Y</mi>
+                </mstyle>
+            </math>,&#160;но не наоборот.</p>
+        <p>Усилить класс <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>Y</mi>
+                        <mo stretchy="false">(</mo>
+                        <mi>S</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>&#160;можно за счет усложнения логических выражений в условных операторах и операторах цикла <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>Y</mi>
+                        <mo stretchy="false">(</mo>
+                        <mi>S</mi>
+                        <mi>L</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>, введением символов логических операций <b>NOT</b>, <b>OR</b>, <b>AND</b> и атомарных формул, которыми являются логические выражения в старом смысле, например:</p>
+        <p class="program"><b>NOT</b> p(x) <b>AND</b> q(y,x);</p>
+        <p class="program">p(g(x,t)) <b>OR</b> q(h(x),x).</p>
+        <p>В&#160;этом случае справедлива следующая теорема.</p>
+        <div class="theorem">
+            <div>
+                <p><b>Теорема Ашкрофта&#160;– Манны</b>. Класс стандартных схем <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mi xmlns="http://www.w3.org/1998/Math/MathML">Y</mi>
+                        </mstyle>
+                    </math>&#160;транслируем в класс схем с логическими операциями <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mi>Y</mi>
+                                <mo stretchy="false">(</mo>
+                                <mi>S</mi>
+                                <mi>L</mi>
+                                <mo stretchy="false">)</mo>
+                            </mrow>
+                        </mstyle>
+                    </math>.</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <head>
+        <meta http-equiv="content-type" content="text/html" charset="utf-8" />
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script>
+        <link href="https://new-online.tusur.ru/theme/fdo/ims/course_style.css" type="text/css" rel="stylesheet" />
+    </head>
+
+<body>
+    <div>
+        <h2>3.4 Разделяемые ресурсы</h2>
+        <p>Обозначение <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo stretchy="false">(</mo>
+                        <mi>m</mi>
+                        <mo>:</mo>
+                        <mtext> </mtext>
+                        <mtext>//</mtext>
+                        <mtext> </mtext>
+                        <mi>S</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>&#160;использовалось для именованного подчиненного процесса <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo stretchy="false">(</mo>
+                        <mi>m</mi>
+                        <mo>:</mo>
+                        <mi>R</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>, единственной обязанностью которого является удовлетворение потребностей главного процесса <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">S</mi>
+                </mstyle>
+            </math>. Предположим теперь, что <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">S</mi>
+                </mstyle>
+            </math>&#160;состоит из двух параллельных процессов <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo stretchy="false">(</mo>
+                        <mi>P</mi>
+                        <mo>|</mo>
+                        <mo>|</mo>
+                        <mi>Q</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>&#160;и они оба нуждаются в услугах одного и&#160;того же подчиненного процесса <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo stretchy="false">(</mo>
+                        <mi>m</mi>
+                        <mo>:</mo>
+                        <mi>R</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>. Процессы <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">P</mi>
+                </mstyle>
+            </math>&#160;и <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">Q</mi>
+                </mstyle>
+            </math>&#160;не могут взаимодействовать с <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">R</mi>
+                </mstyle>
+            </math>&#160;по одним и тем же каналам, потому что тогда эти каналы должны содержаться в алфавитах обоих процессов, и, значит, согласно определению оператора <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo>«</mo>
+                        <mo>|</mo>
+                        <mo>|</mo>
+                        <mo>»</mo>
+                    </mrow>
+                </mstyle>
+            </math>, взаимодействия с <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo stretchy="false">(</mo>
+                        <mi>m</mi>
+                        <mo>:</mo>
+                        <mi>R</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>&#160;могут происходить, только когда <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">P</mi>
+                </mstyle>
+            </math>&#160;и <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">Q</mi>
+                </mstyle>
+            </math>&#160;одновременно посылают одно и то же сообщение. Если же требуется чередование взаимодействий между <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">P</mi>
+                </mstyle>
+            </math>&#160;и <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo stretchy="false">(</mo>
+                        <mi>m</mi>
+                        <mo>:</mo>
+                        <mi>R</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>&#160;с взаимодействиями между <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">Q</mi>
+                </mstyle>
+            </math>&#160;и <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo stretchy="false">(</mo>
+                        <mi>m</mi>
+                        <mo>:</mo>
+                        <mi>R</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>, то в этом случае <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo stretchy="false">(</mo>
+                        <mi>m</mi>
+                        <mo>:</mo>
+                        <mi>R</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>&#160;служит как ресурс, разделяемый <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">P</mi>
+                </mstyle>
+            </math>&#160;и&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">Q</mi>
+                </mstyle>
+            </math>. Каждый из них использует его независимо, и их взаимодействия с ним чередуются.</p>
+        <p>Когда все процессы-пользователи известны заранее, можно организовать работу так, чтобы каждый процесс-пользователь имел свой набор каналов для взаимодействий с совместно используемым ресурсом. Эта техника применялась в&#160;задаче об обедающих философах: каждая вилка совместно использовалась всеми пятью. Общий метод разделения ресурсов дает множественная пометка, которая является эффективным средством создания достаточного числа каналов для независимого взаимодействия с каждым процессом-пользователем. Отдельные взаимодействия по этим каналам произвольно чередуются. Однако при таком методе необходимо знать заранее имена всех процессов-пользователей, и поэтому он не подходит для подчиненного процесса, предназначенного для обслуживания главного процесса, который разбивается на произвольное число параллельных подпроцессов&#160;[15].</p>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html" charset="utf-8" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script>
+    <link href="https://new-online.tusur.ru/theme/fdo/ims/course_style.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <div>
+        <h3>3.1.1 Базовые определения</h3>
+        <p>Неформально <i>процесс</i> можно представить себе как группу ячеек памяти, содержимое которых меняется по определенным правилам. В&#160;ЭВМ эти правила описываются программой, которую интерпретирует процессор. Синоним термина «процесс»&#160;– «задача», «программа».</p>
+        <div class="definition">
+            <div>
+                <p><b><i>Задача</i></b> –<i>&#160;основная единица, подчиняющаяся управляющей программе в мультипрограммном режиме. <b>Процесс</b>&#160;– это программа, выполняемая псевдопроцессором. <b>Процесс</b>&#160;– это то, что происходит при выполнении программы на ЭВМ.</i></p>
+            </div>
+        </div>
+        <p>Дж.&#160;Хорнинг и Б.&#160;Ренделл построили формальное определение понятия <i>процесса</i>. Основными понятиями модели являются:</p>
+        <ul type="disc">
+            <li> набор переменных состояния;</li>
+            <li> состояние;</li>
+            <li> пространство состояний;</li>
+            <li> действия;</li>
+            <li> работа;</li>
+            <li> функция действия;</li>
+            <li> процесс;</li>
+            <li> начальное состояние.</li>
+        </ul>
+        <p>В&#160;модели ВПП понятие <i>процесс</i> используется для обозначения поведения объекта. Для формального описания поведения объекта в&#160;ВПП необходимо сначала выделить в таком поведении наиболее важные <i>события</i> или <i>действия</i> и выбрать для каждого из них подходящее название или имя.</p>
+        <div class="example">
+            <div class="ex_head">
+                <div class="smile">Пример 3.1</div>
+            </div>
+            <p>В&#160;случае простого автомата, торгующего шоколадками, существуют два вида событий:</p>
+            <ul type="disc">
+                <li><i>мон </i>–&#160;опускание монеты в щель автомата;</li>
+                <li><i>шок </i>–&#160;появление шоколадки из выдающего устройства.</li>
+            </ul>
+        </div>
+        <p>Имя каждого события обозначает целый <i>класс</i> событий; отдельные вхождения события внутри одного класса разделены во времени. Множество имен событий, выбранных для конкретного описания объекта, называется его <i>алфавитом</i>.</p>
+        <p>Считается, что конкретное событие в жизни объекта происходит мгновенно, т.&#160;е. является элементарным действием, не имеющим протяженности во&#160;времени. Протяженное действие следует рассматривать как пару событий, первое из которых отмечает начало действия, а&#160;второе&#160;– его завершение. Два протяженных действия перекрываются по времени, если начало каждого из них предшествует завершению другого. Когда совместность событий существенна (например, при синхронизации), такие события сводятся в одно событие или&#160;же совместные события происходят в любом относительно друг друга порядке.</p>
+        <p>Введем следующие соглашения:</p>
+        <ol type="1">
+            <li> Име<a name="OCRUncertain119">н</a>а событий будем обозначать словами, составленными из строчных букв, а также буквами <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>a</mi>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <mi>b</mi>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <mi>c</mi>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <mo>…</mo>
+                        </mrow>
+                    </mstyle>
+                </math>.</li>
+            <li> Имена процессов будем обозначать словами, составленными из прописных букв, а буквами <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>P</mi>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <mi>Q</mi>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <mi>R</mi>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <mo>…</mo>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;будем обозначать произвольные процессы.</li>
+            <li> Буквы <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>x</mi>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <mi>y</mi>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <mi>z</mi>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <mo>…</mo>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;используются для переменных, обозначающих события.</li>
+            <li> Буквы <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>A</mi>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <mi>B</mi>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <mi>C</mi>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <mo>…</mo>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;используются для обозначения множества событий.</li>
+            <li> Буквы <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>X</mi>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <mi>Y</mi>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <mi>Z</mi>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <mo>…</mo>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;используются для переменных, обозначающих процессы.</li>
+            <li> Алфавит процесса <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">P</mi>
+                    </mstyle>
+                </math>&#160;обозначается <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mtext>α</mtext>
+                            <mi>P</mi>
+                        </mrow>
+                    </mstyle>
+                </math>.
+            </li>
+            <li> Процесс с алфавитом <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">V</mi>
+                    </mstyle>
+                </math>, такой, что в нем не происходит ни одно событие из <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">V</mi>
+                    </mstyle>
+                </math>, назовем <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>С</mi>
+                            <mi>Т</mi>
+                            <mi>О</mi>
+                            <msub>
+                                <mi>П</mi>
+                                <mi>A</mi>
+                            </msub>
+                        </mrow>
+                    </mstyle>
+                </math>. Этот процесс описывает поведение сломанного объекта. Далее определим систему обозначений, которая также предназначена для описания поведения объектов.</li>
+        </ol>
+        <div class="example">
+            <div class="ex_head">
+                <div class="smile">Пример 3.2</div>
+            </div>
+            <p>Например, у автомата, торгующего шоколадками, именами событий будут <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>м</mi>
+                            <mi>о</mi>
+                            <mi>н</mi>
+                        </mrow>
+                    </mstyle>
+                </math>
+                и
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>ш</mi>
+                            <mi>о</mi>
+                            <mi>к</mi>
+                        </mrow>
+                    </mstyle>
+                </math>
+                , имя процесса выберем <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>Т</mi>
+                            <mi>А</mi>
+                            <mi>П</mi>
+                        </mrow>
+                    </mstyle>
+                </math> (торговый автомат простой). Тогда алфавит процесса <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mtext>α</mtext>
+                            <mi>Т</mi>
+                            <mi>А</mi>
+                            <mi>П</mi>
+                            <mtext> </mtext>
+                            <mo>=</mo>
+                            <mtext> </mtext>
+                            <mo>{</mo>
+                            <mi>м</mi>
+                            <mi>о</mi>
+                            <mi>н</mi>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <mi>ш</mi>
+                            <mi>о</mi>
+                            <mi>к</mi>
+                            <mo>}</mo>
+                        </mrow>
+                    </mstyle>
+                </math>.</p>
+        </div>
+        <p><i>Пр<a name="OCRUncertain156">е</a>фиксы</i>. Пусть <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">x</mi>
+                </mstyle>
+            </math>&#160;–&#160;событие, а <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">P</mi>
+                </mstyle>
+            </math>&#160;–&#160;процесс. Тогда <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo stretchy="false">(</mo>
+                        <mi>x</mi>
+                        <mtext> </mtext>
+                        <mo>→</mo>
+                        <mtext> </mtext>
+                        <mi>P</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>&#160;описывает объект, который вначале участвует в&#160;событии <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">x</mi>
+                </mstyle>
+            </math>, а затем ведет себя в&#160;точности как <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">P</mi>
+                </mstyle>
+            </math>, где <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mtext>α</mtext>
+                        <mo stretchy="false">(</mo>
+                        <mi>x</mi>
+                        <mo>→</mo>
+                        <mi>P</mi>
+                        <mo stretchy="false">)</mo>
+                        <mo>=</mo>
+                        <mtext>α</mtext>
+                        <mi>P</mi>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <mi>x</mi>
+                        <mo>∈</mo>
+                        <mtext>α</mtext>
+                        <mi>P</mi>
+                    </mrow>
+                </mstyle>
+            </math>.</p>
+        <div class="example">
+            <div class="ex_head">
+                <div class="smile">Пример 3.3</div>
+            </div>
+            <p>Простой торговый автомат, который благополучно обслуживает двух покупателей и затем ломается:</p>
+            <p align="center">
+                <table class="mathcenter">
+                    <tr>
+                        <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mrow>
+                                                <mi>м</mi>
+                                                <mi>о</mi>
+                                                <mi>н</mi>
+                                                <mo>→</mo>
+                                                <mtext> </mtext>
+                                                <mrow>
+                                                    <mo>(</mo>
+                                                    <mrow>
+                                                        <mi>ш</mi>
+                                                        <mi>о</mi>
+                                                        <mi>к</mi>
+                                                        <mo>→</mo>
+                                                        <mrow>
+                                                            <mo>(</mo>
+                                                            <mrow>
+                                                                <mi>м</mi>
+                                                                <mi>о</mi>
+                                                                <mi>н</mi>
+                                                                <mo>→</mo>
+                                                                <mo stretchy="false">(</mo>
+                                                                <mi>ш</mi>
+                                                                <mi>о</mi>
+                                                                <mi>к</mi>
+                                                                <mo>→</mo>
+                                                                <mtext> </mtext>
+                                                                <mi>С</mi>
+                                                                <mi>Т</mi>
+                                                                <mi>О</mi>
+                                                                <msub>
+                                                                    <mi>П</mi>
+                                                                    <mrow>
+                                                                        <mtext>α</mtext>
+                                                                        <mi>Т</mi>
+                                                                        <mi>А</mi>
+                                                                        <mi>П</mi>
+                                                                    </mrow>
+                                                                </msub>
+                                                                <mo stretchy="false">)</mo>
+                                                            </mrow>
+                                                            <mo>)</mo>
+                                                        </mrow>
+                                                    </mrow>
+                                                    <mo>)</mo>
+                                                </mrow>
+                                            </mrow>
+                                            <mo>)</mo>
+                                        </mrow>
+                                    </mrow>
+                                </mstyle>
+                            </math>.</td>
+                    </tr>
+                </table>
+            </p>
+        </div>
+        <p><i>Рекурсия</i>. Префиксную запись можно использовать для полного описания поведения процесса, который рано или поздно останавливается. Было&#160;бы желательно, чтобы этот способ был компактным и не требовал знать заранее срок жизни объекта.</p>
+        <div class="example">
+            <div class="ex_head">
+                <div class="smile">Пример 3.4</div>
+            </div>
+            <p style="margin-bottom: 5px">Рассмотрим простой долговечный объект&#160;– часы, функционирование которых состоит в том, чтобы тикать:
+                <table class="mathcenter">
+                    <tr>
+                        <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <msub>
+                                            <mtext>α</mtext>
+                                            <mrow>
+                                                <mi>Ч</mi>
+                                                <mi>А</mi>
+                                                <mi>С</mi>
+                                                <mi>Ы</mi>
+                                            </mrow>
+                                        </msub>
+                                        <mtext> </mtext>
+                                        <mo>=</mo>
+                                        <mtext> </mtext>
+                                        <mo>{</mo>
+                                        <mi>т</mi>
+                                        <mi>и</mi>
+                                        <mi>к</mi>
+                                        <mo>}</mo>
+                                    </mrow>
+                                </mstyle>
+                            </math>.</td>
+                    </tr>
+                </table>
+            </p>
+            <p style="margin-bottom: 5px">Теперь рассмотрим объект, который вначале издает единственный 
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mo>«</mo>
+                            <mi>т</mi>
+                            <mi>и</mi>
+                            <mi>к</mi>
+                            <mo>»</mo>
+                        </mrow>
+                    </mstyle>
+                </math>
+                , а затем ведет себя в точности как 
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                
+                                                <mi>Ч</mi>
+                                                <mi>А</mi>
+                                                <mi>С</mi>
+                                                <mi>Ы</mi>
+                                            </mrow>
+                                        </mstyle>
+                                    </math>
+                :
+                <table class="mathcenter">
+                    <tr>
+                        <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mo stretchy="false">(</mo>
+                                        <mi>т</mi>
+                                        <mi>и</mi>
+                                        <mi>к</mi>
+                                        <mo>→</mo>
+                                        <mtext> </mtext>
+                                        <mi>Ч</mi>
+                                        <mi>А</mi>
+                                        <mi>С</mi>
+                                        <mi>Ы</mi>
+                                        <mo stretchy="false">)</mo>
+                                    </mrow>
+                                </mstyle>
+                            </math>.</td>
+                    </tr>
+                </table>
+            </p>
+            <p style="margin-bottom: 5px">Поведение этого объекта неотличимо от поведения исходных часов. Следовательно, один и&#160;тот&#160;же процесс описывает поведение обоих объектов. Эти рассуждения позволяют сформулировать равенство:
+                <table class="mathcenter">
+                    <tr>
+                        <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mi>Ч</mi>
+                                        <mi>А</mi>
+                                        <mi>С</mi>
+                                        <mi>Ы</mi>
+                                        <mo>=</mo>
+                                        <mtext> </mtext>
+                                        <mo stretchy="false">(</mo>
+                                        <mi>т</mi>
+                                        <mi>и</mi>
+                                        <mi>к</mi>
+                                        <mo>→</mo>
+                                        <mi>Ч</mi>
+                                        <mi>А</mi>
+                                        <mi>С</mi>
+                                        <mi>Ы</mi>
+                                        <mo stretchy="false">)</mo>
+                                    </mrow>
+                                </mstyle>
+                            </math>.</td>
+                    </tr>
+                </table>
+            </p>
+            <p>Это уравнение можно развертывать простой заменой в правой части уравнения члена <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                
+                                                <mi>Ч</mi>
+                                                <mi>А</mi>
+                                                <mi>С</mi>
+                                                <mi>Ы</mi>
+                                            </mrow>
+                                        </mstyle>
+                                    </math> на равное ему выражение <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mo stretchy="false">(</mo>
+                            <mi>т</mi>
+                            <mi>и</mi>
+                            <mi>к</mi>
+                            <mo>→</mo>
+                            <mtext> </mtext>
+                            <mi>Ч</mi>
+                            <mi>А</mi>
+                            <mi>С</mi>
+                            <mi>Ы</mi>
+                            <mo stretchy="false">)</mo>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;столько раз, сколько нужно, при этом возможность для дальнейшего развертывания сохраняется.</p>
+        </div>
+        <p>Рекурсивный метод определения процесса будет правильно работать, только если в правой части уравнения рекурсивному вхождению имени процесса предшествует хотя бы одно событие. Например, рекурсивное «определение» <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>X</mi>
+                        <mtext> </mtext>
+                        <mo>=</mo>
+                        <mi>X</mi>
+                    </mrow>
+                </mstyle>
+            </math>&#160;не определяет ничего, так как решением этого уравнения может служить все, что угодно.</p>
+        <div class="definition">
+            <div>
+                <p><i>Описание процесса, начинающееся с префикса, называется <b>предваренным</b>.</i></p>
+            </div>
+        </div>
+        <p>Если <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>F</mi>
+                        <mo stretchy="false">(</mo>
+                        <mi>X</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>&#160;–&#160;предваренное выражение, содержащее имя процесса&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">X</mi>
+                </mstyle>
+            </math>, а&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">V</mi>
+                </mstyle>
+            </math>&#160;– алфавит <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">X</mi>
+                </mstyle>
+            </math>, то уравнение <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>X</mi>
+                        <mo>=</mo>
+                        <mi>F</mi>
+                        <mo stretchy="false">(</mo>
+                        <mi>X</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>&#160;имеет единственное решение в алфавите <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">V</mi>
+                </mstyle>
+            </math>. Это решение обозначают выражением:</p>
+        <p align="center">
+            <table class="mathcenter">
+                <tr>
+                    <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mtext>μ</mtext>
+                                    <mi>X</mi>
+                                    <mtext> </mtext>
+                                    <mo>:</mo>
+                                    <mtext> </mtext>
+                                    <mtext> </mtext>
+                                    <mi>V</mi>
+                                    <mo>.</mo>
+                                    <mi>F</mi>
+                                    <mo stretchy="false">(</mo>
+                                    <mi>X</mi>
+                                    <mo stretchy="false">)</mo>
+                                </mrow>
+                            </mstyle>
+                        </math>.</td>
+                </tr>
+            </table>
+        </p>
+        <div class="example">
+            <div class="ex_head">
+                <div class="smile">Пример 3.5</div>
+            </div>
+            <p style="margin-bottom: 5px">Простой торговый автомат, полностью удовлетворяющий спрос на шоколадки:
+                <table class="mathcenter">
+                    <tr>
+                        <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mi>Т</mi>
+                                        <mi>А</mi>
+                                        <mi>П</mi>
+                                        <mo>=</mo>
+                                        <mtext> </mtext>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mrow>
+                                                <mi>м</mi>
+                                                <mi>о</mi>
+                                                <mi>н</mi>
+                                                <mo>→</mo>
+                                                <mtext> </mtext>
+                                                <mo stretchy="false">(</mo>
+                                                <mi>ш</mi>
+                                                <mi>о</mi>
+                                                <mi>к</mi>
+                                                <mo>→</mo>
+                                                <mi>Т</mi>
+                                                <mi>А</mi>
+                                                <mi>П</mi>
+                                                <mo stretchy="false">)</mo>
+                                            </mrow>
+                                            <mo>)</mo>
+                                        </mrow>
+                                    </mrow>
+                                </mstyle>
+                            </math>.</td>
+                    </tr>
+                </table>
+            </p>
+            <p style="margin-bottom: 5px">Решение этого уравнения может быть записано в виде:
+                <table class="mathcenter">
+                    <tr>
+                        <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mi>Т</mi>
+                                        <mi>А</mi>
+                                        <mi>П</mi>
+                                        <mo>=</mo>
+                                        <mtext> </mtext>
+                                        <mtext>μ</mtext>
+                                        <mi>X</mi>
+                                        <mo>:</mo>
+                                        <mtext> </mtext>
+                                        <mtext> </mtext>
+                                        <mo>{</mo>
+                                        <mi>м</mi>
+                                        <mi>о</mi>
+                                        <mi>н</mi>
+                                        <mo>,</mo>
+                                        <mtext> </mtext>
+                                        <mi>ш</mi>
+                                        <mi>о</mi>
+                                        <mi>к</mi>
+                                        <mo>}</mo>
+                                        <mtext> </mtext>
+                                        <mo>.</mo>
+                                        <mtext> </mtext>
+                                        <mrow>
+                                            <mo>{</mo>
+                                            <mrow>
+                                                <mi>м</mi>
+                                                <mi>о</mi>
+                                                <mi>н</mi>
+                                                <mo>→</mo>
+                                                <mtext> </mtext>
+                                                <mo stretchy="false">(</mo>
+                                                <mi>ш</mi>
+                                                <mi>о</mi>
+                                                <mi>к</mi>
+                                                <mo>→</mo>
+                                                <mi>X</mi>
+                                                <mo stretchy="false">)</mo>
+                                            </mrow>
+                                            <mo>}</mo>
+                                        </mrow>
+                                    </mrow>
+                                </mstyle>
+                            </math>.</td>
+                    </tr>
+                </table>
+            </p>
+        </div>
+        <p><i>Выбор</i>. Используя префиксы и рекурсию, можно описывать объекты, обладающие только одной возможной линией поведения. Однако поведение многих объектов зависит от окружающей их обстановки.</p>
+        <p>Если <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">x</mi>
+                </mstyle>
+            </math>&#160;и <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">y</mi>
+                </mstyle>
+            </math>&#160;–&#160;различные события, то <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo stretchy="false">(</mo>
+                        <mi>x</mi>
+                        <mo>→</mo>
+                        <mi>P</mi>
+                        <mtext> </mtext>
+                        <mo>|</mo>
+                        <mtext> </mtext>
+                        <mi>y</mi>
+                        <mo>→</mo>
+                        <mtext> </mtext>
+                        <mi>Q</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>&#160;описывает объект, который сначала участвует в одном из событий <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>x</mi>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <mi>y</mi>
+                    </mrow>
+                </mstyle>
+            </math>, где</p>
+        <p align="center">
+            <table class="mathcenter">
+                <tr>
+                    <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mtext>α</mtext>
+                                    <mo stretchy="false">(</mo>
+                                    <mi>x</mi>
+                                    <mo>→</mo>
+                                    <mi>P</mi>
+                                    <mtext> </mtext>
+                                    <mo>|</mo>
+                                    <mi>y</mi>
+                                    <mo>→</mo>
+                                    <mi>Q</mi>
+                                    <mo stretchy="false">)</mo>
+                                    <mtext> </mtext>
+                                    <mo>=</mo>
+                                    <mtext>α</mtext>
+                                    <mi>P</mi>
+                                    <mo>;</mo>
+                                    <mtext> </mtext>
+                                    <mtext> </mtext>
+                                    <mtext> </mtext>
+                                    <mi>x</mi>
+                                    <mo>,</mo>
+                                    <mtext> </mtext>
+                                    <mi>y</mi>
+                                    <mo>∈</mo>
+                                    <mtext>α</mtext>
+                                    <mi>P</mi>
+                                    <mo>,</mo>
+                                    <mtext> </mtext>
+                                    <mtext>α</mtext>
+                                    <mi>P</mi>
+                                    <mo>=</mo>
+                                    <mtext>α</mtext>
+                                    <mi>Q</mi>
+                                </mrow>
+                            </mstyle>
+                        </math>.</td>
+                </tr>
+            </table>
+        </p>
+        <p>Последующее же поведение объекта описывается процессом <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">P</mi>
+                </mstyle>
+            </math>, если первым произошло событие <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">x</mi>
+                </mstyle>
+            </math>, или <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">Q</mi>
+                </mstyle>
+            </math>, если первым произошло событие <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">y</mi>
+                </mstyle>
+            </math>.</p>
+        <div class="example">
+            <div class="ex_head">
+                <div class="smile">Пример 3.6</div>
+            </div>
+            <p>Процесс копирования состоит из следующих событий:</p>
+            <ul type="disc">
+                <li><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                         <mi>в</mi>
+                                                <mi>в</mi>
+                                                <mn>.0</mn>
+                                            </mrow>
+                                        </mstyle>
+                                    </math>
+
+                                    &#160;– считывание нуля из входного канала,</li>
+                <li><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mi>в</mi>
+                                                <mi>в</mi>
+                                                <mn>.1</mn>
+                                            </mrow>
+                                        </mstyle>
+                                    </math>
+                                    &#160;– считывание единицы из входного канала,</li>
+                <li><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mi>в</mi>
+                                                <mi>ы</mi>
+                                                <mi>в</mi>
+                                                <mn>.0</mn>
+                                        </mrow>
+                                        </mstyle>
+                                    </math>
+                                    &#160;– запись нуля в выходной канал,</li>
+                <li><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mi>в</mi>
+                                                <mi>ы</mi>
+                                                <mi>в</mi>
+                                                <mn>.1</mn>
+                                        </mrow>
+                                        </mstyle>
+                                    </math>
+                                    &#160;– запись единицы в&#160;выходной канал.</li>
+            </ul>
+            <p>Поведение процесса состоит из повторяющихся пар событий. На каждом такте он считывает, а&#160;затем записывает один бит:</p>
+            <p align="center">
+                <table class="mathcenter">
+                    <tr>
+                        <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mi>К</mi>
+                                        <mi>О</mi>
+                                        <mi>П</mi>
+                                        <mi>И</mi>
+                                        <mi>Б</mi>
+                                        <mi>И</mi>
+                                        <mi>Т</mi>
+                                        <mtext> </mtext>
+                                        <mo>=</mo>
+                                        <mtext>μ</mtext>
+                                        <mi>X</mi>
+                                        <mtext> </mtext>
+                                        <mo>:</mo>
+                                        <mtext> </mtext>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mrow>
+                                                <mtext>(</mtext>
+                                                <mi>в</mi>
+                                                <mi>в</mi>
+                                                <mn>.0</mn>
+                                                <mtext> </mtext>
+                                                <mo>→</mo>
+                                                <mi>в</mi>
+                                                <mi>ы</mi>
+                                                <mi>в</mi>
+                                                <mn>.0</mn>
+                                                <mtext> </mtext>
+                                                <mo>|</mo>
+                                                <mtext> </mtext>
+                                                <mi>в</mi>
+                                                <mi>в</mi>
+                                                <mn>.1</mn>
+                                                <mtext> </mtext>
+                                                <mo>→</mo>
+                                                <mi>в</mi>
+                                                <mi>ы</mi>
+                                                <mi>в</mi>
+                                                <mn>.1</mn>
+                                                <mtext>)</mtext>
+                                                <mtext> </mtext>
+                                                <mo>→</mo>
+                                                <mi>X</mi>
+                                            </mrow>
+                                            <mo>)</mo>
+                                        </mrow>
+                                    </mrow>
+                                </mstyle>
+                            </math>.</td>
+                    </tr>
+                </table>
+            </p>
+        </div>
+        <p>Определение выбора легко обобщить на случай более чем двух альтернатив. В&#160;общем случае если <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">B</mi>
+                </mstyle>
+            </math>&#160;–&#160;некоторое множество событий, а <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>P</mi>
+                        <mo stretchy="false">(</mo>
+                        <mi>x</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>&#160;–&#160;выражение, определяющее процесс для всех различных <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">x</mi>
+                </mstyle>
+            </math>&#160;из <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">B</mi>
+                </mstyle>
+            </math>, то запись</p>
+        <p align="center">
+            <table class="mathcenter">
+                <tr>
+                    <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mrow>
+                                        <mo>(</mo>
+                                        <mrow>
+                                            <mi>x</mi>
+                                            <mo>:</mo>
+                                            <mi>B</mi>
+                                            <mo>→</mo>
+                                            <mi>P</mi>
+                                            <mo stretchy="false">(</mo>
+                                            <mi>x</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                        <mo>)</mo>
+                                    </mrow>
+                                </mrow>
+                            </mstyle>
+                        </math></td>
+                </tr>
+            </table>
+        </p>
+        <p>определяет процесс, который сначала предлагает на выбор любое событие&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">y</mi>
+                </mstyle>
+            </math> из&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">B</mi>
+                </mstyle>
+            </math>, а затем ведет себя как&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>P</mi>
+                        <mo stretchy="false">(</mo>
+                        <mi>y</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>.</p>
+        <p><i>Взаимная рекурсия</i>. Рекурсия позволяет определить единственный процесс как решение некоторого единственного уравнения. Эта техника легко обобщается на случай решения систем уравнений с более чем одним неизвестным. Для достижения желаемого результата необходимо, чтобы правые части всех уравнений были предваренными, а каждый неизвестный процесс входил ровно один раз в правую часть одного из уравнений.</p>
+        <div class="example">
+            <div class="ex_head">
+                <div class="smile">Пример 3.7</div>
+            </div>
+            <p>Автомат с газированной водой имеет рукоятку с двумя возможными положениями&#160;– 
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>Л</mi>
+                        <mi>И</mi>
+                        <mi>М</mi>
+                            <mi>О</mi>
+                            <mi>Н</mi>
+                        </mrow>
+                    </mstyle>
+                </math>
+             и 
+             <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>А</mi>
+                        <mi>П</mi>
+                        <mi>Е</mi>
+                            <mi>Л</mi>
+                            <mi>Ь</mi>
+                  <mi>С</mi>
+                        <mi>И</mi>
+                        <mi>Н</mi>
+                        </mrow>
+                    </mstyle>
+                </math>
+             . Действия по установке рукоятки в соответствующее положение назовем 
+             <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mi>у</mi>
+                                    <mi>с</mi>
+                                    <mi>т</mi>
+                                    <mi>л</mi>
+                                    <mi>и</mi>
+                                    <mi>м</mi>
+                                    <mi>о</mi>
+                                    <mi>н</mi>
+                                    </mrow>
+                                </mstyle>
+                            </math>
+
+              и 
+                           <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                 <mi>у</mi>
+                                    <mi>с</mi>
+                                    <mi>т</mi>
+                                    <mi>а</mi>
+                                    <mi>п</mi>
+                                    <mi>е</mi>
+                                    <mi>л</mi>
+                                    <mi>ь</mi>
+                                    <mi>с</mi>
+                                    <mi>и</mi>
+                                    <mi>н</mi>
+                                     </mrow>
+                                </mstyle>
+                            </math>
+              , а действия автомата по наливанию напитка&#160;– 
+              <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                    
+                                    <mi>л</mi>
+                                    <mi>и</mi>
+                                    <mi>м</mi>
+                                    <mi>о</mi>
+                                    <mi>н</mi>
+                                    </mrow>
+                                </mstyle>
+                            </math>
+               и 
+               <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+
+                                    <mi>а</mi>
+                                    <mi>п</mi>
+                                    <mi>е</mi>
+                                    <mi>л</mi>
+                                    <mi>ь</mi>
+                                    <mi>с</mi>
+                                    <mi>и</mi>
+                                    <mi>н</mi>
+                                     </mrow>
+                                </mstyle>
+                            </math>
+           . Вначале рукоятка занимает некоторое нейтральное положение, к которому затем уже не возвращается. Поведение трех процессов описывается уравнением:</p>
+            <p style="margin-left: 3em"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mtable columnalign="left" xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mtr>
+                                <mtd>
+                                    <mtext>α</mtext>
+                                    <mi>А</mi>
+                                    <mi>Г</mi>
+                                    <mi>А</mi>
+                                    <mi>З</mi>
+                                    <mo>=</mo>
+                                    <mtext> </mtext>
+                                    <mtext>α</mtext>
+                                    <mi>G</mi>
+                                    <mo>=</mo>
+                                    <mtext> </mtext>
+                                    <mtext>α</mtext>
+                                    <mi>W</mi>
+                                    <mtext> </mtext>
+                                    <mo>=</mo>
+                                    <mtext> </mtext>
+                                    <mo>{</mo>
+                                    <mi>у</mi>
+                                    <mi>с</mi>
+                                    <mi>т</mi>
+                                    <mi>л</mi>
+                                    <mi>и</mi>
+                                    <mi>м</mi>
+                                    <mi>о</mi>
+                                    <mi>н</mi>
+                                    <mo>,</mo>
+                                    <mtext> </mtext>
+                                    <mi>у</mi>
+                                    <mi>с</mi>
+                                    <mi>т</mi>
+                                    <mi>а</mi>
+                                    <mi>п</mi>
+                                    <mi>е</mi>
+                                    <mi>л</mi>
+                                    <mi>ь</mi>
+                                    <mi>с</mi>
+                                    <mi>и</mi>
+                                    <mi>н</mi>
+                                    <mo>,</mo>
+                                    <mtext> </mtext>
+                                    <mi>м</mi>
+                                    <mi>о</mi>
+                                    <mi>н</mi>
+                                    <mo>,</mo>
+                                    <mtext> </mtext>
+                                    <mi>л</mi>
+                                    <mi>и</mi>
+                                    <mi>м</mi>
+                                    <mi>о</mi>
+                                    <mi>н</mi>
+                                    <mo>,</mo>
+                                    <mtext> </mtext>
+                                    <mi>а</mi>
+                                    <mi>п</mi>
+                                    <mi>е</mi>
+                                    <mi>л</mi>
+                                    <mi>ь</mi>
+                                    <mi>с</mi>
+                                    <mi>и</mi>
+                                    <mi>н</mi>
+                                    <mo>}</mo>
+                                    <mo>,</mo>
+                                </mtd>
+                            </mtr>
+                            <mtr>
+                                <mtd>
+                                    <mtable columnalign="left">
+                                        <mtr columnalign="left">
+                                            <mtd columnalign="left">
+                                                <mrow>
+                                                    <mi>А</mi>
+                                                    <mi>Г</mi>
+                                                    <mi>А</mi>
+                                                    <mi>З</mi>
+                                                    <mo>=</mo>
+                                                    <mo stretchy="false">(</mo>
+                                                    <mi>у</mi>
+                                                    <mi>с</mi>
+                                                    <mi>т</mi>
+                                                    <mi>л</mi>
+                                                    <mi>и</mi>
+                                                    <mi>м</mi>
+                                                    <mi>о</mi>
+                                                    <mi>н</mi>
+                                                    <mo>→</mo>
+                                                    <mi>G</mi>
+                                                    <mo>|</mo>
+                                                    <mi>у</mi>
+                                                    <mi>с</mi>
+                                                    <mi>т</mi>
+                                                    <mi>а</mi>
+                                                    <mi>п</mi>
+                                                    <mi>е</mi>
+                                                    <mi>л</mi>
+                                                    <mi>ь</mi>
+                                                    <mi>с</mi>
+                                                    <mi>и</mi>
+                                                    <mi>н</mi>
+                                                    <mo>→</mo>
+                                                    <mi>W</mi>
+                                                    <mo stretchy="false">)</mo>
+                                                    <mo>,</mo>
+                                                </mrow>
+                                            </mtd>
+                                        </mtr>
+                                        <mtr columnalign="left">
+                                            <mtd columnalign="left">
+                                                <mrow>
+                                                    <mi>G</mi>
+                                                    <mo>=</mo>
+                                                    <mrow>
+                                                        <mo>(</mo>
+                                                        <mrow>
+                                                            <mi>м</mi>
+                                                            <mi>о</mi>
+                                                            <mi>н</mi>
+                                                            <mo>→</mo>
+                                                            <mo stretchy="false">(</mo>
+                                                            <mi>л</mi>
+                                                            <mi>и</mi>
+                                                            <mi>м</mi>
+                                                            <mi>о</mi>
+                                                            <mi>н</mi>
+                                                            <mo>→</mo>
+                                                            <mi>G</mi>
+                                                            <mo>|</mo>
+                                                            <mi>у</mi>
+                                                            <mi>с</mi>
+                                                            <mi>т</mi>
+                                                            <mi>а</mi>
+                                                            <mi>п</mi>
+                                                            <mi>е</mi>
+                                                            <mi>л</mi>
+                                                            <mi>ь</mi>
+                                                            <mi>с</mi>
+                                                            <mi>и</mi>
+                                                            <mi>н</mi>
+                                                            <mo>→</mo>
+                                                            <mi>W</mi>
+                                                            <mo stretchy="false">)</mo>
+                                                        </mrow>
+                                                        <mo>)</mo>
+                                                    </mrow>
+                                                    <mo>,</mo>
+                                                </mrow>
+                                            </mtd>
+                                        </mtr>
+                                    </mtable>
+                                </mtd>
+                            </mtr>
+                            <mtr>
+                                <mtd>
+                                    <mi>W</mi>
+                                    <mo>=</mo>
+                                    <mrow>
+                                        <mo>(</mo>
+                                        <mrow>
+                                            <mi>м</mi>
+                                            <mi>о</mi>
+                                            <mi>н</mi>
+                                            <mo>→</mo>
+                                            <mo stretchy="false">(</mo>
+                                            <mi>а</mi>
+                                            <mi>п</mi>
+                                            <mi>е</mi>
+                                            <mi>л</mi>
+                                            <mi>ь</mi>
+                                            <mi>с</mi>
+                                            <mi>и</mi>
+                                            <mi>н</mi>
+                                            <mo>→</mo>
+                                            <mi>W</mi>
+                                            <mo>|</mo>
+                                            <mi>у</mi>
+                                            <mi>с</mi>
+                                            <mi>т</mi>
+                                            <mi>л</mi>
+                                            <mi>и</mi>
+                                            <mi>м</mi>
+                                            <mi>о</mi>
+                                            <mi>н</mi>
+                                            <mo>→</mo>
+                                            <mi>G</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                        <mo>)</mo>
+                                    </mrow>
+                                    <mo>.</mo>
+                                </mtd>
+                            </mtr>
+                        </mtable>
+                    </mstyle>
+                </math></p>
+        </div>
+    </div>
+</body>
+
+</html>

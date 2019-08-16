@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html" charset="utf-8" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script>
+    <link href="https://new-online.tusur.ru/theme/fdo/ims/course_style.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <div>
+        <h3>1.1.2 Вычислимость и разрешимость</h3>
+        <p>Приведенное выше определение функции не содержит указаний о том, как для заданных значений аргументов получить соответствующие значения функции. Целесообразно переформулировать это определение таким образом, чтобы оно содержало конструктивную процедуру, или алгоритм, нахождения значений функции.</p>
+        <p>А.&#160;Тьюринг формализовал способ получения значений вычислимой функции с помощью абстрактной «математической машины», вычисляющей значения функции по значениям ее аргументов. Конкретная машина Тьюринга задает конкретную вычислимую функцию, и его гипотеза (тезис) состояла в том, что каждая функция, для которой существует алгоритм нахождения ее значений, представима некоторой машиной Тьюринга, т.&#160;е. является вычислимой. Тезис Тьюринга не может быть доказан, так как наряду с формальным понятием вычислимой функции он содержит эмпирическое понятие алгоритма.</p>
+        <p><i>Машина Тьюринга&#160;</i><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">T</mi>
+                </mstyle>
+            </math>&#160;задает словарную функцию над некоторым алфавитом <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">V</mi>
+                </mstyle>
+            </math>&#160;и представляет собой описание машины&#160;– набор <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mrow>
+                            <mo>(</mo>
+                            <mrow>
+                                <mi>V</mi>
+                                <mo>,</mo>
+                                <mtext> </mtext>
+                                <mi>Q</mi>
+                                <mo>,</mo>
+                                <mtext> </mtext>
+                                <msub>
+                                    <mi>q</mi>
+                                    <mn>0</mn>
+                                </msub>
+                                <mo>,</mo>
+                                <mtext> </mtext>
+                                <mo>#</mo>
+                                <mo>,</mo>
+                                <mtext> </mtext>
+                                <mi>I</mi>
+                            </mrow>
+                            <mo>)</mo>
+                        </mrow>
+                    </mrow>
+                </mstyle>
+            </math>&#160;–&#160;и правило функционирования, общее для всех машин, где</p>
+        <ul type="disc">
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">V</mi>
+                    </mstyle>
+                </math>&#160;–&#160;алфавит машины;</li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">Q</mi>
+                    </mstyle>
+                </math>&#160;–&#160;конечное непустое множество символов, называемых состояниями машины <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mo>(</mo>
+                                <mrow>
+                                    <mi>Q</mi>
+                                    <mo>∩</mo>
+                                    <mi>V</mi>
+                                    <mo>=</mo>
+                                    <mstyle mathvariant="bold" mathsize="normal">
+                                        <mtext>&#8709;</mtext>
+                                    </mstyle>
+                                </mrow>
+                                <mo>)</mo>
+                            </mrow>
+                        </mrow>
+                    </mstyle>
+                </math>;</li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mi>q</mi>
+                                <mn>0</mn>
+                            </msub>
+                        </mrow>
+                    </mstyle>
+                </math>
+                &#160;–&#160;выделенный элемент множества <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">Q</mi>
+                    </mstyle>
+                </math>, называемый начальным состоянием;
+            </li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mo xmlns="http://www.w3.org/1998/Math/MathML">#</mo>
+                    </mstyle>
+                </math>&#160;–&#160;специальный «пустой» символ, не принадлежащий ни <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">V</mi>
+                    </mstyle>
+                </math>, ни <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">Q</mi>
+                    </mstyle>
+                </math>;</li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">I</mi>
+                    </mstyle>
+                </math>&#160;–&#160;программа машины.</li>
+        </ul>
+        <p>Программа машины&#160;– это конечное множество слов вида <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>q</mi>
+                        <mi>a</mi>
+                        <mo>→</mo>
+                        <mi>q</mi>
+                        <mo>′</mo>
+                        <mi>a</mi>
+                        <mo>′</mo>
+                        <mi>d</mi>
+                    </mrow>
+                </mstyle>
+            </math>, называемых <i>командами</i>, где <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>q</mi>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <mi>q</mi>
+                        <mo>′</mo>
+                        <mo>∈</mo>
+                        <mi>Q</mi>
+                    </mrow>
+                </mstyle>
+            </math>; <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>a</mi>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <mi>a</mi>
+                        <mo>′</mo>
+                        <mo>∈</mo>
+                        <mi>V</mi>
+                        <mo>∪</mo>
+                        <mo>{</mo>
+                        <mstyle mathvariant="bold" mathsize="normal">
+                            <mtext>&#8709;</mtext>
+                        </mstyle>
+                        <mo>}</mo>
+                    </mrow>
+                </mstyle>
+            </math>; «<math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mo xmlns="http://www.w3.org/1998/Math/MathML">→</mo>
+                </mstyle>
+            </math>»&#160;– вспомогательный символ-разделитель; <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">d</mi>
+                </mstyle>
+            </math>&#160;–&#160;элемент множества <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo>{</mo>
+                        <mi>l</mi>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <mi>r</mi>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <mi>p</mi>
+                        <mo>}</mo>
+                    </mrow>
+                </mstyle>
+            </math>, содержащего три специальных символа, которых нет ни в&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">V</mi>
+                </mstyle>
+            </math>, ни в <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">Q</mi>
+                </mstyle>
+            </math>. В&#160;программе <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">I</mi>
+                </mstyle>
+            </math>&#160;никакие две команды не могут иметь одинаковую пару первых двух символов.</p>
+        <p>Машина состоит из потенциально бесконечной ленты, управления и головки, перемещаемой вдоль ленты (см. рис.&#160;1.2).</p>
+        <p align="center" class="img"><img alt="1.2" src="processes.files/png/1.2.png" /></p>
+        <p class="imgcaption">Рис.&#160;1.2&#160;– Машина Тьюринга</p>
+        <p>Лента разбита на клетки, которые могут содержать символы из алфавита&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">V</mi>
+                </mstyle>
+            </math> или быть пустыми, т.&#160;е. содержать символ <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mo xmlns="http://www.w3.org/1998/Math/MathML">#</mo>
+                </mstyle>
+            </math>. Управление на каждом шаге работы машины находится в одном из состояний <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">Q</mi>
+                </mstyle>
+            </math>, расшифровывает программу, которая однозначно определяет поведение машины и управляет головкой. Головка в каждый момент расположена против некоторой клетки ленты и может считывать символы с ленты, записывать их на ленту и перемещаться в&#160;обе стороны вдоль ленты. Машина функционирует следующим образом. В&#160;начальный момент на ленте записано некоторое слово из <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">V</mi>
+                </mstyle>
+            </math>, а управление находится в начальном состоянии <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mi>q</mi>
+                            <mn>0</mn>
+                        </msub>
+                    </mrow>
+                </mstyle>
+            </math>. Начальное слово, равно как и слова, появляющиеся в процессе работы машины, ограничено с двух сторон пустыми символами <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mo xmlns="http://www.w3.org/1998/Math/MathML">#</mo>
+                </mstyle>
+            </math>. Головка обозревает крайний слева символ заданного слова.</p>
+        <p>Работа машины состоит в повторении следующего цикла элементарных действий:</p>
+        <ol type="1" class="num_brackets">
+            <li> считывание символа, находящегося против головки;</li>
+            <li> поиск применимой команды, а именно той команды <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>q</mi>
+                            <mi>a</mi>
+                            <mo>→</mo>
+                            <mi>q</mi>
+                            <mo>′</mo>
+                                <mi>a</mi>
+                                <mo>′</mo>
+                            <mi>d</mi>
+                        </mrow>
+                    </mstyle>
+                </math>, в которой <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">q</mi>
+                    </mstyle>
+                </math>&#160;–&#160;текущее состояние управления, <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">a</mi>
+                    </mstyle>
+                </math>&#160;–&#160;считанный символ;</li>
+            <li> выполнение найденной команды, состоящее в переводе управления в новое состояние <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>q</mi>
+                            <mo>′</mo>
+                        </mrow>
+                    </mstyle>
+                </math>, записи в обозреваемую головкой клетку символа&#160;
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>a</mi>
+                            <mo>′</mo>
+                        </mrow>
+                    </mstyle>
+                </math>
+                (вместо стираемого символа <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">a</mi>
+                    </mstyle>
+                </math>) и последующем перемещении головки вправо, если <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>d</mi>
+                            <mo>=</mo>
+                            <mi>r</mi>
+                        </mrow>
+                    </mstyle>
+                </math>, влево, если <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>d</mi>
+                            <mo>=</mo>
+                            <mi>l</mi>
+                        </mrow>
+                    </mstyle>
+                </math>, или сохранении ее в том же положении, если <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>d</mi>
+                            <mo>=</mo>
+                            <mi>p</mi>
+                        </mrow>
+                    </mstyle>
+                </math>.</li>
+        </ol>
+        <p>Машина останавливается в том и только в том случае, если на очередном шаге ни одна из команд не применима. Результат работы остановившейся машины&#160;– заключительное слово на ленте.</p>
+        <p>Машина Тьюринга, перерабатывая начальные слова на ленте в заключительные, задает словарную функцию, для которой начальные слова&#160;– значения аргумента, заключительные&#160;– значения функции (для представления <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">n</mi>
+                </mstyle>
+            </math>-местной функции начальное слово на ленте имеет вид <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo>#</mo>
+                        <msub>
+                            <mi>a</mi>
+                            <mn>1</mn>
+                        </msub>
+                        <mo>#</mo>
+                        <msub>
+                            <mi>a</mi>
+                            <mn>2</mn>
+                        </msub>
+                        <mo>#</mo>
+                        <mn>...</mn>
+                        <mo>#</mo>
+                        <msub>
+                            <mi>a</mi>
+                            <mi>n</mi>
+                        </msub>
+                        <mo>#</mo>
+                    </mrow>
+                </mstyle>
+            </math>, где подслова <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mi>a</mi>
+                            <mn>1</mn>
+                        </msub>
+                    </mrow>
+                </mstyle>
+            </math>, <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mi>a</mi>
+                            <mn>2</mn>
+                        </msub>
+                    </mrow>
+                </mstyle>
+            </math>, ..., <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mi>a</mi>
+                            <mi>n</mi>
+                        </msub>
+                    </mrow>
+                </mstyle>
+            </math>&#160;не содержат символа <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mo xmlns="http://www.w3.org/1998/Math/MathML">#</mo>
+                </mstyle>
+            </math>). Если машина не останавливается, начав работу с некоторым словом на ленте, то функция, задаваемая машиной, считается неопределенной для этого слова. Таким образом, машина Тьюринга <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">T</mi>
+                </mstyle>
+            </math>&#160;задает частичную функцию <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mi>F</mi>
+                            <mi>T</mi>
+                        </msub>
+                    </mrow>
+                </mstyle>
+            </math>&#160;и способ вычисления ее значений. Хотя машины Тьюринга оперируют со словами, они могут задавать и числовые функции в силу установленной выше связи между словами и числами.</p>
+        <p>По определению, функция <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">F</mi>
+                </mstyle>
+            </math>&#160;является (частично) вычислимой, если существует машина Тьюринга <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">T</mi>
+                </mstyle>
+            </math>, такая, что <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mi>F</mi>
+                            <mi>T</mi>
+                        </msub>
+                        <mo>=</mo>
+                        <mi>F</mi>
+                    </mrow>
+                </mstyle>
+            </math>. Для машины Тьюринга, как и для всех других формальных способов задания алгоритмов, включая программы для ЭВМ, характерны следующие свойства:</p>
+        <ol type="1" class="num_brackets">
+            <li> конструктивность&#160;– машина Тьюринга представляет собой конечный объект, построенный по определенным правилам из базовых объектов;</li>
+            <li> конечность&#160;– процесс нахождения значений функции для тех значений аргументов, для которых она определена, состоит из конечного числа шагов;</li>
+            <li> однозначность&#160;– результат работы машины единственным образом определяется начальным словом;</li>
+            <li> массовость&#160;– машина работает с любым начальным словом на ленте, составленным из символов ее алфавита.</li>
+        </ol>
+        <p>Машина Тьюринга однозначно задается своей программой. Если упорядочить ее команды и закодировать последовательность команд словом в алфавите машины Тьюринга, то можно получить ее описание в собственном алфавите.</p>
+        <p>При изучении свойства программ и их математических абстракций&#160;– схем программ&#160;– целью является автоматизация программирования, в том числе автоматический анализ свойств программ и их преобразования, осуществляемые с&#160;помощью других, специальных программ. Поэтому интересуют алгоритмы, которые могли бы по любой предъявленной программе установить, завершит ли она работу или будет «циклить»; дают ли две программы, исходная и оптимизированная, один и тот же результат; является ли программа синтаксически правильной и&#160;т.&#160;д.</p>
+        <p>Массовые алгоритмические проблемы формулируются следующим образом. Необходимо указать алгоритм, который бы определял, обладает ли предъявленный объект из некоторого класса объектов интересующим нас свойством, т.&#160;е. принадлежит ли он множеству <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">M</mi>
+                </mstyle>
+            </math>&#160;всех объектов, обладающих этим свойством. Если существует такой частичный алгоритм, то говорят, что множество <i>перечислимо</i>, а поставленная массовая алгоритмическая проблема <i>частично разрешима</i>. Если этот алгоритм к тому же всюду определен, то множество <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">M</mi>
+                </mstyle>
+            </math>&#160;<i>разрешимо</i> и поставленная <i>проблема</i> также <i>разрешима</i>. Существуют неразрешимые проблемы и даже проблемы, которые не являются частично разрешимыми, что свидетельствует о существовании невычислимых функций.</p>
+        <p>Пусть <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">V</mi>
+                </mstyle>
+            </math>&#160;–&#160;алфавит, <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>M</mi>
+                        <mo>⊆</mo>
+                        <mi>V</mi>
+                    </mrow>
+                </mstyle>
+            </math>&#160;–&#160;множество слов в <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">V</mi>
+                </mstyle>
+            </math>.</p>
+        <div class="definition">
+            <div>
+                <p><b><i>Характеристической функцией</i></b><i> множества </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mi xmlns="http://www.w3.org/1998/Math/MathML">M</mi>
+                        </mstyle>
+                    </math><i>&#160;называется предикат </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <msub>
+                                    <mi>F</mi>
+                                    <mi>M</mi>
+                                </msub>
+                                <mtext> </mtext>
+                                <mtext>​</mtext>
+                                <mo>:</mo>
+                                <mtext> </mtext>
+                                <mtext> </mtext>
+                                <msup>
+                                    <mi>V</mi>
+                                    <mo>∗</mo>
+                                </msup>
+                                <mo>→</mo>
+                                <mo>{</mo>
+                                <mn>0,</mn>
+                                <mtext> </mtext>
+                                <mn>1</mn>
+                                <mo>}</mo>
+                            </mrow>
+                        </mstyle>
+                    </math><i>, всюду определенный на </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <msup>
+                                    <mi>V</mi>
+                                    <mo>∗</mo>
+                                </msup>
+                                <mo>:</mo>
+                                <mtext> </mtext>
+                                <msub>
+                                    <mi>F</mi>
+                                    <mi>M</mi>
+                                </msub>
+                                <mo stretchy="false">(</mo>
+                                <mi>a</mi>
+                                <mo stretchy="false">)</mo>
+                                <mo>=</mo>
+                                <mn>1</mn>
+                            </mrow>
+                        </mstyle>
+                    </math><i>&#160;если </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mi>a</mi>
+                                <mo>∈</mo>
+                                <mi>M</mi>
+                            </mrow>
+                        </mstyle>
+                    </math><i>, и </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <msub>
+                                    <mi>F</mi>
+                                    <mi>M</mi>
+                                </msub>
+                                <mo stretchy="false">(</mo>
+                                <mi>a</mi>
+                                <mo stretchy="false">)</mo>
+                                <mo>=</mo>
+                                <mn>0</mn>
+                            </mrow>
+                        </mstyle>
+                    </math><i>, если </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mi>a</mi>
+                                <mo>∉</mo>
+                                <mi>M</mi>
+                            </mrow>
+                        </mstyle>
+                    </math><i>.</i></p>
+                <p><b><i>Частичная характеристическая функция</i></b><i> множества </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mi xmlns="http://www.w3.org/1998/Math/MathML">M</mi>
+                        </mstyle>
+                    </math>&#160;–<i>&#160;это функция </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <msub>
+                                    <mi>H</mi>
+                                    <mi>M</mi>
+                                </msub>
+                                <mo>:</mo>
+                                <mtext> </mtext>
+                                <msup>
+                                    <mi>V</mi>
+                                    <mo>∗</mo>
+                                </msup>
+                                <mo>→</mo>
+                                <mo>{</mo>
+                                <mn>1</mn>
+                                <mo>}</mo>
+                            </mrow>
+                        </mstyle>
+                    </math><i>, определенная только для слов из </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mi xmlns="http://www.w3.org/1998/Math/MathML">M</mi>
+                        </mstyle>
+                    </math><i>&#160;и имеющая вид </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <msub>
+                                    <mi>H</mi>
+                                    <mi>M</mi>
+                                </msub>
+                                <mo stretchy="false">(</mo>
+                                <mi>a</mi>
+                                <mo stretchy="false">)</mo>
+                                <mo>=</mo>
+                                <mn>1</mn>
+                            </mrow>
+                        </mstyle>
+                    </math><i>&#160;для всех </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mi>a</mi>
+                                <mo>∈</mo>
+                                <mi>M</mi>
+                            </mrow>
+                        </mstyle>
+                    </math><i>.</i></p>
+            </div>
+        </div>
+        <p>Множество <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">M</mi>
+                </mstyle>
+            </math>&#160;называется <i>разрешимым</i>, если его характеристическая функция вычислима. Множество <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">M</mi>
+                </mstyle>
+            </math>&#160;<i>перечислимо</i>, если его частичная характеристическая функция вычислима. Разрешимость множества <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">M</mi>
+                </mstyle>
+            </math>&#160;означает, что существует всегда останавливающаяся (оканчивающая работу за конечное время) машина Тьюринга, позволяющая для любого слова в алфавите <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">V</mi>
+                </mstyle>
+            </math>&#160;через конечное число шагов установить, принадлежит ли это слово множеству <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">M</mi>
+                </mstyle>
+            </math>&#160;или нет. Перечислимость множества <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">M</mi>
+                </mstyle>
+            </math>&#160;означает, что существует машина Тьюринга, которая останавливается в том и только том случае, если предъявленное слово принадлежит множеству <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">M</mi>
+                </mstyle>
+            </math>.</p>
+        <p>Приведем без доказательства несколько важных теорем.</p>
+        <div class="theorem">
+            <div>
+                <p><b>Теорема Поста</b>. Множество <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mi>M</mi>
+                                <mo>⊆</mo>
+                                <msup>
+                                    <mi>V</mi>
+                                    <mo>∗</mo>
+                                </msup>
+                            </mrow>
+                        </mstyle>
+                    </math>&#160;разрешимо тогда и только тогда, когда <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mi xmlns="http://www.w3.org/1998/Math/MathML">M</mi>
+                        </mstyle>
+                    </math>&#160;и его дополнение <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <msup>
+                                    <mi>M</mi>
+                                    <mo>′</mo>
+                                </msup>
+                                <mo>=</mo>
+                                <msup>
+                                    <mi>V</mi>
+                                    <mo>∗</mo>
+                                </msup>
+                                <mo>/</mo>
+                                <mi>M</mi>
+                            </mrow>
+                        </mstyle>
+                    </math>&#160;перечислимы.</p>
+            </div>
+        </div>
+        <p>Машина Тьюринга, начав работу, или останавливается, или работает бесконечно. Проблема остановки формулируется следующим образом. Пусть <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">M</mi>
+                </mstyle>
+            </math>&#160;– множество всех пар слов в алфавите <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">V</mi>
+                </mstyle>
+            </math>, в каждой паре первое слово&#160;– словарное представление некоторой машины Тьюринга, второе&#160;– такое слово, что эта машина останавливается, начав работу над ним. Является ли множество <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">M</mi>
+                </mstyle>
+            </math>&#160;неразрешимым?</p>
+        <div class="theorem">
+            <div>
+                <p><b>Теорема Тьюринга</b>. Проблема остановки машины Тьюринга неразрешима.</p>
+            </div>
+        </div>
+        <p>Последняя теорема демонстрирует существование невычислимых функций. Из тезиса Тьюринга следует, что для неразрешимых проблем нельзя построить алгоритм, который решал бы их, например, с помощью ЭВМ.</p>
+        <p>Проблема зацикливания состоит в следующем: существует ли алгоритм, хотя бы частный, который выясняет заранее для произвольной машины Тьюринга, будет ли она работать бесконечно.</p>
+        <div class="theorem">
+            <div>
+                <p>Проблема зацикливания машины Тьюринга не является частично разрешимой.</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

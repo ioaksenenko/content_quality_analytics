@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html" charset="utf-8" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script>
+    <link href="https://new-online.tusur.ru/theme/fdo/ims/course_style.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <div>
+        <h3>3.2.5 Множественная пометка</h3>
+        <p>Определение пометки можно расширить, позволив помечать каждое событие любой меткой <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">l</mi>
+                </mstyle>
+            </math>&#160;из некоторого множества <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">L</mi>
+                </mstyle>
+            </math>. Если <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">P</mi>
+                </mstyle>
+            </math>&#160;–&#160;процесс, определим <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo stretchy="false">(</mo>
+                        <mi>l</mi>
+                        <mo>:</mo>
+                        <mi>P</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>&#160;как процесс, ведущий себя в точности как <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">P</mi>
+                </mstyle>
+            </math>, с той разницей, что он участвует в событии <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>l</mi>
+                        <mo>.</mo>
+                        <mi>x</mi>
+                    </mrow>
+                </mstyle>
+            </math>&#160;(где <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>l</mi>
+                        <mo>∈</mo>
+                        <mi>L</mi>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <mi>x</mi>
+                        <mo>∈</mo>
+                        <mtext>α</mtext>
+                        <mi>P</mi>
+                    </mrow>
+                </mstyle>
+            </math>), если по определению <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">P</mi>
+                </mstyle>
+            </math>&#160;участвует в&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">x</mi>
+                </mstyle>
+            </math>.</p>
+        <div class="example">
+            <div class="ex_head">
+                <div class="smile">Пример 3.21</div>
+            </div>
+            <p style="margin-bottom: 5px">Лакей&#160;– это младший слуга, который имеет одного хозяина, провожает его к столу и из-за стола и прислуживает ему, пока тот ест:</p>
+            <table class="mathcenter">
+                <tr>
+                    <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mtext>α</mtext>
+                                    <mi>Л</mi>
+                                    <mi>А</mi>
+                                    <mi>К</mi>
+                                    <mi>Е</mi>
+                                    <mi>Й</mi>
+                                    <mo>=</mo>
+                                    <mtext>{</mtext>
+                                    <mi>с</mi>
+                                    <mi>а</mi>
+                                    <mi>д</mi>
+                                    <mi>и</mi>
+                                    <mi>т</mi>
+                                    <mi>с</mi>
+                                    <mi>я</mi>
+                                    <mo>,</mo>
+                                    <mtext> </mtext>
+                                    <mi>в</mi>
+                                    <mi>с</mi>
+                                    <mi>т</mi>
+                                    <mi>а</mi>
+                                    <mi>е</mi>
+                                    <mi>т</mi>
+                                    <mtext>}</mtext>
+                                </mrow>
+                            </mstyle>
+                        </math>,</td>
+                </tr>
+                <tr>
+                    <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mi>Л</mi>
+                                    <mi>А</mi>
+                                    <mi>К</mi>
+                                    <mi>Е</mi>
+                                    <mi>Й</mi>
+                                    <mo>=</mo>
+                                    <mo stretchy="false">(</mo>
+                                    <mi>с</mi>
+                                    <mi>а</mi>
+                                    <mi>д</mi>
+                                    <mi>и</mi>
+                                    <mi>т</mi>
+                                    <mi>с</mi>
+                                    <mi>я</mi>
+                                    <mo>→</mo>
+                                    <mi>в</mi>
+                                    <mi>с</mi>
+                                    <mi>т</mi>
+                                    <mi>а</mi>
+                                    <mi>е</mi>
+                                    <mi>т</mi>
+                                    <mo>→</mo>
+                                    <mi>Л</mi>
+                                    <mi>А</mi>
+                                    <mi>К</mi>
+                                    <mi>Е</mi>
+                                    <mi>Й</mi>
+                                    <mo stretchy="false">)</mo>
+                                </mrow>
+                            </mstyle>
+                        </math>.</td>
+                </tr>
+            </table>
+            <p style="margin-bottom: 5px">Лакея, обслуживающего всех пятерых философов по очереди, определим так:</p>
+            <table class="mathcenter">
+                <tr>
+                    <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mi>L</mi>
+                                    <mo>=</mo>
+                                    <mo>{</mo>
+                                    <mn>0,</mn>
+                                    <mtext> </mtext>
+                                    <mn>1,</mn>
+                                    <mtext> </mtext>
+                                    <mn>2,</mn>
+                                    <mtext> </mtext>
+                                    <mn>3,</mn>
+                                    <mtext> </mtext>
+                                    <mn>4</mn>
+                                    <mo>}</mo>
+                                </mrow>
+                            </mstyle>
+                        </math>,</td>
+                </tr>
+                <tr>
+                    <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mi>О</mi>
+                                    <mi>Б</mi>
+                                    <mi>Щ</mi>
+                                    <mi>И</mi>
+                                    <mi>Й</mi>
+                                    <mo>_</mo>
+                                    <mi>Л</mi>
+                                    <mi>А</mi>
+                                    <mi>К</mi>
+                                    <mi>Е</mi>
+                                    <mi>Й</mi>
+                                    <mo>=</mo>
+                                    <mo stretchy="false">(</mo>
+                                    <mi>L</mi>
+                                    <mo>:</mo>
+                                    <mi>Л</mi>
+                                    <mi>А</mi>
+                                    <mi>К</mi>
+                                    <mi>Е</mi>
+                                    <mi>Й</mi>
+                                    <mo stretchy="false">)</mo>
+                                </mrow>
+                            </mstyle>
+                        </math>.</td>
+                </tr>
+            </table>
+            <p>Общего лакея можно нанимать на период отпуска слуги для предохранения обедающих философов от тупиковой ситуации. Конечно, в&#160;течение этого времени философам придется поголодать, ибо находиться за столом они смогут только по очереди.</p>
+        </div>
+    </div>
+</body>
+
+</html>

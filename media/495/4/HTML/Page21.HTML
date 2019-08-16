@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html" charset="utf-8" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script>
+    <link href="https://new-online.tusur.ru/theme/fdo/ims/course_style.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <div>
+        <h3>4.5.4 Матричные уравнения</h3>
+        <p>Другой подход к анализу сетей Петри основан на матричномпредставлении сетей Петри и решении матричных уравнений&#160;[7]. Альтернативным по отношению к&#160;определению сети Петри <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">N</mi>
+                </mstyle>
+            </math> в&#160;виде <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo stretchy="false">(</mo>
+                        <mi>P</mi>
+                        <mo>,</mo>
+                        <mi>T</mi>
+                        <mo>,</mo>
+                        <mi>I</mi>
+                        <mo>,</mo>
+                        <mi>O</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math> является определение сети <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">N</mi>
+                </mstyle>
+            </math> в&#160;виде двухматриц <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msup>
+                            <mi>D</mi>
+                            <mo>−</mo>
+                        </msup>
+                    </mrow>
+                </mstyle>
+            </math> и <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msup>
+                            <mi>D</mi>
+                            <mo>+</mo>
+                        </msup>
+                    </mrow>
+                </mstyle>
+            </math>, представляющих входную и выходную функции <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">I</mi>
+                </mstyle>
+            </math> и <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">O</mi>
+                </mstyle>
+            </math>. Пусть каждая из матриц <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msup>
+                            <mi>D</mi>
+                            <mo>−</mo>
+                        </msup>
+                    </mrow>
+                </mstyle>
+            </math> и <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msup>
+                            <mi>D</mi>
+                            <mo>+</mo>
+                        </msup>
+                    </mrow>
+                </mstyle>
+            </math> имеет <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>m</mi>
+                        <mo>=</mo>
+                        <mo>|</mo>
+                        <mi>T</mi>
+                        <mo>|</mo>
+                    </mrow>
+                </mstyle>
+            </math> строк (по одной на переход) и <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>n</mi>
+                        <mo>=</mo>
+                        <mo>|</mo>
+                        <mi>P</mi>
+                        <mo>|</mo>
+                    </mrow>
+                </mstyle>
+            </math> столбцов (по одному на позицию).</p>
+        <p><i>Матричный вид сети Петри </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>N</mi>
+                        <mo>=</mo>
+                        <mo stretchy="false">(</mo>
+                        <mi>P</mi>
+                        <mo>,</mo>
+                        <mi>T</mi>
+                        <mo>,</mo>
+                        <mi>I</mi>
+                        <mo>,</mo>
+                        <mi>O</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math> задается парой <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo stretchy="false">(</mo>
+                        <msup>
+                            <mi>D</mi>
+                            <mo>−</mo>
+                        </msup>
+                        <mo>,</mo>
+                        <msup>
+                            <mi>D</mi>
+                            <mo>+</mo>
+                        </msup>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math></p>
+        <ul type="disc">
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msup>
+                                <mi>D</mi>
+                                <mo>−</mo>
+                            </msup>
+                            <mo stretchy="false">[</mo>
+                            <mi>k</mi>
+                            <mo>,</mo>
+                            <mi>i</mi>
+                            <mo stretchy="false">]</mo>
+                            <mo>=</mo>
+                            <mtext>^</mtext>
+                            <mo>#</mo>
+                            <mrow>
+                                <mo>(</mo>
+                                <mrow>
+                                    <msub>
+                                        <mi>p</mi>
+                                        <mi>i</mi>
+                                    </msub>
+                                    <mo>,</mo>
+                                    <msub>
+                                        <mi>t</mi>
+                                        <mi>k</mi>
+                                    </msub>
+                                </mrow>
+                                <mo>)</mo>
+                            </mrow>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;– кратность дуги, ведущей из позиции <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mi>p</mi>
+                                <mi>i</mi>
+                            </msub>
+                        </mrow>
+                    </mstyle>
+                </math> в переход <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mi>t</mi>
+                                <mi>k</mi>
+                            </msub>
+                        </mrow>
+                    </mstyle>
+                </math>;</li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msup>
+                                <mi>D</mi>
+                                <mo>+</mo>
+                            </msup>
+                            <mo stretchy="false">[</mo>
+                            <mi>k</mi>
+                            <mo>,</mo>
+                            <mi>i</mi>
+                            <mo stretchy="false">]</mo>
+                            <mo>=</mo>
+                            <mo>#</mo>
+                            <mtext>^</mtext>
+                            <mrow>
+                                <mo>(</mo>
+                                <mrow>
+                                    <msub>
+                                        <mi>t</mi>
+                                        <mi>k</mi>
+                                    </msub>
+                                    <mo>,</mo>
+                                    <msub>
+                                        <mi>p</mi>
+                                        <mi>i</mi>
+                                    </msub>
+                                </mrow>
+                                <mo>)</mo>
+                            </mrow>
+                        </mrow>
+                    </mstyle>
+                </math>
+                &#160;– кратность дуги, ведущей из перехода <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mi>t</mi>
+                                <mi>k</mi>
+                            </msub>
+                        </mrow>
+                    </mstyle>
+                </math> в позицию <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mi>p</mi>
+                                <mi>i</mi>
+                            </msub>
+                        </mrow>
+                    </mstyle>
+                </math>,
+            </li>
+        </ul>
+        <p>для произвольных <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mn>1</mn>
+                        <mo>≤</mo>
+                        <mi>k</mi>
+                        <mo>≤</mo>
+                        <mi>m</mi>
+                    </mrow>
+                </mstyle>
+            </math>, <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mn>1</mn>
+                        <mo>≤</mo>
+                        <mi>i</mi>
+                        <mo>≤</mo>
+                        <mi>n</mi>
+                    </mrow>
+                </mstyle>
+            </math>.</p>
+        <p>Пусть <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>e</mi>
+                        <mo stretchy="false">[</mo>
+                        <mi>k</mi>
+                        <mo stretchy="false">]</mo>
+                    </mrow>
+                </mstyle>
+            </math>&#160;– <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">m</mi>
+                </mstyle>
+            </math>-вектор, <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">k</mi>
+                </mstyle>
+            </math>-й элемент которого равен 1, а остальные равны 0. Переход <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mi>t</mi>
+                            <mi>k</mi>
+                        </msub>
+                    </mrow>
+                </mstyle>
+            </math>, <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mn>1</mn>
+                        <mo>≤</mo>
+                        <mi>k</mi>
+                        <mo>≤</mo>
+                        <mi>m</mi>
+                    </mrow>
+                </mstyle>
+            </math> в маркировке <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mtext>μ</mtext>
+                </mstyle>
+            </math> разрешен, если <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mtext>μ</mtext>
+                        <mo>≥</mo>
+                        <mi>e</mi>
+                        <mo stretchy="false">[</mo>
+                        <mi>k</mi>
+                        <mo stretchy="false">]</mo>
+                        <msup>
+                            <mi>D</mi>
+                            <mo>−</mo>
+                        </msup>
+                    </mrow>
+                </mstyle>
+            </math>. Результатом запуска разрешенного перехода <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mi>t</mi>
+                            <mi>k</mi>
+                        </msub>
+                    </mrow>
+                </mstyle>
+            </math> в&#160;маркировке <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mtext>μ</mtext>
+                </mstyle>
+            </math> является следующая ниже маркировка <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <msup xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mtext>μ</mtext>
+                        <mo>′</mo>
+                    </msup>
+                </mstyle>
+            </math>:</p>
+        <p align="center">
+            <table class="mathcenter">
+                <tr>
+                    <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <msup>
+                                        <mtext>μ</mtext>
+                                        <mo>′</mo>
+                                    </msup>
+                                    <mo>=</mo>
+                                    <mtext>μ</mtext>
+                                    <mo>−</mo>
+                                    <mi>e</mi>
+                                    <mo stretchy="false">[</mo>
+                                    <mi>k</mi>
+                                    <mo stretchy="false">]</mo>
+                                    <msup>
+                                        <mi>D</mi>
+                                        <mo>−</mo>
+                                    </msup>
+                                    <mo>+</mo>
+                                    <mi>e</mi>
+                                    <mo stretchy="false">[</mo>
+                                    <mi>k</mi>
+                                    <mo stretchy="false">]</mo>
+                                    <msup>
+                                        <mi>D</mi>
+                                        <mo>+</mo>
+                                    </msup>
+                                    <mo>=</mo>
+                                    <mtext>μ</mtext>
+                                    <mo>+</mo>
+                                    <mi>e</mi>
+                                    <mo stretchy="false">[</mo>
+                                    <mi>k</mi>
+                                    <mo stretchy="false">]</mo>
+                                    <mi>D</mi>
+                                    <mo>,</mo>
+                                </mrow>
+                            </mstyle>
+                        </math></td>
+                </tr>
+            </table>
+            &#160;
+        </p>
+        <p>где <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>D</mi>
+                        <mo>=</mo>
+                        <mo stretchy="false">(</mo>
+                        <msup>
+                            <mi>D</mi>
+                            <mo>+</mo>
+                        </msup>
+                        <mo>−</mo>
+                        <msup>
+                            <mi>D</mi>
+                            <mo>−</mo>
+                        </msup>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>
+            &#160;–&#160;<i>составная матрица изменений</i>.</p>
+    </div>
+</body>
+
+</html>

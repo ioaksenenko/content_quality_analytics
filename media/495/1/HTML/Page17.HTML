@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html" charset="utf-8" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script>
+    <link href="https://new-online.tusur.ru/theme/fdo/ims/course_style.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <div>
+      <h2>1.4 Моделирование стандартных схем программ</h2>
+        <h3>1.4.1 Одноленточные автоматы</h3>
+        <p>Конечный одноленточный (детерминированный, односторонний) автомат обнаруживает ряд полезных качеств, используемых в теории схем программ для установления разрешимости свойств ССП&#160;[4].</p>
+        <p><i>Одноленточный конечный автомат</i> (ОКА) над алфавитом <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">V</mi>
+                </mstyle>
+            </math>&#160;задается набором <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>A</mi>
+                        <mo>=</mo>
+                        <mrow>
+                            <mo>(</mo>
+                            <mrow>
+                                <mi>V</mi>
+                                <mo>,</mo>
+                                <mtext> </mtext>
+                                <mi>Q</mi>
+                                <mo>,</mo>
+                                <mtext> </mtext>
+                                <mi>R</mi>
+                                <mo>,</mo>
+                                <mtext> </mtext>
+                                <msub>
+                                    <mi>q</mi>
+                                    <mn>0</mn>
+                                </msub>
+                                <mo>,</mo>
+                                <mtext> </mtext>
+                                <mo>#</mo>
+                                <mo>,</mo>
+                                <mtext> </mtext>
+                                <mi>I</mi>
+                            </mrow>
+                            <mo>)</mo>
+                        </mrow>
+                    </mrow>
+                </mstyle>
+            </math>&#160;и правилом функционирования, общим для всех таких автоматов. В&#160;наборе <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">A</mi>
+                </mstyle>
+            </math>:</p>
+        <ul type="disc">
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">V</mi>
+                    </mstyle>
+                </math>&#160;–&#160;алфавит;</li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">Q</mi>
+                    </mstyle>
+                </math>&#160;–&#160;конечное непустое <i>множество состояний </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mo stretchy="false">(</mo>
+                            <mi>Q</mi>
+                            <mo>∩</mo>
+                            <mi>V</mi>
+                            <mo>=</mo>
+                            <mstyle mathvariant="bold" mathsize="normal">
+                            <mtext>&#160;∅</mtext>
+                        </mstyle>
+                            <mo stretchy="false">)</mo>
+                        </mrow>
+                    </mstyle>
+                </math>;</li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">R</mi>
+                    </mstyle>
+                </math>&#160;–&#160;множество выделенных <i>заключительных состояний </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mo stretchy="false">(</mo>
+                            <mi>R</mi>
+                            <mo>⊆</mo>
+                            <mi>Q</mi>
+                            <mo stretchy="false">)</mo>
+                        </mrow>
+                    </mstyle>
+                </math>;</li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mi>q</mi>
+                                <mn>0</mn>
+                            </msub>
+                        </mrow>
+                    </mstyle>
+                </math>
+                &#160;–&#160;выделенное <i>начальное</i> состояние;
+            </li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">I</mi>
+                    </mstyle>
+                </math>&#160;–&#160;<i>программа автомата</i>;</li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mo xmlns="http://www.w3.org/1998/Math/MathML">#</mo>
+                    </mstyle>
+                </math>&#160;–&#160;«пустой» символ.</li>
+        </ul>
+        <p>Программа автомата <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">I</mi>
+                </mstyle>
+            </math>&#160;представляет собой множество <i>команд</i> вида <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>q</mi>
+                        <mi>a</mi>
+                        <mo>→</mo>
+                        <msup>
+                            <mi>q</mi>
+                            <mo>′</mo>
+                        </msup>
+                    </mrow>
+                </mstyle>
+            </math>, в которых <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">q</mi>
+                </mstyle>
+            </math>, <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msup>
+                            <mi>q</mi>
+                            <mo>′</mo>
+                        </msup>
+                        <mo>∈</mo>
+                        <mi>Q</mi>
+                    </mrow>
+                </mstyle>
+            </math>, <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>a</mi>
+                        <mo>∈</mo>
+                        <mi>V</mi>
+                    </mrow>
+                </mstyle>
+            </math>&#160;и для любой пары <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo stretchy="false">(</mo>
+                        <mi>q</mi>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <mi>a</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>&#160;существует единственная команда, начинающаяся этими символами.</p>
+        <p>Неформально ОКА можно представить как абстрактную машину, похожую на машину Тьюринга, но имеющую следующие особенности:</p>
+        <ol type="1" class="num_brackets">
+            <li> выделены заключительные состояния;</li>
+            <li> машина считывает символы с ленты, ничего не записывая на нее;</li>
+            <li> на каждом шаге головка автомата, считав символ с ленты и перейдя согласно программе в новое состояние, обязательно передвигается вправо на одну клетку;</li>
+            <li> автомат останавливается в том и только в том случае, когда головка достигнет конца слова, т.&#160;е. символа <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mo xmlns="http://www.w3.org/1998/Math/MathML">#</mo>
+                    </mstyle>
+                </math>.</li>
+        </ol>
+        <p>Автомат допускает слово <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mtext>α</mtext>
+                </mstyle>
+            </math>&#160;в алфавите <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">V</mi>
+                </mstyle>
+            </math>, если, начав работать с лентой, содержащей это слово, он останавливается в заключительном состоянии. Автомат&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">A</mi>
+                </mstyle>
+            </math> задает <i>характеристическую функцию</i> множества <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mi>M</mi>
+                            <mi>A</mi>
+                        </msub>
+                    </mrow>
+                </mstyle>
+            </math>&#160;<i>допускаемых им слов</i> в алфавите <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">V</mi>
+                </mstyle>
+            </math>, т.&#160;е. он распознает, принадлежит ли заданное слово множеству <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mi>M</mi>
+                            <mi>A</mi>
+                        </msub>
+                    </mrow>
+                </mstyle>
+            </math>, если связать с остановкой в заключительном состоянии символ&#160;1, а с&#160;остановкой в незаключительном состоянии&#160;– 0.</p>
+        <p>Наглядным способом задания ОКА служат графы автоматов. Автомат&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">A</mi>
+                </mstyle>
+            </math> представляется графом, множество вершин которого&#160;– множество состояний&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">Q</mi>
+                </mstyle>
+            </math> и из вершины <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">q</mi>
+                </mstyle>
+            </math>&#160;в вершину <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <msup xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>q</mi>
+                        <mo>′</mo>
+                    </msup>
+                </mstyle>
+            </math>&#160;ведет дуга, помеченная символом <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">a</mi>
+                </mstyle>
+            </math>, тогда и только тогда, когда программа автомата содержит команду <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>q</mi>
+                        <mi>a</mi>
+                        <mo>→</mo>
+                        <msup>
+                            <mi>q</mi>
+                            <mo>′</mo>
+                        </msup>
+                    </mrow>
+                </mstyle>
+            </math>. Работе автомата над заданным словом соответствует путь из начальной вершины <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mi>q</mi>
+                            <mn>0</mn>
+                        </msub>
+                    </mrow>
+                </mstyle>
+            </math>. Последовательность проходимых вершин этого пути&#160;– это последовательность принимаемых автоматом состояний, образ пути по дугам&#160;– читаемое слово. Любой путь в графе автомата, начинающийся в вершине <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mi>q</mi>
+                            <mn>0</mn>
+                        </msub>
+                    </mrow>
+                </mstyle>
+            </math>&#160;и заканчивающийся в вершине <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>q</mi>
+                        <mo>∈</mo>
+                        <mi>R</mi>
+                    </mrow>
+                </mstyle>
+            </math>, порождает слово, допустимое автоматом.</p>
+        <div class="example">
+            <div class="ex_head">
+                <div class="smile">Пример 1.13</div>
+            </div>
+            <p>Одноклеточный конечный автомат <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>A</mi>
+                            <mo>=</mo>
+                            <mrow>
+                                <mo>(</mo>
+                                <mrow>
+                                    <mo>{</mo>
+                                    <mi>a</mi>
+                                    <mo>,</mo>
+                                    <mtext> </mtext>
+                                    <mi>b</mi>
+                                    <mo>}</mo>
+                                </mrow>
+                            </mrow>
+                        </mrow>
+                    </mstyle>
+                </math>, <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mo>{</mo>
+                            <msub>
+                                <mi>q</mi>
+                                <mn>0</mn>
+                            </msub>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <msub>
+                                <mi>q</mi>
+                                <mn>1</mn>
+                            </msub>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <msub>
+                                <mi>q</mi>
+                                <mn>2</mn>
+                            </msub>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <msub>
+                                <mi>q</mi>
+                                <mn>3</mn>
+                            </msub>
+                            <mo>}</mo>
+                        </mrow>
+                    </mstyle>
+                </math>, <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mo>{</mo>
+                            <msub>
+                                <mi>q</mi>
+                                <mn>2</mn>
+                            </msub>
+                            <mo>}</mo>
+                        </mrow>
+                    </mstyle>
+                </math>, <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mi>q</mi>
+                                <mn>0</mn>
+                            </msub>
+                            <mo>,</mo>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mo>#</mo>
+                            <mo>,</mo>
+                        </mrow>
+                    </mstyle>
+                </math>
+                &#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mi>I</mi>
+                                <mo>)</mo>
+                            </mrow>
+                        </mrow>
+                    </mstyle>
+                </math>
+                &#160;допускающего слова <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mo>{</mo>
+                                <mrow>
+                                    <msup>
+                                        <mi>a</mi>
+                                        <mi>n</mi>
+                                    </msup>
+                                    <msup>
+                                        <mi>b</mi>
+                                        <mi>m</mi>
+                                    </msup>
+                                    <mtext> </mtext>
+                                    <mtext>|</mtext>
+                                    <mtext> </mtext>
+                                    <mi>n</mi>
+                                    <mo>=</mo>
+                                    <mn>1,</mn>
+                                    <mtext> </mtext>
+                                    <mn>2,</mn>
+                                    <mtext> </mtext>
+                                    <mo>…</mo>
+                                    <mo>;</mo>
+                                    <mtext> </mtext>
+                                    <mtext> </mtext>
+                                    <mi>m</mi>
+                                    <mo>=</mo>
+                                    <mn>1,</mn>
+                                    <mtext> </mtext>
+                                    <mn>2,</mn>
+                                    <mtext> </mtext>
+                                    <mo>…</mo>
+                                </mrow>
+                                <mo>}</mo>
+                            </mrow>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;задается графом, изображенным на риснуке&#160;1.6. Программа <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">I</mi>
+                    </mstyle>
+                </math>&#160;содержит команды:</p>
+            <p><math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mi>q</mi>
+                                <mn>0</mn>
+                            </msub>
+                            <mi>a</mi>
+                            <mo>→</mo>
+                            <msub>
+                                <mi>q</mi>
+                                <mn>1</mn>
+                            </msub>
+                            <mo>;</mo>
+                        </mrow>
+                    </mstyle>
+                </math></p>
+            <p><math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mi>q</mi>
+                                <mn>0</mn>
+                            </msub>
+                            <mi>b</mi>
+                            <mo>→</mo>
+                            <msub>
+                                <mi>q</mi>
+                                <mn>3</mn>
+                            </msub>
+                            <mo>;</mo>
+                        </mrow>
+                    </mstyle>
+                </math></p>
+            <p><math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mi>q</mi>
+                                <mn>1</mn>
+                            </msub>
+                            <mi>a</mi>
+                            <mo>→</mo>
+                            <msub>
+                                <mi>q</mi>
+                                <mn>1</mn>
+                            </msub>
+                            <mo>;</mo>
+                        </mrow>
+                    </mstyle>
+                </math></p>
+            <p><math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mi>q</mi>
+                                <mn>1</mn>
+                            </msub>
+                            <mi>b</mi>
+                            <mo>→</mo>
+                            <msub>
+                                <mi>q</mi>
+                                <mn>2</mn>
+                            </msub>
+                            <mo>;</mo>
+                        </mrow>
+                    </mstyle>
+                </math></p>
+            <p><math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mi>q</mi>
+                                <mn>2</mn>
+                            </msub>
+                            <mi>a</mi>
+                            <mo>→</mo>
+                            <msub>
+                                <mi>q</mi>
+                                <mn>3</mn>
+                            </msub>
+                            <mo>;</mo>
+                        </mrow>
+                    </mstyle>
+                </math></p>
+            <p><math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mi>q</mi>
+                                <mn>2</mn>
+                            </msub>
+                            <mi>b</mi>
+                            <mo>→</mo>
+                            <msub>
+                                <mi>q</mi>
+                                <mn>2</mn>
+                            </msub>
+                            <mo>;</mo>
+                        </mrow>
+                    </mstyle>
+                </math></p>
+            <p><math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mi>q</mi>
+                                <mn>3</mn>
+                            </msub>
+                            <mi>a</mi>
+                            <mo>→</mo>
+                            <msub>
+                                <mi>q</mi>
+                                <mn>3</mn>
+                            </msub>
+                            <mo>;</mo>
+                        </mrow>
+                    </mstyle>
+                </math></p>
+            <p><math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mi>q</mi>
+                                <mn>3</mn>
+                            </msub>
+                            <mi>b</mi>
+                            <mo>→</mo>
+                            <msub>
+                                <mi>q</mi>
+                                <mn>3</mn>
+                            </msub>
+                            <mo>.</mo>
+                        </mrow>
+                    </mstyle>
+                </math></p>
+            <p align="center" class="img"><img alt="1.6" src="processes.files/png/1.6.png" /></p>
+            <p class="imgcaption">Рис.&#160;1.6&#160;– Пример ОКА</p>
+        </div>
+        <div class="definition">
+            <div>
+                <p><i>Автомат называется <b>пустым</b>, если </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <msub>
+                                    <mi>M</mi>
+                                    <mi>A</mi>
+                                </msub>
+                                <mo>=&#160;</mo>
+                                <mstyle mathvariant="bold" mathsize="normal">
+<mtext>&#8709;</mtext>
+</mstyle>
+                            </mrow>
+                        </mstyle>
+                    </math><i>. Автоматы </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <msub>
+                                    <mi>A</mi>
+                                    <mn>1</mn>
+                                </msub>
+                            </mrow>
+                        </mstyle>
+                    </math><i>&#160;и </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <msub>
+                                    <mi>A</mi>
+                                    <mn>2</mn>
+                                </msub>
+                            </mrow>
+                        </mstyle>
+                    </math><i>&#160;<b>эквивалентны</b>, если </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <msub>
+                                    <mi>M</mi>
+                                    <mi>A</mi>
+                                </msub>
+                                <msub>
+                                    <mtext> </mtext>
+                                    <mn>1</mn>
+                                </msub>
+                                <mo>=</mo>
+                                <msub>
+                                    <mi>M</mi>
+                                    <mi>A</mi>
+                                </msub>
+                                <msub>
+                                    <mtext> </mtext>
+                                    <mn>2</mn>
+                                </msub>
+                            </mrow>
+                        </mstyle>
+                    </math><i>.</i></p>
+            </div>
+        </div>
+        <p>Для ОКА доказано:</p>
+        <ol type="1">
+            <li><i>Проблема пустоты</i> ОКА <i>разрешима</i>. Доказательство основано на проверке допустимости конечного множества всех слов, длина которых не превышает числа состояний ОКА&#160;– <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">n</mi>
+                    </mstyle>
+                </math>. Если ни одно слово из этого множества не допускается, то ОКА «пуст».</li>
+            <li><i>Проблема эквивалентности</i> ОКА <i>разрешима</i>. Доказательство основано на использовании отношения эквивалентности двух состояний&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">q</mi>
+                    </mstyle>
+                </math> и&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <msup xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>q</mi>
+                            <mo>′</mo>
+                        </msup>
+                    </mstyle>
+                </math>: если состояния <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">q</mi>
+                    </mstyle>
+                </math>&#160;и <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <msup xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>q</mi>
+                            <mo>′</mo>
+                        </msup>
+                    </mstyle>
+                </math>&#160;эквивалентны, то для всех <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>a</mi>
+                            <mo>∈</mo>
+                            <mi>A</mi>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;состояния <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>δ</mi>
+                            <mo stretchy="false">(</mo>
+                            <mi>q</mi>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <mi>a</mi>
+                            <mo stretchy="false">)</mo>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;и <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msup>
+                                <mi>δ</mi>
+                                <mo>′</mo>
+                            </msup>
+                            <mo stretchy="false">(</mo>
+                            <msup>
+                                <mi>q</mi>
+                                <mo>′</mo>
+                            </msup>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <mi>a</mi>
+                            <mo stretchy="false">)</mo>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;также эквивалентны.</li>
+        </ol>
+    </div>
+</body>
+
+</html>

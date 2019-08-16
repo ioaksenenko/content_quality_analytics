@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html" charset="utf-8" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script>
+    <link href="https://new-online.tusur.ru/theme/fdo/ims/course_style.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <div>
+        <h3>3.4.2 Общая память</h3>
+        <p>Поведение систем параллельных процессов реализуется на обыкновенной ЭВМ с хранимой программой с&#160;помощью режима разделения времени, при котором единственный процессор поочередно выполняет каждый из процессов, причем смена выполняемого процесса происходит по прерыванию, исходящему от некоторого внешнего или синхронизирующего устройства&#160;[18]. При такой реализации легко позволить параллельным процессам совместно использовать общую память, выборка и загрузка которой осуществляется каждым процессом.</p>
+        <div class="example">
+            <div class="ex_head">
+                <div class="smile">Пример 3.31</div>
+            </div>
+            <p>Ячейка общей памяти&#160;– это разделяемая переменная:</p>
+            <p align="center">
+                <table class="mathcenter">
+                    <tr>
+                        <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mrow>
+                                                <mi>с</mi>
+                                                <mi>ч</mi>
+                                                <mi>е</mi>
+                                                <mi>т</mi>
+                                                <mo>:</mo>
+                                                <mtext> </mtext>
+                                                <mi>П</mi>
+                                                <mi>Е</mi>
+                                                <mi>Р</mi>
+                                                <mi>Е</mi>
+                                                <mi>М</mi>
+                                                <mtext> </mtext>
+                                                <mtext>//</mtext>
+                                                <mtext> </mtext>
+                                                <mrow>
+                                                    <mo>(</mo>
+                                                    <mrow>
+                                                        <mi>с</mi>
+                                                        <mi>ч</mi>
+                                                        <mi>е</mi>
+                                                        <mi>т</mi>
+                                                        <mo>.</mo>
+                                                        <mi>л</mi>
+                                                        <mi>е</mi>
+                                                        <mi>в</mi>
+                                                        <mo>!</mo>
+                                                        <mn>0</mn>
+                                                        <mtext> </mtext>
+                                                        <mo>→</mo>
+                                                        <mtext> </mtext>
+                                                        <mo stretchy="false">(</mo>
+                                                        <mi>P</mi>
+                                                        <mo>|</mo>
+                                                        <mo>|</mo>
+                                                        <mo>|</mo>
+                                                        <mi>Q</mi>
+                                                        <mo stretchy="false">)</mo>
+                                                    </mrow>
+                                                    <mo>)</mo>
+                                                </mrow>
+                                            </mrow>
+                                            <mo>)</mo>
+                                        </mrow>
+                                    </mrow>
+                                </mstyle>
+                            </math>.</td>
+                    </tr>
+                </table>
+            </p>
+            <p>Вместе с&#160;тем произвольное чередование присваиваний в ячейку общей памяти различными процессами является причиной многочисленных опасностей.</p>
+            <p>Разделяемая переменная <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mi>с</mi>
+                                        <mi>ч</mi>
+                                        <mi>е</mi>
+                                        <mi>т</mi>
+                                        </mrow>
+                                        </mstyle>
+                                        </math> используется для подсчета числа исполнений некоторого важного события. При каждом наступлении этого события соответствующий процесс <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">P</mi>
+                    </mstyle>
+                </math>&#160;или <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">Q</mi>
+                    </mstyle>
+                </math>&#160;пытается изменить значение счетчика парой взаимодействий:</p>
+            <p align="center">
+                <table class="mathcenter">
+                    <tr>
+                        <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mi>с</mi>
+                                        <mi>ч</mi>
+                                        <mi>е</mi>
+                                        <mi>т</mi>
+                                        <mo>.</mo>
+                                        <mi>п</mi>
+                                        <mi>р</mi>
+                                        <mi>а</mi>
+                                        <mi>в</mi>
+                                        <mo>?</mo>
+                                        <mi>x</mi>
+                                        <mtext> </mtext>
+                                        <mo>…</mo>
+                                        <mi>с</mi>
+                                        <mi>ч</mi>
+                                        <mi>е</mi>
+                                        <mi>т</mi>
+                                        <mo>.</mo>
+                                        <mi>л</mi>
+                                        <mi>е</mi>
+                                        <mi>в</mi>
+                                        <mo>!</mo>
+                                        <mo stretchy="false">(</mo>
+                                        <mi>x</mi>
+                                        <mtext> </mtext>
+                                        <mo>+</mo>
+                                        <mtext> </mtext>
+                                        <mn>1</mn>
+                                        <mo stretchy="false">)</mo>
+                                    </mrow>
+                                </mstyle>
+                            </math>.</td>
+                    </tr>
+                </table>
+            </p>
+            <p>Эти два взаимодействия могут перемежаться аналогичной парой взаимодействий от другого процесса, в результате чего мы получим последовательность:</p>
+            <p align="center">
+                <table class="mathcenter">
+                    <tr>
+                        <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mi>с</mi>
+                                        <mi>ч</mi>
+                                        <mi>е</mi>
+                                        <mi>т</mi>
+                                        <mo>.</mo>
+                                        <mi>п</mi>
+                                        <mi>р</mi>
+                                        <mi>а</mi>
+                                        <mi>в</mi>
+                                        <mo>?</mo>
+                                        <mi>x</mi>
+                                        <mo>→</mo>
+                                        <mi>с</mi>
+                                        <mi>ч</mi>
+                                        <mi>е</mi>
+                                        <mi>т</mi>
+                                        <mo>.</mo>
+                                        <mi>п</mi>
+                                        <mi>р</mi>
+                                        <mi>а</mi>
+                                        <mi>в</mi>
+                                        <mo>?</mo>
+                                        <mi>y</mi>
+                                        <mo>→</mo>
+                                        <mi>с</mi>
+                                        <mi>ч</mi>
+                                        <mi>е</mi>
+                                        <mi>т</mi>
+                                        <mo>.</mo>
+                                        <mi>л</mi>
+                                        <mi>е</mi>
+                                        <mi>в</mi>
+                                        <mo>!</mo>
+                                        <mo stretchy="false">(</mo>
+                                        <mi>y</mi>
+                                        <mtext> </mtext>
+                                        <mo>+</mo>
+                                        <mtext> </mtext>
+                                        <mn>1</mn>
+                                        <mo stretchy="false">)</mo>
+                                        <mo>→</mo>
+                                        <mi>с</mi>
+                                        <mi>ч</mi>
+                                        <mi>е</mi>
+                                        <mi>т</mi>
+                                        <mo>.</mo>
+                                        <mi>л</mi>
+                                        <mi>е</mi>
+                                        <mi>в</mi>
+                                        <mo>!</mo>
+                                        <mo stretchy="false">(</mo>
+                                        <mi>x</mi>
+                                        <mtext> </mtext>
+                                        <mo>+</mo>
+                                        <mtext> </mtext>
+                                        <mn>1</mn>
+                                        <mo stretchy="false">)</mo>
+                                        <mo>→</mo>
+                                        <mtext> </mtext>
+                                        <mo>…</mo>
+                                    </mrow>
+                                </mstyle>
+                            </math></td>
+                    </tr>
+                </table>
+            </p>
+            <p>В&#160;итоге значение счетчика увеличится лишь на единицу, а не на два.</p>
+        </div>
+        <p>Такого рода ошибки известны как <i>взаимное влияние</i> и часто допускаются при проектировании процессов, совместно использующих общую память. Кроме того, проявление такой ошибки недетерминировано; ее воспроизводимость очень ненадежна, и поэтому ее практически невозможно диагностировать обычными методами тестирования.</p>
+        <div class="notice">
+            <div>
+                <p>Возможным решением этой проблемы может быть контроль над тем, чтобы смена процесса не происходила при совершении последовательности действий, нуждающихся в защите от чередования. Такая последовательность называется <i>критическим участком</i>.</p>
+            </div>
+        </div>
+        <p>Рисунок&#160;3.1 демонстрирует понятие критических участков. Здесь <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>A</mi>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <mi>B</mi>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                    </mrow>
+                </mstyle>
+            </math>&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">C</mi>
+                </mstyle>
+            </math>&#160;– разделяемый ресурс; <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mi>P</mi>
+                            <mn>1</mn>
+                        </msub>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <msub>
+                            <mi>P</mi>
+                            <mn>2</mn>
+                        </msub>
+                    </mrow>
+                </mstyle>
+            </math>&#160;–&#160;процессы.</p>
+        <p align="center"><b><img alt="3.1" src="processes.files/png/3.1.png" /></b></p>
+        <p class="imgcaption">Рис.&#160;3.1&#160;– Критические участки</p>
+        <p>При реализации с одним процессором требуемое исключение обычно достигается запрещением всех прерываний на протяжении критического участка. Нежелательным эффектом такого решения является задержка ответа на прерывание.</p>
+        <div class="notice">
+            <div>
+                <p>Для решения этой проблемы Э.&#160;Дейкстра предложил идею использования <i>семафоров</i>. Согласно Дейкстре, семафор&#160;– это объект, позволяющий войти в заданный участок кода не более чем <math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mi xmlns="http://www.w3.org/1998/Math/MathML">n</mi>
+                        </mstyle>
+                    </math>&#160;потокам.</p>
+            </div>
+        </div>
+        <p>Соответственно, если <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>n</mi>
+                        <mo>=</mo>
+                        <mn>1</mn>
+                    </mrow>
+                </mstyle>
+            </math>, имеем <i>двоичный семафор</i>. Двоичный семафор можно описать как процесс, поочередно выполняющий действия с именами <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">P</mi>
+                </mstyle>
+            </math>&#160;и <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">V</mi>
+                </mstyle>
+            </math>:</p>
+        <p align="center">
+            <table class="mathcenter">
+                <tr>
+                    <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mi>C</mi>
+                                    <mi>E</mi>
+                                    <mi>M</mi>
+                                    <mo>=</mo>
+                                    <mo stretchy="false">(</mo>
+                                    <mi>P</mi>
+                                    <mo>→</mo>
+                                    <mi>V</mi>
+                                    <mo>→</mo>
+                                    <mi>C</mi>
+                                    <mi>E</mi>
+                                    <mi>M</mi>
+                                    <mo stretchy="false">)</mo>
+                                </mrow>
+                            </mstyle>
+                        </math>.</td>
+                </tr>
+            </table>
+        </p>
+        <p>Он описывается как совместно используемый ресурс:</p>
+        <p align="center">
+            <table class="mathcenter">
+                <tr>
+                    <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mo stretchy="false">(</mo>
+                                    <mi>в</mi>
+                                    <mi>з</mi>
+                                    <mi>а</mi>
+                                    <mi>и</mi>
+                                    <mi>с</mi>
+                                    <mi>к</mi>
+                                    <mi>л</mi>
+                                    <mo>:</mo>
+                                    <mi>C</mi>
+                                    <mi>E</mi>
+                                    <mi>M</mi>
+                                    <mtext> </mtext>
+                                    <mtext>//</mtext>
+                                    <mtext> </mtext>
+                                    <mo>…</mo>
+                                    <mo stretchy="false">)</mo>
+                                </mrow>
+                            </mstyle>
+                        </math>.</td>
+                </tr>
+            </table>
+        </p>
+        <p>При условии, что все процессы подчиняются этой дисциплине, каждый из двух процессов не сможет влиять на изменение счетчика&#160;– произвести действие <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>в</mi>
+                        <mi>з</mi>
+                        <mi>а</mi>
+                        <mi>и</mi>
+                        <mi>с</mi>
+                        <mi>к</mi>
+                        <mi>л</mi>
+                        <mo>.</mo>
+                        <mi>V</mi>
+                    </mrow>
+                </mstyle>
+            </math>. Таким образом, критический участок, на котором происходит увеличение счетчика, должен иметь вид:</p>
+        <p align="center">
+            <table class="mathcenter">
+                <tr>
+                    <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mi>в</mi>
+                                    <mi>з</mi>
+                                    <mi>а</mi>
+                                    <mi>и</mi>
+                                    <mi>с</mi>
+                                    <mi>к</mi>
+                                    <mi>л</mi>
+                                    <mo>.</mo>
+                                    <mi>P</mi>
+                                    <mo>→</mo>
+                                    <mi>с</mi>
+                                    <mi>ч</mi>
+                                    <mi>е</mi>
+                                    <mi>т</mi>
+                                    <mo>.</mo>
+                                    <mi>п</mi>
+                                    <mi>р</mi>
+                                    <mi>а</mi>
+                                    <mi>в</mi>
+                                    <mo>?</mo>
+                                    <mi>x</mi>
+                                    <mo>→</mo>
+                                    <mi>с</mi>
+                                    <mi>ч</mi>
+                                    <mi>е</mi>
+                                    <mi>т</mi>
+                                    <mo>.</mo>
+                                    <mi>л</mi>
+                                    <mi>е</mi>
+                                    <mi>в</mi>
+                                    <mo>!</mo>
+                                    <mo stretchy="false">(</mo>
+                                    <mi>x</mi>
+                                    <mtext> </mtext>
+                                    <mo>+</mo>
+                                    <mtext> </mtext>
+                                    <mn>1</mn>
+                                    <mo stretchy="false">)</mo>
+                                    <mo>→</mo>
+                                    <mi>в</mi>
+                                    <mi>з</mi>
+                                    <mi>а</mi>
+                                    <mi>и</mi>
+                                    <mi>с</mi>
+                                    <mi>к</mi>
+                                    <mi>л</mi>
+                                    <mo>.</mo>
+                                    <mi>V</mi>
+                                    <mo>→</mo>
+                                    <mtext> </mtext>
+                                    <mo>…</mo>
+                                </mrow>
+                            </mstyle>
+                        </math></td>
+                </tr>
+            </table>
+        </p>
+        <p>Если все процессы подчиняются этой дисциплине, каждый из двух процессов не сможет влиять на изменение счетчика своим партнером. Но если какой-нибудь процесс пропустит <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">P</mi>
+                </mstyle>
+            </math>&#160;или <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">V</mi>
+                </mstyle>
+            </math>&#160;или выполнит их в обратном порядке, результат будет непредсказуемым и может привести к катастрофической (неуловимой) ошибке.</p>
+        <p>Избежать взаимного влияния гораздо более надежным способом можно, встроив необходимую защиту в саму конструкцию общей памяти, воспользовавшись знанием о&#160;предполагаемом способе ее использования. Если, например, переменная будет использоваться только как счетчик, то ее увеличение можно задать одной элементарной операцией <i>счет</i>.<i>вверх</i>, а соответствующий разделяемый ресурс определить как <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>C</mi>
+                        <msub>
+                            <mi>T</mi>
+                            <mn>0</mn>
+                        </msub>
+                    </mrow>
+                </mstyle>
+            </math>:</p>
+        <p align="center">
+            <table class="mathcenter">
+                <tr>
+                    <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mi>с</mi>
+                                    <mi>ч</mi>
+                                    <mi>е</mi>
+                                    <mi>т</mi>
+                                    <mo>:</mo>
+                                    <mi>C</mi>
+                                    <msub>
+                                        <mi>T</mi>
+                                        <mn>0</mn>
+                                    </msub>
+                                    <mtext> </mtext>
+                                    <mtext>//</mtext>
+                                    <mtext> </mtext>
+                                    <mo stretchy="false">(</mo>
+                                    <mo>…</mo>
+                                    <mtext> </mtext>
+                                    <mo>|</mo>
+                                    <mo>|</mo>
+                                    <mo>|</mo>
+                                    <mtext> </mtext>
+                                    <mi>P</mi>
+                                    <mo>|</mo>
+                                    <mo>|</mo>
+                                    <mo>|</mo>
+                                    <mi>Q</mi>
+                                    <mo>|</mo>
+                                    <mo>|</mo>
+                                    <mo>|</mo>
+                                    <mo>…</mo>
+                                    <mo stretchy="false">)</mo>
+                                </mrow>
+                            </mstyle>
+                        </math>.</td>
+                </tr>
+            </table>
+        </p>
+        <p>В&#160;общем случае необходимо, чтобы каждый совместно используемый ресурс заранее проектировался для своих целей, и чтобы в разработке системы с&#160;элементами параллелизма универсальная память не использовалась совместно. Этот метод не только предупреждает серьезную опасность случайного взаимного влияния, но и позволяет получать конструкции, поддающиеся эффективной реализации на сетях распределенных процессорных элементов, а также на одно- и многопроцессорных ЭВМ с физически общей памятью.</p>
+    </div>
+</body>
+
+</html>

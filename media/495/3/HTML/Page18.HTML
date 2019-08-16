@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html" charset="utf-8" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script>
+    <link href="https://new-online.tusur.ru/theme/fdo/ims/course_style.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <div>
+        <h3>3.3.2 Взаимодействия</h3>
+        <p>Пусть <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>P</mi>
+                        <mo>,</mo>
+                        <mtext> </mtext>
+                        <mi>Q</mi>
+                    </mrow>
+                </mstyle>
+            </math>&#160;–&#160;процессы, <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">c</mi>
+                </mstyle>
+            </math>&#160;–&#160;выходной канал <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">P</mi>
+                </mstyle>
+            </math>&#160;и входной канал <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">Q</mi>
+                </mstyle>
+            </math>. Тогда множество, состоящее из событий-взаимодействий <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>c</mi>
+                        <mo>.</mo>
+                        <mi>v</mi>
+                    </mrow>
+                </mstyle>
+            </math>, содержится в пересечении алфавита <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">P</mi>
+                </mstyle>
+            </math>&#160;с алфавитом <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">Q</mi>
+                </mstyle>
+            </math>. Если процессы объединены в параллельную систему <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo stretchy="false">(</mo>
+                        <mi>P</mi>
+                        <mtext> </mtext>
+                        <mo>|</mo>
+                        <mo>|</mo>
+                        <mtext> </mtext>
+                        <mi>Q</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>, то взаимодействие <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mi>c</mi>
+                        <mo>.</mo>
+                        <mi>v</mi>
+                    </mrow>
+                </mstyle>
+            </math>&#160;может происходить только тогда, когда в&#160;этом событии одновременно участвуют оба процесса, т.&#160;е. в&#160;тот момент, когда <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">P</mi>
+                </mstyle>
+            </math>&#160;выводит значение <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">v</mi>
+                </mstyle>
+            </math>&#160;по каналу <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">c</mi>
+                </mstyle>
+            </math>, а <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">Q</mi>
+                </mstyle>
+            </math>&#160;одновременно вводит это значение. Вводящий процесс готов принять любое возможное поступающее сообщение, и поэтому то, какое именно значение передается, определяет выводящий процесс.</p>
+        <p>Таким образом, вывод можно рассматривать как специальный случай операции префиксации, а ввод&#160;– как специальный случай выбора:</p>
+        <p align="center">
+            <table class="mathcenter">
+                <tr>
+                    <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathsize="100%" displaystyle="true">
+                                <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                    <mo stretchy="false">(</mo>
+                                    <mi>c</mi>
+                                    <mo>!</mo>
+                                    <mi>v</mi>
+                                    <mo>→</mo>
+                                    <mi>P</mi>
+                                    <mo stretchy="false">)</mo>
+                                    <mo>|</mo>
+                                    <mo>|</mo>
+                                    <mrow>
+                                        <mo>(</mo>
+                                        <mrow>
+                                            <mi>c</mi>
+                                            <mo>?</mo>
+                                            <mi>x</mi>
+                                            <mo>→</mo>
+                                            <mi>Q</mi>
+                                            <mtext> </mtext>
+                                            <mo stretchy="false">(</mo>
+                                            <mi>x</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                        <mo>)</mo>
+                                    </mrow>
+                                    <mo>=</mo>
+                                    <mi>c</mi>
+                                    <mo>!</mo>
+                                    <mi>v</mi>
+                                    <mo>→</mo>
+                                    <mrow>
+                                        <mo>(</mo>
+                                        <mrow>
+                                            <mi>P</mi>
+                                            <mo>|</mo>
+                                            <mo>|</mo>
+                                            <mi>Q</mi>
+                                            <mtext> </mtext>
+                                            <mo stretchy="false">(</mo>
+                                            <mi>v</mi>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                        <mo>)</mo>
+                                    </mrow>
+                                </mrow>
+                            </mstyle>
+                        </math>.</td>
+                </tr>
+            </table>
+        </p>
+    </div>
+</body>
+
+</html>

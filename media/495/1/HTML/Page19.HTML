@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html" charset="utf-8" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script>
+    <link href="https://new-online.tusur.ru/theme/fdo/ims/course_style.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <div>
+        <h3>1.4.3 Двухголовочные автоматы</h3>
+        <p><i>Двухголовочный конечный автомат</i> (ДКА) имеет одну ленту и <i>две головки</i>, которые могут независимо перемещаться вдоль ленты в одном направлении&#160;[4]. Множество состояний <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">Q</mi>
+                </mstyle>
+            </math>&#160;разбито на два непересекающихся множества. В&#160;состояниях <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mi>Q</mi>
+                            <mn>1</mn>
+                        </msub>
+                    </mrow>
+                </mstyle>
+            </math>&#160;активна первая головка, а в состояниях <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <msub>
+                            <mi>Q</mi>
+                            <mn>2</mn>
+                        </msub>
+                    </mrow>
+                </mstyle>
+            </math>&#160;–&#160;вторая.</p>
+        <p>Двухголовочный автомат можно рассматривать как такой двухленточный автомат, который работает с идентичными словами на обеих лентах.</p>
+        <div class="example">
+            <div class="ex_head">
+                <div class="smile">Пример 1.15</div>
+            </div>
+            <p>Двухголовочный конечный автомат проверяет равенство двух последовательно записанных слов в алфавите <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>V</mi>
+                            <mo>=</mo>
+                            <mo>{</mo>
+                            <mn>0,</mn>
+                            <mtext> </mtext>
+                            <mn>1</mn>
+                            <mo>}</mo>
+                        </mrow>
+                    </mstyle>
+                </math>. Признаком окончания каждого из слов является вспомогательный символ <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mo>«</mo>
+                            <mo>*</mo>
+                            <mo>»</mo>
+                        </mrow>
+                    </mstyle>
+                </math>, не входящий в <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">V</mi>
+                    </mstyle>
+                </math>. Автомат должен допускать только слова вида <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>a</mi>
+                            <mo>*</mo>
+                            <mi>a</mi>
+                            <mo>*</mo>
+                        </mrow>
+                    </mstyle>
+                </math>, где <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>a</mi>
+                            <mo>∈</mo>
+                            <msup>
+                                <mi>V</mi>
+                                <mo>∗</mo>
+                            </msup>
+                        </mrow>
+                    </mstyle>
+                </math>. Таким образом,</p>
+            <p align="center">
+                <table class="mathcenter">
+                    <tr>
+                        <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mi>A</mi>
+                                        <mo>=</mo>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mrow>
+                                                <mi>V</mi>
+                                                <mo>∪</mo>
+                                                <mo>{</mo>
+                                                <mo>*</mo>
+                                                <mo>}</mo>
+                                                <mo>,</mo>
+                                                <mtext> </mtext>
+                                                <msub>
+                                                    <mi>Q</mi>
+                                                    <mn>1</mn>
+                                                </msub>
+                                                <mo>∪</mo>
+                                                <msub>
+                                                    <mi>Q</mi>
+                                                    <mn>2</mn>
+                                                </msub>
+                                                <mo>,</mo>
+                                                <mtext> </mtext>
+                                                <msubsup>
+                                                    <mi>q</mi>
+                                                    <mn>0</mn>
+                                                    <mn>1</mn>
+                                                </msubsup>
+                                                <mo>,</mo>
+                                                <mtext> </mtext>
+                                                <mo>#</mo>
+                                                <mo>,</mo>
+                                                <mtext> </mtext>
+                                                <mi>I</mi>
+                                            </mrow>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mo>,</mo>
+                                    </mrow>
+                                </mstyle>
+                            </math></td>
+                    </tr>
+                </table>
+            </p>
+            <p>где</p>
+            <ul type="disc">
+                <li><math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <msub>
+                                    <mi>Q</mi>
+                                    <mn>1</mn>
+                                </msub>
+                                <mo>=</mo>
+                                <mrow>
+                                    <mo>{</mo>
+                                    <mrow>
+                                        <msubsup>
+                                            <mi>q</mi>
+                                            <mn>0</mn>
+                                            <mn>1</mn>
+                                        </msubsup>
+                                        <mo>,</mo>
+                                        <mtext> </mtext>
+                                        <msubsup>
+                                            <mi>q</mi>
+                                            <mn>1</mn>
+                                            <mn>1</mn>
+                                        </msubsup>
+                                        <mo>,</mo>
+                                        <mtext> </mtext>
+                                        <msubsup>
+                                            <mi>q</mi>
+                                            <mn>2</mn>
+                                            <mn>1</mn>
+                                        </msubsup>
+                                        <mo>,</mo>
+                                        <mtext> </mtext>
+                                        <msubsup>
+                                            <mi>q</mi>
+                                            <mn>7</mn>
+                                            <mn>1</mn>
+                                        </msubsup>
+                                    </mrow>
+                                    <mo>}</mo>
+                                </mrow>
+                            </mrow>
+                        </mstyle>
+                    </math>
+                    &#160;–&#160;множество состояний, в которых активна первая головка;
+                </li>
+                <li><math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <msub>
+                                    <mi>Q</mi>
+                                    <mn>2</mn>
+                                </msub>
+                                <mo>=</mo>
+                                <mrow>
+                                    <mo>{</mo>
+                                    <mrow>
+                                        <msubsup>
+                                            <mi>q</mi>
+                                            <mn>3</mn>
+                                            <mn>2</mn>
+                                        </msubsup>
+                                        <mo>,</mo>
+                                        <mtext> </mtext>
+                                        <msubsup>
+                                            <mi>q</mi>
+                                            <mn>4</mn>
+                                            <mn>2</mn>
+                                        </msubsup>
+                                        <mo>,</mo>
+                                        <mtext> </mtext>
+                                        <msubsup>
+                                            <mi>q</mi>
+                                            <mn>5</mn>
+                                            <mn>2</mn>
+                                        </msubsup>
+                                        <mo>,</mo>
+                                        <mtext> </mtext>
+                                        <msubsup>
+                                            <mi>q</mi>
+                                            <mn>6</mn>
+                                            <mn>2</mn>
+                                        </msubsup>
+                                    </mrow>
+                                    <mo>}</mo>
+                                </mrow>
+                            </mrow>
+                        </mstyle>
+                    </math>
+                    &#160;–&#160;множество состояний, в которых активна вторая головка;
+                </li>
+                <li><math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mi>R</mi>
+                                <mo>=</mo>
+                                <mrow>
+                                    <mo>{</mo>
+                                    <mrow>
+                                        <msubsup>
+                                            <mi>q</mi>
+                                            <mn>7</mn>
+                                            <mn>1</mn>
+                                        </msubsup>
+                                    </mrow>
+                                    <mo>}</mo>
+                                </mrow>
+                            </mrow>
+                        </mstyle>
+                    </math>
+                    &#160;–&#160;множество, содержащее единственное заключительное состояние.
+                </li>
+            </ul>
+            <p>Граф автомата показан на рисунке&#160;1.8, на котором вместо многих «параллельных» дуг с&#160;разными пометками нарисована одна дуга со всеми этими пометками.</p>
+            <p align="center" class="img"><img alt="1.8" src="processes.files/png/1.8.png" /></p>
+            <p class="imgcaption">Рис.&#160;1.8&#160;– Пример ДКА</p>
+            <p>Находясь в состоянии <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msubsup>
+                                <mi>q</mi>
+                                <mn>0</mn>
+                                <mn>1</mn>
+                            </msubsup>
+                        </mrow>
+                    </mstyle>
+                </math>, автомат передвигает первую головку к началу второго слова и, обнаружив его, переходит в состояние <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msubsup>
+                                <mi>q</mi>
+                                <mn>1</mn>
+                                <mn>1</mn>
+                            </msubsup>
+                        </mrow>
+                    </mstyle>
+                </math>. Если конец ленты&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mo xmlns="http://www.w3.org/1998/Math/MathML">#</mo>
+                    </mstyle>
+                </math> встречается раньше символа <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mo>«</mo>
+                            <mo>*</mo>
+                            <mo>»</mo>
+                        </mrow>
+                    </mstyle>
+                </math>, автомат переходит в незаключительное состояние <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msubsup>
+                                <mi>q</mi>
+                                <mn>6</mn>
+                                <mn>2</mn>
+                            </msubsup>
+                        </mrow>
+                    </mstyle>
+                </math>. Если же автомат приходит к состоянию <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msubsup>
+                                <mi>q</mi>
+                                <mn>1</mn>
+                                <mn>1</mn>
+                            </msubsup>
+                        </mrow>
+                    </mstyle>
+                </math>, он считывает поочередно символы второго слова первой головкой (состояние <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msubsup>
+                                <mi>q</mi>
+                                <mn>1</mn>
+                                <mn>1</mn>
+                            </msubsup>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;), а символы первого слова&#160;– второй головкой (состояния <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msubsup>
+                                <mi>q</mi>
+                                <mn>3</mn>
+                                <mn>2</mn>
+                            </msubsup>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;и <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msubsup>
+                                <mi>q</mi>
+                                <mn>5</mn>
+                                <mn>2</mn>
+                            </msubsup>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;), сравнивая эти символы. Автомат возвращается каждый раз в состояние <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msubsup>
+                                <mi>q</mi>
+                                <mn>1</mn>
+                                <mn>1</mn>
+                            </msubsup>
+                        </mrow>
+                    </mstyle>
+                </math>, если символы одинаковы. Если же обнаружится несовпадение символов или первая головка встречает конец слова раньше символа <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mo>«</mo>
+                            <mo>*</mo>
+                            <mo>»</mo>
+                        </mrow>
+                    </mstyle>
+                </math>, автомат уходит в состояние <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msubsup>
+                                <mi>q</mi>
+                                <mn>6</mn>
+                                <mn>2</mn>
+                            </msubsup>
+                        </mrow>
+                    </mstyle>
+                </math>. Попав в это состояние, автомат не может выйти из него; перемещая вторую головку к концу слова на ленте, он достигает <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mo xmlns="http://www.w3.org/1998/Math/MathML">#</mo>
+                    </mstyle>
+                </math>, находясь в незаключительном состоянии, так что слово на ленте отвергается. Если первая головка достигнет конца второго слова, а вторая головка обнаружит, что первое слово тоже просмотрено до конца, то автомат перейдет в заключительное состояние <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msubsup>
+                                <mi>q</mi>
+                                <mn>7</mn>
+                                <mn>1</mn>
+                            </msubsup>
+                        </mrow>
+                    </mstyle>
+                </math>. В&#160;противном случае автомат перейдет в состояние <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msubsup>
+                                <mi>q</mi>
+                                <mn>6</mn>
+                                <mn>2</mn>
+                            </msubsup>
+                        </mrow>
+                    </mstyle>
+                </math>, отвергая слово.</p>
+        </div>
+        <p>Этот пример легко обобщить на случай произвольного алфавита <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">V</mi>
+                </mstyle>
+            </math>, увеличивая количество состояний множества <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">Q</mi>
+                </mstyle>
+            </math>.</p>
+        <p>Говорят, что ДКА <i>моделирует работу машины Тьюринга над некоторым начальным словом</i>, если автомат допускает единственное слово&#160;– конечный протокол работы машины над ним.</p>
+        <div class="lemma">
+            <div>
+                <p><b>Лемма Розенберга</b>. Существует алгоритм, который для любой машины Тьюринга и для любого начального слова строит двухголовочный автомат, моделирующий ее работу над этим словом.</p>
+            </div>
+        </div>
+        <div class="theorem">
+            <div>
+                <p>Проблема пустоты ДКА не является частично разрешимой.</p>
+                <p>Проблема эквивалентности ДКА не является частично разрешимой.</p>
+            </div>
+        </div>
+        <p>Из неразрешимости проблемы пустоты следует неразрешимость проблемы эквивалентности, так как пустоту можно рассматривать как частный случай эквивалентности.</p>
+    </div>
+</body>
+
+</html>

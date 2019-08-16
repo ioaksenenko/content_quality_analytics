@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html" charset="utf-8" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script>
+    <link href="https://new-online.tusur.ru/theme/fdo/ims/course_style.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <div>
+        <h2>4.4&#160;Моделирование параллельных систем взаимодействующих процессов</h2>
+        <h3>4.4.1 Моделирование последовательных процессов</h3>
+        <p>Вырожденным случаем параллельной системы процессов является система с одним процессом. Сначала рассмотрим, как сетью Петри может быть представлен отдельный процесс. Отдельный процесс описывается программой на одном из существующих языков программирования.</p>
+        <div class="example">
+            <div class="ex_head">
+                <div class="smile">Пример 4.7</div>
+            </div>
+            <p>Рассмотрим схему программы на рисунке&#160;4.6. </p>
+
+            <p align="center" class="img"><img alt="4.6" src="processes.files/png/4.6.png" /></p>
+            <p class="imgcaption">Рис.&#160;4.6&#160;– Программа (<i>а</i>) и блок-схема (<i>б</i>) программы</p>
+            <p>Это последовательная программа на абстрактном языке программирования, вычисляющая <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>Y</mi>
+                            <mo>!</mo>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;и произведение всех четных чисел из отрезка <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mo stretchy="false">[</mo>
+                            <mn>1,</mn>
+                            <mtext> </mtext>
+                            <mi>Y</mi>
+                            <mo stretchy="false">]</mo>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;для <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>Y</mi>
+                            <mo>∈</mo>
+                            <mi>N</mi>
+                            <mi>a</mi>
+                            <mi>t</mi>
+                        </mrow>
+                    </mstyle>
+                </math>.</p>
+        </div>
+        <p>Программа представляет два различных аспекта процесса: вычисление и управление. Сети Петри удачно представляют структуру и управление программ. Они предназначены для моделирования упорядочения действий и потока информации, а не для действительного вычисления самих значений.</p>
+        <div class="notice">
+            <div>
+                <p>Стандартный способ представления структуры программы и потока управления в ней&#160;– это <i>блок-схемы</i>, которые, в&#160;свою очередь, могут быть представлены сетями Петри.</p>
+            </div>
+        </div>
+        <p>Блок-схема программы состоит из узлов двух типов (принятия решений, обозначаемые ромбами, и вычисления, обозначаемые прямоугольниками) и дуг между ними.</p>
+        <div class="example">
+            <div class="ex_head">
+                <div class="smile">Пример 4.8</div>
+            </div>
+            <p>Блок-схема описанной выше программы изображена на рисунке&#160;4.6,&#160;<i>б</i>. На рисунке&#160;4.7 изображена сеть Петри, моделирующая данную блок-схему.</p>
+            <p align="center" class="img"><img alt="4.7" src="processes.files/png/4.7.png" /></p>
+            <p class="imgcaption">Рис.&#160;4.7&#160;– Сеть Петри программы</p>
+        </div>
+        <p>В&#160;сети Петри, моделирующей блок-схему, узлы блок-схемы представляются переходами сети Петри, а дуги блок-схемы&#160;– позициями сети Петри. Фишка в сети Петри представляет счетчик команд блок-схемы.</p>
+    </div>
+</body>
+
+</html>

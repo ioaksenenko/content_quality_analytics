@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html" charset="utf-8" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script>
+    <link href="https://new-online.tusur.ru/theme/fdo/ims/course_style.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <div>
+        <h3>4.4.5 Задача об обедающих философах</h3>
+        <p>В&#160;задаче об обедающих философах возможна ситуация, в которой каждый философ возьмет вилку слева, а затем будет ждать, когда освободится вилка с правой стороны. Так они будут ждать, пока не умрут от голода. Тем самым, это состояние системы «обедающие философы» является <i>тупиковым</i>.</p>
+        <p>Проблема тупика в этой системе может быть решена путем следующей модификации ее правил поведения. Пусть философ при переходе из состояния размышления в состояние приема пищи берет одновременно обе вилки (слева и справа), если они свободны.</p>
+        <div class="example">
+            <div class="ex_head">
+                <div class="smile">Пример 4.12</div>
+            </div>
+            <p>Сеть Петри (рис.&#160;4.10) моделирует такую модифицированную систему обедающих философов, свободную от тупиков.</p>
+            <p align="center" class="img"><img alt="4.10" src="processes.files/png/4.10.png" /></p>
+            <p class="imgcaption">Рис.&#160;4.10&#160;– Задача об обедающих философах</p>
+            <p>В&#160;этой сети Петри позиция <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mtext>п</mtext>
+                                <mi>i</mi>
+                            </msub>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <mi>i</mi>
+                            <mo>∈</mo>
+                            <mo>{</mo>
+                            <mn>1,</mn>
+                            <mtext> </mtext>
+                            <mn>2,</mn>
+                            <mtext> </mtext>
+                            <mn>3,</mn>
+                            <mtext> </mtext>
+                            <mn>4,</mn>
+                            <mtext> </mtext>
+                            <mn>5</mn>
+                            <mo>}</mo>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;представляет условие «<math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">i</mi>
+                    </mstyle>
+                </math>-я вилка свободна». В&#160;начальной маркировке каждая из этих позиций имеет фишку. Каждому философу <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>i</mi>
+                            <mo>∈</mo>
+                            <mo>{</mo>
+                            <mn>1,</mn>
+                            <mtext> </mtext>
+                            <mn>2,</mn>
+                            <mtext> </mtext>
+                            <mn>3,</mn>
+                            <mtext> </mtext>
+                            <mn>4,</mn>
+                            <mtext> </mtext>
+                            <mn>5</mn>
+                            <mo>}</mo>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;соответствует две позиции: позиция <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mtext>д</mtext>
+                                <mi>i</mi>
+                            </msub>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;–&#160;представляющая условие « <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">i</mi>
+                    </mstyle>
+                </math>-й философ думает»; и позиция <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mtext>e</mtext>
+                                <mi>i</mi>
+                            </msub>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;–&#160;представляющая условие « <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">i</mi>
+                    </mstyle>
+                </math>-й философ ест». В&#160;начальной маркировке все позиции&#160;<math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mtext>д</mtext>
+                                <mi>i</mi>
+                            </msub>
+                        </mrow>
+                    </mstyle>
+                </math> содержат фишку, а все позиции <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mtext>e</mtext>
+                                <mi>i</mi>
+                            </msub>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;пусты.</p>
+            <p>Каждому философу <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>i</mi>
+                            <mo>∈</mo>
+                            <mo>{</mo>
+                            <mn>1,</mn>
+                            <mtext> </mtext>
+                            <mn>2,</mn>
+                            <mtext> </mtext>
+                            <mn>3,</mn>
+                            <mtext> </mtext>
+                            <mn>4,</mn>
+                            <mtext> </mtext>
+                            <mn>5</mn>
+                            <mo>}</mo>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;также соответствует два перехода: переход <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mrow>
+                                    <mtext>нач</mtext>
+                                </mrow>
+                                <mi>i</mi>
+                            </msub>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;–&#160;представляющий событие «начало приема пищи <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">i</mi>
+                    </mstyle>
+                </math>-м философом»; и переход <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mrow>
+                                    <mtext>зав</mtext>
+                                </mrow>
+                                <mi>i</mi>
+                            </msub>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;–&#160;представляющий событие «завершение приема пищи <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">i</mi>
+                    </mstyle>
+                </math>-м философом».</p>
+        </div>
+    </div>
+</body>
+
+</html>

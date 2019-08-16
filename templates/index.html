@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block head %}
+	{{ block.super }}
+	<link rel="stylesheet" type="text/css" href="{% static "css/index.css" %}" />
+{% endblock %}
+{% block main %}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col">
+			<form action="{% url 'upload' %}" enctype="multipart/form-data" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="file">Загрузите архив imscp-пакетов.</label>
+                    <input type="file" class="form-control-file" id="file" name="file" accept=".7z, .ace, .alz, .a, .arc, .arj, .bz2, .cab, .Z, .cpio, .deb, .dms, .gz, .lrz, .lha, .lzh, .lz, .lzma, .lzo, .rpm, .rar, .rz, .tar, .xz, .zip, .jar, .zoo">
+                </div>
+                <button type="submit" class="btn btn-primary">Отправить</button>
+            </form>
+		</div>
+	</div>
+</div>
+{% endblock %}

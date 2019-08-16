@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html" charset="utf-8" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script>
+    <link href="https://new-online.tusur.ru/theme/fdo/ims/course_style.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+    <div>
+        <h2>1.2 Стандартные схемы программ</h2>
+        <h3>1.2.1 Базис класса стандартных схем программ</h3>
+        <div class="definition">
+            <div>
+                <p><b><i>Стандартные схемы программ </i></b><span class="textnormal">(</span><i>ССП</i><span class="textnormal">)</span><i> характеризуются базисом и структурой схемы. Базис класса фиксирует символы, из которых строятся схемы, указывает их роль </i><span class="textnormal">(</span><i>переменные, функциональные символы и др.</i><span class="textnormal">)</span>,<i> задает вид выражений и операторов схем.</i></p>
+            </div>
+        </div>
+        <p>Полный <i>базис&#160;</i><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mi xmlns="http://www.w3.org/1998/Math/MathML">B</mi>
+                </mstyle>
+            </math>&#160;<i>класса стандартных схем</i> состоит из 4 непересекающихся счетных множеств символов и множества операторов&#160;– слов, построенных из этих символов&#160;[2, 3].</p>
+        <p>Множества символов полного базиса:</p>
+        <ol type="1" class="num_brackets">
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>X</mi>
+                            <mo>=</mo>
+                            <mrow>
+                                <mo>{</mo>
+                                <mrow>
+                                    <mi>x</mi>
+                                    <mo>,</mo>
+                                    <mtext> </mtext>
+                                    <msub>
+                                        <mi>x</mi>
+                                        <mn>1</mn>
+                                    </msub>
+                                    <mo>,</mo>
+                                    <mtext> </mtext>
+                                    <msub>
+                                        <mi>x</mi>
+                                        <mn>2</mn>
+                                    </msub>
+                                    <mo>,</mo>
+                                    <mtext>&#160;</mtext>
+                                    <mo>…</mo>
+                                    <mo>,</mo>
+                                    <mtext> </mtext>
+                                    <mi>y</mi>
+                                    <mo>,</mo>
+                                    <mtext> </mtext>
+                                    <msub>
+                                        <mi>y</mi>
+                                        <mn>1</mn>
+                                    </msub>
+                                    <mo>,</mo>
+                                    <mtext> </mtext>
+                                    <msub>
+                                        <mi>y</mi>
+                                        <mn>2</mn>
+                                    </msub>
+                                    <mo>,</mo>
+                                    <mtext>&#160;</mtext>
+                                    <mo>…</mo>
+                                    <mo>,</mo>
+                                    <mtext> </mtext>
+                                    <mi>z</mi>
+                                    <mo>,</mo>
+                                    <mtext> </mtext>
+                                    <msub>
+                                        <mi>z</mi>
+                                        <mn>1</mn>
+                                    </msub>
+                                    <mo>,</mo>
+                                    <mtext> </mtext>
+                                    <msub>
+                                        <mi>z</mi>
+                                        <mn>2</mn>
+                                    </msub>
+                                    <mo>,</mo>
+                                    <mtext>&#160;</mtext>
+                                    <mo>…</mo>
+                                </mrow>
+                                <mo>}</mo>
+                            </mrow>
+                        </mrow>
+                    </mstyle>
+                </math>
+                &#160;–&#160;множество символов, называемых <i>переменными</i>;
+            </li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>F</mi>
+                            <mo>=</mo>
+                            <mrow>
+                                <mo>{</mo>
+                                <mrow>
+                                    <msup>
+                                        <mi>f</mi>
+                                        <mrow>
+                                            <mo stretchy="false">(</mo>
+                                            <mn>0</mn>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msup>
+                                    <mo>,</mo>
+                                    <msup>
+                                        <mi>f</mi>
+                                        <mrow>
+                                            <mo stretchy="false">(</mo>
+                                            <mn>1</mn>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msup>
+                                    <mo>,</mo>
+                                    <msup>
+                                        <mi>f</mi>
+                                        <mrow>
+                                            <mo stretchy="false">(</mo>
+                                            <mn>2</mn>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msup>
+                                    <mo>,</mo>
+                                    <mtext>&#160;</mtext>
+                                    <mo>…</mo>
+                                    <mo>,</mo>
+                                    <msup>
+                                        <mi>g</mi>
+                                        <mrow>
+                                            <mo stretchy="false">(</mo>
+                                            <mn>0</mn>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msup>
+                                    <mo>,</mo>
+                                    <msup>
+                                        <mi>g</mi>
+                                        <mrow>
+                                            <mo stretchy="false">(</mo>
+                                            <mn>1</mn>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msup>
+                                    <mo>,</mo>
+                                    <msup>
+                                        <mi>g</mi>
+                                        <mrow>
+                                            <mo stretchy="false">(</mo>
+                                            <mn>2</mn>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msup>
+                                    <mo>,</mo>
+                                    <mtext>&#160;</mtext>
+                                    <mo>…</mo>
+                                    <mo>,</mo>
+                                    <msup>
+                                        <mi>h</mi>
+                                        <mrow>
+                                            <mo stretchy="false">(</mo>
+                                            <mn>0</mn>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msup>
+                                    <mo>,</mo>
+                                    <msup>
+                                        <mi>h</mi>
+                                        <mrow>
+                                            <mo stretchy="false">(</mo>
+                                            <mn>1</mn>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msup>
+                                    <mo>,</mo>
+                                    <msup>
+                                        <mi>h</mi>
+                                        <mrow>
+                                            <mo stretchy="false">(</mo>
+                                            <mn>2</mn>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msup>
+                                    <mo>,</mo>
+                                    <mtext>&#160;</mtext>
+                                    <mo>…</mo>
+                                </mrow>
+                                <mo>}</mo>
+                            </mrow>
+                        </mrow>
+                    </mstyle>
+                </math>
+                &#160;–&#160;множество <i>функциональных символов</i>; верхний символ задает <i>местность символа</i>; нульместные символы называют константами и обозначают начальными буквами латинского алфавита <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>a</mi>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <mi>b</mi>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <mi>c</mi>
+                            <mo>,</mo>
+                            <mtext> </mtext>
+                            <mo>…</mo>
+                        </mrow>
+                    </mstyle>
+                </math>;
+            </li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>P</mi>
+                            <mo>=</mo>
+                            <mrow>
+                                <mo>{</mo>
+                                <mrow>
+                                    <msup>
+                                        <mi>p</mi>
+                                        <mrow>
+                                            <mo stretchy="false">(</mo>
+                                            <mn>0</mn>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msup>
+                                    <mo>,</mo>
+                                    <msup>
+                                        <mi>p</mi>
+                                        <mrow>
+                                            <mo stretchy="false">(</mo>
+                                            <mn>1</mn>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msup>
+                                    <mo>,</mo>
+                                    <msup>
+                                        <mi>p</mi>
+                                        <mrow>
+                                            <mo stretchy="false">(</mo>
+                                            <mn>2</mn>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msup>
+                                    <mo>,</mo>
+                                    <mtext>&#160;</mtext>
+                                    <mo>…</mo>
+                                    <mo>,</mo>
+                                    <msup>
+                                        <mi>q</mi>
+                                        <mrow>
+                                            <mo stretchy="false">(</mo>
+                                            <mn>0</mn>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msup>
+                                    <mo>,</mo>
+                                    <msup>
+                                        <mi>q</mi>
+                                        <mrow>
+                                            <mo stretchy="false">(</mo>
+                                            <mn>1</mn>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msup>
+                                    <mo>,</mo>
+                                    <msup>
+                                        <mi>q</mi>
+                                        <mrow>
+                                            <mo stretchy="false">(</mo>
+                                            <mn>2</mn>
+                                            <mo stretchy="false">)</mo>
+                                        </mrow>
+                                    </msup>
+                                    <mo>,</mo>
+                                    <mtext>&#160;</mtext>
+                                    <mo>…</mo>
+                                </mrow>
+                                <mo>}</mo>
+                            </mrow>
+                        </mrow>
+                    </mstyle>
+                </math>
+                &#160;–&#160;множество <i>предикатных символов</i>; <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msup>
+                                <mi>p</mi>
+                                <mrow>
+                                    <mo stretchy="false">(</mo>
+                                    <mn>0</mn>
+                                    <mo stretchy="false">)</mo>
+                                </mrow>
+                            </msup>
+                        </mrow>
+                    </mstyle>
+                </math>, <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msup>
+                                <mi>q</mi>
+                                <mrow>
+                                    <mo stretchy="false">(</mo>
+                                    <mn>0</mn>
+                                    <mo stretchy="false">)</mo>
+                                </mrow>
+                            </msup>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;–&#160;нульместные символы, которые называют логическими константами;
+            </li>
+            <li><math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mrow>
+                                <mo>{</mo>
+                                <mrow>
+                                    <mstyle mathvariant="bold" mathsize="normal">
+                                        <mi>s</mi>
+                                        <mi>t</mi>
+                                        <mi>a</mi>
+                                        <mi>r</mi>
+                                        <mi>t</mi>
+                                    </mstyle>
+                                    <mo>,</mo>
+                                    <mtext> </mtext>
+                                    <mstyle mathvariant="bold" mathsize="normal">
+                                        <mi>s</mi>
+                                        <mi>t</mi>
+                                        <mi>o</mi>
+                                        <mi>p</mi>
+                                    </mstyle>
+                                    <mo>,</mo>
+                                    <mtext> </mtext>
+                                    <mo>:</mo>
+                                    <mo>=</mo>
+                                    <mo>,</mo>
+                                    <mtext> </mtext>
+                                    <mo>…</mo>
+                                </mrow>
+                                <mo>}</mo>
+                            </mrow>
+                        </mrow>
+                    </mstyle>
+                </math>
+                &#160;–&#160;множество специальных символов.
+                <p><i>Термами </i>(<i>функциональными выражениями</i>) называются слова, построенные из переменных, функциональных и специальных символов по следующим правилам:</p>
+            </li>
+        </ol>
+        <ol type="1" class="num_brackets">
+            <li> односимвольные слова, состоящие из переменных или констант, являются термами;</li>
+            <li> слово <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mtext>τ</mtext>
+                    </mstyle>
+                </math>&#160;вида <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msup>
+                                <mi>f</mi>
+                                <mrow>
+                                    <mo stretchy="false">(</mo>
+                                    <mi>n</mi>
+                                    <mo stretchy="false">)</mo>
+                                </mrow>
+                            </msup>
+                            <mrow>
+                                <mo>(</mo>
+                                <mrow>
+                                    <msub>
+                                        <mtext>τ</mtext>
+                                        <mn>1</mn>
+                                    </msub>
+                                    <mo>,</mo>
+                                    <msub>
+                                        <mtext>τ</mtext>
+                                        <mn>2</mn>
+                                    </msub>
+                                    <mo>,</mo>
+                                    <mtext>&#160;</mtext>
+                                    <mo>…</mo>
+                                    <mo>,</mo>
+                                    <mtext>&#160;</mtext>
+                                    <msub>
+                                        <mtext>τ</mtext>
+                                        <mi>n</mi>
+                                    </msub>
+                                </mrow>
+                                <mo>)</mo>
+                            </mrow>
+                        </mrow>
+                    </mstyle>
+                </math>, где <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mtext>τ</mtext>
+                                <mn>1</mn>
+                            </msub>
+                            <mo>,</mo>
+                            <mtext>&#160;</mtext>
+                            <msub>
+                                <mtext>τ</mtext>
+                                <mn>2</mn>
+                            </msub>
+                            <mo>,</mo>
+                            <mtext>&#160;</mtext>
+                            <mo>…</mo>
+                            <mo>,</mo>
+                            <mtext>&#160;</mtext>
+                            <msub>
+                                <mtext>τ</mtext>
+                                <mi>n</mi>
+                            </msub>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;–&#160;термы, является термом;</li>
+            <li> те и только те слова, о которых говорится в п.&#160;1 и 2, являются термами.</li>
+        </ol>
+        <div class="example">
+            <div class="ex_head">
+                <div class="smile">Пример 1.3</div>
+            </div>
+            <p>Примеры термов:</p>
+            <p align="center">
+                <table class="mathcenter">
+                    <tr>
+                        <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mi>x</mi>
+                                        <mo>,</mo>
+                                        <mtext> </mtext>
+                                        <msup>
+                                            <mi>f</mi>
+                                            <mrow>
+                                                <mo stretchy="false">(</mo>
+                                                <mn>0</mn>
+                                                <mo stretchy="false">)</mo>
+                                            </mrow>
+                                        </msup>
+                                        <mo>,</mo>
+                                        <mtext> </mtext>
+                                        <mi>a</mi>
+                                        <mo>,</mo>
+                                        <mtext> </mtext>
+                                        <msup>
+                                            <mi>f</mi>
+                                            <mrow>
+                                                <mo stretchy="false">(</mo>
+                                                <mn>1</mn>
+                                                <mo stretchy="false">)</mo>
+                                            </mrow>
+                                        </msup>
+                                        <mo stretchy="false">(</mo>
+                                        <mi>x</mi>
+                                        <mo stretchy="false">)</mo>
+                                        <mo>,</mo>
+                                        <mtext> </mtext>
+                                        <msup>
+                                            <mi>g</mi>
+                                            <mrow>
+                                                <mo stretchy="false">(</mo>
+                                                <mn>2</mn>
+                                                <mo stretchy="false">)</mo>
+                                            </mrow>
+                                        </msup>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mrow>
+                                                <mi>x</mi>
+                                                <mo>,</mo>
+                                                <mtext> </mtext>
+                                                <msup>
+                                                    <mi>h</mi>
+                                                    <mrow>
+                                                        <mo stretchy="false">(</mo>
+                                                        <mn>2</mn>
+                                                        <mo stretchy="false">)</mo>
+                                                    </mrow>
+                                                </msup>
+                                                <mo stretchy="false">(</mo>
+                                                <mi>y</mi>
+                                                <mo>,</mo>
+                                                <mtext> </mtext>
+                                                <mi>a</mi>
+                                                <mo stretchy="false">)</mo>
+                                            </mrow>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mo>.</mo>
+                                    </mrow>
+                                </mstyle>
+                            </math></td>
+                    </tr>
+                </table>
+                &#160;
+            </p>
+        </div>
+        <div class="definition">
+            <div>
+                <p><b><i>Тестами <span class="textnormal">(</span>логическими выражениями<span class="textnormal">)</span></i></b><i> называются логические константы и слова вида </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mstyle mathsize="100%" displaystyle="true">
+                            <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                <msup>
+                                    <mi>p</mi>
+                                    <mrow>
+                                        <mo stretchy="false">(</mo>
+                                        <mi>n</mi>
+                                        <mo stretchy="false">)</mo>
+                                    </mrow>
+                                </msup>
+                                <mrow>
+                                    <mo>(</mo>
+                                    <mrow>
+                                        <msub>
+                                            <mtext>τ</mtext>
+                                            <mn>1</mn>
+                                        </msub>
+                                        <mo>,</mo>
+                                        <msub>
+                                            <mtext>τ</mtext>
+                                            <mn>2</mn>
+                                        </msub>
+                                        <mo>,</mo>
+                                        <mtext>&#160;</mtext>
+                                        <mo>…</mo>
+                                        <mo>,</mo>
+                                        <mtext>&#160;</mtext>
+                                        <msub>
+                                            <mtext>τ</mtext>
+                                            <mi>n</mi>
+                                        </msub>
+                                    </mrow>
+                                    <mo>)</mo>
+                                </mrow>
+                            </mrow>
+                        </mstyle>
+                    </math><i>.</i></p>
+            </div>
+        </div>
+        <div class="example">
+            <div class="ex_head">
+                <div class="smile">Пример 1.4</div>
+            </div>
+            <p>Примеры логических выражений:</p>
+            <p align="center">
+                <table class="mathcenter">
+                    <tr>
+                        <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <msup>
+                                            <mi>p</mi>
+                                            <mrow>
+                                                <mo stretchy="false">(</mo>
+                                                <mn>0</mn>
+                                                <mo stretchy="false">)</mo>
+                                            </mrow>
+                                        </msup>
+                                        <mo>,</mo>
+                                        <mtext> </mtext>
+                                        <msup>
+                                            <mi>p</mi>
+                                            <mrow>
+                                                <mo stretchy="false">(</mo>
+                                                <mn>1</mn>
+                                                <mo stretchy="false">)</mo>
+                                            </mrow>
+                                        </msup>
+                                        <mo stretchy="false">(</mo>
+                                        <mi>x</mi>
+                                        <mo stretchy="false">)</mo>
+                                        <mo>,</mo>
+                                        <mtext> </mtext>
+                                        <msup>
+                                            <mi>q</mi>
+                                            <mrow>
+                                                <mo stretchy="false">(</mo>
+                                                <mn>3</mn>
+                                                <mo stretchy="false">)</mo>
+                                            </mrow>
+                                        </msup>
+                                        <mo stretchy="false">(</mo>
+                                        <mi>x</mi>
+                                        <mo>,</mo>
+                                        <mtext> </mtext>
+                                        <mi>y</mi>
+                                        <mo>,</mo>
+                                        <mtext> </mtext>
+                                        <mi>z</mi>
+                                        <mo stretchy="false">)</mo>
+                                        <mo>,</mo>
+                                        <mtext> </mtext>
+                                        <msup>
+                                            <mi>p</mi>
+                                            <mrow>
+                                                <mo stretchy="false">(</mo>
+                                                <mn>2</mn>
+                                                <mo stretchy="false">)</mo>
+                                            </mrow>
+                                        </msup>
+                                        <mrow>
+                                            <mo>(</mo>
+                                            <mrow>
+                                                <msup>
+                                                    <mi>f</mi>
+                                                    <mrow>
+                                                        <mo stretchy="false">(</mo>
+                                                        <mn>2</mn>
+                                                        <mo stretchy="false">)</mo>
+                                                    </mrow>
+                                                </msup>
+                                                <mo stretchy="false">(</mo>
+                                                <mi>x</mi>
+                                                <mo>,</mo>
+                                                <mtext> </mtext>
+                                                <mi>y</mi>
+                                                <mo stretchy="false">)</mo>
+                                            </mrow>
+                                            <mo>)</mo>
+                                        </mrow>
+                                        <mo>.</mo>
+                                    </mrow>
+                                </mstyle>
+                            </math></td>
+                    </tr>
+                </table>
+            </p>
+        </div>
+        <p>Допускается в функциональных и логических выражениях опускать индексы местности, если это не приводит к двусмысленности или противоречию.</p>
+        <p>Множество операторов включает пять типов:</p>
+        <ol type="1" class="num_brackets">
+            <li><i>начальный оператор</i>&#160;– слово вида <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathvariant="bold" mathsize="normal">
+                                <mi>s</mi>
+                                <mi>t</mi>
+                                <mi>a</mi>
+                                <mi>r</mi>
+                                <mi>t</mi>
+                            </mstyle>
+                            <mrow>
+                                <mo>(</mo>
+                                <mrow>
+                                    <msub>
+                                        <mi>x</mi>
+                                        <mn>1</mn>
+                                    </msub>
+                                    <mo>,</mo>
+                                    <msub>
+                                        <mi>x</mi>
+                                        <mn>2</mn>
+                                    </msub>
+                                    <mo>,</mo>
+                                    <mtext>&#160;</mtext>
+                                    <mo>…</mo>
+                                    <mo>,</mo>
+                                    <msub>
+                                        <mi>x</mi>
+                                        <mi>k</mi>
+                                    </msub>
+                                </mrow>
+                                <mo>)</mo>
+                            </mrow>
+                        </mrow>
+                    </mstyle>
+                </math>, где <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>k</mi>
+                            <mo>≥</mo>
+                            <mn>0</mn>
+                        </mrow>
+                    </mstyle>
+                </math>, а <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mi>x</mi>
+                                <mn>1</mn>
+                            </msub>
+                        </mrow>
+                    </mstyle>
+                </math>, <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mi>x</mi>
+                                <mn>2</mn>
+                            </msub>
+                        </mrow>
+                    </mstyle>
+                </math>, …, <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mi>x</mi>
+                                <mi>k</mi>
+                            </msub>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;–&#160;переменные, называемые <i>результатом</i> этого оператора;</li>
+            <li><i>заключительный оператор</i>&#160;– слово вида <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mstyle mathvariant="bold" mathsize="normal">
+                                <mi>s</mi>
+                                <mi>t</mi>
+                                <mi>o</mi>
+                                <mi>p</mi>
+                            </mstyle>
+                            <mrow>
+                                <mo>(</mo>
+                                <mrow>
+                                    <msub>
+                                        <mtext>τ</mtext>
+                                        <mn>1</mn>
+                                    </msub>
+                                    <mo>,</mo>
+                                    <msub>
+                                        <mtext>τ</mtext>
+                                        <mn>2</mn>
+                                    </msub>
+                                    <mo>,</mo>
+                                    <mo>…</mo>
+                                    <mo>,</mo>
+                                    <msub>
+                                        <mtext>τ</mtext>
+                                        <mi>n</mi>
+                                    </msub>
+                                </mrow>
+                                <mo>)</mo>
+                            </mrow>
+                        </mrow>
+                    </mstyle>
+                </math>, где <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>n</mi>
+                            <mo>≥</mo>
+                            <mn>0</mn>
+                        </mrow>
+                    </mstyle>
+                </math>, а <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mtext>τ</mtext>
+                                <mn>1</mn>
+                            </msub>
+                            <mo>,</mo>
+                            <msub>
+                                <mtext>τ</mtext>
+                                <mn>2</mn>
+                            </msub>
+                            <mo>,</mo>
+                            <mtext>&#160;</mtext>
+                            <mo>…</mo>
+                            <mo>,</mo>
+                            <msub>
+                                <mtext>τ</mtext>
+                                <mi>n</mi>
+                            </msub>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;–&#160;термы; вхождения переменных в термы 
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mtext>τ</mtext>
+                        </mrow>
+                    </mstyle>
+                </math>
+                 называются <i>аргументами</i> этого оператора;</li>
+            <li><i>оператор присваивания</i>&#160;– слово вида <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <mi>x</mi>
+                            <mo>:</mo>
+                            <mo>=</mo>
+                            <mtext>τ</mtext>
+                        </mrow>
+                    </mstyle>
+                </math>, где <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">x</mi>
+                    </mstyle>
+                </math>&#160;–&#160;переменная (<i>результат оператора</i>), а <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mtext>τ</mtext>
+                    </mstyle>
+                </math>&#160;–&#160;терм; вхождения переменных в термы называются <i>аргументами</i> этого оператора;</li>
+            <li><i>условный оператор</i> (тест)&#160;– логическое выражение; вхождения переменных в логическое выражение называются <i>аргументами</i> этого оператора;</li>
+            <li><i>оператор петли</i>&#160;– односимвольное слово <b>loop</b>.</li>
+        </ol>
+        <p>Среди операторов присваивания выделим случаи: когда <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mtext>τ</mtext>
+                </mstyle>
+            </math>&#160;–&#160;переменная, то оператор называется <i>пересылкой </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo stretchy="false">(</mo>
+                        <mi>x</mi>
+                        <mo>:</mo>
+                        <mo>=</mo>
+                        <mi>y</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>,
+            и когда <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mtext>τ</mtext>
+                </mstyle>
+            </math>&#160;–&#160;константа, то оператор называется <i>засылкой&#160;</i><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mstyle mathsize="100%" displaystyle="true">
+                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                        <mo stretchy="false">(</mo>
+                        <mi>x</mi>
+                        <mo>:</mo>
+                        <mo>=</mo>
+                        <mi>a</mi>
+                        <mo stretchy="false">)</mo>
+                    </mrow>
+                </mstyle>
+            </math>.
+        </p>
+        <p>Подклассы используют ограниченные базисы.</p>
+        <div class="example">
+            <div class="ex_head">
+                <div class="smile">Пример 1.5</div>
+            </div>
+            <p>Пусть, например, подкласс <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                            <msub>
+                                <mi>Y</mi>
+                                <mn>1</mn>
+                            </msub>
+                        </mrow>
+                    </mstyle>
+                </math>&#160;имеет базис</p>
+            <p align="center">
+                <table class="mathcenter">
+                    <tr>
+                        <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mo>{</mo>
+                                        <msub>
+                                            <mi>x</mi>
+                                            <mn>1</mn>
+                                        </msub>
+                                        <mo>,</mo>
+                                        <mtext> </mtext>
+                                        <msub>
+                                            <mi>x</mi>
+                                            <mn>2</mn>
+                                        </msub>
+                                        <mo>}</mo>
+                                        <mo>,</mo>
+                                        <mtext>&#160;</mtext>
+                                        <mrow>
+                                            <mo>{</mo>
+                                            <mrow>
+                                                <mi>a</mi>
+                                                <mo>,</mo>
+                                                <mtext> </mtext>
+                                                <msup>
+                                                    <mi>f</mi>
+                                                    <mrow>
+                                                        <mo stretchy="false">(</mo>
+                                                        <mn>1</mn>
+                                                        <mo stretchy="false">)</mo>
+                                                    </mrow>
+                                                </msup>
+                                            </mrow>
+                                            <mo>}</mo>
+                                        </mrow>
+                                        <mo>,</mo>
+                                        <mtext>&#160;</mtext>
+                                        <mrow>
+                                            <mo>{</mo>
+                                            <mrow>
+                                                <msup>
+                                                    <mi>p</mi>
+                                                    <mrow>
+                                                        <mo stretchy="false">(</mo>
+                                                        <mn>1</mn>
+                                                        <mo stretchy="false">)</mo>
+                                                    </mrow>
+                                                </msup>
+                                            </mrow>
+                                            <mo>}</mo>
+                                        </mrow>
+                                        <mo>,</mo>
+                                        <mtext> </mtext>
+                                        <mrow>
+                                            <mo>{</mo>
+                                            <mrow>
+                                                <mstyle mathvariant="bold" mathsize="normal">
+                                                    <mi>s</mi>
+                                                    <mi>t</mi>
+                                                    <mi>a</mi>
+                                                    <mi>r</mi>
+                                                    <mi>t</mi>
+                                                </mstyle>
+                                                <mo>,</mo>
+                                                <mtext> </mtext>
+                                                <mstyle mathvariant="bold" mathsize="normal">
+                                                    <mi>s</mi>
+                                                    <mi>t</mi>
+                                                    <mi>o</mi>
+                                                    <mi>p</mi>
+                                                </mstyle>
+                                                <mo>,</mo>
+                                                <mtext> </mtext>
+                                                <mstyle mathvariant="bold" mathsize="normal">
+                                                    <mo stretchy="false">(</mo>
+                                                </mstyle>
+                                                <mo>,</mo>
+                                                <mtext> </mtext>
+                                                <mstyle mathvariant="bold" mathsize="normal">
+                                                    <mo stretchy="false">)</mo>
+                                                </mstyle>
+                                                <mo>,</mo>
+                                                <mtext> </mtext>
+                                                <mstyle mathvariant="bold" mathsize="normal">
+                                                    <mo>:</mo>
+                                                    <mo>=</mo>
+                                                </mstyle>
+                                                <mo>,</mo>
+                                                <mtext> </mtext>
+                                                <mstyle mathvariant="bold" mathsize="normal">
+                                                    <mo>,</mo>
+                                                </mstyle>
+                                            </mrow>
+                                            <mo>}</mo>
+                                        </mrow>
+                                    </mrow>
+                                </mstyle>
+                            </math></td>
+                    </tr>
+                </table>
+                &#160;
+            </p>
+            <p>и множество операторов</p>
+            <p align="center">
+                <table class="mathcenter">
+                    <tr>
+                        <td><math xmlns="http://www.w3.org/1998/Math/MathML">
+                                <mstyle mathsize="100%" displaystyle="true">
+                                    <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mrow>
+                                            <mo>{</mo>
+                                            <mrow>
+                                                <mstyle mathvariant="bold" mathsize="normal">
+                                                    <mi>s</mi>
+                                                    <mi>t</mi>
+                                                    <mi>a</mi>
+                                                    <mi>r</mi>
+                                                    <mi>t</mi>
+                                                </mstyle>
+                                                <mrow>
+                                                    <mo>(</mo>
+                                                    <mrow>
+                                                        <msub>
+                                                            <mi>x</mi>
+                                                            <mn>1</mn>
+                                                        </msub>
+                                                        <mo>,</mo>
+                                                        <mtext> </mtext>
+                                                        <msub>
+                                                            <mi>x</mi>
+                                                            <mn>2</mn>
+                                                        </msub>
+                                                    </mrow>
+                                                    <mo>)</mo>
+                                                </mrow>
+                                                <mo>,</mo>
+                                                <mtext> </mtext>
+                                                <msub>
+                                                    <mi>x</mi>
+                                                    <mn>1</mn>
+                                                </msub>
+                                                <mo>:</mo>
+                                                <mo>=</mo>
+                                                <mi>f</mi>
+                                                <mrow>
+                                                    <mo>(</mo>
+                                                    <mrow>
+                                                        <msub>
+                                                            <mi>x</mi>
+                                                            <mn>1</mn>
+                                                        </msub>
+                                                    </mrow>
+                                                    <mo>)</mo>
+                                                </mrow>
+                                                <mo>,</mo>
+                                                <mtext> </mtext>
+                                                <msub>
+                                                    <mi>x</mi>
+                                                    <mn>2</mn>
+                                                </msub>
+                                                <mo>:</mo>
+                                                <mo>=</mo>
+                                                <mi>f</mi>
+                                                <mrow>
+                                                    <mo>(</mo>
+                                                    <mrow>
+                                                        <msub>
+                                                            <mi>x</mi>
+                                                            <mn>2</mn>
+                                                        </msub>
+                                                    </mrow>
+                                                    <mo>)</mo>
+                                                </mrow>
+                                                <mo>,</mo>
+                                                <mtext> </mtext>
+                                                <msub>
+                                                    <mi>x</mi>
+                                                    <mn>1</mn>
+                                                </msub>
+                                                <mo>:</mo>
+                                                <mo>=</mo>
+                                                <mi>a</mi>
+                                                <mo>,</mo>
+                                                <mtext> </mtext>
+                                                <msub>
+                                                    <mi>x</mi>
+                                                    <mn>2</mn>
+                                                </msub>
+                                                <mo>:</mo>
+                                                <mo>=</mo>
+                                                <mi>a</mi>
+                                                <mo>,</mo>
+                                                <mtext> </mtext>
+                                                <mi>p</mi>
+                                                <mrow>
+                                                    <mo>(</mo>
+                                                    <mrow>
+                                                        <msub>
+                                                            <mi>x</mi>
+                                                            <mn>1</mn>
+                                                        </msub>
+                                                    </mrow>
+                                                    <mo>)</mo>
+                                                </mrow>
+                                                <mo>,</mo>
+                                                <mtext> </mtext>
+                                                <mi>p</mi>
+                                                <mrow>
+                                                    <mo>(</mo>
+                                                    <mrow>
+                                                        <msub>
+                                                            <mi>x</mi>
+                                                            <mn>2</mn>
+                                                        </msub>
+                                                    </mrow>
+                                                    <mo>)</mo>
+                                                </mrow>
+                                                <mo>,</mo>
+                                                <mtext> </mtext>
+                                                <mstyle mathvariant="bold" mathsize="normal">
+                                                    <mi>s</mi>
+                                                    <mi>t</mi>
+                                                    <mi>o</mi>
+                                                    <mi>p</mi>
+                                                </mstyle>
+                                                <mrow>
+                                                    <mo>(</mo>
+                                                    <mrow>
+                                                        <msub>
+                                                            <mi>x</mi>
+                                                            <mn>1</mn>
+                                                        </msub>
+                                                        <mo>,</mo>
+                                                        <mtext> </mtext>
+                                                        <msub>
+                                                            <mi>x</mi>
+                                                            <mn>2</mn>
+                                                        </msub>
+                                                    </mrow>
+                                                    <mo>)</mo>
+                                                </mrow>
+                                            </mrow>
+                                            <mo>}</mo>
+                                        </mrow>
+                                        <mo>,</mo>
+                                    </mrow>
+                                </mstyle>
+                            </math></td>
+                    </tr>
+                </table>
+            </p>
+            <p>т.&#160;е. схемы из этого подкласса используют две переменные, константу <math xmlns="http://www.w3.org/1998/Math/MathML">
+                    <mstyle mathsize="100%" displaystyle="true">
+                        <mi xmlns="http://www.w3.org/1998/Math/MathML">a</mi>
+                    </mstyle>
+                </math>, один одноместный функциональный символ, один предикатный символ и операторы указанного вида.</p>
+        </div>
+    </div>
+</body>
+
+</html>
