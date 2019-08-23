@@ -6,18 +6,20 @@ Local:
 4. Load input.zip file for example.
 
 Deployment:
-1. Download files from repository: `git clone https://github.com/ioaksenenko/content_quality_analytics`
-2. Upgrade apt: sudo apt update
-3. Install python: `sudo apt install python3.6`
-4. Install pip: `sudo apt install python3-pip`
-5. Install virtual environment: `sudo pip3 install virtualenv`
-6. Create virtual environment: `virtualenv venv`
-7. Activate virtual environment: `source {/path/to/venv}/bin/activate`
-8. Upgrade pip: `pip3 install --upgrade pip`
-9. Install project requirements: `pip3 install -r requirements.txt`
-10. Install install the necessary dictionaries: python3 -c "import nltk; nltk.download('stopwords'); nltk.download('punkt')"
-11. Prepare django migrations: python3 manage.py makemigrations
-12. Make django migrations: python3 manage.py migrate
-13. Run the project: python3 manage.py runserver 0.0.0.0:8000
-
-`sudo add-apt-repository ppa:jonathonf/python-3.6`
+1. Upgrade apt: `sudo apt update`
+2. Install python software properties: `sudo apt install software-properties-common` 
+3. Add python repository: `sudo add-apt-repository ppa:jonathonf/python-3.6`
+4. Upgrade apt: `sudo apt update`
+5. Install git: `sudo apt install git`
+6. Download files from repository: `sudo git clone https://github.com/ioaksenenko/content_quality_analytics`
+7. Install python: `sudo apt install python3.6`
+8. Install pip: `sudo apt install python3-pip`
+9. Install virtual environment: `sudo pip3 install virtualenv`
+10. Create virtual environment: `sudo virtualenv venv`
+11. Activate virtual environment: `sudo source {path_to_venv}/bin/activate`
+12. Upgrade pip: `pip3 install --upgrade pip`
+13. Install project requirements: `pip3 install -r requirements.txt`
+14. Install the necessary dictionaries: `python3 -c "import nltk; nltk.download('stopwords'); nltk.download('punkt')"`
+15. Prepare django migrations: `python3.6 manage.py makemigrations`
+16. Make django migrations: `python3.6 manage.py migrate`
+17. Run the project: `python3.6 manage.py runserver 0.0.0.0:8000`
