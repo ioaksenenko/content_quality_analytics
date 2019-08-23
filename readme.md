@@ -10,12 +10,14 @@ Deployment:
 2. Upgrade apt: sudo apt update
 3. Install python: `sudo apt install python3.6`
 4. Install pip: `sudo apt install python3-pip`
-5. Install virtual environment: `sudo pip install virtualenv`
+5. Install virtual environment: `sudo pip3 install virtualenv`
 6. Create virtual environment: `virtualenv venv`
-7. Activate virtual environment: source {/path/to/venv}/bin/activate
+7. Activate virtual environment: `source {/path/to/venv}/bin/activate`
 8. Upgrade pip: `pip3 install --upgrade pip`
 9. Install project requirements: `pip3 install -r requirements.txt`
 10. Install install the necessary dictionaries: python3 -c "import nltk; nltk.download('stopwords'); nltk.download('punkt')"
 11. Prepare django migrations: python3 manage.py makemigrations
 12. Make django migrations: python3 manage.py migrate
 13. Run the project: python3 manage.py runserver 0.0.0.0:8000
+
+`sudo add-apt-repository ppa:jonathonf/python-3.6`
