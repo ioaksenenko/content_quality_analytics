@@ -2,6 +2,7 @@
 {% load staticfiles %}
 {% block head %}
 	{{ block.super }}
+    <script src="{% static "js/index.js" %}"></script>
 	<link rel="stylesheet" type="text/css" href="{% static "css/index.css" %}" />
 {% endblock %}
 {% block main %}
@@ -11,8 +12,10 @@
 			<form action="{% url 'upload' %}" enctype="multipart/form-data" method="post">
                 {% csrf_token %}
                 <div class="form-group">
-                    <label for="file">Загрузите архив imscp-пакетов.</label>
-                    <input type="file" class="form-control-file" id="file" name="file" accept=".7z, .ace, .alz, .a, .arc, .arj, .bz2, .cab, .Z, .cpio, .deb, .dms, .gz, .lrz, .lha, .lzh, .lz, .lzma, .lzo, .rpm, .rar, .rz, .tar, .xz, .zip, .jar, .zoo">
+                    <label for="zip-file">Загрузите архив imscp-пакетов.</label>
+                    <input type="file" class="form-control-file" id="zip-file" name="zip-file" accept=".7z, .ace, .alz, .a, .arc, .arj, .bz2, .cab, .Z, .cpio, .deb, .dms, .gz, .lrz, .lha, .lzh, .lz, .lzma, .lzo, .rpm, .rar, .rz, .tar, .xz, .zip, .jar, .zoo">
+                    <label for="html-files">Или загрузите HTML-документы.</label>
+                    <input type="file" class="form-control-file" id="html-files" name="html-files" accept=".html" multiple>
                 </div>
                 <button type="submit" class="btn btn-primary">Отправить</button>
             </form>

@@ -9,37 +9,43 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col">
-            <form action="{% url 'analyze' %}" enctype="multipart/form-data" method="post" id="modules">
-                {% csrf_token %}
-                <div class="form-group">
-                    <table class="table">
-			        	<thead class="thead-light">
-			        		<tr>
-			        			<th scope="col">#</th>
-                                <th scope="col"><button type="button" class="btn btn-link" onclick="select()">Выбрать \ Снять выбор</button></th>
-			        			<th scope="col">Название модуля</th>
-			        		</tr>
-			        	</thead>
-			        	<tbody>
-			        		{% if modules %}
-			        		    {% for module in modules %}
-			        		        <tr>
-			        			        <th scope="row">{{ forloop.counter }}</th>
-                                        <td>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" name="modules" value="{{ module }}" id="module-{{ module }}">
-                                                <label class="form-check-label" for="module-{{ module }}"></label>
-                                            </div>
-                                        </td>
-			        			        <td>{{ module }}</td>
-			        		        </tr>
-			        		    {% endfor %}
-			        		{% endif %}
-			        	</tbody>
-			        </table>
+            {% if modules|length != 0 %}
+                <form action="{% url 'analyze' %}" enctype="multipart/form-data" method="post" id="modules">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <table class="table">
+			            	<thead class="thead-light">
+			            		<tr>
+			            			<th scope="col">#</th>
+                                    <th scope="col"><button type="button" class="btn btn-link" onclick="select()">Выбрать \ Снять выбор</button></th>
+			            			<th scope="col">Название модуля</th>
+			            		</tr>
+			            	</thead>
+			            	<tbody>
+			            		{% if modules %}
+			            		    {% for module in modules %}
+			            		        <tr>
+			            			        <th scope="row">{{ forloop.counter }}</th>
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" name="modules" value="{{ module }}" id="module-{{ module }}">
+                                                    <label class="form-check-label" for="module-{{ module }}"></label>
+                                                </div>
+                                            </td>
+			            			        <td>{{ module }}</td>
+			            		        </tr>
+			            		    {% endfor %}
+			            		{% endif %}
+			            	</tbody>
+			            </table>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="analyze">Провести анализ</button>
+                </form>
+            {% else %}
+                <div class="alert alert-danger mt-3" role="alert">
+                    {{ msg }}
                 </div>
-                <button type="submit" class="btn btn-primary" id="analyze">Провести анализ</button>
-            </form>
+            {% endif %}
 		</div>
 	</div>
 </div>

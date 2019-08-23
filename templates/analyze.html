@@ -22,7 +22,7 @@
                 {% if modules %}
                     {% for name, content, result in modules %}
                         <div class="tab-pane fade {% if forloop.counter == 1 %} show active {% endif %}" id="tab-{{ name }}" role="tabpanel" aria-labelledby="{{ name }}-tab">
-                        <div class="container">
+                            <div class="container">
                             <div class="row mb-3">
                                 <div class="col">
                                     <h1>Оценка качества текста</h1>
@@ -88,7 +88,7 @@
                                     <p>Количество выделений цветом фона:</p>
                                 </div>
                                 <div class="col">
-                                    <p>{{ result.txt_ch.creolization_vector|index:0 }}</p>
+                                    <p>{{ result.txt_ch.creolization_vector|index:0 }} {% if result.txt_ch.creole_txt_uni_distr %}(Равномерность распределения: {{ result.txt_ch.creole_txt_uni_distr|index:0 }}){% endif %}</p>
                                 </div>
                             </div>
                             <div class="row">
@@ -96,7 +96,7 @@
                                     <p>Количество выделений курсивом:</p>
                                 </div>
                                 <div class="col">
-                                    <p>{{ result.txt_ch.creolization_vector|index:1 }}</p>
+                                    <p>{{ result.txt_ch.creolization_vector|index:1 }} {% if result.txt_ch.creole_txt_uni_distr %}(Равномерность распределения: {{ result.txt_ch.creole_txt_uni_distr|index:1 }}){% endif %}</p>
                                 </div>
                             </div>
                             <div class="row">
@@ -104,7 +104,7 @@
                                     <p>Количество выделений жирным шрифтом:</p>
                                 </div>
                                 <div class="col">
-                                    <p>{{ result.txt_ch.creolization_vector|index:2 }}</p>
+                                    <p>{{ result.txt_ch.creolization_vector|index:2 }} {% if result.txt_ch.creole_txt_uni_distr %}(Равномерность распределения: {{ result.txt_ch.creole_txt_uni_distr|index:2 }}){% endif %}</p>
                                 </div>
                             </div>
                             <div class="row">
@@ -112,7 +112,7 @@
                                     <p>Количество выделений подчёркиванием:</p>
                                 </div>
                                 <div class="col">
-                                    <p>{{ result.txt_ch.creolization_vector|index:3 }}</p>
+                                    <p>{{ result.txt_ch.creolization_vector|index:3 }} {% if result.txt_ch.creole_txt_uni_distr %}(Равномерность распределения: {{ result.txt_ch.creole_txt_uni_distr|index:3 }}){% endif %}</p>
                                 </div>
                             </div>
                             <div class="row">
@@ -120,7 +120,7 @@
                                     <p>Количество выделений рамкой:</p>
                                 </div>
                                 <div class="col">
-                                    <p>{{ result.txt_ch.creolization_vector|index:4 }}</p>
+                                    <p>{{ result.txt_ch.creolization_vector|index:4 }} {% if result.txt_ch.creole_txt_uni_distr %}(Равномерность распределения: {{ result.txt_ch.creole_txt_uni_distr|index:4 }}){% endif %}</p>
                                 </div>
                             </div>
                             <div class="row">
@@ -128,7 +128,7 @@
                                     <p>Количество выделений пиктограммой:</p>
                                 </div>
                                 <div class="col">
-                                    <p>{{ result.txt_ch.creolization_vector|index:5 }}</p>
+                                    <p>{{ result.txt_ch.creolization_vector|index:5 }} {% if result.txt_ch.creole_txt_uni_distr %}(Равномерность распределения: {{ result.txt_ch.creole_txt_uni_distr|index:5 }}){% endif %}</p>
                                 </div>
                             </div>
                             <div class="row">
@@ -136,7 +136,15 @@
                                     <p>Количество выделений ссылкой:</p>
                                 </div>
                                 <div class="col">
-                                    <p>{{ result.txt_ch.creolization_vector|index:6 }}</p>
+                                    <p>{{ result.txt_ch.creolization_vector|index:6 }} {% if result.txt_ch.creole_txt_uni_distr %}(Равномерность распределения: {{ result.txt_ch.creole_txt_uni_distr|index:6 }}){% endif %}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Степень креолизации текста:</p>
+                                </div>
+                                <div class="col">
+                                    <p>{{ result.txt_ch.creolization_degree }}%</p>
                                 </div>
                             </div>
                             <div class="row mb-3">

@@ -23,15 +23,30 @@ def index(request):
 
 def upload_file(request):
     if request.method == 'POST':
+        context = {}
         form = forms.UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
             clear_media()
-            write_file(request.FILES['file'])
-            modules = get_modules()
+            modules = []
+            if 'zip-file' in request.FILES:
+                file = request.FILES['zip-file']
+                file_path = os.path.join(settings.MEDIA_ROOT, file.name)
+                write_file(file, file_path)
+                Archive(file_path).extractall(settings.MEDIA_ROOT)
+                os.remove(file_path)
+                modules = get_modules()
+            elif 'html-files' in request.FILES:
+                files = request.FILES.getlist('html-files')
+                dir_path = os.path.join(settings.MEDIA_ROOT, 'HTML')
+                os.mkdir(dir_path)
+                for file in files:
+                    file_path = os.path.join(dir_path, file.name)
+                    write_file(file, file_path)
+                    modules.append(file.name)
+            else:
+                context['msg'] = "Файл не был загружен."
             template = loader.get_template('modules.html')
-            context = {
-                'modules': natsorted(modules, key=lambda y: y.lower())
-            }
+            context['modules'] = natsorted(modules, key=lambda y: y.lower())
             return HttpResponse(template.render(context, request))
     else:
         form = forms.UploadFileForm()
@@ -47,12 +62,10 @@ def clear_media():
             shutil.rmtree(file_path)
 
 
-def write_file(file):
-    file_path = os.path.join(settings.MEDIA_ROOT, file.name)
+def write_file(file, file_path):
     with open(file_path, 'wb+') as destination:
         for chunk in file.chunks():
             destination.write(chunk)
-    Archive(file_path).extractall(settings.MEDIA_ROOT)
 
 
 def get_modules():
@@ -128,6 +141,7 @@ def parallel_analyze(files):
 
 
 def parallel_analyze_with_futures(files):
+    print(len(files))
     files.pop(0)
 
     start_time = time()
@@ -196,10 +210,10 @@ def analyze(request):
             template = loader.get_template('analyze.html')
             context = {
                 'modules': list(zip(
-                    ['all'] + modules,
+                    ['all'] + [os.path.splitext(module)[0] for module in modules],
                     ['Анализ всего текста'] + ['Анализ модуля ' + module for module in modules],
                     results
-                )),
+                ))
             }
             return HttpResponse(template.render(context, request))
     else:

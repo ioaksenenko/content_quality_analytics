@@ -29,40 +29,60 @@ def read_files(source, only_these=None):
     all_pages_number = 0
     for file_name in natsorted(os.listdir(source), key=lambda y: y.lower()):
         dir_path = os.path.join(source, file_name)
-        if os.path.isdir(dir_path) and (file_name in only_these if only_these is not None else True):
+        if os.path.isdir(dir_path):
             dir_path = os.path.join(dir_path, 'HTML')
-            mod_html = bs4.BeautifulSoup(
-                '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Title</title></head><body></body></html>',
-                'html.parser'
-            )
-            mod_content = ''
-            mod_pages_number = 0
-            for file_name in os.listdir(dir_path):
-                mod_pages_number += 1
-                file_path = os.path.join(dir_path, file_name)
-                if os.path.isfile(file_path) and re.match(fnmatch.translate('*.html'), file_path, re.IGNORECASE):
-                    f = open(file_path, 'r', encoding='utf-8')
-                    c = f.read()
-                    soup = bs4.BeautifulSoup(c, 'html.parser')
-                    imgs = soup.find_all('img')
-                    for img in imgs:
-                        img['src'] = os.path.join(dir_path, img['src'])
-                    for element in soup.body.contents:
-                        mod_html.body.append(copy.copy(element))
-                    f.close()
-                    tockens = re.split(r'<[^>]+>', c)
-                    text = ' '.join(list(filter(lambda x: not re.fullmatch(r'\s*', x), tockens)))
-                    mod_content += ' ' + html.unescape(text)
-            res.append({
-                'dir_path': os.path.dirname(dir_path),
-                'html': str(mod_html),
-                'txt': mod_content,
-                'pgs_num': mod_pages_number
-            })
-            for element in mod_html.body.contents:
-                all_html.body.append(copy.copy(element))
-            all_content += mod_content
-            all_pages_number += mod_pages_number
+            if file_name in only_these if only_these is not None else True:
+                mod_html = bs4.BeautifulSoup(
+                    '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Title</title></head><body></body></html>',
+                    'html.parser'
+                )
+                mod_content = ''
+                mod_pages_number = 0
+                for file_name in os.listdir(dir_path):
+                    mod_pages_number += 1
+                    file_path = os.path.join(dir_path, file_name)
+                    if os.path.isfile(file_path) and re.match(fnmatch.translate('*.html'), file_path, re.IGNORECASE):
+                        f = open(file_path, 'r', encoding='utf-8')
+                        c = f.read()
+                        soup = bs4.BeautifulSoup(c, 'html.parser')
+                        imgs = soup.find_all('img')
+                        for img in imgs:
+                            img['src'] = os.path.join(dir_path, img['src'])
+                        for element in soup.body.contents:
+                            mod_html.body.append(copy.copy(element))
+                        f.close()
+                        tockens = re.split(r'<[^>]+>', c)
+                        text = ' '.join(list(filter(lambda x: not re.fullmatch(r'\s*', x), tockens)))
+                        mod_content += ' ' + html.unescape(text)
+                res.append({
+                    'dir_path': os.path.dirname(dir_path),
+                    'html': str(mod_html),
+                    'txt': mod_content,
+                    'pgs_num': mod_pages_number
+                })
+                for element in mod_html.body.contents:
+                    all_html.body.append(copy.copy(element))
+                all_content += mod_content
+                all_pages_number += mod_pages_number
+        else:
+            if re.match(fnmatch.translate('*.html'), os.path.basename(dir_path), re.IGNORECASE) and (file_name in only_these if only_these is not None else True):
+                f = open(dir_path, 'r', encoding='utf-8')
+                c = f.read()
+                f.close()
+                mod_html = bs4.BeautifulSoup(c, 'html.parser')
+                tockens = re.split(r'<[^>]+>', c)
+                text = ' '.join(list(filter(lambda x: not re.fullmatch(r'\s*', x), tockens)))
+                mod_content = ' ' + html.unescape(text)
+                res.append({
+                    'dir_path': os.path.dirname(dir_path),
+                    'html': str(mod_html),
+                    'txt': mod_content,
+                    'pgs_num': 1
+                })
+                for element in mod_html.body.contents:
+                    all_html.body.append(copy.copy(element))
+                all_content += mod_content
+                all_pages_number += 1
     res.insert(0, {
         'dir_path': os.path.dirname(source),
         'html': str(all_html),
@@ -97,11 +117,32 @@ def text_characteristics(file):
 
     logger.info('The calculation of new concepts number...')
     start = time()
+
+    italic_elements = soup.find_all('i')
+
     definitions = soup.find_all('div', 'definition')
+
+    buf = []
+    for italic_element in italic_elements:
+        if re.fullmatch(r'<i>\s*[a-zA-Zа-яА-Я]\s*</i>', str(italic_element)):
+            continue
+        buf.append(italic_element)
+        for definition in definitions:
+            def_italic_elements = definition.find_all('i')
+            for def_italic_element in def_italic_elements:
+                if italic_element == def_italic_element:
+                    buf.pop(len(buf) - 1)
+                    break
+            if italic_element not in buf:
+                break
+
     new_concepts_number = reduce(
         lambda x, y: x + y,
         [len(definition.find_all('p')) for definition in definitions]
     ) if len(definitions) > 0 else 0
+
+    new_concepts_number += len(buf)
+
     res['new_concepts_number'] = new_concepts_number
     finish = time()
     logger.info(f'New concepts number: {new_concepts_number}')
@@ -208,14 +249,20 @@ def text_characteristics(file):
     logger.info(f'Time spent: {finish - start}')
     """
 
-    ru_words_number = len(ru_uniq_norm_words)
+    ru_words_number = len(ru_norm_words)
+    ru_uniq_words_number = len(ru_uniq_norm_words)
     logger.info(f'Russian words number: {ru_words_number}')
-    en_words_number = len(en_uniq_norm_words)
+    logger.info(f'Russian unique words number: {ru_uniq_words_number}')
+    en_words_number = len(en_norm_words)
+    en_uniq_words_number = len(en_uniq_norm_words)
     logger.info(f'English words number: {en_words_number}')
+    logger.info(f'English unique words number: {en_uniq_words_number}')
     total_words_number = ru_words_number + en_words_number
-    logger.info(f'Total words number: {en_words_number}')
+    total_uniq_words_number = ru_uniq_words_number + en_uniq_words_number
+    logger.info(f'Total words number: {total_words_number}')
+    logger.info(f'Total unique words number: {en_uniq_words_number}')
 
-    inf_saturation = (new_concepts_number / total_words_number) * 100
+    inf_saturation = (new_concepts_number / total_uniq_words_number) * 100
     res['inf_saturation'] = round(inf_saturation, 2)
     logger.info(f'Information saturation: {res["inf_saturation"]}')
 
@@ -224,7 +271,7 @@ def text_characteristics(file):
     abstract_words = list(
         filter(
             lambda x:
-            re.fullmatch(r'.*(ость|есть|мость|нность|ие|ание|ение|ние|ество|изм)', x),
+            re.fullmatch(r'.*(ость|есть|мость|ность|нность|емость|енность|ие|ье|ание|изм|ура|ано|ота|еств|ество|ет|ета|изн|изна|овизна|ин|ина|щин|щина|чин|чина|льщин|льщина|честв|чество|ств|ство|овств|овство|ничеств|ничество|тельств|тельство|енств|енство|шеств|шество|ур|ни|ние|нь|нье|ени|ение|тие|тье|овк|овка|еж|ёж|ежк|ежка|ёжк|ёжка|б|ба|об|оба|еб|еба|ёб|ёба|аци|ация|яци|яция|фукаци|фукация|инфикаци|инфикация|аж|от|н|ня|отн|отня|ын|ыня|ев|ева|знь|ьё|ьо|ец|ок|ёк|чик|ик|иц|ица|к|ка|инк|инка|ушк|ушка|очк|очка|юшк|юшка|ушко|юшко|ышк|ышко|ишк|ишка|ишко|оньк|онька|еньк|енька|онк|онка|ёнк|ёнка|ц|це|цо|ице|ецо|ца|ашк|ашка|ищ|ище|ища|очек|ечк|ечко|ушек|ышек)', x),
             ru_norm_words
         )
     )
@@ -238,7 +285,7 @@ def text_characteristics(file):
     abstract_words_number = len(abstract_uniq_words)
     logger.info(f'Unique abstract words number: {abstract_words_number}')
 
-    abstractness = (abstract_words_number / total_words_number) * 100
+    abstractness = (abstract_words_number / total_uniq_words_number) * 100
     res['abstractness'] = round(abstractness, 2)
     logger.info(f'Text abstractness: {res["abstractness"]}')
 
@@ -264,7 +311,7 @@ def text_characteristics(file):
     logger.info(f'Compound words number: {compound_words_number}')
     logger.info(f'Time spent: {finish - start}')
 
-    ganning_index = 0.4 * (0.78 * ru_words_number / sent_number + 100 * compound_words_number / ru_words_number)
+    ganning_index = 0.4 * (0.78 * ru_uniq_words_number / sent_number + 100 * compound_words_number / ru_uniq_words_number)
     res['ganning_index'] = round(ganning_index, 2)
     logger.info(f'Text readability: {res["ganning_index"]}')
 
@@ -287,16 +334,31 @@ def text_characteristics(file):
 
     logger.info('Calculation of textual characterization...')
     start = time()
+    creolized_text_volume = 0
     bg_creolization = soup.find_all(['span', 'p', 'div'], {'style': re.compile(r'.*background-image: .+')})
+    for element in bg_creolization:
+        creolized_text_volume += len(''.join(re.split(r'<[^>]+>', str(element))))
     italics_creolization = soup.find_all('i')
+    for element in italics_creolization:
+        creolized_text_volume += len(''.join(re.split(r'<[^>]+>', str(element))))
     bold_creolization = soup.find_all('b')
+    for element in bold_creolization:
+        creolized_text_volume += len(''.join(re.split(r'<[^>]+>', str(element))))
     underline_creolization = soup.find_all('u')
+    for element in underline_creolization:
+        creolized_text_volume += len(''.join(re.split(r'<[^>]+>', str(element))))
     border_creolization = soup.find_all(
         ['span', 'p', 'div'],
         {'style': re.compile(r'.*border(-left|-right|-top|-bottom)?: .+')}
     )
+    for element in border_creolization:
+        creolized_text_volume += len(''.join(re.split(r'<[^>]+>', str(element))))
     pictogram_creolization = soup.find_all('div', {'class': ['definition', 'ex_head', 'cn_head']})
+    for element in pictogram_creolization:
+        creolized_text_volume += len(''.join(re.split(r'<[^>]+>', str(element))))
     link_creolization = soup.find_all('a')
+    for element in link_creolization:
+        creolized_text_volume += len(''.join(re.split(r'<[^>]+>', str(element))))
     creolization_vector = [
         len(bg_creolization),
         len(italics_creolization),
@@ -306,7 +368,12 @@ def text_characteristics(file):
         len(pictogram_creolization),
         len(link_creolization)
     ]
+    all_text_volume = len(txt)
+    creolization_degree = round(creolized_text_volume / all_text_volume, 2) * 100
     res['creolization_vector'] = creolization_vector
+    res['all_text_volume'] = all_text_volume
+    res['creolized_text_volume'] = creolized_text_volume
+    res['creolization_degree'] = creolization_degree
     finish = time()
     logger.info(f'Background creolization: {creolization_vector[0]}')
     logger.info(f'Italics creolization: {creolization_vector[1]}')
@@ -315,6 +382,9 @@ def text_characteristics(file):
     logger.info(f'Border creolization: {creolization_vector[4]}')
     logger.info(f'Pictogram creolization: {creolization_vector[5]}')
     logger.info(f'Link creolization: {creolization_vector[6]}')
+    logger.info(f'All text volume: {all_text_volume}')
+    logger.info(f'Creolized text volume: {creolized_text_volume}')
+    logger.info(f'Creolization degree: {creolization_degree}')
     logger.info(f'Time spent: {finish - start}')
 
     logger.info('Text Characterization Completed.')
@@ -332,7 +402,10 @@ def text_characteristics_all_files(files):
         'en_uniq_norm_words': [],
         'abstract_uniq_words': [],
         'sent_number': 0,
-        'creolization_vector': [0, 0, 0, 0, 0, 0, 0]
+        'creolization_vector': [0, 0, 0, 0, 0, 0, 0],
+        'all_text_volume': 0,
+        'creolized_text_volume': 0,
+        'creolization_degree': 0
     }
     for file in files:
         res['new_concepts_number'] += file['txt_ch']['new_concepts_number']
@@ -346,6 +419,20 @@ def text_characteristics_all_files(files):
         res['sent_number'] += file['txt_ch']['sent_number']
         for i in range(len(file['txt_ch']['creolization_vector'])):
             res['creolization_vector'][i] += file['txt_ch']['creolization_vector'][i]
+        res['all_text_volume'] += file['txt_ch']['all_text_volume']
+        res['creolized_text_volume'] += file['txt_ch']['creolized_text_volume']
+
+    n = len(files)
+    m = len(res['creolization_vector'])
+    median = []
+    for i in range(m):
+        median.append(res['creolization_vector'][i] / n)
+    res['creole_txt_uni_distr'] = [0 for _ in range(m)]
+    for file in files:
+        for i in range(len(file['txt_ch']['creolization_vector'])):
+            res['creole_txt_uni_distr'][i] += math.pow(file['txt_ch']['creolization_vector'][i] - median[i], 2)
+    for i in range(m):
+        res['creole_txt_uni_distr'][i] = round(res['creole_txt_uni_distr'][i] / n, 2)
 
     res['ru_uniq_norm_words'] = list(sorted(set(res['ru_uniq_norm_words'])))
     res['en_uniq_norm_words'] = list(sorted(set(res['en_uniq_norm_words'])))
@@ -389,6 +476,8 @@ def text_characteristics_all_files(files):
     density = max(ru_frequences + en_frequences)
 
     res['density'] = round(density, 2)
+
+    res['creolization_degree'] = round(res['creolized_text_volume'] / res['all_text_volume'], 2) * 100
 
     return res
 
@@ -607,9 +696,10 @@ def search_and_nav_characteristics_all_files(files):
 
 
 def clear_dir(dir_path):
-    for file_name in os.listdir(dir_path):
-        file_path = os.path.join(dir_path, file_name)
-        if os.path.isfile(file_path):
-            os.unlink(file_path)
-        elif os.path.isdir(file_path):
-            shutil.rmtree(file_path)
+    if os.path.exists(dir_path):
+        for file_name in os.listdir(dir_path):
+            file_path = os.path.join(dir_path, file_name)
+            if os.path.isfile(file_path):
+                os.unlink(file_path)
+            elif os.path.isdir(file_path):
+                shutil.rmtree(file_path)
