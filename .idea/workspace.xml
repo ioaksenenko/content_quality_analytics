@@ -1,162 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cc8d65a7-0ad6-4cba-9c3a-e5bdd5e2cbc1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/img/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/js/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content_quality_analytics/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/content_quality_analytics/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content_quality_analytics/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/content_quality_analytics/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content_quality_analytics/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/content_quality_analytics/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/1.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/1/HTML/Page1.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/1/HTML/Page10.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/1/HTML/Page12.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/1/HTML/Page13.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/1/HTML/Page14.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/1/HTML/Page15.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/1/HTML/Page17.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/1/HTML/Page18.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/1/HTML/Page19.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/1/HTML/Page20.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/1/HTML/Page22.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/1/HTML/Page23.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/1/HTML/Page24.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/1/HTML/Page25.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/1/HTML/Page26.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/1/HTML/Page28.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/1/HTML/Page29.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/1/HTML/Page3.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/1/HTML/Page30.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/1/HTML/Page31.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/1/HTML/Page4.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/1/HTML/Page5.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/1/HTML/Page7.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/1/HTML/Page8.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/1/HTML/Page9.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/1/HTML/processes.files/png/1.1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/1/HTML/processes.files/png/1.10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/1/HTML/processes.files/png/1.11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/1/HTML/processes.files/png/1.12.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/1/HTML/processes.files/png/1.13.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/1/HTML/processes.files/png/1.2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/1/HTML/processes.files/png/1.3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/1/HTML/processes.files/png/1.4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/1/HTML/processes.files/png/1.5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/1/HTML/processes.files/png/1.6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/1/HTML/processes.files/png/1.7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/1/HTML/processes.files/png/1.8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/1/HTML/processes.files/png/1.9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/1/HTML/processes.files/png/Thumbs.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/1/imsmanifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/2.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/2/HTML/Page1.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/2/HTML/Page11.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/2/HTML/Page12.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/2/HTML/Page13.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/2/HTML/Page14.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/2/HTML/Page2.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/2/HTML/Page3.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/2/HTML/Page4.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/2/HTML/Page5.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/2/HTML/Page6.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/2/HTML/Page7.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/2/HTML/Page8.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/2/HTML/Page9.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/2/imsmanifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/3.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/3/HTML/Page1.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/3/HTML/Page10.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/3/HTML/Page11.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/3/HTML/Page12.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/3/HTML/Page13.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/3/HTML/Page14.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/3/HTML/Page15.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/3/HTML/Page16.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/3/HTML/Page17.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/3/HTML/Page18.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/3/HTML/Page19.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/3/HTML/Page2.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/3/HTML/Page20.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/3/HTML/Page21.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/3/HTML/Page22.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/3/HTML/Page23.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/3/HTML/Page24.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/3/HTML/Page26.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/3/HTML/Page27.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/3/HTML/Page28.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/3/HTML/Page29.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/3/HTML/Page3.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/3/HTML/Page30.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/3/HTML/Page31.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/3/HTML/Page32.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/3/HTML/Page33.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/3/HTML/Page34.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/3/HTML/Page35.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/3/HTML/Page4.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/3/HTML/Page5.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/3/HTML/Page6.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/3/HTML/Page7.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/3/HTML/Page8.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/3/HTML/Page9.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/3/HTML/processes.files/Thumbs.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/3/HTML/processes.files/png/3.1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/3/HTML/processes.files/png/Thumbs.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/3/imsmanifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/4.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/4/HTML/Page1.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/4/HTML/Page10.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/4/HTML/Page12.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/4/HTML/Page13.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/4/HTML/Page14.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/4/HTML/Page15.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/4/HTML/Page16.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/4/HTML/Page17.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/4/HTML/Page18.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/4/HTML/Page19.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/4/HTML/Page2.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/4/HTML/Page20.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/4/HTML/Page21.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/4/HTML/Page22.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/4/HTML/Page4.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/4/HTML/Page5.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/4/HTML/Page6.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/4/HTML/Page7.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/4/HTML/Page9.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/4/HTML/processes.files/Thumbs.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/4/HTML/processes.files/png/4.1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/4/HTML/processes.files/png/4.10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/4/HTML/processes.files/png/4.11.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/4/HTML/processes.files/png/4.12.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/4/HTML/processes.files/png/4.2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/4/HTML/processes.files/png/4.3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/4/HTML/processes.files/png/4.4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/4/HTML/processes.files/png/4.5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/4/HTML/processes.files/png/4.6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/4/HTML/processes.files/png/4.7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/4/HTML/processes.files/png/4.8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/4/HTML/processes.files/png/4.9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/4/HTML/processes.files/png/Thumbs.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/4/imsmanifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/conclusion.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/conclusion/HTML/Page1.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/conclusion/imsmanifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/glossary.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/glossary/HTML/Page1.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/glossary/imsmanifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/introduction.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/introduction/HTML/Page1.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/introduction/imsmanifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/literature.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/literature/HTML/Page1.HTML" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/media/495/literature/imsmanifest.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/analyze.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/analyze.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/modules.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/modules.html" afterDir="false" />
-    </list>
+    <list default="true" id="cc8d65a7-0ad6-4cba-9c3a-e5bdd5e2cbc1" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,20 +47,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="6" lean-forward="true" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
+            <state>
+              <caret column="22" lean-forward="true" selection-start-column="22" selection-end-column="22" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/content_quality_analytics/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="381">
-              <caret line="215" column="18" selection-start-line="215" selection-start-column="18" selection-end-line="215" selection-end-column="18" />
+            <state relative-caret-position="340">
+              <caret line="32" column="72" lean-forward="true" selection-start-line="32" selection-start-column="72" selection-end-line="32" selection-end-column="72" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
                 <element signature="e#434#554#0" />
@@ -312,7 +157,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="953" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
@@ -333,32 +178,6 @@
               <item name="content_quality_analytics" type="b2602c69:ProjectViewProjectNode" />
               <item name="content_quality_analytics" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="content_quality_analytics" type="b2602c69:ProjectViewProjectNode" />
-              <item name="content_quality_analytics" type="462c0819:PsiDirectoryNode" />
-              <item name="content_quality_analytics" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="content_quality_analytics" type="b2602c69:ProjectViewProjectNode" />
-              <item name="content_quality_analytics" type="462c0819:PsiDirectoryNode" />
-              <item name="log" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="content_quality_analytics" type="b2602c69:ProjectViewProjectNode" />
-              <item name="content_quality_analytics" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="content_quality_analytics" type="b2602c69:ProjectViewProjectNode" />
-              <item name="content_quality_analytics" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="content_quality_analytics" type="b2602c69:ProjectViewProjectNode" />
-              <item name="content_quality_analytics" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -375,13 +194,14 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.templateLanguages.PyTemplateLanguageModulesConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\py\dev\lismo\content_quality_analytics\static\img" />
+      <recent name="F:\py\dev\lismo\content_quality_analytics\content_quality_analytics" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\py\dev\lismo\content_quality_analytics\content_quality_analytics" />
       <recent name="F:\py\dev\lismo\content_quality_analytics" />
       <recent name="F:\py\dev\lismo\content_quality_analytics\templates" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="F:\py\dev\lismo\content_quality_analytics\content_quality_analytics" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -436,12 +256,12 @@
       <workItem from="1565942889275" duration="5984000" />
       <workItem from="1566183178565" duration="12695000" />
       <workItem from="1566441554485" duration="16839000" />
-      <workItem from="1566527571548" duration="4766000" />
+      <workItem from="1566527571548" duration="5448000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41074000" />
+    <option name="totallyTimeSpent" value="41756000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -556,40 +376,6 @@
     <entry file="file://$PROJECT_DIR$/media/HTML/Page4.HTML">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/content_quality_analytics/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="215" column="18" selection-start-line="215" selection-start-column="18" selection-end-line="215" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-            <element signature="e#434#554#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/content_quality_analytics/analyzer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding>
-            <element signature="e#370#3889#0" />
-            <element signature="e#3928#17085#0" />
-            <element signature="e#17135#20887#0" />
-            <element signature="e#20926#21322#0" />
-            <element signature="e#21364#21533#0" />
-            <element signature="e#21579#21759#0" />
-            <element signature="e#21796#21984#0" />
-            <element signature="e#22024#22191#0" />
-            <element signature="e#22235#22417#0" />
-            <element signature="e#22455#23984#0" />
-            <element signature="e#24033#24382#0" />
-            <element signature="e#24431#26928#0" />
-            <element signature="e#26988#27598#0" />
-            <element signature="e#27630#27926#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/content_quality_analytics/forms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -633,8 +419,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="6" lean-forward="true" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
+        <state>
+          <caret column="22" lean-forward="true" selection-start-column="22" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content_quality_analytics/analyzer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding>
+            <element signature="e#370#3889#0" />
+            <element signature="e#3928#17085#0" />
+            <element signature="e#17135#20887#0" />
+            <element signature="e#20926#21322#0" />
+            <element signature="e#21364#21533#0" />
+            <element signature="e#21579#21759#0" />
+            <element signature="e#21796#21984#0" />
+            <element signature="e#22024#22191#0" />
+            <element signature="e#22235#22417#0" />
+            <element signature="e#22455#23984#0" />
+            <element signature="e#24033#24382#0" />
+            <element signature="e#24431#26928#0" />
+            <element signature="e#26988#27598#0" />
+            <element signature="e#27630#27926#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content_quality_analytics/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="32" column="72" lean-forward="true" selection-start-line="32" selection-start-column="72" selection-end-line="32" selection-end-column="72" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#434#554#0" />
+          </folding>
         </state>
       </provider>
     </entry>

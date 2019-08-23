@@ -54,12 +54,15 @@ def upload_file(request):
 
 
 def clear_media():
-    for file_name in os.listdir(settings.MEDIA_ROOT):
-        file_path = os.path.join(settings.MEDIA_ROOT, file_name)
-        if os.path.isfile(file_path):
-            os.unlink(file_path)
-        elif os.path.isdir(file_path):
-            shutil.rmtree(file_path)
+    if os.path.exists(settings.MEDIA_ROOT):
+        for file_name in os.listdir(settings.MEDIA_ROOT):
+            file_path = os.path.join(settings.MEDIA_ROOT, file_name)
+            if os.path.isfile(file_path):
+                os.unlink(file_path)
+            elif os.path.isdir(file_path):
+                shutil.rmtree(file_path)
+    else:
+        os.mkdir(settings.MEDIA_ROOT)
 
 
 def write_file(file, file_path):
