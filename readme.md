@@ -7,7 +7,7 @@ Local:
 
 Deployment:
 1. Upgrade apt: `sudo apt update`
-2. Install python software properties: `sudo apt install software-properties-common` 
+2. Install software properties common: `sudo apt install software-properties-common` 
 3. Add python repository: `sudo add-apt-repository ppa:jonathonf/python-3.6`
 4. Upgrade apt: `sudo apt update`
 5. Install git: `sudo apt install git`

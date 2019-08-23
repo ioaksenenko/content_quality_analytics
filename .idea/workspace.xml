@@ -63,8 +63,8 @@
         <entry file="file://$PROJECT_DIR$/readme.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="425">
-                <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+              <first_editor relative-caret-position="238">
+                <caret line="14" column="46" lean-forward="true" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="46" />
               </first_editor>
               <second_editor />
             </state>
@@ -168,7 +168,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="953" />
+    <option name="x" value="-7" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
   </component>
@@ -271,12 +271,12 @@
       <workItem from="1565942889275" duration="5984000" />
       <workItem from="1566183178565" duration="12695000" />
       <workItem from="1566441554485" duration="16839000" />
-      <workItem from="1566527571548" duration="11449000" />
+      <workItem from="1566527571548" duration="11984000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47757000" />
+    <option name="totallyTimeSpent" value="48292000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -477,8 +477,8 @@
     <entry file="file://$PROJECT_DIR$/readme.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="425">
-            <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+          <first_editor relative-caret-position="238">
+            <caret line="14" column="46" lean-forward="true" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="46" />
           </first_editor>
           <second_editor />
         </state>
