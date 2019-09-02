@@ -10,11 +10,11 @@ Deployment:
 2. Install git: `sudo apt install git`
 3. Download files from repository: `sudo git clone https://github.com/ioaksenenko/content_quality_analytics`
 4. Install python: `sudo apt install python3.6`
-    - If you have the message:        
-        "E: Unable to locate package python3.6"        
-        "E: Couldn't find any package by glob 'python3.6'"        
-        "E: Couldn't find any package by regex 'python3.6'"        
-       Run the commands:        
+    - If you have the message:
+        "E: Unable to locate package python3.6"
+        "E: Couldn't find any package by glob 'python3.6'"
+        "E: Couldn't find any package by regex 'python3.6'"
+      Run the commands:
         4.1. Install software properties common: `sudo apt install software-properties-common`
         4.2. Add python repository: `sudo add-apt-repository ppa:jonathonf/python-3.6`
         4.3. Upgrade apt: `sudo apt update`
