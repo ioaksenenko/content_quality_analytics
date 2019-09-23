@@ -37,13 +37,16 @@ def upload_file(request):
         form = forms.UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
             # clear_media()
-            tmp_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'tmp')
+            media_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key)
+            tmp_path = os.path.join(media_path, 'tmp')
             html_path = os.path.join(tmp_path, 'html')
             img_path = os.path.join(tmp_path, 'img')
+            zip_path = os.path.join(tmp_path, 'zip')
             if not os.path.exists(tmp_path):
                 os.mkdir(tmp_path)
                 os.mkdir(html_path)
                 os.mkdir(img_path)
+                os.mkdir(zip_path)
             html_files = []
             files = request.FILES.getlist('files')
             if len(files) != 0:
@@ -52,8 +55,9 @@ def upload_file(request):
                     write_file(file, file_path)
                     name, extension = os.path.splitext(file_path)
                     if re.fullmatch(r'\.(7z|ace|alz|a|arc|arj|bz2|cab|Z|cpio|deb|dms|gz|lrz|lha|lzh|lz|lzma|lzo|rpm|rar|rz|tar|xz|zip|jar|zoo)', extension, re.I):
-                        Archive(file_path).extractall(os.path.join(settings.MEDIA_ROOT, request.session.session_key))
+                        Archive(file_path).extractall(zip_path)
                         os.unlink(file_path)
+                        html_files += check_input_files(media_path, html_path, img_path, zip_path)
                     elif re.fullmatch(r'\.html', extension, re.I):
                         shutil.move(file_path, os.path.join(html_path, file.name))
                         html_files.append(file.name)
@@ -73,6 +77,79 @@ def upload_file(request):
     else:
         form = forms.UploadFileForm()
     return render(request, 'index.html', {'form': form})
+
+
+def check_input_files(media_path, html_path, img_path, zip_path):
+    html_files = []
+    for file_name in os.listdir(zip_path):
+        file_path = os.path.join(zip_path, file_name)
+        if os.path.isdir(file_path):
+            for sub_file_name in os.listdir(file_path):
+                sub_file_path = os.path.join(file_path, sub_file_name)
+                if os.path.isdir(sub_file_path):
+                    if re.fullmatch(r'html', sub_file_name, re.I):
+                        is_html = False
+                        for html_file_name in os.listdir(sub_file_path):
+                            html_file_path = os.path.join(sub_file_path, html_file_name)
+                            if os.path.isfile(html_file_path):
+                                name, extension = os.path.splitext(html_file_name)
+                                if re.fullmatch(r'\.html', extension, re.I):
+                                    shutil.move(file_path, os.path.join(media_path, file_name))
+                                    is_html = True
+                                    break
+                        if not is_html:
+                            shutil.rmtree(sub_file_path)
+                        else:
+                            break
+                    else:
+                        shutil.rmtree(sub_file_path)
+                else:
+                    name, extension = os.path.splitext(sub_file_name)
+                    if re.fullmatch(r'\.html', extension, re.I):
+                        dst = os.path.join(html_path, sub_file_name)
+                        n = 1
+                        while os.path.exists(dst):
+                            sub_file_name = name + ' (' + str(n) + ')' + extension
+                            dst = os.path.join(html_path, sub_file_name)
+                            n += 1
+                        shutil.move(sub_file_path, dst)
+                        html_files.append(sub_file_name)
+                    elif re.fullmatch(r'\.(jpg|jpeg|png)', extension, re.I):
+                        dst = os.path.join(img_path, sub_file_name)
+                        n = 1
+                        while os.path.exists(dst):
+                            sub_file_name = name + ' (' + str(n) + ')' + extension
+                            dst = os.path.join(img_path, sub_file_name)
+                            n += 1
+                        shutil.move(sub_file_path, dst)
+                    else:
+                        os.unlink(file_path)
+        else:
+            name, extension = os.path.splitext(file_name)
+            if re.fullmatch(r'\.(7z|ace|alz|a|arc|arj|bz2|cab|Z|cpio|deb|dms|gz|lrz|lha|lzh|lz|lzma|lzo|rpm|rar|rz|tar|xz|zip|jar|zoo)', extension, re.I):
+                Archive(file_path).extractall(zip_path)
+                os.unlink(file_path)
+                return check_input_files(media_path, html_path, img_path, zip_path)
+            elif re.fullmatch(r'\.html', extension, re.I):
+                dst = os.path.join(html_path, file_name)
+                n = 1
+                while os.path.exists(dst):
+                    file_name = name + ' (' + str(n) + ')' + extension
+                    dst = os.path.join(html_path, file_name)
+                    n += 1
+                shutil.move(file_path, dst)
+                html_files.append(file_name)
+            elif re.fullmatch(r'\.(jpg|jpeg|png)', extension, re.I):
+                dst = os.path.join(img_path, file_name)
+                n = 1
+                while os.path.exists(dst):
+                    file_name = name + ' (' + str(n) + ')' + extension
+                    dst = os.path.join(img_path, file_name)
+                    n += 1
+                shutil.move(file_path, dst)
+            else:
+                os.unlink(file_path)
+    return html_files
 
 
 def join(request):
