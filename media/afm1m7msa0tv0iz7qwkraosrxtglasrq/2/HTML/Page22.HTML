@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8" content="text/html" http-equiv="content-type"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full" type="text/javascript"></script>
+<link href="https://new-online.tusur.ru/theme/fdo/ims/course_style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div>
+<h2>1.5 Рекурсивные схемы</h2>
+<h3>1.5.1 Рекурсивное программирование</h3>
+<p>Среди упомянутых выше методов формализации понятия вычислимой функции метод Тьюринга – Поста основан на уточнении понятия процесса вычислений, для чего используются абстрактные «машины», описанные в точных математических терминах. Другой подход (метод Черча – Клини) основан на понятии рекурсивной функции. Рекурсивная функция задается с помощью рекурсивных определений. Рекурсивное определение позволяет связать искомое значение функции для заданных аргументов с известными значениями той же функции при некоторых других аргументах. Эта связь устанавливается с помощью универсального механизма рекурсии, дающего механическую процедуру поиска значений функции. Двум подходам к определению вычислимых функций соответствуют два метода программирования этих функций – операторное и рекурсивное программирование. При операторном методе программа представляет собой явно выписанную последовательность описаний действий гипотетической вычислительной машины (последовательность операторов, команд и т. п.).</p>
+<p>Язык Фортран – типичный представитель операторных языков. С другой стороны, рекурсивная программа – это совокупность рекурсивных определений, задающих рекурсивную функцию, для которой аргументами служат начальные данные программы, а значением – результат выполнения программы. Известный язык рекурсивного программирования – язык Лисп – предназначен для обработки символьной информации. В других языках комбинируют оба метода программирования. Так, Паскаль – операторный язык с возможностью рекурсивного программирования, предоставляемой механизмом рекурсивных процедур и функций.</p>
+<div class="example">
+<div class="ex_head">
+<div class="smile">Пример 1.17</div>
+</div>
+<p>Примером рекурсивно определяемой функции является факториальная функция <i>FACT</i>: <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mi>N</mi>
+<mi>a</mi>
+<mi>t</mi>
+<mo>→</mo>
+<mi>N</mi>
+<mi>a</mi>
+<mi>t</mi>
+</mrow>
+</mstyle>
+</math>:</p>
+<p align="center" class="program">FACT(х) = 1, если х = 0, FACT(х) = х×FACT(х-1), если х &gt; 0.</p>
+<p>Эту функцию можно запрограммировать в некотором рекурсивном языке, базирующемся на механизме рекурсивных функций языка Паскаль:</p>
+<p class="program">FACT(a),</p>
+<p class="program">FACT(х) := <b>if</b> х = 0 <b>then</b> 1 <b>else</b> х*FACT(х-1), </p>
+<p>где <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">a</mi>
+</mstyle>
+</math> – некоторое целое неотрицательное число.</p>
+<p>Вычисление функционального выражения сводится к его упрощению, т. е. выполнению всех возможных вычислений. Если в упрощенном выражении остается вхождение символа определяемой функции <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mi>F</mi>
+<mi>A</mi>
+<mi>C</mi>
+<mi>T</mi>
+</mrow>
+</mstyle>
+</math>, то осуществляется переход к новому шагу выполнения программы. На этом шаге вхождение <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mi>F</mi>
+<mi>A</mi>
+<mi>C</mi>
+<mi>T</mi>
+<mo stretchy="false">(</mo>
+<mi>m</mi>
+<mo stretchy="false">)</mo>
+</mrow>
+</mstyle>
+</math>, где <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">m</mi>
+</mstyle>
+</math> – значение внутри скобок после упрощения, заменяется левым <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mo stretchy="false">(</mo>
+<mi>m</mi>
+<mo>=</mo>
+<mn>0</mn>
+<mo stretchy="false">)</mo>
+</mrow>
+</mstyle>
+</math> или правым <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mo stretchy="false">(</mo>
+<mi>m</mi>
+<mo>&gt;</mo>
+<mn>0</mn>
+<mo stretchy="false">)</mo>
+</mrow>
+</mstyle>
+</math> функциональным выражением, в котором все вхождения х заменены на <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">m</mi>
+</mstyle>
+</math>. Упрощения продолжаются до тех пор, пока не будет получено выражение, не содержащее <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mi>F</mi>
+<mi>A</mi>
+<mi>C</mi>
+<mi>T</mi>
+</mrow>
+</mstyle>
+</math>.</p>
+</div>
+<p>Вычисление рекурсивной программы может завершиться за конечное число шагов с результатом, равным значению запрограммированной функции для заданных аргументов (начальных значений переменных), но может и продолжаться бесконечно. В последнем случае значение функции не определено.</p>
+</div>
+</body>
+</html>

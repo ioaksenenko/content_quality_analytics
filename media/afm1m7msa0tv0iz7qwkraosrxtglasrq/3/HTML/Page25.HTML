@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8" content="text/html" http-equiv="content-type"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full" type="text/javascript"></script>
+<link href="https://new-online.tusur.ru/theme/fdo/ims/course_style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div>
+<h2>1.6 Трансляция схем программ</h2>
+<h3>1.6.1 О сравнении классов схем</h3>
+<p>Любую вычислимую функцию можно запрограммировать и найти ее значения для заданных значений аргументов. При этом не требуется богатого набора программных примитивов и базовых операций: достаточно тех средств, которые моделируются стандартными схемами. Однако одни программные примитивы являются более «выразительными», чем другие. Запись алгоритмов с привлечением рекурсии короче, чем итерационное представление, но вычисления по такой программе могут потребовать больше времени и т. д. При переходе к схемам программ возникает проблема выражения одних наборов примитивов через другие. Задачи такого типа образуют сравнительную схематологию, основу которой составляют теоремы о возможности или невозможности преобразования схем из одного класса в схемы другого.</p>
+<p>Будем сравнивать классы схем, у которых базисы <i>согласованы </i>в том смысле, что множества <i>переменных</i>, базовых <i>функциональных </i>символов и предикатных символов <i>одинаковы</i> в данных базисах. Это дает возможность превращать в программы схемы из разных классов с помощью одной и той же интерпретации базисов. Например, полные базисы стандартных и рекурсивных схем согласованы, т. е. определение функциональной эквивалентности может быть обобщено на схемы из разных классов.</p>
+<div class="definition">
+<div>
+<p><i>Схема </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<msub>
+<mi>S</mi>
+<mn>1</mn>
+</msub>
+</mrow>
+</mstyle>
+</math><i> из класса </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">W</mi>
+</mstyle>
+</math><i> и схема </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<msub>
+<mi>S</mi>
+<mn>2</mn>
+</msub>
+</mrow>
+</mstyle>
+</math><i> из класса </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<msup xmlns="http://www.w3.org/1998/Math/MathML">
+<mi>W</mi>
+<mo>′</mo>
+</msup>
+</mstyle>
+</math><i> <b>функционально эквивалентны</b>, если для любой интерпретации </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">I</mi>
+</mstyle>
+</math><i> согласованных базисов классов </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">W</mi>
+</mstyle>
+</math><i> и </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<msup xmlns="http://www.w3.org/1998/Math/MathML">
+<mi>W</mi>
+<mo>′</mo>
+</msup>
+</mstyle>
+</math><i> программы </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mrow>
+<mo>(</mo>
+<mrow>
+<msub>
+<mi>S</mi>
+<mn>1</mn>
+</msub>
+<mo>,</mo>
+<mtext> </mtext>
+<mi>I</mi>
+</mrow>
+<mo>)</mo>
+</mrow>
+</mrow>
+</mstyle>
+</math> <i>и </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mrow>
+<mo>(</mo>
+<mrow>
+<msub>
+<mi>S</mi>
+<mn>2</mn>
+</msub>
+<mo>,</mo>
+<mtext> </mtext>
+<mi>I</mi>
+</mrow>
+<mo>)</mo>
+</mrow>
+</mrow>
+</mstyle>
+</math><i> или обе зацикливаются, или обе останавливаются с одним и тем же результатом.</i></p>
+</div>
+</div>
+<p>Говорят, что <i>класс схем </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">W</mi>
+</mstyle>
+</math><i> мощнее класса схем </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<msup xmlns="http://www.w3.org/1998/Math/MathML">
+<mi>W</mi>
+<mo>′</mo>
+</msup>
+</mstyle>
+</math>, или <i>класс </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<msup xmlns="http://www.w3.org/1998/Math/MathML">
+<mi>W</mi>
+<mo>′</mo>
+</msup>
+</mstyle>
+</math> <i>транслируем в класс </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">W</mi>
+</mstyle>
+</math>, если для любой схемы из <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<msup xmlns="http://www.w3.org/1998/Math/MathML">
+<mi>W</mi>
+<mo>′</mo>
+</msup>
+</mstyle>
+</math> существует эквивалентная ей схема в классе <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">W</mi>
+</mstyle>
+</math>. <i>Классы </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">W</mi>
+</mstyle>
+</math><i> и </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<msup xmlns="http://www.w3.org/1998/Math/MathML">
+<mi>W</mi>
+<mo>′</mo>
+</msup>
+</mstyle>
+</math><i> равномощны</i>, если <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<msup xmlns="http://www.w3.org/1998/Math/MathML">
+<mi>W</mi>
+<mo>′</mo>
+</msup>
+</mstyle>
+</math> мощнее <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">W</mi>
+</mstyle>
+</math> и <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">W</mi>
+</mstyle>
+</math> мощнее <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<msup xmlns="http://www.w3.org/1998/Math/MathML">
+<mi>W</mi>
+<mo>′</mo>
+</msup>
+</mstyle>
+</math>.</p>
+<p>Доказано, что класс ССП транслируем в класс РС и класс РС не транслируем в класс ССП [2, 3].</p>
+<p>Существуют некоторые классы РС, транслируемые в ССП. К ним относится класс <i>линейных унарных </i>РС, имеющих базис с единственной переменной <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%"><mi>x</mi></mstyle>
+</math> и одноместными функциональными и предикатными символами.</p>
+<div class="example">
+<div class="ex_head">
+<div class="smile">Пример 1.20</div>
+</div>
+<p>Например, линейная унарная РС</p>
+<p class="program">R<sub>S4</sub>: F(x);</p>
+<p class="program">     F(x) := <b>if </b>p(x) <b>then</b> x <b>else</b> f(x,F(g(x)))</p>
+<p>транслируема в ССП.</p>
+</div>
+</div>
+</body>
+</html>

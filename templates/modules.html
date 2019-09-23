@@ -7,6 +7,13 @@
 {% endblock %}
 {% block main %}
 <div class="container-fluid">
+    <div class="row">
+		<div class="col">
+            <div class="alert alert-info mt-3" role="alert">
+                Выберите модули, которые необходимо проанализировать.
+            </div>
+        </div>
+    </div>
 	<div class="row">
 		<div class="col">
             {% if modules|length != 0 %}
@@ -39,7 +46,7 @@
 			            	</tbody>
 			            </table>
                     </div>
-                    <button type="submit" class="btn btn-primary" id="analyze">Провести анализ</button>
+                    <button type="submit" class="btn btn-primary" id="analyze" disabled>Провести анализ</button>
                 </form>
             {% else %}
                 <div class="alert alert-danger mt-3" role="alert">

@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8" content="text/html" http-equiv="content-type"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full" type="text/javascript"></script>
+<link href="https://new-online.tusur.ru/theme/fdo/ims/course_style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div>
+<h3>1.4.4 Двоичный двухголовочный автомат</h3>
+<p>Стандартные схемы могут моделировать двухголовочные автоматы, что позволяет свести проблему пустоты этих автоматов к проблеме пустоты схем. Такое моделирование можно осуществить более простым способом, если использовать специальный класс двухголовочных автоматов, а именно класс двоичных автоматов, работающих со словами над алфавитом <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mo>{</mo>
+<mn>0,</mn>
+<mtext> </mtext>
+<mn>1</mn>
+<mo>}</mo>
+</mrow>
+</mstyle>
+</math> [4].</p>
+<div class="lemma">
+<div>
+<p>Существует алгоритм преобразования двухголовочных автоматов в двоичные двухголовочные автоматы (ДДКА), сохраняющий пустоту автоматов (построенный двоичный автомат <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<msub>
+<mi>A</mi>
+<mi>b</mi>
+</msub>
+</mrow>
+</mstyle>
+</math> пуст тогда и только тогда, когда пуст исходный автомат <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">A</mi>
+</mstyle>
+</math>).</p>
+</div>
+</div>
+<p><i>Доказательство</i>. Пусть ДКА <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">A</mi>
+</mstyle>
+</math> над алфавитом <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mi>V</mi>
+<mo>=</mo>
+<mrow>
+<mo>{</mo>
+<mrow>
+<msub>
+<mi>a</mi>
+<mn>1</mn>
+</msub>
+<mo>,</mo>
+<mtext> </mtext>
+<msub>
+<mi>a</mi>
+<mn>2</mn>
+</msub>
+<mo>,</mo>
+<mtext> </mtext>
+<mo>…</mo>
+<mo>,</mo>
+<mtext> </mtext>
+<msub>
+<mi>a</mi>
+<mi>n</mi>
+</msub>
+</mrow>
+<mo>}</mo>
+</mrow>
+</mrow>
+</mstyle>
+</math> имеет множество состояний
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<msub>
+<mi>Q</mi>
+<mi>A</mi>
+</msub>
+<mo>=</mo>
+<mrow>
+<mo>{</mo>
+<mrow>
+<msubsup>
+<mi>q</mi>
+<mn>1</mn>
+<mi>k</mi>
+</msubsup>
+<mo>,</mo>
+<mtext> </mtext>
+<msubsup>
+<mi>q</mi>
+<mn>2</mn>
+<mi>k</mi>
+</msubsup>
+<mo>,</mo>
+<mtext> </mtext>
+<mn>...,</mn>
+<mtext> </mtext>
+<msubsup>
+<mi>q</mi>
+<mi>k</mi>
+<mi>k</mi>
+</msubsup>
+</mrow>
+<mo>}</mo>
+</mrow>
+</mrow>
+</mstyle>
+</math>,
+            где верхний индекс <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mi>k</mi>
+<mo>=</mo>
+<mo>{</mo>
+<mn>1,</mn>
+<mtext> </mtext>
+<mn>2</mn>
+<mo>}</mo>
+</mrow>
+</mstyle>
+</math> определяет номер активной головки. Преобразование этого автомата в двоичный начнем с кодировки символов и слов из <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<msup>
+<mi>V</mi>
+<mo>∗</mo>
+</msup>
+</mrow>
+</mstyle>
+</math> словами в алфавите <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mo>{</mo>
+<mn>0,</mn>
+<mtext> </mtext>
+<mn>1</mn>
+<mo>}</mo>
+</mrow>
+</mstyle>
+</math> по следующему правилу:</p>
+<ul type="disc">
+<li><math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mtext>код </mtext>
+<mo stretchy="false">(</mo>
+<mo>#</mo>
+<mo stretchy="false">)</mo>
+<mo>=</mo>
+<mn>0</mn>
+</mrow>
+</mstyle>
+</math>;
+            </li>
+<li><math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mtext>код</mtext>
+<mtext> </mtext>
+<mrow>
+<mo>(</mo>
+<mrow>
+<msub>
+<mi>a</mi>
+<mi>i</mi>
+</msub>
+</mrow>
+<mo>)</mo>
+</mrow>
+<mo>=</mo>
+<mn>11</mn>
+<mo>…</mo>
+<mn>10,</mn>
+<mtext> </mtext>
+<mi>i</mi>
+<mo>=</mo>
+<mn>1,</mn>
+<mtext> </mtext>
+<mn>2,</mn>
+<mtext> </mtext>
+<mo>…</mo>
+<mo>,</mo>
+<mi>n</mi>
+</mrow>
+</mstyle>
+</math>;
+            </li>
+<li><math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mtext>код</mtext>
+<mtext> </mtext>
+<mrow>
+<mo>(</mo>
+<mrow>
+<mtext>α</mtext>
+<msub>
+<mi>a</mi>
+<mi>i</mi>
+</msub>
+</mrow>
+<mo>)</mo>
+</mrow>
+<mo>=</mo>
+<mtext>код</mtext>
+<mtext> </mtext>
+<mtext>(</mtext>
+<mtext>α</mtext>
+<mtext>)</mtext>
+<mtext> </mtext>
+<mtext>код</mtext>
+<mrow>
+<mo>(</mo>
+<mrow>
+<msub>
+<mi>a</mi>
+<mi>i</mi>
+</msub>
+</mrow>
+<mo>)</mo>
+</mrow>
+</mrow>
+</mstyle>
+</math>.
+            </li>
+</ul>
+<p>Так как символ <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mo xmlns="http://www.w3.org/1998/Math/MathML">#</mo>
+</mstyle>
+</math> кодируется нулем, то любому непустому слову на ленте автомата <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">A</mi>
+</mstyle>
+</math> соответствует двоичное слово на ленте автомата <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<msub>
+<mi>A</mi>
+<mi>b</mi>
+</msub>
+</mrow>
+</mstyle>
+</math>, оканчивающееся двумя нулями.</p>
+<p>Автомат <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">A</mi>
+</mstyle>
+</math> преобразуется в двоичный автомат <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<msub>
+<mi>A</mi>
+<mi>b</mi>
+</msub>
+</mrow>
+</mstyle>
+</math> так, как показано на графах на рисунке 1.9. Каждый фрагмент графа <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">A</mi>
+</mstyle>
+</math> (рис. 1.9, <i>а</i>) заменяется фрагментом (рис. 1.9, <i>б</i>) для <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<msub>
+<mi>A</mi>
+<mi>b</mi>
+</msub>
+</mrow>
+</mstyle>
+</math>. После замены добавляются фрагменты (рис. 1.9, <i>в</i>, <i>г</i>). Множество состояний автомата <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<msub>
+<mi>A</mi>
+<mi>b</mi>
+</msub>
+</mrow>
+</mstyle>
+</math> включает:</p>
+<ul type="disc">
+<li> все старые состояния из <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<msub>
+<mi>Q</mi>
+<mi>A</mi>
+</msub>
+</mrow>
+</mstyle>
+</math>;</li>
+<li> для каждого старого состояния <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<msubsup>
+<mi>q</mi>
+<mi>j</mi>
+<mi>k</mi>
+</msubsup>
+<mtext> </mtext>
+<mi>n</mi>
+</mrow>
+</mstyle>
+</math> новых состояний, <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">n</mi>
+</mstyle>
+</math> – число символов алфавита <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">V</mi>
+</mstyle>
+</math>;</li>
+<li> два новых состояния <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<msubsup>
+<mi>r</mi>
+<mn>1</mn>
+<mn>1</mn>
+</msubsup>
+</mrow>
+</mstyle>
+</math> и <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<msubsup>
+<mi>r</mi>
+<mn>2</mn>
+<mn>1</mn>
+</msubsup>
+</mrow>
+</mstyle>
+</math>.</li>
+</ul>
+<p align="center" class="img"><img alt="1.9" src="img\1.9.png"/></p>
+<p class="imgcaption">Рис. 1.9 – Преобразование двухголовочнго автомата</p>
+<p>Заключительными состояниями автомата <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">A</mi>
+</mstyle>
+</math> являются заключительные состояния автомата <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<msub>
+<mi>A</mi>
+<mi>b</mi>
+</msub>
+</mrow>
+</mstyle>
+</math>.</p>
+<p>Вершины <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<msub>
+<mi>S</mi>
+<mi>a</mi>
+</msub>
+</mrow>
+</mstyle>
+</math> (останов допускающий) и <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<msub>
+<mi>S</mi>
+<mi>r</mi>
+</msub>
+</mrow>
+</mstyle>
+</math> (останов отвергающий) носят на графе вспомогательный характер в графе <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<msub>
+<mi>A</mi>
+<mi>b</mi>
+</msub>
+</mrow>
+</mstyle>
+</math>. Они отмечают тот факт, что автомат прочитал два нуля подряд и остановился в заключительном состоянии (случай <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<msub>
+<mi>S</mi>
+<mi>a</mi>
+</msub>
+</mrow>
+</mstyle>
+</math>) или в незаключительном состоянии (случай <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<msub>
+<mi>S</mi>
+<mi>r</mi>
+</msub>
+</mrow>
+</mstyle>
+</math>).</p>
+<p>Легко убедиться, что автомат <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<msub>
+<mi>A</mi>
+<mi>b</mi>
+</msub>
+</mrow>
+</mstyle>
+</math> допускает двоичное слово <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">p</mi>
+</mstyle>
+</math> тогда и только тогда, когда оно является двоичным кодом слова из <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<msup>
+<mi>V</mi>
+<mo>∗</mo>
+</msup>
+</mrow>
+</mstyle>
+</math>, допускаемого автоматом <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">A</mi>
+</mstyle>
+</math>. Таким образом, из пустоты автомата <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">A</mi>
+</mstyle>
+</math> следует пустота автомата <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<msub>
+<mi>A</mi>
+<mi>b</mi>
+</msub>
+</mrow>
+</mstyle>
+</math>, и наоборот.</p>
+<div class="example">
+<div class="ex_head">
+<div class="smile">Пример 1.16</div>
+</div>
+<p>Приведем пример преобразования ДКА в ДДКА. На рисунке 1.10, <i>а</i>, приведен граф ДКА <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">A</mi>
+</mstyle>
+</math>, допускающий только те слова в алфавите <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mi>V</mi>
+<mo>=</mo>
+<mo>{</mo>
+<mi>a</mi>
+<mo>,</mo>
+<mtext> </mtext>
+<mi>b</mi>
+<mo>,</mo>
+<mtext> </mtext>
+<mi>c</mi>
+<mo>}</mo>
+</mrow>
+</mstyle>
+</math>, в которых символ <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">a</mi>
+</mstyle>
+</math> встречается не меньшее число раз, чем символы <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">b</mi>
+</mstyle>
+</math> и <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">c</mi>
+</mstyle>
+</math> вместе взятые.</p>
+<p>Заключительное состояние <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mi>R</mi>
+<mo>=</mo>
+<mrow>
+<mo>{</mo>
+<mrow>
+<msubsup>
+<mi>q</mi>
+<mn>0</mn>
+<mn>1</mn>
+</msubsup>
+</mrow>
+<mo>}</mo>
+</mrow>
+</mrow>
+</mstyle>
+</math>. На рисунке 1.10, <i>б</i> приведен граф ДДКА, построенный по автомату <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">A</mi>
+</mstyle>
+</math> (10 – код символа <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">a</mi>
+</mstyle>
+</math>, 110 – код <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">b</mi>
+</mstyle>
+</math>, 1110 – код <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">c</mi>
+</mstyle>
+</math>).</p>
+<p align="center" class="img"><img alt="1.10" src="img\1.10.png"/></p>
+<p class="imgcaption">Рис. 1.10 – Пример преобразования</p>
+</div>
+</div>
+</body>
+</html>

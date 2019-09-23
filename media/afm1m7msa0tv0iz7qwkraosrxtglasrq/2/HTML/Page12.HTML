@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8" content="text/html" http-equiv="content-type"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full" type="text/javascript"></script>
+<link href="https://new-online.tusur.ru/theme/fdo/ims/course_style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div>
+<h2>1.3 Свойства и виды стандартных схем программ</h2>
+<h3>1.3.1 Эквивалентность, тотальность, пустота, свобода</h3>
+<div class="definition">
+<div>
+<p><i>ССП <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">S</mi>
+</mstyle>
+</math> в базисе </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">B</mi>
+</mstyle>
+</math> <b><i>тотальна</i></b><i>, если для любой интерпретации </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">I</mi>
+</mstyle>
+</math><i> базиса</i> <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">B</mi>
+</mstyle>
+</math><i> программа </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mo stretchy="false">(</mo>
+<mi>S</mi>
+<mo>,</mo>
+<mtext> </mtext>
+<mi>I</mi>
+<mo stretchy="false">)</mo>
+</mrow>
+</mstyle>
+</math><i> останавливается. ССП </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">S</mi>
+</mstyle>
+</math><i> в базисе</i> <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">B</mi>
+</mstyle>
+</math><b><i> пуста</i></b><i>, если для любой интерпретации</i> <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">I</mi>
+</mstyle>
+</math><i> базиса</i> <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">B</mi>
+</mstyle>
+</math><i> программа </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mo stretchy="false">(</mo>
+<mi>S</mi>
+<mo>,</mo>
+<mtext> </mtext>
+<mi>I</mi>
+<mo stretchy="false">)</mo>
+</mrow>
+</mstyle>
+</math><i> зацикливается. Стандартные схемы </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<msub>
+<mi>S</mi>
+<mn>1</mn>
+</msub>
+</mrow>
+</mstyle>
+</math><i> и </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<msub>
+<mi>S</mi>
+<mn>2</mn>
+</msub>
+</mrow>
+</mstyle>
+</math><i> в базисе</i> <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">B</mi>
+</mstyle>
+</math><b><i> функционально эквивалентны </i></b><math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mrow>
+<mo>(</mo>
+<mrow>
+<msub>
+<mi>S</mi>
+<mn>1</mn>
+</msub>
+<mo>~</mo>
+<msub>
+<mi>S</mi>
+<mn>2</mn>
+</msub>
+</mrow>
+<mo>)</mo>
+</mrow>
+</mrow>
+</mstyle>
+</math><i>, если либо обе зацикливаются, либо обе останавливаются с одинаковым результатом, т. е. </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mi>v</mi>
+<mi>a</mi>
+<mi>l</mi>
+<mrow>
+<mo>(</mo>
+<mrow>
+<msub>
+<mi>S</mi>
+<mn>1</mn>
+</msub>
+<mo>,</mo>
+<mtext> </mtext>
+<mi>I</mi>
+</mrow>
+<mo>)</mo>
+</mrow>
+<mo>=</mo>
+<mi>v</mi>
+<mi>a</mi>
+<mi>l</mi>
+<mrow>
+<mo>(</mo>
+<mrow>
+<msub>
+<mi>S</mi>
+<mn>2</mn>
+</msub>
+<mo>,</mo>
+<mtext> </mtext>
+<mi>I</mi>
+</mrow>
+<mo>)</mo>
+</mrow>
+</mrow>
+</mstyle>
+</math><i>.</i></p>
+</div>
+</div>
+<p>Примеры тотальных (<i>а</i>), пустых (<i>б</i>) и эквивалентных (<i>в</i>, <i>г</i>) схем приведены на рисунке 1.4.</p>
+<p align="center" class="img"><img alt="1.4" src="img\1.4.png"/></p>
+<p class="imgcaption">Рис. 1.4 – Примеры схем программ</p>
+<div class="definition">
+<div>
+<p><i><b>Цепочкой стандартной схемы </b><span class="textnormal">(</span>ЦСС<span class="textnormal">)</span> называют:</i></p>
+<ol class="num_brackets" type="1">
+<li><i>конечный путь по вершинам схемы, ведущий от начальной вершины к заключительной;</i></li>
+<li><i>бесконечный путь по вершинам, начинающийся начальной вершиной схемы.</i></li>
+</ol>
+</div>
+</div>
+<p>В случае, когда вершина – распознаватель, то дополнительно указывается верхний индекс (1 или 0), определяющий 1-дугу или 0-дугу, исходящую из вершины.</p>
+<div class="example">
+<div class="ex_head">
+<div class="smile">Пример 1.9</div>
+</div>
+<p>Примеры цепочек схемы <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<msub>
+<mi>S</mi>
+<mn>1</mn>
+</msub>
+</mrow>
+</mstyle>
+</math> (рис. 1.3, <i>а</i>):</p>
+<p align="center">
+<table class="mathcenter">
+<tr>
+<td><math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mrow>
+<mo>(</mo>
+<mrow>
+<mn>0,</mn>
+<mtext> </mtext>
+<mn>1,</mn>
+<mtext> </mtext>
+<msup>
+<mn>2</mn>
+<mn>1</mn>
+</msup>
+<mo>,</mo>
+<mtext> </mtext>
+<mn>5</mn>
+</mrow>
+<mo>)</mo>
+</mrow>
+<mo>;</mo>
+<mtext> </mtext>
+<mrow>
+<mo>(</mo>
+<mrow>
+<mn>0,</mn>
+<mtext> </mtext>
+<mn>1,</mn>
+<mtext> </mtext>
+<msup>
+<mn>2</mn>
+<mn>0</mn>
+</msup>
+<mo>,</mo>
+<mtext> </mtext>
+<mn>3,</mn>
+<mtext> </mtext>
+<mn>4,</mn>
+<mtext> </mtext>
+<msup>
+<mn>2</mn>
+<mn>0</mn>
+</msup>
+<mo>,</mo>
+<mtext> </mtext>
+<mn>3,</mn>
+<mtext> </mtext>
+<mn>4,</mn>
+<mtext> </mtext>
+<msup>
+<mn>2</mn>
+<mn>1</mn>
+</msup>
+<mo>,</mo>
+<mtext> </mtext>
+<mn>5</mn>
+</mrow>
+<mo>)</mo>
+</mrow>
+<mtext> и т</mtext>
+<mtext>.</mtext>
+<mtext> </mtext>
+<mtext>д</mtext>
+<mtext>.</mtext>
+</mrow>
+</mstyle>
+</math></td>
+</tr>
+</table>
+</p>
+</div>
+<div class="definition">
+<div>
+<p><i><b>Цепочкой операторов </b><span class="textnormal">(</span>ЦО<span class="textnormal">)</span> называется последовательность операторов, метящих вершины некоторой цепочки схемы.</i></p>
+</div>
+</div>
+<div class="example">
+<div class="ex_head">
+<div class="smile">Пример 1.10</div>
+</div>
+<p>Например, для <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<msub>
+<mi>S</mi>
+<mn>1</mn>
+</msub>
+</mrow>
+</mstyle>
+</math>:</p>
+<p align="center"><math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mrow>
+<mo>(</mo>
+<mrow>
+<mstyle mathsize="normal" mathvariant="bold">
+<mi>s</mi>
+<mi>t</mi>
+<mi>a</mi>
+<mi>r</mi>
+<mi>t</mi>
+</mstyle>
+<mo stretchy="false">(</mo>
+<mi>x</mi>
+<mo stretchy="false">)</mo>
+<mo>,</mo>
+<mtext> </mtext>
+<mi>y</mi>
+<mo>:</mo>
+<mo>=</mo>
+<mi>a</mi>
+<mo>,</mo>
+<mtext> </mtext>
+<msup>
+<mi>p</mi>
+<mn>1</mn>
+</msup>
+<mo stretchy="false">(</mo>
+<mi>x</mi>
+<mo stretchy="false">)</mo>
+<mo>,</mo>
+<mtext> </mtext>
+<mstyle mathsize="normal" mathvariant="bold">
+<mi>s</mi>
+<mi>t</mi>
+<mi>o</mi>
+<mi>p</mi>
+</mstyle>
+<mo stretchy="false">(</mo>
+<mi>y</mi>
+<mo stretchy="false">)</mo>
+</mrow>
+<mo>)</mo>
+</mrow>
+</mrow>
+</mstyle>
+</math>
+                 или
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mtable xmlns="http://www.w3.org/1998/Math/MathML">
+<mtr>
+<mtd>
+<mrow>
+<mo>(</mo>
+<mrow>
+<mstyle mathsize="normal" mathvariant="bold">
+<mi>s</mi>
+<mi>t</mi>
+<mi>a</mi>
+<mi>r</mi>
+<mi>t</mi>
+</mstyle>
+<mo stretchy="false">(</mo>
+<mi>x</mi>
+<mo stretchy="false">)</mo>
+<mo>,</mo>
+<mtext> </mtext>
+<mi>y</mi>
+<mo>:</mo>
+<mo>=</mo>
+<mi>a</mi>
+<mo>,</mo>
+</mrow>
+</mrow>
+<mtext> </mtext>
+<msup>
+<mi>p</mi>
+<mn>0</mn>
+</msup>
+<mo stretchy="false">(</mo>
+<mi>x</mi>
+<mo stretchy="false">)</mo>
+<mo>,</mo>
+<mtext> </mtext>
+<mi>y</mi>
+<mo>:</mo>
+<mo>=</mo>
+<mi>g</mi>
+<mo stretchy="false">(</mo>
+<mi>x</mi>
+<mo>,</mo>
+<mtext> </mtext>
+<mi>y</mi>
+<mo stretchy="false">)</mo>
+<mo>,</mo>
+<mtext> </mtext>
+<mi>x</mi>
+<mo>:</mo>
+<mo>=</mo>
+<mi>h</mi>
+<mo stretchy="false">(</mo>
+<mi>x</mi>
+<mo stretchy="false">)</mo>
+<mo>,</mo>
+<mtext> </mtext>
+<msup>
+<mi>p</mi>
+<mn>0</mn>
+</msup>
+<mo stretchy="false">(</mo>
+<mi>x</mi>
+<mo stretchy="false">)</mo>
+<mo>,</mo>
+<mtext> </mtext>
+<mi>y</mi>
+<mo>:</mo>
+<mo>=</mo>
+<mi>g</mi>
+<mo stretchy="false">(</mo>
+<mi>x</mi>
+<mo>,</mo>
+<mtext> </mtext>
+<mi>y</mi>
+<mo stretchy="false">)</mo>
+<mo>,</mo>
+<mtext> </mtext>
+<mi>x</mi>
+<mo>:</mo>
+<mo>=</mo>
+<mi>h</mi>
+<mo stretchy="false">(</mo>
+<mi>x</mi>
+<mo stretchy="false">)</mo>
+<mo>,</mo>
+<mtext> </mtext>
+<msup>
+<mi>р</mi>
+<mn>0</mn>
+</msup>
+<mo stretchy="false">(</mo>
+<mi>x</mi>
+<mo stretchy="false">)</mo>
+<mo>,</mo>
+</mtd>
+</mtr>
+<mtr>
+<mtd>
+<mi>y</mi>
+<mo>:</mo>
+<mo>=</mo>
+<mi>g</mi>
+<mo stretchy="false">(</mo>
+<mi>x</mi>
+<mo>,</mo>
+<mtext> </mtext>
+<mi>y</mi>
+<mo stretchy="false">)</mo>
+<mo>,</mo>
+<mtext> </mtext>
+<mrow>
+<mrow>
+<mtext> </mtext>
+<mi>x</mi>
+<mo>:</mo>
+<mo>=</mo>
+<mi>h</mi>
+<mo stretchy="false">(</mo>
+<mi>x</mi>
+<mo stretchy="false">)</mo>
+<mo>,</mo>
+<mtext> </mtext>
+<mo>…</mo>
+</mrow>
+<mo>)</mo>
+</mrow><mtext> и т. д.</mtext>
+</mtd>
+</mtr>
+</mtable>
+</mstyle>
+</math>
+</p>
+</div>
+<p>Предикатные символы ЦО обозначаются так же, как вершины распознавателей в ЦСС.</p>
+<p>Пусть <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">S</mi>
+</mstyle>
+</math> – ССП в базисе <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">B</mi>
+</mstyle>
+</math>, <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">I</mi>
+</mstyle>
+</math> – некоторая его интерпретация, <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mrow>
+<mo>(</mo>
+<mrow>
+<mn>0,</mn>
+<mtext> </mtext>
+<mn>1,</mn>
+<mtext> </mtext>
+<mn>2,</mn>
+<mtext> </mtext>
+<mo>…</mo>
+<mo>,</mo>
+<mrow>
+<mrow>
+<msub>
+<mi>k</mi>
+<mn>1</mn>
+</msub>
+<mo>,</mo>
+<mtext> </mtext>
+<msub>
+<mi>k</mi>
+<mn>2</mn>
+</msub>
+<mo>,</mo>
+<mtext> </mtext>
+<msub>
+<mi>k</mi>
+<mn>3</mn>
+</msub>
+<mo>,</mo>
+<mtext> </mtext>
+<mo>…</mo>
+</mrow>
+<mo>)</mo>
+</mrow>
+</mrow>
+</mrow>
+</mrow>
+</mstyle>
+</math>
+             – последовательность меток инструкций <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">S</mi>
+</mstyle>
+</math>, выписанных в том порядке, в котором эти метки входят в конфигурации протокола выполнения программы <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mo stretchy="false">(</mo>
+<mi>S</mi>
+<mo>,</mo>
+<mtext> </mtext>
+<mi>I</mi>
+<mo stretchy="false">)</mo>
+</mrow>
+</mstyle>
+</math>. Ясно, что эта последовательность – цепочка схемы <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">S</mi>
+</mstyle>
+</math>. Считают, что интерпретация <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">I</mi>
+</mstyle>
+</math> <i>подтверждает</i> (<i>порождает</i>) эту цепочку.</p>
+<p>ЦСС в базисе <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">B</mi>
+</mstyle>
+</math> называют <i>допустимой</i>, если она подтверждается хотя бы одной интерпретацией этого базиса.</p>
+<div class="notice">
+<div>
+<p>Не всякая ЦСС является допустимой. В схеме <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<msub>
+<mi>S</mi>
+<mn>1</mn>
+</msub>
+</mrow>
+</mstyle>
+</math> (рис. 1.4, <i>a</i>) цепочки <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mrow>
+<mo>(</mo>
+<mrow>
+<mn>0,</mn>
+<mtext> </mtext>
+<mn>1,</mn>
+<mtext> </mtext>
+<msup>
+<mn>2</mn>
+<mn>0</mn>
+</msup>
+<mo>,</mo>
+<mtext> </mtext>
+<mn>5,</mn>
+<mtext> </mtext>
+<msup>
+<mn>6</mn>
+<mn>1</mn>
+</msup>
+<mo>,</mo>
+<mtext> </mtext>
+<mn>7</mn>
+</mrow>
+<mo>)</mo>
+</mrow>
+</mrow>
+</mstyle>
+</math>, <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mrow>
+<mo>(</mo>
+<mrow>
+<mn>0,</mn>
+<mtext> </mtext>
+<mn>1,</mn>
+<mtext> </mtext>
+<msup>
+<mn>2</mn>
+<mn>1</mn>
+</msup>
+<mo>,</mo>
+<mtext> </mtext>
+<mn>3,</mn>
+<mtext> </mtext>
+<msup>
+<mn>4</mn>
+<mn>0</mn>
+</msup>
+<mo>,</mo>
+<mtext> </mtext>
+<mn>7</mn>
+</mrow>
+<mo>)</mo>
+</mrow>
+</mrow>
+</mstyle>
+</math> и все другие конечные цепочки не подтверждаются ни одной интерпретацией.</p>
+</div>
+</div>
+<p>Свойство допустимости цепочек играет чрезвычайно важную роль в анализе ССП. В частности, оно определяет те случаи, когда стандартная схема свободна.</p>
+<p>ССП <i>свободна</i>, если все ее цепочки допустимы.</p>
+<div class="definition">
+<div>
+<p><b><i>Допустимая цепочка операторов</i></b> –<i> это цепочка операторов, соответствующая допустимой цепочке схемы.</i></p>
+</div>
+</div>
+<p>В тотальной схеме все допустимые цепочки (и допустимые цепочки операторов) конечны. В пустой схеме – бесконечны.</p>
+</div>
+</body>
+</html>

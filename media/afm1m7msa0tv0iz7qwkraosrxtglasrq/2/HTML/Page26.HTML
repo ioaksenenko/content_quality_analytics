@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8" content="text/html" http-equiv="content-type"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full" type="text/javascript"></script>
+<link href="https://new-online.tusur.ru/theme/fdo/ims/course_style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div>
+<h3>1.6.2 Схемы с процедурами</h3>
+<p>Схемы с процедурами строятся в объединенном базисе классов стандартных и рекурсивных схем. Они состоят из двух частей – <i>главной схемы</i> и множества <i>схем процедур</i>. Главная схема – это стандартная схема, в которой имеются операторы присваивания специального вида <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mi>x</mi>
+<mo>=</mo>
+<msup>
+<mi>F</mi>
+<mrow>
+<mo stretchy="false">(</mo>
+<mi>n</mi>
+<mo stretchy="false">)</mo>
+</mrow>
+</msup>
+<mrow>
+<mo>(</mo>
+<mrow>
+<msub>
+<mi>y</mi>
+<mn>1</mn>
+</msub>
+<mo>,</mo>
+<mtext> </mtext>
+<msub>
+<mi>y</mi>
+<mn>2</mn>
+</msub>
+<mo>,</mo>
+<mtext> </mtext>
+<msub>
+<mi>y</mi>
+<mi>n</mi>
+</msub>
+</mrow>
+<mo>)</mo>
+</mrow>
+</mrow>
+</mstyle>
+</math>, называемые <i>операторами вызова процедур</i>. Схема процедуры состоит из <i>заголовка </i>и<i> тела процедуры</i>, разделенных символом равенства. Заголовок имеет тот же вид, что и левая часть рекурсивных уравнений. Тело процедуры – это стандартная схема того же вида, что и главная схема. Заключительный оператор тела процедуры всегда одноместен <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mrow>
+<mo>(</mo>
+<mrow>
+<mstyle mathsize="normal" mathvariant="bold">
+<mi>s</mi>
+<mi>t</mi>
+<mi>o</mi>
+<mi>p</mi>
+</mstyle>
+<mo stretchy="false">(</mo>
+<mi>x</mi>
+<mo stretchy="false">)</mo>
+</mrow>
+<mo>)</mo>
+</mrow>
+</mrow>
+</mstyle>
+</math>.</p>
+<div class="example">
+<div class="ex_head">
+<div class="smile">Пример 1.21</div>
+</div>
+<p>Пример схемы с процедурами:</p>
+<table class="text">
+<tr>
+<td align="center" style="border-left: none;"><b>Главная схема</b></td>
+<td align="center" style="border-right: none;"><b>Множество схем процедур</b></td>
+</tr>
+<tr>
+<td style="border-left: none; vertical-align: top;"><span class="program" style="margin-top: none !important">
+                            (<b>start</b>(x),<br/>
+                            1:z := x,<br/>
+                            2:u := a,<br/>
+                            3:x := F(x,z,u),<br/>
+                            4:u := b,<br/>
+                            5:z := F(z,x,u)<br/>
+                            6:<b>stop</b>(z))</span></td>
+<td style="border-right: none;"><span class="program">
+                            F(y,v,w) = <b>start</b>,<br/>
+                            1:<b>if</b> p(y) <b>then</b> 2 <b>else</b> 4,<br/>
+                            2:y := h(y),<br/>
+                            3:v := G(v,w) <b>goto</b> 1,<br/>
+                            4:<b>if</b> q(w) <b>then</b> 5 <b>else</b> 6,<br/>
+                            5:y := v,<br/>
+                            6:<b>stop</b>(y))<br/>
+                            G(t,r) = (<b>start</b>,<br/>
+                            1:<b>if</b> q(r) <b>then</b> 2 <b>else</b> 3,<br/>
+                            2:t := f(t),<br/>
+                            3:<b>stop</b>(t);</span></td>
+</tr>
+</table>
+</div>
+<p>Доказано, что класс РС транслируем в класс схем с процедурами и наоборот.</p>
+</div>
+</body>
+</html>

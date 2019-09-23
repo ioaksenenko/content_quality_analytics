@@ -19,12 +19,18 @@ from . import views
 from . import settings
 from django.contrib.staticfiles.urls import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('upload/', views.upload_file, name='upload'),
-    path('analyze/', views.analyze, name='analyze')
+    path('analyze/', views.analyze, name='analyze'),
+    path('join/', views.join, name='join'),
+    path('del_last_module/', views.del_last_module, name='del_last_module'),
+    path('modules/', views.show_modules, name='show_modules'),
+    path('unload/', views.unload, name='unload'),
+    path('load/', views.load, name='load'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

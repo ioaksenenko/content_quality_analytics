@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8" content="text/html" http-equiv="content-type"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full" type="text/javascript"></script>
+<link href="https://new-online.tusur.ru/theme/fdo/ims/course_style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div>
+<h2>1.2 Стандартные схемы программ</h2>
+<h3>1.2.1 Базис класса стандартных схем программ</h3>
+<div class="definition">
+<div>
+<p><b><i>Стандартные схемы программ </i></b><span class="textnormal">(</span><i>ССП</i><span class="textnormal">)</span><i> характеризуются базисом и структурой схемы. Базис класса фиксирует символы, из которых строятся схемы, указывает их роль </i><span class="textnormal">(</span><i>переменные, функциональные символы и др.</i><span class="textnormal">)</span>,<i> задает вид выражений и операторов схем.</i></p>
+</div>
+</div>
+<p>Полный <i>базис </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">B</mi>
+</mstyle>
+</math> <i>класса стандартных схем</i> состоит из 4 непересекающихся счетных множеств символов и множества операторов – слов, построенных из этих символов [2, 3].</p>
+<p>Множества символов полного базиса:</p>
+<ol class="num_brackets" type="1">
+<li><math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mi>X</mi>
+<mo>=</mo>
+<mrow>
+<mo>{</mo>
+<mrow>
+<mi>x</mi>
+<mo>,</mo>
+<mtext> </mtext>
+<msub>
+<mi>x</mi>
+<mn>1</mn>
+</msub>
+<mo>,</mo>
+<mtext> </mtext>
+<msub>
+<mi>x</mi>
+<mn>2</mn>
+</msub>
+<mo>,</mo>
+<mtext> </mtext>
+<mo>…</mo>
+<mo>,</mo>
+<mtext> </mtext>
+<mi>y</mi>
+<mo>,</mo>
+<mtext> </mtext>
+<msub>
+<mi>y</mi>
+<mn>1</mn>
+</msub>
+<mo>,</mo>
+<mtext> </mtext>
+<msub>
+<mi>y</mi>
+<mn>2</mn>
+</msub>
+<mo>,</mo>
+<mtext> </mtext>
+<mo>…</mo>
+<mo>,</mo>
+<mtext> </mtext>
+<mi>z</mi>
+<mo>,</mo>
+<mtext> </mtext>
+<msub>
+<mi>z</mi>
+<mn>1</mn>
+</msub>
+<mo>,</mo>
+<mtext> </mtext>
+<msub>
+<mi>z</mi>
+<mn>2</mn>
+</msub>
+<mo>,</mo>
+<mtext> </mtext>
+<mo>…</mo>
+</mrow>
+<mo>}</mo>
+</mrow>
+</mrow>
+</mstyle>
+</math>
+                 – множество символов, называемых <i>переменными</i>;
+            </li>
+<li><math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mi>F</mi>
+<mo>=</mo>
+<mrow>
+<mo>{</mo>
+<mrow>
+<msup>
+<mi>f</mi>
+<mrow>
+<mo stretchy="false">(</mo>
+<mn>0</mn>
+<mo stretchy="false">)</mo>
+</mrow>
+</msup>
+<mo>,</mo>
+<msup>
+<mi>f</mi>
+<mrow>
+<mo stretchy="false">(</mo>
+<mn>1</mn>
+<mo stretchy="false">)</mo>
+</mrow>
+</msup>
+<mo>,</mo>
+<msup>
+<mi>f</mi>
+<mrow>
+<mo stretchy="false">(</mo>
+<mn>2</mn>
+<mo stretchy="false">)</mo>
+</mrow>
+</msup>
+<mo>,</mo>
+<mtext> </mtext>
+<mo>…</mo>
+<mo>,</mo>
+<msup>
+<mi>g</mi>
+<mrow>
+<mo stretchy="false">(</mo>
+<mn>0</mn>
+<mo stretchy="false">)</mo>
+</mrow>
+</msup>
+<mo>,</mo>
+<msup>
+<mi>g</mi>
+<mrow>
+<mo stretchy="false">(</mo>
+<mn>1</mn>
+<mo stretchy="false">)</mo>
+</mrow>
+</msup>
+<mo>,</mo>
+<msup>
+<mi>g</mi>
+<mrow>
+<mo stretchy="false">(</mo>
+<mn>2</mn>
+<mo stretchy="false">)</mo>
+</mrow>
+</msup>
+<mo>,</mo>
+<mtext> </mtext>
+<mo>…</mo>
+<mo>,</mo>
+<msup>
+<mi>h</mi>
+<mrow>
+<mo stretchy="false">(</mo>
+<mn>0</mn>
+<mo stretchy="false">)</mo>
+</mrow>
+</msup>
+<mo>,</mo>
+<msup>
+<mi>h</mi>
+<mrow>
+<mo stretchy="false">(</mo>
+<mn>1</mn>
+<mo stretchy="false">)</mo>
+</mrow>
+</msup>
+<mo>,</mo>
+<msup>
+<mi>h</mi>
+<mrow>
+<mo stretchy="false">(</mo>
+<mn>2</mn>
+<mo stretchy="false">)</mo>
+</mrow>
+</msup>
+<mo>,</mo>
+<mtext> </mtext>
+<mo>…</mo>
+</mrow>
+<mo>}</mo>
+</mrow>
+</mrow>
+</mstyle>
+</math>
+                 – множество <i>функциональных символов</i>; верхний символ задает <i>местность символа</i>; нульместные символы называют константами и обозначают начальными буквами латинского алфавита <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mi>a</mi>
+<mo>,</mo>
+<mtext> </mtext>
+<mi>b</mi>
+<mo>,</mo>
+<mtext> </mtext>
+<mi>c</mi>
+<mo>,</mo>
+<mtext> </mtext>
+<mo>…</mo>
+</mrow>
+</mstyle>
+</math>;
+            </li>
+<li><math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mi>P</mi>
+<mo>=</mo>
+<mrow>
+<mo>{</mo>
+<mrow>
+<msup>
+<mi>p</mi>
+<mrow>
+<mo stretchy="false">(</mo>
+<mn>0</mn>
+<mo stretchy="false">)</mo>
+</mrow>
+</msup>
+<mo>,</mo>
+<msup>
+<mi>p</mi>
+<mrow>
+<mo stretchy="false">(</mo>
+<mn>1</mn>
+<mo stretchy="false">)</mo>
+</mrow>
+</msup>
+<mo>,</mo>
+<msup>
+<mi>p</mi>
+<mrow>
+<mo stretchy="false">(</mo>
+<mn>2</mn>
+<mo stretchy="false">)</mo>
+</mrow>
+</msup>
+<mo>,</mo>
+<mtext> </mtext>
+<mo>…</mo>
+<mo>,</mo>
+<msup>
+<mi>q</mi>
+<mrow>
+<mo stretchy="false">(</mo>
+<mn>0</mn>
+<mo stretchy="false">)</mo>
+</mrow>
+</msup>
+<mo>,</mo>
+<msup>
+<mi>q</mi>
+<mrow>
+<mo stretchy="false">(</mo>
+<mn>1</mn>
+<mo stretchy="false">)</mo>
+</mrow>
+</msup>
+<mo>,</mo>
+<msup>
+<mi>q</mi>
+<mrow>
+<mo stretchy="false">(</mo>
+<mn>2</mn>
+<mo stretchy="false">)</mo>
+</mrow>
+</msup>
+<mo>,</mo>
+<mtext> </mtext>
+<mo>…</mo>
+</mrow>
+<mo>}</mo>
+</mrow>
+</mrow>
+</mstyle>
+</math>
+                 – множество <i>предикатных символов</i>; <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<msup>
+<mi>p</mi>
+<mrow>
+<mo stretchy="false">(</mo>
+<mn>0</mn>
+<mo stretchy="false">)</mo>
+</mrow>
+</msup>
+</mrow>
+</mstyle>
+</math>, <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<msup>
+<mi>q</mi>
+<mrow>
+<mo stretchy="false">(</mo>
+<mn>0</mn>
+<mo stretchy="false">)</mo>
+</mrow>
+</msup>
+</mrow>
+</mstyle>
+</math> – нульместные символы, которые называют логическими константами;
+            </li>
+<li><math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mrow>
+<mo>{</mo>
+<mrow>
+<mstyle mathsize="normal" mathvariant="bold">
+<mi>s</mi>
+<mi>t</mi>
+<mi>a</mi>
+<mi>r</mi>
+<mi>t</mi>
+</mstyle>
+<mo>,</mo>
+<mtext> </mtext>
+<mstyle mathsize="normal" mathvariant="bold">
+<mi>s</mi>
+<mi>t</mi>
+<mi>o</mi>
+<mi>p</mi>
+</mstyle>
+<mo>,</mo>
+<mtext> </mtext>
+<mo>:</mo>
+<mo>=</mo>
+<mo>,</mo>
+<mtext> </mtext>
+<mo>…</mo>
+</mrow>
+<mo>}</mo>
+</mrow>
+</mrow>
+</mstyle>
+</math>
+                 – множество специальных символов.
+                <p><i>Термами </i>(<i>функциональными выражениями</i>) называются слова, построенные из переменных, функциональных и специальных символов по следующим правилам:</p>
+</li>
+</ol>
+<ol class="num_brackets" type="1">
+<li> односимвольные слова, состоящие из переменных или констант, являются термами;</li>
+<li> слово <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mtext>τ</mtext>
+</mstyle>
+</math> вида <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<msup>
+<mi>f</mi>
+<mrow>
+<mo stretchy="false">(</mo>
+<mi>n</mi>
+<mo stretchy="false">)</mo>
+</mrow>
+</msup>
+<mrow>
+<mo>(</mo>
+<mrow>
+<msub>
+<mtext>τ</mtext>
+<mn>1</mn>
+</msub>
+<mo>,</mo>
+<msub>
+<mtext>τ</mtext>
+<mn>2</mn>
+</msub>
+<mo>,</mo>
+<mtext> </mtext>
+<mo>…</mo>
+<mo>,</mo>
+<mtext> </mtext>
+<msub>
+<mtext>τ</mtext>
+<mi>n</mi>
+</msub>
+</mrow>
+<mo>)</mo>
+</mrow>
+</mrow>
+</mstyle>
+</math>, где <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<msub>
+<mtext>τ</mtext>
+<mn>1</mn>
+</msub>
+<mo>,</mo>
+<mtext> </mtext>
+<msub>
+<mtext>τ</mtext>
+<mn>2</mn>
+</msub>
+<mo>,</mo>
+<mtext> </mtext>
+<mo>…</mo>
+<mo>,</mo>
+<mtext> </mtext>
+<msub>
+<mtext>τ</mtext>
+<mi>n</mi>
+</msub>
+</mrow>
+</mstyle>
+</math> – термы, является термом;</li>
+<li> те и только те слова, о которых говорится в п. 1 и 2, являются термами.</li>
+</ol>
+<div class="example">
+<div class="ex_head">
+<div class="smile">Пример 1.3</div>
+</div>
+<p>Примеры термов:</p>
+<p align="center">
+<table class="mathcenter">
+<tr>
+<td><math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mi>x</mi>
+<mo>,</mo>
+<mtext> </mtext>
+<msup>
+<mi>f</mi>
+<mrow>
+<mo stretchy="false">(</mo>
+<mn>0</mn>
+<mo stretchy="false">)</mo>
+</mrow>
+</msup>
+<mo>,</mo>
+<mtext> </mtext>
+<mi>a</mi>
+<mo>,</mo>
+<mtext> </mtext>
+<msup>
+<mi>f</mi>
+<mrow>
+<mo stretchy="false">(</mo>
+<mn>1</mn>
+<mo stretchy="false">)</mo>
+</mrow>
+</msup>
+<mo stretchy="false">(</mo>
+<mi>x</mi>
+<mo stretchy="false">)</mo>
+<mo>,</mo>
+<mtext> </mtext>
+<msup>
+<mi>g</mi>
+<mrow>
+<mo stretchy="false">(</mo>
+<mn>2</mn>
+<mo stretchy="false">)</mo>
+</mrow>
+</msup>
+<mrow>
+<mo>(</mo>
+<mrow>
+<mi>x</mi>
+<mo>,</mo>
+<mtext> </mtext>
+<msup>
+<mi>h</mi>
+<mrow>
+<mo stretchy="false">(</mo>
+<mn>2</mn>
+<mo stretchy="false">)</mo>
+</mrow>
+</msup>
+<mo stretchy="false">(</mo>
+<mi>y</mi>
+<mo>,</mo>
+<mtext> </mtext>
+<mi>a</mi>
+<mo stretchy="false">)</mo>
+</mrow>
+<mo>)</mo>
+</mrow>
+<mo>.</mo>
+</mrow>
+</mstyle>
+</math></td>
+</tr>
+</table>
+                 
+            </p>
+</div>
+<div class="definition">
+<div>
+<p><b><i>Тестами <span class="textnormal">(</span>логическими выражениями<span class="textnormal">)</span></i></b><i> называются логические константы и слова вида </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<msup>
+<mi>p</mi>
+<mrow>
+<mo stretchy="false">(</mo>
+<mi>n</mi>
+<mo stretchy="false">)</mo>
+</mrow>
+</msup>
+<mrow>
+<mo>(</mo>
+<mrow>
+<msub>
+<mtext>τ</mtext>
+<mn>1</mn>
+</msub>
+<mo>,</mo>
+<msub>
+<mtext>τ</mtext>
+<mn>2</mn>
+</msub>
+<mo>,</mo>
+<mtext> </mtext>
+<mo>…</mo>
+<mo>,</mo>
+<mtext> </mtext>
+<msub>
+<mtext>τ</mtext>
+<mi>n</mi>
+</msub>
+</mrow>
+<mo>)</mo>
+</mrow>
+</mrow>
+</mstyle>
+</math><i>.</i></p>
+</div>
+</div>
+<div class="example">
+<div class="ex_head">
+<div class="smile">Пример 1.4</div>
+</div>
+<p>Примеры логических выражений:</p>
+<p align="center">
+<table class="mathcenter">
+<tr>
+<td><math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<msup>
+<mi>p</mi>
+<mrow>
+<mo stretchy="false">(</mo>
+<mn>0</mn>
+<mo stretchy="false">)</mo>
+</mrow>
+</msup>
+<mo>,</mo>
+<mtext> </mtext>
+<msup>
+<mi>p</mi>
+<mrow>
+<mo stretchy="false">(</mo>
+<mn>1</mn>
+<mo stretchy="false">)</mo>
+</mrow>
+</msup>
+<mo stretchy="false">(</mo>
+<mi>x</mi>
+<mo stretchy="false">)</mo>
+<mo>,</mo>
+<mtext> </mtext>
+<msup>
+<mi>q</mi>
+<mrow>
+<mo stretchy="false">(</mo>
+<mn>3</mn>
+<mo stretchy="false">)</mo>
+</mrow>
+</msup>
+<mo stretchy="false">(</mo>
+<mi>x</mi>
+<mo>,</mo>
+<mtext> </mtext>
+<mi>y</mi>
+<mo>,</mo>
+<mtext> </mtext>
+<mi>z</mi>
+<mo stretchy="false">)</mo>
+<mo>,</mo>
+<mtext> </mtext>
+<msup>
+<mi>p</mi>
+<mrow>
+<mo stretchy="false">(</mo>
+<mn>2</mn>
+<mo stretchy="false">)</mo>
+</mrow>
+</msup>
+<mrow>
+<mo>(</mo>
+<mrow>
+<msup>
+<mi>f</mi>
+<mrow>
+<mo stretchy="false">(</mo>
+<mn>2</mn>
+<mo stretchy="false">)</mo>
+</mrow>
+</msup>
+<mo stretchy="false">(</mo>
+<mi>x</mi>
+<mo>,</mo>
+<mtext> </mtext>
+<mi>y</mi>
+<mo stretchy="false">)</mo>
+</mrow>
+<mo>)</mo>
+</mrow>
+<mo>.</mo>
+</mrow>
+</mstyle>
+</math></td>
+</tr>
+</table>
+</p>
+</div>
+<p>Допускается в функциональных и логических выражениях опускать индексы местности, если это не приводит к двусмысленности или противоречию.</p>
+<p>Множество операторов включает пять типов:</p>
+<ol class="num_brackets" type="1">
+<li><i>начальный оператор</i> – слово вида <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle mathsize="normal" mathvariant="bold">
+<mi>s</mi>
+<mi>t</mi>
+<mi>a</mi>
+<mi>r</mi>
+<mi>t</mi>
+</mstyle>
+<mrow>
+<mo>(</mo>
+<mrow>
+<msub>
+<mi>x</mi>
+<mn>1</mn>
+</msub>
+<mo>,</mo>
+<msub>
+<mi>x</mi>
+<mn>2</mn>
+</msub>
+<mo>,</mo>
+<mtext> </mtext>
+<mo>…</mo>
+<mo>,</mo>
+<msub>
+<mi>x</mi>
+<mi>k</mi>
+</msub>
+</mrow>
+<mo>)</mo>
+</mrow>
+</mrow>
+</mstyle>
+</math>, где <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mi>k</mi>
+<mo>≥</mo>
+<mn>0</mn>
+</mrow>
+</mstyle>
+</math>, а <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<msub>
+<mi>x</mi>
+<mn>1</mn>
+</msub>
+</mrow>
+</mstyle>
+</math>, <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<msub>
+<mi>x</mi>
+<mn>2</mn>
+</msub>
+</mrow>
+</mstyle>
+</math>, …, <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<msub>
+<mi>x</mi>
+<mi>k</mi>
+</msub>
+</mrow>
+</mstyle>
+</math> – переменные, называемые <i>результатом</i> этого оператора;</li>
+<li><i>заключительный оператор</i> – слово вида <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle mathsize="normal" mathvariant="bold">
+<mi>s</mi>
+<mi>t</mi>
+<mi>o</mi>
+<mi>p</mi>
+</mstyle>
+<mrow>
+<mo>(</mo>
+<mrow>
+<msub>
+<mtext>τ</mtext>
+<mn>1</mn>
+</msub>
+<mo>,</mo>
+<msub>
+<mtext>τ</mtext>
+<mn>2</mn>
+</msub>
+<mo>,</mo>
+<mo>…</mo>
+<mo>,</mo>
+<msub>
+<mtext>τ</mtext>
+<mi>n</mi>
+</msub>
+</mrow>
+<mo>)</mo>
+</mrow>
+</mrow>
+</mstyle>
+</math>, где <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mi>n</mi>
+<mo>≥</mo>
+<mn>0</mn>
+</mrow>
+</mstyle>
+</math>, а <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<msub>
+<mtext>τ</mtext>
+<mn>1</mn>
+</msub>
+<mo>,</mo>
+<msub>
+<mtext>τ</mtext>
+<mn>2</mn>
+</msub>
+<mo>,</mo>
+<mtext> </mtext>
+<mo>…</mo>
+<mo>,</mo>
+<msub>
+<mtext>τ</mtext>
+<mi>n</mi>
+</msub>
+</mrow>
+</mstyle>
+</math> – термы; вхождения переменных в термы 
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mtext>τ</mtext>
+</mrow>
+</mstyle>
+</math>
+                 называются <i>аргументами</i> этого оператора;</li>
+<li><i>оператор присваивания</i> – слово вида <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mi>x</mi>
+<mo>:</mo>
+<mo>=</mo>
+<mtext>τ</mtext>
+</mrow>
+</mstyle>
+</math>, где <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">x</mi>
+</mstyle>
+</math> – переменная (<i>результат оператора</i>), а <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mtext>τ</mtext>
+</mstyle>
+</math> – терм; вхождения переменных в термы называются <i>аргументами</i> этого оператора;</li>
+<li><i>условный оператор</i> (тест) – логическое выражение; вхождения переменных в логическое выражение называются <i>аргументами</i> этого оператора;</li>
+<li><i>оператор петли</i> – односимвольное слово <b>loop</b>.</li>
+</ol>
+<p>Среди операторов присваивания выделим случаи: когда <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mtext>τ</mtext>
+</mstyle>
+</math> – переменная, то оператор называется <i>пересылкой </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mo stretchy="false">(</mo>
+<mi>x</mi>
+<mo>:</mo>
+<mo>=</mo>
+<mi>y</mi>
+<mo stretchy="false">)</mo>
+</mrow>
+</mstyle>
+</math>,
+            и когда <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mtext>τ</mtext>
+</mstyle>
+</math> – константа, то оператор называется <i>засылкой </i><math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mo stretchy="false">(</mo>
+<mi>x</mi>
+<mo>:</mo>
+<mo>=</mo>
+<mi>a</mi>
+<mo stretchy="false">)</mo>
+</mrow>
+</mstyle>
+</math>.
+        </p>
+<p>Подклассы используют ограниченные базисы.</p>
+<div class="example">
+<div class="ex_head">
+<div class="smile">Пример 1.5</div>
+</div>
+<p>Пусть, например, подкласс <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<msub>
+<mi>Y</mi>
+<mn>1</mn>
+</msub>
+</mrow>
+</mstyle>
+</math> имеет базис</p>
+<p align="center">
+<table class="mathcenter">
+<tr>
+<td><math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mo>{</mo>
+<msub>
+<mi>x</mi>
+<mn>1</mn>
+</msub>
+<mo>,</mo>
+<mtext> </mtext>
+<msub>
+<mi>x</mi>
+<mn>2</mn>
+</msub>
+<mo>}</mo>
+<mo>,</mo>
+<mtext> </mtext>
+<mrow>
+<mo>{</mo>
+<mrow>
+<mi>a</mi>
+<mo>,</mo>
+<mtext> </mtext>
+<msup>
+<mi>f</mi>
+<mrow>
+<mo stretchy="false">(</mo>
+<mn>1</mn>
+<mo stretchy="false">)</mo>
+</mrow>
+</msup>
+</mrow>
+<mo>}</mo>
+</mrow>
+<mo>,</mo>
+<mtext> </mtext>
+<mrow>
+<mo>{</mo>
+<mrow>
+<msup>
+<mi>p</mi>
+<mrow>
+<mo stretchy="false">(</mo>
+<mn>1</mn>
+<mo stretchy="false">)</mo>
+</mrow>
+</msup>
+</mrow>
+<mo>}</mo>
+</mrow>
+<mo>,</mo>
+<mtext> </mtext>
+<mrow>
+<mo>{</mo>
+<mrow>
+<mstyle mathsize="normal" mathvariant="bold">
+<mi>s</mi>
+<mi>t</mi>
+<mi>a</mi>
+<mi>r</mi>
+<mi>t</mi>
+</mstyle>
+<mo>,</mo>
+<mtext> </mtext>
+<mstyle mathsize="normal" mathvariant="bold">
+<mi>s</mi>
+<mi>t</mi>
+<mi>o</mi>
+<mi>p</mi>
+</mstyle>
+<mo>,</mo>
+<mtext> </mtext>
+<mstyle mathsize="normal" mathvariant="bold">
+<mo stretchy="false">(</mo>
+</mstyle>
+<mo>,</mo>
+<mtext> </mtext>
+<mstyle mathsize="normal" mathvariant="bold">
+<mo stretchy="false">)</mo>
+</mstyle>
+<mo>,</mo>
+<mtext> </mtext>
+<mstyle mathsize="normal" mathvariant="bold">
+<mo>:</mo>
+<mo>=</mo>
+</mstyle>
+<mo>,</mo>
+<mtext> </mtext>
+<mstyle mathsize="normal" mathvariant="bold">
+<mo>,</mo>
+</mstyle>
+</mrow>
+<mo>}</mo>
+</mrow>
+</mrow>
+</mstyle>
+</math></td>
+</tr>
+</table>
+                 
+            </p>
+<p>и множество операторов</p>
+<p align="center">
+<table class="mathcenter">
+<tr>
+<td><math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mrow>
+<mo>{</mo>
+<mrow>
+<mstyle mathsize="normal" mathvariant="bold">
+<mi>s</mi>
+<mi>t</mi>
+<mi>a</mi>
+<mi>r</mi>
+<mi>t</mi>
+</mstyle>
+<mrow>
+<mo>(</mo>
+<mrow>
+<msub>
+<mi>x</mi>
+<mn>1</mn>
+</msub>
+<mo>,</mo>
+<mtext> </mtext>
+<msub>
+<mi>x</mi>
+<mn>2</mn>
+</msub>
+</mrow>
+<mo>)</mo>
+</mrow>
+<mo>,</mo>
+<mtext> </mtext>
+<msub>
+<mi>x</mi>
+<mn>1</mn>
+</msub>
+<mo>:</mo>
+<mo>=</mo>
+<mi>f</mi>
+<mrow>
+<mo>(</mo>
+<mrow>
+<msub>
+<mi>x</mi>
+<mn>1</mn>
+</msub>
+</mrow>
+<mo>)</mo>
+</mrow>
+<mo>,</mo>
+<mtext> </mtext>
+<msub>
+<mi>x</mi>
+<mn>2</mn>
+</msub>
+<mo>:</mo>
+<mo>=</mo>
+<mi>f</mi>
+<mrow>
+<mo>(</mo>
+<mrow>
+<msub>
+<mi>x</mi>
+<mn>2</mn>
+</msub>
+</mrow>
+<mo>)</mo>
+</mrow>
+<mo>,</mo>
+<mtext> </mtext>
+<msub>
+<mi>x</mi>
+<mn>1</mn>
+</msub>
+<mo>:</mo>
+<mo>=</mo>
+<mi>a</mi>
+<mo>,</mo>
+<mtext> </mtext>
+<msub>
+<mi>x</mi>
+<mn>2</mn>
+</msub>
+<mo>:</mo>
+<mo>=</mo>
+<mi>a</mi>
+<mo>,</mo>
+<mtext> </mtext>
+<mi>p</mi>
+<mrow>
+<mo>(</mo>
+<mrow>
+<msub>
+<mi>x</mi>
+<mn>1</mn>
+</msub>
+</mrow>
+<mo>)</mo>
+</mrow>
+<mo>,</mo>
+<mtext> </mtext>
+<mi>p</mi>
+<mrow>
+<mo>(</mo>
+<mrow>
+<msub>
+<mi>x</mi>
+<mn>2</mn>
+</msub>
+</mrow>
+<mo>)</mo>
+</mrow>
+<mo>,</mo>
+<mtext> </mtext>
+<mstyle mathsize="normal" mathvariant="bold">
+<mi>s</mi>
+<mi>t</mi>
+<mi>o</mi>
+<mi>p</mi>
+</mstyle>
+<mrow>
+<mo>(</mo>
+<mrow>
+<msub>
+<mi>x</mi>
+<mn>1</mn>
+</msub>
+<mo>,</mo>
+<mtext> </mtext>
+<msub>
+<mi>x</mi>
+<mn>2</mn>
+</msub>
+</mrow>
+<mo>)</mo>
+</mrow>
+</mrow>
+<mo>}</mo>
+</mrow>
+<mo>,</mo>
+</mrow>
+</mstyle>
+</math></td>
+</tr>
+</table>
+</p>
+<p>т. е. схемы из этого подкласса используют две переменные, константу <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mi xmlns="http://www.w3.org/1998/Math/MathML">a</mi>
+</mstyle>
+</math>, один одноместный функциональный символ, один предикатный символ и операторы указанного вида.</p>
+</div>
+</div>
+</body>
+</html>

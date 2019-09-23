@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block head %}
+	{{ block.super }}
+	<link rel="stylesheet" type="text/css" href="{% static "css/files.css" %}" />
+    <script src="{% static "js/files.js" %}"></script>
+{% endblock %}
+{% block main %}
+<div class="container-fluid">
+    <div class="row">
+		<div class="col">
+            {% if msg|length != 0 %}
+                <div class="alert alert-danger mt-3" role="alert" id="msg">
+                    {{ msg }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
+		<div class="col">
+            <div class="alert alert-info {% if msg|length == 0 %} mt-3 {% endif %}" role="alert">
+                Выберите файлы, относящиеся к одному модулю.
+            </div>
+        </div>
+    </div>
+	<div class="row">
+		<div class="col">
+            <form action="{% url 'join' %}" enctype="multipart/form-data" method="post" id="files">
+                {% csrf_token %}
+                <div class="form-group">
+                    <table class="table">
+			        	<thead class="thead-light">
+			        		<tr>
+			        			<th scope="col">#</th>
+                                <th scope="col"><button type="button" class="btn btn-link" onclick="select()">Выбрать \ Снять выбор</button></th>
+			        			<th scope="col">Название файла</th>
+			        		</tr>
+			        	</thead>
+			        	<tbody>
+			        		{% if files %}
+			        		    {% for file in files %}
+			        		        <tr>
+			        			        <th scope="row">{{ forloop.counter }}</th>
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="checked" value="{{ file }}" id="file-{{ file }}" {% if checked and file in checked %}checked{% endif %}>
+                                                <label class="form-check-label" for="file-{{ file }}"></label>
+                                                <input type="hidden" name="files" value="{{ file }}" />
+                                            </div>
+                                        </td>
+			        			        <td>{{ file }}</td>
+			        		        </tr>
+			        		    {% endfor %}
+			        		{% endif %}
+			        	</tbody>
+			        </table>
+                    <label for="module-name">Введите название модуля</label>
+                    <input type="text" class="form-control" id="module-name" name="module-name" placeholder="Название модуля" value="{% if mod_name %}{{ mod_name }}{% endif %}" required>
+                </div>
+                <button type="submit" class="btn btn-primary" id="join" disabled>Объединить в один модуль</button>
+            </form>
+		</div>
+	</div>
+</div>
+{% endblock %}

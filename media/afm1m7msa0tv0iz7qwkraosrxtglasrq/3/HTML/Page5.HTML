@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8" content="text/html" http-equiv="content-type"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full" type="text/javascript"></script>
+<link href="https://new-online.tusur.ru/theme/fdo/ims/course_style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div>
+<h3>1.1.3 Программы и схемы программ</h3>
+<p>Рассмотрим отличие программ от <i>схем программ</i> [2].</p>
+<div class="definition">
+<div>
+<p><b><i>Схемы программ</i></b> –<i> это математические модели, описывающие строение программ или, точнее, строение множества программ, где конкретные операции и функции заменены абстрактными функциональными и предикатными символами.</i></p>
+</div>
+</div>
+<div class="example">
+<div class="ex_head">
+<div class="smile">Пример 1.2</div>
+</div>
+<p>Приведем в качестве примера программы вычисления факториала <math xmlns="http://www.w3.org/1998/Math/MathML">
+<mstyle displaystyle="true" mathsize="100%">
+<mrow xmlns="http://www.w3.org/1998/Math/MathML">
+<mi>n</mi>
+<mo>!</mo>
+</mrow>
+</mstyle>
+</math> и переворачивания слов. Данный пример поясняет различие между программами и их схемой:</p>
+<table align="center" style="border-spacing: 1em 0;">
+<tr>
+<td>
+<p class="program"><b>begin</b><br/><b> integer</b> x,y;<br/>
+                             ввод(x);<br/>
+                             y:=1;<br/>
+                            L: <b>if</b> x=0 <b>then</b><br/>
+                             <b>goto</b> L1;<br/>
+                             y:=x*y;<br/>
+                             x:=x-1;<br/>
+                             <b>goto</b> L;<br/>
+                            L1: вывод(y);<br/>
+                             <b>end</b></p>
+</td>
+<td>
+<p class="program"><b>begin</b><br/>
+                             <b>string</b> x,y;<br/>
+                             ввод(x);<br/>
+                             y:=ε;<br/>
+                            L: <b>if</b> x=0 <b>then</b><br/>
+                             <b>goto</b> L1;<br/>
+                             y:=CONSCAR(x,y);<br/>
+                             x:=CDR(x);<br/>
+                             <b>goto</b> L;<br/>
+                            L1: вывод(y);<br/>
+                             <b>end</b></p>
+</td>
+<td>
+<p class="program"><b>begin</b><br/>
+                             ввод(x);<br/>
+                             y:=a;<br/>
+                            L: <b>if</b> p(x) <b>then</b><br/>
+                             <b>goto</b> L1;<br/>
+                             y:=g(x,y);<br/>
+                             x:=h(x);<br/>
+                             <b>goto</b> L;<br/>
+                            L1: вывод(y);<br/>
+                             <b>end</b></p>
+</td>
+</tr>
+</table>
+</div>
+<div class="notice">
+<div>
+<p>Функция <span class="program">CONSCAR</span> (суперпозиция функций <span class="program">CONS</span> и <span class="program">CAR</span> из языка Лисп) приписывает первую букву первого слова ко второму слову (т. е. <span class="program">CONSCAR(аб,в)=ав)</span>, а функция CDR стирает первую букву слова (т. е. <span class="program">CDR(аб)=б)</span>.</p>
+</div>
+</div>
+</div>
+</body>
+</html>

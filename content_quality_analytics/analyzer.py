@@ -84,7 +84,7 @@ def read_files(source, only_these=None):
                 all_content += mod_content
                 all_pages_number += 1
     res.insert(0, {
-        'dir_path': os.path.dirname(source),
+        'dir_path': source,
         'html': str(all_html),
         'txt': all_content,
         'pgs_num': all_pages_number
