@@ -2,22 +2,92 @@
 {% load staticfiles %}
 {% block head %}
 	{{ block.super }}
-    <script src="{% static "js/index.js" %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static "css/base.css" %}" />
 	<link rel="stylesheet" type="text/css" href="{% static "css/index.css" %}" />
+    <script src="{% static "js/base.js" %}"></script>
+    <script src="{% static "js/index.js" %}"></script>
 {% endblock %}
 {% block main %}
 <div class="container-fluid">
-	<div class="row">
-		<div class="col">
-			<form action="{% url 'upload' %}" enctype="multipart/form-data" method="post">
-                {% csrf_token %}
-                <div class="form-group">
-                    <label for="files">Загрузите html-файл(ы) или архив с html-файлами и изображениями.</label>
-                    <input type="file" class="form-control-file" id="files" name="files" multiple>
-                </div>
-                <button type="submit" class="btn btn-primary" id="send" disabled>Отправить</button>
-            </form>
+    <div class="row mt-3 align-items-center">
+		<div class="col-auto">
+			<img class="d-block mx-auto" src="{% static 'img/user.png' %}" alt="user">
 		</div>
+        <div class="col-auto d-table mr-auto">
+            <p class="m-0 p-0"><b>{{ username }}</b></p>
+            {% if is_anonymous %}
+                <a href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i> Войти в систему</a>
+            {% else %}
+                <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Выйти из системы</a>
+            {% endif %}
+        </div>
+        <div class="col-auto d-table">
+            {% if is_superuser  %}
+                <a href="{% url 'admin-settings' %}" class="d-table-cell"><h1><i class="fas fa-cog"></i></h1></a>
+            {% endif %}
+        </div>
 	</div>
+    <div class="row mt-3">
+        <div class="col">
+            <ul class="nav nav-tabs" id="system-tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="moodle-tab" data-toggle="tab" href="#tab-moodle" role="tab" aria-controls="tab-moodle" aria-selected="true">Moodle</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="loading-tab" data-toggle="tab" href="#tab-loading" role="tab" aria-controls="tab-loading" aria-selected="false">Загрузка файлов</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="system-tabs-content">
+                <div class="tab-pane fade show active p-0 m-0" id="tab-moodle" role="tabpanel" aria-labelledby="moodle-tab">
+                    <div class="container m-0 mt-3">
+                        <div class="row">
+                            <div class="col-auto">
+                                <form action="{% url 'moodle' %}" enctype="multipart/form-data" method="post">
+                                    {% csrf_token %}
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="moodle" id="online" value="online" checked>
+                                        <label class="form-check-label" for="online"><a href="https://online.tusur.ru" target="_blank">online</a></label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="moodle" id="new-online" value="new-online">
+                                        <label class="form-check-label" for="new-online"><a href="https://new-online.tusur.ru/" target="_blank">new-online</a></label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="moodle" id="sdo" value="sdo">
+                                        <label class="form-check-label" for="sdo"><a href="https://sdo.tusur.ru/" target="_blank">sdo</a></label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="moodle" id="mooc" value="mooc">
+                                        <label class="form-check-label" for="mooc"><a href="https://mooc.tusur.ru/" target="_blank">mooc</a></label>
+                                    </div>
+                                    <div class="form-group mt-3">
+                                        <label for="course-id">Идентификатор курса</label>
+                                        <input type="text" class="form-control" id="course-id" name="course-id" placeholder="696" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary" id="moodle-send">Отправить</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="tab-loading" role="tabpanel" aria-labelledby="loading-tab">
+                    <div class="container m-0 mt-3">
+                        <div class="row">
+                            <div class="col">
+		                    	<form action="{% url 'upload' %}" enctype="multipart/form-data" method="post">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                        <label for="files">Загрузите html-файл(ы) или архив с html-файлами и изображениями.</label>
+                                        <input type="file" class="form-control-file" id="files" name="files" multiple required>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary" id="loading-send">Отправить</button>
+                                </form>
+		                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

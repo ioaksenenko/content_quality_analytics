@@ -2,58 +2,79 @@
 {% load staticfiles %}
 {% block head %}
 	{{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static "css/base.css" %}" />
 	<link rel="stylesheet" type="text/css" href="{% static "css/modules.css" %}" />
+    <script src="{% static "js/base.js" %}"></script>
     <script src="{% static "js/modules.js" %}"></script>
 {% endblock %}
 {% block main %}
-<div class="container-fluid">
-    <div class="row">
-		<div class="col">
-            <div class="alert alert-info mt-3" role="alert">
-                Выберите модули, которые необходимо проанализировать.
+<div class="container-fluid mb-3 mt-3">
+    {% if modules and modules|length != 0 %}
+        <div class="row">
+	    	<div class="col">
+                <div class="alert alert-info" role="alert">
+                    Выберите файлы, которые необходимо проанализировать. Укажите тип каждого из выбранных файлов.
+                </div>
             </div>
         </div>
-    </div>
-	<div class="row">
-		<div class="col">
-            {% if modules|length != 0 %}
-                <form action="{% url 'analyze' %}" enctype="multipart/form-data" method="post" id="modules">
+	    <div class="row">
+	    	<div class="col">
+                <form action="{% url 'indicators' %}" enctype="multipart/form-data" method="post" id="modules">
                     {% csrf_token %}
                     <div class="form-group">
                         <table class="table">
-			            	<thead class="thead-light">
-			            		<tr>
-			            			<th scope="col">#</th>
+	    		        	<thead class="thead-light">
+	    		        		<tr>
+	    		        			<th scope="col">#</th>
                                     <th scope="col"><button type="button" class="btn btn-link" onclick="select()">Выбрать \ Снять выбор</button></th>
-			            			<th scope="col">Название модуля</th>
-			            		</tr>
-			            	</thead>
-			            	<tbody>
-			            		{% if modules %}
-			            		    {% for module in modules %}
-			            		        <tr>
-			            			        <th scope="row">{{ forloop.counter }}</th>
-                                            <td>
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" name="modules" value="{{ module }}" id="module-{{ module }}">
-                                                    <label class="form-check-label" for="module-{{ module }}"></label>
-                                                </div>
-                                            </td>
-			            			        <td>{{ module }}</td>
-			            		        </tr>
-			            		    {% endfor %}
-			            		{% endif %}
-			            	</tbody>
-			            </table>
+	    		        			<th scope="col">Название файла</th>
+                                    <th scope="col">Тип файла</th>
+	    		        		</tr>
+	    		        	</thead>
+	    		        	<tbody>
+                                {% for module in modules %}
+                                    <tr>
+                                        <th scope="row">{{ forloop.counter }}</th>
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="modules" value="{{ module.name }}" id="module-{{ module.name }}" checked>
+                                                <label class="form-check-label" for="module-{{ module.name }}"></label>
+                                            </div>
+                                        </td>
+                                        <td>{{ module.name }}</td>
+                                        <td>
+                                            <label for="type-{{ module.name }}" class="d-none"></label>
+                                            <select class="form-control" id="type-{{ module.name }}" name="type-{{ module.name }}">
+                                                <option value="unknown" selected>Неизвестный</option>
+                                                <option value="theory" {% if module.type == 'theory' %}selected{% endif %}>Теоретический материал</option>
+                                                <option value="self-test" {% if module.type == 'self-test' %}selected{% endif %}>Тест для самопроверки</option>
+                                                <option value="control-test" {% if module.type == 'control-test' %}selected{% endif %}>Контрольный тест</option>
+                                                <option value="exam-test" {% if module.type == 'exam-test' %}selected{% endif %}>Итоговый тест</option>
+                                                <option value="video-file" {% if module.type == 'video-file' %}selected{% endif %}>Видеофайл</option>
+                                                <option value="video-lecture" {% if module.type == 'video-lecture' %}selected{% endif %}>Видеолекция</option>
+                                                <option value="audio-file" {% if module.type == 'audio-file' %}selected{% endif %}>Аудиофайл</option>
+                                                <option value="audio-lecture" {% if module.type == 'audio-lecture' %}selected{% endif %}>Аудиолекция</option>
+                                                <option value="webinar" {% if module.type == 'webinar' %}selected{% endif %}>Вебинар</option>
+                                                <option value="presentation" {% if module.type == 'presentation' %}selected{% endif %}>Презентация</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+	    		        	</tbody>
+	    		        </table>
                     </div>
-                    <button type="submit" class="btn btn-primary" id="analyze" disabled>Провести анализ</button>
+                    <button type="submit" class="btn btn-primary" id="analyze" disabled>Далее</button>
                 </form>
-            {% else %}
+	    	</div>
+	    </div>
+    {% else %}
+        <div class="row">
+            <div class="col">
                 <div class="alert alert-danger mt-3" role="alert">
-                    {{ msg }}
+                    Ни одного модуля не обнаружено.
                 </div>
-            {% endif %}
-		</div>
-	</div>
+            </div>
+        </div>
+    {% endif %}
 </div>
 {% endblock %}

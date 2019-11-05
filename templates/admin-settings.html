@@ -1,0 +1,316 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load filters %}
+{% block head %}
+	{{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static "css/base.css" %}" />
+	<link rel="stylesheet" type="text/css" href="{% static "css/admin-settings.css" %}" />
+    <script src="{% static "js/base.js" %}"></script>
+    <script src="{% static "js/admin-settings.js" %}"></script>
+{% endblock %}
+{% block main %}
+<div class="container-fluid mb-3">
+	<div class="row mt-3 align-items-center">
+		<div class="col-auto">
+			<img class="d-block mx-auto" src="{% static 'img/user.png' %}" alt="user">
+		</div>
+        <div class="col-auto d-table mr-auto">
+            <p class="m-0 p-0"><b>{{ username }}</b></p>
+            <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Выйти из системы</a>
+        </div>
+        <div class="col-auto d-table">
+            <a href="{% url 'index' %}" class="d-table-cell"><h1><i class="far fa-arrow-alt-circle-left"></i></h1></a>
+        </div>
+	</div>
+    <div class="row mt-3">
+        <div class="col">
+            <ul class="nav nav-tabs" id="settings-tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link {% if request.GET|get:'tab' == 'scales' %}active{% endif %}" id="scales-tab" data-toggle="tab" href="#tab-scales" role="tab" aria-controls="tab-scales" aria-selected="{% if request.GET|get:'tab' == 'scales' %}true{% else %}false{% endif %}">Шкалы</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.GET|get:'tab' == 'indicators' %}active{% endif %}" id="indicators-tab" data-toggle="tab" href="#tab-indicators" role="tab" aria-controls="tab-indicators" aria-selected="{% if request.GET|get:'tab' == 'indicators' %}true{% else %}false{% endif %}">Показатели</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="settings-tabs-content">
+                <div class="tab-pane fade {% if request.GET|get:'tab' == 'scales' %}show active{% endif %} p-0 m-0" id="tab-scales" role="tabpanel" aria-labelledby="scales-tab">
+                    <div class="container m-0 mt-3">
+                        <div class="row">
+                            <div class="col">
+                                {% if scales %}
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Название шкалы</th>
+                                                <th scope="col">Тип шкалы</th>
+                                                <th scope="col">Параметры шкалы</th>
+                                                <th scope="col">Изменить шкалу</th>
+                                                <th scope="col">Удалить шкалу</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for scale in scales %}
+                                                <tr>
+                                                    <th scope="row">{{ forloop.counter }}</th>
+                                                    <td>{{ scale.name }}</td>
+                                                    <td>{% if scale.type == 'ordinal-scale' %}Порядковая шкала{% elif scale.type == 'interval-scale' %}Интервальная шкала{% else %}Неизвестный тип шкалы ({{ scale.type }}){% endif %}</td>
+                                                    <td>{{ scale.attr }}</td>
+                                                    <td class="text-center">
+                                                        <a href="#" onclick="change_scale('{{ scale.name }}')"><i class="fas fa-cog"></i></a>
+                                                        <div class="modal fade" id="modal-{{ scale.name }}" tabindex="-1" role="dialog" aria-labelledby="title-{{ scale.name }}" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="title-{{ scale.name }}">Настройка шкалы {{ scale.name }}</h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body text-left">
+                                                                        <div class="row">
+                                                                            <div class="col">
+                                                                                <div class="form-group">
+                                                                                    <h5><label for="scale-name-{{ scale.name }}">Введите название шкалы</label></h5>
+                                                                                    <input type="text" class="form-control" id="scale-name-{{ scale.name }}" name="scale-name-{{ scale.name }}" placeholder="some-scale-name" value="{{ scale.name }}" required>
+                                                                                    <div class="invalid-feedback" id="invalid-feedback-{{ scale.name }}-name">
+                                                                                        Шкала с таким именем уже существует.
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row mt-3">
+                                                                            <div class="col">
+                                                                                <h5>Выберите тип шкалы</h5>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col">
+                                                                                <div class="form-check form-check-inline">
+                                                                                    <input class="form-check-input" type="radio" name="scale-type-{{ scale.name }}" id="ordinal-scale-{{ scale.name }}" value="ordinal-scale" {% if scale.type == 'ordinal-scale' %}checked{% endif %} required>
+                                                                                    <label class="form-check-label" for="ordinal-scale-{{ scale.name }}">Порядковая шкала</label>
+                                                                                </div>
+                                                                                <div class="form-check form-check-inline">
+                                                                                    <input class="form-check-input" type="radio" name="scale-type-{{ scale.name }}" id="interval-scale-{{ scale.name }}" value="interval-scale" {% if scale.type == 'interval-scale' %}checked{% endif %} required>
+                                                                                    <label class="form-check-label" for="interval-scale-{{ scale.name }}">Интервальная шкала</label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row mt-4">
+                                                                            <div class="col">
+                                                                                <h5>Параметры шкалы</h5>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row mt-2">
+                                                                            <div class="col">
+                                                                                <label for="scale-{{ scale.name }}" class="d-none"></label>
+                                                                                <input type="range" class="custom-range" id="scale-{{ scale.name }}">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row mt-2 {% if scale.type == 'interval-scale' %}d-none{% endif %}" id="ordinal-scale-fields-{{ scale.name }}">
+                                                                            <div class="col">
+                                                                                <div class="form-group">
+                                                                                    <label for="min-val-{{ scale.name }}">Минимальное значение</label>
+                                                                                    <input type="text" class="form-control" id="min-val-{{ scale.name }}" name="min-val-{{ scale.name }}" placeholder="0" value="{% if scale.type == 'ordinal-scale' %}{{ scale.attr|json_field:'min' }}{% endif %}">
+                                                                                    <div class="invalid-feedback" id="invalid-feedback-{{ scale.name }}-min"></div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label for="max-val-{{ scale.name }}">Максимальное значение</label>
+                                                                                    <input type="text" class="form-control" id="max-val-{{ scale.name }}" name="max-val-{{ scale.name }}" placeholder="100" value="{% if scale.type == 'ordinal-scale' %}{{ scale.attr|json_field:'max' }}{% endif %}">
+                                                                                    <div class="invalid-feedback" id="invalid-feedback-{{ scale.name }}-max"></div>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label for="step-{{ scale.name }}">Шаг</label>
+                                                                                    <input type="text" class="form-control" id="step-{{ scale.name }}" name="step-{{ scale.name }}" placeholder="1" value="{% if scale.type == 'ordinal-scale' %}{{ scale.attr|json_field:'step' }}{% endif %}">
+                                                                                    <div class="invalid-feedback" id="invalid-feedback-{{ scale.name }}-step"></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row mt-2 {% if scale.type == 'ordinal-scale' %}d-none{% endif %}" id="interval-scale-fields-{{ scale.name }}">
+                                                                            <div class="col">
+                                                                                <div class="row">
+                                                                                    <div class="col">
+                                                                                        <p>Введите сетку значений:</p>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="row">
+                                                                                    <div class="col h-100">
+                                                                                        <div class="form-group h-100 w-100 p-0 m-0">
+                                                                                            <label for="value-{{ scale.name }}-0" class="d-none"></label>
+                                                                                            <input type="text" class="form-control mt-auto mb-0" id="value-{{ scale.name }}-0" name="values-{{ scale.name }}" placeholder="0" value="{% if scale.type == 'interval-scale' %}{{ scale.attr|from_json|first }}{% endif %}">
+                                                                                            <div class="invalid-feedback" id="invalid-feedback-{{ scale.name }}-0"></div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-auto p-0 m-0 h-100 mr-3 mt-1">
+                                                                                        <a href="#" class="w-100 h-100 m-0 p-0" onclick="add_field('{{ scale.name }}')"><i class="fas fa-plus-circle m-0 p-0 h-100" style="font-size: 2rem; cursor: pointer"></i></a>
+                                                                                    </div>
+                                                                                </div>
+                                                                                {% if scale.type == 'interval-scale' %}
+                                                                                    {% for field in scale.attr|from_json %}
+                                                                                        {% if forloop.counter != 1 %}
+                                                                                            <div class="row mt-3">
+                                                                                                <div class="col h-100">
+                                                                                                    <div class="form-group h-100 w-100 p-0 m-0">
+                                                                                                        <label for="value-{{ scale.name }}-{{ forloop.counter|add:-1 }}" class="d-none"></label>
+                                                                                                        <input type="text" class="form-control mt-auto mb-0" id="value-{{ scale.name }}-{{ forloop.counter|add:-1 }}" name="values-{{ scale.name }}" placeholder="0" value="{{ field }}">
+                                                                                                        <div class="invalid-feedback" id="invalid-feedback-{{ scale.name }}-{{ forloop.counter|add:-1 }}"></div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-auto p-0 m-0 h-100 mr-3 mt-1">
+                                                                                                    <a href="#" class="w-100 h-100 m-0 p-0" onclick="remove_field('value-{{ scale.name }}-{{ forloop.counter|add:-1 }}')"><i class="fas fa-minus-circle m-0 p-0 h-100" style="font-size: 2rem; cursor: pointer"></i></a>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        {% endif %}
+                                                                                    {% endfor %}
+                                                                                {% endif %}
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                                                                        <button type="button" class="btn btn-primary" id="save-scale-{{ scale.name }}" onclick="save_scale('{{ scale.name }}')">Сохранить</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="text-center"><a href="#" onclick="delete_scale('{{ scale.name }}')"><i class="fas fa-trash-alt"></i></a></td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                {% else %}
+                                    <div class="alert alert-info" role="alert">
+                                        Не существует ни одной шкалы.
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <form action="{% url 'add-scale' %}" enctype="multipart/form-data" method="get">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-primary" id="add-scale"><i class="fas fa-plus"></i> Добавить шкалу</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade {% if request.GET|get:'tab' == 'indicators' %}show active{% endif %}" id="tab-indicators" role="tabpanel" aria-labelledby="indicators-tab">
+                    <div class="container m-0 mt-3">
+                        <div class="row">
+                            <div class="col">
+                                {% if indicators %}
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Название показателя</th>
+                                                <th scope="col">Тип показателя</th>
+                                                <th scope="col">Настройка показателя</th>
+                                                <th scope="col">Удаление показателя</th>
+                                                <th scope="col">Отображение показателя</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for indicator in indicators %}
+                                                <tr>
+                                                    <th scope="row">{{ forloop.counter }}</th>
+                                                    <td>{{ indicator.name }}</td>
+                                                    <td>{% if indicator.type == 'auto-indicator' %}Автоматический{% elif indicator.type == 'expert-indicator' %}Экспертный{% else %}Неизвестный тип{% endif %}</td>
+                                                    <td class="text-center">
+                                                        <a href="#" onclick="change_indicator('{{ indicator.name }}')"><i class="fas fa-cog"></i></a>
+                                                        <div class="modal fade" id="modal-indicator-{{ indicator.name }}" tabindex="-1" role="dialog" aria-labelledby="title-{{ indicator.name }}" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="title-{{ indicator.name }}">Настройка показателя {{ indicator.name }}</h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body text-left">
+                                                                        <div class="row">
+                                                                            <div class="col">
+                                                                                <div class="form-group">
+                                                                                    <h5><label for="indicator-name-{{ indicator.name }}">Введите название показателя</label></h5>
+                                                                                    <input type="text" class="form-control" id="indicator-name-{{ indicator.name }}" name="indicator-name-{{ indicator.name }}" placeholder="some-indicator-name" value="{{ indicator.name }}" required>
+                                                                                    <div class="invalid-feedback" id="invalid-feedback-indicator-{{ indicator.name }}-name">
+                                                                                        Показатель с таким именем уже существует.
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row mt-3">
+                                                                            <div class="col">
+                                                                                <h5>Выберите тип показателя</h5>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col">
+                                                                                <div class="form-check form-check-inline">
+                                                                                    <input class="form-check-input" type="radio" name="indicator-type-{{ indicator.name }}" id="auto-indicator-{{ indicator.name }}" value="auto-indicator" {% if indicator.type == 'auto-indicator' %}checked{% endif %} required>
+                                                                                    <label class="form-check-label" for="auto-indicator-{{ indicator.name }}">Автоматический показатель</label>
+                                                                                </div>
+                                                                                <div class="form-check form-check-inline">
+                                                                                    <input class="form-check-input" type="radio" name="indicator-type-{{ indicator.name }}" id="expert-indicator-{{ indicator.name }}" value="expert-indicator" {% if scale.type == 'expert-indicator' %}checked{% endif %} required>
+                                                                                    <label class="form-check-label" for="expert-indicator-{{ indicator.name }}">Экспертный показатель</label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row mt-4">
+                                                                            <div class="col">
+                                                                                <h5>Параметры показателя</h5>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col">
+                                                                                <div class="custom-control custom-switch">
+                                                                                    <input type="checkbox" class="custom-control-input" id="indicator-show-{{ indicator.name }}" name="indicator-show-{{ indicator.name }}" {% if indicator.show %}checked{% endif %} value="{% if indicator.show %}on{% else %}off{% endif %}">
+                                                                                    <label class="custom-control-label" for="indicator-show-{{ indicator.name }}">Отображение показателя</label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row mt-2 {% if indicator.type == 'expert-indicator' %}d-none{% endif %}" id="auto-indicator-fields-{{ indicator.name }}">
+                                                                            <div class="col"></div>
+                                                                        </div>
+                                                                        <div class="row mt-2 {% if indicator.type == 'auto-indicator' %}d-none{% endif %}" id="expert-indicator-fields-{{ indicator.name }}">
+                                                                            <div class="col"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                                                                        <button type="button" class="btn btn-primary" id="save-indicator-{{ indicator.name }}" onclick="save_indicator('{{ indicator.name }}')">Сохранить</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td class="text-center"><a href="#" onclick="delete_indicator('{{ indicator.name }}')"><i class="fas fa-trash-alt"></i></a></td>
+                                                    <td class="text-center">{% if indicator.show == True %}<a href="#" onclick="hide_indicator('{{ indicator.name }}')"><i class="fas fa-eye"></i></a>{% else %}<a href="#" onclick="show_indicator('{{ indicator.name }}')"><i class="fas fa-eye-slash"></i></a>{% endif %}</td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                {% else %}
+                                    <div class="alert alert-info" role="alert">
+                                        Не существует ни одного показателя.
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <form action="{% url 'add-indicator' %}" enctype="multipart/form-data" method="get">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-primary" id="add-indicator"><i class="fas fa-plus"></i> Добавить показатель</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

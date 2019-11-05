@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block head %}
+	{{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static "css/base.css" %}" />
+	<link rel="stylesheet" type="text/css" href="{% static "css/add-scale.css" %}" />
+    <script src="{% static "js/base.js" %}"></script>
+    <script src="{% static "js/add-scale.js" %}"></script>
+{% endblock %}
+{% block main %}
+<div class="container-fluid">
+	<div class="row mt-3 align-items-center">
+		<div class="col-auto">
+			<img class="d-block mx-auto" src="{% static 'img/user.png' %}" alt="user">
+		</div>
+        <div class="col-auto d-table mr-auto">
+            <p class="m-0 p-0"><b>{{ username }}</b></p>
+            <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Выйти из системы</a>
+        </div>
+        <div class="col-auto d-table">
+            <a href="{% url 'admin-settings' %}" class="d-table-cell"><h1><i class="far fa-arrow-alt-circle-left"></i></h1></a>
+        </div>
+	</div>
+    <div class="row mb-5 mt-5">
+        <div class="col offset-1">
+            <h1 class="text-left">Добавление шкалы</h1>
+        </div>
+    </div>
+    <form action="{% url 'add-scale' %}" enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-auto offset-1">
+                <div class="form-group">
+                    <h5><label for="scale-name">Введите название шкалы</label></h5>
+                    <input type="text" class="form-control" id="scale-name" name="scale-name" placeholder="some-scale-name" required>
+                    <div class="invalid-feedback">
+                        Шкала с таким именем уже существует.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col offset-1">
+                <h5>Выберите тип шкалы</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col offset-1">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="scale-type" id="ordinal-scale" value="ordinal-scale" required>
+                    <label class="form-check-label" for="ordinal-scale">Порядковая шкала</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="scale-type" id="interval-scale" value="interval-scale" required>
+                    <label class="form-check-label" for="interval-scale">Интервальная шкала</label>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col offset-1">
+                <h5>Параметры шкалы</h5>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-2 offset-1">
+                <label for="scale" class="d-none"></label>
+                <input type="range" class="custom-range" id="scale">
+            </div>
+        </div>
+        <div class="row mt-2 d-none" id="ordinal-scale-fields">
+            <div class="col-2 offset-1">
+                <div class="form-group">
+                    <label for="min-val">Минимальное значение</label>
+                    <input type="text" class="form-control" id="min-val" name="min-val" placeholder="0">
+                </div>
+                <div class="form-group">
+                    <label for="max-val">Максимальное значение</label>
+                    <input type="text" class="form-control" id="max-val" name="max-val" placeholder="100">
+                </div>
+                <div class="form-group">
+                    <label for="step">Шаг</label>
+                    <input type="text" class="form-control" id="step" name="step" placeholder="1">
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2 d-none" id="interval-scale-fields">
+            <div class="col offset-1">
+                <div class="row">
+                    <div class="col-2">
+                        <p>Введите сетку значений:</p>
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-2 h-100">
+                        <div class="form-group h-100 w-100 p-0 m-0">
+                            <label for="value-0" class="d-none"></label>
+                            <input type="text" class="form-control mt-auto mb-0" id="value-0" name="values" placeholder="0">
+                        </div>
+                    </div>
+                    <div class="col-auto p-0 m-0 h-100">
+                        <a href="#" class="w-100 h-100 m-0 p-0" onclick="add_field()"><i class="fas fa-plus-circle m-0 p-0 h-100" style="font-size: 2rem; cursor: pointer"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary mt-5 d-block offset-1" id="add-scale"><i class="fas fa-sliders-h"></i> Добавить</button>
+    </form>
+</div>
+{% endblock %}

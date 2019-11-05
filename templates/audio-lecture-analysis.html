@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load filters %}
+{% block head %}
+	{{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static "css/base.css" %}" />
+	<link rel="stylesheet" type="text/css" href="{% static "css/audio-lecture-analysis.css" %}" />
+    <script src="{% static "js/base.js" %}"></script>
+    <script src="{% static "js/audio-lecture-analysis.js" %}"></script>
+{% endblock %}
+{% block main %}
+<div class="container-fluid mt-3 mb-3">
+	<div class="row">
+		<div class="col">
+            {% if modules|length > 0 %}
+                <ul class="nav nav-tabs" id="modules-tabs" role="tablist">
+                    {% if modules %}
+                        {% for name, extension, src in modules %}
+                            <li class="nav-item">
+                                <a class="nav-link {% if forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if forloop.counter == 1 %} true {% else %} false {% endif %}">Анализ видео {{ name }}</a>
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+                <div class="tab-content" id="modules-tabs-content">
+                    {% for name, extension, src in modules %}
+                        <div class="tab-pane fade {% if forloop.counter == 1 %} show active {% endif %}" id="tab-{{ name }}" role="tabpanel" aria-labelledby="{{ name }}-tab">
+                            <div class="container">
+                                <div class="row mt-3 mb-3">
+                                    <div class="col-auto d-block mx-auto">
+                                        <audio controls>
+                                            <source src="{{ src }}" type="audio/{{ extension }}">
+                                        </audio>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 mt-3">
+                                    <div class="col">
+                                        <h1 class="text-center">Вопросы эксперту</h1>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 mt-3">
+                                    <div class="col">
+                                        <h3>Степень охвата элементов курса учебным аудио?</h3>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="50" aria-label="percent" aria-describedby="percent" name="coverage">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text" id="percent">%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 mt-3">
+                                    <div class="col">
+                                        <h3>Распределение учебного аудио по темам и разделам курса.</h3>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <table class="table">
+			                            	<thead class="thead-light">
+			                            		<tr>
+			                            			<th scope="col">Название раздела</th>
+			                            			<th scope="col">Процент аудио, соответствующий данному разделу учебного курса</th>
+			                            		</tr>
+			                            	</thead>
+			                            	<tbody>
+			                            		{% if sections %}
+			                            		    {% for section in sections %}
+			                            		        <tr>
+			                            			        <th scope="row">{{ section }}</th>
+                                                            <td>
+                                                                <div class="input-group">
+                                                                    <input type="text" class="form-control" id="dist-section-{{ forloop.counter }}" placeholder="50" aria-label="" aria-describedby="percent-section-{{ forloop.counter }}" name="dist-section-{{ forloop.counter }}">
+                                                                    <div class="input-group-append">
+                                                                        <span class="input-group-text" id="percent-section-{{ forloop.counter }}">%</span>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+			                            		        </tr>
+			                            		    {% endfor %}
+			                            		{% endif %}
+			                            	</tbody>
+			                            </table>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 mt-3">
+                                    <div class="col">
+                                        <h3>Общий объем аудиолекций по отношению ко всему курсу, выраженный в часах</h3>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="72" aria-label="hours" aria-describedby="hours" name="hours">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text" id="hours">hh</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 mt-3">
+                                    <div class="col">
+                                        <h3>Система навигации и поиска в аудиолекиях?</h3>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="has-navigation" name="has-navigation">
+                                            <label class="custom-control-label" for="has-navigation">Да / Нет</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="alert alert-danger" role="alert">
+                    Ни одной аудиолекции не обнаружено.
+                </div>
+            {% endif %}
+            <form action="{% url 'webinar-analysis' %}" enctype="multipart/form-data" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary mx-auto d-block" id="doexpans">Перейти к анализу вебинаров</button>
+            </form>
+		</div>
+	</div>
+</div>
+{% endblock %}

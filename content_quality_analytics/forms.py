@@ -12,3 +12,7 @@ class Join(forms.Form):
 
 class Analyze(forms.Form):
     checkbox = forms.CheckboxInput()
+
+
+class TestingAnalysis(forms.Form):
+    input = forms.TextInput()

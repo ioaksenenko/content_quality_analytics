@@ -1,6 +1,7 @@
 $(document).ready(function () {
-    $(window).on('unload', function() {
-        let csrftoken = $("[name=csrfmiddlewaretoken]").val();
+    $(window).on('beforeunload', function() {
+        let csrftoken = Cookies.get('csrftoken');
+        console.log(csrftoken);
         $.ajaxSetup({
             beforeSend: function (xhr, settings) {
                 if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
@@ -21,7 +22,7 @@ $(document).ready(function () {
     });
 
     $(window).on('load', function() {
-        let csrftoken = $("[name=csrfmiddlewaretoken]").val();
+        let csrftoken = Cookies.get('csrftoken');
         $.ajaxSetup({
             beforeSend: function (xhr, settings) {
                 if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
@@ -43,6 +44,5 @@ $(document).ready(function () {
 });
 
 function csrfSafeMethod(method) {
-    // these HTTP methods do not require CSRF protection
     return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
 }

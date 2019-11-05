@@ -93,33 +93,33 @@ def read_files(source, only_these=None):
     return res
 
 
-def text_characteristics(file):
-    log_path = os.path.join(settings.BASE_DIR, 'log')
-    if not os.path.exists(log_path):
-        os.mkdir(log_path)
-    dir_name = os.path.basename(os.path.dirname(file["dir_path"]))
-    log_path = os.path.join(log_path, dir_name)
-    if not os.path.exists(log_path):
-        os.mkdir(log_path)
-    log_name = os.path.basename(file["dir_path"])
-    log_path = os.path.join(log_path, log_name + '.log')
-    logger = logging.getLogger(log_name)
-    logger.setLevel(logging.INFO)
-    handler = logging.FileHandler(log_path, mode='w', encoding='utf-8')
-    handler.setLevel(logging.INFO)
-    logger.addHandler(handler)
+def get_words_number(logger, ru_norm_words, ru_uniq_norm_words, en_norm_words, en_uniq_norm_words):
+    ru_words_number = len(ru_norm_words)
+    ru_uniq_words_number = len(ru_uniq_norm_words)
+    logger.info(f'Russian words number: {ru_words_number}')
+    logger.info(f'Russian unique words number: {ru_uniq_words_number}')
+    en_words_number = len(en_norm_words)
+    en_uniq_words_number = len(en_uniq_norm_words)
+    logger.info(f'English words number: {en_words_number}')
+    logger.info(f'English unique words number: {en_uniq_words_number}')
+    total_words_number = ru_words_number + en_words_number
+    total_uniq_words_number = ru_uniq_words_number + en_uniq_words_number
+    logger.info(f'Total words number: {total_words_number}')
+    logger.info(f'Total unique words number: {en_uniq_words_number}')
+    return ru_words_number, ru_uniq_words_number, en_words_number, en_uniq_words_number, total_words_number, total_uniq_words_number
 
-    logger.info(f'Text characteristics for {file["dir_path"]}:')
 
-    res = {}
+def information_richness(logger, new_concepts_number, total_uniq_words_number, res):
+    inf_saturation = (new_concepts_number / total_uniq_words_number) * 100
+    res['inf_saturation'] = round(inf_saturation, 2)
+    logger.info(f'Information saturation: {res["inf_saturation"]}')
 
-    soup = bs4.BeautifulSoup(file['html'], 'html.parser')
 
+def get_new_concepts_number(logger, soup, res):
     logger.info('The calculation of new concepts number...')
     start = time()
 
     italic_elements = soup.find_all('i')
-
     definitions = soup.find_all('div', 'definition')
 
     buf = []
@@ -143,135 +143,22 @@ def text_characteristics(file):
 
     new_concepts_number += len(buf)
 
-    res['new_concepts_number'] = new_concepts_number
     finish = time()
     logger.info(f'New concepts number: {new_concepts_number}')
     logger.info(f'Time spent: {finish - start}')
+    res['new_concepts_number'] = new_concepts_number
+    return new_concepts_number
 
-    txt = file['txt']
 
-    logger.info('Partitioning into tokens...')
-    start = time()
-    tokenizer = RegexpTokenizer(r'[a-zA-Zа-яА-Я-]+')
-    tockens = list(map(lambda x: x.lower(), tokenizer.tokenize(txt)))
-    finish = time()
-    logger.info(f'Tockens: {tockens}')
-    logger.info(f'Time spent: {finish - start}')
-
-    morph = pymorphy2.MorphAnalyzer()
-    logger.info('Parsing words...')
-    start = time()
-    words_objects = [morph.parse(tocken)[0] for tocken in tockens]
-    finish = time()
-    logger.info(f'Words objects: {words_objects}')
-    logger.info(f'Time spent: {finish - start}')
-
-    logger.info('Deletion of non-existent words...')
-    start = time()
-    filtered_words_objects = list(filter(lambda x: x.tag.POS is not None, words_objects))
-    finish = time()
-    logger.info(f'Filtered words objects: {filtered_words_objects}')
-    logger.info(f'Time spent: {finish - start}')
-
-    logger.info('Normalization of words...')
-    start = time()
-    norm_words = list([word.normal_form for word in filtered_words_objects])
-    # unic_norm_words = list(sorted(set(norm_words)))
-    finish = time()
-    logger.info(f'Normalized russian words: {norm_words}')
-    # logger.info(f'Unique normalized russian words: {unic_norm_words}')
-    logger.info(f'Time spent: {finish - start}')
-
-    ru_norm_words = []
-    en_norm_words = []
-
-    logger.info('Separation into Russian and English normal words...')
-    start = time()
-    for word in norm_words:
-        if re.fullmatch(r'[a-z0-9-/]+', word):
-            en_norm_words.append(word)
-        else:
-            ru_norm_words.append(word)
-    res['ru_norm_words'] = ru_norm_words
-    res['en_norm_words'] = en_norm_words
-    ru_uniq_norm_words = list(sorted(set(ru_norm_words)))
-    en_uniq_norm_words = list(sorted(set(en_norm_words)))
-    res['ru_uniq_norm_words'] = ru_uniq_norm_words
-    res['en_uniq_norm_words'] = en_uniq_norm_words
-    finish = time()
-    logger.info(f'Russian normal words: {ru_norm_words}')
-    logger.info(f'Russian unique normal words: {ru_uniq_norm_words}')
-    logger.info(f'English normal words: {en_norm_words}')
-    logger.info(f'English unique normal words: {en_uniq_norm_words}')
-    logger.info(f'Time spent: {finish - start}')
-
-    logger.info('Getting russian and english stop words...')
-    start = time()
-    ru_stop_words = set(nltk.corpus.stopwords.words('russian'))
-    en_stop_words = set(nltk.corpus.stopwords.words('english'))
-    finish = time()
-    logger.info(f'Russian stop words: {ru_stop_words}')
-    logger.info(f'English stop words: {en_stop_words}')
-    logger.info(f'Time spent: {finish - start}')
-
-    logger.info('Removal of Russian and English stop words...')
-    start = time()
-    ru_filtered_words = [word for word in ru_norm_words if word not in ru_stop_words]
-    en_filtered_words = [word for word in en_norm_words if word not in en_stop_words]
-    finish = time()
-    logger.info(f'Russian filtered words: {ru_filtered_words}')
-    logger.info(f'English filtered words: {en_filtered_words}')
-    logger.info(f'Time spent: {finish - start}')
-
-    res['ru_filtered_words'] = ru_filtered_words
-    res['en_filtered_words'] = en_filtered_words
-
-    logger.info('Calculation of the stop words number in the text...')
-    start = time()
-    ru_stop_words_number = len(list(set(ru_norm_words))) - len(list(set(ru_filtered_words)))
-    en_stop_words_number = len(list(set(en_norm_words))) - len(list(set(en_filtered_words)))
-    finish = time()
-    logger.info(f'Russian stop words number: {ru_stop_words_number}')
-    logger.info(f'English stop words number: {en_stop_words_number}')
-    logger.info(f'Time spent: {finish - start}')
-
-    """
-    logger.info('Normalization of English words...')
-    start = time()
-    lemmatizer = nltk.stem.WordNetLemmatizer()
-    en_norm_words = list([lemmatizer.lemmatize(word) for word in en_filtered_words])
-    en_unic_norm_words = list(sorted(set(en_norm_words)))
-    res['en_norm_words'] = en_norm_words
-    res['en_unic_norm_words'] = en_unic_norm_words
-    finish = time()
-    logger.info(f'Normalized English words: {en_norm_words}')
-    logger.info(f'Unique normalized English words: {en_unic_norm_words}')
-    logger.info(f'Time spent: {finish - start}')
-    """
-
-    ru_words_number = len(ru_norm_words)
-    ru_uniq_words_number = len(ru_uniq_norm_words)
-    logger.info(f'Russian words number: {ru_words_number}')
-    logger.info(f'Russian unique words number: {ru_uniq_words_number}')
-    en_words_number = len(en_norm_words)
-    en_uniq_words_number = len(en_uniq_norm_words)
-    logger.info(f'English words number: {en_words_number}')
-    logger.info(f'English unique words number: {en_uniq_words_number}')
-    total_words_number = ru_words_number + en_words_number
-    total_uniq_words_number = ru_uniq_words_number + en_uniq_words_number
-    logger.info(f'Total words number: {total_words_number}')
-    logger.info(f'Total unique words number: {en_uniq_words_number}')
-
-    inf_saturation = (new_concepts_number / total_uniq_words_number) * 100
-    res['inf_saturation'] = round(inf_saturation, 2)
-    logger.info(f'Information saturation: {res["inf_saturation"]}')
-
+def abstractness(logger, ru_norm_words, total_uniq_words_number, res):
     logger.info('Getting a list of abstract words...')
     start = time()
     abstract_words = list(
         filter(
             lambda x:
-            re.fullmatch(r'.*(ость|есть|мость|ность|нность|емость|енность|ие|ье|ание|изм|ура|ано|ота|еств|ество|ет|ета|изн|изна|овизна|ин|ина|щин|щина|чин|чина|льщин|льщина|честв|чество|ств|ство|овств|овство|ничеств|ничество|тельств|тельство|енств|енство|шеств|шество|ур|ни|ние|нь|нье|ени|ение|тие|тье|овк|овка|еж|ёж|ежк|ежка|ёжк|ёжка|б|ба|об|оба|еб|еба|ёб|ёба|аци|ация|яци|яция|фукаци|фукация|инфикаци|инфикация|аж|от|н|ня|отн|отня|ын|ыня|ев|ева|знь|ьё|ьо|ец|ок|ёк|чик|ик|иц|ица|к|ка|инк|инка|ушк|ушка|очк|очка|юшк|юшка|ушко|юшко|ышк|ышко|ишк|ишка|ишко|оньк|онька|еньк|енька|онк|онка|ёнк|ёнка|ц|це|цо|ице|ецо|ца|ашк|ашка|ищ|ище|ища|очек|ечк|ечко|ушек|ышек)', x),
+            re.fullmatch(
+                r'.*(ость|есть|мость|ность|нность|емость|енность|ие|ье|ание|изм|ура|ано|ота|еств|ество|ет|ета|изн|изна|овизна|ин|ина|щин|щина|чин|чина|льщин|льщина|честв|чество|ств|ство|овств|овство|ничеств|ничество|тельств|тельство|енств|енство|шеств|шество|ур|ни|ние|нь|нье|ени|ение|тие|тье|овк|овка|еж|ёж|ежк|ежка|ёжк|ёжка|б|ба|об|оба|еб|еба|ёб|ёба|аци|ация|яци|яция|фукаци|фукация|инфикаци|инфикация|аж|от|н|ня|отн|отня|ын|ыня|ев|ева|знь|ьё|ьо|ец|ок|ёк|чик|ик|иц|ица|к|ка|инк|инка|ушк|ушка|очк|очка|юшк|юшка|ушко|юшко|ышк|ышко|ишк|ишка|ишко|оньк|онька|еньк|енька|онк|онка|ёнк|ёнка|ц|це|цо|ице|ецо|ца|ашк|ашка|ищ|ище|ища|очек|ечк|ечко|ушек|ышек)',
+                x),
             ru_norm_words
         )
     )
@@ -289,6 +176,8 @@ def text_characteristics(file):
     res['abstractness'] = round(abstractness, 2)
     logger.info(f'Text abstractness: {res["abstractness"]}')
 
+
+def readability(logger, ru_uniq_norm_words, ru_uniq_words_number, txt, res):
     logger.info('Splitting text into sentences...')
     start = time()
     sent_tockens = nltk.tokenize.sent_tokenize(txt)
@@ -311,14 +200,19 @@ def text_characteristics(file):
     logger.info(f'Compound words number: {compound_words_number}')
     logger.info(f'Time spent: {finish - start}')
 
-    ganning_index = 0.4 * (0.78 * ru_uniq_words_number / sent_number + 100 * compound_words_number / ru_uniq_words_number)
+    ganning_index = 0.4 * (0.78 * ru_uniq_words_number / sent_number +
+                           100 * compound_words_number / ru_uniq_words_number)
     res['ganning_index'] = round(ganning_index, 2)
     logger.info(f'Text readability: {res["ganning_index"]}')
 
+
+def wateriness(logger, ru_stop_words_number, en_stop_words_number, total_words_number, res):
     wateriness = ((ru_stop_words_number + en_stop_words_number) / total_words_number) * 100
     res['wateriness'] = round(wateriness, 2)
     logger.info(f'Text wateriness: {res["wateriness"]}')
 
+
+def keyword_density(logger, ru_norm_words, en_norm_words, ru_uniq_norm_words, en_uniq_norm_words,  res):
     logger.info('Calculation of frequencies of Russian and English words...')
     start = time()
     ru_frequencies = [math.sqrt(ru_norm_words.count(word)) for word in ru_uniq_norm_words]
@@ -332,42 +226,51 @@ def text_characteristics(file):
     res['density'] = round(density, 2)
     logger.info(f'Text density: {res["density"]}')
 
+
+def text_creolization(logger, indicators, soup, txt, res):
     logger.info('Calculation of textual characterization...')
     start = time()
     creolized_text_volume = 0
-    bg_creolization = soup.find_all(['span', 'p', 'div'], {'style': re.compile(r'.*background-image: .+')})
-    for element in bg_creolization:
-        creolized_text_volume += len(''.join(re.split(r'<[^>]+>', str(element))))
-    italics_creolization = soup.find_all('i')
-    for element in italics_creolization:
-        creolized_text_volume += len(''.join(re.split(r'<[^>]+>', str(element))))
-    bold_creolization = soup.find_all('b')
-    for element in bold_creolization:
-        creolized_text_volume += len(''.join(re.split(r'<[^>]+>', str(element))))
-    underline_creolization = soup.find_all('u')
-    for element in underline_creolization:
-        creolized_text_volume += len(''.join(re.split(r'<[^>]+>', str(element))))
-    border_creolization = soup.find_all(
-        ['span', 'p', 'div'],
-        {'style': re.compile(r'.*border(-left|-right|-top|-bottom)?: .+')}
-    )
-    for element in border_creolization:
-        creolized_text_volume += len(''.join(re.split(r'<[^>]+>', str(element))))
-    pictogram_creolization = soup.find_all('div', {'class': ['definition', 'ex_head', 'cn_head']})
-    for element in pictogram_creolization:
-        creolized_text_volume += len(''.join(re.split(r'<[^>]+>', str(element))))
-    link_creolization = soup.find_all('a')
-    for element in link_creolization:
-        creolized_text_volume += len(''.join(re.split(r'<[^>]+>', str(element))))
-    creolization_vector = [
-        len(bg_creolization),
-        len(italics_creolization),
-        len(bold_creolization),
-        len(underline_creolization),
-        len(border_creolization),
-        len(pictogram_creolization),
-        len(link_creolization)
-    ]
+    creolization_vector = [0, 0, 0, 0, 0, 0, 0]
+    if 'creolization_background_color' in indicators:
+        bg_creolization = soup.find_all(['span', 'p', 'div'], {'style': re.compile(r'.*background-image: .+')})
+        for element in bg_creolization:
+            creolized_text_volume += len(''.join(re.split(r'<[^>]+>', str(element))))
+        creolization_vector[0] = len(bg_creolization)
+    if 'creolization_italics' in indicators:
+        italics_creolization = soup.find_all('i')
+        for element in italics_creolization:
+            creolized_text_volume += len(''.join(re.split(r'<[^>]+>', str(element))))
+        creolization_vector[1] = len(italics_creolization)
+    if 'creolization_bold' in indicators:
+        bold_creolization = soup.find_all('b')
+        for element in bold_creolization:
+            creolized_text_volume += len(''.join(re.split(r'<[^>]+>', str(element))))
+        creolization_vector[2] = len(bold_creolization)
+    if 'creolization_underline' in indicators:
+        underline_creolization = soup.find_all('u')
+        for element in underline_creolization:
+            creolized_text_volume += len(''.join(re.split(r'<[^>]+>', str(element))))
+        creolization_vector[3] = len(underline_creolization)
+    if 'creolization_border' in indicators:
+        border_creolization = soup.find_all(
+            ['span', 'p', 'div'],
+            {'style': re.compile(r'.*border(-left|-right|-top|-bottom)?: .+')}
+        )
+        for element in border_creolization:
+            creolized_text_volume += len(''.join(re.split(r'<[^>]+>', str(element))))
+        creolization_vector[4] = len(border_creolization)
+    if 'creolization_pictogram' in indicators:
+        pictogram_creolization = soup.find_all('div', {'class': ['definition', 'ex_head', 'cn_head']})
+        for element in pictogram_creolization:
+            creolized_text_volume += len(''.join(re.split(r'<[^>]+>', str(element))))
+        creolization_vector[5] = len(pictogram_creolization)
+    if 'creolization_link' in indicators:
+        link_creolization = soup.find_all('a')
+        for element in link_creolization:
+            creolized_text_volume += len(''.join(re.split(r'<[^>]+>', str(element))))
+        creolization_vector[6] = len(link_creolization)
+
     all_text_volume = len(txt)
     creolization_degree = round(creolized_text_volume / all_text_volume, 2) * 100
     res['creolization_vector'] = creolization_vector
@@ -387,11 +290,225 @@ def text_characteristics(file):
     logger.info(f'Creolization degree: {creolization_degree}')
     logger.info(f'Time spent: {finish - start}')
 
+
+def get_tokens(logger, txt):
+    logger.info('Partitioning into tokens...')
+    start = time()
+    tokenizer = RegexpTokenizer(r'[a-zA-Zа-яА-Я-]+')
+    tokens = list(map(lambda x: x.lower(), tokenizer.tokenize(txt)))
+    finish = time()
+    logger.info(f'Tokens: {tokens}')
+    logger.info(f'Time spent: {finish - start}')
+    return tokens
+
+
+def get_words(logger, tokens):
+    morph = pymorphy2.MorphAnalyzer()
+    logger.info('Parsing words...')
+    start = time()
+    words_objects = [morph.parse(tocken)[0] for tocken in tokens]
+    finish = time()
+    logger.info(f'Words objects: {words_objects}')
+    logger.info(f'Time spent: {finish - start}')
+    return words_objects
+
+
+def get_filtered_words(logger, words):
+    logger.info('Deletion of non-existent words...')
+    start = time()
+    filtered_words = list(filter(lambda x: x.tag.POS is not None, words))
+    finish = time()
+    logger.info(f'Filtered words objects: {filtered_words}')
+    logger.info(f'Time spent: {finish - start}')
+    return filtered_words
+
+
+def get_norm_words(logger, filtered_words):
+    logger.info('Normalization of words...')
+    start = time()
+    norm_words = list([word.normal_form for word in filtered_words])
+    # unic_norm_words = list(sorted(set(norm_words)))
+    finish = time()
+    logger.info(f'Normalized russian words: {norm_words}')
+    # logger.info(f'Unique normalized russian words: {unic_norm_words}')
+    logger.info(f'Time spent: {finish - start}')
+    return norm_words
+
+
+def split_words(logger, norm_words, res):
+    ru_norm_words = []
+    en_norm_words = []
+
+    logger.info('Separation into Russian and English normal words...')
+    start = time()
+    for word in norm_words:
+        if re.fullmatch(r'[a-z0-9-/]+', word):
+            en_norm_words.append(word)
+        else:
+            ru_norm_words.append(word)
+    ru_uniq_norm_words = list(sorted(set(ru_norm_words)))
+    en_uniq_norm_words = list(sorted(set(en_norm_words)))
+    finish = time()
+    logger.info(f'Russian normal words: {ru_norm_words}')
+    logger.info(f'Russian unique normal words: {ru_uniq_norm_words}')
+    logger.info(f'English normal words: {en_norm_words}')
+    logger.info(f'English unique normal words: {en_uniq_norm_words}')
+    logger.info(f'Time spent: {finish - start}')
+    res['ru_norm_words'] = ru_norm_words
+    res['en_norm_words'] = en_norm_words
+    res['ru_uniq_norm_words'] = ru_uniq_norm_words
+    res['en_uniq_norm_words'] = en_uniq_norm_words
+    return ru_norm_words, en_norm_words, ru_uniq_norm_words, en_uniq_norm_words
+
+
+def get_stop_words(logger):
+    logger.info('Getting russian and english stop words...')
+    start = time()
+    ru_stop_words = set(nltk.corpus.stopwords.words('russian'))
+    en_stop_words = set(nltk.corpus.stopwords.words('english'))
+    finish = time()
+    logger.info(f'Russian stop words: {ru_stop_words}')
+    logger.info(f'English stop words: {en_stop_words}')
+    logger.info(f'Time spent: {finish - start}')
+    return ru_stop_words, en_stop_words
+
+
+def get_words_without_stop_words(logger, ru_norm_words, ru_stop_words, en_norm_words, en_stop_words, res):
+    logger.info('Removal of Russian and English stop words...')
+    start = time()
+    ru_filtered_words = [word for word in ru_norm_words if word not in ru_stop_words]
+    en_filtered_words = [word for word in en_norm_words if word not in en_stop_words]
+    finish = time()
+    logger.info(f'Russian filtered words: {ru_filtered_words}')
+    logger.info(f'English filtered words: {en_filtered_words}')
+    logger.info(f'Time spent: {finish - start}')
+    res['ru_filtered_words'] = ru_filtered_words
+    res['en_filtered_words'] = en_filtered_words
+    return ru_filtered_words, en_filtered_words
+
+
+def get_stop_words_number(logger, ru_norm_words, ru_filtered_words, en_norm_words, en_filtered_words):
+    logger.info('Calculation of the stop words number in the text...')
+    start = time()
+    ru_stop_words_number = len(list(set(ru_norm_words))) - len(list(set(ru_filtered_words)))
+    en_stop_words_number = len(list(set(en_norm_words))) - len(list(set(en_filtered_words)))
+    finish = time()
+    logger.info(f'Russian stop words number: {ru_stop_words_number}')
+    logger.info(f'English stop words number: {en_stop_words_number}')
+    logger.info(f'Time spent: {finish - start}')
+    return ru_stop_words_number, en_stop_words_number
+
+
+def norm_en_words(logger, en_filtered_words, res):
+    logger.info('Normalization of English words...')
+    start = time()
+    lemmatizer = nltk.stem.WordNetLemmatizer()
+    en_norm_words = list([lemmatizer.lemmatize(word) for word in en_filtered_words])
+    en_unic_norm_words = list(sorted(set(en_norm_words)))
+    res['en_norm_words'] = en_norm_words
+    res['en_unic_norm_words'] = en_unic_norm_words
+    finish = time()
+    logger.info(f'Normalized English words: {en_norm_words}')
+    logger.info(f'Unique normalized English words: {en_unic_norm_words}')
+    logger.info(f'Time spent: {finish - start}')
+    return en_norm_words, en_unic_norm_words
+
+
+def get_logger(file):
+    log_path = os.path.join(settings.BASE_DIR, 'log')
+    if not os.path.exists(log_path):
+        os.mkdir(log_path)
+    dir_name = os.path.basename(os.path.dirname(os.path.dirname(file["dir_path"])))
+    log_path = os.path.join(log_path, dir_name)
+    if not os.path.exists(log_path):
+        os.mkdir(log_path)
+    log_path = os.path.join(log_path, str(int(time())))
+    if not os.path.exists(log_path):
+        os.mkdir(log_path)
+    log_name = os.path.basename(file["dir_path"])
+    log_path = os.path.join(log_path, log_name + '.log')
+    logger = logging.getLogger(log_name)
+    logger.setLevel(logging.INFO)
+    handler = logging.FileHandler(log_path, mode='w', encoding='utf-8')
+    handler.setLevel(logging.INFO)
+    logger.addHandler(handler)
+    return logger
+
+
+def text_characteristics(file, indicators):
+    logger = get_logger(file)
+    logger.info(f'Text characteristics for {file["dir_path"]}:')
+    res = {}
+    if 'information_richness' in indicators or \
+            'abstractness' in indicators or \
+            'readability' in indicators or \
+            'water_content' in indicators or \
+            'keyword_density' in indicators or \
+            'creolization_background_color' in indicators or \
+            'creolization_italics' in indicators or \
+            'creolization_bold' in indicators or \
+            'creolization_underline' in indicators or \
+            'creolization_border' in indicators or \
+            'creolization_pictogram' in indicators or \
+            'creolization_link' in indicators:
+        soup = bs4.BeautifulSoup(file['html'], 'html.parser')
+        new_concepts_number = get_new_concepts_number(logger, soup, res)
+        txt = file['txt']
+        tokens = get_tokens(logger, txt)
+        words = get_words(logger, tokens)
+        filtered_words = get_filtered_words(logger, words)
+        norm_words = get_norm_words(logger, filtered_words)
+        ru_norm_words, en_norm_words, ru_uniq_norm_words, en_uniq_norm_words = split_words(logger, norm_words, res)
+        ru_stop_words, en_stop_words = get_stop_words(logger)
+        ru_filtered_words, en_filtered_words = get_words_without_stop_words(
+            logger,
+            ru_norm_words,
+            ru_stop_words,
+            en_norm_words,
+            en_stop_words,
+            res
+        )
+        ru_stop_words_number, en_stop_words_number = get_stop_words_number(
+            logger,
+            ru_norm_words,
+            ru_filtered_words,
+            en_norm_words,
+            en_filtered_words
+        )
+        ru_words_number, \
+        ru_uniq_words_number, \
+        en_words_number, \
+        en_uniq_words_number, \
+        total_words_number, \
+        total_uniq_words_number = get_words_number(
+            logger, ru_norm_words,
+            ru_uniq_norm_words,
+            en_norm_words,
+            en_uniq_norm_words
+        )
+        if 'information_richness' in indicators:
+            information_richness(logger, new_concepts_number, total_uniq_words_number, res)
+        if 'abstractness' in indicators:
+            abstractness(logger, ru_norm_words, total_uniq_words_number, res)
+        if 'readability' in indicators:
+            readability(logger, ru_uniq_norm_words, ru_uniq_words_number, txt, res)
+        if 'water_content' in indicators:
+            wateriness(logger, ru_stop_words_number, en_stop_words_number, total_words_number, res)
+        if 'keyword_density' in indicators:
+            keyword_density(logger, ru_norm_words, en_norm_words, ru_uniq_norm_words, en_uniq_norm_words,  res)
+        if 'creolization_background_color' in indicators or \
+            'creolization_italics' in indicators or \
+            'creolization_bold' in indicators or \
+            'creolization_underline' in indicators or \
+            'creolization_border' in indicators or \
+            'creolization_pictogram' in indicators or \
+            'creolization_link' in indicators:
+            text_creolization(logger, indicators, soup, txt, res)
     logger.info('Text Characterization Completed.')
     return res
 
 
-def text_characteristics_all_files(files):
+def text_characteristics_all_files(files, indicators):
     res = {
         'new_concepts_number': 0,
         'ru_filtered_words': [],
@@ -408,76 +525,96 @@ def text_characteristics_all_files(files):
         'creolization_degree': 0
     }
     for file in files:
-        res['new_concepts_number'] += file['txt_ch']['new_concepts_number']
-        res['ru_filtered_words'] += file['txt_ch']['ru_filtered_words']
-        res['en_filtered_words'] += file['txt_ch']['en_filtered_words']
-        res['ru_norm_words'] += file['txt_ch']['ru_norm_words']
-        res['ru_uniq_norm_words'] += file['txt_ch']['ru_uniq_norm_words']
-        res['en_norm_words'] += file['txt_ch']['en_norm_words']
-        res['en_uniq_norm_words'] += file['txt_ch']['en_uniq_norm_words']
-        res['abstract_uniq_words'] += file['txt_ch']['abstract_uniq_words']
-        res['sent_number'] += file['txt_ch']['sent_number']
-        for i in range(len(file['txt_ch']['creolization_vector'])):
-            res['creolization_vector'][i] += file['txt_ch']['creolization_vector'][i]
-        res['all_text_volume'] += file['txt_ch']['all_text_volume']
-        res['creolized_text_volume'] += file['txt_ch']['creolized_text_volume']
+        if 'new_concepts_number' in file['txt_ch']:
+            res['new_concepts_number'] += file['txt_ch']['new_concepts_number']
+        if 'ru_filtered_words' in file['txt_ch']:
+            res['ru_filtered_words'] += file['txt_ch']['ru_filtered_words']
+        if 'en_filtered_words' in file['txt_ch']:
+            res['en_filtered_words'] += file['txt_ch']['en_filtered_words']
+        if 'ru_norm_words' in file['txt_ch']:
+            res['ru_norm_words'] += file['txt_ch']['ru_norm_words']
+        if 'ru_uniq_norm_words' in file['txt_ch']:
+            res['ru_uniq_norm_words'] += file['txt_ch']['ru_uniq_norm_words']
+        if 'en_norm_words' in file['txt_ch']:
+            res['en_norm_words'] += file['txt_ch']['en_norm_words']
+        if 'en_uniq_norm_words' in file['txt_ch']:
+            res['en_uniq_norm_words'] += file['txt_ch']['en_uniq_norm_words']
+        if 'abstract_uniq_words' in file['txt_ch']:
+            res['abstract_uniq_words'] += file['txt_ch']['abstract_uniq_words']
+        if 'sent_number' in file['txt_ch']:
+            res['sent_number'] += file['txt_ch']['sent_number']
+        if 'creolization_vector' in file['txt_ch']:
+            for i in range(len(file['txt_ch']['creolization_vector'])):
+                res['creolization_vector'][i] += file['txt_ch']['creolization_vector'][i]
+        if 'all_text_volume' in file['txt_ch']:
+            res['all_text_volume'] += file['txt_ch']['all_text_volume']
+        if 'creolized_text_volume' in file['txt_ch']:
+            res['creolized_text_volume'] += file['txt_ch']['creolized_text_volume']
 
-    n = len(files)
-    m = len(res['creolization_vector'])
-    median = []
-    for i in range(m):
-        median.append(res['creolization_vector'][i] / n)
-    res['creole_txt_uni_distr'] = [0 for _ in range(m)]
-    for file in files:
-        for i in range(len(file['txt_ch']['creolization_vector'])):
-            res['creole_txt_uni_distr'][i] += math.pow(file['txt_ch']['creolization_vector'][i] - median[i], 2)
-    for i in range(m):
-        res['creole_txt_uni_distr'][i] = round(res['creole_txt_uni_distr'][i] / n, 2)
+    if 'creolization_background_color' in indicators or \
+            'creolization_italics' in indicators or \
+            'creolization_bold' in indicators or \
+            'creolization_underline' in indicators or \
+            'creolization_border' in indicators or \
+            'creolization_pictogram' in indicators or \
+            'creolization_link' in indicators:
+        n = len(files)
+        m = len(res['creolization_vector'])
+        median = []
+        for i in range(m):
+            median.append(res['creolization_vector'][i] / n)
+        res['creole_txt_uni_distr'] = [0 for _ in range(m)]
+        for file in files:
+            if 'creolization_vector' in file['txt_ch']:
+                for i in range(len(file['txt_ch']['creolization_vector'])):
+                    res['creole_txt_uni_distr'][i] += math.pow(file['txt_ch']['creolization_vector'][i] - median[i], 2)
+        for i in range(m):
+            res['creole_txt_uni_distr'][i] = round(res['creole_txt_uni_distr'][i] / n, 2)
 
-    res['ru_uniq_norm_words'] = list(sorted(set(res['ru_uniq_norm_words'])))
-    res['en_uniq_norm_words'] = list(sorted(set(res['en_uniq_norm_words'])))
+    if 'information_richness' in indicators or \
+            'abstractness' in indicators or \
+            'readability' in indicators or \
+            'water_content' in indicators:
+        res['ru_uniq_norm_words'] = list(sorted(set(res['ru_uniq_norm_words'])))
+        res['en_uniq_norm_words'] = list(sorted(set(res['en_uniq_norm_words'])))
 
-    ru_words_number = len(res['ru_uniq_norm_words'])
-    en_words_number = len(res['en_uniq_norm_words'])
-    total_words_number = ru_words_number + en_words_number
+        ru_words_number = len(res['ru_uniq_norm_words'])
+        en_words_number = len(res['en_uniq_norm_words'])
+        total_words_number = ru_words_number + en_words_number
 
-    inf_saturation = (res['new_concepts_number'] / total_words_number) * 100
+        if 'information_richness' in indicators:
+            inf_saturation = (res['new_concepts_number'] / total_words_number) * 100
+            res['inf_saturation'] = round(inf_saturation, 2)
 
-    res['inf_saturation'] = round(inf_saturation, 2)
+        if 'abstractness' in indicators:
+            res['abstract_uniq_words'] = list(sorted(set(res['abstract_uniq_words'])))
+            abstract_words_number = len(res['abstract_uniq_words'])
+            abstractness = (abstract_words_number / total_words_number) * 100
+            res['abstractness'] = round(abstractness, 2)
 
-    res['abstract_uniq_words'] = list(sorted(set(res['abstract_uniq_words'])))
+        if 'readability' in indicators:
+            dic = pyphen.Pyphen(lang='ru')
+            compound_words_number = 0
+            for word in res['ru_uniq_norm_words']:
+                if len(dic.inserted(word).split('-')) > 4:
+                    compound_words_number += 1
+            ganning_index = 0.4 * (0.78 * ru_words_number / res['sent_number'] + 100 * compound_words_number / ru_words_number)
+            res['ganning_index'] = round(ganning_index, 2)
 
-    abstract_words_number = len(res['abstract_uniq_words'])
+        if 'water_content' in indicators:
+            ru_stop_words_number = len(list(set(res['ru_norm_words']))) - len(list(set(res['ru_filtered_words'])))
+            en_stop_words_number = len(list(set(res['en_norm_words']))) - len(list(set(res['en_filtered_words'])))
+            wateriness = ((ru_stop_words_number + en_stop_words_number) / total_words_number) * 100
+            res['wateriness'] = round(wateriness, 2)
 
-    abstractness = (abstract_words_number / total_words_number) * 100
+    if 'keyword_density' in indicators:
+        ru_frequences = [math.sqrt(res['ru_norm_words'].count(word)) for word in res['ru_uniq_norm_words']]
+        en_frequences = [math.sqrt(res['en_norm_words'].count(word)) for word in res['en_uniq_norm_words']]
+        density = max(ru_frequences + en_frequences)
+        res['density'] = round(density, 2)
 
-    res['abstractness'] = round(abstractness, 2)
-
-    dic = pyphen.Pyphen(lang='ru')
-    compound_words_number = 0
-    for word in res['ru_uniq_norm_words']:
-        if len(dic.inserted(word).split('-')) > 4:
-            compound_words_number += 1
-
-    ganning_index = 0.4 * (0.78 * ru_words_number / res['sent_number'] + 100 * compound_words_number / ru_words_number)
-
-    res['ganning_index'] = round(ganning_index, 2)
-
-    ru_stop_words_number = len(list(set(res['ru_norm_words']))) - len(list(set(res['ru_filtered_words'])))
-    en_stop_words_number = len(list(set(res['en_norm_words']))) - len(list(set(res['en_filtered_words'])))
-
-    wateriness = ((ru_stop_words_number + en_stop_words_number) / total_words_number) * 100
-
-    res['wateriness'] = round(wateriness, 2)
-
-    ru_frequences = [math.sqrt(res['ru_norm_words'].count(word)) for word in res['ru_uniq_norm_words']]
-    en_frequences = [math.sqrt(res['en_norm_words'].count(word)) for word in res['en_uniq_norm_words']]
-
-    density = max(ru_frequences + en_frequences)
-
-    res['density'] = round(density, 2)
-
-    res['creolization_degree'] = round(res['creolized_text_volume'] / res['all_text_volume'], 2) * 100
+    if res['all_text_volume'] != 0:
+        res['creolization_degree'] = round(res['creolized_text_volume'] / res['all_text_volume'], 2) * 100
 
     return res
 
@@ -562,51 +699,57 @@ def get_rel_img_contrast(file_path):
     return res
 
 
-def img_characteristics(file):
+def img_characteristics(file, indicators):
     res = {}
 
-    soup = bs4.BeautifulSoup(file['html'], 'html.parser')
-    img_list = soup.find_all('img')
-    img_number = len(img_list)
-    aver_img_in_pg_num = img_number / file['pgs_num']
+    if 'illustrations_number' in indicators or \
+            'average_illustrations_number_per_page' in indicators or \
+            'image_brightness' in indicators or \
+            'relative_image_brightness' in indicators or \
+            'image_contrast' in indicators or \
+            'relative_image_contrast' in indicators:
+        soup = bs4.BeautifulSoup(file['html'], 'html.parser')
+        img_list = soup.find_all('img')
 
-    # print(f'Количество изображений: {img_number}')
-    # print(f'Среднее число иллюстраций на страницу: {aver_img_in_pg_num}\r\n')
-    res['img_number'] = img_number
-    res['pgs_num'] = file['pgs_num']
-    res['aver_img_in_pg_num'] = aver_img_in_pg_num
+        if 'illustrations_number' in indicators or \
+                'average_illustrations_number_per_page' in indicators:
+            img_number = len(img_list)
+            if 'illustrations_number' in indicators:
+                res['img_number'] = img_number
+            if 'average_illustrations_number_per_page' in indicators:
+                aver_img_in_pg_num = img_number / file['pgs_num']
+                res['pgs_num'] = file['pgs_num']
+                res['aver_img_in_pg_num'] = aver_img_in_pg_num
 
-    res['images'] = []
-    for img in img_list:
-
-        try:
-            brightness = get_img_brightness(img['src'])
-            rel_brightness = get_rel_img_brightness(img['src'])
-            contrast = get_img_contrast(img['src'])
-            rel_contrast = get_rel_img_contrast(img['src'])
-
-            # print(f'Путь к файлу: {img_path}')
-            # print(f'Яркость изображения: {brightness}')
-            # print(f'Относительная яркость изображения: {rel_brightness}')
-            # print(f'Контраст изображения: {contrast}')
-            # print(f'Относительный контраст изображения: {rel_contrast}\r\n')
-            res['images'].append({
-                'img_path': '/' + img['src'][img['src'].index('media'):],
-                'brightness': brightness,
-                'rel_brightness': rel_brightness,
-                'contrast': contrast,
-                'rel_contrast': rel_contrast
-            })
-        except Exception as e:
-            print('--------------')
-            print(img['src'])
-            print(e)
-            print('--------------')
+        if 'image_brightness' in indicators or \
+                'relative_image_brightness' in indicators or \
+                'image_contrast' in indicators or \
+                'relative_image_contrast' in indicators:
+            res['images'] = []
+            for img in img_list:
+                try:
+                    img_char = {'img_path': '/' + img['src'][img['src'].index('media'):]}
+                    if 'image_brightness' in indicators:
+                        brightness = get_img_brightness(img['src'])
+                        img_char['brightness'] = brightness
+                    if 'relative_image_brightness' in indicators:
+                        rel_brightness = get_rel_img_brightness(img['src'])
+                        img_char['rel_brightness'] = rel_brightness
+                    if 'image_contrast' in indicators:
+                        contrast = get_img_contrast(img['src'])
+                        img_char['contrast'] = contrast
+                    if 'relative_image_contrast' in indicators:
+                        rel_contrast = get_rel_img_contrast(img['src'])
+                        img_char['rel_contrast'] = rel_contrast
+                    res['images'].append(img_char)
+                except Exception as e:
+                    print(img['src'])
+                    print(e)
 
     return res
 
 
-def img_characteristics_all_files(files):
+def img_characteristics_all_files(files, indicators):
     res = {
         'img_number': 0,
         'pgs_num': 0,
@@ -614,16 +757,20 @@ def img_characteristics_all_files(files):
     }
 
     for file in files:
-        res['img_number'] += file['img_ch']['img_number']
-        res['pgs_num'] += file['img_ch']['pgs_num']
-        res['images'] += file['img_ch']['images']
+        if 'img_number' in file['img_ch']:
+            res['img_number'] += file['img_ch']['img_number']
+        if 'pgs_num' in file['img_ch']:
+            res['pgs_num'] += file['img_ch']['pgs_num']
+        if 'images' in file['img_ch']:
+            res['images'] += file['img_ch']['images']
 
-    res['aver_img_in_pg_num'] = res['img_number'] / res['pgs_num']
+    if res['pgs_num'] != 0:
+        res['aver_img_in_pg_num'] = res['img_number'] / res['pgs_num']
 
     return res
 
 
-def search_and_nav_characteristics(file):
+def search_and_nav_characteristics(file, indicators):
     res = {
         'glossary': 0,
         'tables': 0,
@@ -635,46 +782,57 @@ def search_and_nav_characteristics(file):
 
     soup = bs4.BeautifulSoup(file['html'], 'html.parser')
     h1_list = soup.find_all('h1')
-    for h1 in h1_list:
-        if re.fullmatch(r'глоссарий', str(h1.string), re.I):
-            res['glossary'] = 1
-        if re.fullmatch(r'литература', str(h1.string), re.I):
-            res['litlist'] = 1
-    txt = file['txt']
-    tables = re.findall(
-        r'(табл[а-я.]*\s*\d+(?:\.\d+)*(?:\s(?!\s*[-–](?!\s*(?:табл[а-я.]*\s*)?\d+(?:\.\d+)*))(?:[-–]\s*(?:табл[а-я.]*\s*)?\d+(?:\.\d+)*)?|[-–]\s*(?:табл[а-я.]*\s*)?\d+(?:\.\d+)*|(?=[.,:!?)](?!\d+))))',
-        txt, re.I)
-    if len(tables) != 0:
-        res['tables'] += len(tables)
-    images = re.findall(
-        r'(рис[а-я.]*\s*\d+(?:\.\d+)*(?:\s(?!\s*[-–](?!\s*(?:рис[а-я.]*\s*)?\d+(?:\.\d+)*))(?:[-–]\s*(?:рис[а-я.]*\s*)?\d+(?:\.\d+)*|\s*(?:(?:,\s*[а-яА-Яa-zA-Z](?![а-яА-Яa-zA-Z])\s*)(?:,\s*[а-яА-Яa-zA-Z](?![а-яА-Яa-zA-Z])\s*)*|(?:\(\s*[а-яА-Яa-zA-Z](?![а-яА-Яa-zA-Z])\s*\))(?:\s*,\s*\(\s*[а-яА-Яa-zA-Z](?![а-яА-Яa-zA-Z])\s*\))*))?|[-–]\s*(?:рис[а-я.]*\s*)?\d+(?:\.\d+)*|(?=[,])(?:,\s*[а-яА-Яa-zA-Z](?![а-яА-Яa-zA-Z])\s*)*|(?=[.:!?)](?!\d+))))',
-        txt, re.I)
-    if len(images) != 0:
-        res['images'] += len(images)
-        """
-        for img in images:
-            if (re.fullmatch(r'рис[а-я.]*\s*\d+(\.\d+)*(\s*,\s*[а-яА-Яa-zA-Z](?![а-яА-Яa-zA-Z]))+\s*', img, re.I)):
-                res['images'] += len(img.split(',')) - 1
-            elif (re.fullmatch(r'рис[а-я.]*\s*\d+(\.\d+)*\s*(\(\s*[а-яА-Яa-zA-Z](?![а-яА-Яa-zA-Z])\s*\))(\s*,\s*\(\s*[а-яА-Яa-zA-Z](?![а-яА-Яa-zA-Z])\s*\))*\s*', img, re.I)):
-                res['images'] += len(img.split(','))
-            else:
-                matches = re.fullmatch(r'рис[а-я.]*\s*\d+(\.(?P<from>\d+))*\s*[-–]\s*(?:рис[а-я.]*\s*)?\d+(?:\.(?P<to>\d+))\s*', img, re.I)
-                if matches is not None:
-                    res['images'] += int(matches.group('to')) - int(matches.group('from'))
-                else:
-                    res['images'] += 1
-        """
-    literature = re.findall(r'(\[\d+(?:\s*[-–]\s*\d+)?(?:\s*,\s*\d+(?:\s*[-–]\s*\d+)?)*\])', txt, re.I)
-    if len(literature) != 0:
-        res['literature'] += len(literature)
-    formula = re.findall(r'((?<=[а-я]\s)\s*\(\s*\d+(?:.\d+)*(?:\s*[-–]\s*\d+(?:.\d+)*)?\s*\))', txt, re.I)
-    if len(formula) != 0:
-        res['formula'] += len(formula)
+
+    if 'has_bibliography' in indicators or \
+            'has_glossary' in indicators:
+        for h1 in h1_list:
+            if re.fullmatch(r'глоссарий', str(h1.string), re.I):
+                res['glossary'] = 1
+            if re.fullmatch(r'литература', str(h1.string), re.I):
+                res['litlist'] = 1
+    if 'has_tables_list' in indicators or \
+            'has_illustrations_list' in indicators or \
+            'has_links' in indicators or \
+            'has_formula' in indicators:
+        txt = file['txt']
+        if 'has_tables_list' in indicators:
+            tables = re.findall(
+                r'(табл[а-я.]*\s*\d+(?:\.\d+)*(?:\s(?!\s*[-–](?!\s*(?:табл[а-я.]*\s*)?\d+(?:\.\d+)*))(?:[-–]\s*(?:табл[а-я.]*\s*)?\d+(?:\.\d+)*)?|[-–]\s*(?:табл[а-я.]*\s*)?\d+(?:\.\d+)*|(?=[.,:!?)](?!\d+))))',
+                txt, re.I)
+            if len(tables) != 0:
+                res['tables'] += len(tables)
+        if 'has_illustrations_list' in indicators:
+            images = re.findall(
+                r'(рис[а-я.]*\s*\d+(?:\.\d+)*(?:\s(?!\s*[-–](?!\s*(?:рис[а-я.]*\s*)?\d+(?:\.\d+)*))(?:[-–]\s*(?:рис[а-я.]*\s*)?\d+(?:\.\d+)*|\s*(?:(?:,\s*[а-яА-Яa-zA-Z](?![а-яА-Яa-zA-Z])\s*)(?:,\s*[а-яА-Яa-zA-Z](?![а-яА-Яa-zA-Z])\s*)*|(?:\(\s*[а-яА-Яa-zA-Z](?![а-яА-Яa-zA-Z])\s*\))(?:\s*,\s*\(\s*[а-яА-Яa-zA-Z](?![а-яА-Яa-zA-Z])\s*\))*))?|[-–]\s*(?:рис[а-я.]*\s*)?\d+(?:\.\d+)*|(?=[,])(?:,\s*[а-яА-Яa-zA-Z](?![а-яА-Яa-zA-Z])\s*)*|(?=[.:!?)](?!\d+))))',
+                txt, re.I)
+            if len(images) != 0:
+                res['images'] += len(images)
+                """
+                for img in images:
+                    if (re.fullmatch(r'рис[а-я.]*\s*\d+(\.\d+)*(\s*,\s*[а-яА-Яa-zA-Z](?![а-яА-Яa-zA-Z]))+\s*', img, re.I)):
+                        res['images'] += len(img.split(',')) - 1
+                    elif (re.fullmatch(r'рис[а-я.]*\s*\d+(\.\d+)*\s*(\(\s*[а-яА-Яa-zA-Z](?![а-яА-Яa-zA-Z])\s*\))(\s*,\s*\(\s*[а-яА-Яa-zA-Z](?![а-яА-Яa-zA-Z])\s*\))*\s*', img, re.I)):
+                        res['images'] += len(img.split(','))
+                    else:
+                        matches = re.fullmatch(r'рис[а-я.]*\s*\d+(\.(?P<from>\d+))*\s*[-–]\s*(?:рис[а-я.]*\s*)?\d+(?:\.(?P<to>\d+))\s*', img, re.I)
+                        if matches is not None:
+                            res['images'] += int(matches.group('to')) - int(matches.group('from'))
+                        else:
+                            res['images'] += 1
+                """
+        if 'has_links' in indicators:
+            literature = re.findall(r'(\[\d+(?:\s*[-–]\s*\d+)?(?:\s*,\s*\d+(?:\s*[-–]\s*\d+)?)*\])', txt, re.I)
+            if len(literature) != 0:
+                res['literature'] += len(literature)
+        if 'has_formula' in indicators:
+            formula = re.findall(r'((?<=[а-я]\s)\s*\(\s*\d+(?:.\d+)*(?:\s*[-–]\s*\d+(?:.\d+)*)?\s*\))', txt, re.I)
+            if len(formula) != 0:
+                res['formula'] += len(formula)
 
     return res
 
 
-def search_and_nav_characteristics_all_files(files):
+def search_and_nav_characteristics_all_files(files, indicators):
     res = {
         'glossary': 0,
         'tables': 0,
@@ -685,12 +843,18 @@ def search_and_nav_characteristics_all_files(files):
     }
 
     for file in files:
-        res['glossary'] = file['san_ch']['glossary'] if file['san_ch']['glossary'] == 1 else res['glossary']
-        res['tables'] += file['san_ch']['tables']
-        res['images'] += file['san_ch']['images']
-        res['literature'] += file['san_ch']['literature']
-        res['formula'] += file['san_ch']['formula']
-        res['litlist'] = file['san_ch']['litlist'] if file['san_ch']['litlist'] == 1 else res['litlist']
+        if 'glossary' in file['san_ch']:
+            res['glossary'] = file['san_ch']['glossary'] if file['san_ch']['glossary'] == 1 else res['glossary']
+        if 'tables' in file['san_ch']:
+            res['tables'] += file['san_ch']['tables']
+        if 'images' in file['san_ch']:
+            res['images'] += file['san_ch']['images']
+        if 'literature' in file['san_ch']:
+            res['literature'] += file['san_ch']['literature']
+        if 'formula' in file['san_ch']:
+            res['formula'] += file['san_ch']['formula']
+        if 'litlist' in file['san_ch']:
+            res['litlist'] = file['san_ch']['litlist'] if file['san_ch']['litlist'] == 1 else res['litlist']
 
     return res
 
