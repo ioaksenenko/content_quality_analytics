@@ -5,6 +5,7 @@ import sys
 import bs4
 import datetime
 import html
+# import MySQLdb as sql
 import pandas as pd
 import json
 import requests
@@ -720,7 +721,9 @@ def get_control_questions(file_path):
                 soup = bs4.BeautifulSoup(m.group('text'), 'html.parser')
                 imgs = soup.find_all('img')
                 for img in imgs:
-                    img['src'] = os.path.join(os.path.dirname(file_path)[file_path.index('\media'):], img['src'])
+                    idx = file_path.index('\media')
+                    if idx >= 0:
+                        img['src'] = os.path.join(os.path.dirname(file_path)[idx:], img['src'])
                 res.append(str(soup))
             #soup = bs4.BeautifulSoup(text.string, 'html.parser')
             #fragments = re.split(r'</?[^>]+>', text.string)
