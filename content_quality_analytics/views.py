@@ -721,9 +721,12 @@ def get_control_questions(file_path):
                 soup = bs4.BeautifulSoup(m.group('text'), 'html.parser')
                 imgs = soup.find_all('img')
                 for img in imgs:
-                    idx = file_path.index('\media')
-                    if idx >= 0:
-                        img['src'] = os.path.join(os.path.dirname(file_path)[idx:], img['src'])
+                    try:
+                        idx = file_path.index('\media')
+                        if idx >= 0:
+                            img['src'] = os.path.join(os.path.dirname(file_path)[idx:], img['src'])
+                    except Exception as e:
+                        print(e)
                 res.append(str(soup))
             #soup = bs4.BeautifulSoup(text.string, 'html.parser')
             #fragments = re.split(r'</?[^>]+>', text.string)
