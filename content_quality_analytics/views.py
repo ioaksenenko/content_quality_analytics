@@ -5,7 +5,6 @@ import sys
 import bs4
 import datetime
 import html
-import MySQLdb as sql
 import pandas as pd
 import json
 import requests
