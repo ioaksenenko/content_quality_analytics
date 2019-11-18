@@ -860,7 +860,7 @@ def moodle(request):
 
             for module in modules:
                 fragments = re.findall(r'[a-zA-Zа-яА-Я0-9_\s]+', module['name'])
-                module_path = os.path.join(media_path, ''.join(fragments) + ' ' + module['contextid'])
+                module_path = os.path.join(media_path, '_' + module['contextid'])
                 print(module_path)
                 if not os.path.exists(module_path):
                     os.mkdir(module_path)
