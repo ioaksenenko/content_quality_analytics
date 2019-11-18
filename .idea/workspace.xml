@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc8d65a7-0ad6-4cba-9c3a-e5bdd5e2cbc1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/content_quality_analytics/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/content_quality_analytics/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -62,20 +62,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/content_quality_analytics/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-75">
-              <caret line="708" column="25" selection-start-line="708" selection-start-column="4" selection-end-line="708" selection-end-column="25" />
+            <state relative-caret-position="367">
+              <caret line="728" column="32" selection-start-line="728" selection-start-column="32" selection-end-line="728" selection-end-column="32" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
-                <element signature="e#716#1255#0" />
-                <element signature="e#1288#1663#0" />
-                <element signature="e#1699#2153#0" />
-                <element signature="e#2195#3067#0" />
-                <element signature="e#3119#3889#0" />
-                <element signature="e#3923#5786#0" />
-                <element signature="e#5813#6051#0" />
-                <element signature="e#6113#12179#0" />
-                <element signature="e#16998#17287#0" />
-                <element signature="e#17327#17443#0" />
               </folding>
             </state>
           </provider>
@@ -136,7 +126,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>theory-modules</find>
       <find>self_test_analysis</find>
       <find>testing_analysis</find>
       <find>videolecture-analysis</find>
@@ -166,6 +155,7 @@
       <find>move_files_to_tmp</find>
       <find>move-files-to-tmp</find>
       <find>file_action</find>
+      <find>get_control_questions</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -242,6 +232,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -252,24 +243,13 @@
             <path>
               <item name="content_quality_analytics" type="b2602c69:ProjectViewProjectNode" />
               <item name="content_quality_analytics" type="462c0819:PsiDirectoryNode" />
-              <item name="content_quality_analytics" type="462c0819:PsiDirectoryNode" />
+              <item name="media" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="content_quality_analytics" type="b2602c69:ProjectViewProjectNode" />
               <item name="content_quality_analytics" type="462c0819:PsiDirectoryNode" />
-              <item name="content_quality_analytics" type="462c0819:PsiDirectoryNode" />
-              <item name="migrations" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="content_quality_analytics" type="b2602c69:ProjectViewProjectNode" />
-              <item name="content_quality_analytics" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="content_quality_analytics" type="b2602c69:ProjectViewProjectNode" />
-              <item name="content_quality_analytics" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="media" type="462c0819:PsiDirectoryNode" />
+              <item name="n81obkfxhuqycypysbms626dubic82do" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="content_quality_analytics" type="b2602c69:ProjectViewProjectNode" />
@@ -290,7 +270,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -409,24 +388,24 @@
       <workItem from="1572490853675" duration="269000" />
       <workItem from="1572491195950" duration="14794000" />
       <workItem from="1572575123022" duration="18509000" />
-      <workItem from="1572926897132" duration="8643000" />
+      <workItem from="1572926897132" duration="9417000" />
+      <workItem from="1573722089671" duration="627000" />
+      <workItem from="1574069074163" duration="411000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="394762000" />
+    <option name="totallyTimeSpent" value="396574000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1945629" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1988273" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Database Console" weight="0.32936078" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32936078" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -435,8 +414,9 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32936078" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32936078" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32936078" />
+      <window_info anchor="bottom" id="Database Console" order="13" weight="0.32936078" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -721,32 +701,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/content_quality_analytics/analyzer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5185">
-          <caret line="437" column="43" selection-start-line="437" selection-start-column="43" selection-end-line="437" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-            <element signature="e#370#3872#0" />
-            <element signature="e#10033#13446#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/indicators.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1071">
-          <caret line="63" column="76" selection-start-line="63" selection-start-column="76" selection-end-line="63" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/indicators.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="51" selection-start-line="26" selection-start-column="51" selection-end-line="26" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/content_quality_analytics/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
@@ -764,13 +718,6 @@
             <caret line="23" column="73" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="73" />
           </first_editor>
           <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="13" selection-start-column="13" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -807,8 +754,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/content_quality_analytics/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-75">
-          <caret line="708" column="25" selection-start-line="708" selection-start-column="4" selection-end-line="708" selection-end-column="25" />
+        <state relative-caret-position="367">
+          <caret line="728" column="32" selection-start-line="728" selection-start-column="32" selection-end-line="728" selection-end-column="32" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
             <element signature="e#716#1255#0" />
@@ -822,6 +769,39 @@
             <element signature="e#16998#17287#0" />
             <element signature="e#17327#17443#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="13" selection-start-column="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content_quality_analytics/analyzer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5185">
+          <caret line="437" column="43" selection-start-line="437" selection-start-column="43" selection-end-line="437" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#370#3872#0" />
+            <element signature="e#10033#13446#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/indicators.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1071">
+          <caret line="63" column="76" selection-start-line="63" selection-start-column="76" selection-end-line="63" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/indicators.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="51" selection-start-line="26" selection-start-column="51" selection-end-line="26" selection-end-column="51" />
         </state>
       </provider>
     </entry>
