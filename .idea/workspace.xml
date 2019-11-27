@@ -2,8 +2,43 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc8d65a7-0ad6-4cba-9c3a-e5bdd5e2cbc1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/expert-analysis.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/results.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/expert-analysis.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/js/results.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/expert-analysis.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/results.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/c8c70341-53c1-4150-b972-076c787b74e1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/c8c70341-53c1-4150-b972-076c787b74e1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content_quality_analytics/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/content_quality_analytics/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content_quality_analytics/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/content_quality_analytics/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content_quality_analytics/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/content_quality_analytics/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content_quality_analytics/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/content_quality_analytics/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/content_quality_analytics/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/content_quality_analytics/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/indicators.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/indicators.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/modules.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/modules.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/admin-settings.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/admin-settings.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/files.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/files.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/indicators.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/indicators.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/modules.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/modules.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/add-indicator.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/add-indicator.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin-settings.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin-settings.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/audio-file-analysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/audio-file-analysis.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/audio-lecture-analysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/audio-lecture-analysis.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/control-test-analysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/control-test-analysis.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/files.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/files.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/indicators.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/indicators.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/modules.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/modules.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/self-test-analysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/self-test-analysis.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/theory-analysis-results.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/theory-analysis-results.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/uploaded-files.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/uploaded-files.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/video-file-analysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/video-file-analysis.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/video-lecture-analysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/video-lecture-analysis.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/webinar-analysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/webinar-analysis.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templatetags/filters.py" beforeDir="false" afterPath="$PROJECT_DIR$/templatetags/filters.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -63,8 +98,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/content_quality_analytics/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="864" column="51" selection-start-line="864" selection-start-column="51" selection-end-line="864" selection-end-column="51" />
+            <state relative-caret-position="418">
+              <caret line="1934" lean-forward="true" selection-start-line="1934" selection-end-line="1934" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
                 <element signature="e#718#1257#0" />
@@ -78,89 +113,76 @@
                 <element signature="e#12207#16974#0" />
                 <element signature="e#17000#17289#0" />
                 <element signature="e#17329#17445#0" />
-                <element signature="e#17478#18935#0" />
-                <element signature="e#18973#19236#0" />
-                <element signature="e#19276#19685#0" />
-                <element signature="e#19751#20210#0" />
-                <element signature="e#20244#20751#0" />
-                <element signature="e#20787#21478#0" />
-                <element signature="e#21539#22430#0" />
-                <element signature="e#23680#24457#0" />
-                <element signature="e#24506#24799#0" />
-                <element signature="e#24859#25309#0" />
-                <element signature="e#25338#25513#0" />
-                <element signature="e#25541#25694#0" />
-                <element signature="e#25720#25872#0" />
-                <element signature="e#25912#26636#0" />
-                <element signature="e#26673#27015#0" />
-                <element signature="e#27063#27067#0" />
-                <element signature="e#27110#28520#0" />
-                <element signature="e#28565#29692#0" />
-                <element signature="e#29743#29781#0" />
-                <element signature="e#29822#30630#0" />
-                <element signature="e#30674#31636#0" />
-                <element signature="e#31672#32083#0" />
-                <element signature="e#32114#33100#0" />
-                <element signature="e#35107#35967#0" />
-                <element signature="e#36010#37395#0" />
-                <element signature="e#37434#37779#0" />
-                <element signature="e#37820#38628#0" />
-                <element signature="e#38672#39634#0" />
-                <element signature="e#39672#43346#0" />
-                <element signature="e#43389#44474#0" />
-                <element signature="e#44507#44674#0" />
-                <element signature="e#44716#45439#0" />
-                <element signature="e#45478#45482#0" />
-                <element signature="e#45520#45752#0" />
-                <element signature="e#45783#45928#0" />
-                <element signature="e#45962#46117#0" />
-                <element signature="e#46152#46722#0" />
-                <element signature="e#46760#46939#0" />
-                <element signature="e#46975#47179#0" />
-                <element signature="e#47215#47418#0" />
-                <element signature="e#47460#47724#0" />
-                <element signature="e#47756#51244#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/requirements.txt">
+        <entry file="file://$PROJECT_DIR$/content_quality_analytics/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="13" selection-start-column="13" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/content_quality_analytics/analyzer.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="40" column="54" selection-start-line="40" selection-start-column="54" selection-end-line="40" selection-end-column="54" />
+            <state relative-caret-position="438">
+              <caret line="79" column="46" selection-start-line="79" selection-start-column="33" selection-end-line="79" selection-end-column="46" />
               <folding>
-                <element signature="e#0#9#0" expanded="true" />
-                <element signature="e#10033#13446#0" />
+                <element signature="e#649#681#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/indicators.html">
+        <entry file="file://$PROJECT_DIR$/templates/results.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1071">
-              <caret line="63" column="76" selection-start-line="63" selection-start-column="76" selection-end-line="63" selection-end-column="76" />
+            <state relative-caret-position="236">
+              <caret line="1758" column="45" selection-start-line="1758" selection-start-column="45" selection-end-line="1758" selection-end-column="45" />
+              <folding>
+                <element signature="e#398#416#0#DjangoTemplate" />
+                <element signature="e#1898#1921#0#DjangoTemplate" />
+                <element signature="e#2483#2555#0#DjangoTemplate" />
+                <element signature="e#3061#3145#0#DjangoTemplate" />
+                <element signature="e#3703#3772#0#DjangoTemplate" />
+                <element signature="e#4432#4504#0#DjangoTemplate" />
+                <element signature="e#5234#5303#0#DjangoTemplate" />
+                <element signature="e#6111#6183#0#DjangoTemplate" />
+                <element signature="e#7061#7185#0#DjangoTemplate" />
+                <element signature="e#2573#2596#0#DjangoTemplate" />
+                <element signature="e#70965#70991#0#DjangoTemplate" />
+                <element signature="e#71349#71580#0#HTML" />
+                <element signature="e#71617#71648#0#DjangoTemplate" />
+                <element signature="e#72045#72310#0#HTML" />
+                <element signature="e#72514#75695#0#HTML" />
+                <element signature="e#74727#74996#0#HTML" />
+                <element signature="e#76159#79328#0#HTML" />
+                <element signature="e#79365#79641#0#HTML" />
+                <element signature="e#79678#81389#0#HTML" />
+                <element signature="e#81426#81704#0#HTML" />
+                <element signature="e#81741#83454#0#HTML" />
+                <element signature="e#83491#83728#0#HTML" />
+                <element signature="e#83765#84224#0#HTML" />
+                <element signature="e#82443#82481#0#DjangoTemplate" />
+                <element signature="e#84861#85087#0#HTML" />
+                <element signature="e#85124#86397#0#HTML" />
+                <element signature="e#86434#86702#0#HTML" />
+                <element signature="e#86739#87519#0#HTML" />
+                <element signature="e#87556#87812#0#HTML" />
+                <element signature="e#94033#94060#0#DjangoTemplate" />
+                <element signature="e#104245#104275#0#DjangoTemplate" />
+                <element signature="e#112229#112256#0#DjangoTemplate" />
+                <element signature="e#119257#119287#0#DjangoTemplate" />
+                <element signature="e#126463#126487#0#DjangoTemplate" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/indicators.js">
+        <entry file="file://$PROJECT_DIR$/templatetags/filters.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="26" column="51" selection-start-line="26" selection-start-column="51" selection-end-line="26" selection-end-column="51" />
+            <state relative-caret-position="500">
+              <caret line="42" selection-start-line="42" selection-end-line="42" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -170,45 +192,46 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
-        <option value="CSS File" />
-        <option value="JavaScript File" />
         <option value="Python Script" />
+        <option value="SCSS File" />
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>self_test_analysis</find>
-      <find>testing_analysis</find>
-      <find>videolecture-analysis</find>
-      <find>videofile-analysis</find>
-      <find>testing-analysis</find>
-      <find>testing_analysis_results</find>
-      <find>form</find>
-      <find>Да</find>
-      <find>move_file_to_tmp</find>
-      <find>add_scale</find>
-      <find>index</find>
-      <find>scale_name.hasClass</find>
-      <find>natsort</find>
-      <find>natsorted</find>
-      <find>admin_settings</find>
-      <find>msg</find>
-      <find>invalid</find>
-      <find>trash</find>
-      <find>theory_a</find>
-      <find>AUTH_USER_MODEL</find>
-      <find>moodle</find>
-      <find>img</find>
-      <find>new_concepts_number</find>
-      <find>creolization_vector</find>
       <find>all_text_volume</find>
-      <find>modules</find>
-      <find>move_files_to_tmp</find>
       <find>move-files-to-tmp</find>
       <find>file_action</find>
       <find>get_control_questions</find>
+      <find>modules</find>
+      <find>move</find>
+      <find>get</find>
+      <find>add_ind</find>
+      <find>add-indicator</find>
+      <find>delete_indicator</find>
+      <find>move_files_to_tmp</find>
+      <find>print</find>
+      <find>theory</find>
+      <find>self-test-analysis</find>
+      <find>expert-analysis</find>
+      <find>self-test-ana</find>
+      <find>control-test-analysis</find>
+      <find>video-file-analysis</find>
+      <find>video-lecture-analysis</find>
+      <find>audio-file-analysis</find>
+      <find>audio-lecture-analysis</find>
+      <find>self|</find>
+      <find>self|-test-modules||length</find>
+      <find>self-test</find>
+      <find>webinar-analysis</find>
+      <find>coef</find>
+      <find>DATA_UPLOAD_MAX_NUMBER_FIELDS</find>
+      <find>Весовой коэффициент</find>
+      <find>analyze</find>
+      <find>name=&quot;</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -217,56 +240,56 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/templates/base.html" />
-        <option value="$PROJECT_DIR$/static/css/add-scale.css" />
-        <option value="$PROJECT_DIR$/userauth/views.py" />
-        <option value="$PROJECT_DIR$/static/css/index.css" />
-        <option value="$PROJECT_DIR$/templates/index.html" />
-        <option value="$PROJECT_DIR$/templates/theory-modules.html" />
-        <option value="$PROJECT_DIR$/static/js/theory-modules.js" />
-        <option value="$PROJECT_DIR$/templates/testing-analysis.html" />
-        <option value="$PROJECT_DIR$/templates/videofile-analysis.html" />
-        <option value="$PROJECT_DIR$/templates/audio-lecture-analusis.html" />
-        <option value="$PROJECT_DIR$/templates/videolecture-analysis.html" />
-        <option value="$PROJECT_DIR$/static/css/audio-lecture-analysis.css" />
         <option value="$PROJECT_DIR$/static/js/audio-lecture-analysis.js" />
-        <option value="$PROJECT_DIR$/templates/self-test-analysis.html" />
-        <option value="$PROJECT_DIR$/templates/video-file-analysis.html" />
         <option value="$PROJECT_DIR$/static/css/audio-file-analysis.css" />
         <option value="$PROJECT_DIR$/static/js/audio-file-analysis.js" />
-        <option value="$PROJECT_DIR$/templates/audio-file-analysis.html" />
-        <option value="$PROJECT_DIR$/templates/audio-lecture-analysis.html" />
-        <option value="$PROJECT_DIR$/templates/video-lecture-analysis.html" />
-        <option value="$PROJECT_DIR$/static/js/files.js" />
         <option value="$PROJECT_DIR$/static/css/webinar-analysis.css" />
         <option value="$PROJECT_DIR$/static/js/webinar-analysis.js" />
-        <option value="$PROJECT_DIR$/templates/webinar-analysis.html" />
         <option value="$PROJECT_DIR$/static/js/base.js" />
         <option value="$PROJECT_DIR$/static/js/add-scale.js" />
-        <option value="$PROJECT_DIR$/content_quality_analytics/models.py" />
         <option value="$PROJECT_DIR$/static/css/add-indicator.css" />
         <option value="$PROJECT_DIR$/static/js/add-indicator.js" />
-        <option value="$PROJECT_DIR$/templatetags/filters.py" />
         <option value="$PROJECT_DIR$/templates/add-scale.html" />
-        <option value="$PROJECT_DIR$/templates/add-indicator.html" />
-        <option value="$PROJECT_DIR$/static/js/admin-settings.js" />
-        <option value="$PROJECT_DIR$/templates/admin-settings.html" />
         <option value="$PROJECT_DIR$/static/css/uploaded-files.css" />
-        <option value="$PROJECT_DIR$/templates/uploaded-files.html" />
         <option value="$PROJECT_DIR$/static/js/uploaded-files.js" />
-        <option value="$PROJECT_DIR$/templates/files.html" />
-        <option value="$PROJECT_DIR$/static/css/indicators.css" />
-        <option value="$PROJECT_DIR$/content_quality_analytics/urls.py" />
-        <option value="$PROJECT_DIR$/templates/modules.html" />
-        <option value="$PROJECT_DIR$/static/js/indicators.js" />
-        <option value="$PROJECT_DIR$/templates/control-test-analysis.html" />
-        <option value="$PROJECT_DIR$/static/js/modules.js" />
-        <option value="$PROJECT_DIR$/templates/indicators.html" />
-        <option value="$PROJECT_DIR$/templates/theory-analysis-results.html" />
-        <option value="$PROJECT_DIR$/content_quality_analytics/analyzer.py" />
         <option value="$PROJECT_DIR$/readme.md" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/content_quality_analytics/migrations/__init__.py" />
+        <option value="$PROJECT_DIR$/static/css/indicators.css" />
+        <option value="$PROJECT_DIR$/static/js/admin-settings.js" />
+        <option value="$PROJECT_DIR$/templates/admin-settings.html" />
+        <option value="$PROJECT_DIR$/templates/add-indicator.html" />
+        <option value="$PROJECT_DIR$/templates/control-test-analysis.html" />
+        <option value="$PROJECT_DIR$/templates/video-file-analysis.html" />
+        <option value="$PROJECT_DIR$/templates/video-lecture-analysis.html" />
+        <option value="$PROJECT_DIR$/templates/audio-file-analysis.html" />
+        <option value="$PROJECT_DIR$/templates/audio-lecture-analysis.html" />
+        <option value="$PROJECT_DIR$/templates/webinar-analysis.html" />
+        <option value="$PROJECT_DIR$/templates/uploaded-files.html" />
+        <option value="$PROJECT_DIR$/static/js/files.js" />
+        <option value="$PROJECT_DIR$/templates/files.html" />
+        <option value="$PROJECT_DIR$/templates/index.html" />
+        <option value="$PROJECT_DIR$/static/js/index.js" />
+        <option value="$PROJECT_DIR$/static/scss/modules.scss" />
+        <option value="$PROJECT_DIR$/static/css/modules.css" />
+        <option value="$PROJECT_DIR$/templates/theory-analysis-results.html" />
+        <option value="$PROJECT_DIR$/templates/indicators.html" />
+        <option value="$PROJECT_DIR$/templates/self-test-analysis.html" />
+        <option value="$PROJECT_DIR$/static/css/expert-analysis.scss" />
+        <option value="$PROJECT_DIR$/static/css/expert-analysis.css" />
+        <option value="$PROJECT_DIR$/static/js/indicators.js" />
+        <option value="$PROJECT_DIR$/static/js/results.js" />
+        <option value="$PROJECT_DIR$/static/css/results.css" />
+        <option value="$PROJECT_DIR$/content_quality_analytics/models.py" />
+        <option value="$PROJECT_DIR$/content_quality_analytics/analyzer.py" />
+        <option value="$PROJECT_DIR$/content_quality_analytics/urls.py" />
+        <option value="$PROJECT_DIR$/content_quality_analytics/settings.py" />
+        <option value="$PROJECT_DIR$/templatetags/filters.py" />
+        <option value="$PROJECT_DIR$/static/js/expert-analysis.js" />
+        <option value="$PROJECT_DIR$/static/js/modules.js" />
+        <option value="$PROJECT_DIR$/templates/modules.html" />
+        <option value="$PROJECT_DIR$/templates/expert-analysis.html" />
+        <option value="$PROJECT_DIR$/templates/results.html" />
         <option value="$PROJECT_DIR$/content_quality_analytics/views.py" />
       </list>
     </option>
@@ -285,7 +308,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -296,28 +318,29 @@
             <path>
               <item name="content_quality_analytics" type="b2602c69:ProjectViewProjectNode" />
               <item name="content_quality_analytics" type="462c0819:PsiDirectoryNode" />
-              <item name="media" type="462c0819:PsiDirectoryNode" />
+              <item name="content_quality_analytics" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="content_quality_analytics" type="b2602c69:ProjectViewProjectNode" />
+              <item name="content_quality_analytics" type="462c0819:PsiDirectoryNode" />
+              <item name="content_quality_analytics" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="content_quality_analytics" type="b2602c69:ProjectViewProjectNode" />
               <item name="content_quality_analytics" type="462c0819:PsiDirectoryNode" />
               <item name="media" type="462c0819:PsiDirectoryNode" />
-              <item name="yxny1di7mq08eqqlhohy2xe9htcvo9w9" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="content_quality_analytics" type="b2602c69:ProjectViewProjectNode" />
               <item name="content_quality_analytics" type="462c0819:PsiDirectoryNode" />
-              <item name="media" type="462c0819:PsiDirectoryNode" />
-              <item name="yxny1di7mq08eqqlhohy2xe9htcvo9w9" type="462c0819:PsiDirectoryNode" />
-              <item name="theory" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="content_quality_analytics" type="b2602c69:ProjectViewProjectNode" />
               <item name="content_quality_analytics" type="462c0819:PsiDirectoryNode" />
-              <item name="media" type="462c0819:PsiDirectoryNode" />
-              <item name="yxny1di7mq08eqqlhohy2xe9htcvo9w9" type="462c0819:PsiDirectoryNode" />
-              <item name="theory" type="462c0819:PsiDirectoryNode" />
-              <item name="_44554" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="content_quality_analytics" type="b2602c69:ProjectViewProjectNode" />
@@ -338,6 +361,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -345,13 +369,16 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="database.console.LAST_STATE" value="true" />
+    <property name="database.console.LAST_STATE" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/content_quality_analytics/migrations" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="node.js.detected.package.stylelint" value="true" />
+    <property name="node.js.path.for.package.stylelint" value="project" />
+    <property name="node.js.selected.package.stylelint" value="" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.sass.extensions.compass.CompassConfigurableProvider$1" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -458,22 +485,30 @@
       <workItem from="1572575123022" duration="18509000" />
       <workItem from="1572926897132" duration="9417000" />
       <workItem from="1573722089671" duration="627000" />
-      <workItem from="1574069074163" duration="3937000" />
+      <workItem from="1574069074163" duration="4608000" />
+      <workItem from="1574132329873" duration="12739000" />
+      <workItem from="1574217363847" duration="14712000" />
+      <workItem from="1574308633640" duration="16524000" />
+      <workItem from="1574393775234" duration="16661000" />
+      <workItem from="1574651651949" duration="16961000" />
+      <workItem from="1574735435305" duration="20760000" />
+      <workItem from="1574823349948" duration="22411000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="400100000" />
+    <option name="totallyTimeSpent" value="521539000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1988273" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21375267" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -481,7 +516,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32936078" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50053304" side_tool="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32936078" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32936078" />
       <window_info anchor="bottom" id="Database Console" order="13" weight="0.32936078" />
@@ -496,317 +531,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/static/css/control-test-analysis.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/self-test-analysis.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/audio-lecture-analysis.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/audio-lecture-analysis.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/video-lecture-analysis.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/audio-file-analysis.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/audio-file-analysis.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/audio-file-analysis.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="120" column="23" lean-forward="true" selection-start-line="120" selection-start-column="23" selection-end-line="120" selection-end-column="23" />
-          <folding>
-            <element signature="e#572#1220#0#HTML" />
-            <element signature="e#1610#2066#0#HTML" />
-            <element signature="e#2099#2348#0#HTML" />
-            <element signature="e#2381#2639#0#HTML" />
-            <element signature="e#2672#3909#0#HTML" />
-            <element signature="e#3942#4209#0#HTML" />
-            <element signature="e#4242#6208#0#HTML" />
-            <element signature="e#6241#6525#0#HTML" />
-            <element signature="e#6558#7300#0#HTML" />
-            <element signature="e#7333#7586#0#HTML" />
-            <element signature="e#7619#8166#0#HTML" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/video-file-analysis.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/self-test-analysis.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="202" column="6" lean-forward="true" selection-start-line="202" selection-start-column="6" selection-end-line="202" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/files.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1581">
-          <caret line="93" column="11" selection-start-line="93" selection-start-column="11" selection-end-line="93" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/webinar-analysis.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/audio-lecture-analysis.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="515">
-          <caret line="118" column="30" lean-forward="true" selection-start-line="118" selection-start-column="30" selection-end-line="118" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/userauth/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="4" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="18" selection-end-column="53" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/webinar-analysis.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/base.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-61">
-          <caret line="16" column="37" lean-forward="true" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/video-lecture-analysis.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="128" column="16" selection-start-line="128" selection-start-column="16" selection-end-line="130" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/add-indicator.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/webinar-analysis.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="194" column="32" lean-forward="true" selection-start-line="194" selection-start-column="32" selection-end-line="201" selection-end-column="38" />
-          <folding>
-            <element signature="e#1716#1741#0#DjangoTemplate" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templatetags/filters.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="31" selection-start-line="31" selection-end-line="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/add-scale.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="69" column="63" lean-forward="true" selection-start-line="69" selection-start-column="63" selection-end-line="69" selection-end-column="63" />
-          <folding>
-            <element signature="e#425#985#0#HTML" />
-            <element signature="e#1277#1739#0#HTML" />
-            <element signature="e#1798#1878#0#HTML" />
-            <element signature="e#1932#2599#0#HTML" />
-            <element signature="e#2658#2735#0#HTML" />
-            <element signature="e#2794#2960#0#HTML" />
-            <element signature="e#3052#3784#0#HTML" />
-            <element signature="e#3877#4803#0#HTML" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/admin-settings.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2788">
-          <caret line="505" column="27" selection-start-line="505" selection-start-column="27" selection-end-line="505" selection-end-column="27" />
-          <folding>
-            <element signature="n#!!block;n#add_field#0" />
-            <element signature="n#!!block;n#remove_field#0" />
-            <element signature="n#!!block;n#check_scale_name#0" />
-            <element signature="n#!!block;n#change_scale#0" />
-            <element signature="n#!!block;n#save_scale#0" />
-            <element signature="n#!!block;n#delete_scale#0" />
-            <element signature="n#!!block;n#delete_indicator#0" />
-            <element signature="n#!!block;n#hide_indicator#0" />
-            <element signature="n#!!block;n#show_indicator#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/admin-settings.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="14" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/add-indicator.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="41" column="1" selection-start-line="41" selection-start-column="1" selection-end-line="41" selection-end-column="1" />
-          <folding>
-            <element signature="n#!!block;n#check_indicator_name#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/add-indicator.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="63" column="8" selection-start-line="63" selection-start-column="8" selection-end-line="70" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/uploaded-files.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/add-scale.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="518">
-          <caret line="98" column="7" lean-forward="true" selection-start-line="63" selection-start-column="4" selection-end-line="98" selection-end-column="7" />
-          <folding>
-            <element signature="n#!!block;n#add_field#0" />
-            <element signature="n#style#0;n#i#0;n#a#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#!!block;n#remove_field#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/files.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="14" lean-forward="true" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
-          <folding>
-            <element signature="e#1160#2490#0#HTML" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/uploaded-files.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="22" lean-forward="true" selection-start-line="1" selection-start-column="22" selection-end-line="1" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/uploaded-files.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/content_quality_analytics/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="557">
-          <caret line="44" selection-start-line="44" selection-end-line="44" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/indicators.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/modules.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/media/y1jixz1owgb5k04e1cjkru10wnwwk6d1/self-test/Самоконтроль 42977/html/1.html" />
-    <entry file="file://$PROJECT_DIR$/content_quality_analytics/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="53" column="12" selection-start-line="53" selection-start-column="12" selection-end-line="53" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="44" column="60" selection-start-line="44" selection-start-column="54" selection-end-line="44" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/control-test-analysis.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="212" column="10" lean-forward="true" selection-start-line="212" selection-start-column="10" selection-end-line="212" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/modules.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
-          <caret line="60" column="1" selection-start-line="60" selection-start-column="1" selection-end-line="60" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/theory-analysis-results.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3128">
-          <caret line="249" column="36" selection-start-line="249" selection-start-column="36" selection-end-line="249" selection-end-column="36" />
-          <folding>
-            <element signature="e#1671#1847#0#DjangoTemplate" />
-            <element signature="e#7692#7983#0#DjangoTemplate" />
-            <element signature="e#13884#14175#0#DjangoTemplate" />
-            <element signature="e#14770#15030#0#DjangoTemplate" />
-            <element signature="e#16717#16880#0#DjangoTemplate" />
-            <element signature="e#19840#20288#0#DjangoTemplate" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/content_quality_analytics/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="40" column="42" selection-start-line="40" selection-start-column="31" selection-end-line="40" selection-end-column="42" />
-          <folding>
-            <element signature="e#649#681#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/readme.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="391">
-            <caret line="23" column="73" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="73" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://c8c70341-53c1-4150-b972-076c787b74e1/schema/main/table/auth_user">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="b3cbf07b-f3c9-4a4c-9a7b-0271c58b3dd2">
-          <filtering>
-            <filter text="" />
-          </filtering>
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://c8c70341-53c1-4150-b972-076c787b74e1/schema/main/table/django_session">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="b3cbf07b-f3c9-4a4c-9a7b-0271c58b3dd2">
-          <filtering>
-            <filter text="" />
-          </filtering>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/content_quality_analytics/migrations/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -827,35 +551,416 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/bootstrap.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="6" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/indicators.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://c8c70341-53c1-4150-b972-076c787b74e1/schema/main/table/content_quality_analytics_indicator">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="92256518-2a6f-4291-a775-f2f83b08d397">
+          <filtering>
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin-settings.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="274" column="78" selection-start-line="274" selection-start-column="78" selection-end-line="274" selection-end-column="78" />
+          <folding>
+            <element signature="e#1960#19974#0#HTML" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/add-indicator.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="81" column="14" selection-start-line="81" selection-start-column="14" selection-end-line="81" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/uploaded-files.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="26" column="39" selection-start-line="26" selection-start-column="39" selection-end-line="26" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/files.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1394">
+          <caret line="120" column="48" selection-start-line="120" selection-start-column="48" selection-end-line="120" selection-end-column="48" />
+          <folding>
+            <element signature="e#320#1594#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/files.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="31" column="18" selection-start-line="31" selection-start-column="18" selection-end-line="31" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/scss/modules.scss" />
+    <entry file="file://$PROJECT_DIR$/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="8" lean-forward="true" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/admin-settings.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="525" column="16" selection-start-line="525" selection-start-column="16" selection-end-line="525" selection-end-column="34" />
+          <folding>
+            <element signature="n#!!block;n#add_field#0" />
+            <element signature="n#style#0;n#i#0;n#a#0;n#div#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#!!block;n#remove_field#0" />
+            <element signature="n#!!block;n#check_scale_name#0" />
+            <element signature="n#!!block;n#change_scale#0" />
+            <element signature="n#!!block;n#save_scale#0" />
+            <element signature="n#!!block;n#delete_scale#0" />
+            <element signature="n#!!block;n#delete_indicator#0" />
+            <element signature="n#!!block;n#hide_indicator#0" />
+            <element signature="n#!!block;n#show_indicator#0" />
+            <element signature="n#!!block;n#check_indicator_name#0" />
+            <element signature="n#!!block;n#change_indicator#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content_quality_analytics/migrations/0003_indicator_description.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content_quality_analytics/migrations/0004_merged.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="das://c8c70341-53c1-4150-b972-076c787b74e1/schema/main/table/content_quality_analytics_merged">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="39b39a68-eafe-445a-8aab-f5c89dc53770">
+          <filtering>
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/modules.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="77" column="36" lean-forward="true" selection-start-line="77" selection-start-column="36" selection-end-line="84" selection-end-column="42" />
+          <folding>
+            <element signature="n#block#0;n#!!top" />
+            <element signature="n#block#1;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="35" column="15" selection-start-line="35" selection-start-column="8" selection-end-line="35" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/expert-analysis.scss" />
+    <entry file="file://$PROJECT_DIR$/static/css/expert-analysis.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/self-test-analysis.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="227" column="18" lean-forward="true" selection-end-line="239" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/control-test-analysis.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="208" column="32" lean-forward="true" selection-start-line="41" selection-start-column="20" selection-end-line="208" selection-end-column="32" />
+          <folding>
+            <element signature="e#1915#1960#0#DjangoTemplate" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/video-file-analysis.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="176" column="32" lean-forward="true" selection-start-line="41" selection-start-column="20" selection-end-line="176" selection-end-column="32" />
+          <folding>
+            <element signature="n#for#1;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/video-lecture-analysis.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="141" column="32" lean-forward="true" selection-start-line="41" selection-start-column="20" selection-end-line="141" selection-end-column="32" />
+          <folding>
+            <element signature="e#1923#1964#0#DjangoTemplate" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/audio-file-analysis.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="130" column="32" lean-forward="true" selection-start-line="41" selection-start-column="20" selection-end-line="130" selection-end-column="32" />
+          <folding>
+            <element signature="n#for#1;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/audio-lecture-analysis.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="135" column="32" lean-forward="true" selection-start-line="41" selection-start-column="20" selection-end-line="135" selection-end-column="32" />
+          <folding>
+            <element signature="e#1923#1964#0#DjangoTemplate" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/webinar-analysis.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="235" column="39" selection-start-line="235" selection-start-column="34" selection-end-line="235" selection-end-column="39" />
+          <folding>
+            <element signature="e#1969#2068#0#DjangoTemplate" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/results.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/results.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/theory-analysis-results.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="357" column="14" lean-forward="true" selection-start-line="357" selection-start-column="14" selection-end-line="357" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/media/ngjz293yicyev4kyuol2ablhdidwijoz/theory/43561/html/img/3_7.png" />
+    <entry file="file://$PROJECT_DIR$/media/ngjz293yicyev4kyuol2ablhdidwijoz/theory/43561/html/img/3_1.png" />
+    <entry file="file://$PROJECT_DIR$/media/ngjz293yicyev4kyuol2ablhdidwijoz/theory/43561/html/img/3_14.png" />
+    <entry file="file://$PROJECT_DIR$/content_quality_analytics/analyzer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="770" column="14" selection-start-line="770" selection-start-column="14" selection-end-line="770" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#370#4045#0" />
+            <element signature="e#4152#4992#0" />
+            <element signature="e#5084#5275#0" />
+            <element signature="e#5330#6461#0" />
+            <element signature="e#6539#8026#0" />
+            <element signature="e#8110#9138#0" />
+            <element signature="e#9238#9427#0" />
+            <element signature="e#9539#10140#0" />
+            <element signature="e#10206#13619#0" />
+            <element signature="e#13655#13962#0" />
+            <element signature="e#14000#14299#0" />
+            <element signature="e#14345#14642#0" />
+            <element signature="e#14693#15098#0" />
+            <element signature="e#15147#16151#0" />
+            <element signature="e#16186#16610#0" />
+            <element signature="e#16724#17317#0" />
+            <element signature="e#17427#17961#0" />
+            <element signature="e#18019#18618#0" />
+            <element signature="e#18647#19414#0" />
+            <element signature="e#19465#22706#0" />
+            <element signature="e#22768#28290#0" />
+            <element signature="e#28329#28725#0" />
+            <element signature="e#28767#28936#0" />
+            <element signature="e#28982#29162#0" />
+            <element signature="e#29199#29387#0" />
+            <element signature="e#29427#29594#0" />
+            <element signature="e#29638#29820#0" />
+            <element signature="e#29870#32163#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content_quality_analytics/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="136" selection-start-line="136" selection-end-line="136" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content_quality_analytics/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="72" column="46" selection-start-line="72" selection-start-column="46" selection-end-line="72" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/indicators.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1071">
-          <caret line="63" column="76" selection-start-line="63" selection-start-column="76" selection-end-line="63" selection-end-column="76" />
+        <state relative-caret-position="316">
+          <caret line="90" column="20" selection-start-line="90" selection-start-column="20" selection-end-line="92" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/indicators.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="51" selection-start-line="26" selection-start-column="51" selection-end-line="26" selection-end-column="51" />
+        <state relative-caret-position="323">
+          <caret line="43" column="4" selection-start-line="43" selection-start-column="4" selection-end-line="55" selection-end-column="7" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/content_quality_analytics/analyzer.py">
+    <entry file="file://$PROJECT_DIR$/static/js/expert-analysis.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="40" column="54" selection-start-line="40" selection-start-column="54" selection-end-line="40" selection-end-column="54" />
+        <state relative-caret-position="17">
+          <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="7" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://c8c70341-53c1-4150-b972-076c787b74e1/schema/main/table/content_quality_analytics_scale">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="6a770cc5-7dd6-490a-a3b2-654829207f0b">
+          <filtering>
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://c8c70341-53c1-4150-b972-076c787b74e1/schema/main/table/content_quality_analytics_results">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="6a770cc5-7dd6-490a-a3b2-654829207f0b">
+          <filtering>
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/modules.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="150" column="3" selection-start-line="150" selection-start-column="3" selection-end-line="150" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/modules.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="131" column="26" selection-start-line="131" selection-start-column="26" selection-end-line="131" selection-end-column="26" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
-            <element signature="e#10033#13446#0" />
+            <element signature="e#373#391#0#DjangoTemplate" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/expert-analysis.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="396" column="185" selection-start-line="396" selection-start-column="185" selection-end-line="396" selection-end-column="185" />
+          <folding>
+            <element signature="e#408#426#0#DjangoTemplate" />
+            <element signature="e#2009#8034#0#HTML" />
+            <element signature="e#8131#8186#0#DjangoTemplate" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templatetags/filters.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/results.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="1758" column="45" selection-start-line="1758" selection-start-column="45" selection-end-line="1758" selection-end-column="45" />
+          <folding>
+            <element signature="e#398#416#0#DjangoTemplate" />
+            <element signature="e#1898#1921#0#DjangoTemplate" />
+            <element signature="e#2483#2555#0#DjangoTemplate" />
+            <element signature="e#3061#3145#0#DjangoTemplate" />
+            <element signature="e#3703#3772#0#DjangoTemplate" />
+            <element signature="e#4432#4504#0#DjangoTemplate" />
+            <element signature="e#5234#5303#0#DjangoTemplate" />
+            <element signature="e#6111#6183#0#DjangoTemplate" />
+            <element signature="e#7061#7185#0#DjangoTemplate" />
+            <element signature="e#2573#2596#0#DjangoTemplate" />
+            <element signature="e#70965#70991#0#DjangoTemplate" />
+            <element signature="e#71349#71580#0#HTML" />
+            <element signature="e#71617#71648#0#DjangoTemplate" />
+            <element signature="e#72045#72310#0#HTML" />
+            <element signature="e#72514#75695#0#HTML" />
+            <element signature="e#74727#74996#0#HTML" />
+            <element signature="e#76159#79328#0#HTML" />
+            <element signature="e#79365#79641#0#HTML" />
+            <element signature="e#79678#81389#0#HTML" />
+            <element signature="e#81426#81704#0#HTML" />
+            <element signature="e#81741#83454#0#HTML" />
+            <element signature="e#83491#83728#0#HTML" />
+            <element signature="e#83765#84224#0#HTML" />
+            <element signature="e#82443#82481#0#DjangoTemplate" />
+            <element signature="e#84861#85087#0#HTML" />
+            <element signature="e#85124#86397#0#HTML" />
+            <element signature="e#86434#86702#0#HTML" />
+            <element signature="e#86739#87519#0#HTML" />
+            <element signature="e#87556#87812#0#HTML" />
+            <element signature="e#94033#94060#0#DjangoTemplate" />
+            <element signature="e#104245#104275#0#DjangoTemplate" />
+            <element signature="e#112229#112256#0#DjangoTemplate" />
+            <element signature="e#119257#119287#0#DjangoTemplate" />
+            <element signature="e#126463#126487#0#DjangoTemplate" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content_quality_analytics/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="438">
+          <caret line="79" column="46" selection-start-line="79" selection-start-column="33" selection-end-line="79" selection-end-column="46" />
+          <folding>
+            <element signature="e#649#681#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/content_quality_analytics/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="864" column="51" selection-start-line="864" selection-start-column="51" selection-end-line="864" selection-end-column="51" />
+        <state relative-caret-position="418">
+          <caret line="1934" lean-forward="true" selection-start-line="1934" selection-end-line="1934" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
             <element signature="e#718#1257#0" />
@@ -869,48 +974,6 @@
             <element signature="e#12207#16974#0" />
             <element signature="e#17000#17289#0" />
             <element signature="e#17329#17445#0" />
-            <element signature="e#17478#18935#0" />
-            <element signature="e#18973#19236#0" />
-            <element signature="e#19276#19685#0" />
-            <element signature="e#19751#20210#0" />
-            <element signature="e#20244#20751#0" />
-            <element signature="e#20787#21478#0" />
-            <element signature="e#21539#22430#0" />
-            <element signature="e#23680#24457#0" />
-            <element signature="e#24506#24799#0" />
-            <element signature="e#24859#25309#0" />
-            <element signature="e#25338#25513#0" />
-            <element signature="e#25541#25694#0" />
-            <element signature="e#25720#25872#0" />
-            <element signature="e#25912#26636#0" />
-            <element signature="e#26673#27015#0" />
-            <element signature="e#27063#27067#0" />
-            <element signature="e#27110#28520#0" />
-            <element signature="e#28565#29692#0" />
-            <element signature="e#29743#29781#0" />
-            <element signature="e#29822#30630#0" />
-            <element signature="e#30674#31636#0" />
-            <element signature="e#31672#32083#0" />
-            <element signature="e#32114#33100#0" />
-            <element signature="e#35107#35967#0" />
-            <element signature="e#36010#37395#0" />
-            <element signature="e#37434#37779#0" />
-            <element signature="e#37820#38628#0" />
-            <element signature="e#38672#39634#0" />
-            <element signature="e#39672#43346#0" />
-            <element signature="e#43389#44474#0" />
-            <element signature="e#44507#44674#0" />
-            <element signature="e#44716#45439#0" />
-            <element signature="e#45478#45482#0" />
-            <element signature="e#45520#45752#0" />
-            <element signature="e#45783#45928#0" />
-            <element signature="e#45962#46117#0" />
-            <element signature="e#46152#46722#0" />
-            <element signature="e#46760#46939#0" />
-            <element signature="e#46975#47179#0" />
-            <element signature="e#47215#47418#0" />
-            <element signature="e#47460#47724#0" />
-            <element signature="e#47756#51244#0" />
           </folding>
         </state>
       </provider>

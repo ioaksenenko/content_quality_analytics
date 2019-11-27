@@ -48,10 +48,23 @@ $(document).ready(function () {
         }
     }
 
-    $('[type="checkbox"][name="checked"]').change(disabled_submit);
+    let analyze = $('#analyze');
+    let check_all = $('#check-all');
+    let checkboxes = $('input[type="checkbox"][name="checked"]');
+
+    checkboxes.each(function (i, e) {
+        if (!$(e).is(':checked')) {
+            $(e).parent().parent().next().addClass('disabled');
+        }
+    });
+    check_all.prop('indeterminate', checked.length !== checkboxes.length);
+
+    checkboxes.change(disabled_submit);
     $('#module-type').change(disabled_submit);
     text_input.keyup(disabled_submit);
     disabled_submit();
+
+    check_all.change(select);
 });
 
 function disabled_submit() {
@@ -60,8 +73,18 @@ function disabled_submit() {
     let module_name = $('#module-name');
     let module_type = $('#module-type');
     let checked = $('[type="checkbox"][name="checked"]:checked');
+    let check_all = $('#check-all');
+    let checkboxes = $('input[type="checkbox"][name="checked"]');
+
+    if ($(this).is(':checked')) {
+        $(this).parent().parent().next().removeClass('disabled');
+    } else {
+        $(this).parent().parent().next().addClass('disabled');
+    }
+
     if (checked.length !== 0) {
-        console.log(module_type.val());
+        check_all.prop('checked', true);
+        check_all.prop('indeterminate', checked.length !== checkboxes.length);
         if (module_name.val() !== '' && module_type.val() !== 'unknown') {
             submit.prop('disabled', false);
         } else {
@@ -69,6 +92,8 @@ function disabled_submit() {
         }
         remove.prop('disabled', false);
     } else {
+        check_all.prop('checked', false);
+        check_all.prop('indeterminate', false);
         submit.prop('disabled', true);
         remove.prop('disabled', true);
     }
@@ -76,11 +101,13 @@ function disabled_submit() {
 
 
 function select() {
-    var checkboxes = $('input[type="checkbox"][name="checked"]');
-    var checked = $('input[type="checkbox"][name="checked"]:checked');
-    if (checked.length !== checkboxes.length) {
+    let checkboxes = $('input[type="checkbox"][name="checked"]');
+    let checked = $('input[type="checkbox"][name="checked"]:checked');
+
+    if (checked.length === 0) {
         checkboxes.each(function (i, e) {
             $(e).prop('checked', true);
+            $(this).parent().parent().next().removeClass('disabled');
             if ($('#module-name').val() !== '' && $('#module-type').val() !== 'unknown') {
                 $('#join').prop('disabled', false);
             }
@@ -89,6 +116,7 @@ function select() {
     } else {
         checkboxes.each(function (i, e) {
             $(e).prop('checked', false);
+            $(this).parent().parent().next().addClass('disabled');
             $('#join').prop('disabled', true);
             $('#remove').prop('disabled', true);
         });

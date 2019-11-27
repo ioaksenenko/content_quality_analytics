@@ -385,31 +385,92 @@ def get_modules(request):
     dir_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key)
     for file_name in natsorted(os.listdir(dir_path), key=lambda y: y.lower()):
         if file_name != 'trash' and file_name != 'tmp':
-            if re.fullmatch(r'theory\d*', file_name, re.I):
+            if re.fullmatch(r'^(theory|введение|глоссарий|заключение|карта_курса|литература|сведения_об_авторе|список_сокращений|теоретический_материал|abbreviature|authors|conclusion|glossary|introduction|karta|literature|\d+).*$', file_name, re.I):
                 file_type = 'theory'
-            elif re.fullmatch(r'test\d*', file_name, re.I):
+                src = os.path.join(dir_path, file_name, 'html')
+                if not os.path.exists(src):
+                    src = 'undefined'
+                else:
+                    src = src[src.index(request.session.session_key) + len(request.session.session_key):]
+            elif re.fullmatch(r'^(test|самоконтроль).*$', file_name, re.I):
                 file_type = 'self-test'
-            elif re.fullmatch(r'control\d*', file_name, re.I):
+                src = os.path.join(dir_path, file_name, 'html')
+                if not os.path.exists(src):
+                    src = 'undefined'
+                else:
+                    src = src[src.index(request.session.session_key) + len(request.session.session_key):]
+            elif re.fullmatch(r'^(control|контрольная_работа).*$', file_name, re.I):
                 file_type = 'control-test'
-            elif re.fullmatch(r'exam\d*', file_name, re.I):
+                src = os.path.join(dir_path, file_name, 'test.xml')
+                if not os.path.exists(src):
+                    src = 'undefined'
+                else:
+                    src = src[src.index(request.session.session_key) + len(request.session.session_key):]
+            elif re.fullmatch(r'^(exam|экзаменационная_работа).*$', file_name, re.I):
                 file_type = 'exam-test'
-            elif re.fullmatch(r'presentation\d*', file_name, re.I):
+                src = os.path.join(dir_path, file_name, 'test.xml')
+                if not os.path.exists(src):
+                    src = 'undefined'
+                else:
+                    src = src[src.index(request.session.session_key) + len(request.session.session_key):]
+            elif re.fullmatch(r'^(presentation|презентация).*$', file_name, re.I):
                 file_type = 'presentation'
-            elif re.fullmatch(r'webinar\d*', file_name, re.I):
+                src = os.path.join(dir_path, file_name, 'slides')
+                if not os.path.exists(src):
+                    src = 'undefined'
+                else:
+                    src = src[src.index(request.session.session_key) + len(request.session.session_key):]
+            elif re.fullmatch(r'^(webinar|вебинар).*$', file_name, re.I):
                 file_type = 'webinar'
-            elif re.fullmatch(r'audiofile\d*', file_name, re.I):
+                src = os.path.join(dir_path, file_name)
+                src = src[src.index(request.session.session_key) + len(request.session.session_key):]
+            elif re.fullmatch(r'^(audiofile|аудиофайл).*$', file_name, re.I):
                 file_type = 'audio-file'
-            elif re.fullmatch(r'audiolecture\d*', file_name, re.I):
+                src = 'undefined'
+                dp = os.path.join(dir_path, file_name)
+                for fn in os.listdir(dp):
+                    fn, fe = os.path.splitext(fn)
+                    if re.fullmatch(r'\.(flac|midi|amr|ogg|aiff|mp3|wav)', fe, re.I):
+                        src = os.path.join(dp, fn + fe)
+                if src != 'undefined':
+                    src = src[src.index(request.session.session_key) + len(request.session.session_key):]
+            elif re.fullmatch(r'^(audiolecture|аудиолекция).*$', file_name, re.I):
                 file_type = 'audio-lecture'
-            elif re.fullmatch(r'videofile\d*', file_name, re.I):
+                src = 'undefined'
+                dp = os.path.join(dir_path, file_name)
+                for fn in os.listdir(dp):
+                    fn, fe = os.path.splitext(fn)
+                    if re.fullmatch(r'\.(flac|midi|amr|ogg|aiff|mp3|wav)', fe, re.I):
+                        src = os.path.join(dp, fn + fe)
+                if src != 'undefined':
+                    src = src[src.index(request.session.session_key) + len(request.session.session_key):]
+            elif re.fullmatch(r'^(videofile|видеофайл).*$', file_name, re.I):
                 file_type = 'video-file'
-            elif re.fullmatch(r'videolecture\d*', file_name, re.I):
+                src = 'undefined'
+                dp = os.path.join(dir_path, file_name)
+                for fn in os.listdir(dp):
+                    fn, fe = os.path.splitext(fn)
+                    if re.fullmatch(r'\.(avi|mp4|mkv)', fe, re.I):
+                        src = os.path.join(dp, fn + fe)
+                if src != 'undefined':
+                    src = src[src.index(request.session.session_key) + len(request.session.session_key):]
+            elif re.fullmatch(r'^(videolecture|видеолекция).*$', file_name, re.I):
                 file_type = 'video-lecture'
+                src = 'undefined'
+                dp = os.path.join(dir_path, file_name)
+                for fn in os.listdir(dp):
+                    fn, fe = os.path.splitext(fn)
+                    if re.fullmatch(r'\.(avi|mp4|mkv)', fe, re.I):
+                        src = os.path.join(dp, fn + fe)
+                if src != 'undefined':
+                    src = src[src.index(request.session.session_key) + len(request.session.session_key):]
             else:
                 file_type = 'unknown-file'
+                src = 'undefined'
             res.append({
                 'name': file_name,
-                'type': file_type
+                'type': file_type,
+                'src': src
             })
     return res
 
@@ -519,24 +580,26 @@ def parallel_analyze(files):
 
 def parallel_analyze_with_futures(files, indicators):
     files.pop(0)
+    indicators_for_all = indicators.pop(0)
 
     start_time = time()
 
     with ProcessPoolExecutor(max_workers=os.cpu_count()) as executor:
-        futures = [executor.submit(parallel_analyze_file_with_futures, file, indicators) for file in files]
+        futures = [executor.submit(parallel_analyze_file_with_futures, files[i], indicators[i]) for i in range(len(files))]
 
     results = [future.result() for future in futures]
 
     with ProcessPoolExecutor(max_workers=os.cpu_count()) as executor:
-        txt_ch = executor.submit(analyzer.text_characteristics_all_files, results, indicators)
-        img_ch = executor.submit(analyzer.img_characteristics_all_files, results, indicators)
-        san_ch = executor.submit(analyzer.search_and_nav_characteristics_all_files, results, indicators)
+        txt_ch = executor.submit(analyzer.text_characteristics_all_files, results, indicators_for_all)
+        img_ch = executor.submit(analyzer.img_characteristics_all_files, results, indicators_for_all)
+        san_ch = executor.submit(analyzer.search_and_nav_characteristics_all_files, results, indicators_for_all)
 
     results.insert(0, {
         'txt_ch': txt_ch.result(),
         'img_ch': img_ch.result(),
         'san_ch': san_ch.result()
     })
+    indicators.insert(0, indicators_for_all)
 
     finish_time = time()
 
@@ -546,25 +609,42 @@ def parallel_analyze_with_futures(files, indicators):
 
 
 def theory_analysis_results(request):
+    user = auth.get_user(request)
+    context = {
+        'username': user.username if not user.is_anonymous else 'Anonymous',
+        'is_superuser': user.is_superuser,
+        'is_anonymous': user.is_anonymous,
+    }
     if request.method == 'POST':
-        indicators = request.POST.getlist('indicators')
         media_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key)
         theory_path = os.path.join(media_path, 'theory')
         theory_modules = os.listdir(theory_path)
         if len(theory_modules) > 0:
+            indicators = []
+            for module in theory_modules:
+                module_indicators = request.POST.getlist('indicators-' + module)
+                indicators.append(module_indicators)
+            indicators.insert(0, request.POST.getlist('indicators-all-elements'))
+
             files = analyzer.read_files(theory_path, theory_modules)
             # results = linear_analyze(files)
             # results = parallel_analyze(files)
             results = parallel_analyze_with_futures(files, indicators)
             context = {
-                'modules': list(zip(
-                    ['all'] + [os.path.splitext(module)[0] for module in theory_modules],
+                'theory_modules': list(zip(
+                    ['all'] + [os.path.splitext(module)[0].replace(' ', '-') for module in theory_modules],
                     ['Анализ всего текста'] + ['Анализ модуля ' + module for module in theory_modules],
-                    results
-                )),
-                'indicators': indicators
+                    results,
+                    indicators
+                ))
             }
-            return render(request, 'theory-analysis-results.html', context)
+            models.Results(
+                uid=request.session.session_key,
+                name='theory',
+                context=json.dumps(context)
+            ).save()
+            # return render(request, 'theory-analysis-results.html', context)
+            return redirect('/expert-analysis/')
         else:
             return render(request, 'theory-analysis-results.html', {'modules': []})
     else:
@@ -616,10 +696,14 @@ def module_exist(request, files_names, module_name):
 
 
 def modules(request):
-    template = loader.get_template('modules.html')
-    modules = get_modules(request)
-    context = {'modules': modules}
-    return HttpResponse(template.render(context, request))
+    user = auth.get_user(request)
+    context = {
+        'username': user.username if not user.is_anonymous else 'Anonymous',
+        'is_superuser': user.is_superuser,
+        'is_anonymous': user.is_anonymous,
+        'modules': get_modules(request)
+    }
+    return render(request, 'modules.html', context)
 
 
 def unload(request):
@@ -637,6 +721,12 @@ def load(request):
 
 
 def self_test_analysis(request):
+    user = auth.get_user(request)
+    context = {
+        'username': user.username if not user.is_anonymous else 'Anonymous',
+        'is_superuser': user.is_superuser,
+        'is_anonymous': user.is_anonymous,
+    }
     self_test_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'self-test')
     modules = os.listdir(self_test_path)
     questions = []
@@ -646,13 +736,11 @@ def self_test_analysis(request):
             file_path = os.path.join(dir_path, file_name)
             if os.path.isfile(file_path):
                 questions.append(get_questions(file_path))
-    context = {
-        'modules': list(zip(
-            [os.path.splitext(module)[0] for module in modules],
-            ['Анализ модуля ' + module for module in modules],
-            questions
-        ))
-    }
+    context['modules'] = list(zip(
+        [os.path.splitext(module)[0] for module in modules],
+        ['Анализ модуля ' + module for module in modules],
+        questions
+    ))
     return render(request, 'self-test-analysis.html', context)
 
 
@@ -675,6 +763,12 @@ def self_test_analysis_results(request):
 
 
 def control_test_analysis(request):
+    user = auth.get_user(request)
+    context = {
+        'username': user.username if not user.is_anonymous else 'Anonymous',
+        'is_superuser': user.is_superuser,
+        'is_anonymous': user.is_anonymous,
+    }
     control_test_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'control-test')
     exam_test_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'exam-test')
     control_test_modules = os.listdir(control_test_path)
@@ -696,13 +790,11 @@ def control_test_analysis(request):
             if os.path.isfile(file_path):
                 questions += get_control_questions(file_path)
         all_questions.append(questions)
-    context = {
-        'modules': list(zip(
-            [os.path.splitext(module)[0] for module in control_test_modules + exam_test_modules],
-            ['Анализ модуля ' + module for module in control_test_modules + exam_test_modules],
-            all_questions
-        ))
-    }
+    context['modules'] = list(zip(
+        [os.path.splitext(module)[0] for module in control_test_modules + exam_test_modules],
+        ['Анализ модуля ' + module for module in control_test_modules + exam_test_modules],
+        all_questions
+    ))
     return render(request, 'control-test-analysis.html', context)
 
 
@@ -740,6 +832,12 @@ def control_test_analysis_results(request):
 
 
 def video_file_analysis(request):
+    user = auth.get_user(request)
+    context = {
+        'username': user.username if not user.is_anonymous else 'Anonymous',
+        'is_superuser': user.is_superuser,
+        'is_anonymous': user.is_anonymous,
+    }
     video_file_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'video-file')
     modules = []
     for dir_name in os.listdir(video_file_path):
@@ -756,18 +854,22 @@ def video_file_analysis(request):
         extensions.append(extension[1:])
         src.append(module)
 
-    context = {
-        'modules': list(zip(
-            names,
-            extensions,
-            src
-        ))
-    }
+    context['modules'] = list(zip(
+        names,
+        extensions,
+        src
+    ))
 
     return render(request, 'video-file-analysis.html', context)
 
 
 def video_lecture_analysis(request):
+    user = auth.get_user(request)
+    context = {
+        'username': user.username if not user.is_anonymous else 'Anonymous',
+        'is_superuser': user.is_superuser,
+        'is_anonymous': user.is_anonymous,
+    }
     video_lecture_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'video-lecture')
     theory_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'theory')
     modules = []
@@ -785,14 +887,12 @@ def video_lecture_analysis(request):
         extensions.append(extension[1:])
         src.append(module)
 
-    context = {
-        'modules': list(zip(
-            names,
-            extensions,
-            src
-        )),
-        'sections': os.listdir(theory_path)
-    }
+    context['modules'] = list(zip(
+        names,
+        extensions,
+        src
+    ))
+    context['sections'] = os.listdir(theory_path)
 
     return render(request, 'video-lecture-analysis.html', context)
 
@@ -860,8 +960,7 @@ def moodle(request):
 
             for module in modules:
                 fragments = re.findall(r'[a-zA-Zа-яА-Я0-9_\s]+', module['name'])
-                module_path = os.path.join(media_path, '_' + module['contextid'])
-                print(module_path)
+                module_path = os.path.join(media_path, ''.join(fragments).replace(' ', '_') + '_' + module['contextid'])
                 if not os.path.exists(module_path):
                     os.mkdir(module_path)
                     if module['plugin'] == 'mod_imscp':
@@ -878,8 +977,9 @@ def moodle(request):
             for future in futures:
                 future.result()
 
-        context['modules'] = get_modules(request)
-        return render(request, 'modules.html', context)
+        #context['modules'] = get_modules(request)
+        #return render(request, 'modules.html', context)
+        return redirect('/modules/')
     else:
         return render(request, 'index.html', context)
 
@@ -899,8 +999,13 @@ def download_file(file, module, module_path):
             file_paath = os.path.join(img_path, file['name'])
     response = requests.get(file['url'])
     if response.status_code == 200:
-        with open(file_paath, 'w', encoding='utf-8') as f:
-            f.write(response.text)
+        if re.fullmatch(r'.+\.html', file['name'], re.I):
+            with open(file_paath, 'w', encoding='utf-8') as f:
+                f.write(response.text)
+        elif re.fullmatch(r'.+\.(png|jpeg|jpg)', file['name'], re.I):
+            with open(file_paath, 'wb') as f:
+                f.write(response.content)
+
 
 
 def get_files_from_moodle(request):
@@ -960,16 +1065,38 @@ def get_files_from_moodle(request):
 
 def move_files_to_tmp(request):
     files = models.File.objects.all()
+    files_names = request.POST.getlist('checked[]')
+    media_root = os.path.join(settings.MEDIA_ROOT, request.session.session_key)
+    tmp_root = os.path.join(media_root, 'tmp')
+    move_from_tmp = False
     for file in files:
-        if file.uid == request.session.session_key:
-            src = file.src
-            dst = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'tmp', os.path.basename(src))
+        src = file.src
+        file_name = os.path.basename(src)
+        if file.uid == request.session.session_key and file_name in files_names:
+            dst = os.path.join(tmp_root, file_name)
             shutil.move(src, dst)
             file.delete()
+            move_from_tmp = True
+    if move_from_tmp:
+        for file_name in os.listdir(media_root):
+            file_path = os.path.join(media_root, file_name)
+            if os.path.isdir(file_path) and file_name != 'tmp':
+                shutil.rmtree(file_path)
+        for file_name in os.listdir(tmp_root):
+            src = os.path.join(tmp_root, file_name)
+            dst = os.path.join(media_root, file_name)
+            shutil.move(src, dst)
+        shutil.rmtree(tmp_root)
     return JsonResponse({'res': True})
 
 
 def audio_file_analysis(request):
+    user = auth.get_user(request)
+    context = {
+        'username': user.username if not user.is_anonymous else 'Anonymous',
+        'is_superuser': user.is_superuser,
+        'is_anonymous': user.is_anonymous,
+    }
     audio_file_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'audio-file')
     modules = []
     for dir_name in os.listdir(audio_file_path):
@@ -986,18 +1113,22 @@ def audio_file_analysis(request):
         extensions.append(extension[1:])
         src.append(module)
 
-    context = {
-        'modules': list(zip(
-            names,
-            extensions,
-            src
-        ))
-    }
+    context['modules'] = list(zip(
+        names,
+        extensions,
+        src
+    ))
 
     return render(request, 'audio-file-analysis.html', context)
 
 
 def audio_lecture_analysis(request):
+    user = auth.get_user(request)
+    context = {
+        'username': user.username if not user.is_anonymous else 'Anonymous',
+        'is_superuser': user.is_superuser,
+        'is_anonymous': user.is_anonymous,
+    }
     audio_lecture_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'audio-lecture')
     theory_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'theory')
     modules = []
@@ -1015,14 +1146,12 @@ def audio_lecture_analysis(request):
         extensions.append(extension[1:])
         src.append(module)
 
-    context = {
-        'modules': list(zip(
-            names,
-            extensions,
-            src
-        )),
-        'sections': os.listdir(theory_path)
-    }
+    context['modules'] = list(zip(
+        names,
+        extensions,
+        src
+    ))
+    context['sections'] = os.listdir(theory_path)
 
     return render(request, 'audio-lecture-analysis.html', context)
 
@@ -1206,11 +1335,12 @@ def add_indicator(request):
         indicator_name = request.POST.get('indicator-name')
         indicator_type = request.POST.get('indicator-type')
         indicator_show = request.POST.get('indicator-show')
-        print(indicator_show)
+        indicator_description = request.POST.get('indicator-description')
         indicator = models.Indicator(
             name=indicator_name,
             type=indicator_type,
-            show=True if indicator_show == 'on' else False
+            show=True if indicator_show == 'on' else False,
+            description=indicator_description
         )
         indicator.save()
     return render(request, 'add-indicator.html', context)
@@ -1291,31 +1421,49 @@ def indicators(request):
                 dst = os.path.join(tmp_path, file_name)
                 shutil.move(src, dst)
 
+        context['modules'] = []
+        indicators = models.Indicator.objects.filter(show=True)
         for module in modules:
+            mod = {}
             file_type = request.POST.get('type-' + module)
             src = os.path.join(tmp_path, module)
             if file_type == 'theory':
                 dst = os.path.join(theory_path, module)
+                mod['indicators'] = indicators.filter(type='auto-indicator')
             elif file_type == 'self-test':
                 dst = os.path.join(self_test_path, module)
+                mod['indicators'] = indicators.filter(name='self_test')
             elif file_type == 'control-test':
                 dst = os.path.join(control_test_path, module)
+                mod['indicators'] = indicators.filter(name='control_and_exam_tests')
             elif file_type == 'exam-test':
                 dst = os.path.join(exam_test_path, module)
+                mod['indicators'] = indicators.filter(name='control_and_exam_tests')
             elif file_type == 'video-file':
                 dst = os.path.join(video_file_path, module)
+                mod['indicators'] = indicators.filter(name='video_file')
             elif file_type == 'video-lecture':
                 dst = os.path.join(video_lecture_path, module)
+                mod['indicators'] = indicators.filter(name='video_lecture')
             elif file_type == 'audio-file':
                 dst = os.path.join(audio_file_path, module)
+                mod['indicators'] = indicators.filter(name='audio_file')
             elif file_type == 'audio-lecture':
                 dst = os.path.join(audio_lecture_path, module)
+                mod['indicators'] = indicators.filter(name='audio_lecture')
             elif file_type == 'webinar':
                 dst = os.path.join(webinar_path, module)
+                mod['indicators'] = indicators.filter(name='webinar')
             elif file_type == 'presentation':
                 dst = os.path.join(presentation_path, module)
+                mod['indicators'] = indicators.filter(name='presentation')
             else:
                 dst = None
+                mod['indicators'] = []
+
+            mod['name'] = module
+            mod['id'] = module
+            context['modules'].append(mod)
 
             if dst is not None and os.path.exists(src):
                 models.File(
@@ -1324,8 +1472,488 @@ def indicators(request):
                 ).save()
                 shutil.move(src, dst)
 
-        context['indicators'] = models.Indicator.objects.filter(show=True)
+        """
+        indicators = models.Indicator.objects.filter(show=True)
+        if len(os.listdir(theory_path)) == 0:
+            indicators = indicators.exclude(type='auto-indicator')
+        if len(os.listdir(self_test_path)) == 0:
+            indicators = indicators.exclude(name='self_test')
+        if len(os.listdir(control_test_path)) == 0 and len(os.listdir(exam_test_path)) == 0:
+            indicators = indicators.exclude(name='control_and_exam_tests')
+        if len(os.listdir(video_file_path)) == 0:
+            indicators = indicators.exclude(name='video_file')
+        if len(os.listdir(video_lecture_path)) == 0:
+            indicators = indicators.exclude(name='video_lecture')
+        if len(os.listdir(audio_file_path)) == 0:
+            indicators = indicators.exclude(name='audio_file')
+        if len(os.listdir(audio_lecture_path)) == 0:
+            indicators = indicators.exclude(name='audio_lecture')
+        if len(os.listdir(webinar_path)) == 0:
+            indicators = indicators.exclude(name='webinar')
+        """
+
+        context['modules'].append({
+            'name': 'Контент всех элементов с теорией',
+            'id': 'all-elements',
+            'indicators': indicators.filter(type='auto-indicator')
+        })
+
         return render(request, 'indicators.html', context)
     else:
         context['modules'] = get_modules(request)
         return render(request, 'modules.html', context)
+
+
+def join_elements(request):
+    if request.method == 'POST':
+        new_element_name = request.POST.get('element-name')
+        elements_names = request.POST.getlist('checked[]')
+        models.Merged(uid=request.session.session_key, name=new_element_name, fragments=json.dumps(elements_names)).save()
+        media_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key)
+        new_element_path = os.path.join(media_path, new_element_name)
+        new_html_path = os.path.join(new_element_path, 'html')
+        new_img_path = os.path.join(new_html_path, 'img')
+        if not os.path.exists(new_element_path):
+            os.mkdir(new_element_path)
+            os.mkdir(new_html_path)
+            os.mkdir(new_img_path)
+            trash_path = os.path.join(media_path, 'trash')
+            if not os.path.exists(trash_path):
+                os.mkdir(trash_path)
+            for element_name in elements_names:
+                element_path = os.path.join(media_path, element_name)
+                html_path = os.path.join(element_path, 'html')
+                img_path = os.path.join(html_path, 'img')
+                if os.path.exists(element_path):
+                    shutil.copytree(element_path, os.path.join(trash_path, element_name))
+                    if os.path.exists(html_path):
+                        if os.path.exists(img_path):
+                            for file_name in os.listdir(img_path):
+                                file_path = os.path.join(img_path, file_name)
+                                if os.path.isfile(file_path) and re.fullmatch(r'.*\.(jpg|jpeg|png)', file_name, re.I):
+                                    src = file_path
+                                    dst = os.path.join(new_img_path, file_name)
+                                    fn, fe = os.path.splitext(file_name)
+                                    n = 1
+                                    while os.path.exists(dst):
+                                        dst = os.path.join(new_img_path, fn + ' (' + str(n) + ')' + fe)
+                                        n = n + 1
+                                    if n != 1:
+                                        for file_name in os.listdir(html_path):
+                                            file_path = os.path.join(html_path, file_name)
+                                            if os.path.isfile(file_path) and re.fullmatch(r'.*\.html', file_name, re.I):
+                                                with open(file_path, 'r', encoding='utf-8') as f:
+                                                    c = f.read()
+                                                soup = bs4.BeautifulSoup(c, 'html.parser')
+                                                imgs = soup.find_all('img')
+                                                for img in imgs:
+                                                    if os.path.basename(img['src']) == os.path.basename(src):
+                                                        img['src'] = os.path.join(os.path.dirname(img['src']), os.path.basename(dst))
+                                                with open(file_path, 'w', encoding='utf-8') as f:
+                                                    f.write(str(soup))
+                                    shutil.move(src, dst)
+                        for file_name in os.listdir(html_path):
+                            file_path = os.path.join(html_path, file_name)
+                            if os.path.isfile(file_path) and re.fullmatch(r'.*\.html', file_name, re.I):
+                                src = file_path
+                                dst = os.path.join(new_html_path, file_name)
+                                fn, fe = os.path.splitext(file_name)
+                                n = 1
+                                while os.path.exists(dst):
+                                    dst = os.path.join(new_html_path, fn + ' (' + str(n) + ')' + fe)
+                                    n = n + 1
+                                shutil.move(src, dst)
+                    shutil.rmtree(element_path)
+    return redirect('/modules/')
+
+
+def split_elements(request):
+    if request.method == 'POST':
+        elements_names = request.POST.getlist('checked[]')
+        merged_elements = models.Merged.objects.all()
+        for element_name in elements_names:
+            for merged_element in merged_elements:
+                if merged_element.uid == request.session.session_key and merged_element.name == element_name:
+                    modules = json.loads(merged_element.fragments)
+                    for module in modules:
+                        src = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'trash', module)
+                        dst = os.path.join(settings.MEDIA_ROOT, request.session.session_key, module)
+                        if os.path.exists(src):
+                            shutil.move(src, dst)
+                    merged_element.delete()
+                    shutil.rmtree(os.path.join(settings.MEDIA_ROOT, request.session.session_key, element_name))
+    return redirect('/modules/')
+
+
+def expert_analysis(request):
+    user = auth.get_user(request)
+    context = {
+        'username': user.username if not user.is_anonymous else 'Anonymous',
+        'is_superuser': user.is_superuser,
+        'is_anonymous': user.is_anonymous,
+    }
+
+    self_test_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'self-test')
+    self_test_modules = os.listdir(self_test_path)
+    questions = []
+    for module in self_test_modules:
+        dir_path = os.path.join(self_test_path, module, 'HTML')
+        for file_name in os.listdir(dir_path):
+            file_path = os.path.join(dir_path, file_name)
+            if os.path.isfile(file_path):
+                questions.append(get_questions(file_path))
+
+    context['self_test_modules'] = list(zip(
+        [os.path.splitext(module)[0].replace(' ', '-') for module in self_test_modules],
+        ['Анализ модуля ' + module for module in self_test_modules],
+        questions
+    ))
+
+    control_test_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'control-test')
+    exam_test_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'exam-test')
+    control_test_modules = os.listdir(control_test_path)
+    exam_test_modules = os.listdir(exam_test_path)
+    all_questions = []
+    for module in control_test_modules:
+        dir_path = os.path.join(control_test_path, module)
+        questions = []
+        for file_name in os.listdir(dir_path):
+            file_path = os.path.join(dir_path, file_name)
+            if os.path.isfile(file_path):
+                questions += get_control_questions(file_path)
+        all_questions.append(questions)
+    for module in exam_test_modules:
+        dir_path = os.path.join(exam_test_path, module)
+        questions = []
+        for file_name in os.listdir(dir_path):
+            file_path = os.path.join(dir_path, file_name)
+            if os.path.isfile(file_path):
+                questions += get_control_questions(file_path)
+        all_questions.append(questions)
+    context['control_and_exam_test_modules'] = list(zip(
+        [os.path.splitext(module)[0].replace(' ', '-') for module in control_test_modules + exam_test_modules],
+        ['Анализ модуля ' + module for module in control_test_modules + exam_test_modules],
+        all_questions
+    ))
+
+    video_file_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'video-file')
+    video_file_modules = []
+    for dir_name in os.listdir(video_file_path):
+        dir_path = os.path.join(video_file_path, dir_name)
+        for file_name in os.listdir(dir_path):
+            video_file_modules.append(os.path.join('/media', request.session.session_key, 'video-file', dir_name, file_name))
+
+    names = []
+    extensions = []
+    src = []
+    for module in video_file_modules:
+        name, extension = os.path.splitext(os.path.basename(module))
+        names.append(name.replace(' ', '-'))
+        extensions.append(extension[1:])
+        src.append(module)
+
+    context['video_file_modules'] = list(zip(
+        names,
+        extensions,
+        src
+    ))
+
+    video_lecture_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'video-lecture')
+    theory_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'theory')
+    video_lecture_modules = []
+    for dir_name in os.listdir(video_lecture_path):
+        dir_path = os.path.join(video_lecture_path, dir_name)
+        for file_name in os.listdir(dir_path):
+            video_lecture_modules.append(os.path.join('/media', request.session.session_key, 'video-lecture', dir_name, file_name))
+
+    names = []
+    extensions = []
+    src = []
+    for module in video_lecture_modules:
+        name, extension = os.path.splitext(os.path.basename(module))
+        names.append(name.replace(' ', '-'))
+        extensions.append(extension[1:])
+        src.append(module)
+
+    context['video_lecture_modules'] = list(zip(
+        names,
+        extensions,
+        src
+    ))
+    context['video_lecture_sections'] = os.listdir(theory_path)
+
+    audio_file_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'audio-file')
+    audio_file_modules = []
+    for dir_name in os.listdir(audio_file_path):
+        dir_path = os.path.join(audio_file_path, dir_name)
+        for file_name in os.listdir(dir_path):
+            audio_file_modules.append(os.path.join('/media', request.session.session_key, 'audio-file', dir_name, file_name))
+
+    names = []
+    extensions = []
+    src = []
+    for module in audio_file_modules:
+        name, extension = os.path.splitext(os.path.basename(module))
+        names.append(name.replace(' ', '-'))
+        extensions.append(extension[1:])
+        src.append(module)
+
+    context['audio_file_modules'] = list(zip(
+        names,
+        extensions,
+        src
+    ))
+
+    audio_lecture_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'audio-lecture')
+    theory_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'theory')
+    audio_lecture_modules = []
+    for dir_name in os.listdir(audio_lecture_path):
+        dir_path = os.path.join(audio_lecture_path, dir_name)
+        for file_name in os.listdir(dir_path):
+            audio_lecture_modules.append(os.path.join('/media', request.session.session_key, 'audio-lecture', dir_name, file_name))
+
+    names = []
+    extensions = []
+    src = []
+    for module in audio_lecture_modules:
+        name, extension = os.path.splitext(os.path.basename(module))
+        names.append(name.replace(' ', '-'))
+        extensions.append(extension[1:])
+        src.append(module)
+
+    context['audio_lecture_modules'] = list(zip(
+        names,
+        extensions,
+        src
+    ))
+    context['audio_lecture_sections'] = os.listdir(theory_path)
+
+    webinar_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'webinar')
+    webinar_modules = os.listdir(webinar_path)
+    names = []
+    all_videos = []
+    all_pictures = []
+    all_audios = []
+    all_presentations = []
+    all_documents = []
+    all_tables = []
+    all_pdfs = []
+    all_others = []
+    for module in webinar_modules:
+        names.append(module.replace(' ', '-'))
+        videos = []
+        pictures = []
+        audios = []
+        presentations = []
+        documents = []
+        tables = []
+        pdfs = []
+        others = []
+        dir_path = os.path.join(webinar_path, module)
+        for file_name in os.listdir(dir_path):
+            file_path = os.path.join(dir_path, file_name)
+            if os.path.isfile(file_path):
+                name, extension = os.path.splitext(file_name)
+                if re.fullmatch(r'\.(avi|mp4|mkv)', extension):
+                    videos.append({
+                        'src': os.path.join('/media', request.session.session_key, 'webinar', module, file_name),
+                        'extension': extension[1:]
+                    })
+                elif re.fullmatch(r'\.(jpg|jpeg|png)', extension):
+                    pictures.append({
+                        'src': os.path.join('/media', request.session.session_key, 'webinar', module, file_name),
+                        'name': name
+                    })
+                elif re.fullmatch(r'\.(flac|midi|amr|ogg|aiff|mp3|wav)', extension):
+                    audios.append({
+                        'src': os.path.join('/media', request.session.session_key, 'webinar', module, file_name),
+                        'extension': extension[1:]
+                    })
+                elif re.fullmatch(r'\.(ppt|pptx)', extension):
+                    presentations.append({
+                        'src': os.path.join('/media', request.session.session_key, 'webinar', module, file_name),
+                        'name': name
+                    })
+                elif re.fullmatch(r'\.(doc|docx)', extension):
+                    documents.append({
+                        'src': os.path.join('/media', request.session.session_key, 'webinar', module, file_name),
+                        'name': name
+                    })
+                elif re.fullmatch(r'\.(xls|xlsx)', extension):
+                    tables.append({
+                        'src': os.path.join('/media', request.session.session_key, 'webinar', module, file_name),
+                        'name': name
+                    })
+                elif re.fullmatch(r'\.(pdf)', extension):
+                    pdfs.append({
+                        'src': os.path.join('/media', request.session.session_key, 'webinar', module, file_name),
+                        'name': name
+                    })
+                else:
+                    others.append({
+                        'src': os.path.join('/media', request.session.session_key, 'webinar', module, file_name),
+                        'name': name
+                    })
+            all_videos.append(videos)
+            all_pictures.append(pictures)
+            all_audios.append(audios)
+            all_presentations.append(presentations)
+            all_documents.append(documents)
+            all_tables.append(tables)
+            all_pdfs.append(pdfs)
+            all_others.append(others)
+
+    context['webinar_modules'] = list(zip(
+        names,
+        all_videos,
+        all_pictures,
+        all_audios,
+        all_presentations,
+        all_documents,
+        all_tables,
+        all_pdfs,
+        all_others
+    ))
+
+    models.Results(
+        uid=request.session.session_key,
+        name='expert-analysis',
+        context=json.dumps(context)
+    ).save()
+
+    return render(request, 'expert-analysis.html', context)
+
+
+def results(request):
+    user = auth.get_user(request)
+    context = {
+        'username': user.username if not user.is_anonymous else 'Anonymous',
+        'is_superuser': user.is_superuser,
+        'is_anonymous': user.is_anonymous,
+    }
+    results = models.Results.objects.filter(uid=request.session.session_key)
+    for result in results:
+        context.update(json.loads(result.context))
+
+    if request.method == 'POST':
+        self_test_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'self-test')
+        self_test_modules = os.listdir(self_test_path)
+        for self_test_module in self_test_modules:
+            for element in context['self_test_modules']:
+                if element[0] == self_test_module:
+                    element.append({
+                        'difficulty_factor': request.POST.getlist(self_test_module + '-self-test-difficulty-factor'),
+                        'completion_rate': request.POST.getlist(self_test_module + '-self-test-completion-rate'),
+                        'has_answers': request.POST.getlist(self_test_module + '-self-test-has-answers'),
+                        'has_links': request.POST.getlist(self_test_module + '-self-test-has-links'),
+                        'special_opinion': request.POST.get(self_test_module + '-self-test-special-opinion')
+                    })
+        control_test_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'control-test')
+        exam_test_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'exam-test')
+        control_test_modules = os.listdir(control_test_path)
+        exam_test_modules = os.listdir(exam_test_path)
+        for control_and_exam_test_module in control_test_modules + exam_test_modules:
+            for element in context['control_and_exam_test_modules']:
+                if element[0] == control_and_exam_test_module:
+                    element.append({
+                        'volume': request.POST.get(control_and_exam_test_module+'-control-and-exam-test-volume'),
+                        'has_generation': request.POST.get(control_and_exam_test_module + '-control-and-exam-test-has-generation'),
+                        'testing_technology': request.POST.getlist(control_and_exam_test_module + '-control-and-exam-test-testing-technology'),
+                        'has_codifier': request.POST.get(control_and_exam_test_module + '-control-and-exam-test-has-codifier'),
+                        'course_section': request.POST.getlist(control_and_exam_test_module + '-control-and-exam-test-course-section'),
+                        'researches': request.POST.getlist(control_and_exam_test_module + '-control-and-exam-test-researches'),
+                        'special_opinion': request.POST.get(control_and_exam_test_module + '-control-and-exam-test-special-opinion')
+                    })
+        video_file_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'video-file')
+        video_file_modules = os.listdir(video_file_path)
+        for video_file_module in video_file_modules:
+            for element in context['video_file_modules']:
+                if element[0] == video_file_module:
+                    element.append({
+                        'target': request.POST.getlist(video_file_module+'-video-file-target'),
+                        'duration': request.POST.getlist(video_file_module + '-video-file-duration'),
+                        'has_scenario': request.POST.get(video_file_module + '-video-file-has-scenario'),
+                        'complexity': request.POST.getlist(video_file_module + '-video-file-complexity'),
+                        'has_ticker': request.POST.get(video_file_module + '-video-file-has-ticker'),
+                        'recording_quality': request.POST.getlist(video_file_module + '-video-file-recording-quality')
+                    })
+        video_lecture_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'video-lecture')
+        video_lecture_modules = os.listdir(video_lecture_path)
+        for video_lecture_module in video_lecture_modules:
+            for element in context['video_lecture_modules']:
+                if element[0] == video_lecture_module:
+                    element.append({
+                        'coverage': request.POST.getlist(video_lecture_module + '-video-lecture-coverage'),
+                        'distribution': request.POST.getlist(video_lecture_module + '-video-lecture-distribution'),
+                        'volume': request.POST.get(video_lecture_module + '-video-lecture-volume'),
+                        'has_navigation': request.POST.get(video_lecture_module + '-video-lecture-has-navigation')
+                    })
+        audio_file_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'audio-file')
+        audio_file_modules = os.listdir(audio_file_path)
+        for audio_file_module in audio_file_modules:
+            for element in context['audio_file_modules']:
+                if element[0] == audio_file_module:
+                    element.append({
+                        'target': request.POST.getlist(audio_file_module + '-audio-file-target'),
+                        'target_own': request.POST.get(audio_file_module + '-audio-file-target-own'),
+                        'duration': request.POST.get(audio_file_module + '-audio-file-duration'),
+                        'quality': request.POST.getlist(audio_file_module + '-audio-file-quality'),
+                        'format': request.POST.get(audio_file_module + '-audio-file-format')
+                    })
+        audio_lecture_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'audio-lecture')
+        audio_lecture_modules = os.listdir(audio_lecture_path)
+        for audio_lecture_module in audio_lecture_modules:
+            for element in context['audio_lecture_modules']:
+                if element[0] == audio_lecture_module:
+                    element.append({
+                        'coverage': request.POST.get(audio_lecture_module + '-audio-lecture-coverage'),
+                        'distribution': request.POST.getlist(audio_lecture_module + '-audio-lecture-distribution'),
+                        'volume': request.POST.get(audio_lecture_module + '-audio-lecture-volume'),
+                        'has_navigation': request.POST.get(audio_lecture_module + '-audio-lecture-has-navigation')
+                    })
+        webinar_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'webinar')
+        webinar_modules = os.listdir(webinar_path)
+        for webinar_module in webinar_modules:
+            for element in context['webinar_modules']:
+                if element[0] == webinar_module:
+                    element.append({
+                        'type': request.POST.getlist(webinar_module + '-webinar-type'),
+                        'duration': request.POST.get(webinar_module + '-webinar-duration'),
+                        'has_scenario': request.POST.get(webinar_module + '-webinar-has-scenario'),
+                        'has_presentation': request.POST.get(webinar_module + '-webinar-has-presentation'),
+                        'has_additional_materials': request.POST.get(webinar_module + '-webinar-has-additional-materials'),
+                        'has_questions': request.POST.get(webinar_module + '-webinar-has-questions'),
+                    })
+        results = models.Results.objects.filter(
+            uid=request.session.session_key,
+            name='expert-analysis'
+        )
+        for result in results:
+            result.context = json.dumps(context)
+            result.save()
+    return render(request, 'results.html', context)
+
+
+def course_rating(request):
+    user = auth.get_user(request)
+    context = {
+        'username': user.username if not user.is_anonymous else 'Anonymous',
+        'is_superuser': user.is_superuser,
+        'is_anonymous': user.is_anonymous,
+    }
+    results = models.Results.objects.filter(uid=request.session.session_key)
+    for result in results:
+        context.update(json.loads(result.context))
+
+    course_rating = 0
+    if request.method == 'POST':
+        values = request.POST.getlist('values')
+        coefficients = request.POST.getlist('coefficients')
+        for i in range(len(values)):
+            course_rating += float(values[i]) * float(coefficients[i])
+        course_rating /= len(values)
+        context['coefficients'] = coefficients
+
+    context['course_rating'] = round(course_rating, 2)
+
+    return render(request, 'results.html', context)

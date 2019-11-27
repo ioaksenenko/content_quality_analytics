@@ -461,6 +461,7 @@ function save_indicator(old_indicator_name) {
     let indicator_name_field = $('#indicator-name-' + old_indicator_name);
     let indicator_type_field = $('[name="indicator-type-' + old_indicator_name + '"]:checked');
     let indicator_show_field = $('#indicator-show-' + old_indicator_name);
+    let indicator_description_field = $('#indicator-description-' + old_indicator_name);
 
     let invalid_feedback_name = $('#invalid-feedback-' + old_indicator_name + '-name');
 
@@ -469,6 +470,7 @@ function save_indicator(old_indicator_name) {
     let indicator_name =  indicator_name_field.val();
     let indicator_type =  indicator_type_field.val();
     let indicator_show =  indicator_show_field.val();
+    let indicator_description =  indicator_description_field.val();
 
     let modal_body = $('#modal-indicator-' + old_indicator_name + ' .modal-body');
     let msg = $('[id^="msg-indicator-' + old_indicator_name + '-"]');
@@ -516,7 +518,8 @@ function save_indicator(old_indicator_name) {
                 data: {
                     'indicator-name': indicator_name,
                     'indicator-type': indicator_type,
-                    'indicator-show': indicator_show
+                    'indicator-show': indicator_show,
+                    'indicator-description': indicator_description
                 }
             }).done(function (response) {
                 $('#modal-indicator-' + old_indicator_name).modal('hide');

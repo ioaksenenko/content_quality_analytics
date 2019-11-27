@@ -7,26 +7,33 @@
     <script src="{% static "js/base.js" %}"></script>
     <script src="{% static "js/files.js" %}"></script>
 {% endblock %}
+{% block header %}
+    <div class="container-fluid">
+        <div class="row mt-3 align-items-center">
+	    	<div class="col-auto d-table mr-auto">
+	    		<b>Система анализа электронных курсов</b>
+	    	</div>
+            <div class="col-auto d-table">
+                {% if is_anonymous %}
+                    <a href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i> Войти в систему</a>
+                {% else %}
+                    <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Выйти из системы</a>
+                {% endif %}
+            </div>
+	    </div>
+    </div>
+{% endblock %}
 {% block main %}
 <div class="container-fluid mb-3">
     <div class="row">
-		<div class="col">
-            {% if msg|length != 0 %}
-                <div class="alert alert-danger mt-3" role="alert" id="msg">
-                    {{ msg }}
-                </div>
-            {% endif %}
-        </div>
-    </div>
-    <div class="row">
-		<div class="col">
+		<div class="col-auto">
             <div class="alert alert-info {% if msg|length == 0 %} mt-3 {% endif %}" role="alert">
-                Выберите файлы, относящиеся к одному модулю.
+                Система не смогла распознать модуль, к которому относятся данные файлы. Выберите файлы, относящиеся к одному модулю, укажите имя модуля и его тип. Удалите файлы, которые не нужно анализировать.
             </div>
         </div>
     </div>
 	<div class="row">
-		<div class="col">
+		<div class="col-auto">
             <form action="{% url 'file-action' %}" enctype="multipart/form-data" method="post" id="files">
                 {% csrf_token %}
                 <div class="form-group">
@@ -34,7 +41,12 @@
 			        	<thead class="thead-light">
 			        		<tr>
 			        			<th scope="col">#</th>
-                                <th scope="col"><button type="button" class="btn btn-link" onclick="select()">Выбрать \ Снять выбор</button></th>
+                                <th scope="col">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="check-all" checked>
+                                        <label class="custom-control-label" for="check-all"></label>
+                                    </div>
+                                </th>
 			        			<th scope="col">Название файла</th>
 			        		</tr>
 			        	</thead>
@@ -44,9 +56,9 @@
 			        		        <tr>
 			        			        <th scope="row">{{ forloop.counter }}</th>
                                         <td>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" name="checked" value="{{ file }}" id="file-{{ file }}" {% if checked and file in checked %}checked{% endif %}>
-                                                <label class="form-check-label" for="file-{{ file }}"></label>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" name="checked" value="{{ file }}" id="file-{{ file }}" checked>
+                                                <label class="custom-control-label" for="file-{{ file }}"></label>
                                                 <input type="hidden" name="files" value="{{ file }}" />
                                             </div>
                                         </td>

@@ -1,0 +1,15 @@
+.disabled {
+    color: rgb(191, 192, 193);
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+    content: "" !important;
+}
+
+.btn-sm {
+    padding: .10rem .3rem !important;
+    font-size: .575rem !important;
+    line-height: 1.2 !important;
+    border-radius: .2rem;
+    margin-bottom: .2rem !important;
+}

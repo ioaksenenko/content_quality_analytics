@@ -207,6 +207,7 @@
                                                 <th scope="col">#</th>
                                                 <th scope="col">Название показателя</th>
                                                 <th scope="col">Тип показателя</th>
+                                                <th scope="col">Описание показателя</th>
                                                 <th scope="col">Настройка показателя</th>
                                                 <th scope="col">Удаление показателя</th>
                                                 <th scope="col">Отображение показателя</th>
@@ -218,6 +219,7 @@
                                                     <th scope="row">{{ forloop.counter }}</th>
                                                     <td>{{ indicator.name }}</td>
                                                     <td>{% if indicator.type == 'auto-indicator' %}Автоматический{% elif indicator.type == 'expert-indicator' %}Экспертный{% else %}Неизвестный тип{% endif %}</td>
+                                                    <td>{{ indicator.description }}</td>
                                                     <td class="text-center">
                                                         <a href="#" onclick="change_indicator('{{ indicator.name }}')"><i class="fas fa-cog"></i></a>
                                                         <div class="modal fade" id="modal-indicator-{{ indicator.name }}" tabindex="-1" role="dialog" aria-labelledby="title-{{ indicator.name }}" aria-hidden="true">
@@ -268,6 +270,14 @@
                                                                                 <div class="custom-control custom-switch">
                                                                                     <input type="checkbox" class="custom-control-input" id="indicator-show-{{ indicator.name }}" name="indicator-show-{{ indicator.name }}" {% if indicator.show %}checked{% endif %} value="{% if indicator.show %}on{% else %}off{% endif %}">
                                                                                     <label class="custom-control-label" for="indicator-show-{{ indicator.name }}">Отображение показателя</label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row mt-4">
+                                                                            <div class="col">
+                                                                                <div class="form-group">
+                                                                                    <h5><label for="indicator-description-{{ indicator.name }}">Описание показателя</label></h5>
+                                                                                    <textarea class="form-control" id="indicator-description-{{ indicator.name }}" name="indicator-description-{{ indicator.name }}" rows="3">{{ indicator.description }}</textarea>
                                                                                 </div>
                                                                             </div>
                                                                         </div>

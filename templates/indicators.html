@@ -7,61 +7,91 @@
     <script src="{% static "js/base.js" %}"></script>
     <script src="{% static "js/indicators.js" %}"></script>
 {% endblock %}
-{% block main %}
-<div class="container-fluid mt-3 mb-3">
-    <div class="row mt-3 align-items-center">
-		<div class="col-auto">
-			<img class="d-block mx-auto" src="{% static 'img/user.png' %}" alt="user">
-		</div>
-        <div class="col-auto d-table mr-auto">
-            <p class="m-0 p-0"><b>{{ username }}</b></p>
-            {% if is_anonymous %}
-                <a href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i> Войти в систему</a>
-            {% else %}
-                <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Выйти из системы</a>
-            {% endif %}
-        </div>
-        <div class="col-auto d-table">
-            {% if is_superuser  %}
-                <a href="{% url 'admin-settings' %}" class="d-table-cell"><h1><i class="fas fa-cog"></i></h1></a>
-            {% endif %}
-        </div>
-	</div>
-    <div class="row mt-3">
-        <div class="col">
-            <h1 class="text-center">Выберите показатели, которые необходимо вычислить</h1>
+{% block header %}
+    <div class="container-fluid">
+        <div class="row mt-3 align-items-center">
+	    	<div class="col-auto d-table mr-auto">
+	    		<b>Система анализа электронных курсов</b>
+	    	</div>
+            <div class="col-auto d-table">
+                {% if is_anonymous %}
+                    <a href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i> Войти в систему</a>
+                {% else %}
+                    <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Выйти из системы</a>
+                {% endif %}
+            </div>
+	    </div>
+        <div class="row pl-3 mt-3">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">1. Определение структуры</li>
+                    <li class="breadcrumb-item active">2. Выбор показателей</li>
+                    <li class="breadcrumb-item">3. Экспертный анализ</li>
+                    <li class="breadcrumb-item">4. Результаты</li>
+                </ol>
+            </nav>
         </div>
     </div>
-    <div class="row mt-3">
-        <div class="col">
+{% endblock %}
+{% block main %}
+<div class="container-fluid mb-3">
+    <!--<div class="row">
+		<div class="col-auto">
+            <div class="alert alert-info" role="alert">
+                Выберите показатели, которые необходимо вычислить
+            </div>
+        </div>
+    </div>-->
+    <div class="row">
+        <div class="col-auto">
             <form action="{% url 'theory-analysis-results' %}" enctype="multipart/form-data" method="post" id="indicators">
                 {% csrf_token %}
-                <table class="table">
-			    	<thead class="thead-light">
-			    		<tr>
-			    			<th scope="col">#</th>
-                            <th scope="col"><button type="button" class="btn btn-link" onclick="select()">Выбрать \ Снять выбор</button></th>
-			    			<th scope="col">Название показателя</th>
-                            <th scope="col">Тип показателя</th>
-			    		</tr>
-			    	</thead>
-			    	<tbody>
-                        {% for indicator in indicators %}
-                            <tr>
-                                <th scope="row">{{ forloop.counter }}</th>
-                                <td>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="indicators" value="{{ indicator.name }}" id="indicator-{{ indicator.name }}" checked>
-                                        <label class="form-check-label" for="indicator-{{ indicator.name }}"></label>
-                                    </div>
-                                </td>
-                                <td>{{ indicator.name }}</td>
-                                <td>{% if indicator.type == 'auto-indicator' %}Автоматический{% elif indicator.type == 'expert-indicator' %}Экспертный{% endif %}</td>
-                            </tr>
-                        {% endfor %}
-			    	</tbody>
-			    </table>
-                <button type="submit" class="btn btn-primary mx-auto d-block" id="next">Далее</button>
+                {% for module in modules %}
+                    {% if module.indicators|length > 0 %}
+                        <p>{{ module.name }}</p>
+                        <table class="table">
+			            	<thead class="thead-light">
+			            		<!--<tr>
+                                    <th scope="col">
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="check-all" checked>
+                                            <label class="custom-control-label" for="check-all"></label>
+                                        </div>
+                                    </th>
+			            			<th scope="col">Название показателя</th>
+                                    <th scope="col">Описание показателя</th>
+                                    <th scope="col">Тип показателя</th>
+			            		</tr>-->
+			            	</thead>
+			            	<tbody>
+                                {% for indicator in module.indicators %}
+                                    <tr>
+                                        <td>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" name="indicators-{{ module.id }}" value="{{ indicator.name }}" id="{{ module.name }}-indicator-{{ indicator.name }}" checked>
+                                                <label class="custom-control-label" for="{{ module.name }}-indicator-{{ indicator.name }}"></label>
+                                            </div>
+                                        </td>
+                                        <td>{{ indicator.name }}</td>
+                                        <td>{{ indicator.description }}</td>
+                                        <td>{% if indicator.type == 'auto-indicator' %}Автоматический{% elif indicator.type == 'expert-indicator' %}Экспертный{% endif %}</td>
+                                    </tr>
+                                {% endfor %}
+			            	</tbody>
+			            </table>
+                        <!--<input type="text" class="d-none" name="modules" id="module-{{ module.name }}" value="{{ module.name }}">
+                        <label class="d-none" for="module-{{ module.name }}"></label>-->
+                    {% endif %}
+                {% endfor %}
+
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-primary" id="next">Далее</button>
+                    </div>
+                    <div class="col-auto">
+                        <div class="spinner-border text-primary d-none" role="status" id="spinner"></div>
+                    </div>
+                </div>
             </form>
         </div>
     </div>

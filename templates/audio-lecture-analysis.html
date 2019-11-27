@@ -8,11 +8,27 @@
     <script src="{% static "js/base.js" %}"></script>
     <script src="{% static "js/audio-lecture-analysis.js" %}"></script>
 {% endblock %}
+{% block header %}
+    <div class="container-fluid">
+        <div class="row mt-3 align-items-center">
+	    	<div class="col-auto d-table mr-auto">
+	    		<b>Система анализа электронных курсов</b>
+	    	</div>
+            <div class="col-auto d-table">
+                {% if is_anonymous %}
+                    <a href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i> Войти в систему</a>
+                {% else %}
+                    <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Выйти из системы</a>
+                {% endif %}
+            </div>
+	    </div>
+    </div>
+{% endblock %}
 {% block main %}
 <div class="container-fluid mt-3 mb-3">
-	<div class="row">
-		<div class="col">
-            {% if modules|length > 0 %}
+    {% if modules|length > 0 %}
+	    <div class="row">
+	    	<div class="col">
                 <ul class="nav nav-tabs" id="modules-tabs" role="tablist">
                     {% if modules %}
                         {% for name, extension, src in modules %}
@@ -61,17 +77,17 @@
                                 <div class="row">
                                     <div class="col">
                                         <table class="table">
-			                            	<thead class="thead-light">
-			                            		<tr>
-			                            			<th scope="col">Название раздела</th>
-			                            			<th scope="col">Процент аудио, соответствующий данному разделу учебного курса</th>
-			                            		</tr>
-			                            	</thead>
-			                            	<tbody>
-			                            		{% if sections %}
-			                            		    {% for section in sections %}
-			                            		        <tr>
-			                            			        <th scope="row">{{ section }}</th>
+	    		                        	<thead class="thead-light">
+	    		                        		<tr>
+	    		                        			<th scope="col">Название раздела</th>
+	    		                        			<th scope="col">Процент аудио, соответствующий данному разделу учебного курса</th>
+	    		                        		</tr>
+	    		                        	</thead>
+	    		                        	<tbody>
+	    		                        		{% if sections %}
+	    		                        		    {% for section in sections %}
+	    		                        		        <tr>
+	    		                        			        <th scope="row">{{ section }}</th>
                                                             <td>
                                                                 <div class="input-group">
                                                                     <input type="text" class="form-control" id="dist-section-{{ forloop.counter }}" placeholder="50" aria-label="" aria-describedby="percent-section-{{ forloop.counter }}" name="dist-section-{{ forloop.counter }}">
@@ -80,11 +96,11 @@
                                                                     </div>
                                                                 </div>
                                                             </td>
-			                            		        </tr>
-			                            		    {% endfor %}
-			                            		{% endif %}
-			                            	</tbody>
-			                            </table>
+	    		                        		        </tr>
+	    		                        		    {% endfor %}
+	    		                        		{% endif %}
+	    		                        	</tbody>
+	    		                        </table>
                                     </div>
                                 </div>
                                 <div class="row mb-3 mt-3">
@@ -119,16 +135,24 @@
                         </div>
                     {% endfor %}
                 </div>
-            {% else %}
+	    	</div>
+	    </div>
+    {% else %}
+        <div class="row">
+            <div class="col">
                 <div class="alert alert-danger" role="alert">
                     Ни одной аудиолекции не обнаружено.
                 </div>
-            {% endif %}
-            <form action="{% url 'webinar-analysis' %}" enctype="multipart/form-data" method="post">
+            </div>
+        </div>
+    {% endif %}
+    <div class="row mt-1">
+        <div class="col-4 mx-auto d-block">
+            <form action="{% url 'webinar-analysis' %}" enctype="multipart/form-data" method="post" id="expert-questions">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-primary mx-auto d-block" id="doexpans">Перейти к анализу вебинаров</button>
             </form>
-		</div>
-	</div>
+        </div>
+    </div>
 </div>
 {% endblock %}

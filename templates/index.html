@@ -7,26 +7,36 @@
     <script src="{% static "js/base.js" %}"></script>
     <script src="{% static "js/index.js" %}"></script>
 {% endblock %}
+{% block header %}
+    <div class="container-fluid">
+        <div class="row mt-3 align-items-center">
+	    	<div class="col-auto d-table mr-auto">
+	    		<!--<img class="d-block mx-auto" src="{% static 'img/user.png' %}" alt="user">-->
+                <b>Система анализа электронных курсов</b>
+	    	</div>
+            <!--<div class="col-auto d-table mr-auto">
+                <p class="m-0 p-0"><b>{{ username }}</b></p>
+                {% if is_anonymous %}
+                    <a href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i> Войти в систему</a>
+                {% else %}
+                    <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Выйти из системы</a>
+                {% endif %}
+            </div>-->
+            <div class="col-auto d-table">
+                <!--{% if is_superuser  %}
+                    <a href="{% url 'admin-settings' %}" class="d-table-cell"><h1><i class="fas fa-cog"></i></h1></a>
+                {% endif %}-->
+                {% if is_anonymous %}
+                    <a href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i> Войти в систему</a>
+                {% else %}
+                    <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Выйти из системы</a>
+                {% endif %}
+            </div>
+	    </div>
+    </div>
+{% endblock %}
 {% block main %}
-<div class="container-fluid">
-    <div class="row mt-3 align-items-center">
-		<div class="col-auto">
-			<img class="d-block mx-auto" src="{% static 'img/user.png' %}" alt="user">
-		</div>
-        <div class="col-auto d-table mr-auto">
-            <p class="m-0 p-0"><b>{{ username }}</b></p>
-            {% if is_anonymous %}
-                <a href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i> Войти в систему</a>
-            {% else %}
-                <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Выйти из системы</a>
-            {% endif %}
-        </div>
-        <div class="col-auto d-table">
-            {% if is_superuser  %}
-                <a href="{% url 'admin-settings' %}" class="d-table-cell"><h1><i class="fas fa-cog"></i></h1></a>
-            {% endif %}
-        </div>
-	</div>
+<!--<div class="container-fluid">
     <div class="row mt-3">
         <div class="col">
             <ul class="nav nav-tabs" id="system-tabs" role="tablist">
@@ -38,11 +48,16 @@
                 </li>
             </ul>
             <div class="tab-content" id="system-tabs-content">
-                <div class="tab-pane fade show active p-0 m-0" id="tab-moodle" role="tabpanel" aria-labelledby="moodle-tab">
+                <div class="tab-pane fade show active p-0 m-0" id="tab-moodle" role="tabpanel" aria-labelledby="moodle-tab">-->
                     <div class="container m-0 mt-3">
+                        <div class="row mb-3">
+                            <div class="col-auto">
+                                Выберите СДО:
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-auto">
-                                <form action="{% url 'moodle' %}" enctype="multipart/form-data" method="post">
+                                <form action="{% url 'moodle' %}" enctype="multipart/form-data" method="post" id="moodle-form">
                                     {% csrf_token %}
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="moodle" id="online" value="online" checked>
@@ -56,20 +71,23 @@
                                         <input class="form-check-input" type="radio" name="moodle" id="sdo" value="sdo">
                                         <label class="form-check-label" for="sdo"><a href="https://sdo.tusur.ru/" target="_blank">sdo</a></label>
                                     </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="moodle" id="mooc" value="mooc">
-                                        <label class="form-check-label" for="mooc"><a href="https://mooc.tusur.ru/" target="_blank">mooc</a></label>
-                                    </div>
                                     <div class="form-group mt-3">
                                         <label for="course-id">Идентификатор курса</label>
-                                        <input type="text" class="form-control" id="course-id" name="course-id" placeholder="696" required>
+                                        <input type="text" class="form-control" id="course-id" name="course-id" placeholder="" required>
                                     </div>
-                                    <button type="submit" class="btn btn-primary" id="moodle-send">Отправить</button>
+                                    <div class="row align-items-center">
+                                        <div class="col-auto">
+                                            <button class="btn btn-primary" id="moodle-send" disabled>Далее</button>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="spinner-border text-primary d-none" role="status" id="spinner"></div>
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
                         </div>
                     </div>
-                </div>
+                <!--</div>
                 <div class="tab-pane fade" id="tab-loading" role="tabpanel" aria-labelledby="loading-tab">
                     <div class="container m-0 mt-3">
                         <div class="row">
@@ -89,5 +107,5 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
 {% endblock %}

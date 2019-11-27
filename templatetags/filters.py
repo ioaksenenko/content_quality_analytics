@@ -29,3 +29,14 @@ def from_json(string):
 def get(dictionary, key):
     res = dictionary[key] if key in dictionary else 'scales'
     return res
+
+
+@register.filter
+def next_element(list_iter):
+    return next(list_iter)
+
+
+@register.filter
+def get_list_iter(some_list):
+    some_list = iter(some_list)
+    return some_list

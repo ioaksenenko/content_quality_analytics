@@ -1,0 +1,1777 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load filters %}
+{% block head %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static "css/base.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/results.css" %}" />
+    <script src="{% static "js/base.js" %}"></script>
+    <script src="{% static "js/results.js" %}"></script>
+{% endblock %}
+{% block header %}
+    <div class="container-fluid">
+        <div class="row mt-3 align-items-center">
+            <div class="col-auto d-table mr-auto">
+                <b>Система анализа электронных курсов</b>
+            </div>
+            <div class="col-auto d-table">
+                {% if is_anonymous %}
+                    <a href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i> Войти в систему</a>
+                {% else %}
+                    <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Выйти из системы</a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row pl-3 mt-3">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">1. Определение структуры</li>
+                    <li class="breadcrumb-item">2. Выбор показателей</li>
+                    <li class="breadcrumb-item">3. Экспертный анализ</li>
+                    <li class="breadcrumb-item active">4. Результаты</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+{% endblock %}
+{% block main %}
+<div class="container-fluid mb-3">
+    <div class="row">
+        <div class="col">
+            <form action="{% url 'course-rating' %}" enctype="multipart/form-data" method="post">
+                {% csrf_token %}
+                {% with list_iter=coefficients|get_list_iter %}
+                <ul class="nav nav-tabs" id="modules-tabs" role="tablist">
+                    {% if theory_modules %}
+                        {% for name, content, result, indicators in theory_modules %}
+                            <li class="nav-item">
+                                <a class="nav-link {% if forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if forloop.counter == 1 %} true {% else %} false {% endif %}">{{ content }}</a>
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                    {% for name, content, questions, expert_analysis in self_test_modules %}
+                            <li class="nav-item">
+                                <a class="nav-link {% if theory_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if theory_modules|length == 0 and forloop.counter == 1 %} true {% else %} false {% endif %}">{{ content }}</a>
+                            </li>
+                        {% endfor %}
+                    {% for name, content, questions, expert_analysis in control_and_exam_test_modules %}
+                        <li class="nav-item">
+                            <a class="nav-link {% if theory_modules|length == 0 and self_test_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if theory_modules|length == 0 and self_test_modules|length == 0 and forloop.counter == 1 %} true {% else %} false {% endif %}">{{ content }}</a>
+                        </li>
+                    {% endfor %}
+                    {% for name, extension, src, expert_analysis in video_file_modules %}
+                        <li class="nav-item">
+                            <a class="nav-link {% if theory_modules|length == 0 and self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if theory_modules|length == 0 and self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and forloop.counter == 1 %} true {% else %} false {% endif %}">Анализ видео {{ name }}</a>
+                        </li>
+                    {% endfor %}
+                    {% for name, extension, src, expert_analysis in video_lecture_modules %}
+                        <li class="nav-item">
+                            <a class="nav-link {% if theory_modules|length == 0 and self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if theory_modules|length == 0 and self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and forloop.counter == 1 %} true {% else %} false {% endif %}">Анализ видео {{ name }}</a>
+                        </li>
+                    {% endfor %}
+                    {% for name, extension, src, expert_analysis in audio_file_modules %}
+                        <li class="nav-item">
+                            <a class="nav-link {% if theory_modules|length == 0 and self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if theory_modules|length == 0 and self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and forloop.counter == 1 %} true {% else %} false {% endif %}">Анализ видео {{ name }}</a>
+                        </li>
+                    {% endfor %}
+                    {% for name, extension, src, expert_analysis in audio_lecture_modules %}
+                        <li class="nav-item">
+                            <a class="nav-link {% if theory_modules|length == 0 and self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and audio_file_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if theory_modules|length == 0 and self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and audio_file_modules|length == 0 and forloop.counter == 1 %} true {% else %} false {% endif %}">Анализ видео {{ name }}</a>
+                        </li>
+                    {% endfor %}
+                    {% for name, videos, pictures, audios, presentations, documents, tables, pdfs, others, expert_analysis in webinar_modules %}
+                        <li class="nav-item">
+                            <a class="nav-link {% if theory_modules|length == 0 and self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and audio_file_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if theory_modules|length == 0 and self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and audio_file_modules|length == 0 and audio_lecture_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and audio_file_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and audio_file_modules|length == 0 and audio_lecture_modules|length == 0 and forloop.counter == 1 %} true {% else %} false {% endif %}">Анализ видео {{ name }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <div class="tab-content" id="modules-tabs-content">
+                    {% if theory_modules %}
+                        {% for name, content, result, indicators in theory_modules %}
+                            <div class="tab-pane fade {% if forloop.counter == 1 %} show active {% endif %}" id="tab-{{ name }}" role="tabpanel" aria-labelledby="{{ name }}-tab">
+                                <div class="container-fluid">
+                                    {% if 'information_richness' in indicators or 'abstractness' in indicators or 'readability' in indicators or 'water_content' in indicators or 'keyword_density' in indicators %}
+                                        <div class="row mb-3">
+                                            <div class="col">
+                                                <h1>Оценка качества текста</h1>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                    {% if 'information_richness' in indicators %}
+                                        <div class="row align-items-center">
+                                            <div class="col-3">
+                                                <p>Информационная насыщенность</p>
+                                            </div>
+                                            <div class="col-1">
+                                                <!--<div class="progress">
+                                                    <div class="progress-bar {% if result.txt_ch.inf_saturation < 30 %} bg-danger {% elif result.txt_ch.inf_saturation < 60 %} bg-warning {% else %} bg-success {% endif %}" role="progressbar" style="width: {{ result.txt_ch.inf_saturation }}%" aria-valuenow="{{ result.txt_ch.inf_saturation }}" aria-valuemin="0" aria-valuemax="100">{{ result.txt_ch.inf_saturation }}%</div>
+                                                </div>-->
+                                                <p>{{ result.txt_ch.inf_saturation }}%</p>
+                                            </div>
+                                            {% if forloop.counter == 1 %}
+                                                <div class="col-auto">
+                                                    <p>Весовой коэффициент</p>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <div class="form-group">
+                                                        <label for="coef-information-richness-{{ name }}" class="d-none"></label>
+                                                        <input type="hidden" name="values" value="{{ result.txt_ch.inf_saturation }}">
+                                                        <input type="text" class="form-control" name="coefficients" id="coef-information-richness-{{ name }}" placeholder="" value="{% if coefficients %}{{ list_iter|next_element }}{% else %}1{% endif %}" required>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    {% endif %}
+                                    {% if 'abstractness' in indicators %}
+                                        <div class="row align-items-center">
+                                            <div class="col-3">
+                                                <p>Абстрактность</p>
+                                            </div>
+                                            <div class="col-1">
+                                                <!--<div class="progress">
+                                                    <div class="progress-bar {% if result.txt_ch.abstractness >= 21 %} bg-danger {% elif result.txt_ch.abstractness < 21 and result.txt_ch.abstractness >= 16 %} bg-warning {% else %} bg-success {% endif %}" role="progressbar" style="width: {{ result.txt_ch.abstractness }}%" aria-valuenow="{{ result.txt_ch.abstractness }}" aria-valuemin="0" aria-valuemax="100">{{ result.txt_ch.abstractness }}%</div>
+                                                </div>-->
+                                                <p>{{ result.txt_ch.abstractness }}%</p>
+                                            </div>
+                                            {% if forloop.counter == 1 %}
+                                                <div class="col-auto">
+                                                    <p>Весовой коэффициент</p>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <div class="form-group">
+                                                        <label for="coef-abstractness-{{ name }}" class="d-none"></label>
+                                                        <input type="hidden" name="values" value="{{ result.txt_ch.inf_saturation }}">
+                                                        <input type="text" class="form-control" name="coefficients" id="coef-abstractness-{{ name }}" placeholder="" value="{% if coefficients %}{{ list_iter|next_element }}{% else %}1{% endif %}" required>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    {% endif %}
+                                    {% if 'readability' in indicators %}
+                                        <div class="row align-items-center">
+                                            <div class="col-3">
+                                                <p>Удобочитаемость</p>
+                                            </div>
+                                            <div class="col-1">
+                                                <!--<div class="progress">
+                                                    <div class="progress-bar {% if result.txt_ch.ganning_index >= 17 %} bg-danger {% elif result.txt_ch.ganning_index < 17 and result.txt_ch.ganning_index >= 13 %} bg-warning {% else %} bg-success {% endif %}" role="progressbar" style="width: {{ result.txt_ch.ganning_index }}%" aria-valuenow="{{ result.txt_ch.ganning_index }}" aria-valuemin="0" aria-valuemax="100">{{ result.txt_ch.ganning_index }}%</div>
+                                                </div>-->
+                                                <p>{{ result.txt_ch.ganning_index }}%</p>
+                                            </div>
+                                            {% if forloop.counter == 1 %}
+                                                <div class="col-auto">
+                                                    <p>Весовой коэффициент</p>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <div class="form-group">
+                                                        <label for="coef-readability-{{ name }}" class="d-none"></label>
+                                                        <input type="hidden" name="values" value="{{ result.txt_ch.inf_saturation }}">
+                                                        <input type="text" class="form-control" name="coefficients" id="coef-readability-{{ name }}" placeholder="" value="{% if coefficients %}{{ list_iter|next_element }}{% else %}1{% endif %}" required>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    {% endif %}
+                                    {% if 'water_content' in indicators %}
+                                        <div class="row align-items-center">
+                                            <div class="col-3">
+                                                <p>Водность</p>
+                                            </div>
+                                            <div class="col-1">
+                                                <!--<div class="progress">
+                                                    <div class="progress-bar {% if result.txt_ch.wateriness >= 60 %} bg-danger {% elif result.txt_ch.wateriness < 60 and result.txt_ch.wateriness >= 31 %} bg-warning {% else %} bg-success {% endif %}" role="progressbar" style="width: {{ result.txt_ch.wateriness }}%" aria-valuenow="{{ result.txt_ch.wateriness }}" aria-valuemin="0" aria-valuemax="100">{{ result.txt_ch.wateriness }}%</div>
+                                                </div>-->
+                                                <p>{{ result.txt_ch.wateriness }}%</p>
+                                            </div>
+                                            {% if forloop.counter == 1 %}
+                                                <div class="col-auto">
+                                                    <p>Весовой коэффициент</p>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <div class="form-group">
+                                                        <label for="coef-water-content-{{ name }}" class="d-none"></label>
+                                                        <input type="hidden" name="values" value="{{ result.txt_ch.inf_saturation }}">
+                                                        <input type="text" class="form-control" name="coefficients" id="coef-water-content-{{ name }}" placeholder="" value="{% if coefficients %}{{ list_iter|next_element }}{% else %}1{% endif %}" required>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    {% endif %}
+                                    {% if 'keyword_density' in indicators %}
+                                        <div class="row align-items-center">
+                                            <div class="col-3">
+                                                <p>Плотность ключевых слов</p>
+                                            </div>
+                                            <div class="col-1">
+                                                <!--<div class="progress">
+                                                    <div class="progress-bar {% if result.txt_ch.density >= 14 %} bg-danger {% elif result.txt_ch.density < 14 and result.txt_ch.density >= 7 %} bg-warning {% else %} bg-success {% endif %}" role="progressbar" style="width: {{ result.txt_ch.density }}%" aria-valuenow="{{ result.txt_ch.density }}" aria-valuemin="0" aria-valuemax="100">{{ result.txt_ch.density }}%</div>
+                                                </div>-->
+                                                <p>{{ result.txt_ch.density }}%</p>
+                                            </div>
+                                            {% if forloop.counter == 1 %}
+                                                <div class="col-auto">
+                                                    <p>Весовой коэффициент</p>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <div class="form-group">
+                                                        <label for="coef-keyword-density-{{ name }}" class="d-none"></label>
+                                                        <input type="hidden" name="values" value="{{ result.txt_ch.inf_saturation }}">
+                                                        <input type="text" class="form-control" name="coefficients" id="coef-keyword-density-{{ name }}" placeholder="" value="{% if coefficients %}{{ list_iter|next_element }}{% else %}1{% endif %}" required>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    {% endif %}
+                                    {% if 'creolization_background_color' in indicators or 'creolization_italics' in indicators or 'creolization_bold' in indicators or 'creolization_underline' in indicators or 'creolization_border' in indicators or 'creolization_pictogram' in indicators or 'creolization_link' in indicators %}
+                                        <div class="row mb-3">
+                                            <div class="col">
+                                                <h1>Оценка крeoлизации текста</h1>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                    {% if 'creolization_background_color' in indicators %}
+                                        <div class="row align-items-center">
+                                            <div class="col-3">
+                                                <p>Количество выделений цветом фона:</p>
+                                            </div>
+                                            <div class="col-1">
+                                                <p>{{ result.txt_ch.creolization_vector|index:0 }}</p>
+                                            </div>
+                                            {% if forloop.counter == 1 %}
+                                                <div class="col-auto">
+                                                    <p>Весовой коэффициент</p>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <div class="form-group">
+                                                        <label for="coef-creolization-background-color-{{ name }}" class="d-none"></label>
+                                                        <input type="hidden" name="values" value="{{ result.txt_ch.inf_saturation }}">
+                                                        <input type="text" class="form-control" name="coefficients" id="coef-creolization-background-color-{{ name }}" placeholder="" value="{% if coefficients %}{{ list_iter|next_element }}{% else %}1{% endif %}" required>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                        {% if result.txt_ch.creole_txt_uni_distr %}
+                                            <div class="row align-items-center">
+                                                <div class="col-3">
+                                                    <p>Равномерность распределения:</p>
+                                                </div>
+                                                <div class="col-1">
+                                                    <p>{{ result.txt_ch.creole_txt_uni_distr|index:0 }}</p>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <p>Весовой коэффициент</p>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <div class="form-group">
+                                                        <label for="coef-creolization-background-color-uniform-{{ name }}" class="d-none"></label>
+                                                        <input type="hidden" name="values" value="{{ result.txt_ch.inf_saturation }}">
+                                                        <input type="text" class="form-control" name="coefficients" id="coef-creolization-background-color-uniform-{{ name }}" placeholder="" value="{% if coefficients %}{{ list_iter|next_element }}{% else %}1{% endif %}" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    {% endif %}
+                                    {% if 'creolization_italics' in indicators %}
+                                        <div class="row align-items-center">
+                                            <div class="col-3">
+                                                <p>Количество выделений курсивом:</p>
+                                            </div>
+                                            <div class="col-1">
+                                                <p>{{ result.txt_ch.creolization_vector|index:1 }}</p>
+                                            </div>
+                                            {% if forloop.counter == 1 %}
+                                                <div class="col-auto">
+                                                    <p>Весовой коэффициент</p>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <div class="form-group">
+                                                        <label for="coef-creolization-italics-{{ name }}" class="d-none"></label>
+                                                        <input type="hidden" name="values" value="{{ result.txt_ch.inf_saturation }}">
+                                                        <input type="text" class="form-control" name="coefficients" id="coef-creolization-italics-{{ name }}" placeholder="" value="{% if coefficients %}{{ list_iter|next_element }}{% else %}1{% endif %}" required>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                        {% if result.txt_ch.creole_txt_uni_distr %}
+                                            <div class="row align-items-center">
+                                                <div class="col-3">
+                                                    <p>Равномерность распределения:</p>
+                                                </div>
+                                                <div class="col-1">
+                                                    <p>{{ result.txt_ch.creole_txt_uni_distr|index:1 }}</p>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <p>Весовой коэффициент</p>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <div class="form-group">
+                                                        <label for="coef-creolization-italics-uniform-{{ name }}" class="d-none"></label>
+                                                        <input type="hidden" name="values" value="{{ result.txt_ch.inf_saturation }}">
+                                                        <input type="text" class="form-control" name="coefficients" id="coef-creolization-italics-uniform-{{ name }}" placeholder="" value="{% if coefficients %}{{ list_iter|next_element }}{% else %}1{% endif %}" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    {% endif %}
+                                    {% if 'creolization_bold' in indicators %}
+                                        <div class="row align-items-center">
+                                            <div class="col-3">
+                                                <p>Количество выделений жирным шрифтом:</p>
+                                            </div>
+                                            <div class="col-1">
+                                                <p>{{ result.txt_ch.creolization_vector|index:2 }}</p>
+                                            </div>
+                                            {% if forloop.counter == 1 %}
+                                                <div class="col-auto">
+                                                    <p>Весовой коэффициент</p>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <div class="form-group">
+                                                        <label for="coef-creolization-bold-{{ name }}" class="d-none"></label>
+                                                        <input type="hidden" name="values" value="{{ result.txt_ch.inf_saturation }}">
+                                                        <input type="text" class="form-control" name="coefficients" id="coef-creolization-bold-{{ name }}" placeholder="" value="{% if coefficients %}{{ list_iter|next_element }}{% else %}1{% endif %}" required>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                        {% if result.txt_ch.creole_txt_uni_distr %}
+                                            <div class="row align-items-center">
+                                                <div class="col-3">
+                                                    <p>Равномерность распределения:</p>
+                                                </div>
+                                                <div class="col-1">
+                                                    <p>{{ result.txt_ch.creole_txt_uni_distr|index:2 }}</p>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <p>Весовой коэффициент</p>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <div class="form-group">
+                                                        <label for="coef-creolization-bold-uniform-{{ name }}" class="d-none"></label>
+                                                        <input type="hidden" name="values" value="{{ result.txt_ch.inf_saturation }}">
+                                                        <input type="text" class="form-control" name="coefficients" id="coef-creolization-bold-uniform-{{ name }}" placeholder="" value="{% if coefficients %}{{ list_iter|next_element }}{% else %}1{% endif %}" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    {% endif %}
+                                    {% if 'creolization_underline' in indicators %}
+                                        <div class="row align-items-center">
+                                            <div class="col-3">
+                                                <p>Количество выделений подчёркиванием:</p>
+                                            </div>
+                                            <div class="col-1">
+                                                <p>{{ result.txt_ch.creolization_vector|index:3 }}</p>
+                                            </div>
+                                            {% if forloop.counter == 1 %}
+                                                <div class="col-auto">
+                                                    <p>Весовой коэффициент</p>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <div class="form-group">
+                                                        <label for="coef-creolization-underline-{{ name }}" class="d-none"></label>
+                                                        <input type="hidden" name="values" value="{{ result.txt_ch.inf_saturation }}">
+                                                        <input type="text" class="form-control" name="coefficients" id="coef-creolization-underline-{{ name }}" placeholder="" value="{% if coefficients %}{{ list_iter|next_element }}{% else %}1{% endif %}" required>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                        {% if result.txt_ch.creole_txt_uni_distr %}
+                                            <div class="row align-items-center">
+                                                <div class="col-3">
+                                                    <p>Равномерность распределения:</p>
+                                                </div>
+                                                <div class="col-1">
+                                                    <p>{{ result.txt_ch.creole_txt_uni_distr|index:3 }}</p>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <p>Весовой коэффициент</p>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <div class="form-group">
+                                                        <label for="coef-creolization-underline-uniform-{{ name }}" class="d-none"></label>
+                                                        <input type="hidden" name="values" value="{{ result.txt_ch.inf_saturation }}">
+                                                        <input type="text" class="form-control" name="coefficients" id="coef-creolization-underline-uniform-{{ name }}" placeholder="" value="{% if coefficients %}{{ list_iter|next_element }}{% else %}1{% endif %}" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    {% endif %}
+                                    {% if 'creolization_border' in indicators %}
+                                        <div class="row align-items-center">
+                                            <div class="col-3">
+                                                <p>Количество выделений рамкой:</p>
+                                            </div>
+                                            <div class="col-1">
+                                                <p>{{ result.txt_ch.creolization_vector|index:4 }}</p>
+                                            </div>
+                                            {% if forloop.counter == 1 %}
+                                                <div class="col-auto">
+                                                    <p>Весовой коэффициент</p>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <div class="form-group">
+                                                        <label for="coef-creolization-border-{{ name }}" class="d-none"></label>
+                                                        <input type="hidden" name="values" value="{{ result.txt_ch.inf_saturation }}">
+                                                        <input type="text" class="form-control" name="coefficients" id="coef-creolization-border-{{ name }}" placeholder="" value="{% if coefficients %}{{ list_iter|next_element }}{% else %}1{% endif %}" required>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                        {% if result.txt_ch.creole_txt_uni_distr %}
+                                            <div class="row align-items-center">
+                                                <div class="col-3">
+                                                    <p>Равномерность распределения:</p>
+                                                </div>
+                                                <div class="col-1">
+                                                    <p>{{ result.txt_ch.creole_txt_uni_distr|index:4 }}</p>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <p>Весовой коэффициент</p>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <div class="form-group">
+                                                        <label for="coef-creolization-border-uniform-{{ name }}" class="d-none"></label>
+                                                        <input type="hidden" name="values" value="{{ result.txt_ch.inf_saturation }}">
+                                                        <input type="text" class="form-control" name="coefficients" id="coef-creolization-border-uniform-{{ name }}" placeholder="" value="{% if coefficients %}{{ list_iter|next_element }}{% else %}1{% endif %}" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    {% endif %}
+                                    {% if 'creolization_pictogram' in indicators %}
+                                        <div class="row align-items-center">
+                                            <div class="col-3">
+                                                <p>Количество выделений пиктограммой:</p>
+                                            </div>
+                                            <div class="col-1">
+                                                <p>{{ result.txt_ch.creolization_vector|index:5 }}</p>
+                                            </div>
+                                            {% if forloop.counter == 1 %}
+                                                <div class="col-auto">
+                                                    <p>Весовой коэффициент</p>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <div class="form-group">
+                                                        <label for="coef-creolization-pictogram-{{ name }}" class="d-none"></label>
+                                                        <input type="hidden" name="values" value="{{ result.txt_ch.inf_saturation }}">
+                                                        <input type="text" class="form-control" name="coefficients" id="coef-creolization-pictogram-{{ name }}" placeholder="" value="{% if coefficients %}{{ list_iter|next_element }}{% else %}1{% endif %}" required>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                        {% if result.txt_ch.creole_txt_uni_distr %}
+                                            <div class="row align-items-center">
+                                                <div class="col-3">
+                                                    <p>Равномерность распределения:</p>
+                                                </div>
+                                                <div class="col-1">
+                                                    <p>{{ result.txt_ch.creole_txt_uni_distr|index:5 }}</p>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <p>Весовой коэффициент</p>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <div class="form-group">
+                                                        <label for="coef-creolization-pictogram-uniform-{{ name }}" class="d-none"></label>
+                                                        <input type="hidden" name="values" value="{{ result.txt_ch.inf_saturation }}">
+                                                        <input type="text" class="form-control" name="coefficients" id="coef-creolization-pictogram-uniform-{{ name }}" placeholder="" value="{% if coefficients %}{{ list_iter|next_element }}{% else %}1{% endif %}" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    {% endif %}
+                                    {% if 'creolization_link' in indicators %}
+                                        <div class="row align-items-center">
+                                            <div class="col-3">
+                                                <p>Количество выделений ссылкой:</p>
+                                            </div>
+                                            <div class="col-1">
+                                                <p>{{ result.txt_ch.creolization_vector|index:6 }}</p>
+                                            </div>
+                                            {% if forloop.counter == 1 %}
+                                                <div class="col-auto">
+                                                    <p>Весовой коэффициент</p>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <div class="form-group">
+                                                        <label for="coef-creolization-link-{{ name }}" class="d-none"></label>
+                                                        <input type="hidden" name="values" value="{{ result.txt_ch.inf_saturation }}">
+                                                        <input type="text" class="form-control" name="coefficients" id="coef-creolization-link-{{ name }}" placeholder="" value="{% if coefficients %}{{ list_iter|next_element }}{% else %}1{% endif %}" required>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                        {% if result.txt_ch.creole_txt_uni_distr %}
+                                            <div class="row align-items-center">
+                                                <div class="col-3">
+                                                    <p>Равномерность распределения:</p>
+                                                </div>
+                                                <div class="col-1">
+                                                    <p>{{ result.txt_ch.creole_txt_uni_distr|index:6 }}</p>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <p>Весовой коэффициент</p>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <div class="form-group">
+                                                        <label for="coef-creolization-link-uniform-{{ name }}" class="d-none"></label>
+                                                        <input type="hidden" name="values" value="{{ result.txt_ch.inf_saturation }}">
+                                                        <input type="text" class="form-control" name="coefficients" id="coef-creolization-link-uniform-{{ name }}" placeholder="" value="{% if coefficients %}{{ list_iter|next_element }}{% else %}1{% endif %}" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    {% endif %}
+                                    {% if 'creolization_background_color' in indicators or 'creolization_italics' in indicators or 'creolization_bold' in indicators or 'creolization_underline' in indicators or 'creolization_border' in indicators or 'creolization_pictogram' in indicators or 'creolization_link' in indicators %}
+                                        <div class="row align-items-center">
+                                            <div class="col-3">
+                                                <p>Степень креолизации текста:</p>
+                                            </div>
+                                            <div class="col-1">
+                                                <p>{{ result.txt_ch.creolization_degree }}%</p>
+                                            </div>
+                                            {% if forloop.counter == 1 %}
+                                                <div class="col-auto">
+                                                    <p>Весовой коэффициент</p>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <div class="form-group">
+                                                        <label for="coef-creolization-degree-{{ name }}" class="d-none"></label>
+                                                        <input type="hidden" name="values" value="{{ result.txt_ch.inf_saturation }}">
+                                                        <input type="text" class="form-control" name="coefficients" id="coef-creolization-degree-{{ name }}" placeholder="" value="{% if coefficients %}{{ list_iter|next_element }}{% else %}1{% endif %}" required>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    {% endif %}
+                                    {% if 'illustrations_number' in indicators or 'average_illustrations_number_per_page' in indicators or 'image_brightness' in indicators or 'relative_image_brightness' in indicators or 'image_contrast' in indicators or 'relative_image_contrast' in indicators %}
+                                        <div class="row mb-3">
+                                            <div class="col">
+                                                <h1>Оценка качества иллюстраций</h1>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                    {% if 'illustrations_number' in indicators %}
+                                        <div class="row align-items-center">
+                                            <div class="col-3">
+                                                <p>Количество иллюстраций: </p>
+                                            </div>
+                                            <div class="col-1">
+                                                <p>{{ result.img_ch.img_number }}</p>
+                                            </div>
+                                            {% if forloop.counter == 1 %}
+                                                <div class="col-auto">
+                                                    <p>Весовой коэффициент</p>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <div class="form-group">
+                                                        <label for="coef-illustrations-number-{{ name }}" class="d-none"></label>
+                                                        <input type="hidden" name="values" value="{{ result.txt_ch.inf_saturation }}">
+                                                        <input type="text" class="form-control" name="coefficients" id="coef-illustrations-number-{{ name }}" placeholder="" value="{% if coefficients %}{{ list_iter|next_element }}{% else %}1{% endif %}" required>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    {% endif %}
+                                    {% if 'average_illustrations_number_per_page' in indicators %}
+                                        <div class="row align-items-center">
+                                            <div class="col-3">
+                                                <p>Среднее число иллюстраций на странице: </p>
+                                            </div>
+                                            <div class="col-1">
+                                                <p>{{ result.img_ch.aver_img_in_pg_num }}</p>
+                                            </div>
+                                            {% if forloop.counter == 1 %}
+                                                <div class="col-auto">
+                                                    <p>Весовой коэффициент</p>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <div class="form-group">
+                                                        <label for="coef-average-illustrations-number-per-page-{{ name }}" class="d-none"></label>
+                                                        <input type="hidden" name="values" value="{{ result.txt_ch.inf_saturation }}">
+                                                        <input type="text" class="form-control" name="coefficients" id="coef-average-illustrations-number-per-page-{{ name }}" placeholder="" value="{% if coefficients %}{{ list_iter|next_element }}{% else %}1{% endif %}" required>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    {% endif %}
+                                    {% if 'image_brightness' in indicators or 'relative_image_brightness' in indicators or 'image_contrast' in indicators or 'relative_image_contrast' in indicators %}
+                                        {% for image in result.img_ch.images %}
+                                            <div class="row mb-3">
+                                                <div class="col">
+                                                    <img src="{{ image.img_path }}" alt="" class="img-thumbnail">
+                                                </div>
+                                                <div class="col">
+                                                    {% if 'image_brightness' in indicators %}
+                                                        <div class="row align-items-center">
+                                                            <div class="col-3">
+                                                                <p>Яркость изображения:</p>
+                                                            </div>
+                                                            <div class="col-1">
+                                                                <p>{{ image.brightness }}</p>
+                                                            </div>
+                                                            <div class="col-auto">
+                                                                <p>Весовой коэффициент</p>
+                                                            </div>
+                                                            <div class="col-auto">
+                                                                <div class="form-group">
+                                                                    <label for="coef-image-brightness-{{ name }}" class="d-none"></label>
+                                                                    <input type="hidden" name="values" value="{{ result.txt_ch.inf_saturation }}">
+                                                                    <input type="text" class="form-control" name="coefficients" id="coef-image-brightness-{{ name }}" placeholder="" value="{% if coefficients %}{{ list_iter|next_element }}{% else %}1{% endif %}" required>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% endif %}
+                                                    {% if 'relative_image_brightness' in indicators %}
+                                                        <div class="row align-items-center">
+                                                            <div class="col-3">
+                                                                <p>Относительная яркость изображения:</p>
+                                                            </div>
+                                                            <div class="col-1">
+                                                                <p>{{ image.rel_brightness }}</p>
+                                                            </div>
+                                                            <div class="col-auto">
+                                                                <p>Весовой коэффициент</p>
+                                                            </div>
+                                                            <div class="col-auto">
+                                                                <div class="form-group">
+                                                                    <label for="coef-relative-image-brightness-{{ name }}" class="d-none"></label>
+                                                                    <input type="hidden" name="values" value="{{ result.txt_ch.inf_saturation }}">
+                                                                    <input type="text" class="form-control" name="coefficients" id="coef-relative-image-brightness-{{ name }}" placeholder="" value="{% if coefficients %}{{ list_iter|next_element }}{% else %}1{% endif %}" required>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% endif %}
+                                                    {% if 'image_contrast' in indicators %}
+                                                        <div class="row align-items-center">
+                                                            <div class="col-3">
+                                                                <p>Контраст изображения:</p>
+                                                            </div>
+                                                            <div class="col-1">
+                                                                <p>{{ image.contrast }}</p>
+                                                            </div>
+                                                            <div class="col-auto">
+                                                                <p>Весовой коэффициент</p>
+                                                            </div>
+                                                            <div class="col-auto">
+                                                                <div class="form-group">
+                                                                    <label for="coef-image-contrast-{{ name }}" class="d-none"></label>
+                                                                    <input type="hidden" name="values" value="{{ result.txt_ch.inf_saturation }}">
+                                                                    <input type="text" class="form-control" name="coefficients" id="coef-image-contrast-{{ name }}" placeholder="" value="{% if coefficients %}{{ list_iter|next_element }}{% else %}1{% endif %}" required>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% endif %}
+                                                    {% if 'relative_image_contrast' in indicators %}
+                                                        <div class="row align-items-center">
+                                                            <div class="col-3">
+                                                                <p>Относительный контраст изображения:</p>
+                                                            </div>
+                                                            <div class="col-1">
+                                                                <p>{{ image.rel_contrast }}</p>
+                                                            </div>
+                                                            <div class="col-auto">
+                                                                <p>Весовой коэффициент</p>
+                                                            </div>
+                                                            <div class="col-auto">
+                                                                <div class="form-group">
+                                                                    <label for="coef-relative-image-contrast-{{ name }}" class="d-none"></label>
+                                                                    <input type="hidden" name="values" value="{{ result.txt_ch.inf_saturation }}">
+                                                                    <input type="text" class="form-control" name="coefficients" id="coef-relative-image-contrast-{{ name }}" placeholder="" value="{% if coefficients %}{{ list_iter|next_element }}{% else %}1{% endif %}" required>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    {% endif %}
+                                    {% if 'has_glossary' in indicators or 'has_subject_index' in indicators or 'has_name_index' in indicators or 'has_geographical_index' in indicators or 'has_chronological_index' in indicators or 'has_illustrations_list' in indicators or 'has_tables_list' in indicators or 'has_abbreviations_list' in indicators or 'has_links' in indicators or 'has_formula' in indicators or 'has_bibliography' in indicators or 'has_conventions_list' in indicators %}
+                                        <div class="row mb-3">
+                                            <div class="col">
+                                                <h1>Наличие справочной информации</h1>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                    {% if 'has_glossary' in indicators %}
+                                        <div class="row align-items-center">
+                                            <div class="col-3">
+                                                <p>Глоссарий:</p>
+                                            </div>
+                                            <div class="col-1">
+                                                <p>{% if result.san_ch.glossary == 1 %} есть {% else %} нет {% endif %}</p>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                    {% if 'has_tables_list' in indicators %}
+                                        <div class="row align-items-center">
+                                            <div class="col-3">
+                                                <p>Количество ссылок на таблицы:</p>
+                                            </div>
+                                            <div class="col-1">
+                                                <p>{{ result.san_ch.tables }}</p>
+                                            </div>
+                                            {% if forloop.counter == 1 %}
+                                                <div class="col-auto">
+                                                    <p>Весовой коэффициент</p>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <div class="form-group">
+                                                        <label for="coef-has-tables-list-{{ name }}" class="d-none"></label>
+                                                        <input type="hidden" name="values" value="{{ result.txt_ch.inf_saturation }}">
+                                                        <input type="text" class="form-control" name="coefficients" id="coef-has-tables-list-{{ name }}" placeholder="" value="{% if coefficients %}{{ list_iter|next_element }}{% else %}1{% endif %}" required>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    {% endif %}
+                                    {% if 'has_illustrations_list' in indicators %}
+                                        <div class="row align-items-center">
+                                            <div class="col-3">
+                                                <p>Количество ссылок на изображения:</p>
+                                            </div>
+                                            <div class="col-1">
+                                                <p>{{ result.san_ch.images }}</p>
+                                            </div>
+                                            {% if forloop.counter == 1 %}
+                                                <div class="col-auto">
+                                                    <p>Весовой коэффициент</p>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <div class="form-group">
+                                                        <label for="coef-has-illustrations-list-{{ name }}" class="d-none"></label>
+                                                        <input type="hidden" name="values" value="{{ result.txt_ch.inf_saturation }}">
+                                                        <input type="text" class="form-control" name="coefficients" id="coef-has-illustrations-list-{{ name }}" placeholder="" value="{% if coefficients %}{{ list_iter|next_element }}{% else %}1{% endif %}" required>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    {% endif %}
+                                    {% if 'has_links' in indicators %}
+                                        <div class="row align-items-center">
+                                            <div class="col-3">
+                                                <p>Количество ссылок на источники литературы:</p>
+                                            </div>
+                                            <div class="col-1">
+                                                <p>{{ result.san_ch.literature }}</p>
+                                            </div>
+                                            {% if forloop.counter == 1 %}
+                                                <div class="col-auto">
+                                                    <p>Весовой коэффициент</p>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <div class="form-group">
+                                                        <label for="coef-has-links-{{ name }}" class="d-none"></label>
+                                                        <input type="hidden" name="values" value="{{ result.txt_ch.inf_saturation }}">
+                                                        <input type="text" class="form-control" name="coefficients" id="coef-has-links-{{ name }}" placeholder="" value="{% if coefficients %}{{ list_iter|next_element }}{% else %}1{% endif %}" required>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    {% endif %}
+                                    {% if 'has_formula' in indicators %}
+                                        <div class="row align-items-center">
+                                            <div class="col-3">
+                                                <p>Количество ссылок на формулы:</p>
+                                            </div>
+                                            <div class="col-1">
+                                                <p>{{ result.san_ch.formula }}</p>
+                                            </div>
+                                            {% if forloop.counter == 1 %}
+                                                <div class="col-auto">
+                                                    <p>Весовой коэффициент</p>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <div class="form-group">
+                                                        <label for="coef-has-formula-{{ name }}" class="d-none"></label>
+                                                        <input type="hidden" name="values" value="{{ result.txt_ch.inf_saturation }}">
+                                                        <input type="text" class="form-control" name="coefficients" id="coef-has-formula-{{ name }}" placeholder="" value="{% if coefficients %}{{ list_iter|next_element }}{% else %}1{% endif %}" required>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    {% endif %}
+                                    {% if 'has_bibliography' in indicators %}
+                                        <div class="row align-items-center">
+                                            <div class="col-3">
+                                                <p>Список литературы:</p>
+                                            </div>
+                                            <div class="col-1">
+                                                <p>{% if result.san_ch.litlist == 1 %} есть {% else %} нет {% endif %}</p>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    {% if self_test_modules %}
+                        {% for name, content, questions, expert_analysis in self_test_modules %}
+                            <div class="tab-pane fade {% if theory_modules|length == 0 and forloop.counter == 1 %} show active {% endif %}" id="tab-{{ name }}" role="tabpanel" aria-labelledby="{{ name }}-tab">
+                                <div class="container-fluid">
+                                    <div class="row mb-3">
+                                        <div class="col">
+                                            <h1>Вопросы</h1>
+                                        </div>
+                                    </div>
+                                    {% for question in questions %}
+                                        <div class="row">
+                                            <div class="col">
+                                                <p>{{ forloop.counter }}. {{ question }}</p>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                    <div class="row mb-3">
+                                        <div class="col">
+                                            <h1>Коэффициент сложности вопроса или задания</h1>
+                                        </div>
+                                    </div>
+                                    <div class="row align-items-center">
+                                        <div class="col">
+                                            <table class="table">
+    	    		                        	<thead class="thead-light">
+    	    		                        		<tr>
+    	    		                        			<th scope="col">Номер вопроса</th>
+    	    		                        			<th scope="col">Коэффициент сложности</th>
+                                                        <th scope="col">Весовой коэффициент</th>
+    	    		                        		</tr>
+    	    		                        	</thead>
+    	    		                        	<tbody>
+    	    		                        		{% for question in questions %}
+                                                        {% with i=forloop.counter|add:-1 %}
+                                                            <tr>
+                                                                <th scope="row" class="align-middle">{{ forloop.counter }}</th>
+                                                                <td class="align-middle">
+                                                                    <div class="form-group">
+                                                                        <label for="diffac-{{ forloop.counter }}"></label>
+                                                                        <input type="range" class="form-control-range custom-range" id="diffac-{{ forloop.counter }}" min="0" max="10" step="1" value="{{ expert_analysis.difficulty_factor|index:i }}" name="{{ name }}-self-test-difficulty-factor">
+                                                                    </div>
+                                                                </td>
+                                                                <td class="align-middle">
+                                                                    <div class="form-group m-0">
+                                                                        <label for="coef-difficulty-factor-{{ name }}-{{ forloop.counter }}" class="d-none"></label>
+                                                                        <input type="hidden" name="values" value="{{ expert_analysis.difficulty_factor|index:i }}">
+                                                                        <input type="text" class="form-control" name="coefficients" id="coef-difficulty-factor-{{ name }}-{{ forloop.counter }}" placeholder="" value="{% if coefficients %}{{ list_iter|next_element }}{% else %}1{% endif %}" required>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        {% endwith %}
+                                                    {% endfor %}
+    	    		                        	</tbody>
+    	    		                        </table>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col">
+                                            <h1>Коэффициент завершённости вопроса или задания</h1>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <table class="table">
+    	    		                        	<thead class="thead-light">
+    	    		                        		<tr>
+    	    		                        			<th scope="col">Номер вопроса</th>
+    	    		                        			<th scope="col">Коэффициент завершённости</th>
+                                                        <th scope="col">Весовой коэффициент</th>
+    	    		                        		</tr>
+    	    		                        	</thead>
+    	    		                        	<tbody>
+    	    		                        		{% for question in questions %}
+                                                        {% with i=forloop.counter|add:-1 %}
+                                                            <tr>
+                                                                <th scope="row" class="align-middle">{{ forloop.counter }}</th>
+                                                                <td class="align-middle">
+                                                                    <div class="form-group">
+                                                                        <label for="comrate-{{ forloop.counter }}"></label>
+                                                                        <input type="range" class="form-control-range custom-range" id="comrate-{{ forloop.counter }}" min="0" max="100" step="1" value="{{ expert_analysis.completion_rate|index:i }}" name="{{ name }}-self-test-completion-rate">
+                                                                    </div>
+                                                                </td>
+                                                                <td class="align-middle">
+                                                                    <div class="form-group m-0">
+                                                                        <label for="coef-completion-rate-{{ name }}-{{ forloop.counter }}" class="d-none"></label>
+                                                                        <input type="hidden" name="values" value="{{ expert_analysis.completion_rate|index:i }}">
+                                                                        <input type="text" class="form-control" name="coefficients" id="coef-completion-rate-{{ name }}-{{ forloop.counter }}" placeholder="" value="{% if coefficients %}{{ list_iter|next_element }}{% else %}1{% endif %}" required>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        {% endwith %}
+                                                    {% endfor %}
+    	    		                        	</tbody>
+    	    		                        </table>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col">
+                                            <h1>Имеются ли ответы или решения  на вопросы и задания?</h1>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <table class="table">
+    	    		                        	<thead class="thead-light">
+    	    		                        		<tr>
+    	    		                        			<th scope="col">Номер вопроса</th>
+    	    		                        			<th scope="col">Флаг</th>
+    	    		                        		</tr>
+    	    		                        	</thead>
+    	    		                        	<tbody>
+    	    		                        		{% for question in questions %}
+                                                        <tr>
+                                                            <th scope="row">{{ forloop.counter }}</th>
+                                                            <td>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="checkbox" value="{{ forloop.counter }}" id="hasans-{{ forloop.counter }}" name="{{ name }}-self-test-has-answers" {% if forloop.counter|stringformat:'d' in expert_analysis.has_answers %}checked{% endif %}>
+                                                                    <label class="form-check-label" for="hasans-{{ forloop.counter }}"></label>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    {% endfor %}
+    	    		                        	</tbody>
+    	    		                        </table>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col">
+                                            <h1>Имеются ли ссылки на источники с теорией или решением?</h1>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <table class="table">
+    	    		                        	<thead class="thead-light">
+    	    		                        		<tr>
+    	    		                        			<th scope="col">Номер вопроса</th>
+    	    		                        			<th scope="col">Флаг</th>
+    	    		                        		</tr>
+    	    		                        	</thead>
+    	    		                        	<tbody>
+    	    		                        		{% for question in questions %}
+                                                        <tr>
+                                                            <th scope="row">{{ forloop.counter }}</th>
+                                                            <td>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="checkbox" value="{{ forloop.counter }}" id="haslinks-{{ forloop.counter }}" name="{{ name }}-self-test-has-links" {% if forloop.counter|stringformat:'d' in expert_analysis.has_links %}checked{% endif %}>
+                                                                    <label class="form-check-label" for="haslinks-{{ forloop.counter }}"></label>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    {% endfor %}
+    	    		                        	</tbody>
+    	    		                        </table>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col">
+                                            <h1>Особое мнение</h1>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="specopin" class="d-none"></label>
+                                            <textarea class="form-control" id="specopin" placeholder="Введите своё мнение о вопросах или заданиях"  name="{{ name }}-self-test-special-opinion">{{ expert_analysis.special_opinion }}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    {% if control_and_exam_test_modules %}
+                        {% for name, content, questions, expert_analysis in control_and_exam_test_modules %}
+                            <div class="tab-pane fade {% if theory_modules|length == 0 and self_test_modules|length == 0 and forloop.counter == 1 %} show active {% endif %}" id="tab-{{ name }}" role="tabpanel" aria-labelledby="{{ name }}-tab">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col">
+                                            <h3>Вопросы</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <table class="table">
+                                                <thead class="thead-light">
+                                                <tr>
+                                                    <th scope="col">№</th>
+                                                    <th scope="col">Текст вопроса</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                {% for question in questions %}
+                                                    <tr>
+                                                        <th scope="row">{{ forloop.counter }}</th>
+                                                        <td>{% autoescape off %}{{ question }}{% endautoescape %}</td>
+                                                    </tr>
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col">
+                                            <h3>Оценка объема тестовых вопросов или шаблонов</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row align-items-center">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="volume"></label>
+                                                <input type="range" class="form-control-range custom-range" id="volume" min="0" max="10" step="1" value="{{ expert_analysis.volume }}" name="{{ name }}-control-and-exam-test-volume">
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <p>Весовой коэффициент</p>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="form-group">
+                                                <label for="coef-volume-{{ name }}" class="d-none"></label>
+                                                <input type="hidden" name="values" value="{{ expert_analysis.volume }}">
+                                                <input type="text" class="form-control" name="coefficients" id="coef-volume-{{ name }}" placeholder="" value="{% if coefficients %}{{ list_iter|next_element }}{% else %}1{% endif %}" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <h3>Есть ли генерация вопросов?</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" class="custom-control-input" id="hasgen" name="{{ name }}-control-and-exam-test-has-generation">
+                                                <label class="custom-control-label" for="hasgen">Да / Нет</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <h3>Какие технологии тестирования используются?</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="simple" id="testech-simple" name="{{ name }}-control-and-exam-test-testing-technology">
+                                                <label class="form-check-label" for="testech-simple">Простое тестирование</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="adaptive" id="testech-adaptive" name="{{ name }}-control-and-exam-test-testing-technology">
+                                                <label class="form-check-label" for="testech-adaptive">Адаптивное тестирование</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <h3>Присутствует ли кодификатор?</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" class="custom-control-input" id="hascodifier" name="{{ name }}-control-and-exam-test-has-codifier">
+                                                <label class="custom-control-label" for="hascodifier">Да / Нет</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <h3>Укажите, к какому разделу курса относится каждый из данных вопросов</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <table class="table">
+                                                <thead class="thead-light">
+                                                <tr>
+                                                    <th scope="col">Номер вопроса</th>
+                                                    <th scope="col">Поле для ввода раздела</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                {% for question in questions %}
+                                                    <tr>
+                                                        <th scope="row">{{ forloop.counter }}</th>
+                                                        <td>
+                                                            <div class="form-group">
+                                                                <label for="theme-{{ forloop.counter }}" class="d-none"></label>
+                                                                <input type="text" class="form-control" id="theme-{{ forloop.counter }}" placeholder="1, 5, 7" name="{{ name }}-control-and-exam-test-course-section">
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <h3>Проводилось ли исследование текста каждого из вопросов?</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <table class="table">
+                                                <thead class="thead-light">
+                                                <tr>
+                                                    <th scope="col">Номер вопроса</th>
+                                                    <th scope="col">Тип исследования</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                {% for question in questions %}
+                                                    <tr>
+                                                        <th scope="row">{{ forloop.counter }}</th>
+                                                        <td>
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="checkbox" value="{{ forloop.counter }}-validity" id="research-validity" name="{{ name }}-control-and-exam-test-researches">
+                                                                <label class="form-check-label" for="research-validity">На валидность</label>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <h3>Особое мнение</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="specopin" class="d-none"></label>
+                                            <textarea class="form-control" id="specopin" placeholder="Введите своё мнение о вопросах или заданиях" name="{{ name }}-control-and-exam-test-special-opinion"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    {% if video_file_modules %}
+                        {% for name, extension, src, expert_analysis in video_file_modules %}
+                            <div class="tab-pane fade {% if theory_modules|length == 0 and self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and forloop.counter == 1 %} show active {% endif %}" id="tab-{{ name }}" role="tabpanel" aria-labelledby="{{ name }}-tab">
+                                <div class="container-fluid">
+                                    <div class="row mt-3 mb-3">
+                                        <div class="col-auto d-block mx-auto">
+                                            <video controls="controls" poster="" class="w-100">
+                                                <source src="{{ src }}" type='video/{{ extension }}; codecs="avc1.42E01E, mp4a.40.2"'>
+                                            </video>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <h1 class="text-center">Вопросы эксперту</h1>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <h3>Цель видео?</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="introductory" id="target-introductory" name="{{ name }}-video-file-target">
+                                                <label class="form-check-label" for="target-introductory">Вводная</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="subsidiary" id="target-subsidiary" name="{{ name }}-video-file-target">
+                                                <label class="form-check-label" for="target-subsidiary">Вспомогательная</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="illustrative" id="target-illustrative" name="{{ name }}-video-file-target">
+                                                <label class="form-check-label" for="target-illustrative">Иллюстративная</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <h3>Длительность учебного видео</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="short" id="duration-short" name="{{ name }}-video-file-duration">
+                                                <label class="form-check-label" for="duration-short">Слишком короткое</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="normal" id="duration-normal" name="{{ name }}-video-file-duration">
+                                                <label class="form-check-label" for="duration-normal">Нормальное</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="long" id="duration-long" name="{{ name }}-video-file-duration">
+                                                <label class="form-check-label" for="duration-long">Слишком длинное</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <h3>Наличие сценария</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" class="custom-control-input" id="has-scenario" name="{{ name }}-video-file-has-scenario">
+                                                <label class="custom-control-label" for="has-scenario">Нет / Есть</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <h3>Сложность</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="simple" id="complexity-simple" name="{{ name }}-video-file-complexity">
+                                                <label class="form-check-label" for="complexity-simple">Простое видео</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="interactive" id="complexity-interactive" name="{{ name }}-video-file-complexity">
+                                                <label class="form-check-label" for="complexity-interactive">Интерактивное видео</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <h3>Использование интерактивного текста (бегущая строка)</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" class="custom-control-input" id="has-ticker" name="{{ name }}-video-file-has-ticker">
+                                                <label class="custom-control-label" for="has-ticker">Нет / Есть</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <h3>Качество записи</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="low" id="rec-quality-low" name="{{ name }}-video-file-recording-quality">
+                                                <label class="form-check-label" for="rec-quality-low">Плохое</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="normal" id="rec-quality-normal" name="{{ name }}-video-file-recording-quality">
+                                                <label class="form-check-label" for="rec-quality-normal">Нормальное</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="good" id="rec-quality-good" name="{{ name }}-video-file-recording-quality">
+                                                <label class="form-check-label" for="rec-quality-good">Хорошее</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="excellent" id="rec-quality-excellent" name="{{ name }}-video-file-recording-quality">
+                                                <label class="form-check-label" for="rec-quality-excellent">Отличное</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    {% if video_lecture_modules %}
+                        {% for name, extension, src, expert_analysis in video_lecture_modules %}
+                            <div class="tab-pane fade {% if theory_modules|length == 0 and self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and forloop.counter == 1 %} show active {% endif %}" id="tab-{{ name }}" role="tabpanel" aria-labelledby="{{ name }}-tab">
+                                <div class="container-fluid">
+                                    <div class="row mt-3 mb-3">
+                                        <div class="col-auto d-block mx-auto">
+                                            <video controls="controls" poster="" class="w-100">
+                                                <source src="{{ src }}" type='video/{{ extension }}; codecs="avc1.42E01E, mp4a.40.2"'>
+                                            </video>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <h1 class="text-center">Вопросы эксперту</h1>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <h3>Степень охвата элементов курса учебным видео?</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="weak" id="coverage-weak" name="{{ name }}-video-lecture-coverage">
+                                                <label class="form-check-label" for="coverage-weak">Слабая</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="normal" id="coverage-normal" name="{{ name }}-video-lecture-coverage">
+                                                <label class="form-check-label" for="coverage-normal">Нормальная</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="strong" id="coverage-strong" name="{{ name }}-video-lecture-coverage">
+                                                <label class="form-check-label" for="coverage-strong">Сильная</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <h3>Распределение учебного видео по темам и разделам курса</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <table class="table">
+    	    		                        	<thead class="thead-light">
+    	    		                        		<tr>
+    	    		                        			<th scope="col">Название раздела</th>
+    	    		                        			<th scope="col">Процент видео, соответствующий данному разделу учебного курса</th>
+    	    		                        		</tr>
+    	    		                        	</thead>
+    	    		                        	<tbody>
+    	    		                        		{% if video_lecture_sections %}
+    	    		                        		    {% for section in video_lecture_sections %}
+    	    		                        		        <tr>
+    	    		                        			        <th scope="row">{{ section }}</th>
+                                                                <td>
+                                                                    <div class="input-group">
+                                                                        <input type="hidden" value="{{ section }}" name="{{ name }}-video-lecture-sections">
+                                                                        <input type="text" class="form-control" id="dist-section-{{ forloop.counter }}" placeholder="50" aria-label="Recipient's username" aria-describedby="percent-section-{{ forloop.counter }}" name="{{ name }}-video-lecture-distribution">
+                                                                        <div class="input-group-append">
+                                                                            <span class="input-group-text" id="percent-section-{{ forloop.counter }}">%</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+    	    		                        		        </tr>
+    	    		                        		    {% endfor %}
+    	    		                        		{% endif %}
+    	    		                        	</tbody>
+    	    		                        </table>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <h3>Общий объем видеолекций по отношению ко всему курсу, выраженный в часах</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" id="volume-{{ forloop.counter }}" placeholder="3.5" aria-label="Recipient's username" aria-describedby="hours-{{ forloop.counter }}" name="{{ name }}-video-lecture-volume">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text" id="hours-{{ forloop.counter }}">hours</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <h3>Система навигации и поиска в видеолекиях</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col">
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" class="custom-control-input" id="has-navigation" name="{{ name }}-video-lecture-has-navigation">
+                                                <label class="custom-control-label" for="has-navigation">Есть / Нет</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    {% if audio_file_modules %}
+                        {% for name, extension, src, expert_analysis in audio_file_modules %}
+                            <div class="tab-pane fade {% if theory_modules|length == 0 and self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and video_lecture_modules|length == 0 and forloop.counter == 1 %} show active {% endif %}" id="tab-{{ name }}" role="tabpanel" aria-labelledby="{{ name }}-tab">
+                                <div class="container-fluid">
+                                    <div class="row mt-3 mb-3">
+                                        <div class="col-auto d-block mx-auto">
+                                            <audio controls>
+                                                <source src="{{ src }}" type="audio/{{ extension }}">
+                                            </audio>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <h1 class="text-center">Вопросы эксперту</h1>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <h3>Цель аудио?</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="introductory" id="target-introductory" name="{{ name }}-audio-file-target">
+                                                <label class="form-check-label" for="target-introductory">Вводная</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="auxiliary" id="target-auxiliary" name="{{ name }}-audio-file-target">
+                                                <label class="form-check-label" for="target-auxiliary">Вспомогательная</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="illustrative" id="target-illustrative" name="{{ name }}-audio-file-target">
+                                                <label class="form-check-label" for="target-illustrative">Иллюстративная</label>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="target-own">Свой вариант</label>
+                                                <input type="text" class="form-control" id="target-own" placeholder="Введите цель аудио" name="{{ name }}-audio-file-target-own">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <h3>Длительность учебного аудио?</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="audio-duration" class="d-none"></label>
+                                                <input type="text" class="form-control" id="audio-duration" placeholder="00:40:02" name="{{ name }}-audio-file-duration">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <h3>Качество записи аудио?</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="low" id="audio-quality-low" name="{{ name }}-audio-file-quality">
+                                                <label class="form-check-label" for="audio-quality-low">Низкоое</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="normal" id="audio-quality-normal" name="{{ name }}-audio-file-quality">
+                                                <label class="form-check-label" for="audio-quality-normal">Среднее</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="high" id="audio-quality-high" name="{{ name }}-audio-file-quality">
+                                                <label class="form-check-label" for="audio-quality-high">Высокое</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <h3>Формат записи?</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="recording-format" class="d-none"></label>
+                                                <input type="text" class="form-control" id="recording-format" placeholder="mp3" name="{{ name }}-audio-file-format">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    {% if audio_lecture_modules %}
+                        {% for name, extension, src, expert_analysis in audio_lecture_modules %}
+                            <div class="tab-pane fade {% if theory_modules|length == 0 and self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and video_lecture_modules|length == 0 and audio_file_modules|length == 0 and forloop.counter == 1 %} show active {% endif %}" id="tab-{{ name }}" role="tabpanel" aria-labelledby="{{ name }}-tab">
+                                <div class="container-fluid">
+                                    <div class="row mt-3 mb-3">
+                                        <div class="col-auto d-block mx-auto">
+                                            <audio controls>
+                                                <source src="{{ src }}" type="audio/{{ extension }}">
+                                            </audio>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <h1 class="text-center">Вопросы эксперту</h1>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <h3>Степень охвата элементов курса учебным аудио?</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" placeholder="50" aria-label="percent" aria-describedby="percent" name="{{ name }}-audio-lecture-coverage">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text" id="percent">%</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <h3>Распределение учебного аудио по темам и разделам курса.</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <table class="table">
+    	    		                        	<thead class="thead-light">
+    	    		                        		<tr>
+    	    		                        			<th scope="col">Название раздела</th>
+    	    		                        			<th scope="col">Процент аудио, соответствующий данному разделу учебного курса</th>
+    	    		                        		</tr>
+    	    		                        	</thead>
+    	    		                        	<tbody>
+    	    		                        		{% if audio_lecture_sections %}
+    	    		                        		    {% for section in audio_lecture_sections %}
+    	    		                        		        <tr>
+    	    		                        			        <th scope="row">{{ section }}</th>
+                                                                <td>
+                                                                    <div class="input-group">
+                                                                        <input type="hidden" value="{{ section }}" name="{{ name }}-audio-lecture-sections">
+                                                                        <input type="text" class="form-control" id="dist-section-{{ forloop.counter }}" placeholder="50" aria-label="" aria-describedby="percent-section-{{ forloop.counter }}" name="{{ name }}-audio-lecture-distribution">
+                                                                        <div class="input-group-append">
+                                                                            <span class="input-group-text" id="percent-section-{{ forloop.counter }}">%</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+    	    		                        		        </tr>
+    	    		                        		    {% endfor %}
+    	    		                        		{% endif %}
+    	    		                        	</tbody>
+    	    		                        </table>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <h3>Общий объем аудиолекций по отношению ко всему курсу, выраженный в часах</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" placeholder="72" aria-label="hours" aria-describedby="hours" name="{{ name }}-audio-lecture-volume">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text" id="hours">hh</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <h3>Система навигации и поиска в аудиолекиях?</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col">
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" class="custom-control-input" id="has-navigation" name="{{ name }}-audio-lecture-has-navigation">
+                                                <label class="custom-control-label" for="has-navigation">Да / Нет</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    {% if webinar_modules %}
+                        {% for name, videos, pictures, audios, presentations, documents, tables, pdfs, others, expert_analysis in webinar_modules %}
+                            <div class="tab-pane fade {% if theory_modules|length == 0 and self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and video_lecture_modules|length == 0 and audio_file_modules|length == 0 and audio_lecture_modules|length == 0 and forloop.counter == 1 %} show active {% endif %}" id="tab-{{ name }}" role="tabpanel" aria-labelledby="{{ name }}-tab">
+                                <div class="container-fluid">
+                                    {% for video in videos %}
+                                        <div class="row mt-3 mb-3">
+                                            <div class="col-auto d-block mx-auto">
+                                                <video controls="controls" poster="" class="w-100">
+                                                    <source src="{{ video.src }}" type='video/{{ video.extension }}; codecs="avc1.42E01E, mp4a.40.2"'>
+                                                </video>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                    {% if pictures|length > 0 %}
+                                        <div id="webinar-carousel" class="carousel slide" data-ride="carousel">
+                                            <ol class="carousel-indicators">
+                                                {% for picture in pictures %}
+                                                    <li data-target="#webinar-carousel" data-slide-to="{{ forloop.counter|add:-1 }}" {% if forloop.counter == 1 %}class="active"{% endif %}></li>
+                                                {% endfor %}
+                                            </ol>
+                                            <div class="carousel-inner">
+                                                {% for picture in pictures %}
+                                                    <div class="carousel-item {% if forloop.counter == 1 %}active{% endif %}">
+                                                        <img src="{{ picture.src }}" class="d-block w-100" alt="{{ picture.name }}">
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                            <a class="carousel-control-prev" href="#webinar-carousel" role="button" data-slide="prev">
+                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="carousel-control-next" href="#webinar-carousel" role="button" data-slide="next">
+                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                <span class="sr-only">Next</span>
+                                            </a>
+                                        </div>
+                                    {% endif %}
+                                    {% for audio in audios %}
+                                        <div class="row mt-3 mb-3">
+                                            <div class="col-auto d-block mx-auto">
+                                                <audio controls>
+                                                    <source src="{{ audio.src }}" type="audio/{{ audio.extension }}">
+                                                </audio>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                    {% for presentation in presentations %}
+                                        <div class="row mt-3 mb-3">
+                                            <div class="col-auto d-block mx-auto">
+                                                <a href="{{ presentation.src }}"><i class="far fa-file-powerpoint"></i> Скачать {{ presentation.name }}</a>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                    {% for document in documents %}
+                                        <div class="row mt-3 mb-3">
+                                            <div class="col-auto d-block mx-auto">
+                                                <a href="{{ document.src }}"><i class="far fa-file-word"></i> Скачать {{ document.name }}</a>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                    {% for table in tables %}
+                                        <div class="row mt-3 mb-3">
+                                            <div class="col-auto d-block mx-auto">
+                                                <a href="{{ table.src }}"><i class="far fa-file-excel"></i> Скачать {{ table.name }}</a>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                    {% for pdf in pdfs %}
+                                        <div class="row mt-3 mb-3">
+                                            <div class="col-auto d-block mx-auto">
+                                                <a href="{{ pdf.src }}"><i class="far fa-file-pdf"></i> Скачать {{ pdf.name }}</a>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                    {% for other in others %}
+                                        <div class="row mt-3 mb-3">
+                                            <div class="col-auto d-block mx-auto">
+                                                <a href="{{ other.src }}"><i class="far fa-file"></i> Скачать {{ other.name }}</a>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <h1 class="text-center">Вопросы эксперту</h1>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <h3>Тип вебинара?</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="lecture" id="webinar-type-lecture" name="{{ name }}-webinar-type">
+                                                <label class="form-check-label" for="webinar-type-lecture">Лекция</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="seminar" id="webinar-type-seminar" name="{{ name }}-webinar-type">
+                                                <label class="form-check-label" for="webinar-type-seminar">Семинар</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="consultation" id="webinar-type-consultation" name="{{ name }}-webinar-type">
+                                                <label class="form-check-label" for="webinar-type-consultation">Консультация</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="combined" id="webinar-type-combined" name="{{ name }}-webinar-type">
+                                                <label class="form-check-label" for="webinar-type-combined">Комбинированный</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <h3>Длительность вебинара?</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" placeholder="90" aria-label="minutes" aria-describedby="minutes" id="webinar-duration" name="{{ name }}-webinar-duration">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text" id="minutes">mm</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <h3>Наличие сценария вебинара?</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col">
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" class="custom-control-input" id="has-scenario" name="{{ name }}-webinar-has-scenario">
+                                                <label class="custom-control-label" for="has-scenario">Есть / Нет</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <h3>Наличие презентации?</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col">
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" class="custom-control-input" id="has-presentation" name="{{ name }}-webinar-has-presentation">
+                                                <label class="custom-control-label" for="has-presentation">Есть / Нет</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <h3>Наличие дополнительных материалов (видеоролики по теме вебинара, справочные файлы (в формате - .doc, .xls, .pdf, .jpg, pas и т.д.))</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col">
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" class="custom-control-input" id="has-additional-materials" name="{{ name }}-webinar-has-additional-materials">
+                                                <label class="custom-control-label" for="has-additional-materials">Есть / Нет</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <h3>Наличие вопросов для слушателей?</h3>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col">
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" class="custom-control-input" id="has-questions" name="{{ name }}-webinar-has-questions">
+                                                <label class="custom-control-label" for="has-questions">Есть / Нет</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+                {% endwith %}
+                {% if course_rating %}
+                    <div class="row ml-auto mt-3">
+                        <div class="col">
+                            <p><b>Рейтинг курса:</b></p>
+                        </div>
+                        <div class="col">
+                            <p><b>{{ course_rating }}</b></p>
+                        </div>
+                    </div>
+                {% endif %}
+                <div class="row ml-auto mt-3">
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary mb-3">Далее</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

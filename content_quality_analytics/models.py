@@ -42,6 +42,39 @@ class Indicator(models.Model):
     type = models.CharField(max_length=255)
     questions = models.CharField(max_length=255)
     show = models.BooleanField()
+    description = models.CharField(max_length=255, default='')
 
     def __str__(self):
-        return json.dumps({'name': self.name, 'type': self.type, 'questions': self.questions, 'show': self.show})
+        return json.dumps({
+            'name': self.name,
+            'type': self.type,
+            'questions': self.questions,
+            'show': self.show,
+            'description': self.description
+        })
+
+
+class Merged(models.Model):
+    uid = models.CharField(max_length=255)
+    name = models.CharField(max_length=255)
+    fragments = models.CharField(max_length=255)
+
+    def __str__(self):
+        return json.dumps({
+            'uid': self.uid,
+            'name': self.name,
+            'fragments': self.fragments,
+        })
+
+
+class Results(models.Model):
+    uid = models.CharField(max_length=255)
+    name = models.CharField(max_length=255)
+    context = models.CharField(max_length=255)
+
+    def __str__(self):
+        return json.dumps({
+            'uid': self.uid,
+            'name': self.name,
+            'context': self.context,
+        })

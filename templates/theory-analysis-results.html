@@ -8,6 +8,22 @@
     <script src="{% static "js/base.js" %}"></script>
     <script src="{% static "js/theory-analysis-results.js" %}"></script>
 {% endblock %}
+{% block header %}
+    <div class="container-fluid">
+        <div class="row mt-3 align-items-center">
+	    	<div class="col-auto d-table mr-auto">
+	    		<b>Система анализа электронных курсов</b>
+	    	</div>
+            <div class="col-auto d-table">
+                {% if is_anonymous %}
+                    <a href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i> Войти в систему</a>
+                {% else %}
+                    <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Выйти из системы</a>
+                {% endif %}
+            </div>
+	    </div>
+    </div>
+{% endblock %}
 {% block main %}
 <div class="container-fluid mt-3 mb-3">
     {% if modules and modules|length > 0 %}
@@ -15,7 +31,7 @@
 	    	<div class="col">
                 <ul class="nav nav-tabs" id="modules-tabs" role="tablist">
                     {% if modules %}
-                        {% for name, content, result in modules %}
+                        {% for name, content, result, indicators in modules %}
                             <li class="nav-item">
                                 <a class="nav-link {% if forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if forloop.counter == 1 %} true {% else %} false {% endif %}">{{ content }}</a>
                             </li>
@@ -24,7 +40,7 @@
                 </ul>
                 <div class="tab-content" id="modules-tabs-content">
                     {% if modules %}
-                        {% for name, content, result in modules %}
+                        {% for name, content, result, indicators in modules %}
                             <div class="tab-pane fade {% if forloop.counter == 1 %} show active {% endif %}" id="tab-{{ name }}" role="tabpanel" aria-labelledby="{{ name }}-tab">
                                 <div class="container">
                                     {% if 'information_richness' in indicators or 'abstractness' in indicators or 'readability' in indicators or 'water_content' in indicators or 'keyword_density' in indicators %}

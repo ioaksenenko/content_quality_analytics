@@ -30,40 +30,41 @@ def read_files(source, only_these=None):
     for file_name in natsorted(os.listdir(source), key=lambda y: y.lower()):
         dir_path = os.path.join(source, file_name)
         if os.path.isdir(dir_path):
-            dir_path = os.path.join(dir_path, 'HTML')
-            if file_name in only_these if only_these is not None else True:
-                mod_html = bs4.BeautifulSoup(
-                    '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Title</title></head><body></body></html>',
-                    'html.parser'
-                )
-                mod_content = ''
-                mod_pages_number = 0
-                for file_name in os.listdir(dir_path):
-                    mod_pages_number += 1
-                    file_path = os.path.join(dir_path, file_name)
-                    if os.path.isfile(file_path) and re.match(fnmatch.translate('*.html'), file_path, re.IGNORECASE):
-                        f = open(file_path, 'r', encoding='utf-8')
-                        c = f.read()
-                        soup = bs4.BeautifulSoup(c, 'html.parser')
-                        imgs = soup.find_all('img')
-                        for img in imgs:
-                            img['src'] = os.path.join(dir_path, img['src'])
-                        for element in soup.body.contents:
-                            mod_html.body.append(copy.copy(element))
-                        f.close()
-                        tockens = re.split(r'<[^>]+>', c)
-                        text = ' '.join(list(filter(lambda x: not re.fullmatch(r'\s*', x), tockens)))
-                        mod_content += ' ' + html.unescape(text)
-                res.append({
-                    'dir_path': os.path.dirname(dir_path),
-                    'html': str(mod_html),
-                    'txt': mod_content,
-                    'pgs_num': mod_pages_number
-                })
-                for element in mod_html.body.contents:
-                    all_html.body.append(copy.copy(element))
-                all_content += mod_content
-                all_pages_number += mod_pages_number
+            dir_path = os.path.join(dir_path, 'html')
+            if os.path.exists(dir_path):
+                if file_name in only_these if only_these is not None else True:
+                    mod_html = bs4.BeautifulSoup(
+                        '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Title</title></head><body></body></html>',
+                        'html.parser'
+                    )
+                    mod_content = ''
+                    mod_pages_number = 0
+                    for file_name in os.listdir(dir_path):
+                        mod_pages_number += 1
+                        file_path = os.path.join(dir_path, file_name)
+                        if os.path.isfile(file_path) and re.match(fnmatch.translate('*.html'), file_path, re.IGNORECASE):
+                            f = open(file_path, 'r', encoding='utf-8')
+                            c = f.read()
+                            soup = bs4.BeautifulSoup(c, 'html.parser')
+                            imgs = soup.find_all('img')
+                            for img in imgs:
+                                img['src'] = os.path.join(dir_path, img['src'])
+                            for element in soup.body.contents:
+                                mod_html.body.append(copy.copy(element))
+                            f.close()
+                            tockens = re.split(r'<[^>]+>', c)
+                            text = ' '.join(list(filter(lambda x: not re.fullmatch(r'\s*', x), tockens)))
+                            mod_content += ' ' + html.unescape(text)
+                    res.append({
+                        'dir_path': os.path.dirname(dir_path),
+                        'html': str(mod_html),
+                        'txt': mod_content,
+                        'pgs_num': mod_pages_number
+                    })
+                    for element in mod_html.body.contents:
+                        all_html.body.append(copy.copy(element))
+                    all_content += mod_content
+                    all_pages_number += mod_pages_number
         else:
             if re.match(fnmatch.translate('*.html'), os.path.basename(dir_path), re.IGNORECASE) and (file_name in only_these if only_these is not None else True):
                 f = open(dir_path, 'r', encoding='utf-8')
@@ -717,7 +718,7 @@ def img_characteristics(file, indicators):
             if 'illustrations_number' in indicators:
                 res['img_number'] = img_number
             if 'average_illustrations_number_per_page' in indicators:
-                aver_img_in_pg_num = img_number / file['pgs_num']
+                aver_img_in_pg_num = round(img_number / file['pgs_num'], 2)
                 res['pgs_num'] = file['pgs_num']
                 res['aver_img_in_pg_num'] = aver_img_in_pg_num
 
@@ -730,16 +731,16 @@ def img_characteristics(file, indicators):
                 try:
                     img_char = {'img_path': '/' + img['src'][img['src'].index('media'):]}
                     if 'image_brightness' in indicators:
-                        brightness = get_img_brightness(img['src'])
+                        brightness = round(get_img_brightness(img['src']), 2)
                         img_char['brightness'] = brightness
                     if 'relative_image_brightness' in indicators:
-                        rel_brightness = get_rel_img_brightness(img['src'])
+                        rel_brightness = round(get_rel_img_brightness(img['src']), 2)
                         img_char['rel_brightness'] = rel_brightness
                     if 'image_contrast' in indicators:
-                        contrast = get_img_contrast(img['src'])
+                        contrast = round(get_img_contrast(img['src']), 2)
                         img_char['contrast'] = contrast
                     if 'relative_image_contrast' in indicators:
-                        rel_contrast = get_rel_img_contrast(img['src'])
+                        rel_contrast = round(get_rel_img_contrast(img['src']), 2)
                         img_char['rel_contrast'] = rel_contrast
                     res['images'].append(img_char)
                 except Exception as e:
@@ -765,7 +766,7 @@ def img_characteristics_all_files(files, indicators):
             res['images'] += file['img_ch']['images']
 
     if res['pgs_num'] != 0:
-        res['aver_img_in_pg_num'] = res['img_number'] / res['pgs_num']
+        res['aver_img_in_pg_num'] = round(res['img_number'] / res['pgs_num'], 2)
 
     return res
 

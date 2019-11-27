@@ -72,6 +72,12 @@ urlpatterns = [
     path('hide-indicator/', views.hide_indicator, name='hide-indicator'),
     path('show-indicator/', views.show_indicator, name='show-indicator'),
     path('check-indicator-name/', views.check_indicator_name, name='check-indicator-name'),
+
+    path('join-elements/', views.join_elements, name='join-elements'),
+    path('split-elements/', views.split_elements, name='split-elements'),
+    path('expert-analysis/', views.expert_analysis, name='expert-analysis'),
+    path('results/', views.results, name='results'),
+    path('course-rating/', views.course_rating, name='course-rating'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

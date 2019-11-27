@@ -8,191 +8,227 @@
     <script src="{% static "js/base.js" %}"></script>
     <script src="{% static "js/self-test-analysis.js" %}"></script>
 {% endblock %}
-{% block main %}
-<div class="container-fluid mb-3">
-	<div class="row">
-		<div class="col">
-            <ul class="nav nav-tabs" id="modules-tabs" role="tablist">
-                {% if modules %}
-                    {% for name, content, questions in modules %}
-                        <li class="nav-item">
-                            <a class="nav-link {% if forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if forloop.counter == 1 %} true {% else %} false {% endif %}">{{ content }}</a>
-                        </li>
-                    {% endfor %}
-                {% endif %}
-            </ul>
-            <div class="tab-content" id="modules-tabs-content">
-                {% if modules %}
-                    {% for name, content, questions in modules %}
-                        <div class="tab-pane fade {% if forloop.counter == 1 %} show active {% endif %}" id="tab-{{ name }}" role="tabpanel" aria-labelledby="{{ name }}-tab">
-                            <div class="container">
-                                <div class="row mb-3">
-                                    <div class="col">
-                                        <h1>Вопросы</h1>
-                                    </div>
-                                </div>
-                                {% for question in questions %}
-                                    <div class="row">
-                                        <div class="col">
-                                            <p>{{ forloop.counter }}. {{ question }}</p>
-                                        </div>
-                                    </div>
-                                {% endfor %}
-                                <form action="{% url 'self-test-analysis-results' %}" enctype="multipart/form-data" method="post" id="expert-questions">
-                                    {% csrf_token %}
-                                    <div class="row mb-3">
-                                        <div class="col">
-                                            <h1>Коэффициент сложности вопроса или задания</h1>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <table class="table">
-			                                	<thead class="thead-light">
-			                                		<tr>
-			                                			<th scope="col">Номер вопроса</th>
-			                                			<th scope="col">Коэффициент сложности</th>
-			                                		</tr>
-			                                	</thead>
-			                                	<tbody>
-			                                		{% for question in questions %}
-                                                        <tr>
-                                                            <th scope="row">{{ forloop.counter }}</th>
-                                                            <td>
-                                                                <div class="row d-table">
-                                                                    <div class="col-auto d-table-cell align-bottom">0</div>
-                                                                    <div class="col d-table-cell">
-                                                                        <div class="form-group">
-                                                                            <label for="diffac-{{ forloop.counter }}"></label>
-                                                                            <input type="range" class="form-control-range custom-range" id="diffac-{{ forloop.counter }}" min="0" max="10" step="1" value="5">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-auto d-table-cell align-bottom">10</div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                    {% endfor %}
-			                                	</tbody>
-			                                </table>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <div class="col">
-                                            <h1>Коэффициент завершённости вопроса или задания</h1>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <table class="table">
-			                                	<thead class="thead-light">
-			                                		<tr>
-			                                			<th scope="col">Номер вопроса</th>
-			                                			<th scope="col">Коэффициент завершённости</th>
-			                                		</tr>
-			                                	</thead>
-			                                	<tbody>
-			                                		{% for question in questions %}
-                                                        <tr>
-                                                            <th scope="row">{{ forloop.counter }}</th>
-                                                            <td>
-                                                                <div class="row d-table">
-                                                                    <div class="col-auto d-table-cell align-bottom">0</div>
-                                                                    <div class="col d-table-cell">
-                                                                        <div class="form-group">
-                                                                            <label for="comrate-{{ forloop.counter }}"></label>
-                                                                            <input type="range" class="form-control-range custom-range" id="comrate-{{ forloop.counter }}" min="0" max="100" step="1" value="50">
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-auto d-table-cell align-bottom">100</div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                    {% endfor %}
-			                                	</tbody>
-			                                </table>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <div class="col">
-                                            <h1>Имеются ли ответы или решения  на вопросы и задания?</h1>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <table class="table">
-			                                	<thead class="thead-light">
-			                                		<tr>
-			                                			<th scope="col">Номер вопроса</th>
-			                                			<th scope="col">Флаг</th>
-			                                		</tr>
-			                                	</thead>
-			                                	<tbody>
-			                                		{% for question in questions %}
-                                                        <tr>
-                                                            <th scope="row">{{ forloop.counter }}</th>
-                                                            <td>
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input" type="checkbox" value="" id="hasans-{{ forloop.counter }}" name="hasans">
-                                                                    <label class="form-check-label" for="hasans-{{ forloop.counter }}"></label>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                    {% endfor %}
-			                                	</tbody>
-			                                </table>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <div class="col">
-                                            <h1>Имеются ли ссылки на источники с теорией или решением?</h1>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <table class="table">
-			                                	<thead class="thead-light">
-			                                		<tr>
-			                                			<th scope="col">Номер вопроса</th>
-			                                			<th scope="col">Флаг</th>
-			                                		</tr>
-			                                	</thead>
-			                                	<tbody>
-			                                		{% for question in questions %}
-                                                        <tr>
-                                                            <th scope="row">{{ forloop.counter }}</th>
-                                                            <td>
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input" type="checkbox" value="" id="haslinks-{{ forloop.counter }}" name="haslinks">
-                                                                    <label class="form-check-label" for="haslinks-{{ forloop.counter }}"></label>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                    {% endfor %}
-			                                	</tbody>
-			                                </table>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <div class="col">
-                                            <h1>Особое мнение</h1>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <label for="specopin" class="d-none"></label>
-                                            <textarea class="form-control" id="specopin" placeholder="Введите своё мнение о вопросах или заданиях"></textarea>
-                                        </div>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary mt-3" id="expert-analyze" disabled>Провести анализ</button>
-                                </form>
-                            </div>
-                        </div>
-                    {% endfor %}
+{% block header %}
+    <div class="container-fluid">
+        <div class="row mt-3 align-items-center">
+	    	<div class="col-auto d-table mr-auto">
+	    		<b>Система анализа электронных курсов</b>
+	    	</div>
+            <div class="col-auto d-table">
+                {% if is_anonymous %}
+                    <a href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i> Войти в систему</a>
+                {% else %}
+                    <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Выйти из системы</a>
                 {% endif %}
             </div>
-		</div>
-	</div>
-    <div class="row mt-3">
+	    </div>
+        <div class="row pl-3 mt-3">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">1. Определение структуры</li>
+                    <li class="breadcrumb-item">2. Выбор показателей</li>
+                    <li class="breadcrumb-item active">3. Экспертный анализ</li>
+                    <li class="breadcrumb-item">4. Результаты</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+{% endblock %}
+{% block main %}
+<div class="container-fluid mb-3 mt-3">
+    {% if modules|length > 0 %}
+	    <div class="row">
+	    	<div class="col">
+                <ul class="nav nav-tabs" id="modules-tabs" role="tablist">
+                    {% if modules %}
+                        {% for name, content, questions in modules %}
+                            <li class="nav-item">
+                                <a class="nav-link {% if forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if forloop.counter == 1 %} true {% else %} false {% endif %}">{{ content }}</a>
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+                <div class="tab-content" id="modules-tabs-content">
+                    {% if modules %}
+                        {% for name, content, questions in modules %}
+                            <div class="tab-pane fade {% if forloop.counter == 1 %} show active {% endif %}" id="tab-{{ name }}" role="tabpanel" aria-labelledby="{{ name }}-tab">
+                                <div class="container">
+                                    <div class="row mb-3">
+                                        <div class="col">
+                                            <h1>Вопросы</h1>
+                                        </div>
+                                    </div>
+                                    {% for question in questions %}
+                                        <div class="row">
+                                            <div class="col">
+                                                <p>{{ forloop.counter }}. {{ question }}</p>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                    <form action="{% url 'self-test-analysis-results' %}" enctype="multipart/form-data" method="post" id="expert-questions">
+                                        {% csrf_token %}
+                                        <div class="row mb-3">
+                                            <div class="col">
+                                                <h1>Коэффициент сложности вопроса или задания</h1>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <table class="table">
+	    		                                	<thead class="thead-light">
+	    		                                		<tr>
+	    		                                			<th scope="col">Номер вопроса</th>
+	    		                                			<th scope="col">Коэффициент сложности</th>
+	    		                                		</tr>
+	    		                                	</thead>
+	    		                                	<tbody>
+	    		                                		{% for question in questions %}
+                                                            <tr>
+                                                                <th scope="row">{{ forloop.counter }}</th>
+                                                                <td>
+                                                                    <div class="row d-table">
+                                                                        <div class="col-auto d-table-cell align-bottom">0</div>
+                                                                        <div class="col d-table-cell">
+                                                                            <div class="form-group">
+                                                                                <label for="diffac-{{ forloop.counter }}"></label>
+                                                                                <input type="range" class="form-control-range custom-range" id="diffac-{{ forloop.counter }}" min="0" max="10" step="1" value="5">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-auto d-table-cell align-bottom">10</div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        {% endfor %}
+	    		                                	</tbody>
+	    		                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col">
+                                                <h1>Коэффициент завершённости вопроса или задания</h1>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <table class="table">
+	    		                                	<thead class="thead-light">
+	    		                                		<tr>
+	    		                                			<th scope="col">Номер вопроса</th>
+	    		                                			<th scope="col">Коэффициент завершённости</th>
+	    		                                		</tr>
+	    		                                	</thead>
+	    		                                	<tbody>
+	    		                                		{% for question in questions %}
+                                                            <tr>
+                                                                <th scope="row">{{ forloop.counter }}</th>
+                                                                <td>
+                                                                    <div class="row d-table">
+                                                                        <div class="col-auto d-table-cell align-bottom">0</div>
+                                                                        <div class="col d-table-cell">
+                                                                            <div class="form-group">
+                                                                                <label for="comrate-{{ forloop.counter }}"></label>
+                                                                                <input type="range" class="form-control-range custom-range" id="comrate-{{ forloop.counter }}" min="0" max="100" step="1" value="50">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-auto d-table-cell align-bottom">100</div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        {% endfor %}
+	    		                                	</tbody>
+	    		                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col">
+                                                <h1>Имеются ли ответы или решения  на вопросы и задания?</h1>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <table class="table">
+	    		                                	<thead class="thead-light">
+	    		                                		<tr>
+	    		                                			<th scope="col">Номер вопроса</th>
+	    		                                			<th scope="col">Флаг</th>
+	    		                                		</tr>
+	    		                                	</thead>
+	    		                                	<tbody>
+	    		                                		{% for question in questions %}
+                                                            <tr>
+                                                                <th scope="row">{{ forloop.counter }}</th>
+                                                                <td>
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="checkbox" value="" id="hasans-{{ forloop.counter }}" name="hasans">
+                                                                        <label class="form-check-label" for="hasans-{{ forloop.counter }}"></label>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        {% endfor %}
+	    		                                	</tbody>
+	    		                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col">
+                                                <h1>Имеются ли ссылки на источники с теорией или решением?</h1>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <table class="table">
+	    		                                	<thead class="thead-light">
+	    		                                		<tr>
+	    		                                			<th scope="col">Номер вопроса</th>
+	    		                                			<th scope="col">Флаг</th>
+	    		                                		</tr>
+	    		                                	</thead>
+	    		                                	<tbody>
+	    		                                		{% for question in questions %}
+                                                            <tr>
+                                                                <th scope="row">{{ forloop.counter }}</th>
+                                                                <td>
+                                                                    <div class="form-check">
+                                                                        <input class="form-check-input" type="checkbox" value="" id="haslinks-{{ forloop.counter }}" name="haslinks">
+                                                                        <label class="form-check-label" for="haslinks-{{ forloop.counter }}"></label>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        {% endfor %}
+	    		                                	</tbody>
+	    		                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col">
+                                                <h1>Особое мнение</h1>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="specopin" class="d-none"></label>
+                                                <textarea class="form-control" id="specopin" placeholder="Введите своё мнение о вопросах или заданиях"></textarea>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary mt-3" id="expert-analyze" disabled>Провести анализ</button>
+                                    </form>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+	    	</div>
+	    </div>
+    {% else %}
+        <div class="row">
+            <div class="col">
+                <div class="alert alert-danger" role="alert">
+                    Ни одного теста для самопроверки не обнаружено.
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    <div class="row mt-1">
         <div class="col-4 mx-auto d-block">
             <form action="{% url 'control-test-analysis' %}" enctype="multipart/form-data" method="post" id="expert-questions">
                 {% csrf_token %}
