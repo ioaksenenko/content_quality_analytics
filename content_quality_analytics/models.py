@@ -81,14 +81,15 @@ class Results(models.Model):
 
 
 class Course(models.Model):
-    class Meta:
-        unique_together = (('id', 'moodle'),)
-
-    id = models.IntegerField(primary_key=True)
+    identifier = models.IntegerField()
     moodle = models.CharField(max_length=255)
+    rating = models.FloatField(default=0)
+    context = models.CharField(max_length=255, default='')
 
     def __str__(self):
         return json.dumps({
-            'id': self.id,
-            'moodle': self.moodle
+            'identifier': self.identifier,
+            'moodle': self.moodle,
+            'rating': self.rating,
+            'context': self.context
         })

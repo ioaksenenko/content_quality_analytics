@@ -79,6 +79,7 @@ urlpatterns = [
     path('results/', views.results, name='results'),
     path('course-rating/', views.course_rating, name='course-rating'),
     path('history/', views.history, name='history'),
+    path('show-course-result/', views.show_course_result, name='show-course-result'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

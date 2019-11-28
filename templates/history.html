@@ -46,15 +46,17 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Идентификатор курса</th>
-                            <th scope="col">Moodle</th>
+                            <th scope="col">Система дистанционного обучения</th>
+                            <th scope="col">Рейтинг</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for course in courses %}
                             <tr>
                                 <th scope="row">{{ forloop.counter }}</th>
-                                <td>{{ course.id }}</td>
+                                <td><a href="{% url 'show-course-result' %}?course_id={{ course.identifier }}&moodle={{ course.moodle }}">{{ course.identifier }}</a></td>
                                 <td>{{ course.moodle }}</td>
+                                <td>{{ course.rating }}</td>
                             </tr>
                         {% endfor %}
                     </tbody>

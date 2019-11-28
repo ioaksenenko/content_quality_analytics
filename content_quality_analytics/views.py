@@ -30,11 +30,11 @@ from functools import reduce
 
 
 def index(request):
+    models.Course.objects.all().delete()
     user = auth.get_user(request)
     clear_media()
     request.session.create()
-    session = models.Session(id=request.session.session_key, active=True)
-    session.save()
+    models.Session(id=request.session.session_key, active=True).save()
     os.mkdir(os.path.join(settings.MEDIA_ROOT, request.session.session_key))
     template = loader.get_template('index.html')
     context = {
@@ -960,9 +960,13 @@ def moodle(request):
 
         if not exist:
             models.Course(
-                id=course_id,
+                identifier=course_id,
                 moodle=moodle
             ).save()
+
+        request.session['course_id'] = course_id
+        request.session['moodle'] = moodle
+        request.session.save()
 
         response = requests.get(f'https://online.tusur.ru/local/filemap/?courseid={course_id}&key=cea17f418fc4227b647f75fe66fe859bd24ea752')
         if response.status_code == 200:
@@ -1017,7 +1021,6 @@ def download_file(file, module, module_path):
         elif re.fullmatch(r'.+\.(png|jpeg|jpg)', file['name'], re.I):
             with open(file_paath, 'wb') as f:
                 f.write(response.content)
-
 
 
 def get_files_from_moodle(request):
@@ -1968,6 +1971,15 @@ def course_rating(request):
 
     context['course_rating'] = round(course_rating, 2)
 
+    courses = models.Course.objects.filter(
+        identifier=request.session['course_id'],
+        moodle=request.session['moodle']
+    )
+    for course in courses:
+        course.rating = context['course_rating']
+        course.context = json.dumps(context)
+        course.save()
+
     return render(request, 'results.html', context)
 
 
@@ -1977,6 +1989,19 @@ def history(request):
         'username': user.username if not user.is_anonymous else 'Anonymous',
         'is_superuser': user.is_superuser,
         'is_anonymous': user.is_anonymous,
-        'courses': models.Course.objects.all()
+        'courses': [course for course in models.Course.objects.all() if course.context != '']
     }
     return render(request, 'history.html', context)
+
+
+def show_course_result(request):
+    course_id = request.GET.get('course_id')
+    moodle = request.GET.get('moodle')
+    courses = models.Course.objects.filter(
+        identifier=course_id,
+        moodle=moodle
+    )
+    context = {}
+    for course in courses:
+        context = json.loads(course.context)
+    return render(request, 'results.html', context)
