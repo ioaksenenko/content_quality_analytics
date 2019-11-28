@@ -33,6 +33,7 @@ $(document).ready(function () {
         if (!$(e).is(':checked')) {
             $(e).parent().parent().next().addClass('disabled');
             $(e).parent().parent().next().next().find('select').prop('disabled', true);
+            $(e).parent().parent().next().next().next().find('span').addClass('disabled');
         }
     });
     check_all.prop('indeterminate', checked.length !== checkboxes.length);
@@ -49,6 +50,8 @@ $(document).ready(function () {
         if ($(this).is(':checked')) {
             $(this).parent().parent().next().removeClass('disabled');
             let select = $(this).parent().parent().next().next().find('select');
+            $(this).parent().parent().next().next().next().find('span').removeClass('disabled');
+            //$(this).parent().parent().next().next().next().find('span').addClass('red');
             select.prop('disabled', false);
             next.prop('disabled', false);
             if (select.val() === 'unknown') {
@@ -62,6 +65,8 @@ $(document).ready(function () {
         } else {
             $(this).parent().parent().next().addClass('disabled');
             $(this).parent().parent().next().next().find('select').prop('disabled', true);
+            $(this).parent().parent().next().next().next().find('span').addClass('disabled');
+            //$(this).parent().parent().next().next().next().find('span').removeClass('red');
             msg.addClass('d-none');
             msg_src.addClass('d-none');
             next.prop('disabled', false);
@@ -165,6 +170,8 @@ function select() {
             $(e).prop('checked', true);
             $(this).parent().parent().next().removeClass('disabled');
             $(this).parent().parent().next().next().find('select').prop('disabled', false);
+            $(this).parent().parent().next().next().next().find('span').removeClass('disabled');
+            //$(this).parent().parent().next().next().next().find('span').addClass('red');
             if ($(e).parent().parent().next().next().find('select').val() === 'unknown') {
                 msg.removeClass('d-none');
                 next.prop('disabled', true);
@@ -180,6 +187,8 @@ function select() {
             next.prop('disabled', true);
             $(this).parent().parent().next().addClass('disabled');
             $(this).parent().parent().next().next().find('select').prop('disabled', true);
+            $(this).parent().parent().next().next().next().find('span').addClass('disabled');
+            //$(this).parent().parent().next().next().next().find('span').removeClass('red');
         });
     }
 }

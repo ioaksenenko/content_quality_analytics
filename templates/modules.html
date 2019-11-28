@@ -83,20 +83,20 @@
 	    		        	<tbody>
                                 {% for module in modules %}
                                     <tr>
-                                        <th scope="row">
+                                        <th scope="row" class="align-middle">
                                             <div class="custom-control custom-checkbox">
                                                 <input type="checkbox" class="custom-control-input" name="modules-for-join" value="{{ module.name }}" id="module-for-join-{{ module.name }}" checked>
                                                 <label class="custom-control-label" for="module-for-join-{{ module.name }}"></label>
                                             </div>
                                         </th>
-                                        <td>
+                                        <td class="align-middle">
                                             <div class="custom-control custom-switch">
                                                 <input type="checkbox" class="custom-control-input" name="modules" value="{{ module.name }}" id="module-{{ module.name }}" checked>
                                                 <label class="custom-control-label" for="module-{{ module.name }}"></label>
                                             </div>
                                         </td>
-                                        <td>{{ module.name }}</td>
-                                        <td>
+                                        <td class="align-middle">{{ module.name }}</td>
+                                        <td class="align-middle">
                                             <label for="type-{{ module.name }}" class="d-none"></label>
                                             <select class="form-control" id="type-{{ module.name }}" name="type-{{ module.name }}">
                                                 <option value="unknown" selected>Неизвестный</option>
@@ -112,7 +112,7 @@
                                                 <option value="presentation" {% if module.type == 'presentation' %}selected{% endif %}>Презентация</option>
                                             </select>
                                         </td>
-                                        <td>{% if module.src == 'undefined' %}<span style="color: red">Не определён</span>{% else %}<span>{{ module.src }}</span>{% endif %}</td>
+                                        <td class="align-middle">{% if module.src == 'undefined' %}<span class="red">Не определён</span>{% else %}<span>{{ module.src }}</span>{% endif %}</td>
                                     </tr>
                                 {% endfor %}
 	    		        	</tbody>

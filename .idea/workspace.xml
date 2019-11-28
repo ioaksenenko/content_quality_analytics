@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="cc8d65a7-0ad6-4cba-9c3a-e5bdd5e2cbc1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/modules.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/modules.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/modules.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/modules.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/modules.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/modules.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -62,8 +65,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/content_quality_analytics/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="1932" column="25" selection-start-line="1932" selection-start-column="25" selection-end-line="1932" selection-end-column="25" />
+            <state relative-caret-position="445">
+              <caret line="1613" column="56" selection-start-line="1613" selection-start-column="56" selection-end-line="1613" selection-end-column="56" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
                 <element signature="e#718#1257#0" />
@@ -83,6 +86,36 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/js/modules.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="462">
+              <caret line="38" column="64" lean-forward="true" selection-start-line="38" selection-start-column="64" selection-end-line="38" selection-end-column="64" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/modules.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1268">
+              <caret line="115" column="41" selection-start-line="115" selection-start-column="41" selection-end-line="115" selection-end-column="41" />
+              <folding>
+                <element signature="e#373#391#0#DjangoTemplate" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/css/modules.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/content_quality_analytics/urls.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="438">
@@ -94,11 +127,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/results.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="398">
-              <caret line="1772" column="19" lean-forward="true" selection-start-line="1772" selection-start-column="19" selection-end-line="1772" selection-end-column="19" />
+              <caret line="1772" column="19" selection-start-line="1772" selection-start-column="19" selection-end-line="1772" selection-end-column="19" />
               <folding>
                 <element signature="e#398#416#0#DjangoTemplate" />
                 <element signature="e#1898#1921#0#DjangoTemplate" />
@@ -109,31 +142,44 @@
                 <element signature="e#5234#5303#0#DjangoTemplate" />
                 <element signature="e#6111#6183#0#DjangoTemplate" />
                 <element signature="e#7061#7185#0#DjangoTemplate" />
-                <element signature="e#2573#2596#0#DjangoTemplate" />
-                <element signature="e#70965#70991#0#DjangoTemplate" />
-                <element signature="e#71349#71580#0#HTML" />
-                <element signature="e#71617#71648#0#DjangoTemplate" />
-                <element signature="e#72045#72310#0#HTML" />
-                <element signature="e#72514#75695#0#HTML" />
-                <element signature="e#74727#74996#0#HTML" />
-                <element signature="e#76159#79328#0#HTML" />
-                <element signature="e#79365#79641#0#HTML" />
-                <element signature="e#79678#81389#0#HTML" />
-                <element signature="e#81426#81704#0#HTML" />
-                <element signature="e#81741#83454#0#HTML" />
-                <element signature="e#83491#83728#0#HTML" />
-                <element signature="e#83765#84224#0#HTML" />
-                <element signature="e#82443#82481#0#DjangoTemplate" />
-                <element signature="e#84861#85087#0#HTML" />
-                <element signature="e#85124#86397#0#HTML" />
-                <element signature="e#86434#86702#0#HTML" />
-                <element signature="e#86739#87519#0#HTML" />
-                <element signature="e#87556#87812#0#HTML" />
-                <element signature="e#94033#94060#0#DjangoTemplate" />
-                <element signature="e#104245#104275#0#DjangoTemplate" />
-                <element signature="e#112229#112256#0#DjangoTemplate" />
-                <element signature="e#119257#119287#0#DjangoTemplate" />
-                <element signature="e#126463#126487#0#DjangoTemplate" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/content_quality_analytics/analyzer.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="207">
+              <caret line="432" column="27" selection-start-line="432" selection-start-column="27" selection-end-line="432" selection-end-column="27" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+                <element signature="e#370#4045#0" />
+                <element signature="e#4152#4992#0" />
+                <element signature="e#5084#5275#0" />
+                <element signature="e#5330#6461#0" />
+                <element signature="e#6539#8026#0" />
+                <element signature="e#8110#9138#0" />
+                <element signature="e#9238#9427#0" />
+                <element signature="e#9539#10140#0" />
+                <element signature="e#10206#13619#0" />
+                <element signature="e#13655#13962#0" />
+                <element signature="e#14000#14299#0" />
+                <element signature="e#14345#14642#0" />
+                <element signature="e#14693#15098#0" />
+                <element signature="e#15147#16151#0" />
+                <element signature="e#16186#16610#0" />
+                <element signature="e#16724#17317#0" />
+                <element signature="e#17427#17961#0" />
+                <element signature="e#18019#18618#0" />
+                <element signature="e#19465#22706#0" />
+                <element signature="e#22768#28290#0" />
+                <element signature="e#28329#28725#0" />
+                <element signature="e#28767#28936#0" />
+                <element signature="e#28982#29162#0" />
+                <element signature="e#29199#29387#0" />
+                <element signature="e#29427#29594#0" />
+                <element signature="e#29638#29820#0" />
               </folding>
             </state>
           </provider>
@@ -142,7 +188,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templatetags/filters.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
+            <state relative-caret-position="680">
               <caret line="42" selection-start-line="42" selection-end-line="42" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
@@ -166,8 +212,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>all_text_volume</find>
-      <find>move-files-to-tmp</find>
       <find>file_action</find>
       <find>get_control_questions</find>
       <find>modules</find>
@@ -196,6 +240,8 @@
       <find>Весовой коэффициент</find>
       <find>analyze</find>
       <find>name=&quot;</find>
+      <find>HTML</find>
+      <find>find('select')</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -235,7 +281,6 @@
         <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/static/js/index.js" />
         <option value="$PROJECT_DIR$/static/scss/modules.scss" />
-        <option value="$PROJECT_DIR$/static/css/modules.css" />
         <option value="$PROJECT_DIR$/templates/theory-analysis-results.html" />
         <option value="$PROJECT_DIR$/templates/indicators.html" />
         <option value="$PROJECT_DIR$/templates/self-test-analysis.html" />
@@ -250,15 +295,16 @@
         <option value="$PROJECT_DIR$/content_quality_analytics/settings.py" />
         <option value="$PROJECT_DIR$/templatetags/filters.py" />
         <option value="$PROJECT_DIR$/static/js/expert-analysis.js" />
-        <option value="$PROJECT_DIR$/static/js/modules.js" />
-        <option value="$PROJECT_DIR$/templates/modules.html" />
         <option value="$PROJECT_DIR$/templates/expert-analysis.html" />
-        <option value="$PROJECT_DIR$/content_quality_analytics/views.py" />
         <option value="$PROJECT_DIR$/templates/results.html" />
+        <option value="$PROJECT_DIR$/content_quality_analytics/views.py" />
+        <option value="$PROJECT_DIR$/templates/modules.html" />
+        <option value="$PROJECT_DIR$/static/css/modules.css" />
+        <option value="$PROJECT_DIR$/static/js/modules.js" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="561" />
     <option name="y" value="42" />
     <option name="width" value="974" />
@@ -272,6 +318,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -304,6 +351,12 @@
               <item name="content_quality_analytics" type="b2602c69:ProjectViewProjectNode" />
               <item name="content_quality_analytics" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="content_quality_analytics" type="b2602c69:ProjectViewProjectNode" />
+              <item name="content_quality_analytics" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -325,7 +378,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -457,21 +509,23 @@
       <workItem from="1574651651949" duration="16961000" />
       <workItem from="1574735435305" duration="20760000" />
       <workItem from="1574823349948" duration="23245000" />
+      <workItem from="1574907684789" duration="2137000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="522373000" />
+    <option name="totallyTimeSpent" value="524510000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21375267" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21588486" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.32936078" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -480,7 +534,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32936078" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50053304" side_tool="true" weight="0.32936078" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32936078" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32936078" />
       <window_info anchor="bottom" id="Database Console" order="13" weight="0.32936078" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -622,13 +676,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/modules.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="197">
@@ -734,44 +781,6 @@
     <entry file="file://$PROJECT_DIR$/media/ngjz293yicyev4kyuol2ablhdidwijoz/theory/43561/html/img/3_7.png" />
     <entry file="file://$PROJECT_DIR$/media/ngjz293yicyev4kyuol2ablhdidwijoz/theory/43561/html/img/3_1.png" />
     <entry file="file://$PROJECT_DIR$/media/ngjz293yicyev4kyuol2ablhdidwijoz/theory/43561/html/img/3_14.png" />
-    <entry file="file://$PROJECT_DIR$/content_quality_analytics/analyzer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="770" column="14" selection-start-line="770" selection-start-column="14" selection-end-line="770" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-            <element signature="e#370#4045#0" />
-            <element signature="e#4152#4992#0" />
-            <element signature="e#5084#5275#0" />
-            <element signature="e#5330#6461#0" />
-            <element signature="e#6539#8026#0" />
-            <element signature="e#8110#9138#0" />
-            <element signature="e#9238#9427#0" />
-            <element signature="e#9539#10140#0" />
-            <element signature="e#10206#13619#0" />
-            <element signature="e#13655#13962#0" />
-            <element signature="e#14000#14299#0" />
-            <element signature="e#14345#14642#0" />
-            <element signature="e#14693#15098#0" />
-            <element signature="e#15147#16151#0" />
-            <element signature="e#16186#16610#0" />
-            <element signature="e#16724#17317#0" />
-            <element signature="e#17427#17961#0" />
-            <element signature="e#18019#18618#0" />
-            <element signature="e#18647#19414#0" />
-            <element signature="e#19465#22706#0" />
-            <element signature="e#22768#28290#0" />
-            <element signature="e#28329#28725#0" />
-            <element signature="e#28767#28936#0" />
-            <element signature="e#28982#29162#0" />
-            <element signature="e#29199#29387#0" />
-            <element signature="e#29427#29594#0" />
-            <element signature="e#29638#29820#0" />
-            <element signature="e#29870#32163#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/content_quality_analytics/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="500">
@@ -828,23 +837,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/modules.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="150" column="3" selection-start-line="150" selection-start-column="3" selection-end-line="150" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/modules.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="131" column="26" selection-start-line="131" selection-start-column="26" selection-end-line="131" selection-end-column="26" />
-          <folding>
-            <element signature="e#373#391#0#DjangoTemplate" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/expert-analysis.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
@@ -859,10 +851,64 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templatetags/filters.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
+        <state relative-caret-position="680">
           <caret line="42" selection-start-line="42" selection-end-line="42" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/results.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="398">
+          <caret line="1772" column="19" selection-start-line="1772" selection-start-column="19" selection-end-line="1772" selection-end-column="19" />
+          <folding>
+            <element signature="e#398#416#0#DjangoTemplate" />
+            <element signature="e#1898#1921#0#DjangoTemplate" />
+            <element signature="e#2483#2555#0#DjangoTemplate" />
+            <element signature="e#3061#3145#0#DjangoTemplate" />
+            <element signature="e#3703#3772#0#DjangoTemplate" />
+            <element signature="e#4432#4504#0#DjangoTemplate" />
+            <element signature="e#5234#5303#0#DjangoTemplate" />
+            <element signature="e#6111#6183#0#DjangoTemplate" />
+            <element signature="e#7061#7185#0#DjangoTemplate" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content_quality_analytics/analyzer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="432" column="27" selection-start-line="432" selection-start-column="27" selection-end-line="432" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#370#4045#0" />
+            <element signature="e#4152#4992#0" />
+            <element signature="e#5084#5275#0" />
+            <element signature="e#5330#6461#0" />
+            <element signature="e#6539#8026#0" />
+            <element signature="e#8110#9138#0" />
+            <element signature="e#9238#9427#0" />
+            <element signature="e#9539#10140#0" />
+            <element signature="e#10206#13619#0" />
+            <element signature="e#13655#13962#0" />
+            <element signature="e#14000#14299#0" />
+            <element signature="e#14345#14642#0" />
+            <element signature="e#14693#15098#0" />
+            <element signature="e#15147#16151#0" />
+            <element signature="e#16186#16610#0" />
+            <element signature="e#16724#17317#0" />
+            <element signature="e#17427#17961#0" />
+            <element signature="e#18019#18618#0" />
+            <element signature="e#19465#22706#0" />
+            <element signature="e#22768#28290#0" />
+            <element signature="e#28329#28725#0" />
+            <element signature="e#28767#28936#0" />
+            <element signature="e#28982#29162#0" />
+            <element signature="e#29199#29387#0" />
+            <element signature="e#29427#29594#0" />
+            <element signature="e#29638#29820#0" />
           </folding>
         </state>
       </provider>
@@ -879,8 +925,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/content_quality_analytics/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="1932" column="25" selection-start-line="1932" selection-start-column="25" selection-end-line="1932" selection-end-column="25" />
+        <state relative-caret-position="445">
+          <caret line="1613" column="56" selection-start-line="1613" selection-start-column="56" selection-end-line="1613" selection-end-column="56" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
             <element signature="e#718#1257#0" />
@@ -898,45 +944,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/results.html">
+    <entry file="file://$PROJECT_DIR$/static/css/modules.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="1772" column="19" lean-forward="true" selection-start-line="1772" selection-start-column="19" selection-end-line="1772" selection-end-column="19" />
+        <state relative-caret-position="306">
+          <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/modules.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="38" column="64" lean-forward="true" selection-start-line="38" selection-start-column="64" selection-end-line="38" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/modules.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1268">
+          <caret line="115" column="41" selection-start-line="115" selection-start-column="41" selection-end-line="115" selection-end-column="41" />
           <folding>
-            <element signature="e#398#416#0#DjangoTemplate" />
-            <element signature="e#1898#1921#0#DjangoTemplate" />
-            <element signature="e#2483#2555#0#DjangoTemplate" />
-            <element signature="e#3061#3145#0#DjangoTemplate" />
-            <element signature="e#3703#3772#0#DjangoTemplate" />
-            <element signature="e#4432#4504#0#DjangoTemplate" />
-            <element signature="e#5234#5303#0#DjangoTemplate" />
-            <element signature="e#6111#6183#0#DjangoTemplate" />
-            <element signature="e#7061#7185#0#DjangoTemplate" />
-            <element signature="e#2573#2596#0#DjangoTemplate" />
-            <element signature="e#70965#70991#0#DjangoTemplate" />
-            <element signature="e#71349#71580#0#HTML" />
-            <element signature="e#71617#71648#0#DjangoTemplate" />
-            <element signature="e#72045#72310#0#HTML" />
-            <element signature="e#72514#75695#0#HTML" />
-            <element signature="e#74727#74996#0#HTML" />
-            <element signature="e#76159#79328#0#HTML" />
-            <element signature="e#79365#79641#0#HTML" />
-            <element signature="e#79678#81389#0#HTML" />
-            <element signature="e#81426#81704#0#HTML" />
-            <element signature="e#81741#83454#0#HTML" />
-            <element signature="e#83491#83728#0#HTML" />
-            <element signature="e#83765#84224#0#HTML" />
-            <element signature="e#82443#82481#0#DjangoTemplate" />
-            <element signature="e#84861#85087#0#HTML" />
-            <element signature="e#85124#86397#0#HTML" />
-            <element signature="e#86434#86702#0#HTML" />
-            <element signature="e#86739#87519#0#HTML" />
-            <element signature="e#87556#87812#0#HTML" />
-            <element signature="e#94033#94060#0#DjangoTemplate" />
-            <element signature="e#104245#104275#0#DjangoTemplate" />
-            <element signature="e#112229#112256#0#DjangoTemplate" />
-            <element signature="e#119257#119287#0#DjangoTemplate" />
-            <element signature="e#126463#126487#0#DjangoTemplate" />
+            <element signature="e#373#391#0#DjangoTemplate" />
           </folding>
         </state>
       </provider>

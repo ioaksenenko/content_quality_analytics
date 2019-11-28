@@ -1,5 +1,5 @@
 .disabled {
-    color: rgb(191, 192, 193);
+    color: rgb(191, 192, 193) !important;
 }
 
 .breadcrumb-item+.breadcrumb-item::before {
@@ -12,4 +12,8 @@
     line-height: 1.2 !important;
     border-radius: .2rem;
     margin-bottom: .2rem !important;
+}
+
+.red {
+    color: red;
 }
