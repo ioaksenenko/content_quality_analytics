@@ -30,6 +30,7 @@ from functools import reduce
 
 
 def index(request):
+    models.Course.objects.all().delete()
     user = auth.get_user(request)
     clear_media()
     request.session.create()
@@ -365,12 +366,14 @@ def join(request):
 
 
 def clear_media():
+    """
     if os.path.exists(settings.MEDIA_ROOT):
         for file_name in os.listdir(settings.MEDIA_ROOT):
             if not models.Session.objects.get(id=file_name).active:
                 shutil.rmtree(os.path.join(settings.MEDIA_ROOT, file_name))
     else:
         os.mkdir(settings.MEDIA_ROOT)
+    """
 
 
 def write_file(file, file_path):
