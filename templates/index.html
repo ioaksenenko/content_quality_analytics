@@ -16,13 +16,11 @@
 	    	</div>
             <div class="col-auto">
                 {% if is_superuser  %}
-                    <a href="{% url 'admin-settings' %}" class="d-table-cell"><i class="fas fa-cog"></i></a>
+                    <a href="{% url 'admin-settings' %}" class="d-table-cell" target="_blank"><i class="fas fa-cog"></i></a>
                 {% endif %}
             </div>
             <div class="col-auto mr-auto">
-                {% if is_superuser  %}
-                    <a href="{% url 'history' %}" class="d-table-cell"><i class="fas fa-clipboard-list"></i></a>
-                {% endif %}
+                <a href="{% url 'history' %}" class="d-table-cell" target="_blank"><i class="fas fa-clipboard-list"></i></a>
             </div>
             <!--<div class="col-auto d-table mr-auto">
                 <p class="m-0 p-0"><b>{{ username }}</b></p>

@@ -16,13 +16,11 @@
 	    	</div>
             <div class="col-auto">
                 {% if is_superuser  %}
-                    <a href="{% url 'admin-settings' %}" class="d-table-cell"><i class="fas fa-cog"></i></a>
+                    <a href="{% url 'admin-settings' %}" class="d-table-cell" target="_blank"><i class="fas fa-cog"></i></a>
                 {% endif %}
             </div>
             <div class="col-auto mr-auto">
-                {% if is_superuser  %}
-                    <a href="{% url 'history' %}" class="d-table-cell"><i class="fas fa-clipboard-list"></i></a>
-                {% endif %}
+                <a href="{% url 'history' %}" class="d-table-cell" target="_blank"><i class="fas fa-clipboard-list"></i></a>
             </div>
             <div class="col-auto">
                 {% if is_anonymous %}
@@ -1777,7 +1775,7 @@
                 {% endif %}
                 <div class="row ml-auto mt-3">
                     <div class="col">
-                        <button type="submit" class="btn btn-primary mb-3">Далее</button>
+                        <button type="submit" class="btn btn-primary mb-3">Рассчитать рейтинг</button>
                     </div>
                 </div>
             </form>

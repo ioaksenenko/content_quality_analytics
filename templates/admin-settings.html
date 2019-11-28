@@ -14,8 +14,11 @@
 	    	<div class="col-auto">
                 <b>Система анализа электронных курсов</b>
 	    	</div>
-            <div class="col-auto mr-auto">
+            <!--<div class="col-auto mr-auto">
                 <a href="{% url 'index' %}" class="d-table-cell"><i class="far fa-arrow-alt-circle-left"></i></a>
+            </div>-->
+            <div class="col-auto mr-auto">
+                <a href="{% url 'history' %}" class="d-table-cell" target="_blank"><i class="fas fa-clipboard-list"></i></a>
             </div>
             <div class="col-auto">
                 {% if is_anonymous %}

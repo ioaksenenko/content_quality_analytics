@@ -13,14 +13,14 @@
 	    	<div class="col-auto">
                 <b>Система анализа электронных курсов</b>
 	    	</div>
-            <div class="col-auto">
+            <div class="col-auto mr-auto">
                 {% if is_superuser  %}
-                    <a href="{% url 'admin-settings' %}" class="d-table-cell"><i class="fas fa-cog"></i></a>
+                    <a href="{% url 'admin-settings' %}" class="d-table-cell" target="_blank"><i class="fas fa-cog"></i></a>
                 {% endif %}
             </div>
-            <div class="col-auto mr-auto">
+            <!--<div class="col-auto mr-auto">
                 <a href="{% url 'index' %}" class="d-table-cell"><i class="far fa-arrow-alt-circle-left"></i></a>
-            </div>
+            </div>-->
             <div class="col-auto">
                 {% if is_anonymous %}
                     <a href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i> Войти в систему</a>
