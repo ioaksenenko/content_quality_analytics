@@ -2,43 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc8d65a7-0ad6-4cba-9c3a-e5bdd5e2cbc1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/expert-analysis.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/results.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/js/expert-analysis.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/js/results.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/expert-analysis.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/results.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/c8c70341-53c1-4150-b972-076c787b74e1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/c8c70341-53c1-4150-b972-076c787b74e1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content_quality_analytics/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/content_quality_analytics/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content_quality_analytics/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/content_quality_analytics/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content_quality_analytics/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/content_quality_analytics/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content_quality_analytics/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/content_quality_analytics/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content_quality_analytics/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/content_quality_analytics/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/indicators.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/indicators.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/modules.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/modules.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/admin-settings.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/admin-settings.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/files.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/files.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/indicators.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/indicators.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/modules.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/modules.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/add-indicator.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/add-indicator.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin-settings.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin-settings.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/audio-file-analysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/audio-file-analysis.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/audio-lecture-analysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/audio-lecture-analysis.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/control-test-analysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/control-test-analysis.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/files.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/files.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/indicators.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/indicators.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/modules.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/modules.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/self-test-analysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/self-test-analysis.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/theory-analysis-results.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/theory-analysis-results.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/uploaded-files.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/uploaded-files.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/video-file-analysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/video-file-analysis.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/video-lecture-analysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/video-lecture-analysis.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/webinar-analysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/webinar-analysis.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templatetags/filters.py" beforeDir="false" afterPath="$PROJECT_DIR$/templatetags/filters.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -95,11 +59,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/content_quality_analytics/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="1934" lean-forward="true" selection-start-line="1934" selection-end-line="1934" />
+            <state relative-caret-position="384">
+              <caret line="1932" column="25" selection-start-line="1932" selection-start-column="25" selection-end-line="1932" selection-end-column="25" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
                 <element signature="e#718#1257#0" />
@@ -130,11 +94,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/results.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="1758" column="45" selection-start-line="1758" selection-start-column="45" selection-end-line="1758" selection-end-column="45" />
+            <state relative-caret-position="398">
+              <caret line="1772" column="19" lean-forward="true" selection-start-line="1772" selection-start-column="19" selection-end-line="1772" selection-end-column="19" />
               <folding>
                 <element signature="e#398#416#0#DjangoTemplate" />
                 <element signature="e#1898#1921#0#DjangoTemplate" />
@@ -289,12 +253,12 @@
         <option value="$PROJECT_DIR$/static/js/modules.js" />
         <option value="$PROJECT_DIR$/templates/modules.html" />
         <option value="$PROJECT_DIR$/templates/expert-analysis.html" />
-        <option value="$PROJECT_DIR$/templates/results.html" />
         <option value="$PROJECT_DIR$/content_quality_analytics/views.py" />
+        <option value="$PROJECT_DIR$/templates/results.html" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="561" />
     <option name="y" value="42" />
     <option name="width" value="974" />
@@ -492,23 +456,22 @@
       <workItem from="1574393775234" duration="16661000" />
       <workItem from="1574651651949" duration="16961000" />
       <workItem from="1574735435305" duration="20760000" />
-      <workItem from="1574823349948" duration="22411000" />
+      <workItem from="1574823349948" duration="23245000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="521539000" />
+    <option name="totallyTimeSpent" value="522373000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21375267" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21375267" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.32936078" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -517,7 +480,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32936078" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50053304" side_tool="true" weight="0.32936078" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32936078" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.32936078" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32936078" />
       <window_info anchor="bottom" id="Database Console" order="13" weight="0.32936078" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -904,10 +867,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/content_quality_analytics/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="438">
+          <caret line="79" column="46" selection-start-line="79" selection-start-column="33" selection-end-line="79" selection-end-column="46" />
+          <folding>
+            <element signature="e#649#681#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content_quality_analytics/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="1932" column="25" selection-start-line="1932" selection-start-column="25" selection-end-line="1932" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#718#1257#0" />
+            <element signature="e#1290#1665#0" />
+            <element signature="e#1701#2155#0" />
+            <element signature="e#2197#3069#0" />
+            <element signature="e#3121#3891#0" />
+            <element signature="e#3925#5788#0" />
+            <element signature="e#5815#6053#0" />
+            <element signature="e#6115#12181#0" />
+            <element signature="e#12207#16974#0" />
+            <element signature="e#17000#17289#0" />
+            <element signature="e#17329#17445#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/results.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="1758" column="45" selection-start-line="1758" selection-start-column="45" selection-end-line="1758" selection-end-column="45" />
+        <state relative-caret-position="398">
+          <caret line="1772" column="19" lean-forward="true" selection-start-line="1772" selection-start-column="19" selection-end-line="1772" selection-end-column="19" />
           <folding>
             <element signature="e#398#416#0#DjangoTemplate" />
             <element signature="e#1898#1921#0#DjangoTemplate" />
@@ -943,37 +937,6 @@
             <element signature="e#112229#112256#0#DjangoTemplate" />
             <element signature="e#119257#119287#0#DjangoTemplate" />
             <element signature="e#126463#126487#0#DjangoTemplate" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/content_quality_analytics/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
-          <caret line="79" column="46" selection-start-line="79" selection-start-column="33" selection-end-line="79" selection-end-column="46" />
-          <folding>
-            <element signature="e#649#681#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/content_quality_analytics/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="1934" lean-forward="true" selection-start-line="1934" selection-end-line="1934" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-            <element signature="e#718#1257#0" />
-            <element signature="e#1290#1665#0" />
-            <element signature="e#1701#2155#0" />
-            <element signature="e#2197#3069#0" />
-            <element signature="e#3121#3891#0" />
-            <element signature="e#3925#5788#0" />
-            <element signature="e#5815#6053#0" />
-            <element signature="e#6115#12181#0" />
-            <element signature="e#12207#16974#0" />
-            <element signature="e#17000#17289#0" />
-            <element signature="e#17329#17445#0" />
           </folding>
         </state>
       </provider>

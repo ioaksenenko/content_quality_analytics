@@ -135,7 +135,7 @@ def unpack_files(request):
                 if not os.path.exists(mod_path):
                     os.mkdir(mod_path)
                 Archive(file_path).extractall(mod_path)
-                if not os.path.exists(os.path.join(mod_path, 'HTML')):
+                if not os.path.exists(os.path.join(mod_path, 'html')):
                     for file in os.listdir(mod_path):
                         shutil.move(os.path.join(mod_path, file), os.path.join(zip_path, file))
                     shutil.rmtree(mod_path)
@@ -299,12 +299,12 @@ def join(request):
                 module.save()
 
                 if mod_type == 'theory' or mod_type == 'self-test':
-                    os.mkdir(os.path.join(mod_path, 'HTML'))
-                    os.mkdir(os.path.join(mod_path, 'HTML', 'img'))
+                    os.mkdir(os.path.join(mod_path, 'html'))
+                    os.mkdir(os.path.join(mod_path, 'html', 'img'))
                     for file in checked:
                         if re.fullmatch(r'.*\.html', file, re.I):
                             src = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'tmp', file)
-                            dst = os.path.join(mod_path, 'HTML', file)
+                            dst = os.path.join(mod_path, 'html', file)
                             shutil.move(src, dst)
                             f = open(dst, 'r', encoding='utf-8')
                             c = f.read()
@@ -315,7 +315,7 @@ def join(request):
                                 img_name = os.path.basename(img['src'])
                                 img['src'] = os.path.join('img', img_name)
                                 img_src = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'tmp', img_name)
-                                img_dst = os.path.join(mod_path, 'HTML', 'img', img_name)
+                                img_dst = os.path.join(mod_path, 'html', 'img', img_name)
                                 if os.path.exists(img_src):
                                     shutil.move(img_src, img_dst)
                             f = open(dst, 'w', encoding='utf-8')
@@ -685,7 +685,7 @@ def move_file_to_tmp(dir_path, tmp_path):
 def module_exist(request, files_names, module_name):
     module_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key, module_name)
     if os.path.exists(module_path):
-        html_path = os.path.join(module_path, 'HTML')
+        html_path = os.path.join(module_path, 'html')
         for file_name in os.listdir(html_path):
             file_path = os.path.join(html_path, file_name)
             if not os.path.isdir(file_path):
@@ -731,7 +731,7 @@ def self_test_analysis(request):
     modules = os.listdir(self_test_path)
     questions = []
     for module in modules:
-        dir_path = os.path.join(self_test_path, module, 'HTML')
+        dir_path = os.path.join(self_test_path, module, 'html')
         for file_name in os.listdir(dir_path):
             file_path = os.path.join(dir_path, file_name)
             if os.path.isfile(file_path):
@@ -1597,7 +1597,7 @@ def expert_analysis(request):
     self_test_modules = os.listdir(self_test_path)
     questions = []
     for module in self_test_modules:
-        dir_path = os.path.join(self_test_path, module, 'HTML')
+        dir_path = os.path.join(self_test_path, module, 'html')
         for file_name in os.listdir(dir_path):
             file_path = os.path.join(dir_path, file_name)
             if os.path.isfile(file_path):
