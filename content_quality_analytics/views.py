@@ -952,6 +952,18 @@ def moodle(request):
     if request.method == 'POST':
         moodle = request.POST.get('moodle')
         course_id = request.POST.get('course-id')
+
+        courses = models.Course.objects.all()
+        exist = False
+        for course in courses:
+            exist = course.id == course_id and course.moodle == moodle
+
+        if not exist:
+            models.Course(
+                id=course_id,
+                moodle=moodle
+            ).save()
+
         response = requests.get(f'https://online.tusur.ru/local/filemap/?courseid={course_id}&key=cea17f418fc4227b647f75fe66fe859bd24ea752')
         if response.status_code == 200:
             modules = response.json()
@@ -1957,3 +1969,14 @@ def course_rating(request):
     context['course_rating'] = round(course_rating, 2)
 
     return render(request, 'results.html', context)
+
+
+def history(request):
+    user = auth.get_user(request)
+    context = {
+        'username': user.username if not user.is_anonymous else 'Anonymous',
+        'is_superuser': user.is_superuser,
+        'is_anonymous': user.is_anonymous,
+        'courses': models.Course.objects.all()
+    }
+    return render(request, 'history.html', context)

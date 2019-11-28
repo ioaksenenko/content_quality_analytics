@@ -11,10 +11,20 @@
 {% block header %}
     <div class="container-fluid">
         <div class="row mt-3 align-items-center">
-	    	<div class="col-auto d-table mr-auto">
-	    		<b>Система анализа электронных курсов</b>
+	    	<div class="col-auto">
+                <b>Система анализа электронных курсов</b>
 	    	</div>
-            <div class="col-auto d-table">
+            <div class="col-auto">
+                {% if is_superuser  %}
+                    <a href="{% url 'admin-settings' %}" class="d-table-cell"><i class="fas fa-cog"></i></a>
+                {% endif %}
+            </div>
+            <div class="col-auto mr-auto">
+                {% if is_superuser  %}
+                    <a href="{% url 'history' %}" class="d-table-cell"><i class="fas fa-clipboard-list"></i></a>
+                {% endif %}
+            </div>
+            <div class="col-auto">
                 {% if is_anonymous %}
                     <a href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i> Войти в систему</a>
                 {% else %}

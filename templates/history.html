@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block head %}
+	{{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static "css/base.css" %}" />
+	<link rel="stylesheet" type="text/css" href="{% static "css/history.css" %}" />
+    <script src="{% static "js/base.js" %}"></script>
+    <script src="{% static "js/history.js" %}"></script>
+{% endblock %}
+{% block header %}
+    <div class="container-fluid">
+        <div class="row mt-3 align-items-center">
+	    	<div class="col-auto">
+                <b>Система анализа электронных курсов</b>
+	    	</div>
+            <div class="col-auto">
+                {% if is_superuser  %}
+                    <a href="{% url 'admin-settings' %}" class="d-table-cell"><i class="fas fa-cog"></i></a>
+                {% endif %}
+            </div>
+            <div class="col-auto mr-auto">
+                <a href="{% url 'index' %}" class="d-table-cell"><i class="far fa-arrow-alt-circle-left"></i></a>
+            </div>
+            <div class="col-auto">
+                {% if is_anonymous %}
+                    <a href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i> Войти в систему</a>
+                {% else %}
+                    <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Выйти из системы</a>
+                {% endif %}
+            </div>
+	    </div>
+    </div>
+{% endblock %}
+{% block main %}
+<div class="container-fluid mt-3 mb-3">
+    <div class="row mt-5 mb-5">
+        <div class="col">
+            <h1 class="text-center">История анализа курсов</h1>
+        </div>
+    </div>
+    {% if courses and courses|length > 0 %}
+        <div class="row">
+            <div class="col-auto">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Идентификатор курса</th>
+                            <th scope="col">Moodle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for course in courses %}
+                            <tr>
+                                <th scope="row">{{ forloop.counter }}</th>
+                                <td>{{ course.id }}</td>
+                                <td>{{ course.moodle }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% else %}
+        <div class="row">
+            <div class="col">
+                <div class="alert alert-danger" role="alert">
+                    На данный момент ни одного курса не проанализировано.
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

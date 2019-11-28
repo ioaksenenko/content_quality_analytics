@@ -7,29 +7,36 @@
     <script src="{% static "js/base.js" %}"></script>
     <script src="{% static "js/add-scale.js" %}"></script>
 {% endblock %}
+{% block header %}
+    <div class="container-fluid">
+        <div class="row mt-3 align-items-center">
+	    	<div class="col-auto">
+                <b>Система анализа электронных курсов</b>
+	    	</div>
+            <div class="col-auto mr-auto">
+                <a href="{% url 'admin-settings' %}" class="d-table-cell"><i class="far fa-arrow-alt-circle-left"></i></a>
+            </div>
+            <div class="col-auto">
+                {% if is_anonymous %}
+                    <a href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i> Войти в систему</a>
+                {% else %}
+                    <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Выйти из системы</a>
+                {% endif %}
+            </div>
+	    </div>
+    </div>
+{% endblock %}
 {% block main %}
 <div class="container-fluid">
-	<div class="row mt-3 align-items-center">
-		<div class="col-auto">
-			<img class="d-block mx-auto" src="{% static 'img/user.png' %}" alt="user">
-		</div>
-        <div class="col-auto d-table mr-auto">
-            <p class="m-0 p-0"><b>{{ username }}</b></p>
-            <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Выйти из системы</a>
-        </div>
-        <div class="col-auto d-table">
-            <a href="{% url 'admin-settings' %}" class="d-table-cell"><h1><i class="far fa-arrow-alt-circle-left"></i></h1></a>
-        </div>
-	</div>
     <div class="row mb-5 mt-5">
-        <div class="col offset-1">
-            <h1 class="text-left">Добавление шкалы</h1>
+        <div class="col">
+            <h1 class="text-center">Добавление шкалы</h1>
         </div>
     </div>
     <form action="{% url 'add-scale' %}" enctype="multipart/form-data" method="post">
         {% csrf_token %}
         <div class="row">
-            <div class="col-auto offset-1">
+            <div class="col-auto">
                 <div class="form-group">
                     <h5><label for="scale-name">Введите название шкалы</label></h5>
                     <input type="text" class="form-control" id="scale-name" name="scale-name" placeholder="some-scale-name" required>
@@ -40,12 +47,12 @@
             </div>
         </div>
         <div class="row mt-3">
-            <div class="col offset-1">
+            <div class="col">
                 <h5>Выберите тип шкалы</h5>
             </div>
         </div>
         <div class="row">
-            <div class="col offset-1">
+            <div class="col">
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="scale-type" id="ordinal-scale" value="ordinal-scale" required>
                     <label class="form-check-label" for="ordinal-scale">Порядковая шкала</label>
@@ -57,18 +64,18 @@
             </div>
         </div>
         <div class="row mt-4">
-            <div class="col offset-1">
+            <div class="col">
                 <h5>Параметры шкалы</h5>
             </div>
         </div>
         <div class="row mt-2">
-            <div class="col-2 offset-1">
+            <div class="col-2">
                 <label for="scale" class="d-none"></label>
                 <input type="range" class="custom-range" id="scale">
             </div>
         </div>
         <div class="row mt-2 d-none" id="ordinal-scale-fields">
-            <div class="col-2 offset-1">
+            <div class="col-2">
                 <div class="form-group">
                     <label for="min-val">Минимальное значение</label>
                     <input type="text" class="form-control" id="min-val" name="min-val" placeholder="0">
@@ -84,7 +91,7 @@
             </div>
         </div>
         <div class="row mt-2 d-none" id="interval-scale-fields">
-            <div class="col offset-1">
+            <div class="col">
                 <div class="row">
                     <div class="col-2">
                         <p>Введите сетку значений:</p>
@@ -103,7 +110,7 @@
                 </div>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary mt-5 d-block offset-1" id="add-scale"><i class="fas fa-sliders-h"></i> Добавить</button>
+        <button type="submit" class="btn btn-primary mt-5 d-block" id="add-scale"><i class="fas fa-sliders-h"></i> Добавить</button>
     </form>
 </div>
 {% endblock %}
