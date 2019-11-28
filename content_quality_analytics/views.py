@@ -30,7 +30,6 @@ from functools import reduce
 
 
 def index(request):
-    models.Course.objects.all().delete()
     user = auth.get_user(request)
     clear_media()
     request.session.create()
