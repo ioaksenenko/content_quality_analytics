@@ -273,7 +273,7 @@ def text_creolization(logger, indicators, soup, txt, res):
         creolization_vector[6] = len(link_creolization)
 
     all_text_volume = len(txt)
-    creolization_degree = round(creolized_text_volume / all_text_volume, 2) * 100
+    creolization_degree = round((creolized_text_volume / all_text_volume) * 100, 2)
     res['creolization_vector'] = creolization_vector
     res['all_text_volume'] = all_text_volume
     res['creolized_text_volume'] = creolized_text_volume

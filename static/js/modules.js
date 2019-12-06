@@ -6,17 +6,18 @@ $(document).ready(function () {
         container.append('<img src="http://denis-creative.com/wp-content/uploads/2017/10/loader.gif" class="mt-3" alt="loader"><p>Пожалуйста, подождите. Анализ может занять несколько минут... </p>');
     });*/
 
-    let msg_src = $('#msg-src');
+    //let msg_src = $('#msg-src');
     let msg = $('#msg');
     let next = $('#next');
     let checkboxes = $('input[type="checkbox"][name="modules"]');
+    let enabled = $('input[type="checkbox"][name="modules"]:enabled');
     let checked = $('input[type="checkbox"][name="modules"]:checked');
     let check_all = $('#check-all');
 
-    let join = $('#join');
-    let checkboxes_for_join = $('input[type="checkbox"][name="modules-for-join"]');
-    let checked_for_join = $('input[type="checkbox"][name="modules-for-join"]:checked');
-    let check_all_for_join = $('#check-all-for-join');
+    //let join = $('#join');
+    //let checkboxes_for_join = $('input[type="checkbox"][name="modules-for-join"]');
+    //let checked_for_join = $('input[type="checkbox"][name="modules-for-join"]:checked');
+    //let check_all_for_join = $('#check-all-for-join');
 
 
     checked.each(function (i, e) {
@@ -24,12 +25,12 @@ $(document).ready(function () {
             msg.removeClass('d-none');
             next.prop('disabled', true);
         }
-        if ($(e).parent().parent().next().next().next().find('span').text() === 'Не определён') {
-            msg_src.removeClass('d-none');
-            next.prop('disabled', true);
-        }
+        //if ($(e).parent().parent().next().next().next().find('span').text() === 'Не определён') {
+            //msg_src.removeClass('d-none');
+            //next.prop('disabled', true);
+        //}
     });
-    checkboxes.each(function (i, e) {
+    enabled.each(function (i, e) {
         if (!$(e).is(':checked')) {
             $(e).parent().parent().next().addClass('disabled');
             $(e).parent().parent().next().next().find('select').prop('disabled', true);
@@ -38,12 +39,13 @@ $(document).ready(function () {
     });
     check_all.prop('indeterminate', checked.length !== checkboxes.length);
 
-    check_all_for_join.prop('indeterminate', checked.length !== checkboxes.length);
+    //check_all_for_join.prop('indeterminate', checked.length !== checkboxes.length);
 
-    checkboxes.change(function () {
+    enabled.change(function () {
         let msg = $('#msg');
         let check_all = $('#check-all');
         let checked = $('input[type="checkbox"][name="modules"]:checked');
+        let enabled = $('input[type="checkbox"][name="modules"]:enabled');
         let checkboxes = $('input[type="checkbox"][name="modules"]');
         let next = $('#next');
 
@@ -58,27 +60,27 @@ $(document).ready(function () {
                 msg.removeClass('d-none');
                 next.prop('disabled', true);
             }
-            if ($(this).parent().parent().next().next().next().find('span').text() === 'Не определён') {
-                msg_src.removeClass('d-none');
-                next.prop('disabled', true);
-            }
+            //if ($(this).parent().parent().next().next().next().find('span').text() === 'Не определён') {
+                //msg_src.removeClass('d-none');
+                //next.prop('disabled', true);
+            //}
         } else {
             $(this).parent().parent().next().addClass('disabled');
             $(this).parent().parent().next().next().find('select').prop('disabled', true);
             $(this).parent().parent().next().next().next().find('span').addClass('disabled');
             //$(this).parent().parent().next().next().next().find('span').removeClass('red');
             msg.addClass('d-none');
-            msg_src.addClass('d-none');
+            //msg_src.addClass('d-none');
             next.prop('disabled', false);
             checked.each(function (i, e) {
                 if ($(e).parent().parent().next().next().find('select').val() === 'unknown') {
                     msg.removeClass('d-none');
                     next.prop('disabled', true);
                 }
-                if ($(e).parent().parent().next().next().next().find('span').text() === 'Не определён') {
-                    msg_src.removeClass('d-none');
-                    next.prop('disabled', true);
-                }
+                //if ($(e).parent().parent().next().next().next().find('span').text() === 'Не определён') {
+                    //msg_src.removeClass('d-none');
+                    //next.prop('disabled', true);
+                //}
             });
         }
         if (checked.length !== 0) {
@@ -91,7 +93,7 @@ $(document).ready(function () {
         }
     });
 
-    checkboxes_for_join.change(function () {
+    /*checkboxes_for_join.change(function () {
         let check_all_for_join = $('#check-all-for-join');
         let checked_for_join = $('input[type="checkbox"][name="modules-for-join"]:checked');
         let checkboxes_for_join = $('input[type="checkbox"][name="modules-for-join"]');
@@ -115,10 +117,10 @@ $(document).ready(function () {
         } else if (!join.hasClass('d-none')) {
             join.addClass('d-none');
         }
-    });
+    });*/
 
     check_all.change(select);
-    check_all_for_join.change(select_for_join);
+    //check_all_for_join.change(select_for_join);
 
     $('select').change(function () {
         let msg = $('#msg');
@@ -158,15 +160,17 @@ $(document).ready(function () {
 
 function select() {
     let msg = $('#msg');
-    let msg_src = $('#msg-src');
+    //let msg_src = $('#msg-src');
     let checkboxes = $('input[type="checkbox"][name="modules"]');
+    let enabled = $('input[type="checkbox"][name="modules"]:enabled');
     let checked = $('input[type="checkbox"][name="modules"]:checked');
     let next = $('#next');
+    let check_all = $('#check-all');
     msg.addClass('d-none');
-    msg_src.addClass('d-none');
+    //msg_src.addClass('d-none');
     if (checked.length === 0) {
         next.prop('disabled', false);
-        checkboxes.each(function (i, e) {
+        enabled.each(function (i, e) {
             $(e).prop('checked', true);
             $(this).parent().parent().next().removeClass('disabled');
             $(this).parent().parent().next().next().find('select').prop('disabled', false);
@@ -176,13 +180,15 @@ function select() {
                 msg.removeClass('d-none');
                 next.prop('disabled', true);
             }
-            if ($(e).parent().parent().next().next().next().find('span').text() === 'Не определён') {
-                msg_src.removeClass('d-none');
-                next.prop('disabled', true);
-            }
+            //if ($(e).parent().parent().next().next().next().find('span').text() === 'Не определён') {
+                //msg_src.removeClass('d-none');
+                //next.prop('disabled', true);
+            //}
         });
+        check_all.prop('checked', true);
+        check_all.prop('indeterminate', checked.length !== checkboxes.length);
     } else {
-        checkboxes.each(function (i, e) {
+        enabled.each(function (i, e) {
             $(e).prop('checked', false);
             next.prop('disabled', true);
             $(this).parent().parent().next().addClass('disabled');
@@ -190,6 +196,7 @@ function select() {
             $(this).parent().parent().next().next().next().find('span').addClass('disabled');
             //$(this).parent().parent().next().next().next().find('span').removeClass('red');
         });
+        check_all.prop('checked', false);
     }
 }
 

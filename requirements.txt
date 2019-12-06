@@ -8,3 +8,4 @@ pyphen==0.9.5
 pillow==6.1.0
 mysqlclient==1.4.4
 pandas==0.25.1
+timezones==2.0.5

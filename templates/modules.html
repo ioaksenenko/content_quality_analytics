@@ -1,53 +1,12 @@
-{% extends "base.html" %}
+{% extends "common.html" %}
 {% load staticfiles %}
 {% block head %}
 	{{ block.super }}
-    <link rel="stylesheet" type="text/css" href="{% static "css/base.css" %}" />
 	<link rel="stylesheet" type="text/css" href="{% static "css/modules.css" %}" />
-    <script src="{% static "js/base.js" %}"></script>
     <script src="{% static "js/modules.js" %}"></script>
 {% endblock %}
-{% block header %}
-    <div class="container-fluid">
-        <div class="row mt-3 align-items-center">
-	    	<div class="col-auto">
-                <b>Система анализа электронных курсов</b>
-	    	</div>
-            <div class="col-auto">
-                {% if is_superuser  %}
-                    <a href="{% url 'admin-settings' %}" class="d-table-cell" target="_blank"><i class="fas fa-cog"></i></a>
-                {% endif %}
-            </div>
-            <div class="col-auto mr-auto">
-                <a href="{% url 'history' %}" class="d-table-cell" target="_blank"><i class="fas fa-clipboard-list"></i></a>
-            </div>
-            <div class="col-auto">
-                {% if is_anonymous %}
-                    <a href="{% url 'login' %}"><i class="fas fa-sign-in-alt"></i> Войти в систему</a>
-                {% else %}
-                    <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> Выйти из системы</a>
-                {% endif %}
-            </div>
-	    </div>
-        <div class="row pl-3 mt-3">
-	    	<!--<div class="col-auto">
-                <div class="alert alert-info" role="alert">
-                    Выберите файлы, которые необходимо проанализировать. Укажите тип каждого из выбранных файлов.
-                </div>
-            </div>-->
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item active">1. Определение структуры</li>
-                    <li class="breadcrumb-item">2. Выбор показателей</li>
-                    <li class="breadcrumb-item">3. Экспертный анализ</li>
-                    <li class="breadcrumb-item">4. Результаты</li>
-                </ol>
-            </nav>
-        </div>
-    </div>
-{% endblock %}
 {% block main %}
-<div class="container-fluid mb-3">
+<div class="container-fluid mb-3 mt-3">
     {% if modules and modules|length != 0 %}
 	    <div class="row">
 	    	<div class="col-auto">
@@ -57,7 +16,7 @@
                         <table class="table">
 	    		        	<thead class="thead-light">
 	    		        		<tr>
-	    		        			<th scope="col">
+	    		        			<!--<th scope="col">
                                         <div class="row ml-auto align-items-center">
                                             <div class="col-auto m-0 p-0">
                                                 <div class="custom-control custom-checkbox mt-auto">
@@ -67,46 +26,47 @@
                                             </div>
                                             <div class="col-auto m-0 p-0">
                                                 <a href="#" data-toggle="modal" data-target="#exampleModalCenter" id="join"><i class="far fa-object-group" data-toggle="tooltip" data-placement="top" title="Объединить"></i></a>
-                                                <!--<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter" id="join">
+                                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter" id="join">
                                                     Объединить
-                                                </button>-->
+                                                </button>
                                             </div>
                                             <div class="col-auto m-0 p-0 ml-2">
                                                 <a href="#" id="split" onclick="split_elements()"><i class="far fa-object-ungroup" data-toggle="tooltip" data-placement="top" title="Разъединить"></i></a>
                                             </div>
                                         </div>
-                                    </th>
+                                    </th>-->
                                     <th scope="col">
                                         <!--<button type="button" class="btn btn-link" onclick="select()">Выбрать \ Снять выбор</button>-->
-                                        <div class="custom-control custom-switch">
-                                            <input type="checkbox" class="custom-control-input" id="check-all" checked>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="check-all">
                                             <label class="custom-control-label" for="check-all"></label>
                                         </div>
                                     </th>
 	    		        			<th scope="col">Название элемента</th>
                                     <th scope="col">Тип элемента</th>
                                     <th scope="col">Источник</th>
+                                    <th scope="col">Возможность анализа</th>
 	    		        		</tr>
 	    		        	</thead>
 	    		        	<tbody>
                                 {% for module in modules %}
                                     <tr>
-                                        <th scope="row" class="align-middle">
+                                        <!--<th scope="row" class="align-middle">
                                             <div class="custom-control custom-checkbox">
                                                 <input type="checkbox" class="custom-control-input" name="modules-for-join" value="{{ module.name }}" id="module-for-join-{{ module.name }}" checked>
                                                 <label class="custom-control-label" for="module-for-join-{{ module.name }}"></label>
                                             </div>
-                                        </th>
+                                        </th>-->
                                         <td class="align-middle">
-                                            <div class="custom-control custom-switch">
-                                                <input type="checkbox" class="custom-control-input" name="modules" value="{{ module.name }}" id="module-{{ module.name }}" checked>
+                                            <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" name="modules" value="{{ module.name }}" id="module-{{ module.name }}" {% if not module.allowed_for_analysis %}disabled{% else %}checked{% endif %}>
                                                 <label class="custom-control-label" for="module-{{ module.name }}"></label>
                                             </div>
                                         </td>
-                                        <td class="align-middle">{{ module.name }}</td>
+                                        <td class="align-middle {% if not module.allowed_for_analysis %}disabled{% endif %}">{{ module.name }}</td>
                                         <td class="align-middle">
                                             <label for="type-{{ module.name }}" class="d-none"></label>
-                                            <select class="form-control" id="type-{{ module.name }}" name="type-{{ module.name }}">
+                                            <select class="form-control" id="type-{{ module.name }}" name="type-{{ module.name }}" {% if not module.allowed_for_analysis %}disabled{% endif %}>
                                                 <option value="unknown" selected>Неизвестный</option>
                                                 <option value="theory" {% if module.type == 'theory' %}selected{% endif %}>Теоретический материал</option>
                                                 <option value="self-test" {% if module.type == 'self-test' %}selected{% endif %}>Тест для самопроверки</option>
@@ -117,10 +77,11 @@
                                                 <option value="audio-file" {% if module.type == 'audio-file' %}selected{% endif %}>Аудиофайл</option>
                                                 <option value="audio-lecture" {% if module.type == 'audio-lecture' %}selected{% endif %}>Аудиолекция</option>
                                                 <option value="webinar" {% if module.type == 'webinar' %}selected{% endif %}>Вебинар</option>
-                                                <option value="presentation" {% if module.type == 'presentation' %}selected{% endif %}>Презентация</option>
+                                                <!--<option value="presentation" {% if module.type == 'presentation' %}selected{% endif %}>Презентация</option>-->
                                             </select>
                                         </td>
-                                        <td class="align-middle">{% if module.src == 'undefined' %}<span class="red">Не определён</span>{% else %}<span>{{ module.src }}</span>{% endif %}</td>
+                                        <td class="align-middle">{% if module.src == 'undefined' %}<span class="{% if not module.allowed_for_analysis %}disabled{% else %}red{% endif %}">Не определён</span>{% else %}<span class="{% if not module.allowed_for_analysis %}disabled{% endif %}">{{ module.src }}</span>{% endif %}</td>
+                                        <td class="align-middle">{% if not module.allowed_for_analysis %}<span class="disabled">Неоступен для анализа</span>{% else %}<span>Доступен для анализа</span>{% endif %}</td>
                                     </tr>
                                 {% endfor %}
 	    		        	</tbody>

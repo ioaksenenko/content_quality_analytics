@@ -81,15 +81,19 @@ class Results(models.Model):
 
 
 class Course(models.Model):
+    uid = models.CharField(max_length=255)
     identifier = models.IntegerField()
     moodle = models.CharField(max_length=255)
     rating = models.FloatField(default=0)
     context = models.CharField(max_length=255, default='')
+    datetime = models.DateTimeField()
 
     def __str__(self):
         return json.dumps({
+            'uid': self.uid,
             'identifier': self.identifier,
             'moodle': self.moodle,
             'rating': self.rating,
-            'context': self.context
+            'context': self.context,
+            'datetime': self.datetime
         })

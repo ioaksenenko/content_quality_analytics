@@ -40,3 +40,13 @@ def next_element(list_iter):
 def get_list_iter(some_list):
     some_list = iter(some_list)
     return some_list
+
+
+@register.filter
+def get_percent(length):
+    return round(100 / length, 2)
+
+
+@register.filter
+def concat(lhs, rhs):
+    return lhs + rhs

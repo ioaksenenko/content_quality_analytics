@@ -2,9 +2,9 @@
 {% load staticfiles %}
 {% block head %}
 	{{ block.super }}
-    <link rel="stylesheet" type="text/css" href="{% static "css/base.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/common.css" %}" />
 	<link rel="stylesheet" type="text/css" href="{% static "css/history.css" %}" />
-    <script src="{% static "js/base.js" %}"></script>
+    <script src="{% static "js/common.js" %}"></script>
     <script src="{% static "js/history.js" %}"></script>
 {% endblock %}
 {% block header %}
@@ -13,9 +13,14 @@
 	    	<div class="col-auto">
                 <b>Система анализа электронных курсов</b>
 	    	</div>
+            <div class="col-auto">
+                {% if is_superuser  %}
+                    <a href="{% url 'admin-settings' %}" target="_blank"><i class="fas fa-cog"></i></a>
+                {% endif %}
+            </div>
             <div class="col-auto mr-auto">
                 {% if is_superuser  %}
-                    <a href="{% url 'admin-settings' %}" class="d-table-cell" target="_blank"><i class="fas fa-cog"></i></a>
+                    <a href="{% url 'clear-history' %}"><i class="fas fa-trash-alt"></i></a>
                 {% endif %}
             </div>
             <!--<div class="col-auto mr-auto">
@@ -48,15 +53,17 @@
                             <th scope="col">Идентификатор курса</th>
                             <th scope="col">Система дистанционного обучения</th>
                             <th scope="col">Рейтинг</th>
+                            <th scope="col">Дата / Время</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for course in courses %}
                             <tr>
                                 <th scope="row">{{ forloop.counter }}</th>
-                                <td><a href="{% url 'show-course-result' %}?course_id={{ course.identifier }}&moodle={{ course.moodle }}">{{ course.identifier }}</a></td>
+                                <td><a href="{% url 'show-course-result' %}?course_id={{ course.identifier }}&moodle={{ course.moodle }}&datetime={{ course.datetime|date:"d.m.Y H:i:s" }}&uid={{ course.uid }}">{{ course.identifier }}</a></td>
                                 <td>{{ course.moodle }}</td>
                                 <td>{{ course.rating }}</td>
+                                <td>{{ course.datetime|date:"d.m.Y H:i:s" }}</td>
                             </tr>
                         {% endfor %}
                     </tbody>

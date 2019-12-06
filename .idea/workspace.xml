@@ -2,9 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc8d65a7-0ad6-4cba-9c3a-e5bdd5e2cbc1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/templates/common.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content_quality_analytics/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/content_quality_analytics/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content_quality_analytics/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/content_quality_analytics/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content_quality_analytics/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/content_quality_analytics/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content_quality_analytics/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/content_quality_analytics/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/common.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/base.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/common.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/expert-analysis.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/expert-analysis.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/modules.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/modules.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/js/results.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/results.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/add-indicator.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/add-indicator.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/add-scale.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/add-scale.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin-settings.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin-settings.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/audio-file-analysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/audio-file-analysis.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/audio-lecture-analysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/audio-lecture-analysis.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/control-test-analysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/control-test-analysis.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/expert-analysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/expert-analysis.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/files.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/files.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/history.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/history.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/indicators.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/indicators.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/modules.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/modules.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/results.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/results.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/self-test-analysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/self-test-analysis.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/theory-analysis-results.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/theory-analysis-results.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/uploaded-files.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/uploaded-files.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/video-file-analysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/video-file-analysis.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/video-lecture-analysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/video-lecture-analysis.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/webinar-analysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/webinar-analysis.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templatetags/filters.py" beforeDir="false" afterPath="$PROJECT_DIR$/templatetags/filters.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -64,66 +93,110 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/content_quality_analytics/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="25" column="20" lean-forward="true" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
+            <state relative-caret-position="479">
+              <caret line="2095" lean-forward="true" selection-start-line="2095" selection-end-line="2095" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
-                <element signature="e#1290#1665#0" />
-                <element signature="e#1701#2155#0" />
-                <element signature="e#2197#3069#0" />
-                <element signature="e#3121#3891#0" />
-                <element signature="e#3925#5788#0" />
-                <element signature="e#5815#6053#0" />
-                <element signature="e#6115#12181#0" />
-                <element signature="e#12207#16974#0" />
-                <element signature="e#17329#17445#0" />
-                <element signature="e#17478#22706#0" />
-                <element signature="e#22744#23007#0" />
-                <element signature="e#23047#23456#0" />
-                <element signature="e#23522#23981#0" />
-                <element signature="e#24015#24522#0" />
-                <element signature="e#24558#25249#0" />
-                <element signature="e#25310#26329#0" />
-                <element signature="e#26374#28231#0" />
-                <element signature="e#28268#29045#0" />
-                <element signature="e#29094#29387#0" />
-                <element signature="e#29447#29897#0" />
-                <element signature="e#29926#30232#0" />
-                <element signature="e#30260#30413#0" />
-                <element signature="e#30439#30591#0" />
-                <element signature="e#30631#31542#0" />
-                <element signature="e#31579#31921#0" />
-                <element signature="e#31969#31973#0" />
-                <element signature="e#32016#33613#0" />
-                <element signature="e#33658#34785#0" />
-                <element signature="e#34836#34874#0" />
-                <element signature="e#34915#35910#0" />
-                <element signature="e#35954#37108#0" />
-                <element signature="e#37144#37555#0" />
-                <element signature="e#37586#38572#0" />
-                <element signature="e#40601#41685#0" />
-                <element signature="e#41729#43114#0" />
-                <element signature="e#43153#44199#0" />
-                <element signature="e#44240#45235#0" />
-                <element signature="e#45279#46433#0" />
-                <element signature="e#46471#50145#0" />
-                <element signature="e#50188#51273#0" />
-                <element signature="e#51306#51473#0" />
-                <element signature="e#51515#52238#0" />
-                <element signature="e#52277#52281#0" />
-                <element signature="e#52319#52551#0" />
-                <element signature="e#52582#52727#0" />
-                <element signature="e#52761#52916#0" />
-                <element signature="e#52951#53612#0" />
-                <element signature="e#53650#53829#0" />
-                <element signature="e#53865#54069#0" />
-                <element signature="e#54105#54308#0" />
-                <element signature="e#54350#54614#0" />
-                <element signature="e#54646#60342#0" />
-                <element signature="e#60377#64455#0" />
-                <element signature="e#64491#65445#0" />
-                <element signature="e#65482#75045#0" />
-                <element signature="e#75074#82764#0" />
+                <element signature="e#1311#1686#0" />
+                <element signature="e#1722#2176#0" />
+                <element signature="e#2218#3090#0" />
+                <element signature="e#3142#3912#0" />
+                <element signature="e#3946#5809#0" />
+                <element signature="e#5836#6074#0" />
+                <element signature="e#6136#12202#0" />
+                <element signature="e#12228#16995#0" />
+                <element signature="e#17021#17326#0" />
+                <element signature="e#17366#17482#0" />
+                <element signature="e#17515#23512#0" />
+                <element signature="e#23550#23813#0" />
+                <element signature="e#23853#24262#0" />
+                <element signature="e#24328#24787#0" />
+                <element signature="e#24821#25328#0" />
+                <element signature="e#25364#26055#0" />
+                <element signature="e#26116#27135#0" />
+                <element signature="e#27180#29045#0" />
+                <element signature="e#29082#29859#0" />
+                <element signature="e#29908#30201#0" />
+                <element signature="e#30261#30711#0" />
+                <element signature="e#30740#31046#0" />
+                <element signature="e#31074#31227#0" />
+                <element signature="e#31253#31405#0" />
+                <element signature="e#31445#32356#0" />
+                <element signature="e#32393#32735#0" />
+                <element signature="e#32783#32787#0" />
+                <element signature="e#32830#34427#0" />
+                <element signature="e#34472#35599#0" />
+                <element signature="e#35650#35688#0" />
+                <element signature="e#35729#36724#0" />
+                <element signature="e#36768#37922#0" />
+                <element signature="e#37958#38369#0" />
+                <element signature="e#38400#39386#0" />
+                <element signature="e#39414#41797#0" />
+                <element signature="e#41850#42934#0" />
+                <element signature="e#42977#44362#0" />
+                <element signature="e#44401#45447#0" />
+                <element signature="e#45488#46483#0" />
+                <element signature="e#46527#47681#0" />
+                <element signature="e#47719#51393#0" />
+                <element signature="e#51436#52521#0" />
+                <element signature="e#52554#52721#0" />
+                <element signature="e#52763#53486#0" />
+                <element signature="e#53525#53529#0" />
+                <element signature="e#53567#53799#0" />
+                <element signature="e#53830#53975#0" />
+                <element signature="e#54009#54164#0" />
+                <element signature="e#54199#54860#0" />
+                <element signature="e#54898#55077#0" />
+                <element signature="e#55113#55317#0" />
+                <element signature="e#55353#55556#0" />
+                <element signature="e#55598#55862#0" />
+                <element signature="e#55894#61590#0" />
+                <element signature="e#61625#65703#0" />
+                <element signature="e#65739#66693#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="das://c8c70341-53c1-4150-b972-076c787b74e1/schema/main/table/content_quality_analytics_course">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state projectRestartId="57f90e96-e7ab-4213-b6d7-0c51f115285e">
+              <filtering>
+                <filter text="" />
+              </filtering>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/content_quality_analytics/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="394">
+              <caret line="92" column="28" selection-start-line="92" selection-start-column="28" selection-end-line="92" selection-end-column="28" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/history.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="22" column="37" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/content_quality_analytics/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="489">
+              <caret line="82" column="46" selection-start-line="82" selection-start-column="33" selection-end-line="82" selection-end-column="46" />
+              <folding>
+                <element signature="e#649#681#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -144,23 +217,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>get_control_questions</find>
-      <find>modules</find>
-      <find>move</find>
-      <find>get</find>
-      <find>add_ind</find>
-      <find>add-indicator</find>
-      <find>delete_indicator</find>
-      <find>move_files_to_tmp</find>
-      <find>print</find>
-      <find>theory</find>
-      <find>self-test-analysis</find>
-      <find>expert-analysis</find>
-      <find>self-test-ana</find>
-      <find>control-test-analysis</find>
-      <find>video-file-analysis</find>
-      <find>video-lecture-analysis</find>
-      <find>audio-file-analysis</find>
       <find>audio-lecture-analysis</find>
       <find>self|</find>
       <find>self|-test-modules||length</find>
@@ -174,6 +230,23 @@
       <find>HTML</find>
       <find>find('select')</find>
       <find>moodle</find>
+      <find>check_all_for_join</find>
+      <find>msg_src</find>
+      <find>check_all</find>
+      <find>type=&quot;range&quot;</find>
+      <find>td</find>
+      <find>with</find>
+      <find>range</find>
+      <find>autoescape</find>
+      <find>aria-label</find>
+      <find>disabled</find>
+      <find>id=&quot;{{ name }}</find>
+      <find>name=&quot;{{ name }}-</find>
+      <find>name=&quot;{{ name }}-control-and-exam-test</find>
+      <find>name=&quot;{{ name }}</find>
+      <find>name=&quot;{{ name }}-self-test</find>
+      <find>single</find>
+      <find>Course</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -182,9 +255,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/static/js/webinar-analysis.js" />
-        <option value="$PROJECT_DIR$/static/js/base.js" />
-        <option value="$PROJECT_DIR$/static/js/add-scale.js" />
         <option value="$PROJECT_DIR$/static/css/add-indicator.css" />
         <option value="$PROJECT_DIR$/static/js/add-indicator.js" />
         <option value="$PROJECT_DIR$/static/css/uploaded-files.css" />
@@ -208,37 +278,39 @@
         <option value="$PROJECT_DIR$/templates/theory-analysis-results.html" />
         <option value="$PROJECT_DIR$/templates/self-test-analysis.html" />
         <option value="$PROJECT_DIR$/static/css/expert-analysis.scss" />
-        <option value="$PROJECT_DIR$/static/css/expert-analysis.css" />
         <option value="$PROJECT_DIR$/static/js/indicators.js" />
         <option value="$PROJECT_DIR$/static/css/results.css" />
-        <option value="$PROJECT_DIR$/content_quality_analytics/analyzer.py" />
         <option value="$PROJECT_DIR$/content_quality_analytics/settings.py" />
-        <option value="$PROJECT_DIR$/templatetags/filters.py" />
-        <option value="$PROJECT_DIR$/static/js/expert-analysis.js" />
         <option value="$PROJECT_DIR$/static/css/modules.css" />
-        <option value="$PROJECT_DIR$/static/js/modules.js" />
         <option value="$PROJECT_DIR$/static/css/history.css" />
         <option value="$PROJECT_DIR$/static/js/history.js" />
         <option value="$PROJECT_DIR$/templates/base.html" />
-        <option value="$PROJECT_DIR$/templates/expert-analysis.html" />
         <option value="$PROJECT_DIR$/templates/add-scale.html" />
         <option value="$PROJECT_DIR$/templates/add-indicator.html" />
-        <option value="$PROJECT_DIR$/content_quality_analytics/urls.py" />
-        <option value="$PROJECT_DIR$/content_quality_analytics/models.py" />
+        <option value="$PROJECT_DIR$/templates/admin-settings.html" />
+        <option value="$PROJECT_DIR$/templates/header.html" />
+        <option value="$PROJECT_DIR$/templates/common.html" />
         <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/templates/modules.html" />
+        <option value="$PROJECT_DIR$/static/js/modules.js" />
         <option value="$PROJECT_DIR$/templates/indicators.html" />
-        <option value="$PROJECT_DIR$/templates/admin-settings.html" />
-        <option value="$PROJECT_DIR$/templates/history.html" />
-        <option value="$PROJECT_DIR$/content_quality_analytics/views.py" />
+        <option value="$PROJECT_DIR$/static/css/expert-analysis.css" />
+        <option value="$PROJECT_DIR$/static/js/expert-analysis.js" />
+        <option value="$PROJECT_DIR$/content_quality_analytics/analyzer.py" />
         <option value="$PROJECT_DIR$/static/js/results.js" />
+        <option value="$PROJECT_DIR$/templatetags/filters.py" />
+        <option value="$PROJECT_DIR$/templates/expert-analysis.html" />
         <option value="$PROJECT_DIR$/templates/results.html" />
+        <option value="$PROJECT_DIR$/requirements.txt" />
+        <option value="$PROJECT_DIR$/content_quality_analytics/models.py" />
+        <option value="$PROJECT_DIR$/templates/history.html" />
+        <option value="$PROJECT_DIR$/content_quality_analytics/urls.py" />
+        <option value="$PROJECT_DIR$/content_quality_analytics/views.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="561" />
-    <option name="y" value="42" />
+    <option name="x" value="953" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
   </component>
@@ -250,7 +322,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -295,15 +366,11 @@
               <item name="content_quality_analytics" type="462c0819:PsiDirectoryNode" />
               <item name="templatetags" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="content_quality_analytics" type="b2602c69:ProjectViewProjectNode" />
-              <item name="content_quality_analytics" type="462c0819:PsiDirectoryNode" />
-              <item name="userauth" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -312,7 +379,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/content_quality_analytics/migrations" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/media/uqfszpfgbzxdqfvq99jtvmrogu67xkhj" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.stylelint" value="true" />
     <property name="node.js.path.for.package.stylelint" value="project" />
@@ -323,17 +390,17 @@
     <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.sass.extensions.compass.CompassConfigurableProvider$1" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="F:\py\dev\lismo\content_quality_analytics\content_quality_analytics\migrations" />
-      <recent name="F:\py\dev\lismo\content_quality_analytics\static\js" />
-      <recent name="F:\py\dev\lismo\content_quality_analytics\static\css" />
-      <recent name="F:\py\dev\lismo\content_quality_analytics\static" />
-      <recent name="F:\py\dev\lismo\content_quality_analytics\static\img" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\py\dev\lismo\content_quality_analytics\content_quality_analytics" />
       <recent name="F:\py\dev\lismo\content_quality_analytics" />
       <recent name="F:\py\dev\lismo\content_quality_analytics\templates" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\py\dev\lismo\content_quality_analytics\media\uqfszpfgbzxdqfvq99jtvmrogu67xkhj" />
+      <recent name="F:\py\dev\lismo\content_quality_analytics\media\il4erga6ykr5fvz6is974e41k8fnl36h" />
+      <recent name="F:\py\dev\lismo\content_quality_analytics\media\9bxmif78dj54057wtsfm71i6a0590qej" />
+      <recent name="F:\py\dev\lismo\content_quality_analytics\media\jiz4i2agtl2bqp77rz94uelcjul6sav6" />
+      <recent name="F:\py\dev\lismo\content_quality_analytics\media\f4h7rexrnulgjjtiosvsuoz75u11qyaf" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -435,23 +502,29 @@
       <workItem from="1574651651949" duration="16961000" />
       <workItem from="1574735435305" duration="20760000" />
       <workItem from="1574823349948" duration="23245000" />
-      <workItem from="1574907684789" duration="14844000" />
+      <workItem from="1574907684789" duration="15097000" />
+      <workItem from="1575184930019" duration="8000" />
+      <workItem from="1575270407255" duration="5899000" />
+      <workItem from="1575342102866" duration="18553000" />
+      <workItem from="1575429030400" duration="22936000" />
+      <workItem from="1575517191258" duration="21748000" />
+      <workItem from="1575603566076" duration="10667000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="537217000" />
+    <option name="totallyTimeSpent" value="617281000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21588486" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22867803" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.32936078" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.3336945" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -460,82 +533,20 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32936078" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50053304" side_tool="true" weight="0.32936078" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32936078" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32936078" />
       <window_info anchor="bottom" id="Database Console" order="13" weight="0.32936078" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" />
-      <window_info anchor="right" id="Database" order="4" visible="true" weight="0.17430703" />
+      <window_info active="true" anchor="right" id="Database" order="4" visible="true" weight="0.17430703" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/static/css/indicators.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://c8c70341-53c1-4150-b972-076c787b74e1/schema/main/table/content_quality_analytics_indicator">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="92256518-2a6f-4291-a775-f2f83b08d397">
-          <filtering>
-            <filter text="" />
-          </filtering>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/uploaded-files.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="26" column="39" selection-start-line="26" selection-start-column="39" selection-end-line="26" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/files.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1394">
-          <caret line="120" column="48" selection-start-line="120" selection-start-column="48" selection-end-line="120" selection-end-column="48" />
-          <folding>
-            <element signature="e#320#1594#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/files.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="31" column="18" selection-start-line="31" selection-start-column="18" selection-end-line="31" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/scss/modules.scss" />
-    <entry file="file://$PROJECT_DIR$/static/js/admin-settings.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="525" column="16" selection-start-line="525" selection-start-column="16" selection-end-line="525" selection-end-column="34" />
-          <folding>
-            <element signature="n#!!block;n#add_field#0" />
-            <element signature="n#style#0;n#i#0;n#a#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#!!block;n#remove_field#0" />
-            <element signature="n#!!block;n#check_scale_name#0" />
-            <element signature="n#!!block;n#change_scale#0" />
-            <element signature="n#!!block;n#save_scale#0" />
-            <element signature="n#!!block;n#delete_scale#0" />
-            <element signature="n#!!block;n#delete_indicator#0" />
-            <element signature="n#!!block;n#hide_indicator#0" />
-            <element signature="n#!!block;n#show_indicator#0" />
-            <element signature="n#!!block;n#check_indicator_name#0" />
-            <element signature="n#!!block;n#change_indicator#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/content_quality_analytics/migrations/0003_indicator_description.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -559,9 +570,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/css/expert-analysis.scss" />
-    <entry file="file://$PROJECT_DIR$/static/css/expert-analysis.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/self-test-analysis.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="262">
@@ -642,24 +650,10 @@
     <entry file="file://$PROJECT_DIR$/media/ngjz293yicyev4kyuol2ablhdidwijoz/theory/43561/html/img/3_7.png" />
     <entry file="file://$PROJECT_DIR$/media/ngjz293yicyev4kyuol2ablhdidwijoz/theory/43561/html/img/3_1.png" />
     <entry file="file://$PROJECT_DIR$/media/ngjz293yicyev4kyuol2ablhdidwijoz/theory/43561/html/img/3_14.png" />
-    <entry file="file://$PROJECT_DIR$/content_quality_analytics/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="136" selection-start-line="136" selection-end-line="136" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/js/indicators.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="43" column="4" selection-start-line="43" selection-start-column="4" selection-end-line="55" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/expert-analysis.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="7" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -669,68 +663,6 @@
           <filtering>
             <filter text="" />
           </filtering>
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://c8c70341-53c1-4150-b972-076c787b74e1/schema/main/table/content_quality_analytics_results">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="6a770cc5-7dd6-490a-a3b2-654829207f0b">
-          <filtering>
-            <filter text="" />
-          </filtering>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templatetags/filters.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="42" selection-start-line="42" selection-end-line="42" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/content_quality_analytics/analyzer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="432" column="27" selection-start-line="432" selection-start-column="27" selection-end-line="432" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-            <element signature="e#370#4045#0" />
-            <element signature="e#4152#4992#0" />
-            <element signature="e#5084#5275#0" />
-            <element signature="e#5330#6461#0" />
-            <element signature="e#6539#8026#0" />
-            <element signature="e#8110#9138#0" />
-            <element signature="e#9238#9427#0" />
-            <element signature="e#9539#10140#0" />
-            <element signature="e#10206#13619#0" />
-            <element signature="e#13655#13962#0" />
-            <element signature="e#14000#14299#0" />
-            <element signature="e#14345#14642#0" />
-            <element signature="e#14693#15098#0" />
-            <element signature="e#15147#16151#0" />
-            <element signature="e#16186#16610#0" />
-            <element signature="e#16724#17317#0" />
-            <element signature="e#17427#17961#0" />
-            <element signature="e#18019#18618#0" />
-            <element signature="e#19465#22706#0" />
-            <element signature="e#22768#28290#0" />
-            <element signature="e#28329#28725#0" />
-            <element signature="e#28767#28936#0" />
-            <element signature="e#28982#29162#0" />
-            <element signature="e#29199#29387#0" />
-            <element signature="e#29427#29594#0" />
-            <element signature="e#29638#29820#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/modules.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -764,52 +696,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/expert-analysis.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="32" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
-          <folding>
-            <element signature="e#8131#8186#0#DjangoTemplate" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/content_quality_analytics/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="89" column="27" selection-start-line="89" selection-start-column="27" selection-end-line="89" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://c8c70341-53c1-4150-b972-076c787b74e1/schema/main/table/content_quality_analytics_course">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="44afefe3-e13e-48d9-a1d9-dd1fedba844f">
-          <filtering>
-            <filter text="" />
-          </filtering>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="22" column="124" selection-start-line="22" selection-start-column="124" selection-end-line="22" selection-end-column="124" />
-          <folding>
-            <element signature="n#block#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/indicators.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="21" column="124" selection-start-line="21" selection-start-column="124" selection-end-line="21" selection-end-column="124" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/admin-settings.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="245">
@@ -817,113 +703,275 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/history.html">
+    <entry file="file://$PROJECT_DIR$/templates/common.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
+        <state relative-caret-position="527">
+          <caret line="31" column="16" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/content_quality_analytics/urls.py">
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="472">
-          <caret line="81" column="56" selection-start-line="81" selection-start-column="38" selection-end-line="81" selection-end-column="56" />
+        <state relative-caret-position="119">
+          <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/modules.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/modules.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="452">
+          <caret line="95" column="46" selection-start-line="95" selection-start-column="46" selection-end-line="95" selection-end-column="46" />
           <folding>
-            <element signature="e#649#681#0" expanded="true" />
+            <element signature="e#5426#6065#0" />
+            <element signature="n#!!block;n#select_for_join#0" />
+            <element signature="n#!!block;n#move_files_to_tmp#0" />
+            <element signature="n#!!block;n#join_elements#0" />
+            <element signature="n#!!block;n#split_elements#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/modules.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="132" column="24" selection-start-line="132" selection-start-column="24" selection-end-line="134" selection-end-column="30" />
+        <state relative-caret-position="255">
+          <caret line="60" column="86" selection-start-line="60" selection-start-column="86" selection-end-line="60" selection-end-column="86" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/modules.js">
+    <entry file="file://$PROJECT_DIR$/templates/indicators.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/bootstrap.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="6" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/bootstrap.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="6" selection-end-column="41" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/expert-analysis.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm2019.1/system/python_stubs/1668765940/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="5136" column="8" selection-start-line="5136" selection-start-column="8" selection-end-line="5136" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/expert-analysis.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
-          <caret line="148" column="4" selection-start-line="148" selection-start-column="4" selection-end-line="154" selection-end-column="7" />
+          <caret line="24" selection-start-line="24" selection-end-line="40" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/results.js">
+    <entry file="file://$PROJECT_DIR$/media/f4h7rexrnulgjjtiosvsuoz75u11qyaf/exam-test/exam1/test.xml" />
+    <entry file="das://c8c70341-53c1-4150-b972-076c787b74e1/schema/main/table/content_quality_analytics_results">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="530c3944-4477-421d-b4d2-6700954911f0">
+          <filtering>
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/expert-analysis.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="3" lean-forward="true" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
+        <state relative-caret-position="315">
+          <caret line="734" column="24" selection-start-line="734" selection-start-column="24" selection-end-line="734" selection-end-column="24" />
+          <folding>
+            <element signature="e#6947#7002#0#DjangoTemplate" />
+            <element signature="e#19866#19933#0#DjangoTemplate" />
+            <element signature="e#34615#34667#0#DjangoTemplate" />
+            <element signature="e#47106#47161#0#DjangoTemplate" />
+            <element signature="e#56437#56489#0#DjangoTemplate" />
+            <element signature="e#64715#64770#0#DjangoTemplate" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content_quality_analytics/analyzer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="530">
+          <caret line="288" column="54" selection-start-line="288" selection-start-column="54" selection-end-line="288" selection-end-column="54" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#370#4045#0" />
+            <element signature="e#4152#4992#0" />
+            <element signature="e#5084#5275#0" />
+            <element signature="e#5330#6461#0" />
+            <element signature="e#6539#8026#0" />
+            <element signature="e#8110#9138#0" />
+            <element signature="e#9238#9427#0" />
+            <element signature="e#9539#10140#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content_quality_analytics/migrations/0007_course.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content_quality_analytics/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="115" selection-start-line="115" selection-end-line="115" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content_quality_analytics/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="394">
+          <caret line="92" column="28" selection-start-line="92" selection-start-column="28" selection-end-line="92" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/results.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="1782" column="22" lean-forward="true" selection-start-line="1782" selection-start-column="22" selection-end-line="1782" selection-end-column="22" />
+        <state relative-caret-position="173">
+          <caret line="3706" column="39" selection-start-line="3706" selection-start-column="39" selection-end-line="3706" selection-end-column="39" />
+          <folding>
+            <element signature="e#954#977#0#DjangoTemplate" />
+            <element signature="e#1542#1614#0#DjangoTemplate" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templatetags/filters.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="530">
+          <caret line="51" column="20" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/results.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="530">
+          <caret line="39" column="1" selection-start-line="39" selection-start-column="1" selection-end-line="39" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/history.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="37" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content_quality_analytics/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="489">
+          <caret line="82" column="46" selection-start-line="82" selection-start-column="33" selection-end-line="82" selection-end-column="46" />
+          <folding>
+            <element signature="e#649#681#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://c8c70341-53c1-4150-b972-076c787b74e1/schema/main/table/content_quality_analytics_course">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="57f90e96-e7ab-4213-b6d7-0c51f115285e">
+          <filtering>
+            <filter text="" />
+          </filtering>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/content_quality_analytics/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="25" column="20" lean-forward="true" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
+        <state relative-caret-position="479">
+          <caret line="2095" lean-forward="true" selection-start-line="2095" selection-end-line="2095" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
-            <element signature="e#1290#1665#0" />
-            <element signature="e#1701#2155#0" />
-            <element signature="e#2197#3069#0" />
-            <element signature="e#3121#3891#0" />
-            <element signature="e#3925#5788#0" />
-            <element signature="e#5815#6053#0" />
-            <element signature="e#6115#12181#0" />
-            <element signature="e#12207#16974#0" />
-            <element signature="e#17329#17445#0" />
-            <element signature="e#17478#22706#0" />
-            <element signature="e#22744#23007#0" />
-            <element signature="e#23047#23456#0" />
-            <element signature="e#23522#23981#0" />
-            <element signature="e#24015#24522#0" />
-            <element signature="e#24558#25249#0" />
-            <element signature="e#25310#26329#0" />
-            <element signature="e#26374#28231#0" />
-            <element signature="e#28268#29045#0" />
-            <element signature="e#29094#29387#0" />
-            <element signature="e#29447#29897#0" />
-            <element signature="e#29926#30232#0" />
-            <element signature="e#30260#30413#0" />
-            <element signature="e#30439#30591#0" />
-            <element signature="e#30631#31542#0" />
-            <element signature="e#31579#31921#0" />
-            <element signature="e#31969#31973#0" />
-            <element signature="e#32016#33613#0" />
-            <element signature="e#33658#34785#0" />
-            <element signature="e#34836#34874#0" />
-            <element signature="e#34915#35910#0" />
-            <element signature="e#35954#37108#0" />
-            <element signature="e#37144#37555#0" />
-            <element signature="e#37586#38572#0" />
-            <element signature="e#40601#41685#0" />
-            <element signature="e#41729#43114#0" />
-            <element signature="e#43153#44199#0" />
-            <element signature="e#44240#45235#0" />
-            <element signature="e#45279#46433#0" />
-            <element signature="e#46471#50145#0" />
-            <element signature="e#50188#51273#0" />
-            <element signature="e#51306#51473#0" />
-            <element signature="e#51515#52238#0" />
-            <element signature="e#52277#52281#0" />
-            <element signature="e#52319#52551#0" />
-            <element signature="e#52582#52727#0" />
-            <element signature="e#52761#52916#0" />
-            <element signature="e#52951#53612#0" />
-            <element signature="e#53650#53829#0" />
-            <element signature="e#53865#54069#0" />
-            <element signature="e#54105#54308#0" />
-            <element signature="e#54350#54614#0" />
-            <element signature="e#54646#60342#0" />
-            <element signature="e#60377#64455#0" />
-            <element signature="e#64491#65445#0" />
-            <element signature="e#65482#75045#0" />
-            <element signature="e#75074#82764#0" />
+            <element signature="e#1311#1686#0" />
+            <element signature="e#1722#2176#0" />
+            <element signature="e#2218#3090#0" />
+            <element signature="e#3142#3912#0" />
+            <element signature="e#3946#5809#0" />
+            <element signature="e#5836#6074#0" />
+            <element signature="e#6136#12202#0" />
+            <element signature="e#12228#16995#0" />
+            <element signature="e#17021#17326#0" />
+            <element signature="e#17366#17482#0" />
+            <element signature="e#17515#23512#0" />
+            <element signature="e#23550#23813#0" />
+            <element signature="e#23853#24262#0" />
+            <element signature="e#24328#24787#0" />
+            <element signature="e#24821#25328#0" />
+            <element signature="e#25364#26055#0" />
+            <element signature="e#26116#27135#0" />
+            <element signature="e#27180#29045#0" />
+            <element signature="e#29082#29859#0" />
+            <element signature="e#29908#30201#0" />
+            <element signature="e#30261#30711#0" />
+            <element signature="e#30740#31046#0" />
+            <element signature="e#31074#31227#0" />
+            <element signature="e#31253#31405#0" />
+            <element signature="e#31445#32356#0" />
+            <element signature="e#32393#32735#0" />
+            <element signature="e#32783#32787#0" />
+            <element signature="e#32830#34427#0" />
+            <element signature="e#34472#35599#0" />
+            <element signature="e#35650#35688#0" />
+            <element signature="e#35729#36724#0" />
+            <element signature="e#36768#37922#0" />
+            <element signature="e#37958#38369#0" />
+            <element signature="e#38400#39386#0" />
+            <element signature="e#39414#41797#0" />
+            <element signature="e#41850#42934#0" />
+            <element signature="e#42977#44362#0" />
+            <element signature="e#44401#45447#0" />
+            <element signature="e#45488#46483#0" />
+            <element signature="e#46527#47681#0" />
+            <element signature="e#47719#51393#0" />
+            <element signature="e#51436#52521#0" />
+            <element signature="e#52554#52721#0" />
+            <element signature="e#52763#53486#0" />
+            <element signature="e#53525#53529#0" />
+            <element signature="e#53567#53799#0" />
+            <element signature="e#53830#53975#0" />
+            <element signature="e#54009#54164#0" />
+            <element signature="e#54199#54860#0" />
+            <element signature="e#54898#55077#0" />
+            <element signature="e#55113#55317#0" />
+            <element signature="e#55353#55556#0" />
+            <element signature="e#55598#55862#0" />
+            <element signature="e#55894#61590#0" />
+            <element signature="e#61625#65703#0" />
+            <element signature="e#65739#66693#0" />
           </folding>
         </state>
       </provider>

@@ -3,7 +3,6 @@ import re
 import shutil
 import sys
 import bs4
-import datetime
 import html
 # import MySQLdb as sql
 import pandas as pd
@@ -27,10 +26,11 @@ from . import models
 from django.shortcuts import redirect
 from django.contrib import auth
 from functools import reduce
+from datetime import datetime, timezone
+from django.utils.timezone import pytz
 
 
 def index(request):
-    # models.Course.objects.all().delete()
     user = auth.get_user(request)
     clear_media()
     request.session.create()
@@ -392,44 +392,56 @@ def get_modules(request):
                 src = os.path.join(dir_path, file_name, 'html')
                 if not os.path.exists(src):
                     src = 'undefined'
+                    allowed_for_analysis = False
                 else:
                     src = src[src.index(request.session.session_key) + len(request.session.session_key):]
+                    allowed_for_analysis = True
             elif re.fullmatch(r'^(test|самоконтроль).*$', file_name, re.I):
                 file_type = 'self-test'
                 src = os.path.join(dir_path, file_name, 'html')
                 if not os.path.exists(src):
                     src = 'undefined'
+                    allowed_for_analysis = False
                 else:
                     src = src[src.index(request.session.session_key) + len(request.session.session_key):]
+                    allowed_for_analysis = True
             elif re.fullmatch(r'^(control|контрольная_работа).*$', file_name, re.I):
                 file_type = 'control-test'
                 src = os.path.join(dir_path, file_name, 'test.xml')
                 if not os.path.exists(src):
                     src = 'undefined'
+                    allowed_for_analysis = False
                 else:
                     src = src[src.index(request.session.session_key) + len(request.session.session_key):]
+                    allowed_for_analysis = True
             elif re.fullmatch(r'^(exam|экзаменационная_работа).*$', file_name, re.I):
                 file_type = 'exam-test'
                 src = os.path.join(dir_path, file_name, 'test.xml')
                 if not os.path.exists(src):
                     src = 'undefined'
+                    allowed_for_analysis = False
                 else:
                     src = src[src.index(request.session.session_key) + len(request.session.session_key):]
-            elif re.fullmatch(r'^(presentation|презентация).*$', file_name, re.I):
-                file_type = 'presentation'
-                src = os.path.join(dir_path, file_name, 'slides')
-                if not os.path.exists(src):
-                    src = 'undefined'
-                else:
-                    src = src[src.index(request.session.session_key) + len(request.session.session_key):]
+                    allowed_for_analysis = True
+
+            #elif re.fullmatch(r'^(presentation|презентация).*$', file_name, re.I):
+                #file_type = 'presentation'
+                #src = os.path.join(dir_path, file_name, 'slides')
+                #allowed_for_analysis = False
+                #if not os.path.exists(src):
+                #    src = 'undefined'
+                #else:
+                #    src = src[src.index(request.session.session_key) + len(request.session.session_key):]
             elif re.fullmatch(r'^(webinar|вебинар).*$', file_name, re.I):
                 file_type = 'webinar'
                 src = os.path.join(dir_path, file_name)
                 src = src[src.index(request.session.session_key) + len(request.session.session_key):]
+                allowed_for_analysis = True
             elif re.fullmatch(r'^(audiofile|аудиофайл).*$', file_name, re.I):
                 file_type = 'audio-file'
                 src = 'undefined'
                 dp = os.path.join(dir_path, file_name)
+                allowed_for_analysis = True
                 for fn in os.listdir(dp):
                     fn, fe = os.path.splitext(fn)
                     if re.fullmatch(r'\.(flac|midi|amr|ogg|aiff|mp3|wav)', fe, re.I):
@@ -440,6 +452,7 @@ def get_modules(request):
                 file_type = 'audio-lecture'
                 src = 'undefined'
                 dp = os.path.join(dir_path, file_name)
+                allowed_for_analysis = True
                 for fn in os.listdir(dp):
                     fn, fe = os.path.splitext(fn)
                     if re.fullmatch(r'\.(flac|midi|amr|ogg|aiff|mp3|wav)', fe, re.I):
@@ -450,6 +463,7 @@ def get_modules(request):
                 file_type = 'video-file'
                 src = 'undefined'
                 dp = os.path.join(dir_path, file_name)
+                allowed_for_analysis = True
                 for fn in os.listdir(dp):
                     fn, fe = os.path.splitext(fn)
                     if re.fullmatch(r'\.(avi|mp4|mkv)', fe, re.I):
@@ -460,6 +474,7 @@ def get_modules(request):
                 file_type = 'video-lecture'
                 src = 'undefined'
                 dp = os.path.join(dir_path, file_name)
+                allowed_for_analysis = True
                 for fn in os.listdir(dp):
                     fn, fe = os.path.splitext(fn)
                     if re.fullmatch(r'\.(avi|mp4|mkv)', fe, re.I):
@@ -469,10 +484,12 @@ def get_modules(request):
             else:
                 file_type = 'unknown-file'
                 src = 'undefined'
+                allowed_for_analysis = False
             res.append({
                 'name': file_name,
                 'type': file_type,
-                'src': src
+                'src': src,
+                'allowed_for_analysis': allowed_for_analysis
             })
     return res
 
@@ -635,14 +652,14 @@ def theory_analysis_results(request):
             context = {
                 'theory_modules': list(zip(
                     ['all'] + [os.path.splitext(module)[0].replace(' ', '-') for module in theory_modules],
-                    ['Анализ всего текста'] + ['Анализ модуля ' + module for module in theory_modules],
+                    ['Анализ всего курса'] + ['Анализ модуля ' + module for module in theory_modules],
                     results,
                     indicators
                 ))
             }
             models.Results(
                 uid=request.session.session_key,
-                name='theory',
+                name='theory-analysis',
                 context=json.dumps(context)
             ).save()
             # return render(request, 'theory-analysis-results.html', context)
@@ -954,17 +971,6 @@ def moodle(request):
     if request.method == 'POST':
         moodle = request.POST.get('moodle')
         course_id = request.POST.get('course-id')
-
-        courses = models.Course.objects.all()
-        exist = False
-        for course in courses:
-            exist = course.id == course_id and course.moodle == moodle
-
-        if not exist:
-            models.Course(
-                identifier=course_id,
-                moodle=moodle
-            ).save()
 
         request.session['course_id'] = course_id
         request.session['moodle'] = moodle
@@ -1656,18 +1662,30 @@ def expert_analysis(request):
     video_file_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'video-file')
     video_file_modules = []
     for dir_name in os.listdir(video_file_path):
-        dir_path = os.path.join(video_file_path, dir_name)
-        for file_name in os.listdir(dir_path):
-            video_file_modules.append(os.path.join('/media', request.session.session_key, 'video-file', dir_name, file_name))
+        video_file_modules.append(os.path.join('/media', request.session.session_key, 'video-file', dir_name))
+        #dir_path = os.path.join(video_file_path, dir_name)
+        #for file_name in os.listdir(dir_path):
+        #    video_file_modules.append(os.path.join('/media', request.session.session_key, 'video-file', dir_name, file_name))
 
     names = []
     extensions = []
     src = []
     for module in video_file_modules:
-        name, extension = os.path.splitext(os.path.basename(module))
-        names.append(name.replace(' ', '-'))
-        extensions.append(extension[1:])
-        src.append(module)
+        name = os.path.basename(module)
+        names.append(name)
+        has_video = False
+        dir_path = os.path.join(video_file_path, name)
+        for file_name in os.listdir(dir_path):
+            if re.fullmatch(r'.*\.(mkv|avi|mp4)', file_name, re.I):
+                name, extension = os.path.splitext(file_name)
+                # names.append(name.replace(' ', '-'))
+                extensions.append(extension[1:])
+                src.append(os.path.join(module, file_name))
+                has_video = True
+                break
+        if not has_video:
+            extensions.append(None)
+            src.append(None)
 
     context['video_file_modules'] = list(zip(
         names,
@@ -1679,18 +1697,30 @@ def expert_analysis(request):
     theory_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'theory')
     video_lecture_modules = []
     for dir_name in os.listdir(video_lecture_path):
-        dir_path = os.path.join(video_lecture_path, dir_name)
-        for file_name in os.listdir(dir_path):
-            video_lecture_modules.append(os.path.join('/media', request.session.session_key, 'video-lecture', dir_name, file_name))
+        video_lecture_modules.append(os.path.join('/media', request.session.session_key, 'video-lecture', dir_name))
+        #dir_path = os.path.join(video_lecture_path, dir_name)
+        #for file_name in os.listdir(dir_path):
+        #    video_lecture_modules.append(os.path.join('/media', request.session.session_key, 'video-lecture', dir_name, file_name))
 
     names = []
     extensions = []
     src = []
     for module in video_lecture_modules:
-        name, extension = os.path.splitext(os.path.basename(module))
-        names.append(name.replace(' ', '-'))
-        extensions.append(extension[1:])
-        src.append(module)
+        name = os.path.basename(module)
+        names.append(name)
+        has_video = False
+        dir_path = os.path.join(video_lecture_path, name)
+        for file_name in os.listdir(dir_path):
+            if re.fullmatch(r'.*\.(mkv|avi|mp4)', file_name, re.I):
+                name, extension = os.path.splitext(file_name)
+                # names.append(name.replace(' ', '-'))
+                extensions.append(extension[1:])
+                src.append(os.path.join(module, file_name))
+                has_video = True
+                break
+        if not has_video:
+            extensions.append(None)
+            src.append(None)
 
     context['video_lecture_modules'] = list(zip(
         names,
@@ -1702,18 +1732,30 @@ def expert_analysis(request):
     audio_file_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'audio-file')
     audio_file_modules = []
     for dir_name in os.listdir(audio_file_path):
-        dir_path = os.path.join(audio_file_path, dir_name)
-        for file_name in os.listdir(dir_path):
-            audio_file_modules.append(os.path.join('/media', request.session.session_key, 'audio-file', dir_name, file_name))
+        audio_file_modules.append(os.path.join('/media', request.session.session_key, 'audio-file', dir_name))
+        #dir_path = os.path.join(audio_file_path, dir_name)
+        #for file_name in os.listdir(dir_path):
+        #    audio_file_modules.append(os.path.join('/media', request.session.session_key, 'audio-file', dir_name, file_name))
 
     names = []
     extensions = []
     src = []
     for module in audio_file_modules:
-        name, extension = os.path.splitext(os.path.basename(module))
-        names.append(name.replace(' ', '-'))
-        extensions.append(extension[1:])
-        src.append(module)
+        name = os.path.basename(module)
+        names.append(name)
+        has_audio = False
+        dir_path = os.path.join(audio_file_path, name)
+        for file_name in os.listdir(dir_path):
+            if re.fullmatch(r'.*\.(flac|midi|amr|ogg|aiff|mp3|wav)', file_name, re.I):
+                name, extension = os.path.splitext(file_name)
+                # names.append(name.replace(' ', '-'))
+                extensions.append(extension[1:])
+                src.append(os.path.join(module, file_name))
+                has_audio = True
+                break
+        if not has_audio:
+            extensions.append(None)
+            src.append(None)
 
     context['audio_file_modules'] = list(zip(
         names,
@@ -1725,18 +1767,30 @@ def expert_analysis(request):
     theory_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'theory')
     audio_lecture_modules = []
     for dir_name in os.listdir(audio_lecture_path):
-        dir_path = os.path.join(audio_lecture_path, dir_name)
-        for file_name in os.listdir(dir_path):
-            audio_lecture_modules.append(os.path.join('/media', request.session.session_key, 'audio-lecture', dir_name, file_name))
+        audio_lecture_modules.append(os.path.join('/media', request.session.session_key, 'audio-lecture', dir_name))
+        #dir_path = os.path.join(audio_lecture_path, dir_name)
+        #for file_name in os.listdir(dir_path):
+        #    audio_lecture_modules.append(os.path.join('/media', request.session.session_key, 'audio-lecture', dir_name, file_name))
 
     names = []
     extensions = []
     src = []
     for module in audio_lecture_modules:
-        name, extension = os.path.splitext(os.path.basename(module))
-        names.append(name.replace(' ', '-'))
-        extensions.append(extension[1:])
-        src.append(module)
+        name = os.path.basename(module)
+        names.append(name)
+        has_audio = False
+        dir_path = os.path.join(audio_lecture_path, name)
+        for file_name in os.listdir(dir_path):
+            if re.fullmatch(r'.*\.(flac|midi|amr|ogg|aiff|mp3|wav)', file_name, re.I):
+                name, extension = os.path.splitext(file_name)
+                # names.append(name.replace(' ', '-'))
+                extensions.append(extension[1:])
+                src.append(os.path.join(module, file_name))
+                has_audio = True
+                break
+        if not has_audio:
+            extensions.append(None)
+            src.append(None)
 
     context['audio_lecture_modules'] = list(zip(
         names,
@@ -1848,7 +1902,8 @@ def results(request):
         'is_superuser': user.is_superuser,
         'is_anonymous': user.is_anonymous,
     }
-    results = models.Results.objects.filter(uid=request.session.session_key)
+    results = models.Results.objects.filter(uid=request.session.session_key, name='theory-analysis') | \
+              models.Results.objects.filter(uid=request.session.session_key, name='expert-analysis')
     for result in results:
         context.update(json.loads(result.context))
 
@@ -1896,6 +1951,8 @@ def results(request):
                     })
         video_lecture_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'video-lecture')
         video_lecture_modules = os.listdir(video_lecture_path)
+        print(video_lecture_modules)
+        print(context['video_lecture_modules'])
         for video_lecture_module in video_lecture_modules:
             for element in context['video_lecture_modules']:
                 if element[0] == video_lecture_module:
@@ -1907,6 +1964,8 @@ def results(request):
                     })
         audio_file_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'audio-file')
         audio_file_modules = os.listdir(audio_file_path)
+        print(audio_file_modules)
+        print(context['audio_file_modules'])
         for audio_file_module in audio_file_modules:
             for element in context['audio_file_modules']:
                 if element[0] == audio_file_module:
@@ -1941,6 +2000,7 @@ def results(request):
                         'has_additional_materials': request.POST.get(webinar_module + '-webinar-has-additional-materials'),
                         'has_questions': request.POST.get(webinar_module + '-webinar-has-questions'),
                     })
+        """
         results = models.Results.objects.filter(
             uid=request.session.session_key,
             name='expert-analysis'
@@ -1948,6 +2008,21 @@ def results(request):
         for result in results:
             result.context = json.dumps(context)
             result.save()
+        """
+        results = models.Results.objects.filter(
+            uid=request.session.session_key,
+            name='course-analysis'
+        )
+        if len(results) == 0:
+            models.Results(
+                uid=request.session.session_key,
+                name='course-analysis',
+                context=json.dumps(context)
+            ).save()
+        else:
+            for result in results:
+                result.context = json.dumps(context)
+                result.save()
     return render(request, 'results.html', context)
 
 
@@ -1958,7 +2033,7 @@ def course_rating(request):
         'is_superuser': user.is_superuser,
         'is_anonymous': user.is_anonymous,
     }
-    results = models.Results.objects.filter(uid=request.session.session_key)
+    results = models.Results.objects.filter(uid=request.session.session_key, name='course-analysis')
     for result in results:
         context.update(json.loads(result.context))
 
@@ -1973,14 +2048,14 @@ def course_rating(request):
 
     context['course_rating'] = round(course_rating, 2)
 
-    courses = models.Course.objects.filter(
+    models.Course(
+        uid=request.session.session_key,
         identifier=request.session['course_id'],
-        moodle=request.session['moodle']
-    )
-    for course in courses:
-        course.rating = context['course_rating']
-        course.context = json.dumps(context)
-        course.save()
+        moodle=request.session['moodle'],
+        rating=context['course_rating'],
+        context=json.dumps(context),
+        datetime=datetime.now().astimezone(pytz.timezone(settings.TIME_ZONE))
+    ).save()
 
     return render(request, 'results.html', context)
 
@@ -1991,7 +2066,7 @@ def history(request):
         'username': user.username if not user.is_anonymous else 'Anonymous',
         'is_superuser': user.is_superuser,
         'is_anonymous': user.is_anonymous,
-        'courses': [course for course in models.Course.objects.all() if course.context != '']
+        'courses': models.Course.objects.all()
     }
     return render(request, 'history.html', context)
 
@@ -1999,11 +2074,22 @@ def history(request):
 def show_course_result(request):
     course_id = request.GET.get('course_id')
     moodle = request.GET.get('moodle')
+    dt = datetime.strptime(request.GET.get('datetime'), '%d.%m.%Y %H:%M:%S')
+    uid = request.GET.get('uid')
     courses = models.Course.objects.filter(
         identifier=course_id,
-        moodle=moodle
+        moodle=moodle,
+        uid=uid
     )
     context = {}
     for course in courses:
-        context = json.loads(course.context)
+        c_dt = course.datetime.astimezone(pytz.timezone(settings.TIME_ZONE))
+        if c_dt.day == dt.day and c_dt.month == dt.month and c_dt.year == dt.year and \
+                c_dt.hour == dt.hour and c_dt.minute == dt.minute and c_dt.second == dt.second:
+            context = json.loads(course.context)
     return render(request, 'results.html', context)
+
+
+def clear_history(request):
+    models.Course.objects.all().delete()
+    return redirect('/history/')
