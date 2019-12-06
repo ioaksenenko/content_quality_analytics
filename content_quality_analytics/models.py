@@ -1,6 +1,7 @@
 import json
 
 from django.db import models
+from datetime import datetime as dt
 
 
 class Module(models.Model):
@@ -81,12 +82,12 @@ class Results(models.Model):
 
 
 class Course(models.Model):
-    uid = models.CharField(max_length=255)
-    identifier = models.IntegerField()
-    moodle = models.CharField(max_length=255)
+    uid = models.CharField(max_length=255, default='')
+    identifier = models.IntegerField(default=0)
+    moodle = models.CharField(max_length=255, default='')
     rating = models.FloatField(default=0)
     context = models.CharField(max_length=255, default='')
-    datetime = models.DateTimeField()
+    datetime = models.DateTimeField(default=dt.now())
 
     def __str__(self):
         return json.dumps({
