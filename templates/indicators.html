@@ -5,8 +5,21 @@
 	<link rel="stylesheet" type="text/css" href="{% static "css/indicators.css" %}" />
     <script src="{% static "js/indicators.js" %}"></script>
 {% endblock %}
+{% block header %}
+    {{ block.super }}
+    <div class="row pl-3 mt-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">1. Определение структуры</li>
+                <li class="breadcrumb-item active">2. Выбор показателей</li>
+                <li class="breadcrumb-item">3. Экспертный анализ</li>
+                <li class="breadcrumb-item">4. Результаты</li>
+            </ol>
+        </nav>
+    </div>
+{% endblock %}
 {% block main %}
-<div class="container-fluid mb-3 mt-3">
+<div class="container-fluid mb-3">
     <!--<div class="row">
 		<div class="col-auto">
             <div class="alert alert-info" role="alert">

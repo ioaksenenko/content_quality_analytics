@@ -6,8 +6,21 @@
     <link rel="stylesheet" type="text/css" href="{% static "css/results.css" %}" />
     <script src="{% static "js/results.js" %}"></script>
 {% endblock %}
+{% block header %}
+    {{ block.super }}
+    <div class="row pl-3 mt-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">1. Определение структуры</li>
+                <li class="breadcrumb-item">2. Выбор показателей</li>
+                <li class="breadcrumb-item">3. Экспертный анализ</li>
+                <li class="breadcrumb-item active">4. Результаты</li>
+            </ol>
+        </nav>
+    </div>
+{% endblock %}
 {% block main %}
-<div class="container-fluid mb-3 mt-3">
+<div class="container-fluid mb-3">
     <div class="row">
         <div class="col">
             <form action="{% url 'course-rating' %}" enctype="multipart/form-data" method="post" id="results">
@@ -1979,6 +1992,24 @@
                                 </div>
                             </div>
                         {% endif %}
+                        {% if course_rating %}
+                        <div class="row ml-auto mt-3">
+                                <div class="col-auto p-0">
+                                    <p><b>Рейтинг курса:</b></p>
+                                </div>
+                                <div class="col">
+                                    <p><b>{{ course_rating }}</b></p>
+                                </div>
+                            </div>
+                        {% endif %}
+                        <div class="row ml-auto mt-3">
+                            <div class="col-auto p-0">
+                                <button type="submit" class="btn btn-primary mb-3" id="next">Рассчитать рейтинг</button>
+                            </div>
+                            <div class="col-auto d-none" id="spinner">
+                                <div class="spinner-border text-primary" role="status"></div>
+                            </div>
+                        </div>
                     </div>
                     {% if theory_modules %}
                         {% for name, content, result, indicators in theory_modules %}
@@ -3699,24 +3730,6 @@
                     {% endif %}
                 </div>
                 {% endwith %}
-                {% if course_rating %}
-                    <div class="row ml-auto mt-3">
-                        <div class="col-auto p-0">
-                            <p><b>Рейтинг курса:</b></p>
-                        </div>
-                        <div class="col">
-                            <p><b>{{ course_rating }}</b></p>
-                        </div>
-                    </div>
-                {% endif %}
-                <div class="row ml-auto mt-3">
-                    <div class="col-auto p-0">
-                        <button type="submit" class="btn btn-primary mb-3" id="next">Рассчитать рейтинг</button>
-                    </div>
-                    <div class="col-auto d-none" id="spinner">
-                        <div class="spinner-border text-primary" role="status"></div>
-                    </div>
-                </div>
             </form>
         </div>
     </div>
