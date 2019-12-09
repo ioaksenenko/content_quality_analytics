@@ -47,6 +47,8 @@ function dynamic_nav() {
     let dropdown_items = $('.dropdown-item');
     let n = dropdown_items.length;
     dropdown_items.each(function (i, e) {
+        console.log(nav.innerHeight());
+        console.log(height);
         if (nav.innerHeight() === height) {
             $(e).removeClass('dropdown-item');
             $(e).addClass('nav-link');
@@ -65,6 +67,7 @@ function dynamic_nav() {
         }
     });
     let dropdown = $('.dropdown');
+    console.log(n);
     if (n === 0) {
         dropdown.detach();
     }
