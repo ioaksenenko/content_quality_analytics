@@ -100,10 +100,6 @@ function dynamic_nav() {
     dropdown_dividers.each(function (i, e) {
         let prev = $(e).prev();
         let next = $(e).next();
-        console.log($(e));
-        console.log(prev);
-        console.log(next);
-        console.log('----');
         if (prev.length === 0 || next.length === 0 || prev.hasClass('dropdown-divider') || next.hasClass('dropdown-divider')) {
             $(e).detach();
         }

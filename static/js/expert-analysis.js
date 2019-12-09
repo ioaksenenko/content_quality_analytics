@@ -45,11 +45,13 @@ function dynamic_nav() {
     let nav = $('#modules-tabs');
     let height = nav.innerHeight();
     let dropdown_items = $('.dropdown-item');
+    let n = dropdown_items.length;
     dropdown_items.each(function (i, e) {
         if (nav.innerHeight() === height) {
             $(e).removeClass('dropdown-item');
             $(e).addClass('nav-link');
             nav.append($('<li class="nav-item"></li>').append($(e)));
+            n--;
         } else {
             let dropdown_menu = $('.dropdown-menu');
             let nav_item = nav.find('li:last-child');
@@ -58,12 +60,12 @@ function dynamic_nav() {
             nav_link.addClass('dropdown-item');
             dropdown_menu.prepend(nav_link);
             nav_item.detach();
+            n++;
             return false;
         }
     });
-    dropdown_items = $('.dropdown-item');
     let dropdown = $('.dropdown');
-    if (dropdown_items.length === 0) {
+    if (n === 0) {
         dropdown.detach();
     }
     nav.append(dropdown);
@@ -72,10 +74,6 @@ function dynamic_nav() {
     dropdown_dividers.each(function (i, e) {
         let prev = $(e).prev();
         let next = $(e).next();
-        console.log($(e));
-        console.log(prev);
-        console.log(next);
-        console.log('----');
         if (prev.length === 0 || next.length === 0 || prev.hasClass('dropdown-divider') || next.hasClass('dropdown-divider')) {
             $(e).detach();
         }
