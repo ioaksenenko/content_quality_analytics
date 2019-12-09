@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc8d65a7-0ad6-4cba-9c3a-e5bdd5e2cbc1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/js/expert-analysis.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/expert-analysis.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/results.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/results.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/expert-analysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/expert-analysis.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/results.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/results.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -75,8 +78,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/results.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="248">
-              <caret line="4111" column="33" selection-start-line="4111" selection-start-column="33" selection-end-line="4111" selection-end-column="33" />
+            <state relative-caret-position="462">
+              <caret line="4123" column="14" selection-start-line="4123" selection-start-column="14" selection-end-line="4123" selection-end-column="14" />
               <folding>
                 <element signature="e#265#283#0#DjangoTemplate" />
                 <element signature="e#1759#6564#0#HTML" />
@@ -86,8 +89,7 @@
                 <element signature="e#3724#3793#0#DjangoTemplate" />
                 <element signature="e#4129#4201#0#DjangoTemplate" />
                 <element signature="e#5240#5364#0#DjangoTemplate" />
-                <element signature="e#6706#228846#0#HTML" />
-                <element signature="e#227252#227275#0#DjangoTemplate" />
+                <element signature="e#8181#230321#0#HTML" />
               </folding>
             </state>
           </provider>
@@ -106,19 +108,7 @@
         <entry file="file://$PROJECT_DIR$/static/js/results.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="343">
-              <caret line="83" column="35" selection-start-line="83" selection-start-column="27" selection-end-line="83" selection-end-column="35" />
-              <folding>
-                <element signature="n#!!block;n#show_tooltip#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/js/expert-analysis.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="53" column="16" selection-start-line="53" selection-start-column="16" selection-end-line="53" selection-end-column="16" />
+              <caret line="98" column="5" lean-forward="true" selection-start-line="98" selection-start-column="5" selection-end-line="98" selection-end-column="5" />
               <folding>
                 <element signature="n#!!block;n#show_tooltip#0" />
               </folding>
@@ -127,10 +117,21 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/static/js/expert-analysis.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="57" column="53" lean-forward="true" selection-start-line="57" selection-start-column="53" selection-end-line="57" selection-end-column="53" />
+              <folding>
+                <element signature="n#!!block;n#show_tooltip#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/expert-analysis.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="1074" column="10" lean-forward="true" selection-start-line="1074" selection-start-column="10" selection-end-line="1074" selection-end-column="10" />
+            <state>
               <folding>
                 <element signature="e#275#293#0#DjangoTemplate" />
                 <element signature="e#1668#13121#0#HTML" />
@@ -240,11 +241,11 @@
         <option value="$PROJECT_DIR$/content_quality_analytics/models.py" />
         <option value="$PROJECT_DIR$/templates/indicators.html" />
         <option value="$PROJECT_DIR$/templates/modules.html" />
-        <option value="$PROJECT_DIR$/templates/results.html" />
         <option value="$PROJECT_DIR$/static/css/results.css" />
-        <option value="$PROJECT_DIR$/static/js/results.js" />
-        <option value="$PROJECT_DIR$/static/js/expert-analysis.js" />
         <option value="$PROJECT_DIR$/templates/expert-analysis.html" />
+        <option value="$PROJECT_DIR$/templates/results.html" />
+        <option value="$PROJECT_DIR$/static/js/expert-analysis.js" />
+        <option value="$PROJECT_DIR$/static/js/results.js" />
       </list>
     </option>
   </component>
@@ -443,16 +444,15 @@
       <workItem from="1575517191258" duration="21748000" />
       <workItem from="1575603566076" duration="14121000" />
       <workItem from="1575620652033" duration="12214000" />
-      <workItem from="1575860686104" duration="14754000" />
+      <workItem from="1575860686104" duration="16152000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="647703000" />
+    <option name="totallyTimeSpent" value="649101000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23400854" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -819,30 +819,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/results.js">
+    <entry file="file://$PROJECT_DIR$/templates/expert-analysis.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="83" column="35" selection-start-line="83" selection-start-column="27" selection-end-line="83" selection-end-column="35" />
+        <state>
           <folding>
-            <element signature="n#!!block;n#show_tooltip#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/expert-analysis.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="53" column="16" selection-start-line="53" selection-start-column="16" selection-end-line="53" selection-end-column="16" />
-          <folding>
-            <element signature="n#!!block;n#show_tooltip#0" />
+            <element signature="e#275#293#0#DjangoTemplate" />
+            <element signature="e#1668#13121#0#HTML" />
+            <element signature="e#11149#93088#0#HTML" />
+            <element signature="e#7517#7572#0#DjangoTemplate" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/results.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="4111" column="33" selection-start-line="4111" selection-start-column="33" selection-end-line="4111" selection-end-column="33" />
+        <state relative-caret-position="462">
+          <caret line="4123" column="14" selection-start-line="4123" selection-start-column="14" selection-end-line="4123" selection-end-column="14" />
           <folding>
             <element signature="e#265#283#0#DjangoTemplate" />
             <element signature="e#1759#6564#0#HTML" />
@@ -852,21 +844,27 @@
             <element signature="e#3724#3793#0#DjangoTemplate" />
             <element signature="e#4129#4201#0#DjangoTemplate" />
             <element signature="e#5240#5364#0#DjangoTemplate" />
-            <element signature="e#6706#228846#0#HTML" />
-            <element signature="e#227252#227275#0#DjangoTemplate" />
+            <element signature="e#8181#230321#0#HTML" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/expert-analysis.html">
+    <entry file="file://$PROJECT_DIR$/static/js/results.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="1074" column="10" lean-forward="true" selection-start-line="1074" selection-start-column="10" selection-end-line="1074" selection-end-column="10" />
+        <state relative-caret-position="343">
+          <caret line="98" column="5" lean-forward="true" selection-start-line="98" selection-start-column="5" selection-end-line="98" selection-end-column="5" />
           <folding>
-            <element signature="e#275#293#0#DjangoTemplate" />
-            <element signature="e#1668#13121#0#HTML" />
-            <element signature="e#11149#93088#0#HTML" />
-            <element signature="e#7517#7572#0#DjangoTemplate" />
+            <element signature="n#!!block;n#show_tooltip#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/expert-analysis.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="57" column="53" lean-forward="true" selection-start-line="57" selection-start-column="53" selection-end-line="57" selection-end-column="53" />
+          <folding>
+            <element signature="n#!!block;n#show_tooltip#0" />
           </folding>
         </state>
       </provider>

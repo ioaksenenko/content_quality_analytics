@@ -46,6 +46,7 @@ function dynamic_nav() {
     let height = nav.innerHeight();
     let dropdown_items = $('.dropdown-item');
     let n = dropdown_items.length;
+    let dropdown = $('.dropdown');
     dropdown_items.each(function (i, e) {
         if (nav.innerHeight() === height) {
             $(e).removeClass('dropdown-item');
@@ -60,15 +61,14 @@ function dynamic_nav() {
             nav_link.addClass('dropdown-item');
             dropdown_menu.prepend(nav_link);
             nav_item.detach();
+            nav.append(dropdown);
             n++;
             return false;
         }
     });
-    let dropdown = $('.dropdown');
     if (n === 0) {
         dropdown.detach();
     }
-    nav.append(dropdown);
 
     let dropdown_dividers = $('.dropdown-divider');
     dropdown_dividers.each(function (i, e) {
