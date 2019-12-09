@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="cc8d65a7-0ad6-4cba-9c3a-e5bdd5e2cbc1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/static/js/expert-analysis.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/expert-analysis.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/results.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/results.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -115,8 +114,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/js/expert-analysis.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="63" column="39" lean-forward="true" selection-start-line="63" selection-start-column="39" selection-end-line="63" selection-end-column="39" />
+            <state relative-caret-position="177">
+              <caret line="52" column="46" lean-forward="true" selection-start-line="52" selection-start-column="46" selection-end-line="52" selection-end-column="46" />
               <folding>
                 <element signature="n#!!block;n#show_tooltip#0" />
               </folding>
@@ -239,8 +238,8 @@
         <option value="$PROJECT_DIR$/templates/results.html" />
         <option value="$PROJECT_DIR$/templates/expert-analysis.html" />
         <option value="$PROJECT_DIR$/static/css/results.css" />
-        <option value="$PROJECT_DIR$/static/js/expert-analysis.js" />
         <option value="$PROJECT_DIR$/static/js/results.js" />
+        <option value="$PROJECT_DIR$/static/js/expert-analysis.js" />
       </list>
     </option>
   </component>
@@ -439,16 +438,15 @@
       <workItem from="1575517191258" duration="21748000" />
       <workItem from="1575603566076" duration="14121000" />
       <workItem from="1575620652033" duration="12214000" />
-      <workItem from="1575860686104" duration="13341000" />
+      <workItem from="1575860686104" duration="13707000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="646290000" />
+    <option name="totallyTimeSpent" value="646656000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23400854" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -855,8 +853,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/js/expert-analysis.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="63" column="39" lean-forward="true" selection-start-line="63" selection-start-column="39" selection-end-line="63" selection-end-column="39" />
+        <state relative-caret-position="177">
+          <caret line="52" column="46" lean-forward="true" selection-start-line="52" selection-start-column="46" selection-end-line="52" selection-end-column="46" />
           <folding>
             <element signature="n#!!block;n#show_tooltip#0" />
           </folding>

@@ -67,9 +67,9 @@ function dynamic_nav() {
         }
     });
     let dropdown = $('.dropdown');
-    console.log(n);
     if (n === 0) {
         dropdown.detach();
+        console.log('dsfsd');
     }
     nav.append(dropdown);
 
