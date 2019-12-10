@@ -2219,6 +2219,24 @@
                                 </div>
                             </div>
                         {% endif %}
+                        {% if course_rating %}
+                            <div class="row ml-auto pt-3 bg-light">
+                                <div class="col-auto p-0">
+                                    <p><b>Рейтинг курса:</b></p>
+                                </div>
+                                <div class="col">
+                                    <p><b>{{ course_rating }}</b></p>
+                                </div>
+                            </div>
+                        {% endif %}
+                        <div class="row ml-auto bg-light {% if not course_rating %}pt-3{% endif %}">
+                            <div class="col-auto p-0">
+                                <button type="submit" class="btn btn-primary mb-3" id="next">Рассчитать рейтинг</button>
+                            </div>
+                            <div class="col-auto d-none" id="spinner">
+                                <div class="spinner-border text-primary" role="status"></div>
+                            </div>
+                        </div>
                     </div>
                     {% if theory_modules %}
                         {% for name, content, result, indicators in theory_modules %}
@@ -4100,29 +4118,11 @@
                             </div>
                         {% endfor %}
                     {% endif %}
+                    {% if uid %}
+                        <input type="hidden" value="{{ uid }}" name="uid">
+                    {% endif %}
                 </div>
                 {% endwith %}
-                {% if course_rating %}
-                    <div class="row ml-auto pt-3 bg-light">
-                        <div class="col-auto p-0">
-                            <p><b>Рейтинг курса:</b></p>
-                        </div>
-                        <div class="col">
-                            <p><b>{{ course_rating }}</b></p>
-                        </div>
-                    </div>
-                {% endif %}
-                <div class="row ml-auto bg-light {% if not course_rating %}pt-3{% endif %}">
-                    <div class="col-auto p-0">
-                        <button type="submit" class="btn btn-primary mb-3" id="next">Рассчитать рейтинг</button>
-                    </div>
-                    <div class="col-auto d-none" id="spinner">
-                        <div class="spinner-border text-primary" role="status"></div>
-                    </div>
-                </div>
-                {% if uid %}
-                    <input type="hidden" value="{{ uid }}" name="uid">
-                {% endif %}
             </form>
         </div>
     </div>
