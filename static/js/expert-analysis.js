@@ -20,6 +20,34 @@ $(document).ready(function () {
         $(e).focus(show_tooltip);
     });
 
+    let collapse = $('a[data-toggle="collapse"]');
+    let collapse_show = $('a[data-toggle="collapse"][aria-expanded="true"]');
+    let collapse_hide = $('a[data-toggle="collapse"][aria-expanded="false"]');
+
+    /*collapse_show.each(function (i, e) {
+        $(e).find(">:first-child").prepend('<span class="show mr-3"><i class="fas fa-angle-down"></i></span>');
+        $(e).find(">:first-child").prepend('<span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>');
+    });
+
+    collapse_hide.each(function (i, e) {
+        $(e).find(">:first-child").prepend('<span class="show d-none mr-3"><i class="fas fa-angle-down"></i></span>');
+        $(e).find(">:first-child").prepend('<span class="hide mr-3"><i class="fas fa-angle-right"></i></span>');
+    });*/
+
+    collapse.each(function (i, e) {
+        let collapse = $($(e).attr('href'));
+        collapse.on('hidden.bs.collapse', function () {
+            let trigger = $('a[data-toggle="collapse"][aria-expanded="false"][href="#'+$(this).attr('id')+'"]');
+            trigger.find('.hide').removeClass('d-none');
+            trigger.find('.show').addClass('d-none');
+        });
+        collapse.on('shown.bs.collapse', function () {
+            let trigger = $('a[data-toggle="collapse"][aria-expanded="true"][href="#'+$(this).attr('id')+'"]');
+            trigger.find('.show').removeClass('d-none');
+            trigger.find('.hide').addClass('d-none');
+        });
+    });
+
     dynamic_nav();
 });
 

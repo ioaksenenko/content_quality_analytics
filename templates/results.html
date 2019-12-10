@@ -3028,10 +3028,11 @@
                                                                 <td class="align-middle">{{ forloop.counter }}</td>
                                                                 <td class="align-middle">{{ question }}</td>
                                                                 <td class="align-middle">
-                                                                    <div class="form-group">
+                                                                    <!--<div class="form-group">
                                                                         <label for="{{ name }}-self-test-single-difficulty-factor-{{ forloop.counter }}"></label>
-                                                                        <input type="range" class="form-control-range custom-range" id="{{ name }}-self-test-single-difficulty-factor-{{ forloop.counter }}" min="0" max="10" step="1" value="{{ expert_analysis.difficulty_factor|index:i }}" data-toggle="tooltip" data-placement="top" title="{{ expert_analysis.difficulty_factor|index:i }}" name="{{ name }}-self-test-single-difficulty-factor">
-                                                                    </div>
+                                                                        <input type="range" class="form-control-range custom-range" id="{{ name }}-self-test-single-difficulty-factor-{{ forloop.counter }}" min="0" max="10" step="1" value="{{ expert_analysis.difficulty_factor|index:i }}" data-toggle="tooltip" data-placement="top" title="{{ expert_analysis.difficulty_factor|index:i }}" name="{{ name }}-self-test-single-difficulty-factor" disabled>
+                                                                    </div>-->
+                                                                    {{ expert_analysis.difficulty_factor|index:i }}
                                                                 </td>
                                                             </tr>
                                                         {% endwith %}
@@ -3068,10 +3069,11 @@
                                                                 <td class="align-middle">{{ forloop.counter }}</td>
                                                                 <td class="align-middle">{{ question }}</td>
                                                                 <td class="align-middle">
-                                                                    <div class="form-group">
+                                                                    <!--<div class="form-group">
                                                                         <label for="{{ name }}-self-test-single-completion-rate-{{ forloop.counter }}"></label>
-                                                                        <input type="range" class="form-control-range custom-range" id="{{ name }}-self-test-single-completion-rate-{{ forloop.counter }}" min="0" max="100" step="1" value="{{ expert_analysis.completion_rate|index:i }}" data-toggle="tooltip" data-placement="top" title="{{ expert_analysis.difficulty_factor|index:i }}" name="{{ name }}-self-test-single-completion-rate">
-                                                                    </div>
+                                                                        <input type="range" class="form-control-range custom-range" id="{{ name }}-self-test-single-completion-rate-{{ forloop.counter }}" min="0" max="100" step="1" value="{{ expert_analysis.completion_rate|index:i }}" data-toggle="tooltip" data-placement="top" title="{{ expert_analysis.difficulty_factor|index:i }}" name="{{ name }}-self-test-single-completion-rate" disabled>
+                                                                    </div>-->
+                                                                    {{ expert_analysis.completion_rate|index:i }}
                                                                 </td>
                                                             </tr>
                                                         {% endwith %}
@@ -3108,7 +3110,7 @@
                                                             <td>{{ question }}</td>
                                                             <td>
                                                                 <div class="form-check">
-                                                                    <input class="form-check-input" type="checkbox" value="{{ forloop.counter }}" id="{{ name }}-self-test-single-has-answers-{{ forloop.counter }}" name="{{ name }}-self-test-single-has-answers" {% if forloop.counter|stringformat:'d' in expert_analysis.has_answers %}checked{% endif %}>
+                                                                    <input class="form-check-input" type="checkbox" value="{{ forloop.counter }}" id="{{ name }}-self-test-single-has-answers-{{ forloop.counter }}" name="{{ name }}-self-test-single-has-answers" {% if forloop.counter|stringformat:'d' in expert_analysis.has_answers %}checked{% endif %} disabled>
                                                                     <label class="form-check-label" for="{{ name }}-self-test-single-has-answers-{{ forloop.counter }}"></label>
                                                                 </div>
                                                             </td>
@@ -3146,7 +3148,7 @@
                                                             <td>{{ question }}</td>
                                                             <td>
                                                                 <div class="form-check">
-                                                                    <input class="form-check-input" type="checkbox" value="{{ forloop.counter }}" id="{{ name }}-self-test-single-has-links-{{ forloop.counter }}" name="{{ name }}-self-test-single-has-links" {% if forloop.counter|stringformat:'d' in expert_analysis.has_links %}checked{% endif %}>
+                                                                    <input class="form-check-input" type="checkbox" value="{{ forloop.counter }}" id="{{ name }}-self-test-single-has-links-{{ forloop.counter }}" name="{{ name }}-self-test-single-has-links" {% if forloop.counter|stringformat:'d' in expert_analysis.has_links %}checked{% endif %} disabled>
                                                                     <label class="form-check-label" for="{{ name }}-self-test-single-has-links-{{ forloop.counter }}"></label>
                                                                 </div>
                                                             </td>
@@ -3170,7 +3172,7 @@
                                     <div class="row collapse show ml-5" id="collapse-self-test-single-special-opinion-{{ name }}">
                                         <div class="col-6">
                                             <label for="{{ name }}-self-test-single-special-opinion" class="d-none"></label>
-                                            <textarea class="form-control" id="{{ name }}-self-test-single-special-opinion" placeholder="Введите своё мнение о вопросах или заданиях"  name="{{ name }}-self-test-single-special-opinion">{{ expert_analysis.special_opinion }}</textarea>
+                                            <textarea class="form-control" id="{{ name }}-self-test-single-special-opinion" placeholder="Введите своё мнение о вопросах или заданиях"  name="{{ name }}-self-test-single-special-opinion" disabled>{{ expert_analysis.special_opinion }}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -3194,10 +3196,11 @@
                                     </div>
                                     <div class="row align-items-center collapse show ml-5" id="collapse-control-and-exam-test-single-volume-{{ name }}">
                                         <div class="col-4">
-                                            <div class="form-group">
+                                            <!--<div class="form-group">
                                                 <label for="{{ name }}-control-and-exam-test-single-volume"></label>
-                                                <input type="range" class="form-control-range custom-range" id="{{ name }}-control-and-exam-test-single-volume" min="0" max="10" step="1" value="{{ expert_analysis.volume }}" data-toggle="tooltip" data-placement="top" title="{{ expert_analysis.volume }}" name="{{ name }}-control-and-exam-test-single-volume">
-                                            </div>
+                                                <input type="range" class="form-control-range custom-range" id="{{ name }}-control-and-exam-test-single-volume" min="0" max="10" step="1" value="{{ expert_analysis.volume }}" data-toggle="tooltip" data-placement="top" title="{{ expert_analysis.volume }}" name="{{ name }}-control-and-exam-test-single-volume" disabled>
+                                            </div>-->
+                                            {{ expert_analysis.volume }}
                                         </div>
                                     </div>
                                     <div class="row mb-3 mt-3">
@@ -3214,7 +3217,7 @@
                                     <div class="row collapse show ml-5" id="collapse-control-and-exam-test-single-has-generation-{{ name }}">
                                         <div class="col">
                                             <div class="custom-control custom-switch">
-                                                <input type="checkbox" class="custom-control-input" id="{{ name }}-control-and-exam-test-single-has-generation" name="{{ name }}-control-and-exam-test-single-has-generation" {% if expert_analysis.has_generation == 'on' %}checked{% endif %}>
+                                                <input type="checkbox" class="custom-control-input" id="{{ name }}-control-and-exam-test-single-has-generation" name="{{ name }}-control-and-exam-test-single-has-generation" {% if expert_analysis.has_generation == 'on' %}checked{% endif %} disabled>
                                                 <label class="custom-control-label" for="{{ name }}-control-and-exam-test-single-has-generation">Да / Нет</label>
                                             </div>
                                         </div>
@@ -3233,11 +3236,11 @@
                                     <div class="row collapse show ml-5" id="collapse-control-and-exam-test-single-technology-{{ name }}">
                                         <div class="col">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="simple" id="{{ name }}-control-and-exam-test-single-testing-technology-simple" name="{{ name }}-control-and-exam-test-single-testing-technology" {% if 'simple' in expert_analysis.testing_technology %}checked{% endif %}>
+                                                <input class="form-check-input" type="checkbox" value="simple" id="{{ name }}-control-and-exam-test-single-testing-technology-simple" name="{{ name }}-control-and-exam-test-single-testing-technology" {% if 'simple' in expert_analysis.testing_technology %}checked{% endif %} disabled>
                                                 <label class="form-check-label" for="{{ name }}-control-and-exam-test-single-testing-technology-simple">Простое тестирование</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="adaptive" id="{{ name }}-control-and-exam-test-single-testing-technology-adaptive" name="{{ name }}-control-and-exam-test-single-testing-technology" {% if 'adaptive' in expert_analysis.testing_technology %}checked{% endif %}>
+                                                <input class="form-check-input" type="checkbox" value="adaptive" id="{{ name }}-control-and-exam-test-single-testing-technology-adaptive" name="{{ name }}-control-and-exam-test-single-testing-technology" {% if 'adaptive' in expert_analysis.testing_technology %}checked{% endif %} disabled>
                                                 <label class="form-check-label" for="{{ name }}-control-and-exam-test-single-testing-technology-adaptive">Адаптивное тестирование</label>
                                             </div>
                                         </div>
@@ -3256,7 +3259,7 @@
                                     <div class="row collapse show ml-5" id="collapse-control-and-exam-test-single-has-codifier-{{ name }}">
                                         <div class="col">
                                             <div class="custom-control custom-switch">
-                                                <input type="checkbox" class="custom-control-input" id="{{ name }}-control-and-exam-test-single-has-codifier" name="{{ name }}-control-and-exam-test-single-has-codifier" {% if expert_analysis.has_codifier == 'on' %}checked{% endif %}>
+                                                <input type="checkbox" class="custom-control-input" id="{{ name }}-control-and-exam-test-single-has-codifier" name="{{ name }}-control-and-exam-test-single-has-codifier" {% if expert_analysis.has_codifier == 'on' %}checked{% endif %} disabled>
                                                 <label class="custom-control-label" for="{{ name }}-control-and-exam-test-single-has-codifier">Да / Нет</label>
                                             </div>
                                         </div>
@@ -3291,7 +3294,7 @@
                                                             <td class="align-middle">
                                                                 <div class="form-group">
                                                                     <label for="{{ name }}-control-and-exam-test-single-course-section-{{ forloop.counter }}" class="d-none"></label>
-                                                                    <input type="text" class="form-control" id="{{ name }}-control-and-exam-test-single-course-section-{{ forloop.counter }}" placeholder="" name="{{ name }}-control-and-exam-test-single-course-section" value="{{ expert_analysis.course_section|index:i }}">
+                                                                    <input type="text" class="form-control" id="{{ name }}-control-and-exam-test-single-course-section-{{ forloop.counter }}" placeholder="" name="{{ name }}-control-and-exam-test-single-course-section" value="{{ expert_analysis.course_section|index:i }}" disabled>
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -3329,7 +3332,7 @@
                                                         <td class="align-middle w-50">{% autoescape off %}{{ question }}{% endautoescape %}</td>
                                                         <td class="align-middle">
                                                             <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="{{ forloop.counter }}-validity" id="{{ name }}-control-and-exam-test-single-researches-validity-{{ forloop.counter }}" name="{{ name }}-control-and-exam-test-single-researches" {% if forloop.counter|stringformat:"d"|concat:'-validity' in expert_analysis.researches %}checked{% endif %}>
+                                                                <input class="form-check-input" type="checkbox" value="{{ forloop.counter }}-validity" id="{{ name }}-control-and-exam-test-single-researches-validity-{{ forloop.counter }}" name="{{ name }}-control-and-exam-test-single-researches" {% if forloop.counter|stringformat:"d"|concat:'-validity' in expert_analysis.researches %}checked{% endif %} disabled>
                                                                 <label class="form-check-label" for="{{ name }}-control-and-exam-test-single-researches-validity-{{ forloop.counter }}">На валидность</label>
                                                             </div>
                                                         </td>
@@ -3353,7 +3356,7 @@
                                     <div class="row collapse show ml-5" id="collapse-control-and-exam-test-single-special-opinion-{{ name }}">
                                         <div class="col-4">
                                             <label for="{{ name }}-control-and-exam-test-single-special-opinion" class="d-none"></label>
-                                            <textarea class="form-control" id="{{ name }}-control-and-exam-test-single-special-opinion" placeholder="Введите своё мнение о вопросах или заданиях" name="{{ name }}-control-and-exam-test-single-special-opinion">{{ expert_analysis.special_opinion }}</textarea>
+                                            <textarea class="form-control" id="{{ name }}-control-and-exam-test-single-special-opinion" placeholder="Введите своё мнение о вопросах или заданиях" name="{{ name }}-control-and-exam-test-single-special-opinion" disabled>{{ expert_analysis.special_opinion }}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -3387,15 +3390,15 @@
                                     <div class="row collapse show ml-5" id="collapse-video-file-single-target-{{ name }}">
                                         <div class="col">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="introductory" id="{{ name }}-video-file-single-target-introductory" name="{{ name }}-video-file-single-target" {% if 'introductory' in expert_analysis.target %}checked{% endif %}>
+                                                <input class="form-check-input" type="radio" value="introductory" id="{{ name }}-video-file-single-target-introductory" name="{{ name }}-video-file-single-target" {% if 'introductory' in expert_analysis.target %}checked{% endif %} disabled>
                                                 <label class="form-check-label" for="{{ name }}-video-file-single-target-introductory">Вводная</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="subsidiary" id="{{ name }}-video-file-single-target-subsidiary" name="{{ name }}-video-file-single-target" {% if 'subsidiary' in expert_analysis.target %}checked{% endif %}>
+                                                <input class="form-check-input" type="radio" value="subsidiary" id="{{ name }}-video-file-single-target-subsidiary" name="{{ name }}-video-file-single-target" {% if 'subsidiary' in expert_analysis.target %}checked{% endif %} disabled>
                                                 <label class="form-check-label" for="{{ name }}-video-file-single-target-subsidiary">Вспомогательная</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="illustrative" id="{{ name }}-video-file-single-target-illustrative" name="{{ name }}-video-file-single-target" {% if 'illustrative' in expert_analysis.target %}checked{% endif %}>
+                                                <input class="form-check-input" type="radio" value="illustrative" id="{{ name }}-video-file-single-target-illustrative" name="{{ name }}-video-file-single-target" {% if 'illustrative' in expert_analysis.target %}checked{% endif %} disabled>
                                                 <label class="form-check-label" for="{{ name }}-video-file-single-target-illustrative">Иллюстративная</label>
                                             </div>
                                         </div>
@@ -3414,15 +3417,15 @@
                                     <div class="row collapse show ml-5" id="collapse-video-file-single-duration-{{ name }}">
                                         <div class="col">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="short" id="{{ name }}-video-file-single-duration-short" name="{{ name }}-video-file-single-duration" {% if 'short' in expert_analysis.duration %}checked{% endif %}>
+                                                <input class="form-check-input" type="radio" value="short" id="{{ name }}-video-file-single-duration-short" name="{{ name }}-video-file-single-duration" {% if 'short' in expert_analysis.duration %}checked{% endif %} disabled>
                                                 <label class="form-check-label" for="{{ name }}-video-file-single-duration-short">Слишком короткое</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="normal" id="{{ name }}-video-file-single-duration-normal" name="{{ name }}-video-file-single-duration" {% if 'normal' in expert_analysis.duration %}checked{% endif %}>
+                                                <input class="form-check-input" type="radio" value="normal" id="{{ name }}-video-file-single-duration-normal" name="{{ name }}-video-file-single-duration" {% if 'normal' in expert_analysis.duration %}checked{% endif %} disabled>
                                                 <label class="form-check-label" for="{{ name }}-video-file-single-duration-normal">Нормальное</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="long" id="{{ name }}-video-file-single-duration-long" name="{{ name }}-video-file-single-duration" {% if 'long' in expert_analysis.duration %}checked{% endif %}>
+                                                <input class="form-check-input" type="radio" value="long" id="{{ name }}-video-file-single-duration-long" name="{{ name }}-video-file-single-duration" {% if 'long' in expert_analysis.duration %}checked{% endif %} disabled>
                                                 <label class="form-check-label" for="{{ name }}-video-file-single-duration-long">Слишком длинное</label>
                                             </div>
                                         </div>
@@ -3441,7 +3444,7 @@
                                     <div class="row collapse show ml-5" id="collapse-video-file-single-has-scenario-{{ name }}">
                                         <div class="col">
                                             <div class="custom-control custom-switch">
-                                                <input type="checkbox" class="custom-control-input" id="{{ name }}-video-file-single-has-scenario" name="{{ name }}-video-file-single-has-scenario" {% if 'on' in expert_analysis.has_scenario %}checked{% endif %}>
+                                                <input type="checkbox" class="custom-control-input" id="{{ name }}-video-file-single-has-scenario" name="{{ name }}-video-file-single-has-scenario" {% if 'on' in expert_analysis.has_scenario %}checked{% endif %} disabled>
                                                 <label class="custom-control-label" for="{{ name }}-video-file-single-has-scenario">Нет / Есть</label>
                                             </div>
                                         </div>
@@ -3460,11 +3463,11 @@
                                     <div class="row collapse show ml-5" id="collapse-video-file-single-complexity-{{ name }}">
                                         <div class="col">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="simple" id="{{ name }}-video-file-single-complexity-simple" name="{{ name }}-video-file-single-complexity" {% if 'simple' in expert_analysis.complexity %}checked{% endif %}>
+                                                <input class="form-check-input" type="radio" value="simple" id="{{ name }}-video-file-single-complexity-simple" name="{{ name }}-video-file-single-complexity" {% if 'simple' in expert_analysis.complexity %}checked{% endif %} disabled>
                                                 <label class="form-check-label" for="{{ name }}-video-file-single-complexity-simple">Простое видео</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="interactive" id="{{ name }}-video-file-single-complexity-interactive" name="{{ name }}-video-file-single-complexity" {% if 'interactive' in expert_analysis.complexity %}checked{% endif %}>
+                                                <input class="form-check-input" type="radio" value="interactive" id="{{ name }}-video-file-single-complexity-interactive" name="{{ name }}-video-file-single-complexity" {% if 'interactive' in expert_analysis.complexity %}checked{% endif %} disabled>
                                                 <label class="form-check-label" for="{{ name }}-video-file-single-complexity-interactive">Интерактивное видео</label>
                                             </div>
                                         </div>
@@ -3483,7 +3486,7 @@
                                     <div class="row collapse show ml-5" id="collapse-video-file-single-has-ticker-{{ name }}">
                                         <div class="col">
                                             <div class="custom-control custom-switch">
-                                                <input type="checkbox" class="custom-control-input" id="{{ name }}-video-file-single-has-ticker" name="{{ name }}-video-file-single-has-ticker" {% if 'on' in expert_analysis.has_ticker %}checked{% endif %}>
+                                                <input type="checkbox" class="custom-control-input" id="{{ name }}-video-file-single-has-ticker" name="{{ name }}-video-file-single-has-ticker" {% if 'on' in expert_analysis.has_ticker %}checked{% endif %} disabled>
                                                 <label class="custom-control-label" for="{{ name }}-video-file-single-has-ticker">Нет / Есть</label>
                                             </div>
                                         </div>
@@ -3502,19 +3505,19 @@
                                     <div class="row collapse show ml-5" id="collapse-video-file-single-recording-quality-{{ name }}">
                                         <div class="col">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="low" id="{{ name }}-video-file-single-recording-quality-low" name="{{ name }}-video-file-single-recording-quality" {% if 'low' in expert_analysis.recording_quality %}checked{% endif %}>
+                                                <input class="form-check-input" type="radio" value="low" id="{{ name }}-video-file-single-recording-quality-low" name="{{ name }}-video-file-single-recording-quality" {% if 'low' in expert_analysis.recording_quality %}checked{% endif %} disabled>
                                                 <label class="form-check-label" for="{{ name }}-video-file-single-recording-quality-low">Плохое</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="normal" id="{{ name }}-video-file-single-recording-quality-normal" name="{{ name }}-video-file-single-recording-quality" {% if 'normal' in expert_analysis.recording_quality %}checked{% endif %}>
+                                                <input class="form-check-input" type="radio" value="normal" id="{{ name }}-video-file-single-recording-quality-normal" name="{{ name }}-video-file-single-recording-quality" {% if 'normal' in expert_analysis.recording_quality %}checked{% endif %} disabled>
                                                 <label class="form-check-label" for="{{ name }}-video-file-single-recording-quality-normal">Нормальное</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="good" id="{{ name }}-video-file-single-recording-quality-good" name="{{ name }}-video-file-single-recording-quality" {% if 'good' in expert_analysis.recording_quality %}checked{% endif %}>
+                                                <input class="form-check-input" type="radio" value="good" id="{{ name }}-video-file-single-recording-quality-good" name="{{ name }}-video-file-single-recording-quality" {% if 'good' in expert_analysis.recording_quality %}checked{% endif %} disabled>
                                                 <label class="form-check-label" for="{{ name }}-video-file-single-recording-quality-good">Хорошее</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="excellent" id="{{ name }}-video-file-single-recording-quality-excellent" name="{{ name }}-video-file-single-recording-quality" {% if 'excellent' in expert_analysis.recording_quality %}checked{% endif %}>
+                                                <input class="form-check-input" type="radio" value="excellent" id="{{ name }}-video-file-single-recording-quality-excellent" name="{{ name }}-video-file-single-recording-quality" {% if 'excellent' in expert_analysis.recording_quality %}checked{% endif %} disabled>
                                                 <label class="form-check-label" for="{{ name }}-video-file-single-recording-quality-excellent">Отличное</label>
                                             </div>
                                         </div>
@@ -3550,15 +3553,15 @@
                                     <div class="row collapse show ml-5" id="collapse-video-lecture-single-coverage-{{ name }}">
                                         <div class="col">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="weak" id="{{ name }}-video-lecture-single-coverage-weak" name="{{ name }}-video-lecture-single-coverage" {% if 'weak' in expert_analysis.coverage %}checked{% endif %}>
+                                                <input class="form-check-input" type="radio" value="weak" id="{{ name }}-video-lecture-single-coverage-weak" name="{{ name }}-video-lecture-single-coverage" {% if 'weak' in expert_analysis.coverage %}checked{% endif %} disabled>
                                                 <label class="form-check-label" for="{{ name }}-video-lecture-single-coverage-weak">Слабая</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="normal" id="{{ name }}-video-lecture-single-coverage-normal" name="{{ name }}-video-lecture-single-coverage" {% if 'normal' in expert_analysis.coverage %}checked{% endif %}>
+                                                <input class="form-check-input" type="radio" value="normal" id="{{ name }}-video-lecture-single-coverage-normal" name="{{ name }}-video-lecture-single-coverage" {% if 'normal' in expert_analysis.coverage %}checked{% endif %} disabled>
                                                 <label class="form-check-label" for="{{ name }}-video-lecture-single-coverage-normal">Нормальная</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="strong" id="{{ name }}-video-lecture-single-coverage-strong" name="{{ name }}-video-lecture-single-coverage" {% if 'strong' in expert_analysis.coverage %}checked{% endif %}>
+                                                <input class="form-check-input" type="radio" value="strong" id="{{ name }}-video-lecture-single-coverage-strong" name="{{ name }}-video-lecture-single-coverage" {% if 'strong' in expert_analysis.coverage %}checked{% endif %} disabled>
                                                 <label class="form-check-label" for="{{ name }}-video-lecture-single-coverage-strong">Сильная</label>
                                             </div>
                                         </div>
@@ -3592,7 +3595,7 @@
                                                                     <td class="align-middle">
                                                                         <div class="input-group">
                                                                             <!--<input type="hidden" value="{{ section }}" name="{{ name }}-video-lecture-sections">-->
-                                                                            <input type="text" class="form-control" id="{{ name }}-video-lecture-single-distribution-{{ forloop.counter }}" placeholder="" aria-label="{{ name }}-video-lecture-single-percent-section-{{ forloop.counter }}" aria-describedby="{{ name }}-video-lecture-single-percent-section-{{ forloop.counter }}" name="{{ name }}-video-lecture-single-distribution" value="{{ expert_analysis.distribution|index:i }}">
+                                                                            <input type="text" class="form-control" id="{{ name }}-video-lecture-single-distribution-{{ forloop.counter }}" placeholder="" aria-label="{{ name }}-video-lecture-single-percent-section-{{ forloop.counter }}" aria-describedby="{{ name }}-video-lecture-single-percent-section-{{ forloop.counter }}" name="{{ name }}-video-lecture-single-distribution" value="{{ expert_analysis.distribution|index:i }}" disabled>
                                                                             <div class="input-group-append">
                                                                                 <span class="input-group-text" id="{{ name }}-video-lecture-single-percent-section-{{ forloop.counter }}">%</span>
                                                                             </div>
@@ -3620,7 +3623,7 @@
                                     <div class="row mb-3 collapse show ml-5" id="collapse-video-lecture-single-volume-{{ name }}">
                                         <div class="col-auto">
                                             <div class="input-group">
-                                                <input type="text" class="form-control" id="{{ name }}-video-lecture-single-volume" placeholder="" aria-label="{{ name }}-video-lecture-single-hours" aria-describedby="{{ name }}-video-lecture-single-hours" name="{{ name }}-video-lecture-single-volume" value="{{ expert_analysis.volume }}">
+                                                <input type="text" class="form-control" id="{{ name }}-video-lecture-single-volume" placeholder="" aria-label="{{ name }}-video-lecture-single-hours" aria-describedby="{{ name }}-video-lecture-single-hours" name="{{ name }}-video-lecture-single-volume" value="{{ expert_analysis.volume }}" disabled>
                                                 <div class="input-group-append">
                                                     <span class="input-group-text" id="{{ name }}-video-lecture-single-hours">hours</span>
                                                 </div>
@@ -3641,7 +3644,7 @@
                                     <div class="row mb-3 collapse show ml-5" id="collapse-video-lecture-single-has-navigation-{{ name }}">
                                         <div class="col">
                                             <div class="custom-control custom-switch">
-                                                <input type="checkbox" class="custom-control-input" id="{{ name }}-video-lecture-single-has-navigation" name="{{ name }}-video-lecture-single-has-navigation" {% if 'on' in expert_analysis.has_navigation %}checked{% endif %}>
+                                                <input type="checkbox" class="custom-control-input" id="{{ name }}-video-lecture-single-has-navigation" name="{{ name }}-video-lecture-single-has-navigation" {% if 'on' in expert_analysis.has_navigation %}checked{% endif %} disabled>
                                                 <label class="custom-control-label" for="{{ name }}-video-lecture-single-has-navigation">Нет / Есть</label>
                                             </div>
                                         </div>
@@ -3677,20 +3680,20 @@
                                     <div class="row collapse show ml-5" id="collapse-audio-file-single-target-{{ name }}">
                                         <div class="col-auto">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="introductory" id="{{ name }}-audio-file-single-target-introductory" name="{{ name }}-audio-file-single-target" {% if 'introductory' in expert_analysis.target %}checked{% endif %}>
+                                                <input class="form-check-input" type="radio" value="introductory" id="{{ name }}-audio-file-single-target-introductory" name="{{ name }}-audio-file-single-target" {% if 'introductory' in expert_analysis.target %}checked{% endif %} disabled>
                                                 <label class="form-check-label" for="{{ name }}-audio-file-single-target-introductory">Вводная</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="auxiliary" id="{{ name }}-audio-file-single-target-auxiliary" name="{{ name }}-audio-file-single-target" {% if 'auxiliary' in expert_analysis.target %}checked{% endif %}>
+                                                <input class="form-check-input" type="radio" value="auxiliary" id="{{ name }}-audio-file-single-target-auxiliary" name="{{ name }}-audio-file-single-target" {% if 'auxiliary' in expert_analysis.target %}checked{% endif %} disabled>
                                                 <label class="form-check-label" for="{{ name }}-audio-file-single-target-auxiliary">Вспомогательная</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="illustrative" id="{{ name }}-audio-file-single-target-illustrative" name="{{ name }}-audio-file-single-target" {% if 'illustrative' in expert_analysis.target %}checked{% endif %}>
+                                                <input class="form-check-input" type="radio" value="illustrative" id="{{ name }}-audio-file-single-target-illustrative" name="{{ name }}-audio-file-single-target" {% if 'illustrative' in expert_analysis.target %}checked{% endif %} disabled>
                                                 <label class="form-check-label" for="{{ name }}-audio-file-single-target-illustrative">Иллюстративная</label>
                                             </div>
                                             <div class="form-group">
                                                 <label for="{{ name }}-audio-file-single-target-own"></label>
-                                                <input type="text" class="form-control" id="{{ name }}-audio-file-single-target-own" placeholder="Свой вариант" name="{{ name }}-audio-file-single-target-own" value="{{ expert_analysis.target_own }}">
+                                                <input type="text" class="form-control" id="{{ name }}-audio-file-single-target-own" placeholder="Свой вариант" name="{{ name }}-audio-file-single-target-own" value="{{ expert_analysis.target_own }}" disabled>
                                             </div>
                                         </div>
                                     </div>
@@ -3709,7 +3712,7 @@
                                         <div class="col-auto">
                                             <div class="form-group">
                                                 <label for="{{ name }}-audio-file-single-duration" class="d-none"></label>
-                                                <input type="text" class="form-control" id="{{ name }}-audio-file-single-duration" placeholder="00:40:02" name="{{ name }}-audio-file-single-duration" value="{{ expert_analysis.duration }}">
+                                                <input type="text" class="form-control" id="{{ name }}-audio-file-single-duration" placeholder="00:40:02" name="{{ name }}-audio-file-single-duration" value="{{ expert_analysis.duration }}" disabled>
                                             </div>
                                         </div>
                                     </div>
@@ -3727,15 +3730,15 @@
                                     <div class="row mb-3 collapse show ml-5" id="collapse-audio-file-single-quality-{{ name }}">
                                         <div class="col">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="low" id="{{ name }}-audio-file-single-quality-low" name="{{ name }}-audio-file-single-quality" {% if 'low' in expert_analysis.quality %}checked{% endif %}>
+                                                <input class="form-check-input" type="radio" value="low" id="{{ name }}-audio-file-single-quality-low" name="{{ name }}-audio-file-single-quality" {% if 'low' in expert_analysis.quality %}checked{% endif %} disabled>
                                                 <label class="form-check-label" for="{{ name }}-audio-file-single-quality-low">Низкоое</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="normal" id="{{ name }}-audio-file-single-quality-normal" name="{{ name }}-audio-file-single-quality" {% if 'normal' in expert_analysis.quality %}checked{% endif %}>
+                                                <input class="form-check-input" type="radio" value="normal" id="{{ name }}-audio-file-single-quality-normal" name="{{ name }}-audio-file-single-quality" {% if 'normal' in expert_analysis.quality %}checked{% endif %} disabled>
                                                 <label class="form-check-label" for="{{ name }}-audio-file-single-quality-normal">Среднее</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="high" id="{{ name }}-audio-file-single-quality-high" name="{{ name }}-audio-file-single-quality" {% if 'high' in expert_analysis.quality %}checked{% endif %}>
+                                                <input class="form-check-input" type="radio" value="high" id="{{ name }}-audio-file-single-quality-high" name="{{ name }}-audio-file-single-quality" {% if 'high' in expert_analysis.quality %}checked{% endif %} disabled>
                                                 <label class="form-check-label" for="{{ name }}-audio-file-single-quality-high">Высокое</label>
                                             </div>
                                         </div>
@@ -3755,7 +3758,7 @@
                                         <div class="col-auto">
                                             <div class="form-group">
                                                 <label for="{{ name }}-audio-file-single-format" class="d-none"></label>
-                                                <input type="text" class="form-control" id="{{ name }}-audio-file-single-format" placeholder="mp3" name="{{ name }}-audio-file-single-format" value="{{ expert_analysis.format }}">
+                                                <input type="text" class="form-control" id="{{ name }}-audio-file-single-format" placeholder="mp3" name="{{ name }}-audio-file-single-format" value="{{ expert_analysis.format }}" disabled>
                                             </div>
                                         </div>
                                     </div>
@@ -3790,7 +3793,7 @@
                                     <div class="row collapse show ml-5" id="collapse-audio-lecture-single-coverage-{{ name }}">
                                         <div class="col-auto">
                                             <div class="input-group">
-                                                <input type="text" class="form-control" placeholder="50" id="{{ name }}-audio-lecture-single-coverage" aria-label="{{ name }}-audio-lecture-single-percent" aria-describedby="{{ name }}-audio-lecture-single-percent" name="{{ name }}-audio-lecture-single-coverage" value="{{ expert_analysis.coverage }}">
+                                                <input type="text" class="form-control" placeholder="50" id="{{ name }}-audio-lecture-single-coverage" aria-label="{{ name }}-audio-lecture-single-percent" aria-describedby="{{ name }}-audio-lecture-single-percent" name="{{ name }}-audio-lecture-single-coverage" value="{{ expert_analysis.coverage }}" disabled>
                                                 <div class="input-group-append">
                                                     <span class="input-group-text" id="{{ name }}-audio-lecture-single-percent">%</span>
                                                 </div>
@@ -3826,7 +3829,7 @@
                                                                     <td class="align-middle">
                                                                         <div class="input-group">
                                                                             <!--<input type="hidden" value="{{ section }}" name="{{ name }}-audio-lecture-sections">-->
-                                                                            <input type="text" class="form-control" id="{{ name }}-audio-lecture-single-distribution-{{ forloop.counter }}" placeholder="50" aria-label="{{ name }}-audio-lecture-single-percent-section-{{ forloop.counter }}" aria-describedby="{{ name }}-audio-lecture-single-percent-section-{{ forloop.counter }}" name="{{ name }}-audio-lecture-single-distribution" value="{{ expert_analysis.distribution|index:i }}">
+                                                                            <input type="text" class="form-control" id="{{ name }}-audio-lecture-single-distribution-{{ forloop.counter }}" placeholder="50" aria-label="{{ name }}-audio-lecture-single-percent-section-{{ forloop.counter }}" aria-describedby="{{ name }}-audio-lecture-single-percent-section-{{ forloop.counter }}" name="{{ name }}-audio-lecture-single-distribution" value="{{ expert_analysis.distribution|index:i }}" disabled>
                                                                             <div class="input-group-append">
                                                                                 <span class="input-group-text" id="{{ name }}-audio-lecture-single-percent-section-{{ forloop.counter }}">%</span>
                                                                             </div>
@@ -3854,7 +3857,7 @@
                                     <div class="row mb-3 collapse show ml-5" id="collapse-audio-lecture-single-volume-{{ name }}">
                                         <div class="col-auto">
                                             <div class="input-group">
-                                                <input type="text" class="form-control" placeholder="72" aria-label="{{ name }}-audio-lecture-single-hours" aria-describedby="{{ name }}-audio-lecture-single-hours" name="{{ name }}-audio-lecture-single-volume" id="{{ name }}-audio-lecture-single-volume" value="{{ expert_analysis.volume }}">
+                                                <input type="text" class="form-control" placeholder="72" aria-label="{{ name }}-audio-lecture-single-hours" aria-describedby="{{ name }}-audio-lecture-single-hours" name="{{ name }}-audio-lecture-single-volume" id="{{ name }}-audio-lecture-single-volume" value="{{ expert_analysis.volume }}" disabled>
                                                 <div class="input-group-append">
                                                     <span class="input-group-text" id="{{ name }}-audio-lecture-single-hours">hh</span>
                                                 </div>
@@ -3875,7 +3878,7 @@
                                     <div class="row mb-3 collapse show ml-5" id="collapse-audio-lecture-single-has-navigation-{{ name }}">
                                         <div class="col">
                                             <div class="custom-control custom-switch">
-                                                <input type="checkbox" class="custom-control-input" id="{{ name }}-audio-lecture-single-has-navigation" name="{{ name }}-audio-lecture-single-has-navigation" {% if 'on' in expert_analysis.has_navigation %}checked{% endif %}>
+                                                <input type="checkbox" class="custom-control-input" id="{{ name }}-audio-lecture-single-has-navigation" name="{{ name }}-audio-lecture-single-has-navigation" {% if 'on' in expert_analysis.has_navigation %}checked{% endif %} disabled>
                                                 <label class="custom-control-label" for="{{ name }}-audio-lecture-single-has-navigation">Да / Нет</label>
                                             </div>
                                         </div>
@@ -3979,19 +3982,19 @@
                                     <div class="row collapse show ml-5" id="collapse-webinar-single-type-{{ name }}">
                                         <div class="col">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="lecture" id="{{ name }}-webinar-single-type-lecture" name="{{ name }}-webinar-single-type" {% if 'lecture' in expert_analysis.type %}checked{% endif %}>
+                                                <input class="form-check-input" type="radio" value="lecture" id="{{ name }}-webinar-single-type-lecture" name="{{ name }}-webinar-single-type" {% if 'lecture' in expert_analysis.type %}checked{% endif %} disabled>
                                                 <label class="form-check-label" for="{{ name }}-webinar-single-type-lecture">Лекция</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="seminar" id="{{ name }}-webinar-single-type-seminar" name="{{ name }}-webinar-single-type" {% if 'seminar' in expert_analysis.type %}checked{% endif %}>
+                                                <input class="form-check-input" type="radio" value="seminar" id="{{ name }}-webinar-single-type-seminar" name="{{ name }}-webinar-single-type" {% if 'seminar' in expert_analysis.type %}checked{% endif %} disabled>
                                                 <label class="form-check-label" for="{{ name }}-webinar-single-type-seminar">Семинар</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="consultation" id="{{ name }}-webinar-single-type-consultation" name="{{ name }}-webinar-single-type" {% if 'consultation' in expert_analysis.type %}checked{% endif %}>
+                                                <input class="form-check-input" type="radio" value="consultation" id="{{ name }}-webinar-single-type-consultation" name="{{ name }}-webinar-single-type" {% if 'consultation' in expert_analysis.type %}checked{% endif %} disabled>
                                                 <label class="form-check-label" for="{{ name }}-webinar-single-type-consultation">Консультация</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="combined" id="{{ name }}-webinar-single-type-combined" name="{{ name }}-webinar-single-type" {% if 'combined' in expert_analysis.type %}checked{% endif %}>
+                                                <input class="form-check-input" type="radio" value="combined" id="{{ name }}-webinar-single-type-combined" name="{{ name }}-webinar-single-type" {% if 'combined' in expert_analysis.type %}checked{% endif %} disabled>
                                                 <label class="form-check-label" for="{{ name }}-webinar-single-type-combined">Комбинированный</label>
                                             </div>
                                         </div>
@@ -4010,7 +4013,7 @@
                                     <div class="row mb-3 collapse show ml-5" id="collapse-webinar-single-duration-{{ name }}">
                                         <div class="col-auto">
                                             <div class="input-group">
-                                                <input type="text" class="form-control" placeholder="90" aria-label="{{ name }}-webinar-single-minutes" aria-describedby="{{ name }}-webinar-single-minutes" id="{{ name }}-webinar-single-duration" name="{{ name }}-webinar-single-duration" value="{{ expert_analysis.duration }}">
+                                                <input type="text" class="form-control" placeholder="90" aria-label="{{ name }}-webinar-single-minutes" aria-describedby="{{ name }}-webinar-single-minutes" id="{{ name }}-webinar-single-duration" name="{{ name }}-webinar-single-duration" value="{{ expert_analysis.duration }}" disabled>
                                                 <div class="input-group-append">
                                                     <span class="input-group-text" id="{{ name }}-webinar-single-minutes">mm</span>
                                                 </div>
@@ -4031,7 +4034,7 @@
                                     <div class="row mb-3 collapse show ml-5" id="collapse-webinar-single-has-scenario-{{ name }}">
                                         <div class="col">
                                             <div class="custom-control custom-switch">
-                                                <input type="checkbox" class="custom-control-input" id="{{ name }}-webinar-single-has-scenario" name="{{ name }}-webinar-single-has-scenario" {% if 'on' in expert_analysis.has_scenario %}checked{% endif %}>
+                                                <input type="checkbox" class="custom-control-input" id="{{ name }}-webinar-single-has-scenario" name="{{ name }}-webinar-single-has-scenario" {% if 'on' in expert_analysis.has_scenario %}checked{% endif %} disabled>
                                                 <label class="custom-control-label" for="{{ name }}-webinar-single-has-scenario">Нет / Есть</label>
                                             </div>
                                         </div>
@@ -4050,7 +4053,7 @@
                                     <div class="row mb-3 collapse show ml-5" id="collapse-webinar-single-has-presentation-{{ name }}">
                                         <div class="col">
                                             <div class="custom-control custom-switch">
-                                                <input type="checkbox" class="custom-control-input" id="{{ name }}-webinar-single-has-presentation" name="{{ name }}-webinar-single-has-presentation" {% if 'on' in expert_analysis.has_presentation %}checked{% endif %}>
+                                                <input type="checkbox" class="custom-control-input" id="{{ name }}-webinar-single-has-presentation" name="{{ name }}-webinar-single-has-presentation" {% if 'on' in expert_analysis.has_presentation %}checked{% endif %} disabled>
                                                 <label class="custom-control-label" for="{{ name }}-webinar-single-has-presentation">Нет / Есть</label>
                                             </div>
                                         </div>
@@ -4069,7 +4072,7 @@
                                     <div class="row mb-3 collapse show ml-5" id="collapse-webinar-single-has-additional-materials-{{ name }}">
                                         <div class="col">
                                             <div class="custom-control custom-switch">
-                                                <input type="checkbox" class="custom-control-input" id="{{ name }}-webinar-single-has-additional-materials" name="{{ name }}-webinar-single-has-additional-materials" {% if 'on' in expert_analysis.has_additional_materials %}checked{% endif %}>
+                                                <input type="checkbox" class="custom-control-input" id="{{ name }}-webinar-single-has-additional-materials" name="{{ name }}-webinar-single-has-additional-materials" {% if 'on' in expert_analysis.has_additional_materials %}checked{% endif %} disabled>
                                                 <label class="custom-control-label" for="{{ name }}-webinar-single-has-additional-materials">Нет / Есть</label>
                                             </div>
                                         </div>
@@ -4088,7 +4091,7 @@
                                     <div class="row mb-3 collapse show ml-5" id="collapse-webinar-single-has-questions-{{ name }}">
                                         <div class="col">
                                             <div class="custom-control custom-switch">
-                                                <input type="checkbox" class="custom-control-input" id="{{ name }}-webinar-single-has-questions" name="{{ name }}-webinar-single-has-questions" {% if 'on' in expert_analysis.has_questions %}checked{% endif %}>
+                                                <input type="checkbox" class="custom-control-input" id="{{ name }}-webinar-single-has-questions" name="{{ name }}-webinar-single-has-questions" {% if 'on' in expert_analysis.has_questions %}checked{% endif %} disabled>
                                                 <label class="custom-control-label" for="{{ name }}-webinar-single-has-questions">Нет / Есть</label>
                                             </div>
                                         </div>
@@ -4117,6 +4120,9 @@
                         <div class="spinner-border text-primary" role="status"></div>
                     </div>
                 </div>
+                {% if uid %}
+                    <input type="hidden" value="{{ uid }}" name="uid">
+                {% endif %}
             </form>
         </div>
     </div>

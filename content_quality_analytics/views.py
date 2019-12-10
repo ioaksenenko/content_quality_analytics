@@ -657,15 +657,18 @@ def theory_analysis_results(request):
                     indicators
                 ))
             }
+        objects = models.Results.objects.filter(uid=request.session.session_key, name='theory-analysis')
+        if len(objects) == 0:
             models.Results(
                 uid=request.session.session_key,
                 name='theory-analysis',
                 context=json.dumps(context)
             ).save()
-            # return render(request, 'theory-analysis-results.html', context)
-            return redirect('/expert-analysis/')
         else:
-            return render(request, 'theory-analysis-results.html', {'modules': []})
+            for object in objects:
+                object.context = json.dumps(context)
+                object.save()
+        return redirect('/expert-analysis/')
     else:
         return render(request, 'modules.html', {'modules': get_modules(request)})
 
@@ -1515,11 +1518,12 @@ def indicators(request):
             indicators = indicators.exclude(name='webinar')
         """
 
-        context['modules'].append({
-            'name': 'Контент всех элементов с теорией',
-            'id': 'all-elements',
-            'indicators': indicators.filter(type='auto-indicator')
-        })
+        if len(os.listdir(theory_path)) != 0:
+            context['modules'].append({
+                'name': 'Контент всех элементов с теорией',
+                'id': 'all-elements',
+                'indicators': indicators.filter(type='auto-indicator')
+            })
 
         return render(request, 'indicators.html', context)
     else:
@@ -1886,11 +1890,17 @@ def expert_analysis(request):
         all_others
     ))
 
-    models.Results(
-        uid=request.session.session_key,
-        name='expert-analysis',
-        context=json.dumps(context)
-    ).save()
+    objects = models.Results.objects.filter(uid=request.session.session_key, name='expert-analysis')
+    if len(objects) == 0:
+        models.Results(
+            uid=request.session.session_key,
+            name='expert-analysis',
+            context=json.dumps(context)
+        ).save()
+    else:
+        for object in objects:
+            object.context = json.dumps(context)
+            object.save()
 
     return render(request, 'expert-analysis.html', context)
 
@@ -2009,20 +2019,20 @@ def results(request):
             result.context = json.dumps(context)
             result.save()
         """
-        results = models.Results.objects.filter(
+        objects = models.Results.objects.filter(
             uid=request.session.session_key,
             name='course-analysis'
         )
-        if len(results) == 0:
+        if len(objects) == 0:
             models.Results(
                 uid=request.session.session_key,
                 name='course-analysis',
                 context=json.dumps(context)
             ).save()
         else:
-            for result in results:
-                result.context = json.dumps(context)
-                result.save()
+            for object in objects:
+                object.context = json.dumps(context)
+                object.save()
     return render(request, 'results.html', context)
 
 
@@ -2033,7 +2043,8 @@ def course_rating(request):
         'is_superuser': user.is_superuser,
         'is_anonymous': user.is_anonymous,
     }
-    results = models.Results.objects.filter(uid=request.session.session_key, name='course-analysis')
+    uid = request.POST.get('uid')
+    results = models.Results.objects.filter(uid=uid if uid is not None else request.session.session_key, name='course-analysis')
     for result in results:
         context.update(json.loads(result.context))
 
@@ -2081,12 +2092,14 @@ def show_course_result(request):
         moodle=moodle,
         uid=uid
     )
-    context = {}
+    context = {
+        'uid': uid
+    }
     for course in courses:
         c_dt = course.datetime.astimezone(pytz.timezone(settings.TIME_ZONE))
         if c_dt.day == dt.day and c_dt.month == dt.month and c_dt.year == dt.year and \
                 c_dt.hour == dt.hour and c_dt.minute == dt.minute and c_dt.second == dt.second:
-            context = json.loads(course.context)
+            context.update(json.loads(course.context))
     return render(request, 'results.html', context)
 
 
