@@ -608,6 +608,19 @@ def parallel_analyze_with_futures(files, indicators):
 
     results = [future.result() for future in futures]
 
+    results = [
+        {
+            'txt_ch': result['txt_ch'],
+            'img_ch': {
+                'img_number': result['img_ch']['img_number'],
+                'pgs_num': result['img_ch']['pgs_num'],
+                'aver_img_in_pg_num': result['img_ch']['aver_img_in_pg_num'],
+                'images': natsorted(result['img_ch']['images'], key=lambda k: k['img_name'].lower())
+            },
+            'san_ch': result['san_ch']
+        } for result in results
+    ]
+
     with ProcessPoolExecutor(max_workers=os.cpu_count()) as executor:
         txt_ch = executor.submit(analyzer.text_characteristics_all_files, results, indicators_for_all)
         img_ch = executor.submit(analyzer.img_characteristics_all_files, results, indicators_for_all)

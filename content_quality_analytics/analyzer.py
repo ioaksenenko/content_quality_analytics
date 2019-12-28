@@ -729,7 +729,10 @@ def img_characteristics(file, indicators):
             res['images'] = []
             for img in img_list:
                 try:
-                    img_char = {'img_path': '/' + img['src'][img['src'].index('media'):]}
+                    img_char = {
+                        'img_name': os.path.basename(img['src']),
+                        'img_path': '/' + img['src'][img['src'].index('media'):]
+                    }
                     if 'image_brightness' in indicators:
                         brightness = round(get_img_brightness(img['src']), 2)
                         img_char['brightness'] = brightness
