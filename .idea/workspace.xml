@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc8d65a7-0ad6-4cba-9c3a-e5bdd5e2cbc1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/requirements" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/64549dc5-f15e-47db-97ed-e6b837546120.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/64549dc5-f15e-47db-97ed-e6b837546120.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/c8c70341-53c1-4150-b972-076c787b74e1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/c8c70341-53c1-4150-b972-076c787b74e1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/content_quality_analytics/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/content_quality_analytics/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,40 +67,6 @@
         <option value="HTML File" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>moodle</find>
-      <find>check_all_for_join</find>
-      <find>msg_src</find>
-      <find>check_all</find>
-      <find>type=&quot;range&quot;</find>
-      <find>td</find>
-      <find>with</find>
-      <find>autoescape</find>
-      <find>aria-label</find>
-      <find>disabled</find>
-      <find>id=&quot;{{ name }}</find>
-      <find>name=&quot;{{ name }}-</find>
-      <find>name=&quot;{{ name }}-control-and-exam-test</find>
-      <find>name=&quot;{{ name }}</find>
-      <find>name=&quot;{{ name }}-self-test</find>
-      <find>single</find>
-      <find>Course</find>
-      <find>aria-expanded=&quot;false&quot;</find>
-      <find>indicators</find>
-      <find>theory_analysis_results</find>
-      <find>expert_analysis</find>
-      <find>a data-toggle=&quot;collapse&quot;</find>
-      <find>id=&quot;#</find>
-      <find>range</find>
-      <find>img</find>
-      <find>online</find>
-      <find>sorted</find>
-      <find>natsorted</find>
-      <find>res</find>
-      <find>futures</find>
-    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -264,7 +223,7 @@
       <workItem from="1577506078990" duration="5182000" />
       <workItem from="1577602243956" duration="40000" />
       <workItem from="1578541723133" duration="5416000" />
-      <workItem from="1578552774234" duration="4113000" />
+      <workItem from="1578552774234" duration="5327000" />
     </task>
     <servers />
   </component>

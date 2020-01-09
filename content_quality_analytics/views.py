@@ -33,6 +33,7 @@ def index(request):
     clear_media()
     request.session.create()
     models.Session(id=request.session.session_key, active=True).save()
+    os.mkdir(settings.MEDIA_ROOT)
     os.mkdir(os.path.join(settings.MEDIA_ROOT, request.session.session_key))
     template = loader.get_template('index.html')
     context = {
@@ -998,8 +999,8 @@ def moodle(request):
 
             for module in modules:
                 fragments = re.findall(r'[a-zA-Zа-яА-Я0-9_\s]+', module['name'])
-                #module_path = os.path.join(media_path, ''.join(fragments).replace(' ', '_') + '_' + module['contextid'])
-                module_path = os.path.join(media_path, module['contextid'])
+                module_path = os.path.join(media_path, ''.join(fragments).replace(' ', '_') + '_' + module['contextid'])
+                # module_path = os.path.join(media_path, module['contextid'])
                 if not os.path.exists(module_path):
                     os.mkdir(module_path)
                     if module['plugin'] == 'mod_imscp':
