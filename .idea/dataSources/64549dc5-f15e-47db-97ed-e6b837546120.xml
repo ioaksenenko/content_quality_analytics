@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="testing">
-  <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.15">
+  <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.17">
     <root id="1">
       <ServerVersion>5.5.62</ServerVersion>
       <DefaultEngine>InnoDB</DefaultEngine>
@@ -8,24 +8,19 @@
       <DefaultCasing>exact</DefaultCasing>
     </root>
     <schema id="2" parent="1" name="information_schema">
-      <Visible>1</Visible>
       <Collation>utf8_general_ci</Collation>
     </schema>
     <schema id="3" parent="1" name="online_exams">
-      <Visible>1</Visible>
       <Collation>utf8_unicode_ci</Collation>
     </schema>
     <schema id="4" parent="1" name="online_testing">
       <Current>1</Current>
-      <Visible>1</Visible>
       <Collation>utf8_unicode_ci</Collation>
     </schema>
     <schema id="5" parent="1" name="tcde_docs">
-      <Visible>1</Visible>
       <Collation>cp1251_general_ci</Collation>
     </schema>
     <schema id="6" parent="1" name="test">
-      <Visible>1</Visible>
       <Collation>latin1_swedish_ci</Collation>
     </schema>
     <collation id="7" parent="1" name="armscii8_bin">

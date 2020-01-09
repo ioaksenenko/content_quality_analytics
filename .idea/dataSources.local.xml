@@ -9,7 +9,11 @@
       <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact" />
       <secret-storage>master_key</secret-storage>
       <user-name>lismo_aio</user-name>
-      <introspection-schemas>*:*</introspection-schemas>
+      <schema-mapping>
+        <introspection-scope>
+          <node kind="schema" negative="1" />
+        </introspection-scope>
+      </schema-mapping>
       <load-sources>user_and_system_sources</load-sources>
     </data-source>
     <data-source name="db" uuid="c8c70341-53c1-4150-b972-076c787b74e1">
@@ -18,7 +22,11 @@
       </database-info>
       <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
       <auth-required>false</auth-required>
-      <introspection-schemas>*:*</introspection-schemas>
+      <schema-mapping>
+        <introspection-scope>
+          <node kind="schema" negative="1" />
+        </introspection-scope>
+      </schema-mapping>
     </data-source>
   </component>
 </project>

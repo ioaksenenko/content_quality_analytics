@@ -4,8 +4,6 @@ import shutil
 import sys
 import bs4
 import html
-# import MySQLdb as sql
-import pandas as pd
 import json
 import requests
 import django
@@ -1000,7 +998,8 @@ def moodle(request):
 
             for module in modules:
                 fragments = re.findall(r'[a-zA-Zа-яА-Я0-9_\s]+', module['name'])
-                module_path = os.path.join(media_path, ''.join(fragments).replace(' ', '_') + '_' + module['contextid'])
+                #module_path = os.path.join(media_path, ''.join(fragments).replace(' ', '_') + '_' + module['contextid'])
+                module_path = os.path.join(media_path, module['contextid'])
                 if not os.path.exists(module_path):
                     os.mkdir(module_path)
                     if module['plugin'] == 'mod_imscp':
