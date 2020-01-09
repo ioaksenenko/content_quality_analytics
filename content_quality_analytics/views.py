@@ -33,7 +33,8 @@ def index(request):
     clear_media()
     request.session.create()
     models.Session(id=request.session.session_key, active=True).save()
-    os.mkdir(settings.MEDIA_ROOT)
+    if not os.path.exists(settings.MEDIA_ROOT):
+        os.mkdir(settings.MEDIA_ROOT)
     os.mkdir(os.path.join(settings.MEDIA_ROOT, request.session.session_key))
     template = loader.get_template('index.html')
     context = {
