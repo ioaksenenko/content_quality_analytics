@@ -1,0 +1,419 @@
+[
+{
+    "model": "content_quality_analytics.indicator",
+    "pk": "abstractness",
+    "fields":
+    {
+        "type": "auto-indicator",
+        "questions": "",
+        "show": true,
+        "description": ""
+    }
+},
+{
+    "model": "content_quality_analytics.indicator",
+    "pk": "audio_file",
+    "fields":
+    {
+        "type": "expert-indicator",
+        "questions": "",
+        "show": true,
+        "description": ""
+    }
+},
+{
+    "model": "content_quality_analytics.indicator",
+    "pk": "audio_lecture",
+    "fields":
+    {
+        "type": "expert-indicator",
+        "questions": "",
+        "show": true,
+        "description": ""
+    }
+},
+{
+    "model": "content_quality_analytics.indicator",
+    "pk": "average_illustrations_number_per_page",
+    "fields":
+    {
+        "type": "auto-indicator",
+        "questions": "",
+        "show": true,
+        "description": ""
+    }
+},
+{
+    "model": "content_quality_analytics.indicator",
+    "pk": "control_and_exam_tests",
+    "fields":
+    {
+        "type": "expert-indicator",
+        "questions": "",
+        "show": true,
+        "description": ""
+    }
+},
+{
+    "model": "content_quality_analytics.indicator",
+    "pk": "creolization_background_color",
+    "fields":
+    {
+        "type": "auto-indicator",
+        "questions": "",
+        "show": true,
+        "description": ""
+    }
+},
+{
+    "model": "content_quality_analytics.indicator",
+    "pk": "creolization_bold",
+    "fields":
+    {
+        "type": "auto-indicator",
+        "questions": "",
+        "show": true,
+        "description": ""
+    }
+},
+{
+    "model": "content_quality_analytics.indicator",
+    "pk": "creolization_border",
+    "fields":
+    {
+        "type": "auto-indicator",
+        "questions": "",
+        "show": true,
+        "description": ""
+    }
+},
+{
+    "model": "content_quality_analytics.indicator",
+    "pk": "creolization_italics",
+    "fields":
+    {
+        "type": "auto-indicator",
+        "questions": "",
+        "show": true,
+        "description": ""
+    }
+},
+{
+    "model": "content_quality_analytics.indicator",
+    "pk": "creolization_link",
+    "fields":
+    {
+        "type": "auto-indicator",
+        "questions": "",
+        "show": true,
+        "description": ""
+    }
+},
+{
+    "model": "content_quality_analytics.indicator",
+    "pk": "creolization_pictogram",
+    "fields":
+    {
+        "type": "auto-indicator",
+        "questions": "",
+        "show": true,
+        "description": ""
+    }
+},
+{
+    "model": "content_quality_analytics.indicator",
+    "pk": "creolization_underline",
+    "fields":
+    {
+        "type": "auto-indicator",
+        "questions": "",
+        "show": true,
+        "description": ""
+    }
+},
+{
+    "model": "content_quality_analytics.indicator",
+    "pk": "has_abbreviations_list",
+    "fields":
+    {
+        "type": "auto-indicator",
+        "questions": "",
+        "show": true,
+        "description": ""
+    }
+},
+{
+    "model": "content_quality_analytics.indicator",
+    "pk": "has_bibliography",
+    "fields":
+    {
+        "type": "auto-indicator",
+        "questions": "",
+        "show": true,
+        "description": ""
+    }
+},
+{
+    "model": "content_quality_analytics.indicator",
+    "pk": "has_chronological_index",
+    "fields":
+    {
+        "type": "auto-indicator",
+        "questions": "",
+        "show": true,
+        "description": ""
+    }
+},
+{
+    "model": "content_quality_analytics.indicator",
+    "pk": "has_conventions_list",
+    "fields":
+    {
+        "type": "auto-indicator",
+        "questions": "",
+        "show": true,
+        "description": ""
+    }
+},
+{
+    "model": "content_quality_analytics.indicator",
+    "pk": "has_formula",
+    "fields":
+    {
+        "type": "auto-indicator",
+        "questions": "",
+        "show": true,
+        "description": ""
+    }
+},
+{
+    "model": "content_quality_analytics.indicator",
+    "pk": "has_geographical_index",
+    "fields":
+    {
+        "type": "auto-indicator",
+        "questions": "",
+        "show": true,
+        "description": ""
+    }
+},
+{
+    "model": "content_quality_analytics.indicator",
+    "pk": "has_glossary",
+    "fields":
+    {
+        "type": "auto-indicator",
+        "questions": "",
+        "show": true,
+        "description": ""
+    }
+},
+{
+    "model": "content_quality_analytics.indicator",
+    "pk": "has_illustrations_list",
+    "fields":
+    {
+        "type": "auto-indicator",
+        "questions": "",
+        "show": true,
+        "description": ""
+    }
+},
+{
+    "model": "content_quality_analytics.indicator",
+    "pk": "has_links",
+    "fields":
+    {
+        "type": "auto-indicator",
+        "questions": "",
+        "show": true,
+        "description": ""
+    }
+},
+{
+    "model": "content_quality_analytics.indicator",
+    "pk": "has_name_index",
+    "fields":
+    {
+        "type": "auto-indicator",
+        "questions": "",
+        "show": true,
+        "description": ""
+    }
+},
+{
+    "model": "content_quality_analytics.indicator",
+    "pk": "has_subject_index",
+    "fields":
+    {
+        "type": "auto-indicator",
+        "questions": "",
+        "show": true,
+        "description": ""
+    }
+},
+{
+    "model": "content_quality_analytics.indicator",
+    "pk": "has_tables_list",
+    "fields":
+    {
+        "type": "auto-indicator",
+        "questions": "",
+        "show": true,
+        "description": ""
+    }
+},
+{
+    "model": "content_quality_analytics.indicator",
+    "pk": "illustrations_area_percentage",
+    "fields":
+    {
+        "type": "auto-indicator",
+        "questions": "",
+        "show": false,
+        "description": ""
+    }
+},
+{
+    "model": "content_quality_analytics.indicator",
+    "pk": "illustrations_number",
+    "fields":
+    {
+        "type": "auto-indicator",
+        "questions": "",
+        "show": true,
+        "description": ""
+    }
+},
+{
+    "model": "content_quality_analytics.indicator",
+    "pk": "image_brightness",
+    "fields":
+    {
+        "type": "auto-indicator",
+        "questions": "",
+        "show": true,
+        "description": ""
+    }
+},
+{
+    "model": "content_quality_analytics.indicator",
+    "pk": "image_contrast",
+    "fields":
+    {
+        "type": "auto-indicator",
+        "questions": "",
+        "show": true,
+        "description": ""
+    }
+},
+{
+    "model": "content_quality_analytics.indicator",
+    "pk": "information_richness",
+    "fields":
+    {
+        "type": "auto-indicator",
+        "questions": "",
+        "show": true,
+        "description": ""
+    }
+},
+{
+    "model": "content_quality_analytics.indicator",
+    "pk": "keyword_density",
+    "fields":
+    {
+        "type": "auto-indicator",
+        "questions": "",
+        "show": true,
+        "description": ""
+    }
+},
+{
+    "model": "content_quality_analytics.indicator",
+    "pk": "readability",
+    "fields":
+    {
+        "type": "auto-indicator",
+        "questions": "",
+        "show": true,
+        "description": ""
+    }
+},
+{
+    "model": "content_quality_analytics.indicator",
+    "pk": "relative_image_brightness",
+    "fields":
+    {
+        "type": "auto-indicator",
+        "questions": "",
+        "show": true,
+        "description": ""
+    }
+},
+{
+    "model": "content_quality_analytics.indicator",
+    "pk": "relative_image_contrast",
+    "fields":
+    {
+        "type": "auto-indicator",
+        "questions": "",
+        "show": true,
+        "description": ""
+    }
+},
+{
+    "model": "content_quality_analytics.indicator",
+    "pk": "self_test",
+    "fields":
+    {
+        "type": "expert-indicator",
+        "questions": "",
+        "show": true,
+        "description": ""
+    }
+},
+{
+    "model": "content_quality_analytics.indicator",
+    "pk": "video_file",
+    "fields":
+    {
+        "type": "expert-indicator",
+        "questions": "",
+        "show": true,
+        "description": ""
+    }
+},
+{
+    "model": "content_quality_analytics.indicator",
+    "pk": "video_lecture",
+    "fields":
+    {
+        "type": "expert-indicator",
+        "questions": "",
+        "show": true,
+        "description": ""
+    }
+},
+{
+    "model": "content_quality_analytics.indicator",
+    "pk": "water_content",
+    "fields":
+    {
+        "type": "auto-indicator",
+        "questions": "",
+        "show": true,
+        "description": ""
+    }
+},
+{
+    "model": "content_quality_analytics.indicator",
+    "pk": "webinar",
+    "fields":
+    {
+        "type": "expert-indicator",
+        "questions": "",
+        "show": true,
+        "description": ""
+    }
+}]
