@@ -68,7 +68,6 @@ function show_tooltip() {
     $(this).tooltip('show');
 }
 
-
 function dynamic_nav() {
     let nav = $('#modules-tabs');
     let height = nav.innerHeight();
