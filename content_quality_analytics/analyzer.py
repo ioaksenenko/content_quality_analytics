@@ -55,7 +55,7 @@ def read_files(source, only_these=None):
                             tockens = re.split(r'<[^>]+>', c)
                             text = ' '.join(list(filter(lambda x: not re.fullmatch(r'\s*', x), tockens)))
                             mod_content += ' ' + html.unescape(text)
-                    name = os.path.splitext(os.path.basename(dir_path))[0]
+                    name, extension = os.path.splitext(os.path.dirname(dir_path))
                     res.append({
                         'name': name.replace(' ', '-'),
                         'content': 'Анализ модуля ' + name,
@@ -77,7 +77,7 @@ def read_files(source, only_these=None):
                 tockens = re.split(r'<[^>]+>', c)
                 text = ' '.join(list(filter(lambda x: not re.fullmatch(r'\s*', x), tockens)))
                 mod_content = ' ' + html.unescape(text)
-                name = os.path.splitext(os.path.basename(dir_path))[0]
+                name, extension = os.path.splitext(os.path.dirname(dir_path))
                 res.append({
                     'name': name.replace(' ', '-'),
                     'content': 'Анализ модуля ' + name,
