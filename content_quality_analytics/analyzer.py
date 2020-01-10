@@ -55,7 +55,10 @@ def read_files(source, only_these=None):
                             tockens = re.split(r'<[^>]+>', c)
                             text = ' '.join(list(filter(lambda x: not re.fullmatch(r'\s*', x), tockens)))
                             mod_content += ' ' + html.unescape(text)
+                    name = os.path.splitext(os.path.basename(dir_path))[0]
                     res.append({
+                        'name': name.replace(' ', '-'),
+                        'content': 'Анализ модуля ' + name,
                         'dir_path': os.path.dirname(dir_path),
                         'html': str(mod_html),
                         'txt': mod_content,
@@ -74,7 +77,10 @@ def read_files(source, only_these=None):
                 tockens = re.split(r'<[^>]+>', c)
                 text = ' '.join(list(filter(lambda x: not re.fullmatch(r'\s*', x), tockens)))
                 mod_content = ' ' + html.unescape(text)
+                name = os.path.splitext(os.path.basename(dir_path))[0]
                 res.append({
+                    'name': name.replace(' ', '-'),
+                    'content': 'Анализ модуля ' + name,
                     'dir_path': os.path.dirname(dir_path),
                     'html': str(mod_html),
                     'txt': mod_content,
@@ -85,6 +91,8 @@ def read_files(source, only_these=None):
                 all_content += mod_content
                 all_pages_number += 1
     res.insert(0, {
+        'name': 'all',
+        'content': 'Анализ всего курса',
         'dir_path': source,
         'html': str(all_html),
         'txt': all_content,

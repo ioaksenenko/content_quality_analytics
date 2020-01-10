@@ -527,7 +527,7 @@ def parallel_analyze_file(file):
     return res
 
 
-def parallel_analyze_file_with_futures(file, name, content, indicators):
+def parallel_analyze_file_with_futures(file, indicators):
 
     with ProcessPoolExecutor(max_workers=os.cpu_count()) as executor:
         txt_ch = executor.submit(analyzer.text_characteristics, file, indicators)
@@ -540,7 +540,7 @@ def parallel_analyze_file_with_futures(file, name, content, indicators):
         'san_ch': san_ch.result()
     }
 
-    return res, name, content
+    return res, file['name'], file['content']
 
 
 def linear_analyze(files):
@@ -597,16 +597,14 @@ def parallel_analyze(files):
     return res
 
 
-def parallel_analyze_with_futures(files, names, contents, indicators):
-    files.pop(0)
-    name_for_all = names.pop(0)
-    content_for_all = contents.pop(0)
+def parallel_analyze_with_futures(files, indicators):
+    file_for_all = files.pop(0)
     indicators_for_all = indicators.pop(0)
 
     start_time = time()
 
     with ProcessPoolExecutor(max_workers=os.cpu_count()) as executor:
-        futures = [executor.submit(parallel_analyze_file_with_futures, files[i], names[i], contents[i], indicators[i]) for i in range(len(files))]
+        futures = [executor.submit(parallel_analyze_file_with_futures, files[i], indicators[i]) for i in range(len(files))]
 
     results = []
     names = []
@@ -641,8 +639,8 @@ def parallel_analyze_with_futures(files, names, contents, indicators):
         'san_ch': san_ch.result()
     })
     indicators.insert(0, indicators_for_all)
-    names.insert(0, name_for_all)
-    contents.insert(0, content_for_all)
+    names.insert(0, file_for_all['name'])
+    contents.insert(0, file_for_all['content'])
 
     finish_time = time()
 
@@ -672,9 +670,7 @@ def theory_analysis_results(request):
             files = analyzer.read_files(theory_path, theory_modules)
             # results = linear_analyze(files)
             # results = parallel_analyze(files)
-            names = ['all'] + [os.path.splitext(module)[0].replace(' ', '-') for module in theory_modules]
-            contents = ['Анализ всего курса'] + ['Анализ модуля ' + module for module in theory_modules]
-            results, names, contents = parallel_analyze_with_futures(files, names, contents, indicators)
+            results, names, contents = parallel_analyze_with_futures(files, indicators)
             context = {
                 'theory_modules': list(zip(names, contents, results, indicators))
             }
