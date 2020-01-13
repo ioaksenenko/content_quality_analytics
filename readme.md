@@ -32,5 +32,5 @@ USAGE
 -----
 
 1. Choose distance learning systems [online](https://online.tusur.ru/) or [new-online](https://new-online.tusur.ru/).
-2. Enter course IDs, separated by commas.
-3. Press the "Get" button and in the table below new lines with data and keywords of the entered courses will appear.  
+2. Enter course ID.
+3. Press the "Next" button.  

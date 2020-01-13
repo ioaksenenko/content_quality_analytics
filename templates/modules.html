@@ -74,14 +74,29 @@
                                         </th>-->
                                         <td class="align-middle">
                                             <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" name="modules" value="{{ module.name }}" id="module-{{ module.name }}" {% if not module.allowed_for_analysis %}disabled{% else %}checked{% endif %}>
+                                                <input type="checkbox" class="custom-control-input" name="modules" value="{{ module.id }}" id="module-{{ module.name }}" {% if not module.allowed_for_analysis %}disabled{% else %}checked{% endif %}>
                                                 <label class="custom-control-label" for="module-{{ module.name }}"></label>
                                             </div>
                                         </td>
-                                        <td class="align-middle {% if not module.allowed_for_analysis %}disabled{% endif %}">{{ module.name }}</td>
+                                        <td class="align-middle {% if not module.allowed_for_analysis %}disabled{% endif %}">
+                                            <div class="container-fluid">
+                                                {% if module.section != '' %}
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            {{ module.section }}:
+                                                        </div>
+                                                    </div>
+                                                {% endif %}
+                                                <div class="row">
+                                                    <div class="col">
+                                                        {{ module.name }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
                                         <td class="align-middle">
-                                            <label for="type-{{ module.name }}" class="d-none"></label>
-                                            <select class="form-control" id="type-{{ module.name }}" name="type-{{ module.name }}" {% if not module.allowed_for_analysis %}disabled{% endif %}>
+                                            <label for="type-{{ module.id }}" class="d-none"></label>
+                                            <select class="form-control" id="type-{{ module.id }}" name="type-{{ module.id }}" {% if not module.allowed_for_analysis %}disabled{% endif %}>
                                                 <option value="unknown" selected>Неизвестный</option>
                                                 <option value="theory" {% if module.type == 'theory' %}selected{% endif %}>Теоретический материал</option>
                                                 <option value="self-test" {% if module.type == 'self-test' %}selected{% endif %}>Тест для самопроверки</option>

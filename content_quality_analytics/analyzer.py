@@ -10,6 +10,8 @@ import os
 import copy
 import logging
 import shutil
+import django
+django.setup()
 
 from natsort import natsorted
 from functools import reduce
@@ -17,9 +19,10 @@ from PIL import Image
 from time import time
 from nltk.tokenize import RegexpTokenizer
 from . import settings
+from . import models
 
 
-def read_files(source, only_these=None):
+def read_files(source, request, only_these=None):
     res = []
     all_html = bs4.BeautifulSoup(
         '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Title</title></head><body></body></html>',
@@ -56,9 +59,22 @@ def read_files(source, only_these=None):
                             text = ' '.join(list(filter(lambda x: not re.fullmatch(r'\s*', x), tockens)))
                             mod_content += ' ' + html.unescape(text)
                     name, extension = os.path.splitext(os.path.basename(os.path.dirname(dir_path)))
+                    db_modules = models.Module.objects.filter(
+                        uid=request.session.session_key,
+                        sdo=request.session['moodle'],
+                        cid=request.session['course_id'],
+                        mid=name,
+                    )
+                    if len(db_modules) > 0:
+                        mod_name = db_modules[0].mod_name
+                        sec_name = db_modules[0].sec_name
+                    else:
+                        mod_name = name
+                        sec_name = name
                     res.append({
-                        'name': name.replace(' ', '-'),
-                        'content': 'Анализ модуля ' + name,
+                        'name': name,
+                        'content': mod_name,
+                        'section': sec_name,
                         'dir_path': os.path.dirname(dir_path),
                         'html': str(mod_html),
                         'txt': mod_content,
@@ -78,9 +94,22 @@ def read_files(source, only_these=None):
                 text = ' '.join(list(filter(lambda x: not re.fullmatch(r'\s*', x), tockens)))
                 mod_content = ' ' + html.unescape(text)
                 name, extension = os.path.splitext(os.path.basename(os.path.dirname(dir_path)))
+                db_modules = models.Module.objects.filter(
+                    uid=request.session.session_key,
+                    sdo=request.session['moodle'],
+                    cid=request.session['course_id'],
+                    mid=name,
+                )
+                if len(db_modules) > 0:
+                    mod_name = db_modules[0].mod_name
+                    sec_name = db_modules[0].sec_name
+                else:
+                    mod_name = name
+                    sec_name = name
                 res.append({
-                    'name': name.replace(' ', '-'),
-                    'content': 'Анализ модуля ' + name,
+                    'name': name,
+                    'content': mod_name,
+                    'section': sec_name,
                     'dir_path': os.path.dirname(dir_path),
                     'html': str(mod_html),
                     'txt': mod_content,
@@ -93,6 +122,7 @@ def read_files(source, only_these=None):
     res.insert(0, {
         'name': 'all',
         'content': 'Анализ всего курса',
+        'section': '',
         'dir_path': source,
         'html': str(all_html),
         'txt': all_content,

@@ -36,64 +36,80 @@
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">...</a>
                         <div class="dropdown-menu dropdown-menu-right">
                             {% if theory_modules %}
-                                {% for name, content, result, indicators in theory_modules %}
+                                {% for name, content, section, result, indicators in theory_modules %}
                                     {% if forloop.counter != 1 %}
                                         <!--<li class="nav-item">
                                             <a class="nav-link" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="false">{{ content }}</a>
                                         </li>-->
-                                        <a class="dropdown-item" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="false">{{ content }}</a>
+                                        <a class="dropdown-item" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="false">
+                                            <span data-toggle="tooltip" data-placement="top" title="{% if section != '' %}{{ section }}{% else %}{{ content }}{% endif %}">{{ content }}</span>
+                                        </a>
                                     {% endif %}
                                 {% endfor %}
                             {% endif %}
                             <div class="dropdown-divider"></div>
-                            {% for name, content, questions, expert_analysis in self_test_modules %}
+                            {% for name, content, section, questions, expert_analysis in self_test_modules %}
                                 <!--<li class="nav-item">
                                     <a class="nav-link" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="false">{{ content }}</a>
                                 </li>-->
                                 <!--<a class="dropdown-item" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="false">{{ content }}</a>-->
-                                <a class="dropdown-item" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="false">{{ content }}</a>
+                                <a class="dropdown-item" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="false">
+                                    <span data-toggle="tooltip" data-placement="top" title="{% if section != '' %}{{ section }}{% else %}{{ content }}{% endif %}">{{ content }}</span>
+                                </a>
                             {% endfor %}
                             <div class="dropdown-divider"></div>
-                            {% for name, content, questions, expert_analysis in control_and_exam_test_modules %}
+                            {% for name, content, sections, questions, expert_analysis in control_and_exam_test_modules %}
                                 <!--<li class="nav-item">
                                     <a class="nav-link" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="false">{{ content }}</a>
                                 </li>-->
-                                <a class="dropdown-item" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="false">{{ content }}</a>
+                                <a class="dropdown-item" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="false">
+                                    <span data-toggle="tooltip" data-placement="top" title="{% if section != '' %}{{ section }}{% else %}{{ content }}{% endif %}">{{ content }}</span>
+                                </a>
                             {% endfor %}
                             <div class="dropdown-divider"></div>
-                            {% for name, extension, src, expert_analysis in video_file_modules %}
+                            {% for name, content, section, extension, src, expert_analysis in video_file_modules %}
                                 <!--<li class="nav-item">
                                     <a class="nav-link" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="false">Анализ видеофайла {{ name }}</a>
                                 </li>-->
-                                <a class="dropdown-item" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="false">Анализ видеофайла {{ name }}</a>
+                                <a class="dropdown-item" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="false">
+                                    <span data-toggle="tooltip" data-placement="top" title="{% if section != '' %}{{ section }}{% else %}{{ content }}{% endif %}">{{ content }}</span>
+                                </a>
                             {% endfor %}
                             <div class="dropdown-divider"></div>
-                            {% for name, extension, src, expert_analysis in video_lecture_modules %}
+                            {% for name, content, section, extension, src, expert_analysis in video_lecture_modules %}
                                 <!--<li class="nav-item">
                                     <a class="nav-link" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="false">Анализ видеолекции {{ name }}</a>
                                 </li>-->
-                                <a class="dropdown-item" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="false">Анализ видеолекции {{ name }}</a>
+                                <a class="dropdown-item" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="false">
+                                    <span data-toggle="tooltip" data-placement="top" title="{% if section != '' %}{{ section }}{% else %}{{ content }}{% endif %}">{{ content }}</span>
+                                </a>
                             {% endfor %}
                             <div class="dropdown-divider"></div>
-                            {% for name, extension, src, expert_analysis in audio_file_modules %}
+                            {% for name, content, section, extension, src, expert_analysis in audio_file_modules %}
                                 <!--<li class="nav-item">
                                     <a class="nav-link" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="false">Анализ аудиофайла {{ name }}</a>
                                 </li>-->
-                                <a class="dropdown-item" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="false">Анализ аудиофайла {{ name }}</a>
+                                <a class="dropdown-item" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="false">
+                                    <span data-toggle="tooltip" data-placement="top" title="{% if section != '' %}{{ section }}{% else %}{{ content }}{% endif %}">{{ content }}</span>
+                                </a>
                             {% endfor %}
                             <div class="dropdown-divider"></div>
-                            {% for name, extension, src, expert_analysis in audio_lecture_modules %}
+                            {% for name, content, section, extension, src, expert_analysis in audio_lecture_modules %}
                                 <!--<li class="nav-item">
                                     <a class="nav-link" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="false">Анализ аудиолукции {{ name }}</a>
                                 </li>-->
-                                <a class="dropdown-item" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="false">Анализ аудиолукции {{ name }}</a>
+                                <a class="dropdown-item" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="false">
+                                    <span data-toggle="tooltip" data-placement="top" title="{% if section != '' %}{{ section }}{% else %}{{ content }}{% endif %}">{{ content }}</span>
+                                </a>
                             {% endfor %}
                             <div class="dropdown-divider"></div>
-                            {% for name, videos, pictures, audios, presentations, documents, tables, pdfs, others, expert_analysis in webinar_modules %}
+                            {% for name, content, section, videos, pictures, audios, presentations, documents, tables, pdfs, others, expert_analysis in webinar_modules %}
                                 <!--<li class="nav-item">
                                     <a class="nav-link" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="false">Анализ вебинара {{ name }}</a>
                                 </li>-->
-                                <a class="dropdown-item" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="false">Анализ вебинара {{ name }}</a>
+                                <a class="dropdown-item" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="false">
+                                    <span data-toggle="tooltip" data-placement="top" title="{% if section != '' %}{{ section }}{% else %}{{ content }}{% endif %}">{{ content }}</span>
+                                </a>
                             {% endfor %}
                         </div>
                     </li>
@@ -102,7 +118,7 @@
                     <div class="tab-pane fade show active" id="tab-course-analysis" role="tabpanel" aria-labelledby="course-analysis-tab">
                         {% if theory_modules %}
                             <div class="accordion" id="theory-analysis-accordion">
-                                {% for name, content, result, indicators in theory_modules %}
+                                {% for name, content, section, result, indicators in theory_modules %}
                                     {% if forloop.counter == 1 %}
                                         <div class="card">
                                             <div class="card-header" id="theory-analysis-card-header">
@@ -891,14 +907,14 @@
                                     </div>
                                     <div id="collapse-self-test" class="collapse show" aria-labelledby="self-test-card-header" data-parent="#self-test-accordion">
                                         <div class="card-body">
-                                            {% for name, content, questions, expert_analysis in self_test_modules %}
+                                            {% for name, content, section, questions, expert_analysis in self_test_modules %}
                                                 <div class="row mb-3">
                                                     <div class="col">
                                                         <a data-toggle="collapse" href="#collapse-self-test-{{ name }}" aria-expanded="true" aria-controls="collapseExample">
                                                             <h2>
                                                                 <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
                                                                 <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                                <span>{{ name }}</span>
+                                                                <span>{% if section != '' %}{{ section }}: {% endif %}{{ content }}</span>
                                                             </h2>
                                                         </a>
                                                     </div>
@@ -1102,14 +1118,14 @@
                                     </div>
                                     <div id="collapse-control-and-exam-test" class="collapse show" aria-labelledby="control-and-exam-test-card-header" data-parent="#control-and-exam-test-accordion">
                                         <div class="card-body">
-                                            {% for name, content, questions, expert_analysis in control_and_exam_test_modules %}
+                                            {% for name, content, section, questions, expert_analysis in control_and_exam_test_modules %}
                                                 <div class="row mb-3">
                                                     <div class="col">
                                                         <a data-toggle="collapse" href="#collapse-control-and-exam-test-{{ name }}" aria-expanded="true" aria-controls="collapseExample">
                                                             <h2>
                                                                 <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
                                                                 <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                                <span>{{ name }}</span>
+                                                                <span>{% if section != '' %}{{ section }}: {% endif %}{{ content }}</span>
                                                             </h2>
                                                         </a>
                                                     </div>
@@ -1316,14 +1332,14 @@
                                     </div>
                                     <div id="collapse-video-file" class="collapse show" aria-labelledby="video-file-card-header" data-parent="#video-file-accordion">
                                         <div class="card-body">
-                                            {% for name, extension, src, expert_analysis in video_file_modules %}
+                                            {% for name, content, section, extension, src, expert_analysis in video_file_modules %}
                                                 <div class="row mb-3">
                                                     <div class="col">
                                                         <a data-toggle="collapse" href="#collapse-video-file-{{ name }}" aria-expanded="true" aria-controls="collapseExample">
                                                             <h2>
                                                                 <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
                                                                 <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                                <span>{{ name }}</span>
+                                                                <span>{% if section != '' %}{{ section }}: {% endif %}{{ content }}</span>
                                                             </h2>
                                                         </a>
                                                     </div>
@@ -1503,14 +1519,14 @@
                                     </div>
                                     <div id="collapse-video-lecture" class="collapse show" aria-labelledby="video-lecture-card-header" data-parent="#video-lecture-accordion">
                                         <div class="card-body">
-                                            {% for name, extension, src, expert_analysis in video_lecture_modules %}
+                                            {% for name, content, section, extension, src, expert_analysis in video_lecture_modules %}
                                                 <div class="row mb-3">
                                                     <div class="col">
                                                         <a data-toggle="collapse" href="#collapse-video-lecture-{{ name }}" aria-expanded="true" aria-controls="collapseExample">
                                                             <h2>
                                                                 <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
                                                                 <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                                <span>{{ name }}</span>
+                                                                <span>{% if section != '' %}{{ section }}: {% endif %}{{ content }}</span>
                                                             </h2>
                                                         </a>
                                                     </div>
@@ -1672,14 +1688,14 @@
                                     </div>
                                     <div id="collapse-audio-file" class="collapse show" aria-labelledby="audio-file-card-header" data-parent="#audio-file-accordion">
                                         <div class="card-body">
-                                            {% for name, extension, src, expert_analysis in audio_file_modules %}
+                                            {% for name, content, section, extension, src, expert_analysis in audio_file_modules %}
                                                 <div class="row mb-3">
                                                     <div class="col">
                                                         <a data-toggle="collapse" href="#collapse-audio-file-{{ name }}" aria-expanded="true" aria-controls="collapseExample">
                                                             <h2>
                                                                 <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
                                                                 <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                                <span>{{ name }}</span>
+                                                                <span>{% if section != '' %}{{ section }}: {% endif %}{{ content }}</span>
                                                             </h2>
                                                         </a>
                                                     </div>
@@ -1809,14 +1825,14 @@
                                     </div>
                                     <div id="collapse-audio-lecture" class="collapse show" aria-labelledby="audio-lecture-card-header" data-parent="#audio-lecture-accordion">
                                         <div class="card-body">
-                                            {% for name, extension, src, expert_analysis in audio_lecture_modules %}
+                                            {% for name, content, section, extension, src, expert_analysis in audio_lecture_modules %}
                                                 <div class="row mb-3">
                                                     <div class="col">
                                                         <a data-toggle="collapse" href="#collapse-audio-lecture-{{ name }}" aria-expanded="true" aria-controls="collapseExample">
                                                             <h2>
                                                                 <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
                                                                 <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                                <span>{{ name }}</span>
+                                                                <span>{% if section != '' %}{{ section }}: {% endif %}{{ content }}</span>
                                                             </h2>
                                                         </a>
                                                     </div>
@@ -1982,14 +1998,14 @@
                                     </div>
                                     <div id="collapse-webinar" class="collapse show" aria-labelledby="webinar-card-header" data-parent="#webinar-accordion">
                                         <div class="card-body">
-                                            {% for name, videos, pictures, audios, presentations, documents, tables, pdfs, others, expert_analysis in webinar_modules %}
+                                            {% for name, content, section, videos, pictures, audios, presentations, documents, tables, pdfs, others, expert_analysis in webinar_modules %}
                                                 <div class="row mb-3">
                                                     <div class="col">
                                                         <a data-toggle="collapse" href="#collapse-webinar-{{ name }}" aria-expanded="true" aria-controls="collapseExample">
                                                             <h2>
                                                                 <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
                                                                 <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                                <span>{{ name }}</span>
+                                                                <span>{% if section != '' %}{{ section }}: {% endif %}{{ content }}</span>
                                                             </h2>
                                                         </a>
                                                     </div>
@@ -2239,7 +2255,7 @@
                         </div>
                     </div>
                     {% if theory_modules %}
-                        {% for name, content, result, indicators in theory_modules %}
+                        {% for name, content, section, result, indicators in theory_modules %}
                             {% if forloop.counter != 1 %}
                                 <div class="tab-pane fade" id="tab-{{ name }}" role="tabpanel" aria-labelledby="{{ name }}-tab">
                                     <div class="container-fluid">
@@ -3015,7 +3031,7 @@
                         {% endfor %}
                     {% endif %}
                     {% if self_test_modules %}
-                        {% for name, content, questions, expert_analysis in self_test_modules %}
+                        {% for name, content, section, questions, expert_analysis in self_test_modules %}
                             <div class="tab-pane fade" id="tab-{{ name }}" role="tabpanel" aria-labelledby="{{ name }}-tab">
                                 <div class="container-fluid">
                                     <div class="row mb-3">
@@ -3198,7 +3214,7 @@
                         {% endfor %}
                     {% endif %}
                     {% if control_and_exam_test_modules %}
-                        {% for name, content, questions, expert_analysis in control_and_exam_test_modules %}
+                        {% for name, content, section, questions, expert_analysis in control_and_exam_test_modules %}
                             <div class="tab-pane fade" id="tab-{{ name }}" role="tabpanel" aria-labelledby="{{ name }}-tab">
                                 <div class="container-fluid">
                                     <div class="row mb-3">
@@ -3382,7 +3398,7 @@
                         {% endfor %}
                     {% endif %}
                     {% if video_file_modules %}
-                        {% for name, extension, src, expert_analysis in video_file_modules %}
+                        {% for name, content, section, extension, src, expert_analysis in video_file_modules %}
                             <div class="tab-pane fade" id="tab-{{ name }}" role="tabpanel" aria-labelledby="{{ name }}-tab">
                                 <div class="container-fluid">
                                     {% if src is not None %}
@@ -3545,7 +3561,7 @@
                         {% endfor %}
                     {% endif %}
                     {% if video_lecture_modules %}
-                        {% for name, extension, src, expert_analysis in video_lecture_modules %}
+                        {% for name, content, section, extension, src, expert_analysis in video_lecture_modules %}
                             <div class="tab-pane fade" id="tab-{{ name }}" role="tabpanel" aria-labelledby="{{ name }}-tab">
                                 <div class="container-fluid">
                                     {% if src is not None %}
@@ -3672,7 +3688,7 @@
                         {% endfor %}
                     {% endif %}
                     {% if audio_file_modules %}
-                        {% for name, extension, src, expert_analysis in audio_file_modules %}
+                        {% for name, content, section, extension, src, expert_analysis in audio_file_modules %}
                             <div class="tab-pane fade" id="tab-{{ name }}" role="tabpanel" aria-labelledby="{{ name }}-tab">
                                 <div class="container-fluid">
                                     {% if src is not None %}
@@ -3785,7 +3801,7 @@
                         {% endfor %}
                     {% endif %}
                     {% if audio_lecture_modules %}
-                        {% for name, extension, src, expert_analysis in audio_lecture_modules %}
+                        {% for name, content, section, extension, src, expert_analysis in audio_lecture_modules %}
                             <div class="tab-pane fade" id="tab-{{ name }}" role="tabpanel" aria-labelledby="{{ name }}-tab">
                                 <div class="container-fluid">
                                     {% if src is not None %}
@@ -3906,7 +3922,7 @@
                         {% endfor %}
                     {% endif %}
                     {% if webinar_modules %}
-                        {% for name, videos, pictures, audios, presentations, documents, tables, pdfs, others, expert_analysis in webinar_modules %}
+                        {% for name, content, section, videos, pictures, audios, presentations, documents, tables, pdfs, others, expert_analysis in webinar_modules %}
                             <div class="tab-pane fade" id="tab-{{ name }}" role="tabpanel" aria-labelledby="{{ name }}-tab">
                                 <div class="container-fluid">
                                     {% for video in videos %}

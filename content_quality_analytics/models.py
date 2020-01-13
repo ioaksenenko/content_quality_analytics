@@ -5,12 +5,24 @@ from datetime import datetime as dt
 
 
 class Module(models.Model):
-    uid = models.CharField(max_length=255)
-    mod_name = models.CharField(max_length=255)
-    mod_type = models.CharField(max_length=255)
+    uid = models.CharField(max_length=255, default='')
+    sdo = models.CharField(max_length=255, default='')
+    cid = models.IntegerField(default=-1)
+    mid = models.IntegerField(default=-1)
+    sec_name = models.CharField(max_length=255, default='')
+    mod_name = models.CharField(max_length=255, default='')
+    mod_type = models.CharField(max_length=255, default='')
 
     def __str__(self):
-        return json.dumps({'uid': self.uid, 'mod_name': self.mod_name, 'mod_type': self.mod_type})
+        return json.dumps({
+            'uid': self.uid,
+            'sdo': self.sdo,
+            'cid': self.cid,
+            'mid': self.mid,
+            'sec_name': self.sec_name,
+            'mod_name': self.mod_name,
+            'mod_type': self.mod_type
+        })
 
 
 class Session(models.Model):

@@ -49,6 +49,11 @@ $(document).ready(function () {
     });
 
     dynamic_nav();
+
+    let tabs = $('span[data-toggle="tooltip"]');
+    tabs.each(function (i, e) {
+        $(e).tooltip();
+    });
 });
 
 function show_tooltip() {

@@ -384,113 +384,122 @@ def write_file(file, file_path):
 
 def get_modules(request):
     res = []
+    modules = models.Module.objects.filter(
+        uid=request.session.session_key,
+        sdo=request.session['moodle'],
+        cid=request.session['course_id']
+    )
     dir_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key)
-    for file_name in natsorted(os.listdir(dir_path), key=lambda y: y.lower()):
-        if file_name != 'trash' and file_name != 'tmp':
-            if re.fullmatch(r'^(theory|введение|глоссарий|заключение|карта_курса|литература|сведения_об_авторе|список_сокращений|теоретический_материал|abbreviature|authors|conclusion|glossary|introduction|karta|literature|\d+).*$', file_name, re.I):
-                file_type = 'theory'
-                src = os.path.join(dir_path, file_name, 'html')
-                if not os.path.exists(src):
-                    src = 'undefined'
-                    allowed_for_analysis = False
-                else:
-                    src = src[src.index(request.session.session_key) + len(request.session.session_key):]
-                    allowed_for_analysis = True
-            elif re.fullmatch(r'^(test|самоконтроль).*$', file_name, re.I):
-                file_type = 'self-test'
-                src = os.path.join(dir_path, file_name, 'html')
-                if not os.path.exists(src):
-                    src = 'undefined'
-                    allowed_for_analysis = False
-                else:
-                    src = src[src.index(request.session.session_key) + len(request.session.session_key):]
-                    allowed_for_analysis = True
-            elif re.fullmatch(r'^(control|контрольная_работа).*$', file_name, re.I):
-                file_type = 'control-test'
-                src = os.path.join(dir_path, file_name, 'test.xml')
-                if not os.path.exists(src):
-                    src = 'undefined'
-                    allowed_for_analysis = False
-                else:
-                    src = src[src.index(request.session.session_key) + len(request.session.session_key):]
-                    allowed_for_analysis = True
-            elif re.fullmatch(r'^(exam|экзаменационная_работа).*$', file_name, re.I):
-                file_type = 'exam-test'
-                src = os.path.join(dir_path, file_name, 'test.xml')
-                if not os.path.exists(src):
-                    src = 'undefined'
-                    allowed_for_analysis = False
-                else:
-                    src = src[src.index(request.session.session_key) + len(request.session.session_key):]
-                    allowed_for_analysis = True
-
-            #elif re.fullmatch(r'^(presentation|презентация).*$', file_name, re.I):
-                #file_type = 'presentation'
-                #src = os.path.join(dir_path, file_name, 'slides')
-                #allowed_for_analysis = False
-                #if not os.path.exists(src):
-                #    src = 'undefined'
-                #else:
-                #    src = src[src.index(request.session.session_key) + len(request.session.session_key):]
-            elif re.fullmatch(r'^(webinar|вебинар).*$', file_name, re.I):
-                file_type = 'webinar'
-                src = os.path.join(dir_path, file_name)
-                src = src[src.index(request.session.session_key) + len(request.session.session_key):]
-                allowed_for_analysis = True
-            elif re.fullmatch(r'^(audiofile|аудиофайл).*$', file_name, re.I):
-                file_type = 'audio-file'
-                src = 'undefined'
-                dp = os.path.join(dir_path, file_name)
-                allowed_for_analysis = True
-                for fn in os.listdir(dp):
-                    fn, fe = os.path.splitext(fn)
-                    if re.fullmatch(r'\.(flac|midi|amr|ogg|aiff|mp3|wav)', fe, re.I):
-                        src = os.path.join(dp, fn + fe)
-                if src != 'undefined':
-                    src = src[src.index(request.session.session_key) + len(request.session.session_key):]
-            elif re.fullmatch(r'^(audiolecture|аудиолекция).*$', file_name, re.I):
-                file_type = 'audio-lecture'
-                src = 'undefined'
-                dp = os.path.join(dir_path, file_name)
-                allowed_for_analysis = True
-                for fn in os.listdir(dp):
-                    fn, fe = os.path.splitext(fn)
-                    if re.fullmatch(r'\.(flac|midi|amr|ogg|aiff|mp3|wav)', fe, re.I):
-                        src = os.path.join(dp, fn + fe)
-                if src != 'undefined':
-                    src = src[src.index(request.session.session_key) + len(request.session.session_key):]
-            elif re.fullmatch(r'^(videofile|видеофайл).*$', file_name, re.I):
-                file_type = 'video-file'
-                src = 'undefined'
-                dp = os.path.join(dir_path, file_name)
-                allowed_for_analysis = True
-                for fn in os.listdir(dp):
-                    fn, fe = os.path.splitext(fn)
-                    if re.fullmatch(r'\.(avi|mp4|mkv)', fe, re.I):
-                        src = os.path.join(dp, fn + fe)
-                if src != 'undefined':
-                    src = src[src.index(request.session.session_key) + len(request.session.session_key):]
-            elif re.fullmatch(r'^(videolecture|видеолекция).*$', file_name, re.I):
-                file_type = 'video-lecture'
-                src = 'undefined'
-                dp = os.path.join(dir_path, file_name)
-                allowed_for_analysis = True
-                for fn in os.listdir(dp):
-                    fn, fe = os.path.splitext(fn)
-                    if re.fullmatch(r'\.(avi|mp4|mkv)', fe, re.I):
-                        src = os.path.join(dp, fn + fe)
-                if src != 'undefined':
-                    src = src[src.index(request.session.session_key) + len(request.session.session_key):]
-            else:
-                file_type = 'unknown-file'
+    for module in modules:
+        file_name = str(module.mid)
+        module_name = ''.join(re.findall(r'[a-zA-Zа-яА-Я0-9_\s]+', module.mod_name)).replace(' ', '_')
+        if re.fullmatch(r'^(theory|введение|глоссарий|заключение|карта_курса|литература|сведения_об_авторе|список_сокращений|теоретический_материал|abbreviature|authors|conclusion|glossary|introduction|karta|literature|\d+).*$', module_name, re.I):
+            file_type = 'theory'
+            src = os.path.join(dir_path, file_name, 'html')
+            if not os.path.exists(src):
                 src = 'undefined'
                 allowed_for_analysis = False
-            res.append({
-                'name': file_name,
-                'type': file_type,
-                'src': src,
-                'allowed_for_analysis': allowed_for_analysis
-            })
+            else:
+                src = src[src.index(request.session.session_key) + len(request.session.session_key):]
+                allowed_for_analysis = True
+        elif re.fullmatch(r'^(test|самоконтроль).*$', module_name, re.I):
+            file_type = 'self-test'
+            src = os.path.join(dir_path, file_name, 'html')
+            if not os.path.exists(src):
+                src = 'undefined'
+                allowed_for_analysis = False
+            else:
+                src = src[src.index(request.session.session_key) + len(request.session.session_key):]
+                allowed_for_analysis = True
+        elif re.fullmatch(r'^(control|контрольная_работа).*$', module_name, re.I):
+            file_type = 'control-test'
+            src = os.path.join(dir_path, file_name, 'test.xml')
+            if not os.path.exists(src):
+                src = 'undefined'
+                allowed_for_analysis = False
+            else:
+                src = src[src.index(request.session.session_key) + len(request.session.session_key):]
+                allowed_for_analysis = True
+        elif re.fullmatch(r'^(exam|экзаменационная_работа).*$', module_name, re.I):
+            file_type = 'exam-test'
+            src = os.path.join(dir_path, file_name, 'test.xml')
+            if not os.path.exists(src):
+                src = 'undefined'
+                allowed_for_analysis = False
+            else:
+                src = src[src.index(request.session.session_key) + len(request.session.session_key):]
+                allowed_for_analysis = True
+        #elif re.fullmatch(r'^(presentation|презентация).*$', file_name, re.I):
+            #file_type = 'presentation'
+            #src = os.path.join(dir_path, file_name, 'slides')
+            #allowed_for_analysis = False
+            #if not os.path.exists(src):
+            #    src = 'undefined'
+            #else:
+            #    src = src[src.index(request.session.session_key) + len(request.session.session_key):]
+        elif re.fullmatch(r'^(webinar|вебинар).*$', module_name, re.I):
+            file_type = 'webinar'
+            src = os.path.join(dir_path, file_name)
+            src = src[src.index(request.session.session_key) + len(request.session.session_key):]
+            allowed_for_analysis = True
+        elif re.fullmatch(r'^(audiofile|аудиофайл).*$', module_name, re.I):
+            file_type = 'audio-file'
+            src = 'undefined'
+            dp = os.path.join(dir_path, file_name)
+            allowed_for_analysis = True
+            for fn in os.listdir(dp):
+                fn, fe = os.path.splitext(fn)
+                if re.fullmatch(r'\.(flac|midi|amr|ogg|aiff|mp3|wav)', fe, re.I):
+                    src = os.path.join(dp, fn + fe)
+            if src != 'undefined':
+                src = src[src.index(request.session.session_key) + len(request.session.session_key):]
+        elif re.fullmatch(r'^(audiolecture|аудиолекция).*$', module_name, re.I):
+            file_type = 'audio-lecture'
+            src = 'undefined'
+            dp = os.path.join(dir_path, file_name)
+            allowed_for_analysis = True
+            for fn in os.listdir(dp):
+                fn, fe = os.path.splitext(fn)
+                if re.fullmatch(r'\.(flac|midi|amr|ogg|aiff|mp3|wav)', fe, re.I):
+                    src = os.path.join(dp, fn + fe)
+            if src != 'undefined':
+                src = src[src.index(request.session.session_key) + len(request.session.session_key):]
+        elif re.fullmatch(r'^(videofile|видеофайл).*$', module_name, re.I):
+            file_type = 'video-file'
+            src = 'undefined'
+            dp = os.path.join(dir_path, file_name)
+            allowed_for_analysis = True
+            for fn in os.listdir(dp):
+                fn, fe = os.path.splitext(fn)
+                if re.fullmatch(r'\.(avi|mp4|mkv)', fe, re.I):
+                    src = os.path.join(dp, fn + fe)
+            if src != 'undefined':
+                src = src[src.index(request.session.session_key) + len(request.session.session_key):]
+        elif re.fullmatch(r'^(videolecture|видеолекция).*$', module_name, re.I):
+            file_type = 'video-lecture'
+            src = 'undefined'
+            dp = os.path.join(dir_path, file_name)
+            allowed_for_analysis = True
+            for fn in os.listdir(dp):
+                fn, fe = os.path.splitext(fn)
+                if re.fullmatch(r'\.(avi|mp4|mkv)', fe, re.I):
+                    src = os.path.join(dp, fn + fe)
+            if src != 'undefined':
+                src = src[src.index(request.session.session_key) + len(request.session.session_key):]
+        else:
+            file_type = 'unknown-file'
+            src = 'undefined'
+            allowed_for_analysis = False
+        module.mod_type = file_type
+        module.save()
+        res.append({
+            'section': module.sec_name,
+            'name': module.mod_name,
+            'id': str(module.mid),
+            'type': file_type,
+            'src': src,
+            'allowed_for_analysis': allowed_for_analysis
+        })
     return res
 
 
@@ -540,7 +549,7 @@ def parallel_analyze_file_with_futures(file, indicators):
         'san_ch': san_ch.result()
     }
 
-    return res, file['name'], file['content']
+    return res, file['name'], file['content'], file['section']
 
 
 def linear_analyze(files):
@@ -609,11 +618,13 @@ def parallel_analyze_with_futures(files, indicators):
     results = []
     names = []
     contents = []
+    sections = []
     for future in futures:
-        result, name, content = future.result()
+        result, name, content, section = future.result()
         results.append(result)
         names.append(name)
         contents.append(content)
+        sections.append(section)
 
     results = [
         {
@@ -641,12 +652,13 @@ def parallel_analyze_with_futures(files, indicators):
     indicators.insert(0, indicators_for_all)
     names.insert(0, file_for_all['name'])
     contents.insert(0, file_for_all['content'])
+    sections.insert(0, file_for_all['section'])
 
     finish_time = time()
 
     print(f'Parallel analyze with futures: {finish_time - start_time}')
 
-    return results, names, contents
+    return results, names, contents, sections
 
 
 def theory_analysis_results(request):
@@ -667,12 +679,12 @@ def theory_analysis_results(request):
                 indicators.append(module_indicators)
             indicators.insert(0, request.POST.getlist('indicators-all-elements'))
 
-            files = analyzer.read_files(theory_path, theory_modules)
+            files = analyzer.read_files(theory_path, request, theory_modules)
             # results = linear_analyze(files)
             # results = parallel_analyze(files)
-            results, names, contents = parallel_analyze_with_futures(files, indicators)
+            results, names, contents, sections = parallel_analyze_with_futures(files, indicators)
             context = {
-                'theory_modules': list(zip(names, contents, results, indicators))
+                'theory_modules': list(zip(names, contents, sections, results, indicators))
             }
         objects = models.Results.objects.filter(uid=request.session.session_key, name='theory-analysis')
         if len(objects) == 0:
@@ -1003,9 +1015,17 @@ def moodle(request):
             futures = []
 
             for module in modules:
-                fragments = re.findall(r'[a-zA-Zа-яА-Я0-9_\s]+', module['name'])
-                module_path = os.path.join(media_path, ''.join(fragments).replace(' ', '_') + '_' + module['contextid'])
-                # module_path = os.path.join(media_path, module['contextid'])
+                # fragments = re.findall(r'[a-zA-Zа-яА-Я0-9_\s]+', module['name'])
+                # module_path = os.path.join(media_path, ''.join(fragments).replace(' ', '_') + '_' + module['contextid'])
+                module_path = os.path.join(media_path, module['cmid'])
+                models.Module(
+                    uid=request.session.session_key,
+                    sdo=moodle,
+                    cid=course_id,
+                    mid=module['cmid'],
+                    sec_name=module['section_name'] if module['section_name'] is not None else '',
+                    mod_name=module['name']
+                ).save()
                 if not os.path.exists(module_path):
                     os.mkdir(module_path)
                     if module['plugin'] == 'mod_imscp':
@@ -1504,8 +1524,20 @@ def indicators(request):
             else:
                 dst = None
                 mod['indicators'] = []
-
-            mod['name'] = module
+            db_modules = models.Module.objects.filter(
+                uid=request.session.session_key,
+                sdo=request.session['moodle'],
+                cid=request.session['course_id'],
+                mid=module,
+            )
+            if len(db_modules) > 0:
+                mod_name = db_modules[0].mod_name
+                sec_name = db_modules[0].sec_name
+            else:
+                mod_name = module
+                sec_name = module
+            mod['name'] = mod_name
+            mod['section'] = sec_name
             mod['id'] = module
             context['modules'].append(mod)
 
@@ -1539,6 +1571,7 @@ def indicators(request):
         if len(os.listdir(theory_path)) != 0:
             context['modules'].append({
                 'name': 'Контент всех элементов с теорией',
+                'section': '',
                 'id': 'all-elements',
                 'indicators': indicators.filter(type='auto-indicator')
             })
@@ -1641,16 +1674,33 @@ def expert_analysis(request):
     self_test_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'self-test')
     self_test_modules = os.listdir(self_test_path)
     questions = []
+    ids = []
+    names = []
+    sections = []
     for module in self_test_modules:
         dir_path = os.path.join(self_test_path, module, 'html')
         for file_name in os.listdir(dir_path):
             file_path = os.path.join(dir_path, file_name)
             if os.path.isfile(file_path):
                 questions.append(get_questions(file_path))
+        ids.append(module)
+        db_modules = models.Module.objects.filter(
+            uid=request.session.session_key,
+            sdo=request.session['moodle'],
+            cid=request.session['course_id'],
+            mid=module,
+        )
+        if len(db_modules) > 0:
+            names.append(db_modules[0].mod_name)
+            sections.append(db_modules[0].sec_name)
+        else:
+            names.append(module)
+            sections.append(module)
 
     context['self_test_modules'] = list(zip(
-        [os.path.splitext(module)[0].replace(' ', '-') for module in self_test_modules],
-        ['Анализ модуля ' + module for module in self_test_modules],
+        ids,
+        names,
+        sections,
         questions
     ))
 
@@ -1659,6 +1709,9 @@ def expert_analysis(request):
     control_test_modules = os.listdir(control_test_path)
     exam_test_modules = os.listdir(exam_test_path)
     all_questions = []
+    ids = []
+    names = []
+    sections = []
     for module in control_test_modules:
         dir_path = os.path.join(control_test_path, module)
         questions = []
@@ -1667,6 +1720,19 @@ def expert_analysis(request):
             if os.path.isfile(file_path):
                 questions += get_control_questions(file_path)
         all_questions.append(questions)
+        ids.append(module)
+        db_modules = models.Module.objects.filter(
+            uid=request.session.session_key,
+            sdo=request.session['moodle'],
+            cid=request.session['course_id'],
+            mid=module,
+        )
+        if len(db_modules) > 0:
+            names.append(db_modules[0].mod_name)
+            sections.append(db_modules[0].sec_name)
+        else:
+            names.append(module)
+            sections.append(module)
     for module in exam_test_modules:
         dir_path = os.path.join(exam_test_path, module)
         questions = []
@@ -1675,9 +1741,23 @@ def expert_analysis(request):
             if os.path.isfile(file_path):
                 questions += get_control_questions(file_path)
         all_questions.append(questions)
+        ids.append(module)
+        db_modules = models.Module.objects.filter(
+            uid=request.session.session_key,
+            sdo=request.session['moodle'],
+            cid=request.session['course_id'],
+            mid=module,
+        )
+        if len(db_modules) > 0:
+            names.append(db_modules[0].mod_name)
+            sections.append(db_modules[0].sec_name)
+        else:
+            names.append(module)
+            sections.append(module)
     context['control_and_exam_test_modules'] = list(zip(
-        [os.path.splitext(module)[0].replace(' ', '-') for module in control_test_modules + exam_test_modules],
-        ['Анализ модуля ' + module for module in control_test_modules + exam_test_modules],
+        ids,
+        names,
+        sections,
         all_questions
     ))
 
@@ -1692,9 +1772,10 @@ def expert_analysis(request):
     names = []
     extensions = []
     src = []
+    ids = []
+    sections = []
     for module in video_file_modules:
         name = os.path.basename(module)
-        names.append(name)
         has_video = False
         dir_path = os.path.join(video_file_path, name)
         for file_name in os.listdir(dir_path):
@@ -1708,9 +1789,25 @@ def expert_analysis(request):
         if not has_video:
             extensions.append(None)
             src.append(None)
+        module = os.path.basename(module)
+        ids.append(module)
+        db_modules = models.Module.objects.filter(
+            uid=request.session.session_key,
+            sdo=request.session['moodle'],
+            cid=request.session['course_id'],
+            mid=module,
+        )
+        if len(db_modules) > 0:
+            names.append(db_modules[0].mod_name)
+            sections.append(db_modules[0].sec_name)
+        else:
+            names.append(module)
+            sections.append(module)
 
     context['video_file_modules'] = list(zip(
+        ids,
         names,
+        sections,
         extensions,
         src
     ))
@@ -1727,9 +1824,10 @@ def expert_analysis(request):
     names = []
     extensions = []
     src = []
+    ids = []
+    sections = []
     for module in video_lecture_modules:
         name = os.path.basename(module)
-        names.append(name)
         has_video = False
         dir_path = os.path.join(video_lecture_path, name)
         for file_name in os.listdir(dir_path):
@@ -1743,9 +1841,25 @@ def expert_analysis(request):
         if not has_video:
             extensions.append(None)
             src.append(None)
+        module = os.path.basename(module)
+        ids.append(module)
+        db_modules = models.Module.objects.filter(
+            uid=request.session.session_key,
+            sdo=request.session['moodle'],
+            cid=request.session['course_id'],
+            mid=module,
+        )
+        if len(db_modules) > 0:
+            names.append(db_modules[0].mod_name)
+            sections.append(db_modules[0].sec_name)
+        else:
+            names.append(module)
+            sections.append(module)
 
     context['video_lecture_modules'] = list(zip(
+        ids,
         names,
+        sections,
         extensions,
         src
     ))
@@ -1762,9 +1876,11 @@ def expert_analysis(request):
     names = []
     extensions = []
     src = []
+    ids = []
+    sections = []
     for module in audio_file_modules:
         name = os.path.basename(module)
-        names.append(name)
+        # names.append(name)
         has_audio = False
         dir_path = os.path.join(audio_file_path, name)
         for file_name in os.listdir(dir_path):
@@ -1778,9 +1894,25 @@ def expert_analysis(request):
         if not has_audio:
             extensions.append(None)
             src.append(None)
+        module = os.path.basename(module)
+        ids.append(module)
+        db_modules = models.Module.objects.filter(
+            uid=request.session.session_key,
+            sdo=request.session['moodle'],
+            cid=request.session['course_id'],
+            mid=module,
+        )
+        if len(db_modules) > 0:
+            names.append(db_modules[0].mod_name)
+            sections.append(db_modules[0].sec_name)
+        else:
+            names.append(module)
+            sections.append(module)
 
     context['audio_file_modules'] = list(zip(
+        ids,
         names,
+        sections,
         extensions,
         src
     ))
@@ -1797,9 +1929,11 @@ def expert_analysis(request):
     names = []
     extensions = []
     src = []
+    ids = []
+    sections = []
     for module in audio_lecture_modules:
         name = os.path.basename(module)
-        names.append(name)
+        # names.append(name)
         has_audio = False
         dir_path = os.path.join(audio_lecture_path, name)
         for file_name in os.listdir(dir_path):
@@ -1813,9 +1947,25 @@ def expert_analysis(request):
         if not has_audio:
             extensions.append(None)
             src.append(None)
+        module = os.path.basename(module)
+        ids.append(module)
+        db_modules = models.Module.objects.filter(
+            uid=request.session.session_key,
+            sdo=request.session['moodle'],
+            cid=request.session['course_id'],
+            mid=module,
+        )
+        if len(db_modules) > 0:
+            names.append(db_modules[0].mod_name)
+            sections.append(db_modules[0].sec_name)
+        else:
+            names.append(module)
+            sections.append(module)
 
     context['audio_lecture_modules'] = list(zip(
+        ids,
         names,
+        sections,
         extensions,
         src
     ))
@@ -1832,8 +1982,10 @@ def expert_analysis(request):
     all_tables = []
     all_pdfs = []
     all_others = []
+    ids = []
+    sections = []
     for module in webinar_modules:
-        names.append(module.replace(' ', '-'))
+        # names.append(module.replace(' ', '-'))
         videos = []
         pictures = []
         audios = []
@@ -1895,9 +2047,25 @@ def expert_analysis(request):
             all_tables.append(tables)
             all_pdfs.append(pdfs)
             all_others.append(others)
+            module = os.path.basename(module)
+            ids.append(module)
+            db_modules = models.Module.objects.filter(
+                uid=request.session.session_key,
+                sdo=request.session['moodle'],
+                cid=request.session['course_id'],
+                mid=module,
+            )
+            if len(db_modules) > 0:
+                names.append(db_modules[0].mod_name)
+                sections.append(db_modules[0].sec_name)
+            else:
+                names.append(module)
+                sections.append(module)
 
     context['webinar_modules'] = list(zip(
+        ids,
         names,
+        sections,
         all_videos,
         all_pictures,
         all_audios,

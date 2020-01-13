@@ -54,6 +54,22 @@ $(document).ready(function () {
             'Пожалуйста, подождите. Анализ может занять несколько минут...'
         );*/
     });
+
+    let collapse = $('a[data-toggle="collapse"]');
+
+    collapse.each(function (i, e) {
+        let collapse = $($(e).attr('href'));
+        collapse.on('hidden.bs.collapse', function () {
+            let trigger = $('a[data-toggle="collapse"][aria-expanded="false"][href="#'+$(this).attr('id')+'"]');
+            trigger.find('.hide').removeClass('d-none');
+            trigger.find('.show').addClass('d-none');
+        });
+        collapse.on('shown.bs.collapse', function () {
+            let trigger = $('a[data-toggle="collapse"][aria-expanded="true"][href="#'+$(this).attr('id')+'"]');
+            trigger.find('.show').removeClass('d-none');
+            trigger.find('.hide').addClass('d-none');
+        });
+    });
 });
 
 

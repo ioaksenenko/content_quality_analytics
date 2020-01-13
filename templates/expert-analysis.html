@@ -32,59 +32,73 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">...</a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                {% for name, content, questions in self_test_modules %}
+                                {% for name, content, section, questions in self_test_modules %}
                                     <!--<li class="nav-item">
                                         <a class="nav-link {% if forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if forloop.counter == 1 %} true {% else %} false {% endif %}">{{ content }}</a>
                                     </li>-->
-                                    <a class="dropdown-item {% if forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if forloop.counter == 1 %} true {% else %} false {% endif %}">{{ content }}</a>
+                                    <a class="dropdown-item {% if forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if forloop.counter == 1 %} true {% else %} false {% endif %}">
+                                        <span data-toggle="tooltip" data-placement="top" title="{% if section != '' %}{{ section }}{% else %}{{ content }}{% endif %}">{{ content }}</span>
+                                    </a>
                                 {% endfor %}
                                 <div class="dropdown-divider"></div>
-                                {% for name, content, questions in control_and_exam_test_modules %}
+                                {% for name, content, sections, questions in control_and_exam_test_modules %}
                                     <!--<li class="nav-item">
                                         <a class="nav-link {% if self_test_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if self_test_modules|length == 0 and forloop.counter == 1 %} true {% else %} false {% endif %}">{{ content }}</a>
                                     </li>-->
-                                    <a class="dropdown-item {% if self_test_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if self_test_modules|length == 0 and forloop.counter == 1 %} true {% else %} false {% endif %}">{{ content }}</a>
+                                    <a class="dropdown-item {% if self_test_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if self_test_modules|length == 0 and forloop.counter == 1 %} true {% else %} false {% endif %}">
+                                        <span data-toggle="tooltip" data-placement="top" title="{% if section != '' %}{{ section }}{% else %}{{ content }}{% endif %}">{{ content }}</span>
+                                    </a>
                                 {% endfor %}
                                 <div class="dropdown-divider"></div>
-                                {% for name, extension, src in video_file_modules %}
+                                {% for name, content, section, extension, src in video_file_modules %}
                                     <!--<li class="nav-item">
                                         <a class="nav-link {% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and forloop.counter == 1 %} true {% else %} false {% endif %}">Анализ видеофайла {{ name }}</a>
                                     </li>-->
-                                    <a class="dropdown-item {% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and forloop.counter == 1 %} true {% else %} false {% endif %}">Анализ видеофайла {{ name }}</a>
+                                    <a class="dropdown-item {% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and forloop.counter == 1 %} true {% else %} false {% endif %}">
+                                        <span data-toggle="tooltip" data-placement="top" title="{% if section != '' %}{{ section }}{% else %}{{ content }}{% endif %}">{{ content }}</span>
+                                    </a>
                                 {% endfor %}
                                 <div class="dropdown-divider"></div>
-                                {% for name, extension, src in video_lecture_modules %}
+                                {% for name, content, section, extension, src in video_lecture_modules %}
                                     <!--<li class="nav-item">
                                         <a class="nav-link {% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and forloop.counter == 1 %} true {% else %} false {% endif %}">Анализ видеолекции {{ name }}</a>
                                     </li>-->
-                                    <a class="dropdown-item {% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and forloop.counter == 1 %} true {% else %} false {% endif %}">Анализ видеолекции {{ name }}</a>
+                                    <a class="dropdown-item {% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and forloop.counter == 1 %} true {% else %} false {% endif %}">
+                                        <span data-toggle="tooltip" data-placement="top" title="{% if section != '' %}{{ section }}{% else %}{{ content }}{% endif %}">{{ content }}</span>
+                                    </a>
                                 {% endfor %}
                                 <div class="dropdown-divider"></div>
-                                {% for name, extension, src in audio_file_modules %}
+                                {% for name, content, section, extension, src in audio_file_modules %}
                                     <!--<li class="nav-item">
                                         <a class="nav-link {% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and forloop.counter == 1 %} true {% else %} false {% endif %}">Анализ аудиофайла {{ name }}</a>
                                     </li>-->
-                                    <a class="dropdown-item {% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and forloop.counter == 1 %} true {% else %} false {% endif %}">Анализ аудиофайла {{ name }}</a>
+                                    <a class="dropdown-item {% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and forloop.counter == 1 %} true {% else %} false {% endif %}">
+                                        <span data-toggle="tooltip" data-placement="top" title="{% if section != '' %}{{ section }}{% else %}{{ content }}{% endif %}">{{ content }}</span>
+                                    </a>
                                 {% endfor %}
                                 <div class="dropdown-divider"></div>
-                                {% for name, extension, src in audio_lecture_modules %}
+                                {% for name, content, section, extension, src in audio_lecture_modules %}
                                     <!--<li class="nav-item">
                                         <a class="nav-link {% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and audio_file_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and audio_file_modules|length == 0 and forloop.counter == 1 %} true {% else %} false {% endif %}">Анализ аудиолекции {{ name }}</a>
                                     </li>-->
-                                    <a class="dropdown-item {% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and audio_file_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and audio_file_modules|length == 0 and forloop.counter == 1 %} true {% else %} false {% endif %}">Анализ аудиолекции {{ name }}</a>
+                                    <a class="dropdown-item {% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and audio_file_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and audio_file_modules|length == 0 and forloop.counter == 1 %} true {% else %} false {% endif %}">
+                                        <span data-toggle="tooltip" data-placement="top" title="{% if section != '' %}{{ section }}{% else %}{{ content }}{% endif %}">{{ content }}</span>
+                                    </a>
                                 {% endfor %}
                                 <div class="dropdown-divider"></div>
-                                {% for name, videos, pictures, audios, presentations, documents, tables, pdfs, others in webinar_modules %}
+                                {% for name, content, section, videos, pictures, audios, presentations, documents, tables, pdfs, others in webinar_modules %}
                                     <!--<li class="nav-item">
                                         <a class="nav-link {% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and audio_file_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and audio_file_modules|length == 0 and audio_lecture_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and audio_file_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and audio_file_modules|length == 0 and audio_lecture_modules|length == 0 and forloop.counter == 1 %} true {% else %} false {% endif %}">Анализ вебинара {{ name }}</a>
                                     </li>-->
-                                    <a class="dropdown-item {% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and audio_file_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and audio_file_modules|length == 0 and audio_lecture_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and audio_file_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and audio_file_modules|length == 0 and audio_lecture_modules|length == 0 and forloop.counter == 1 %} true {% else %} false {% endif %}">Анализ вебинара {{ name }}</a>
+                                    <a class="dropdown-item {% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and audio_file_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and audio_file_modules|length == 0 and audio_lecture_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and audio_file_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and audio_file_modules|length == 0 and audio_lecture_modules|length == 0 and forloop.counter == 1 %} true {% else %} false {% endif %}">
+                                        <span data-toggle="tooltip" data-placement="top" title="{% if section != '' %}{{ section }}{% else %}{{ content }}{% endif %}">{{ content }}</span>
+                                    </a>
                                 {% endfor %}
                             </div>
                         </li>
                     </ul>
                     <div class="tab-content mt-3 mb-3" id="modules-tabs-content">
-                        {% for name, content, questions in self_test_modules %}
+                        {% for name, content, section, questions in self_test_modules %}
                             <div class="tab-pane fade {% if forloop.counter == 1 %} show active {% endif %}" id="tab-{{ name }}" role="tabpanel" aria-labelledby="{{ name }}-tab">
                                 <div class="container-fluid">
                                     <!--<div class="row mb-3">
@@ -271,7 +285,7 @@
                                 </div>
                             </div>
                         {% endfor %}
-                        {% for name, content, questions in control_and_exam_test_modules %}
+                        {% for name, content, section, questions in control_and_exam_test_modules %}
                             <div class="tab-pane fade {% if self_test_modules|length == 0 and forloop.counter == 1 %} show active {% endif %}" id="tab-{{ name }}" role="tabpanel" aria-labelledby="{{ name }}-tab">
                                 <div class="container-fluid">
                                     <!--<div class="row">
@@ -475,7 +489,7 @@
                                 </div>
                             </div>
                         {% endfor %}
-                        {% for name, extension, src in video_file_modules %}
+                        {% for name, content, section, extension, src in video_file_modules %}
                             <div class="tab-pane fade {% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and forloop.counter == 1 %} show active {% endif %}" id="tab-{{ name }}" role="tabpanel" aria-labelledby="{{ name }}-tab">
                                 <div class="container-fluid">
                                     {% if src is not None %}
@@ -636,7 +650,7 @@
                                 </div>
                             </div>
                         {% endfor %}
-                        {% for name, extension, src in video_lecture_modules %}
+                        {% for name, content, section, extension, src in video_lecture_modules %}
                             <div class="tab-pane fade {% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and forloop.counter == 1 %} show active {% endif %}" id="tab-{{ name }}" role="tabpanel" aria-labelledby="{{ name }}-tab">
                                 <div class="container-fluid">
                                     {% if src is not None %}
@@ -758,7 +772,7 @@
                                 </div>
                             </div>
                         {% endfor %}
-                        {% for name, extension, src in audio_file_modules %}
+                        {% for name, content, section, extension, src in audio_file_modules %}
                             <div class="tab-pane fade {% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and video_lecture_modules|length == 0 and forloop.counter == 1 %} show active {% endif %}" id="tab-{{ name }}" role="tabpanel" aria-labelledby="{{ name }}-tab">
                                 <div class="container-fluid">
                                     {% if src is not None %}
@@ -869,7 +883,7 @@
                                 </div>
                             </div>
                         {% endfor %}
-                        {% for name, extension, src in audio_lecture_modules %}
+                        {% for name, content, section, extension, src in audio_lecture_modules %}
                             <div class="tab-pane fade {% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and video_lecture_modules|length == 0 and audio_file_modules|length == 0 and forloop.counter == 1 %} show active {% endif %}" id="tab-{{ name }}" role="tabpanel" aria-labelledby="{{ name }}-tab">
                                 <div class="container-fluid">
                                     {% if src is not None %}
@@ -985,7 +999,7 @@
                                 </div>
                             </div>
                         {% endfor %}
-                        {% for name, videos, pictures, audios, presentations, documents, tables, pdfs, others in webinar_modules %}
+                        {% for name, content, section, videos, pictures, audios, presentations, documents, tables, pdfs, others in webinar_modules %}
                             <div class="tab-pane fade {% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and video_lecture_modules|length == 0 and audio_file_modules|length == 0 and audio_lecture_modules|length == 0 and forloop.counter == 1 %} show active {% endif %}" id="tab-{{ name }}" role="tabpanel" aria-labelledby="{{ name }}-tab">
                                 <div class="container-fluid">
                                     {% for video in videos %}
