@@ -71,10 +71,12 @@ def read_files(source, request, only_these=None):
                     else:
                         mod_name = name
                         sec_name = name
+                    indicators = request.POST.getlist('indicators-' + name)
                     res.append({
                         'name': name,
                         'content': mod_name,
                         'section': sec_name,
+                        'indicators': indicators,
                         'dir_path': os.path.dirname(dir_path),
                         'html': str(mod_html),
                         'txt': mod_content,
@@ -106,10 +108,12 @@ def read_files(source, request, only_these=None):
                 else:
                     mod_name = name
                     sec_name = name
+                indicators = request.POST.getlist('indicators-' + name)
                 res.append({
                     'name': name,
                     'content': mod_name,
                     'section': sec_name,
+                    'indicators': indicators,
                     'dir_path': os.path.dirname(dir_path),
                     'html': str(mod_html),
                     'txt': mod_content,
@@ -123,6 +127,7 @@ def read_files(source, request, only_these=None):
         'name': 'all',
         'content': 'Анализ всего курса',
         'section': '',
+        'indicators': [],
         'dir_path': source,
         'html': str(all_html),
         'txt': all_content,
@@ -474,7 +479,8 @@ def get_logger(file):
     return logger
 
 
-def text_characteristics(file, indicators):
+def text_characteristics(file):
+    indicators = file['indicators']
     logger = get_logger(file)
     logger.info(f'Text characteristics for {file["dir_path"]}:')
     res = {}
@@ -738,9 +744,10 @@ def get_rel_img_contrast(file_path):
     return res
 
 
-def img_characteristics(file, indicators):
+def img_characteristics(file):
     res = {}
 
+    indicators = file['indicators']
     if 'illustrations_number' in indicators or \
             'average_illustrations_number_per_page' in indicators or \
             'image_brightness' in indicators or \
@@ -812,7 +819,7 @@ def img_characteristics_all_files(files, indicators):
     return res
 
 
-def search_and_nav_characteristics(file, indicators):
+def search_and_nav_characteristics(file):
     res = {
         'glossary': 0,
         'tables': 0,
@@ -821,6 +828,8 @@ def search_and_nav_characteristics(file, indicators):
         'formula': 0,
         'litlist': 0
     }
+
+    indicators = file['indicators']
 
     soup = bs4.BeautifulSoup(file['html'], 'html.parser')
     h1_list = soup.find_all('h1')

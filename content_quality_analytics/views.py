@@ -536,12 +536,12 @@ def parallel_analyze_file(file):
     return res
 
 
-def parallel_analyze_file_with_futures(file, indicators):
+def parallel_analyze_file_with_futures(file):
 
     with ProcessPoolExecutor(max_workers=os.cpu_count()) as executor:
-        txt_ch = executor.submit(analyzer.text_characteristics, file, indicators)
-        img_ch = executor.submit(analyzer.img_characteristics, file, indicators)
-        san_ch = executor.submit(analyzer.search_and_nav_characteristics, file, indicators)
+        txt_ch = executor.submit(analyzer.text_characteristics, file)
+        img_ch = executor.submit(analyzer.img_characteristics, file)
+        san_ch = executor.submit(analyzer.search_and_nav_characteristics, file)
 
     res = {
         'txt_ch': txt_ch.result(),
@@ -549,7 +549,7 @@ def parallel_analyze_file_with_futures(file, indicators):
         'san_ch': san_ch.result()
     }
 
-    return res, file['name'], file['content'], file['section']
+    return res, file['name'], file['content'], file['section'], file['indicators']
 
 
 def linear_analyze(files):
@@ -606,25 +606,26 @@ def parallel_analyze(files):
     return res
 
 
-def parallel_analyze_with_futures(files, indicators):
+def parallel_analyze_with_futures(files):
     file_for_all = files.pop(0)
-    indicators_for_all = indicators.pop(0)
 
     start_time = time()
 
     with ProcessPoolExecutor(max_workers=os.cpu_count()) as executor:
-        futures = [executor.submit(parallel_analyze_file_with_futures, files[i], indicators[i]) for i in range(len(files))]
+        futures = [executor.submit(parallel_analyze_file_with_futures, files[i]) for i in range(len(files))]
 
     results = []
     names = []
     contents = []
     sections = []
+    indicators = []
     for future in futures:
-        result, name, content, section = future.result()
+        result, name, content, section, indicator = future.result()
         results.append(result)
         names.append(name)
         contents.append(content)
         sections.append(section)
+        indicators.append(indicator)
 
     results = [
         {
@@ -639,6 +640,11 @@ def parallel_analyze_with_futures(files, indicators):
         } for result in results
     ]
 
+    indicators_for_all = set(files[0]['indicators'])
+    for i in range(1, len(files)):
+        indicators_for_all.intersection(set(files[i]['indicators']))
+    indicators_for_all = list(indicators_for_all)
+
     with ProcessPoolExecutor(max_workers=os.cpu_count()) as executor:
         txt_ch = executor.submit(analyzer.text_characteristics_all_files, results, indicators_for_all)
         img_ch = executor.submit(analyzer.img_characteristics_all_files, results, indicators_for_all)
@@ -649,16 +655,16 @@ def parallel_analyze_with_futures(files, indicators):
         'img_ch': img_ch.result(),
         'san_ch': san_ch.result()
     })
-    indicators.insert(0, indicators_for_all)
     names.insert(0, file_for_all['name'])
     contents.insert(0, file_for_all['content'])
     sections.insert(0, file_for_all['section'])
+    indicators.insert(0, indicators_for_all)
 
     finish_time = time()
 
     print(f'Parallel analyze with futures: {finish_time - start_time}')
 
-    return results, names, contents, sections
+    return results, names, contents, sections, indicators
 
 
 def theory_analysis_results(request):
@@ -673,16 +679,18 @@ def theory_analysis_results(request):
         theory_path = os.path.join(media_path, 'theory')
         theory_modules = os.listdir(theory_path)
         if len(theory_modules) > 0:
+            """
             indicators = []
             for module in theory_modules:
                 module_indicators = request.POST.getlist('indicators-' + module)
                 indicators.append(module_indicators)
             indicators.insert(0, request.POST.getlist('indicators-all-elements'))
+            """
 
             files = analyzer.read_files(theory_path, request, theory_modules)
             # results = linear_analyze(files)
             # results = parallel_analyze(files)
-            results, names, contents, sections = parallel_analyze_with_futures(files, indicators)
+            results, names, contents, sections, indicators = parallel_analyze_with_futures(files)
             context = {
                 'theory_modules': list(zip(names, contents, sections, results, indicators))
             }
@@ -1568,13 +1576,13 @@ def indicators(request):
             indicators = indicators.exclude(name='webinar')
         """
 
-        if len(os.listdir(theory_path)) != 0:
-            context['modules'].append({
-                'name': 'Контент всех элементов с теорией',
-                'section': '',
-                'id': 'all-elements',
-                'indicators': indicators.filter(type='auto-indicator')
-            })
+        # if len(os.listdir(theory_path)) != 0:
+        #     context['modules'].append({
+        #         'name': 'Контент всех элементов с теорией',
+        #         'section': '',
+        #         'id': 'all-elements',
+        #         'indicators': indicators.filter(type='auto-indicator')
+        #     })
 
         return render(request, 'indicators.html', context)
     else:
