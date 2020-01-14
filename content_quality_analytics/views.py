@@ -2111,6 +2111,8 @@ def results(request):
     for result in results:
         context.update(json.loads(result.context))
 
+    print(context['theory_modules'][0][-1])
+
     if request.method == 'POST':
         self_test_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'self-test')
         self_test_modules = os.listdir(self_test_path)
@@ -2155,8 +2157,6 @@ def results(request):
                     })
         video_lecture_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'video-lecture')
         video_lecture_modules = os.listdir(video_lecture_path)
-        print(video_lecture_modules)
-        print(context['video_lecture_modules'])
         for video_lecture_module in video_lecture_modules:
             for element in context['video_lecture_modules']:
                 if element[0] == video_lecture_module:
@@ -2168,8 +2168,6 @@ def results(request):
                     })
         audio_file_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'audio-file')
         audio_file_modules = os.listdir(audio_file_path)
-        print(audio_file_modules)
-        print(context['audio_file_modules'])
         for audio_file_module in audio_file_modules:
             for element in context['audio_file_modules']:
                 if element[0] == audio_file_module:
