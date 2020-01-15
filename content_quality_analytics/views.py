@@ -891,7 +891,6 @@ def control_test_analysis(request):
 
 
 def get_control_questions(file_path):
-    print('=' * 10)
     with open(file_path, 'r', encoding='utf-8') as f:
         c = f.read()
     bs = bs4.BeautifulSoup(c, 'html.parser')
@@ -907,9 +906,6 @@ def get_control_questions(file_path):
                 for img in imgs:
                     try:
                         img['src'] = '/' + os.path.join(os.path.dirname(file_path)[file_path.index('media'):], os.path.basename(img['src']))
-                        print('=' * 10)
-                        print(img['src'])
-                        print('=' * 10)
                     except Exception as e:
                         print(e)
                 res.append(str(bs))
@@ -1718,6 +1714,7 @@ def split_elements(request):
 
 
 def expert_analysis(request):
+    print('=' * 10)
     user = auth.get_user(request)
     context = {
         'username': user.username if not user.is_anonymous else 'Anonymous',
