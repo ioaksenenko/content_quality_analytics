@@ -31,7 +31,7 @@
     </div>-->
     <div class="row">
         <div class="col-auto">
-            <form action="{% url 'theory-analysis-results' %}" enctype="multipart/form-data" method="post" id="indicators">
+        <form action="{% url 'theory-analysis-results' %}" enctype="multipart/form-data" method="post" id="indicators">
                 {% csrf_token %}
                 {% for module in modules %}
                     {% if module.indicators|length > 0 %}

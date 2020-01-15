@@ -58,7 +58,7 @@
                                 </a>
                             {% endfor %}
                             <div class="dropdown-divider"></div>
-                            {% for name, content, sections, questions, expert_analysis in control_and_exam_test_modules %}
+                            {% for name, content, section, questions, expert_analysis in control_and_exam_test_modules %}
                                 <!--<li class="nav-item">
                                     <a class="nav-link" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="false">{{ content }}</a>
                                 </li>-->
@@ -935,16 +935,16 @@
                                                         <div class="row align-items-center collapse show ml-5" id="collapse-self-test-difficulty-factor-{{ name }}">
                                                             <div class="col-auto">
                                                                 <table class="table">
-    	    		                                            	<thead class="thead-light">
-    	    		                                            		<tr>
-    	    		                                            			<th scope="col">№</th>
+                                                                    <thead class="thead-light">
+                                                                        <tr>
+                                                                            <th scope="col">№</th>
                                                                             <th scope="col">Текст вопроса</th>
-    	    		                                            			<th scope="col">Коэффициент сложности</th>
+                                                                            <th scope="col">Коэффициент сложности</th>
                                                                             <th scope="col">Весовой коэффициент</th>
-    	    		                                            		</tr>
-    	    		                                            	</thead>
-    	    		                                            	<tbody>
-    	    		                                            		{% for question in questions %}
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        {% for question in questions %}
                                                                             {% with i=forloop.counter|add:-1 %}
                                                                                 <tr>
                                                                                     <td class="align-middle">{{ forloop.counter }}</td>
@@ -960,8 +960,8 @@
                                                                                 </tr>
                                                                             {% endwith %}
                                                                         {% endfor %}
-    	    		                                            	</tbody>
-    	    		                                            </table>
+                                                                    </tbody>
+                                                                </table>
                                                             </div>
                                                         </div>
                                                         <div class="row mb-3">
@@ -978,16 +978,16 @@
                                                         <div class="row collapse show ml-5" id="collapse-self-test-completion-rate-{{ name }}">
                                                             <div class="col-auto">
                                                                 <table class="table">
-    	    		                                            	<thead class="thead-light">
-    	    		                                            		<tr>
-    	    		                                            			<th scope="col">№</th>
+                                                                    <thead class="thead-light">
+                                                                        <tr>
+                                                                            <th scope="col">№</th>
                                                                             <th scope="col">Текст вопроса</th>
-    	    		                                            			<th scope="col">Коэффициент завершённости</th>
+                                                                            <th scope="col">Коэффициент завершённости</th>
                                                                             <th scope="col">Весовой коэффициент</th>
-    	    		                                            		</tr>
-    	    		                                            	</thead>
-    	    		                                            	<tbody>
-    	    		                                            		{% for question in questions %}
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        {% for question in questions %}
                                                                             {% with i=forloop.counter|add:-1 %}
                                                                                 <tr>
                                                                                     <td class="align-middle">{{ forloop.counter }}</td>
@@ -1003,8 +1003,8 @@
                                                                                 </tr>
                                                                             {% endwith %}
                                                                         {% endfor %}
-    	    		                                            	</tbody>
-    	    		                                            </table>
+                                                                    </tbody>
+                                                                </table>
                                                             </div>
                                                         </div>
                                                         <div class="row mb-3">
@@ -1021,15 +1021,15 @@
                                                         <div class="row collapse show ml-5" id="collapse-self-test-has-answers-{{ name }}">
                                                             <div class="col-auto">
                                                                 <table class="table">
-    	    		                                            	<thead class="thead-light">
-    	    		                                            		<tr>
-    	    		                                            			<th scope="col">№</th>
+                                                                    <thead class="thead-light">
+                                                                        <tr>
+                                                                            <th scope="col">№</th>
                                                                             <th scope="col">Текст вопроса</th>
-    	    		                                            			<th scope="col">Флаг</th>
-    	    		                                            		</tr>
-    	    		                                            	</thead>
-    	    		                                            	<tbody>
-    	    		                                            		{% for question in questions %}
+                                                                            <th scope="col">Флаг</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        {% for question in questions %}
                                                                             <tr>
                                                                                 <td class="align-middle">{{ forloop.counter }}</td>
                                                                                 <td class="align-middle">{{ question }}</td>
@@ -1041,8 +1041,8 @@
                                                                                 </td>
                                                                             </tr>
                                                                         {% endfor %}
-    	    		                                            	</tbody>
-    	    		                                            </table>
+                                                                    </tbody>
+                                                                </table>
                                                             </div>
                                                         </div>
                                                         <div class="row mb-3">
@@ -1059,15 +1059,15 @@
                                                         <div class="row collapse show ml-5" id="collapse-self-test-has-links-{{ name }}">
                                                             <div class="col-auto">
                                                                 <table class="table">
-    	    		                                            	<thead class="thead-light">
-    	    		                                            		<tr>
-    	    		                                            			<th scope="col">№</th>
+                                                                    <thead class="thead-light">
+                                                                        <tr>
+                                                                            <th scope="col">№</th>
                                                                             <th scope="col">Текст вопроса</th>
-    	    		                                            			<th scope="col">Флаг</th>
-    	    		                                            		</tr>
-    	    		                                            	</thead>
-    	    		                                            	<tbody>
-    	    		                                            		{% for question in questions %}
+                                                                            <th scope="col">Флаг</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        {% for question in questions %}
                                                                             <tr>
                                                                                 <td class="align-middle">{{ forloop.counter }}</td>
                                                                                 <td class="align-middle">{{ question }}</td>
@@ -1079,8 +1079,8 @@
                                                                                 </td>
                                                                             </tr>
                                                                         {% endfor %}
-    	    		                                            	</tbody>
-    	    		                                            </table>
+                                                                    </tbody>
+                                                                </table>
                                                             </div>
                                                         </div>
                                                         <div class="row mb-3">
@@ -1542,6 +1542,154 @@
                                                                 </div>
                                                             </div>
                                                         {% endif %}
+
+                                                        <div class="row mb-3 mt-3">
+                                                            <div class="col">
+                                                                <a data-toggle="collapse" href="#collapse-video-lecture-target-{{ name }}" aria-expanded="true" aria-controls="collapseExample">
+                                                                    <h3>
+                                                                        <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                                        <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                                        <span>Цель видео?</span>
+                                                                    </h3>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row collapse show ml-5" id="collapse-video-lecture-target-{{ name }}">
+                                                            <div class="col">
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="radio" value="introductory" id="{{ name }}-video-lecture-target-introductory" name="{{ name }}-video-lecture-target" {% if 'introductory' in expert_analysis.target %}checked{% endif %} disabled>
+                                                                    <label class="form-check-label" for="{{ name }}-video-lecture-target-introductory">Вводная</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="radio" value="subsidiary" id="{{ name }}-video-lecture-target-subsidiary" name="{{ name }}-video-lecture-target" {% if 'subsidiary' in expert_analysis.target %}checked{% endif %} disabled>
+                                                                    <label class="form-check-label" for="{{ name }}-video-lecture-target-subsidiary">Вспомогательная</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="radio" value="illustrative" id="{{ name }}-video-lecture-target-illustrative" name="{{ name }}-video-lecture-target" {% if 'illustrative' in expert_analysis.target %}checked{% endif %} disabled>
+                                                                    <label class="form-check-label" for="{{ name }}-video-lecture-target-illustrative">Иллюстративная</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3 mt-3">
+                                                            <div class="col">
+                                                                <a data-toggle="collapse" href="#collapse-video-lecture-duration-{{ name }}" aria-expanded="true" aria-controls="collapseExample">
+                                                                    <h3>
+                                                                        <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                                        <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                                        <span>Длительность учебного видео</span>
+                                                                    </h3>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row collapse show ml-5" id="collapse-video-lecture-duration-{{ name }}">
+                                                            <div class="col">
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="radio" value="short" id="{{ name }}-video-lecture-duration-short" name="{{ name }}-video-lecture-duration" {% if 'short' in expert_analysis.duration %}checked{% endif %} disabled>
+                                                                    <label class="form-check-label" for="{{ name }}-video-lecture-duration-short">Слишком короткое</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="radio" value="normal" id="{{ name }}-video-lecture-duration-normal" name="{{ name }}-video-lecture-duration" {% if 'normal' in expert_analysis.duration %}checked{% endif %} disabled>
+                                                                    <label class="form-check-label" for="{{ name }}-video-lecture-duration-normal">Нормальное</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="radio" value="long" id="{{ name }}-video-lecture-duration-long" name="{{ name }}-video-lecture-duration" {% if 'long' in expert_analysis.duration %}checked{% endif %} disabled>
+                                                                    <label class="form-check-label" for="{{ name }}-video-lecture-duration-long">Слишком длинное</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3 mt-3">
+                                                            <div class="col">
+                                                                <a data-toggle="collapse" href="#collapse-video-lecture-has-scenario-{{ name }}" aria-expanded="true" aria-controls="collapseExample">
+                                                                    <h3>
+                                                                        <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                                        <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                                        <span>Наличие сценария</span>
+                                                                    </h3>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row collapse show ml-5" id="collapse-video-lecture-has-scenario-{{ name }}">
+                                                            <div class="col">
+                                                                <div class="custom-control custom-switch">
+                                                                    <input type="checkbox" class="custom-control-input" id="{{ name }}-video-lecture-has-scenario" name="{{ name }}-video-lecture-has-scenario" {% if 'on' in expert_analysis.has_scenario %}checked{% endif %} disabled>
+                                                                    <label class="custom-control-label" for="{{ name }}-video-lecture-has-scenario">Нет / Есть</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3 mt-3">
+                                                            <div class="col">
+                                                                <a data-toggle="collapse" href="#collapse-video-lecture-complexity-{{ name }}" aria-expanded="true" aria-controls="collapseExample">
+                                                                    <h3>
+                                                                        <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                                        <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                                        <span>Сложность</span>
+                                                                    </h3>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row collapse show ml-5" id="collapse-video-lecture-complexity-{{ name }}">
+                                                            <div class="col">
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="radio" value="simple" id="{{ name }}-video-lecture-complexity-simple" name="{{ name }}-video-lecture-complexity" {% if 'simple' in expert_analysis.complexity %}checked{% endif %} disabled>
+                                                                    <label class="form-check-label" for="{{ name }}-video-lecture-complexity-simple">Простое видео</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="radio" value="interactive" id="{{ name }}-video-lecture-complexity-interactive" name="{{ name }}-video-lecture-complexity" {% if 'interactive' in expert_analysis.complexity %}checked{% endif %} disabled>
+                                                                    <label class="form-check-label" for="{{ name }}-video-lecture-complexity-interactive">Интерактивное видео</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3 mt-3">
+                                                            <div class="col">
+                                                                <a data-toggle="collapse" href="#collapse-video-lecture-has-ticker-{{ name }}" aria-expanded="true" aria-controls="collapseExample">
+                                                                    <h3>
+                                                                        <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                                        <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                                        <span>Использование интерактивного текста (бегущая строка)</span>
+                                                                    </h3>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row collapse show ml-5" id="collapse-video-lecture-has-ticker-{{ name }}">
+                                                            <div class="col">
+                                                                <div class="custom-control custom-switch">
+                                                                    <input type="checkbox" class="custom-control-input" id="{{ name }}-video-lecture-has-ticker" name="{{ name }}-video-lecture-has-ticker" {% if 'on' in expert_analysis.has_ticker %}checked{% endif %} disabled>
+                                                                    <label class="custom-control-label" for="{{ name }}-video-lecture-has-ticker">Нет / Есть</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3 mt-3">
+                                                            <div class="col">
+                                                                <a data-toggle="collapse" href="#collapse-video-lecture-recording-quality-{{ name }}" aria-expanded="true" aria-controls="collapseExample">
+                                                                    <h3>
+                                                                        <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                                        <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                                        <span>Качество записи</span>
+                                                                    </h3>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row collapse show ml-5" id="collapse-video-lecture-recording-quality-{{ name }}">
+                                                            <div class="col">
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="radio" value="low" id="{{ name }}-video-lecture-recording-quality-low" name="{{ name }}-video-lecture-recording-quality" {% if 'low' in expert_analysis.recording_quality %}checked{% endif %} disabled>
+                                                                    <label class="form-check-label" for="{{ name }}-video-lecture-recording-quality-low">Плохое</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="radio" value="normal" id="{{ name }}-video-lecture-recording-quality-normal" name="{{ name }}-video-lecture-recording-quality" {% if 'normal' in expert_analysis.recording_quality %}checked{% endif %} disabled>
+                                                                    <label class="form-check-label" for="{{ name }}-video-lecture-recording-quality-normal">Нормальное</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="radio" value="good" id="{{ name }}-video-lecture-recording-quality-good" name="{{ name }}-video-lecture-recording-quality" {% if 'good' in expert_analysis.recording_quality %}checked{% endif %} disabled>
+                                                                    <label class="form-check-label" for="{{ name }}-video-lecture-recording-quality-good">Хорошее</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="radio" value="excellent" id="{{ name }}-video-lecture-recording-quality-excellent" name="{{ name }}-video-lecture-recording-quality" {% if 'excellent' in expert_analysis.recording_quality %}checked{% endif %} disabled>
+                                                                    <label class="form-check-label" for="{{ name }}-video-lecture-recording-quality-excellent">Отличное</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
                                                         <div class="row mb-3 mt-3">
                                                             <div class="col">
                                                                 <a data-toggle="collapse" href="#collapse-video-lecture-coverage-{{ name }}" aria-expanded="true" aria-controls="collapseExample">
@@ -1583,19 +1731,19 @@
                                                         <div class="row collapse show ml-5" id="collapse-video-lecture-distribution-{{ name }}">
                                                             <div class="col-auto">
                                                                 <table class="table">
-    	    		                                            	<thead class="thead-light">
-    	    		                                            		<tr>
-    	    		                                            			<th scope="col">Название раздела</th>
-    	    		                                            			<th scope="col">Процент видео, соответствующий данному разделу учебного курса</th>
+                                                                    <thead class="thead-light">
+                                                                        <tr>
+                                                                            <th scope="col">Название раздела</th>
+                                                                            <th scope="col">Процент видео, соответствующий данному разделу учебного курса</th>
                                                                             <th scope="col">Весовой коэффициент</th>
-    	    		                                            		</tr>
-    	    		                                            	</thead>
-    	    		                                            	<tbody>
-    	    		                                            		{% if video_lecture_sections %}
-    	    		                                            		    {% for section in video_lecture_sections %}
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        {% if video_lecture_sections %}
+                                                                            {% for section in video_lecture_sections %}
                                                                                 {% with i=forloop.counter|add:-1 %}
-    	    		                                            		            <tr>
-    	    		                                            			            <td class="align-middle">{{ section }}</td>
+                                                                                    <tr>
+                                                                                        <td class="align-middle">{{ section }}</td>
                                                                                         <td class="align-middle">
                                                                                             <div class="input-group">
                                                                                                 <!--<input type="hidden" value="{{ section }}" name="{{ name }}-video-lecture-sections">-->
@@ -1612,12 +1760,12 @@
                                                                                                 <input type="text" class="form-control" name="coefficients" id="coef-video-lecture-distribution-{{ name }}-{{ forloop.counter }}" placeholder="" value="{% if coefficients %}{{ list_iter|next_element }}{% else %}1{% endif %}" required>
                                                                                             </div>
                                                                                         </td>
-    	    		                                            		            </tr>
+                                                                                    </tr>
                                                                                 {% endwith %}
-    	    		                                            		    {% endfor %}
-    	    		                                            		{% endif %}
-    	    		                                            	</tbody>
-    	    		                                            </table>
+                                                                            {% endfor %}
+                                                                        {% endif %}
+                                                                    </tbody>
+                                                                </table>
                                                             </div>
                                                         </div>
                                                         <div class="row mb-3 mt-3">
@@ -1848,6 +1996,104 @@
                                                                 </div>
                                                             </div>
                                                         {% endif %}
+
+                                                        <div class="row mb-3 mt-3">
+                                                            <div class="col">
+                                                                <a data-toggle="collapse" href="#collapse-audio-lecture-target-{{ name }}" aria-expanded="true" aria-controls="collapseExample">
+                                                                    <h3>
+                                                                        <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                                        <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                                        <span>Цель аудио?</span>
+                                                                    </h3>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row collapse show ml-5" id="collapse-audio-lecture-target-{{ name }}">
+                                                            <div class="col-auto">
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="radio" value="introductory" id="{{ name }}-audio-lecture-target-introductory" name="{{ name }}-audio-lecture-target" {% if 'introductory' in expert_analysis.target %}checked{% endif %} disabled>
+                                                                    <label class="form-check-label" for="{{ name }}-audio-lecture-target-introductory">Вводная</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="radio" value="auxiliary" id="{{ name }}-audio-lecture-target-auxiliary" name="{{ name }}-audio-lecture-target" {% if 'auxiliary' in expert_analysis.target %}checked{% endif %} disabled>
+                                                                    <label class="form-check-label" for="{{ name }}-audio-lecture-target-auxiliary">Вспомогательная</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="radio" value="illustrative" id="{{ name }}-audio-lecture-target-illustrative" name="{{ name }}-audio-lecture-target" {% if 'illustrative' in expert_analysis.target %}checked{% endif %} disabled>
+                                                                    <label class="form-check-label" for="{{ name }}-audio-lecture-target-illustrative">Иллюстративная</label>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="{{ name }}-audio-lecture-target-own"></label>
+                                                                    <input type="text" class="form-control" id="{{ name }}-audio-lecture-target-own" placeholder="Свой вариант" name="{{ name }}-audio-lecture-target-own" value="{{ expert_analysis.target_own }}" disabled>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3 mt-3">
+                                                            <div class="col">
+                                                                <a data-toggle="collapse" href="#collapse-audio-lecture-duration-{{ name }}" aria-expanded="true" aria-controls="collapseExample">
+                                                                    <h3>
+                                                                        <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                                        <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                                        <span>Длительность учебного аудио?</span>
+                                                                    </h3>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row collapse show ml-5" id="collapse-audio-lecture-duration-{{ name }}">
+                                                            <div class="col-auto">
+                                                                <div class="form-group">
+                                                                    <label for="{{ name }}-audio-lecture-duration" class="d-none"></label>
+                                                                    <input type="text" class="form-control" id="{{ name }}-audio-lecture-duration" placeholder="00:40:02" name="{{ name }}-audio-lecture-duration" value="{{ expert_analysis.duration }}" disabled>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3 mt-3">
+                                                            <div class="col">
+                                                                <a data-toggle="collapse" href="#collapse-audio-lecture-quality-{{ name }}" aria-expanded="true" aria-controls="collapseExample">
+                                                                    <h3>
+                                                                        <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                                        <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                                        <span>Качество записи аудио?</span>
+                                                                    </h3>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3 collapse show ml-5" id="collapse-audio-lecture-quality-{{ name }}">
+                                                            <div class="col">
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="radio" value="low" id="{{ name }}-audio-lecture-quality-low" name="{{ name }}-audio-lecture-quality" {% if 'low' in expert_analysis.quality %}checked{% endif %} disabled>
+                                                                    <label class="form-check-label" for="{{ name }}-audio-lecture-quality-low">Низкоое</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="radio" value="normal" id="{{ name }}-audio-lecture-quality-normal" name="{{ name }}-audio-lecture-quality" {% if 'normal' in expert_analysis.quality %}checked{% endif %} disabled>
+                                                                    <label class="form-check-label" for="{{ name }}-audio-lecture-quality-normal">Среднее</label>
+                                                                </div>
+                                                                <div class="form-check">
+                                                                    <input class="form-check-input" type="radio" value="high" id="{{ name }}-audio-lecture-quality-high" name="{{ name }}-audio-lecture-quality" {% if 'high' in expert_analysis.quality %}checked{% endif %} disabled>
+                                                                    <label class="form-check-label" for="{{ name }}-audio-lecture-quality-high">Высокое</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3 mt-3">
+                                                            <div class="col">
+                                                                <a data-toggle="collapse" href="#collapse-audio-lecture-format-{{ name }}" aria-expanded="true" aria-controls="collapseExample">
+                                                                    <h3>
+                                                                        <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                                        <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                                        <span>Формат записи?</span>
+                                                                    </h3>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row mb-3 collapse show ml-5" id="collapse-audio-lecture-format-{{ name }}">
+                                                            <div class="col-auto">
+                                                                <div class="form-group">
+                                                                    <label for="{{ name }}-audio-lecture-format" class="d-none"></label>
+                                                                    <input type="text" class="form-control" id="{{ name }}-audio-lecture-format" placeholder="mp3" name="{{ name }}-audio-lecture-format" value="{{ expert_analysis.format }}" disabled>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
                                                         <div class="row mb-3 mt-3">
                                                             <div class="col">
                                                                 <a data-toggle="collapse" href="#collapse-audio-lecture-coverage-{{ name }}" aria-expanded="true" aria-controls="collapseExample">
@@ -1893,19 +2139,19 @@
                                                         <div class="row collapse show ml-5" id="collapse-audio-lecture-distribution-{{ name }}">
                                                             <div class="col-auto">
                                                                 <table class="table">
-    	    		                                            	<thead class="thead-light">
-    	    		                                            		<tr>
-    	    		                                            			<th scope="col">Название раздела</th>
-    	    		                                            			<th scope="col">Процент аудио, соответствующий данному разделу учебного курса</th>
+                                                                    <thead class="thead-light">
+                                                                        <tr>
+                                                                            <th scope="col">Название раздела</th>
+                                                                            <th scope="col">Процент аудио, соответствующий данному разделу учебного курса</th>
                                                                             <th scope="col">Весовой коэффициент</th>
-    	    		                                            		</tr>
-    	    		                                            	</thead>
-    	    		                                            	<tbody>
-    	    		                                            		{% if audio_lecture_sections %}
-    	    		                                            		    {% for section in audio_lecture_sections %}
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        {% if audio_lecture_sections %}
+                                                                            {% for section in audio_lecture_sections %}
                                                                                 {% with i=forloop.counter|add:-1 %}
-    	    		                                            		            <tr>
-    	    		                                            			            <td class="align-middle">{{ section }}</td>
+                                                                                    <tr>
+                                                                                        <td class="align-middle">{{ section }}</td>
                                                                                         <td class="align-middle">
                                                                                             <div class="input-group">
                                                                                                 <!--<input type="hidden" value="{{ section }}" name="{{ name }}-audio-lecture-sections">-->
@@ -1922,12 +2168,12 @@
                                                                                                 <input type="text" class="form-control" name="coefficients" id="coef-audio-lecture-distribution-{{ name }}-{{ forloop.counter }}" placeholder="" value="{% if coefficients %}{{ list_iter|next_element }}{% else %}1{% endif %}" required>
                                                                                             </div>
                                                                                         </td>
-    	    		                                            		            </tr>
+                                                                                    </tr>
                                                                                 {% endwith %}
-    	    		                                            		    {% endfor %}
-    	    		                                            		{% endif %}
-    	    		                                            	</tbody>
-    	    		                                            </table>
+                                                                            {% endfor %}
+                                                                        {% endif %}
+                                                                    </tbody>
+                                                                </table>
                                                             </div>
                                                         </div>
                                                         <div class="row mb-3 mt-3">
@@ -2170,6 +2416,124 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <div class="row ml-5 {% if not 'on' in expert_analysis.has_scenario %}d-none{% endif %}" id="scenario-block">
+                                                            <div class="col">
+                                                                <div class="row mb-3 mt-3">
+                                                                    <div class="col">
+                                                                        <a data-toggle="collapse" href="#collapse-webinar-scenario-has-introduction-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                                                                            <h5>
+                                                                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                                                <span> Наличие блока «Вступление»?</span>
+                                                                            </h5>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-3 collapse show ml-5" id="collapse-webinar-scenario-has-introduction-{{ name }}">
+                                                                    <div class="col">
+                                                                        <div class="custom-control custom-switch">
+                                                                            <input type="checkbox" class="custom-control-input" id="{{ name }}-webinar-scenario-has-introduction" name="{{ name }}-webinar-scenario-has-introduction" {% if 'on' in expert_analysis.scenario_has_introduction %}checked{% endif %} disabled>
+                                                                            <label class="custom-control-label" for="{{ name }}-webinar-scenario-has-introduction">Нет / Есть</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-3 mt-3">
+                                                                    <div class="col">
+                                                                        <a data-toggle="collapse" href="#collapse-webinar-scenario-has-presentation-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                                                                            <h5>
+                                                                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                                                <span> Наличие блока «Презентация»?</span>
+                                                                            </h5>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-3 collapse show ml-5" id="collapse-webinar-scenario-has-presentation-{{ name }}">
+                                                                    <div class="col">
+                                                                        <div class="custom-control custom-switch">
+                                                                            <input type="checkbox" class="custom-control-input" id="{{ name }}-webinar-scenario-has-presentation" name="{{ name }}-webinar-scenario-has-presentation" {% if 'on' in expert_analysis.scenario_has_presentation %}checked{% endif %} disabled>
+                                                                            <label class="custom-control-label" for="{{ name }}-webinar-scenario-has-presentation">Нет / Есть</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-3 mt-3">
+                                                                    <div class="col">
+                                                                        <a data-toggle="collapse" href="#collapse-webinar-scenario-has-add-materials-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                                                                            <h5>
+                                                                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                                                <span> Наличие блока «Демонстрация дополнительных материалов»?</span>
+                                                                            </h5>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-3 collapse show ml-5" id="collapse-webinar-scenario-has-add-materials-{{ name }}">
+                                                                    <div class="col">
+                                                                        <div class="custom-control custom-switch">
+                                                                            <input type="checkbox" class="custom-control-input" id="{{ name }}-webinar-scenario-has-add-materials" name="{{ name }}-webinar-scenario-has-add-materials" {% if 'on' in expert_analysis.scenario_has_add_materials %}checked{% endif %} disabled>
+                                                                            <label class="custom-control-label" for="{{ name }}-webinar-scenario-has-add-materials">Нет / Есть</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-3 mt-3">
+                                                                    <div class="col">
+                                                                        <a data-toggle="collapse" href="#collapse-webinar-scenario-has-questions-answers-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                                                                            <h5>
+                                                                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                                                <span> Наличие блока «Вопросы-ответы» (ответы на вопросы слушателей)?</span>
+                                                                            </h5>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-3 collapse show ml-5" id="collapse-webinar-scenario-has-questions-answers-{{ name }}">
+                                                                    <div class="col">
+                                                                        <div class="custom-control custom-switch">
+                                                                            <input type="checkbox" class="custom-control-input" id="{{ name }}-webinar-scenario-has-questions-answers" name="{{ name }}-webinar-scenario-has-questions-answers" {% if 'on' in expert_analysis.scenario_has_questions_answers %}checked{% endif %} disabled>
+                                                                            <label class="custom-control-label" for="{{ name }}-webinar-scenario-has-questions-answers">Нет / Есть</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-3 mt-3">
+                                                                    <div class="col">
+                                                                        <a data-toggle="collapse" href="#collapse-webinar-scenario-has-quiz-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                                                                            <h5>
+                                                                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                                                <span> Наличие блока «Опросы» (вопросы ведущего слушателям)?</span>
+                                                                            </h5>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-3 collapse show ml-5" id="collapse-webinar-scenario-has-quiz-{{ name }}">
+                                                                    <div class="col">
+                                                                        <div class="custom-control custom-switch">
+                                                                            <input type="checkbox" class="custom-control-input" id="{{ name }}-webinar-scenario-has-quiz" name="{{ name }}-webinar-scenario-has-quiz" {% if 'on' in expert_analysis.scenario_has_quiz %}checked{% endif %} disabled>
+                                                                            <label class="custom-control-label" for="{{ name }}-webinar-scenario-has-quiz">Нет / Есть</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-3 mt-3">
+                                                                    <div class="col">
+                                                                        <a data-toggle="collapse" href="#collapse-webinar-scenario-has-summarizing-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                                                                            <h5>
+                                                                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                                                <span> Наличие блока «Подведение итогов»?</span>
+                                                                            </h5>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-3 collapse show ml-5" id="collapse-webinar-scenario-has-summarizing-{{ name }}">
+                                                                    <div class="col">
+                                                                        <div class="custom-control custom-switch">
+                                                                            <input type="checkbox" class="custom-control-input" id="{{ name }}-webinar-scenario-has-summarizing" name="{{ name }}-webinar-scenario-has-summarizing" {% if 'on' in expert_analysis.scenario_has_summarizing %}checked{% endif %} disabled>
+                                                                            <label class="custom-control-label" for="{{ name }}-webinar-scenario-has-summarizing">Нет / Есть</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                         <div class="row mb-3 mt-3">
                                                             <div class="col">
                                                                 <a data-toggle="collapse" href="#collapse-webinar-has-presentation-{{ name }}" aria-expanded="true" aria-controls="collapseExample">
@@ -2186,6 +2550,86 @@
                                                                 <div class="custom-control custom-switch">
                                                                     <input type="checkbox" class="custom-control-input" id="{{ name }}-webinar-has-presentation" name="{{ name }}-webinar-has-presentation" {% if 'on' in expert_analysis.has_presentation %}checked{% endif %} disabled>
                                                                     <label class="custom-control-label" for="{{ name }}-webinar-has-presentation">Нет / Есть</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row ml-5 {% if not 'on' in expert_analysis.has_presentation %}d-none{% endif %}" id="presentation-block">
+                                                            <div class="col">
+                                                                <div class="row mb-3 mt-3">
+                                                                    <div class="col">
+                                                                        <a data-toggle="collapse" href="#collapse-webinar-has-presentation-red-color-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                                                                            <h5>
+                                                                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                                                <span> Использовался ли красный цвет в большом количестве?</span>
+                                                                            </h5>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-3 collapse show ml-5" id="collapse-webinar-has-presentation-red-color-{{ name }}">
+                                                                    <div class="col">
+                                                                        <div class="custom-control custom-switch">
+                                                                            <input type="checkbox" class="custom-control-input" id="{{ name }}-webinar-has-presentation-red-color" name="{{ name }}-webinar-has-presentation-red-color" {% if 'on' in expert_analysis.has_presentation_red_color %}checked{% endif %} disabled>
+                                                                            <label class="custom-control-label" for="{{ name }}-webinar-has-presentation-red-color">Нет / Есть</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-3 mt-3">
+                                                                    <div class="col">
+                                                                        <a data-toggle="collapse" href="#collapse-webinar-has-presentation-text-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                                                                            <h5>
+                                                                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                                                <span> Перегружкны ли слайды текстом?</span>
+                                                                            </h5>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-3 collapse show ml-5" id="collapse-webinar-has-presentation-text-{{ name }}">
+                                                                    <div class="col">
+                                                                        <div class="custom-control custom-switch">
+                                                                            <input type="checkbox" class="custom-control-input" id="{{ name }}-webinar-has-presentation-text" name="{{ name }}-webinar-has-presentation-text" {% if 'on' in expert_analysis.has_presentation_text %}checked{% endif %} disabled>
+                                                                            <label class="custom-control-label" for="{{ name }}-webinar-has-presentation-text">Нет / Есть</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-3 mt-3">
+                                                                    <div class="col">
+                                                                        <a data-toggle="collapse" href="#collapse-webinar-has-presentation-illustrations-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                                                                            <h5>
+                                                                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                                                <span> Достаточно ли размещено иллюстраций и схем, поддерживающих смысл сказанного?</span>
+                                                                            </h5>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-3 collapse show ml-5" id="collapse-webinar-has-presentation-illustrations-{{ name }}">
+                                                                    <div class="col">
+                                                                        <div class="custom-control custom-switch">
+                                                                            <input type="checkbox" class="custom-control-input" id="{{ name }}-webinar-has-presentation-illustrations" name="{{ name }}-webinar-has-presentation-illustrations" {% if 'on' in expert_analysis.has_presentation_illustrations %}checked{% endif %} disabled>
+                                                                            <label class="custom-control-label" for="{{ name }}-webinar-has-presentation-illustrations">Нет / Есть</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-3 mt-3">
+                                                                    <div class="col">
+                                                                        <a data-toggle="collapse" href="#collapse-webinar-has-presentation-numeration-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                                                                            <h5>
+                                                                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                                                <span> Пронумерованы ли слайды?</span>
+                                                                            </h5>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-3 collapse show ml-5" id="collapse-webinar-has-presentation-numeration-{{ name }}">
+                                                                    <div class="col">
+                                                                        <div class="custom-control custom-switch">
+                                                                            <input type="checkbox" class="custom-control-input" id="{{ name }}-webinar-has-presentation-numeration" name="{{ name }}-webinar-has-presentation-numeration" {% if 'on' in expert_analysis.has_presentation_numeration %}checked{% endif %} disabled>
+                                                                            <label class="custom-control-label" for="{{ name }}-webinar-has-presentation-numeration">Нет / Есть</label>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -2208,6 +2652,48 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <div class="row ml-5 {% if not 'on' in expert_analysis.has_additional_materials %}d-none{% endif %}" id="additional-materials-block">
+                                                            <div class="col">
+                                                                <div class="row mb-3 mt-3">
+                                                                    <div class="col">
+                                                                        <a data-toggle="collapse" href="#collapse-webinar-has-additional-materials-video-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                                                                            <h5>
+                                                                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                                                <span> Присутствуют ли видеоролики?</span>
+                                                                            </h5>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-3 collapse show ml-5" id="collapse-webinar-has-additional-materials-video-{{ name }}">
+                                                                    <div class="col">
+                                                                        <div class="custom-control custom-switch">
+                                                                            <input type="checkbox" class="custom-control-input" id="{{ name }}-webinar-has-additional-materials-video" name="{{ name }}-webinar-has-additional-materials-video" {% if 'on' in expert_analysis.has_additional_materials_video %}checked{% endif %} disabled>
+                                                                            <label class="custom-control-label" for="{{ name }}-webinar-has-additional-materials-video">Нет / Есть</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-3 mt-3">
+                                                                    <div class="col">
+                                                                        <a data-toggle="collapse" href="#collapse-webinar-has-additional-materials-help-files-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                                                                            <h5>
+                                                                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                                                <span> Присутствуют ли справочные файлы (например, таблица производных, математические формулы, свод законов, нормативные акты, и т.д.)?</span>
+                                                                            </h5>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-3 collapse show ml-5" id="collapse-webinar-has-additional-materials-help-files-{{ name }}">
+                                                                    <div class="col">
+                                                                        <div class="custom-control custom-switch">
+                                                                            <input type="checkbox" class="custom-control-input" id="{{ name }}-webinar-has-additional-materials-help-files" name="{{ name }}-webinar-has-additional-materials-help-files" {% if 'on' in expert_analysis.has_additional_materials_help_files %}checked{% endif %} disabled>
+                                                                            <label class="custom-control-label" for="{{ name }}-webinar-has-additional-materials-help-files">Нет / Есть</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                         <div class="row mb-3 mt-3">
                                                             <div class="col">
                                                                 <a data-toggle="collapse" href="#collapse-webinar-has-questions-{{ name }}" aria-expanded="true" aria-controls="collapseExample">
@@ -2224,6 +2710,67 @@
                                                                 <div class="custom-control custom-switch">
                                                                     <input type="checkbox" class="custom-control-input" id="{{ name }}-webinar-has-questions" name="{{ name }}-webinar-has-questions" {% if 'on' in expert_analysis.has_questions %}checked{% endif %} disabled>
                                                                     <label class="custom-control-label" for="{{ name }}-webinar-has-questions">Нет / Есть</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row ml-5 {% if not 'on' in expert_analysis.has_questions %}d-none{% endif %}" id="questions-block">
+                                                            <div class="col">
+                                                                <div class="row mb-3 mt-3">
+                                                                    <div class="col">
+                                                                        <a data-toggle="collapse" href="#collapse-webinar-has-questions-input-control-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                                                                            <h5>
+                                                                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                                                <span> Присутствуют ли вопросы по типу входного контроля?</span>
+                                                                            </h5>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-3 collapse show ml-5" id="collapse-webinar-has-questions-input-control-{{ name }}">
+                                                                    <div class="col">
+                                                                        <div class="custom-control custom-switch">
+                                                                            <input type="checkbox" class="custom-control-input" id="{{ name }}-webinar-has-questions-input-control" name="{{ name }}-webinar-has-questions-input-control" {% if 'on' in expert_analysis.has_questions_input_control %}checked{% endif %} disabled>
+                                                                            <label class="custom-control-label" for="{{ name }}-webinar-has-questions-input-control">Нет / Есть</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-3 mt-3">
+                                                                    <div class="col">
+                                                                        <a data-toggle="collapse" href="#collapse-webinar-has-questions-interim-issues-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                                                                            <h5>
+                                                                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                                                <span> Присутствуют ли промежуточные вопросы для закрепления прослушанного материала?</span>
+                                                                            </h5>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-3 collapse show ml-5" id="collapse-webinar-has-questions-interim-issues-{{ name }}">
+                                                                    <div class="col">
+                                                                        <div class="custom-control custom-switch">
+                                                                            <input type="checkbox" class="custom-control-input" id="{{ name }}-webinar-has-questions-interim-issues" name="{{ name }}-webinar-has-questions-interim-issues" {% if 'on' in expert_analysis.has_questions_interim_issues %}checked{% endif %} disabled>
+                                                                            <label class="custom-control-label" for="{{ name }}-webinar-has-questions-interim-issues">Нет / Есть</label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-3 mt-3">
+                                                                    <div class="col">
+                                                                        <a data-toggle="collapse" href="#collapse-webinar-has-questions-test-questions-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                                                                            <h5>
+                                                                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                                                <span> Присутствуют ли контрольные вопросы по занятию?</span>
+                                                                            </h5>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row mb-3 collapse show ml-5" id="collapse-webinar-has-questions-test-questions-{{ name }}">
+                                                                    <div class="col">
+                                                                        <div class="custom-control custom-switch">
+                                                                            <input type="checkbox" class="custom-control-input" id="{{ name }}-webinar-has-questions-test-questions" name="{{ name }}-webinar-has-questions-test-questions" {% if 'on' in expert_analysis.has_questions_test_questions %}checked{% endif %} disabled>
+                                                                            <label class="custom-control-label" for="{{ name }}-webinar-has-questions-test-questions">Нет / Есть</label>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -3048,15 +3595,15 @@
                                     <div class="row align-items-center collapse show ml-5" id="collapse-self-test-single-difficulty-factor-{{ name }}">
                                         <div class="col-auto">
                                             <table class="table">
-    	    		                        	<thead class="thead-light">
-    	    		                        		<tr>
-    	    		                        			<th scope="col">№</th>
+                                                <thead class="thead-light">
+                                                    <tr>
+                                                        <th scope="col">№</th>
                                                         <th scope="col">Текст вопроса</th>
-    	    		                        			<th scope="col">Коэффициент сложности</th>
-    	    		                        		</tr>
-    	    		                        	</thead>
-    	    		                        	<tbody>
-    	    		                        		{% for question in questions %}
+                                                        <th scope="col">Коэффициент сложности</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for question in questions %}
                                                         {% with i=forloop.counter|add:-1 %}
                                                             <tr>
                                                                 <td class="align-middle">{{ forloop.counter }}</td>
@@ -3071,8 +3618,8 @@
                                                             </tr>
                                                         {% endwith %}
                                                     {% endfor %}
-    	    		                        	</tbody>
-    	    		                        </table>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                     <div class="row mb-3">
@@ -3089,15 +3636,15 @@
                                     <div class="row collapse show ml-5" id="collapse-self-test-single-completion-rate-{{ name }}">
                                         <div class="col-auto">
                                             <table class="table">
-    	    		                        	<thead class="thead-light">
-    	    		                        		<tr>
-    	    		                        			<th scope="col">№</th>
+                                                <thead class="thead-light">
+                                                    <tr>
+                                                        <th scope="col">№</th>
                                                         <th scope="col">Текст вопроса</th>
-    	    		                        			<th scope="col">Коэффициент завершённости</th>
-    	    		                        		</tr>
-    	    		                        	</thead>
-    	    		                        	<tbody>
-    	    		                        		{% for question in questions %}
+                                                        <th scope="col">Коэффициент завершённости</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for question in questions %}
                                                         {% with i=forloop.counter|add:-1 %}
                                                             <tr>
                                                                 <td class="align-middle">{{ forloop.counter }}</td>
@@ -3112,8 +3659,8 @@
                                                             </tr>
                                                         {% endwith %}
                                                     {% endfor %}
-    	    		                        	</tbody>
-    	    		                        </table>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                     <div class="row mb-3">
@@ -3130,15 +3677,15 @@
                                     <div class="row collapse show ml-5" id="collapse-self-test-single-has-answers-{{ name }}">
                                         <div class="col-auto">
                                             <table class="table">
-    	    		                        	<thead class="thead-light">
-    	    		                        		<tr>
-    	    		                        			<th scope="col">№</th>
+                                                <thead class="thead-light">
+                                                    <tr>
+                                                        <th scope="col">№</th>
                                                         <th scope="col">Текст вопроса</th>
-    	    		                        			<th scope="col">Флаг</th>
-    	    		                        		</tr>
-    	    		                        	</thead>
-    	    		                        	<tbody>
-    	    		                        		{% for question in questions %}
+                                                        <th scope="col">Флаг</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for question in questions %}
                                                         <tr>
                                                             <td>{{ forloop.counter }}</td>
                                                             <td>{{ question }}</td>
@@ -3150,8 +3697,8 @@
                                                             </td>
                                                         </tr>
                                                     {% endfor %}
-    	    		                        	</tbody>
-    	    		                        </table>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                     <div class="row mb-3">
@@ -3168,15 +3715,15 @@
                                     <div class="row collapse show ml-5" id="collapse-self-test-single-has-links-{{ name }}">
                                         <div class="col-auto">
                                             <table class="table">
-    	    		                        	<thead class="thead-light">
-    	    		                        		<tr>
-    	    		                        			<th scope="col">№</th>
+                                                <thead class="thead-light">
+                                                    <tr>
+                                                        <th scope="col">№</th>
                                                         <th scope="col">Текст вопроса</th>
-    	    		                        			<th scope="col">Флаг</th>
-    	    		                        		</tr>
-    	    		                        	</thead>
-    	    		                        	<tbody>
-    	    		                        		{% for question in questions %}
+                                                        <th scope="col">Флаг</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for question in questions %}
                                                         <tr>
                                                             <td>{{ forloop.counter }}</td>
                                                             <td>{{ question }}</td>
@@ -3188,8 +3735,8 @@
                                                             </td>
                                                         </tr>
                                                     {% endfor %}
-    	    		                        	</tbody>
-    	    		                        </table>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                     <div class="row mb-3">
@@ -3573,6 +4120,154 @@
                                             </div>
                                         </div>
                                     {% endif %}
+
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <a data-toggle="collapse" href="#collapse-video-lecture-single-target-{{ name }}" aria-expanded="true" aria-controls="collapseExample">
+                                                <h3>
+                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                    <span>Цель видео?</span>
+                                                </h3>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="row collapse show ml-5" id="collapse-video-lecture-single-target-{{ name }}">
+                                        <div class="col">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="introductory" id="{{ name }}-video-lecture-single-target-introductory" name="{{ name }}-video-lecture-single-target" {% if 'introductory' in expert_analysis.target %}checked{% endif %} disabled>
+                                                <label class="form-check-label" for="{{ name }}-video-lecture-single-target-introductory">Вводная</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="subsidiary" id="{{ name }}-video-lecture-single-target-subsidiary" name="{{ name }}-video-lecture-single-target" {% if 'subsidiary' in expert_analysis.target %}checked{% endif %} disabled>
+                                                <label class="form-check-label" for="{{ name }}-video-lecture-single-target-subsidiary">Вспомогательная</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="illustrative" id="{{ name }}-video-lecture-single-target-illustrative" name="{{ name }}-video-lecture-single-target" {% if 'illustrative' in expert_analysis.target %}checked{% endif %} disabled>
+                                                <label class="form-check-label" for="{{ name }}-video-lecture-single-target-illustrative">Иллюстративная</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <a data-toggle="collapse" href="#collapse-video-lecture-single-duration-{{ name }}" aria-expanded="true" aria-controls="collapseExample">
+                                                <h3>
+                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                    <span>Длительность учебного видео</span>
+                                                </h3>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="row collapse show ml-5" id="collapse-video-lecture-single-duration-{{ name }}">
+                                        <div class="col">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="short" id="{{ name }}-video-lecture-single-duration-short" name="{{ name }}-video-lecture-single-duration" {% if 'short' in expert_analysis.duration %}checked{% endif %} disabled>
+                                                <label class="form-check-label" for="{{ name }}-video-lecture-single-duration-short">Слишком короткое</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="normal" id="{{ name }}-video-lecture-single-duration-normal" name="{{ name }}-video-lecture-single-duration" {% if 'normal' in expert_analysis.duration %}checked{% endif %} disabled>
+                                                <label class="form-check-label" for="{{ name }}-video-lecture-single-duration-normal">Нормальное</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="long" id="{{ name }}-video-lecture-single-duration-long" name="{{ name }}-video-lecture-single-duration" {% if 'long' in expert_analysis.duration %}checked{% endif %} disabled>
+                                                <label class="form-check-label" for="{{ name }}-video-lecture-single-duration-long">Слишком длинное</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <a data-toggle="collapse" href="#collapse-video-lecture-single-has-scenario-{{ name }}" aria-expanded="true" aria-controls="collapseExample">
+                                                <h3>
+                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                    <span>Наличие сценария</span>
+                                                </h3>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="row collapse show ml-5" id="collapse-video-lecture-single-has-scenario-{{ name }}">
+                                        <div class="col">
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" class="custom-control-input" id="{{ name }}-video-lecture-single-has-scenario" name="{{ name }}-video-lecture-single-has-scenario" {% if 'on' in expert_analysis.has_scenario %}checked{% endif %} disabled>
+                                                <label class="custom-control-label" for="{{ name }}-video-lecture-single-has-scenario">Нет / Есть</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <a data-toggle="collapse" href="#collapse-video-lecture-single-complexity-{{ name }}" aria-expanded="true" aria-controls="collapseExample">
+                                                <h3>
+                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                    <span>Сложность</span>
+                                                </h3>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="row collapse show ml-5" id="collapse-video-lecture-single-complexity-{{ name }}">
+                                        <div class="col">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="simple" id="{{ name }}-video-lecture-single-complexity-simple" name="{{ name }}-video-lecture-single-complexity" {% if 'simple' in expert_analysis.complexity %}checked{% endif %} disabled>
+                                                <label class="form-check-label" for="{{ name }}-video-lecture-single-complexity-simple">Простое видео</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="interactive" id="{{ name }}-video-lecture-single-complexity-interactive" name="{{ name }}-video-lecture-single-complexity" {% if 'interactive' in expert_analysis.complexity %}checked{% endif %} disabled>
+                                                <label class="form-check-label" for="{{ name }}-video-lecture-single-complexity-interactive">Интерактивное видео</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <a data-toggle="collapse" href="#collapse-video-lecture-single-has-ticker-{{ name }}" aria-expanded="true" aria-controls="collapseExample">
+                                                <h3>
+                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                    <span>Использование интерактивного текста (бегущая строка)</span>
+                                                </h3>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="row collapse show ml-5" id="collapse-video-lecture-single-has-ticker-{{ name }}">
+                                        <div class="col">
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" class="custom-control-input" id="{{ name }}-video-lecture-single-has-ticker" name="{{ name }}-video-lecture-single-has-ticker" {% if 'on' in expert_analysis.has_ticker %}checked{% endif %} disabled>
+                                                <label class="custom-control-label" for="{{ name }}-video-lecture-single-has-ticker">Нет / Есть</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <a data-toggle="collapse" href="#collapse-video-lecture-single-recording-quality-{{ name }}" aria-expanded="true" aria-controls="collapseExample">
+                                                <h3>
+                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                    <span>Качество записи</span>
+                                                </h3>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="row collapse show ml-5" id="collapse-video-lecture-single-recording-quality-{{ name }}">
+                                        <div class="col">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="low" id="{{ name }}-video-lecture-single-recording-quality-low" name="{{ name }}-video-lecture-single-recording-quality" {% if 'low' in expert_analysis.recording_quality %}checked{% endif %} disabled>
+                                                <label class="form-check-label" for="{{ name }}-video-lecture-single-recording-quality-low">Плохое</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="normal" id="{{ name }}-video-lecture-single-recording-quality-normal" name="{{ name }}-video-lecture-single-recording-quality" {% if 'normal' in expert_analysis.recording_quality %}checked{% endif %} disabled>
+                                                <label class="form-check-label" for="{{ name }}-video-lecture-single-recording-quality-normal">Нормальное</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="good" id="{{ name }}-video-lecture-single-recording-quality-good" name="{{ name }}-video-lecture-single-recording-quality" {% if 'good' in expert_analysis.recording_quality %}checked{% endif %} disabled>
+                                                <label class="form-check-label" for="{{ name }}-video-lecture-single-recording-quality-good">Хорошее</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="excellent" id="{{ name }}-video-lecture-single-recording-quality-excellent" name="{{ name }}-video-lecture-single-recording-quality" {% if 'excellent' in expert_analysis.recording_quality %}checked{% endif %} disabled>
+                                                <label class="form-check-label" for="{{ name }}-video-lecture-single-recording-quality-excellent">Отличное</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <div class="row mb-3 mt-3">
                                         <div class="col">
                                             <a data-toggle="collapse" href="#collapse-video-lecture-single-coverage-{{ name }}" aria-expanded="true" aria-controls="collapseExample">
@@ -3614,18 +4309,18 @@
                                     <div class="row collapse show ml-5" id="collapse-video-lecture-single-distribution-{{ name }}">
                                         <div class="col-auto">
                                             <table class="table">
-    	    		                        	<thead class="thead-light">
-    	    		                        		<tr>
-    	    		                        			<th scope="col">Название раздела</th>
-    	    		                        			<th scope="col">Процент видео, соответствующий данному разделу учебного курса</th>
-    	    		                        		</tr>
-    	    		                        	</thead>
-    	    		                        	<tbody>
-    	    		                        		{% if video_lecture_sections %}
-    	    		                        		    {% for section in video_lecture_sections %}
+                                                <thead class="thead-light">
+                                                    <tr>
+                                                        <th scope="col">Название раздела</th>
+                                                        <th scope="col">Процент видео, соответствующий данному разделу учебного курса</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% if video_lecture_sections %}
+                                                        {% for section in video_lecture_sections %}
                                                             {% with i=forloop.counter|add:-1 %}
-    	    		                        		            <tr>
-    	    		                        			            <td class="align-middle">{{ section }}</td>
+                                                                <tr>
+                                                                    <td class="align-middle">{{ section }}</td>
                                                                     <td class="align-middle">
                                                                         <div class="input-group">
                                                                             <!--<input type="hidden" value="{{ section }}" name="{{ name }}-video-lecture-sections">-->
@@ -3635,12 +4330,12 @@
                                                                             </div>
                                                                         </div>
                                                                     </td>
-    	    		                        		            </tr>
+                                                                </tr>
                                                             {% endwith %}
-    	    		                        		    {% endfor %}
-    	    		                        		{% endif %}
-    	    		                        	</tbody>
-    	    		                        </table>
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                     <div class="row mb-3 mt-3">
@@ -3813,6 +4508,104 @@
                                             </div>
                                         </div>
                                     {% endif %}
+
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <a data-toggle="collapse" href="#collapse-audio-lecture-single-target-{{ name }}" aria-expanded="true" aria-controls="collapseExample">
+                                                <h3>
+                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                    <span>Цель аудио?</span>
+                                                </h3>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="row collapse show ml-5" id="collapse-audio-lecture-single-target-{{ name }}">
+                                        <div class="col-auto">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="introductory" id="{{ name }}-audio-lecture-single-target-introductory" name="{{ name }}-audio-lecture-single-target" {% if 'introductory' in expert_analysis.target %}checked{% endif %} disabled>
+                                                <label class="form-check-label" for="{{ name }}-audio-lecture-single-target-introductory">Вводная</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="auxiliary" id="{{ name }}-audio-lecture-single-target-auxiliary" name="{{ name }}-audio-lecture-single-target" {% if 'auxiliary' in expert_analysis.target %}checked{% endif %} disabled>
+                                                <label class="form-check-label" for="{{ name }}-audio-lecture-single-target-auxiliary">Вспомогательная</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="illustrative" id="{{ name }}-audio-lecture-single-target-illustrative" name="{{ name }}-audio-lecture-single-target" {% if 'illustrative' in expert_analysis.target %}checked{% endif %} disabled>
+                                                <label class="form-check-label" for="{{ name }}-audio-lecture-single-target-illustrative">Иллюстративная</label>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="{{ name }}-audio-lecture-single-target-own"></label>
+                                                <input type="text" class="form-control" id="{{ name }}-audio-lecture-single-target-own" placeholder="Свой вариант" name="{{ name }}-audio-lecture-single-target-own" value="{{ expert_analysis.target_own }}" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <a data-toggle="collapse" href="#collapse-audio-lecture-single-duration-{{ name }}" aria-expanded="true" aria-controls="collapseExample">
+                                                <h3>
+                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                    <span>Длительность учебного аудио?</span>
+                                                </h3>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="row collapse show ml-5" id="collapse-audio-lecture-single-duration-{{ name }}">
+                                        <div class="col-auto">
+                                            <div class="form-group">
+                                                <label for="{{ name }}-audio-lecture-single-duration" class="d-none"></label>
+                                                <input type="text" class="form-control" id="{{ name }}-audio-lecture-single-duration" placeholder="00:40:02" name="{{ name }}-audio-lecture-single-duration" value="{{ expert_analysis.duration }}" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <a data-toggle="collapse" href="#collapse-audio-lecture-single-quality-{{ name }}" aria-expanded="true" aria-controls="collapseExample">
+                                                <h3>
+                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                    <span>Качество записи аудио?</span>
+                                                </h3>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 collapse show ml-5" id="collapse-audio-lecture-single-quality-{{ name }}">
+                                        <div class="col">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="low" id="{{ name }}-audio-lecture-single-quality-low" name="{{ name }}-audio-lecture-single-quality" {% if 'low' in expert_analysis.quality %}checked{% endif %} disabled>
+                                                <label class="form-check-label" for="{{ name }}-audio-lecture-single-quality-low">Низкоое</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="normal" id="{{ name }}-audio-lecture-single-quality-normal" name="{{ name }}-audio-lecture-single-quality" {% if 'normal' in expert_analysis.quality %}checked{% endif %} disabled>
+                                                <label class="form-check-label" for="{{ name }}-audio-lecture-single-quality-normal">Среднее</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" value="high" id="{{ name }}-audio-lecture-single-quality-high" name="{{ name }}-audio-lecture-single-quality" {% if 'high' in expert_analysis.quality %}checked{% endif %} disabled>
+                                                <label class="form-check-label" for="{{ name }}-audio-lecture-single-quality-high">Высокое</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 mt-3">
+                                        <div class="col">
+                                            <a data-toggle="collapse" href="#collapse-audio-lecture-single-format-{{ name }}" aria-expanded="true" aria-controls="collapseExample">
+                                                <h3>
+                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                    <span>Формат записи?</span>
+                                                </h3>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3 collapse show ml-5" id="collapse-audio-lecture-single-format-{{ name }}">
+                                        <div class="col-auto">
+                                            <div class="form-group">
+                                                <label for="{{ name }}-audio-lecture-single-format" class="d-none"></label>
+                                                <input type="text" class="form-control" id="{{ name }}-audio-lecture-single-format" placeholder="mp3" name="{{ name }}-audio-lecture-single-format" value="{{ expert_analysis.format }}" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <div class="row mb-3 mt-3">
                                         <div class="col">
                                             <a data-toggle="collapse" href="#collapse-audio-lecture-single-coverage-{{ name }}" aria-expanded="true" aria-controls="collapseExample">
@@ -3848,18 +4641,18 @@
                                     <div class="row collapse show ml-5" id="collapse-audio-lecture-single-distribution-{{ name }}">
                                         <div class="col-auto">
                                             <table class="table">
-    	    		                        	<thead class="thead-light">
-    	    		                        		<tr>
-    	    		                        			<th scope="col">Название раздела</th>
-    	    		                        			<th scope="col">Процент аудио, соответствующий данному разделу учебного курса</th>
-    	    		                        		</tr>
-    	    		                        	</thead>
-    	    		                        	<tbody>
-    	    		                        		{% if audio_lecture_sections %}
-    	    		                        		    {% for section in audio_lecture_sections %}
+                                                <thead class="thead-light">
+                                                    <tr>
+                                                        <th scope="col">Название раздела</th>
+                                                        <th scope="col">Процент аудио, соответствующий данному разделу учебного курса</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% if audio_lecture_sections %}
+                                                        {% for section in audio_lecture_sections %}
                                                             {% with i=forloop.counter|add:-1 %}
-    	    		                        		            <tr>
-    	    		                        			            <td class="align-middle">{{ section }}</td>
+                                                                <tr>
+                                                                    <td class="align-middle">{{ section }}</td>
                                                                     <td class="align-middle">
                                                                         <div class="input-group">
                                                                             <!--<input type="hidden" value="{{ section }}" name="{{ name }}-audio-lecture-sections">-->
@@ -3869,12 +4662,12 @@
                                                                             </div>
                                                                         </div>
                                                                     </td>
-    	    		                        		            </tr>
+                                                                </tr>
                                                             {% endwith %}
-    	    		                        		    {% endfor %}
-    	    		                        		{% endif %}
-    	    		                        	</tbody>
-    	    		                        </table>
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                     <div class="row mb-3 mt-3">
@@ -4073,6 +4866,124 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row ml-5 {% if not 'on' in expert_analysis.has_scenario %}d-none{% endif %}" id="single-scenario-block">
+                                        <div class="col">
+                                            <div class="row mb-3 mt-3">
+                                                <div class="col">
+                                                    <a data-toggle="collapse" href="#collapse-webinar-single-scenario-has-introduction-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                                                        <h5>
+                                                            <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                            <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                            <span> Наличие блока «Вступление»?</span>
+                                                        </h5>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3 collapse show ml-5" id="collapse-webinar-single-scenario-has-introduction-{{ name }}">
+                                                <div class="col">
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" class="custom-control-input" id="{{ name }}-webinar-single-scenario-has-introduction" name="{{ name }}-webinar-single-scenario-has-introduction" {% if 'on' in expert_analysis.scenario_has_introduction %}checked{% endif %} disabled>
+                                                        <label class="custom-control-label" for="{{ name }}-webinar-single-scenario-has-introduction">Нет / Есть</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3 mt-3">
+                                                <div class="col">
+                                                    <a data-toggle="collapse" href="#collapse-webinar-single-scenario-has-presentation-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                                                        <h5>
+                                                            <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                            <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                            <span> Наличие блока «Презентация»?</span>
+                                                        </h5>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3 collapse show ml-5" id="collapse-webinar-single-scenario-has-presentation-{{ name }}">
+                                                <div class="col">
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" class="custom-control-input" id="{{ name }}-webinar-single-scenario-has-presentation" name="{{ name }}-webinar-single-scenario-has-presentation" {% if 'on' in expert_analysis.scenario_has_presentation %}checked{% endif %} disabled>
+                                                        <label class="custom-control-label" for="{{ name }}-webinar-single-scenario-has-presentation">Нет / Есть</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3 mt-3">
+                                                <div class="col">
+                                                    <a data-toggle="collapse" href="#collapse-webinar-single-scenario-has-add-materials-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                                                        <h5>
+                                                            <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                            <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                            <span> Наличие блока «Демонстрация дополнительных материалов»?</span>
+                                                        </h5>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3 collapse show ml-5" id="collapse-webinar-single-scenario-has-add-materials-{{ name }}">
+                                                <div class="col">
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" class="custom-control-input" id="{{ name }}-webinar-single-scenario-has-add-materials" name="{{ name }}-webinar-single-scenario-has-add-materials" {% if 'on' in expert_analysis.scenario_has_add_materials %}checked{% endif %} disabled>
+                                                        <label class="custom-control-label" for="{{ name }}-webinar-single-scenario-has-add-materials">Нет / Есть</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3 mt-3">
+                                                <div class="col">
+                                                    <a data-toggle="collapse" href="#collapse-webinar-single-scenario-has-questions-answers-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                                                        <h5>
+                                                            <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                            <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                            <span> Наличие блока «Вопросы-ответы» (ответы на вопросы слушателей)?</span>
+                                                        </h5>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3 collapse show ml-5" id="collapse-webinar-single-scenario-has-questions-answers-{{ name }}">
+                                                <div class="col">
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" class="custom-control-input" id="{{ name }}-webinar-single-scenario-has-questions-answers" name="{{ name }}-webinar-single-scenario-has-questions-answers" {% if 'on' in expert_analysis.scenario_has_questions_answers %}checked{% endif %} disabled>
+                                                        <label class="custom-control-label" for="{{ name }}-webinar-single-scenario-has-questions-answers">Нет / Есть</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3 mt-3">
+                                                <div class="col">
+                                                    <a data-toggle="collapse" href="#collapse-webinar-single-scenario-has-quiz-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                                                        <h5>
+                                                            <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                            <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                            <span> Наличие блока «Опросы» (вопросы ведущего слушателям)?</span>
+                                                        </h5>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3 collapse show ml-5" id="collapse-webinar-single-scenario-has-quiz-{{ name }}">
+                                                <div class="col">
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" class="custom-control-input" id="{{ name }}-webinar-single-scenario-has-quiz" name="{{ name }}-webinar-single-scenario-has-quiz" {% if 'on' in expert_analysis.scenario_has_quiz %}checked{% endif %} disabled>
+                                                        <label class="custom-control-label" for="{{ name }}-webinar-single-scenario-has-quiz">Нет / Есть</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3 mt-3">
+                                                <div class="col">
+                                                    <a data-toggle="collapse" href="#collapse-webinar-single-scenario-has-summarizing-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                                                        <h5>
+                                                            <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                            <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                            <span> Наличие блока «Подведение итогов»?</span>
+                                                        </h5>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3 collapse show ml-5" id="collapse-webinar-single-scenario-has-summarizing-{{ name }}">
+                                                <div class="col">
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" class="custom-control-input" id="{{ name }}-webinar-single-scenario-has-summarizing" name="{{ name }}-webinar-single-scenario-has-summarizing" {% if 'on' in expert_analysis.scenario_has_summarizing %}checked{% endif %} disabled>
+                                                        <label class="custom-control-label" for="{{ name }}-webinar-single-scenario-has-summarizing">Нет / Есть</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="row mb-3 mt-3">
                                         <div class="col">
                                             <a data-toggle="collapse" href="#collapse-webinar-single-has-presentation-{{ name }}" aria-expanded="true" aria-controls="collapseExample">
@@ -4089,6 +5000,86 @@
                                             <div class="custom-control custom-switch">
                                                 <input type="checkbox" class="custom-control-input" id="{{ name }}-webinar-single-has-presentation" name="{{ name }}-webinar-single-has-presentation" {% if 'on' in expert_analysis.has_presentation %}checked{% endif %} disabled>
                                                 <label class="custom-control-label" for="{{ name }}-webinar-single-has-presentation">Нет / Есть</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row ml-5 {% if not 'on' in expert_analysis.has_presentation %}d-none{% endif %}" id="single-presentation-block">
+                                        <div class="col">
+                                            <div class="row mb-3 mt-3">
+                                                <div class="col">
+                                                    <a data-toggle="collapse" href="#collapse-webinar-single-has-presentation-red-color-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                                                        <h5>
+                                                            <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                            <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                            <span> Использовался ли красный цвет в большом количестве?</span>
+                                                        </h5>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3 collapse show ml-5" id="collapse-webinar-single-has-presentation-red-color-{{ name }}">
+                                                <div class="col">
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" class="custom-control-input" id="{{ name }}-webinar-single-has-presentation-red-color" name="{{ name }}-webinar-single-has-presentation-red-color" {% if 'on' in expert_analysis.has_presentation_red_color %}checked{% endif %} disabled>
+                                                        <label class="custom-control-label" for="{{ name }}-webinar-single-has-presentation-red-color">Нет / Есть</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3 mt-3">
+                                                <div class="col">
+                                                    <a data-toggle="collapse" href="#collapse-webinar-single-has-presentation-text-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                                                        <h5>
+                                                            <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                            <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                            <span> Перегружкны ли слайды текстом?</span>
+                                                        </h5>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3 collapse show ml-5" id="collapse-webinar-single-has-presentation-text-{{ name }}">
+                                                <div class="col">
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" class="custom-control-input" id="{{ name }}-webinar-single-has-presentation-text" name="{{ name }}-webinar-single-has-presentation-text" {% if 'on' in expert_analysis.has_presentation_text %}checked{% endif %} disabled>
+                                                        <label class="custom-control-label" for="{{ name }}-webinar-single-has-presentation-text">Нет / Есть</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3 mt-3">
+                                                <div class="col">
+                                                    <a data-toggle="collapse" href="#collapse-webinar-single-has-presentation-illustrations-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                                                        <h5>
+                                                            <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                            <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                            <span> Достаточно ли размещено иллюстраций и схем, поддерживающих смысл сказанного?</span>
+                                                        </h5>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3 collapse show ml-5" id="collapse-webinar-single-has-presentation-illustrations-{{ name }}">
+                                                <div class="col">
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" class="custom-control-input" id="{{ name }}-webinar-single-has-presentation-illustrations" name="{{ name }}-webinar-single-has-presentation-illustrations" {% if 'on' in expert_analysis.has_presentation_illustrations %}checked{% endif %} disabled>
+                                                        <label class="custom-control-label" for="{{ name }}-webinar-single-has-presentation-illustrations">Нет / Есть</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3 mt-3">
+                                                <div class="col">
+                                                    <a data-toggle="collapse" href="#collapse-webinar-single-has-presentation-numeration-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                                                        <h5>
+                                                            <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                            <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                            <span> Пронумерованы ли слайды?</span>
+                                                        </h5>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3 collapse show ml-5" id="collapse-webinar-single-has-presentation-numeration-{{ name }}">
+                                                <div class="col">
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" class="custom-control-input" id="{{ name }}-webinar-single-has-presentation-numeration" name="{{ name }}-webinar-single-has-presentation-numeration" {% if 'on' in expert_analysis.has_presentation_numeration %}checked{% endif %} disabled>
+                                                        <label class="custom-control-label" for="{{ name }}-webinar-single-has-presentation-numeration">Нет / Есть</label>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -4111,6 +5102,48 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row ml-5 {% if not 'on' in expert_analysis.has_additional_materials %}d-none{% endif %}" id="single-additional-materials-block">
+                                        <div class="col">
+                                            <div class="row mb-3 mt-3">
+                                                <div class="col">
+                                                    <a data-toggle="collapse" href="#collapse-webinar-single-has-additional-materials-video-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                                                        <h5>
+                                                            <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                            <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                            <span> Присутствуют ли видеоролики?</span>
+                                                        </h5>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3 collapse show ml-5" id="collapse-webinar-single-has-additional-materials-video-{{ name }}">
+                                                <div class="col">
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" class="custom-control-input" id="{{ name }}-webinar-single-has-additional-materials-video" name="{{ name }}-webinar-single-has-additional-materials-video" {% if 'on' in expert_analysis.has_additional_materials_video %}checked{% endif %} disabled>
+                                                        <label class="custom-control-label" for="{{ name }}-webinar-single-has-additional-materials-video">Нет / Есть</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3 mt-3">
+                                                <div class="col">
+                                                    <a data-toggle="collapse" href="#collapse-webinar-single-has-additional-materials-help-files-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                                                        <h5>
+                                                            <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                            <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                            <span> Присутствуют ли справочные файлы (например, таблица производных, математические формулы, свод законов, нормативные акты, и т.д.)?</span>
+                                                        </h5>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3 collapse show ml-5" id="collapse-webinar-single-has-additional-materials-help-files-{{ name }}">
+                                                <div class="col">
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" class="custom-control-input" id="{{ name }}-webinar-single-has-additional-materials-help-files" name="{{ name }}-webinar-single-has-additional-materials-help-files" {% if 'on' in expert_analysis.has_additional_materials_help_files %}checked{% endif %} disabled>
+                                                        <label class="custom-control-label" for="{{ name }}-webinar-single-has-additional-materials-help-files">Нет / Есть</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="row mb-3 mt-3">
                                         <div class="col">
                                             <a data-toggle="collapse" href="#collapse-webinar-single-has-questions-{{ name }}" aria-expanded="true" aria-controls="collapseExample">
@@ -4127,6 +5160,67 @@
                                             <div class="custom-control custom-switch">
                                                 <input type="checkbox" class="custom-control-input" id="{{ name }}-webinar-single-has-questions" name="{{ name }}-webinar-single-has-questions" {% if 'on' in expert_analysis.has_questions %}checked{% endif %} disabled>
                                                 <label class="custom-control-label" for="{{ name }}-webinar-single-has-questions">Нет / Есть</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row ml-5 {% if not 'on' in expert_analysis.has_questions %}d-none{% endif %}" id="single-questions-block">
+                                        <div class="col">
+                                            <div class="row mb-3 mt-3">
+                                                <div class="col">
+                                                    <a data-toggle="collapse" href="#collapse-webinar-single-has-questions-input-control-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                                                        <h5>
+                                                            <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                            <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                            <span> Присутствуют ли вопросы по типу входного контроля?</span>
+                                                        </h5>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3 collapse show ml-5" id="collapse-webinar-single-has-questions-input-control-{{ name }}">
+                                                <div class="col">
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" class="custom-control-input" id="{{ name }}-webinar-single-has-questions-input-control" name="{{ name }}-webinar-single-has-questions-input-control" {% if 'on' in expert_analysis.has_questions_input_control %}checked{% endif %} disabled>
+                                                        <label class="custom-control-label" for="{{ name }}-webinar-single-has-questions-input-control">Нет / Есть</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3 mt-3">
+                                                <div class="col">
+                                                    <a data-toggle="collapse" href="#collapse-webinar-single-has-questions-interim-issues-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                                                        <h5>
+                                                            <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                            <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                            <span> Присутствуют ли промежуточные вопросы для закрепления прослушанного материала?</span>
+                                                        </h5>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3 collapse show ml-5" id="collapse-webinar-single-has-questions-interim-issues-{{ name }}">
+                                                <div class="col">
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" class="custom-control-input" id="{{ name }}-webinar-single-has-questions-interim-issues" name="{{ name }}-webinar-single-has-questions-interim-issues" {% if 'on' in expert_analysis.has_questions_interim_issues %}checked{% endif %} disabled>
+                                                        <label class="custom-control-label" for="{{ name }}-webinar-single-has-questions-interim-issues">Нет / Есть</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3 mt-3">
+                                                <div class="col">
+                                                    <a data-toggle="collapse" href="#collapse-webinar-single-has-questions-test-questions-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                                                        <h5>
+                                                            <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                            <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                            <span> Присутствуют ли контрольные вопросы по занятию?</span>
+                                                        </h5>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3 collapse show ml-5" id="collapse-webinar-single-has-questions-test-questions-{{ name }}">
+                                                <div class="col">
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" class="custom-control-input" id="{{ name }}-webinar-single-has-questions-test-questions" name="{{ name }}-webinar-single-has-questions-test-questions" {% if 'on' in expert_analysis.has_questions_test_questions %}checked{% endif %} disabled>
+                                                        <label class="custom-control-label" for="{{ name }}-webinar-single-has-questions-test-questions">Нет / Есть</label>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

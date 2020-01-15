@@ -54,6 +54,38 @@ $(document).ready(function () {
     tabs.each(function (i, e) {
         $(e).tooltip();
     });
+
+    $('[type="checkbox"][id$="-webinar-has-scenario"]').change(function () {
+        if (this.checked) {
+            $('#scenario-block').removeClass('d-none');
+        } else {
+           $('#scenario-block').addClass('d-none');
+        }
+    });
+
+    $('[type="checkbox"][id$="-webinar-has-presentation"]').change(function () {
+        if (this.checked) {
+            $('#presentation-block').removeClass('d-none');
+        } else {
+           $('#presentation-block').addClass('d-none');
+        }
+    });
+
+    $('[type="checkbox"][id$="-webinar-has-additional-materials"]').change(function () {
+        if (this.checked) {
+            $('#additional-materials-block').removeClass('d-none');
+        } else {
+           $('#additional-materials-block').addClass('d-none');
+        }
+    });
+
+    $('[type="checkbox"][id$="-webinar-has-questions"]').change(function () {
+        if (this.checked) {
+            $('#questions-block').removeClass('d-none');
+        } else {
+           $('#questions-block').addClass('d-none');
+        }
+    });
 });
 
 

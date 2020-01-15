@@ -81,6 +81,7 @@ urlpatterns = [
     path('history/', views.history, name='history'),
     path('show-course-result/', views.show_course_result, name='show-course-result'),
     path('clear-history/', views.clear_history, name='clear-history'),
+    path('log/', views.show_log, name='log'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

@@ -21,7 +21,7 @@ from nltk.tokenize import RegexpTokenizer
 from . import settings
 from . import models
 
-
+"""
 def read_files(source, request, only_these=None):
     res = []
     all_html = bs4.BeautifulSoup(
@@ -134,6 +134,80 @@ def read_files(source, request, only_these=None):
         'pgs_num': all_pages_number
     })
     clear_dir(os.path.join(settings.BASE_DIR, 'log', os.path.basename(source)))
+    return res
+"""
+
+
+def read_files(source, request):
+    res = []
+    all_html = bs4.BeautifulSoup(
+        '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Title</title></head><body></body></html>',
+        'html.parser'
+    )
+    all_content = ''
+    all_pages_number = 0
+    for module_name in os.listdir(source):
+        module_path = os.path.join(source, module_name)
+        module_html = bs4.BeautifulSoup(
+            '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Title</title></head><body></body></html>',
+            'html.parser'
+        )
+        module_content = ''
+        module_pages_number = 0
+        for file_name in os.listdir(module_path):
+            file_path = os.path.join(module_path, file_name)
+            if re.fullmatch(r'.*\.html', file_name, re.I):
+                module_pages_number += 1
+                with open(file_path, 'r', encoding='utf-8') as f:
+                    c = f.read()
+                    bs = bs4.BeautifulSoup(c, 'html.parser')
+                    imgs = bs.find_all('img')
+                    for img in imgs:
+                        img['src'] = os.path.join(module_path, os.path.basename(img['src']))
+                    for content in bs.body.contents:
+                        module_html.body.append(copy.copy(content))
+                    tokens = re.split(r'<[^>]+>', c)
+                    text = ' '.join(list(filter(lambda x: not re.fullmatch(r'\s*', x), tokens)))
+                    module_content += ' ' + html.unescape(text)
+        db_modules = models.Module.objects.filter(
+            uid=request.session.session_key,
+            sdo=request.session['moodle'],
+            cid=request.session['course_id'],
+            mid=module_name,
+        )
+        if len(db_modules) > 0:
+            mod_name = db_modules[0].mod_name
+            sec_name = db_modules[0].sec_name
+        else:
+            mod_name = module_name
+            sec_name = ''
+        indicators = request.POST.getlist('indicators-' + module_name)
+        res.append({
+            'name': module_name,
+            'content': mod_name,
+            'section': sec_name,
+            'indicators': indicators,
+            'dir_path': module_path,
+            'html': str(module_html),
+            'txt': module_content,
+            'pgs_num': module_pages_number
+        })
+        for content in module_html.body.contents:
+            all_html.body.append(copy.copy(content))
+        all_content += module_content
+        all_pages_number += module_pages_number
+    if all_pages_number > 0:
+        res.insert(0, {
+            'name': 'all',
+            'content': 'Анализ всего курса',
+            'section': '',
+            'indicators': [],
+            'dir_path': source,
+            'html': str(all_html),
+            'txt': all_content,
+            'pgs_num': all_pages_number
+        })
+    clear_dir(os.path.join(settings.BASE_DIR, 'log', request.session.session_key))
     return res
 
 

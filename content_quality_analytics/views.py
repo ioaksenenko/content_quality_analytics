@@ -395,6 +395,7 @@ def get_modules(request):
         module_name = ''.join(re.findall(r'[a-zA-Zа-яА-Я0-9_\s]+', module.mod_name)).replace(' ', '_')
         if re.fullmatch(r'^(theory|введение|глоссарий|заключение|карта_курса|литература|сведения_об_авторе|список_сокращений|теоретический_материал|abbreviature|authors|conclusion|glossary|introduction|karta|literature|\d+).*$', module_name, re.I):
             file_type = 'theory'
+            """
             src = os.path.join(dir_path, file_name, 'html')
             if not os.path.exists(src):
                 src = 'undefined'
@@ -402,8 +403,19 @@ def get_modules(request):
             else:
                 src = src[src.index(request.session.session_key) + len(request.session.session_key):]
                 allowed_for_analysis = True
+            """
+            src = 'undefined'
+            dp = os.path.join(dir_path, file_name)
+            allowed_for_analysis = True
+            for fn in os.listdir(dp):
+                fn, fe = os.path.splitext(fn)
+                if re.fullmatch(r'\.(html)', fe, re.I):
+                    src = os.path.join(dp, fn + fe)
+            if src != 'undefined':
+                src = src[src.index(request.session.session_key) + len(request.session.session_key):]
         elif re.fullmatch(r'^(test|самоконтроль).*$', module_name, re.I):
             file_type = 'self-test'
+            """
             src = os.path.join(dir_path, file_name, 'html')
             if not os.path.exists(src):
                 src = 'undefined'
@@ -411,8 +423,19 @@ def get_modules(request):
             else:
                 src = src[src.index(request.session.session_key) + len(request.session.session_key):]
                 allowed_for_analysis = True
+            """
+            src = 'undefined'
+            dp = os.path.join(dir_path, file_name)
+            allowed_for_analysis = True
+            for fn in os.listdir(dp):
+                fn, fe = os.path.splitext(fn)
+                if re.fullmatch(r'\.(html)', fe, re.I):
+                    src = os.path.join(dp, fn + fe)
+            if src != 'undefined':
+                src = src[src.index(request.session.session_key) + len(request.session.session_key):]
         elif re.fullmatch(r'^(control|контрольная_работа).*$', module_name, re.I):
             file_type = 'control-test'
+            """
             src = os.path.join(dir_path, file_name, 'test.xml')
             if not os.path.exists(src):
                 src = 'undefined'
@@ -420,8 +443,19 @@ def get_modules(request):
             else:
                 src = src[src.index(request.session.session_key) + len(request.session.session_key):]
                 allowed_for_analysis = True
+            """
+            src = 'undefined'
+            dp = os.path.join(dir_path, file_name)
+            allowed_for_analysis = True
+            for fn in os.listdir(dp):
+                fn, fe = os.path.splitext(fn)
+                if re.fullmatch(r'\.(xml)', fe, re.I):
+                    src = os.path.join(dp, fn + fe)
+            if src != 'undefined':
+                src = src[src.index(request.session.session_key) + len(request.session.session_key):]
         elif re.fullmatch(r'^(exam|экзаменационная_работа).*$', module_name, re.I):
             file_type = 'exam-test'
+            """
             src = os.path.join(dir_path, file_name, 'test.xml')
             if not os.path.exists(src):
                 src = 'undefined'
@@ -429,6 +463,16 @@ def get_modules(request):
             else:
                 src = src[src.index(request.session.session_key) + len(request.session.session_key):]
                 allowed_for_analysis = True
+            """
+            src = 'undefined'
+            dp = os.path.join(dir_path, file_name)
+            allowed_for_analysis = True
+            for fn in os.listdir(dp):
+                fn, fe = os.path.splitext(fn)
+                if re.fullmatch(r'\.(xml)', fe, re.I):
+                    src = os.path.join(dp, fn + fe)
+            if src != 'undefined':
+                src = src[src.index(request.session.session_key) + len(request.session.session_key):]
         #elif re.fullmatch(r'^(presentation|презентация).*$', file_name, re.I):
             #file_type = 'presentation'
             #src = os.path.join(dir_path, file_name, 'slides')
@@ -677,19 +721,8 @@ def theory_analysis_results(request):
     if request.method == 'POST':
         media_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key)
         theory_path = os.path.join(media_path, 'theory')
-        theory_modules = os.listdir(theory_path)
-        if len(theory_modules) > 0:
-            """
-            indicators = []
-            for module in theory_modules:
-                module_indicators = request.POST.getlist('indicators-' + module)
-                indicators.append(module_indicators)
-            indicators.insert(0, request.POST.getlist('indicators-all-elements'))
-            """
-
-            files = analyzer.read_files(theory_path, request, theory_modules)
-            # results = linear_analyze(files)
-            # results = parallel_analyze(files)
+        files = analyzer.read_files(theory_path, request)
+        if len(files) > 0:
             results, names, contents, sections, indicators = parallel_analyze_with_futures(files)
             context = {
                 'theory_modules': list(zip(names, contents, sections, results, indicators))
@@ -790,7 +823,8 @@ def self_test_analysis(request):
     modules = os.listdir(self_test_path)
     questions = []
     for module in modules:
-        dir_path = os.path.join(self_test_path, module, 'html')
+        #dir_path = os.path.join(self_test_path, module, 'html')
+        dir_path = os.path.join(self_test_path, module)
         for file_name in os.listdir(dir_path):
             file_path = os.path.join(dir_path, file_name)
             if os.path.isfile(file_path):
@@ -804,11 +838,10 @@ def self_test_analysis(request):
 
 
 def get_questions(html_path):
-    f = open(html_path, 'r', encoding='utf-8')
-    c = f.read()
-    f.close()
-    soup = bs4.BeautifulSoup(c, 'html.parser')
-    questions = soup.find_all('div', 'qheader')
+    with open(html_path, 'r', encoding='utf-8') as f:
+        c = f.read()
+    bs = bs4.BeautifulSoup(c, 'html.parser')
+    questions = bs.find_all('div', 'qheader')
     res = []
     for question in questions:
         p = question.find('p')
@@ -858,27 +891,24 @@ def control_test_analysis(request):
 
 
 def get_control_questions(file_path):
-    f = open(file_path, 'r', encoding='utf-8')
-    c = f.read()
-    f.close()
-    soup = bs4.BeautifulSoup(c, 'html.parser')
-    questions = soup.find_all('questiontext')
+    with open(file_path, 'r', encoding='utf-8') as f:
+        c = f.read()
+    bs = bs4.BeautifulSoup(c, 'html.parser')
+    questions = bs.find_all('questiontext')
     res = []
     for question in questions:
         text = question.find('text')
         if text is not None:
             m = re.match(r'<text><!\[CDATA\[\s*(?P<text>(.|\s)+(?!\]\]>))\s*\]\]></text>', str(text))
             if m is not None:
-                soup = bs4.BeautifulSoup(m.group('text'), 'html.parser')
-                imgs = soup.find_all('img')
+                bs = bs4.BeautifulSoup(m.group('text'), 'html.parser')
+                imgs = bs.find_all('img')
                 for img in imgs:
                     try:
-                        idx = file_path.index('\media')
-                        if idx >= 0:
-                            img['src'] = os.path.join(os.path.dirname(file_path)[idx:], img['src'])
+                        img['src'] = os.path.join(os.path.dirname(file_path)[file_path.index('\media'):], os.path.basename(img['src']))
                     except Exception as e:
                         print(e)
-                res.append(str(soup))
+                res.append(str(bs))
             #soup = bs4.BeautifulSoup(text.string, 'html.parser')
             #fragments = re.split(r'</?[^>]+>', text.string)
             #res.append(html.unescape(' '.join(fragments)))
@@ -1031,11 +1061,12 @@ def moodle(request):
                     sdo=moodle,
                     cid=course_id,
                     mid=module['cmid'],
-                    sec_name=module['section_name'] if module['section_name'] is not None else '',
+                    sec_name=module['section_name'] if module['section_name'] is not None else 'Тема ' + module['section'],
                     mod_name=module['name']
                 ).save()
                 if not os.path.exists(module_path):
                     os.mkdir(module_path)
+                    """
                     if module['plugin'] == 'mod_imscp':
                         html_path = os.path.join(module_path, 'html')
                         img_path = os.path.join(module_path, 'html', 'img')
@@ -1044,6 +1075,7 @@ def moodle(request):
                     elif module['plugin'] == 'mod_resource':
                         img_path = os.path.join(module_path, 'slides')
                         os.mkdir(img_path)
+                    """
                 with ProcessPoolExecutor(max_workers=os.cpu_count()) as executor:
                     futures += [executor.submit(download_file, file, module, module_path) for file in module['files']]
 
@@ -1059,6 +1091,7 @@ def moodle(request):
 
 def download_file(file, module, module_path):
     file_paath = os.path.join(module_path, file['name'])
+    """
     if module['plugin'] == 'mod_imscp':
         html_path = os.path.join(module_path, 'html')
         img_path = os.path.join(module_path, 'html', 'img')
@@ -1070,14 +1103,23 @@ def download_file(file, module, module_path):
         img_path = os.path.join(module_path, 'slides')
         if re.fullmatch(r'.+\.(png|jpeg|jpg)', file['name'], re.I):
             file_paath = os.path.join(img_path, file['name'])
+    """
     response = requests.get(file['url'])
     if response.status_code == 200:
+        if re.fullmatch(r'.+\.(png|jpeg|jpg|flac|midi|amr|ogg|aiff|mp3|wav|avi|mp4|mkv|doc|docx|lsx|xlsx|ppt|pptx)', file['name'], re.I):
+            with open(file_paath, 'wb') as f:
+                f.write(response.content)
+        else:
+            with open(file_paath, 'w', encoding='utf-8') as f:
+                f.write(response.text)
+        """
         if re.fullmatch(r'.+\.html', file['name'], re.I):
             with open(file_paath, 'w', encoding='utf-8') as f:
                 f.write(response.text)
         elif re.fullmatch(r'.+\.(png|jpeg|jpg)', file['name'], re.I):
             with open(file_paath, 'wb') as f:
                 f.write(response.content)
+        """
 
 
 def get_files_from_moodle(request):
@@ -1686,10 +1728,11 @@ def expert_analysis(request):
     names = []
     sections = []
     for module in self_test_modules:
-        dir_path = os.path.join(self_test_path, module, 'html')
+        # dir_path = os.path.join(self_test_path, module, 'html')
+        dir_path = os.path.join(self_test_path, module)
         for file_name in os.listdir(dir_path):
             file_path = os.path.join(dir_path, file_name)
-            if os.path.isfile(file_path):
+            if re.fullmatch(r'.*\.html', file_name, re.I):
                 questions.append(get_questions(file_path))
         ids.append(module)
         db_modules = models.Module.objects.filter(
@@ -1725,7 +1768,7 @@ def expert_analysis(request):
         questions = []
         for file_name in os.listdir(dir_path):
             file_path = os.path.join(dir_path, file_name)
-            if os.path.isfile(file_path):
+            if re.fullmatch(r'.*\.xml', file_name, re.I):
                 questions += get_control_questions(file_path)
         all_questions.append(questions)
         ids.append(module)
@@ -1746,7 +1789,7 @@ def expert_analysis(request):
         questions = []
         for file_name in os.listdir(dir_path):
             file_path = os.path.join(dir_path, file_name)
-            if os.path.isfile(file_path):
+            if re.fullmatch(r'.*\.xml', file_name, re.I):
                 questions += get_control_questions(file_path)
         all_questions.append(questions)
         ids.append(module)
@@ -1871,7 +1914,18 @@ def expert_analysis(request):
         extensions,
         src
     ))
-    context['video_lecture_sections'] = os.listdir(theory_path)
+    context['video_lecture_sections'] = []
+    for mid in os.listdir(theory_path):
+        db_modules = models.Module.objects.filter(
+            uid=request.session.session_key,
+            sdo=request.session['moodle'],
+            cid=request.session['course_id'],
+            mid=mid,
+        )
+        if len(db_modules) > 0:
+            context['video_lecture_sections'].append(
+                db_modules[0].sec_name + (': ' if db_modules[0].sec_name != '' else '') + db_modules[0].mod_name
+            )
 
     audio_file_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'audio-file')
     audio_file_modules = []
@@ -1977,7 +2031,18 @@ def expert_analysis(request):
         extensions,
         src
     ))
-    context['audio_lecture_sections'] = os.listdir(theory_path)
+    context['audio_lecture_sections'] = []
+    for mid in os.listdir(theory_path):
+        db_modules = models.Module.objects.filter(
+            uid=request.session.session_key,
+            sdo=request.session['moodle'],
+            cid=request.session['course_id'],
+            mid=mid,
+        )
+        if len(db_modules) > 0:
+            context['audio_lecture_sections'].append(
+                db_modules[0].sec_name + (': ' if db_modules[0].sec_name != '' else '') + db_modules[0].mod_name
+            )
 
     webinar_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'webinar')
     webinar_modules = os.listdir(webinar_path)
@@ -2055,20 +2120,20 @@ def expert_analysis(request):
             all_tables.append(tables)
             all_pdfs.append(pdfs)
             all_others.append(others)
-            module = os.path.basename(module)
-            ids.append(module)
-            db_modules = models.Module.objects.filter(
-                uid=request.session.session_key,
-                sdo=request.session['moodle'],
-                cid=request.session['course_id'],
-                mid=module,
-            )
-            if len(db_modules) > 0:
-                names.append(db_modules[0].mod_name)
-                sections.append(db_modules[0].sec_name)
-            else:
-                names.append(module)
-                sections.append(module)
+        module = os.path.basename(module)
+        ids.append(module)
+        db_modules = models.Module.objects.filter(
+            uid=request.session.session_key,
+            sdo=request.session['moodle'],
+            cid=request.session['course_id'],
+            mid=module,
+        )
+        if len(db_modules) > 0:
+            names.append(db_modules[0].mod_name)
+            sections.append(db_modules[0].sec_name)
+        else:
+            names.append(module)
+            sections.append(module)
 
     context['webinar_modules'] = list(zip(
         ids,
@@ -2111,7 +2176,7 @@ def results(request):
     for result in results:
         context.update(json.loads(result.context))
 
-    print(context['theory_modules'][0][-1])
+    # print(context['theory_modules'][0][-1])
 
     if request.method == 'POST':
         self_test_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'self-test')
@@ -2161,6 +2226,12 @@ def results(request):
             for element in context['video_lecture_modules']:
                 if element[0] == video_lecture_module:
                     element.append({
+                        'target': request.POST.getlist(video_lecture_module + '-video-lecture-target'),
+                        'duration': request.POST.getlist(video_lecture_module + '-video-lecture-duration'),
+                        'has_scenario': request.POST.get(video_lecture_module + '-video-lecture-has-scenario'),
+                        'complexity': request.POST.getlist(video_lecture_module + '-video-lecture-complexity'),
+                        'has_ticker': request.POST.get(video_lecture_module + '-video-lecture-has-ticker'),
+                        'recording_quality': request.POST.getlist(video_lecture_module + '-video-file-recording-quality'),
                         'coverage': request.POST.getlist(video_lecture_module + '-video-lecture-coverage'),
                         'distribution': request.POST.getlist(video_lecture_module + '-video-lecture-distribution'),
                         'volume': request.POST.get(video_lecture_module + '-video-lecture-volume'),
@@ -2184,6 +2255,11 @@ def results(request):
             for element in context['audio_lecture_modules']:
                 if element[0] == audio_lecture_module:
                     element.append({
+                        'target': request.POST.getlist(audio_lecture_module + '-audio-lecture-target'),
+                        'target_own': request.POST.get(audio_lecture_module + '-audio-lecture-target-own'),
+                        'duration': request.POST.get(audio_lecture_module + '-audio-lecture-duration'),
+                        'quality': request.POST.getlist(audio_lecture_module + '-audio-lecture-quality'),
+                        'format': request.POST.get(audio_lecture_module + '-audio-lecture-format'),
                         'coverage': request.POST.get(audio_lecture_module + '-audio-lecture-coverage'),
                         'distribution': request.POST.getlist(audio_lecture_module + '-audio-lecture-distribution'),
                         'volume': request.POST.get(audio_lecture_module + '-audio-lecture-volume'),
@@ -2198,9 +2274,24 @@ def results(request):
                         'type': request.POST.getlist(webinar_module + '-webinar-type'),
                         'duration': request.POST.get(webinar_module + '-webinar-duration'),
                         'has_scenario': request.POST.get(webinar_module + '-webinar-has-scenario'),
+                        'scenario_has_introduction': request.POST.get(webinar_module + '-webinar-scenario-has-introduction'),
+                        'scenario_has_presentation': request.POST.get(webinar_module + '-webinar-scenario-has-presentation'),
+                        'scenario_has_add_materials': request.POST.get(webinar_module + '-webinar-scenario-has-add-materials'),
+                        'scenario_has_questions_answers': request.POST.get(webinar_module + '-webinar-scenario-has-questions-answers'),
+                        'scenario_has_quiz': request.POST.get(webinar_module + '-webinar-scenario-has-quiz'),
+                        'scenario_has_summarizing': request.POST.get(webinar_module + '-webinar-scenario-has-summarizing'),
                         'has_presentation': request.POST.get(webinar_module + '-webinar-has-presentation'),
+                        'has_presentation_red_color': request.POST.get(webinar_module + '-webinar-has-presentation-red-color'),
+                        'has_presentation_text': request.POST.get(webinar_module + '-webinar-has-presentation-text'),
+                        'has_presentation_illustrations': request.POST.get(webinar_module + '-webinar-has-presentation-illustrations'),
+                        'has_presentation_numeration': request.POST.get(webinar_module + '-webinar-has-presentation-numeration'),
                         'has_additional_materials': request.POST.get(webinar_module + '-webinar-has-additional-materials'),
+                        'has_additional_materials_video': request.POST.get(webinar_module + '-webinar-has-additional-materials-video'),
+                        'has_additional_materials_help_files': request.POST.get(webinar_module + '-webinar-has-additional-materials-help-files'),
                         'has_questions': request.POST.get(webinar_module + '-webinar-has-questions'),
+                        'has_questions_input_control': request.POST.get(webinar_module + '-webinar-has-questions-input-control'),
+                        'has_questions_interim_issues': request.POST.get(webinar_module + '-webinar-has-questions-interim-issues'),
+                        'has_questions_test_questions': request.POST.get(webinar_module + '-webinar-has-questions-test-questions'),
                     })
         """
         results = models.Results.objects.filter(
@@ -2298,3 +2389,13 @@ def show_course_result(request):
 def clear_history(request):
     models.Course.objects.all().delete()
     return redirect('/history/')
+
+
+def show_log(request):
+    context = {}
+    file_path = os.path.join(settings.BASE_DIR, 'cqa.log')
+    if os.path.exists(file_path):
+        with open(file_path, 'r') as file_object:
+            file_content = file_object.read()
+            context['content'] = file_content
+    return render(request, 'log.html', context)
