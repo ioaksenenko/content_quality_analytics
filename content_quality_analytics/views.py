@@ -2393,7 +2393,7 @@ def clear_history(request):
 
 def show_log(request):
     context = {}
-    file_path = os.path.join(settings.BASE_DIR, 'cqa.log')
+    file_path = '/var/www/cqa.fdo.tusur.ru/cqa.log'
     if os.path.exists(file_path):
         with open(file_path, 'r') as file_object:
             file_content = file_object.read()
