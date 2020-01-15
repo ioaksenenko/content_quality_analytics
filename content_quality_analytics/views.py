@@ -29,6 +29,7 @@ from django.utils.timezone import pytz
 
 
 def index(request):
+    print('=' * 10)
     user = auth.get_user(request)
     clear_media()
     request.session.create()
@@ -1714,7 +1715,6 @@ def split_elements(request):
 
 
 def expert_analysis(request):
-    print('=' * 10)
     user = auth.get_user(request)
     context = {
         'username': user.username if not user.is_anonymous else 'Anonymous',
