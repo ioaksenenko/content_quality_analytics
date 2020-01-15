@@ -891,6 +891,7 @@ def control_test_analysis(request):
 
 
 def get_control_questions(file_path):
+    print('=' * 10)
     with open(file_path, 'r', encoding='utf-8') as f:
         c = f.read()
     bs = bs4.BeautifulSoup(c, 'html.parser')
