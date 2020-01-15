@@ -905,7 +905,7 @@ def get_control_questions(file_path):
                 imgs = bs.find_all('img')
                 for img in imgs:
                     try:
-                        img['src'] = os.path.join(os.path.dirname(file_path)[file_path.index('\media'):], os.path.basename(img['src']))
+                        img['src'] = '/' + os.path.join(os.path.dirname(file_path)[file_path.index('media'):], os.path.basename(img['src']))
                     except Exception as e:
                         print(e)
                 res.append(str(bs))
