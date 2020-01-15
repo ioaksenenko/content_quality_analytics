@@ -906,6 +906,9 @@ def get_control_questions(file_path):
                 for img in imgs:
                     try:
                         img['src'] = '/' + os.path.join(os.path.dirname(file_path)[file_path.index('media'):], os.path.basename(img['src']))
+                        print('=' * 10)
+                        print(img['src'])
+                        print('=' * 10)
                     except Exception as e:
                         print(e)
                 res.append(str(bs))
