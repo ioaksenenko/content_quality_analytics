@@ -2400,5 +2400,5 @@ def show_log(request):
     if os.path.exists(file_path):
         with open(file_path, 'r') as file_object:
             file_content = file_object.read()
-            context['content'] = file_content
+            context['content'] = file_content.replace('\n', '<br>')
     return render(request, 'log.html', context)
