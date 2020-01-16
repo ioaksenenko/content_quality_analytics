@@ -29,7 +29,6 @@ from django.utils.timezone import pytz
 
 
 def index(request):
-    print('=' * 10)
     user = auth.get_user(request)
     clear_media()
     request.session.create()
@@ -2177,7 +2176,7 @@ def results(request):
     for result in results:
         context.update(json.loads(result.context))
 
-    # print(context['theory_modules'][0][-1])
+    print(context['theory_modules'][0][-1])
 
     if request.method == 'POST':
         self_test_path = os.path.join(settings.MEDIA_ROOT, request.session.session_key, 'self-test')
