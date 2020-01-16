@@ -54,62 +54,6 @@ $(document).ready(function () {
     tabs.each(function (i, e) {
         $(e).tooltip();
     });
-});
-
-function show_tooltip() {
-    let element = $(this);
-    element.tooltip('dispose');
-    let min = element.attr('min');
-    let max = element.attr('max');
-    let step = element.attr('step');
-    let val = element.val();
-    let n = (max - min) / step;
-    setTimeout(function () {
-        let tooltip = $('#' + element.attr('aria-describedby'));
-        let left = element.offset().left - tooltip.width() / 4;
-        let right = element.offset().left + element.width() - tooltip.width() / 1.3;
-        tooltip.offset({left: left + ((right - left) / n) * val });
-    }, 1);
-    $(this).tooltip('show');
-}
-
-function dynamic_nav() {
-    let nav = $('#modules-tabs');
-    let height = nav.innerHeight();
-    let dropdown_items = $('.dropdown-item');
-    let n = dropdown_items.length;
-    let dropdown = $('.dropdown');
-    dropdown_items.each(function (i, e) {
-        if (nav.innerHeight() === height) {
-            $(e).removeClass('dropdown-item');
-            $(e).addClass('nav-link');
-            nav.append($('<li class="nav-item"></li>').append($(e)));
-            n--;
-        } else {
-            let dropdown_menu = $('.dropdown-menu');
-            let nav_item = nav.find('li:last-child');
-            let nav_link = nav_item.find('.nav-link');
-            nav_link.removeClass('nav-link');
-            nav_link.addClass('dropdown-item');
-            dropdown_menu.prepend(nav_link);
-            nav_item.detach();
-            nav.append(dropdown);
-            n++;
-            return false;
-        }
-    });
-    if (n === 0) {
-        dropdown.detach();
-    }
-
-    let dropdown_dividers = $('.dropdown-divider');
-    dropdown_dividers.each(function (i, e) {
-        let prev = $(e).prev();
-        let next = $(e).next();
-        if (prev.length === 0 || next.length === 0 || prev.hasClass('dropdown-divider') || next.hasClass('dropdown-divider')) {
-            $(e).detach();
-        }
-    });
 
     $('[type="checkbox"][id$="-webinar-has-scenario"]').change(function () {
         if (this.checked) {
@@ -172,6 +116,61 @@ function dynamic_nav() {
             $('#single-questions-block').removeClass('d-none');
         } else {
            $('#single-questions-block').addClass('d-none');
+        }
+    });
+});
+
+function show_tooltip() {
+    let element = $(this);
+    element.tooltip('dispose');
+    let min = element.attr('min');
+    let max = element.attr('max');
+    let step = element.attr('step');
+    let val = element.val();
+    let n = (max - min) / step;
+    setTimeout(function () {
+        let tooltip = $('#' + element.attr('aria-describedby'));
+        let left = element.offset().left - tooltip.width() / 4;
+        let right = element.offset().left + element.width() - tooltip.width() / 1.3;
+        tooltip.offset({left: left + ((right - left) / n) * val });
+    }, 1);
+    $(this).tooltip('show');
+}
+
+function dynamic_nav() {
+    let nav = $('#modules-tabs');
+    let height = nav.innerHeight();
+    let dropdown_items = $('.dropdown-item');
+    let n = dropdown_items.length;
+    let dropdown = $('.dropdown');
+    dropdown_items.each(function (i, e) {
+        $(e).removeClass('dropdown-item');
+        $(e).addClass('nav-link');
+        nav.append($('<li class="nav-item"></li>').append($(e)));
+        n--;
+        if (nav.innerHeight() !== height) {
+            let dropdown_menu = $('.dropdown-menu');
+            let nav_item = nav.find('li:last-child');
+            let nav_link = nav_item.find('.nav-link');
+            nav_link.removeClass('nav-link');
+            nav_link.addClass('dropdown-item');
+            dropdown_menu.prepend(nav_link);
+            nav_item.detach();
+            nav.append(dropdown);
+            n++;
+            return false;
+        }
+    });
+    if (n === 0) {
+        dropdown.detach();
+    }
+
+    let dropdown_dividers = $('.dropdown-divider');
+    dropdown_dividers.each(function (i, e) {
+        let prev = $(e).prev();
+        let next = $(e).next();
+        if (prev.length === 0 || next.length === 0 || prev.hasClass('dropdown-divider') || next.hasClass('dropdown-divider')) {
+            $(e).detach();
         }
     });
 }
