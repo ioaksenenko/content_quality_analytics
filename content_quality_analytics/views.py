@@ -2294,6 +2294,41 @@ def results(request):
                         'has_questions_interim_issues': request.POST.get(webinar_module + '-webinar-has-questions-interim-issues'),
                         'has_questions_test_questions': request.POST.get(webinar_module + '-webinar-has-questions-test-questions'),
                     })
+        context['tutorial'] = {
+            'tutorial_amount_correspond_intensity': request.POST.get('tutorial-amount-correspond-intensity'),
+            'tutorial_content_correspond_goals': request.POST.get('tutorial-content-correspond-goals'),
+            'tutorial_content_correspond_tasks': request.POST.get('tutorial-content-correspond-tasks'),
+            'tutorial_ensures_continuity_knowledge': request.POST.get('tutorial-ensures-continuity-knowledge'),
+            'tutorial_content_correspond_competencies': request.POST.get('tutorial-content-correspond-competencies'),
+            'tutorial_content_correspond_knowledge': request.POST.get('tutorial-content-correspond-knowledge'),
+            'tutorial_chapter_titles_correspond_section_names': request.POST.get('tutorial-chapter-titles-correspond-section-names'),
+            'tutorial_volume_correspond_hours': request.POST.get('tutorial-volume-correspond-hours'),
+            'tutorial_in_references': request.POST.get('tutorial-in-references'),
+        }
+        context['educational_methodical_manual'] = {
+            'educational_methodical_manual_content_correspond_goals': request.POST.get('educational-methodical-manual-content-correspond-goals'),
+            'educational_methodical_manual_content_correspond_tasks': request.POST.get('educational-methodical-manual-content-correspond-tasks'),
+            'educational_methodical_manual_content_correspond_competencies': request.POST.get('educational-methodical-manual-content-correspond-competencies'),
+            'educational_methodical_manual_content_correspond_knowledge': request.POST.get('educational-methodical-manual-content-correspond-knowledge'),
+            'educational_methodical_manual_in_references': request.POST.get('educational-methodical-manual-in-references'),
+            'educational_methodical_manual_task_correspond_hours': request.POST.get('educational-methodical-manual-task-correspond-hours'),
+            'educational_methodical_manual_topics_correspond_rpd': request.POST.get('educational-methodical-manual-topics-correspond-rpd'),
+        }
+        context['guidelines'] = {
+            'guidelines_content_correspond_goals': request.POST.get('guidelines-content-correspond-goals'),
+            'guidelines_content_correspond_tasks': request.POST.get('guidelines-content-correspond-tasks'),
+            'guidelines_content_correspond_competencies': request.POST.get('guidelines-content-correspond-competencies'),
+            'guidelines_content_correspond_knowledge': request.POST.get('guidelines-content-correspond-knowledge'),
+            'guidelines_task_correspond_hours': request.POST.get('guidelines-task-correspond-hours'),
+            'guidelines_in_references': request.POST.get('guidelines-in-references'),
+            'guidelines_topics_correspond_rpd': request.POST.get('guidelines-topics-correspond-rpd'),
+            'guidelines_po_correspond_mto': request.POST.get('guidelines-po-correspond-mto'),
+        }
+        context['test_bank'] = {
+            'test_bank_checked_competencies_formulate': request.POST.get('test-bank-checked-competencies-formulate'),
+            'test_bank_correspond_rpd': request.POST.get('test-bank-correspond-rpd'),
+            'test_bank_correspond_sections': request.POST.get('test-bank-correspond-sections'),
+        }
         """
         results = models.Results.objects.filter(
             uid=request.session.session_key,

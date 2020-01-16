@@ -88,12 +88,25 @@
                                 <div class="dropdown-divider"></div>
                                 {% for name, content, section, videos, pictures, audios, presentations, documents, tables, pdfs, others in webinar_modules %}
                                     <!--<li class="nav-item">
-                                        <a class="nav-link {% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and audio_file_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and audio_file_modules|length == 0 and audio_lecture_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and audio_file_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and audio_file_modules|length == 0 and audio_lecture_modules|length == 0 and forloop.counter == 1 %} true {% else %} false {% endif %}">Анализ вебинара {{ name }}</a>
+                                        <a class="nav-link {% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and audio_file_modules|length == 0 and audio_lecture_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and audio_file_modules|length == 0 and audio_lecture_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and audio_file_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and audio_file_modules|length == 0 and audio_lecture_modules|length == 0 and forloop.counter == 1 %} true {% else %} false {% endif %}">Анализ вебинара {{ name }}</a>
                                     </li>-->
-                                    <a class="dropdown-item {% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and audio_file_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and audio_file_modules|length == 0 and audio_lecture_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and audio_file_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and audio_file_modules|length == 0 and audio_lecture_modules|length == 0 and forloop.counter == 1 %} true {% else %} false {% endif %}">
+                                    <a class="dropdown-item {% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and audio_file_modules|length == 0 and audio_lecture_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="{{ name }}-tab" data-toggle="tab" href="#tab-{{ name }}" role="tab" aria-controls="tab-{{ name }}" aria-selected="{% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and audio_file_modules|length == 0 and audio_lecture_modules|length == 0 and forloop.counter == 1 %} true {% else %} false {% endif %}">
                                         <span data-toggle="tooltip" data-placement="top" title="{% if section != '' %}{{ section }}{% else %}{{ content }}{% endif %}">{{ content }}</span>
                                     </a>
                                 {% endfor %}
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item {% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and audio_file_modules|length == 0 and audio_lecture_modules|length == 0 and webinar_modules|length == 0 and forloop.counter == 1 %} active {% endif %}" id="tutorial-tab" data-toggle="tab" href="#tab-tutorial" role="tab" aria-controls="tab-tutorial" aria-selected="{% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and  video_lecture_modules|length == 0 and audio_file_modules|length == 0 and audio_lecture_modules|length == 0 and webinar_modules|length == 0 and forloop.counter == 1 %} true {% else %} false {% endif %}">
+                                    <span data-toggle="tooltip" data-placement="top" title="Оценка соответствия УМКД РПД">Учебное пособие / Курс лекций</span>
+                                </a>
+                                <a class="dropdown-item" id="educational-methodical-manual-tab" data-toggle="tab" href="#tab-educational-methodical-manual" role="tab" aria-controls="tab-educational-methodical-manual" aria-selected="false">
+                                    <span data-toggle="tooltip" data-placement="top" title="Оценка соответствия УМКД РПД">Учебно-методическое пособие</span>
+                                </a>
+                                <a class="dropdown-item" id="guidelines-tab" data-toggle="tab" href="#tab-guidelines" role="tab" aria-controls="tab-guidelines" aria-selected="false">
+                                    <span data-toggle="tooltip" data-placement="top" title="Оценка соответствия УМКД РПД">Методические указания</span>
+                                </a>
+                                <a class="dropdown-item" id="test-bank-tab" data-toggle="tab" href="#tab-test-bank" role="tab" aria-controls="tab-test-bank" aria-selected="false">
+                                    <span data-toggle="tooltip" data-placement="top" title="Оценка соответствия УМКД РПД">Банк тестовых заданий</span>
+                                </a>
                             </div>
                         </li>
                     </ul>
@@ -1761,6 +1774,535 @@
                                 </div>
                             </div>
                         {% endfor %}
+                        <div class="tab-pane fade {% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and video_lecture_modules|length == 0 and audio_file_modules|length == 0 and audio_lecture_modules|length == 0 and webinar_modules|length == 0 and forloop.counter == 1 %} show active {% endif %}" id="tab-tutorial" role="tabpanel" aria-labelledby="tutorial-tab">
+                            <div class="container-fluid">
+                                <div class="row mb-3 mt-3">
+                                    <div class="col">
+                                        <a data-toggle="collapse" href="#collapse-tutorial-amount-correspond-intensity" aria-expanded="false" aria-controls="collapseExample">
+                                            <h3>
+                                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                <span>Соответствует ли объем пособия общей трудоемкости дисциплины?</span>
+                                            </h3>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 collapse show ml-5" id="collapse-tutorial-amount-correspond-intensity">
+                                    <div class="col">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="tutorial-amount-correspond-intensity" name="tutorial-amount-correspond-intensity">
+                                            <label class="custom-control-label" for="tutorial-amount-correspond-intensity">Нет / Да</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 mt-3">
+                                    <div class="col">
+                                        <a data-toggle="collapse" href="#collapse-tutorial-content-correspond-goals" aria-expanded="false" aria-controls="collapseExample">
+                                            <h3>
+                                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                <span>Соответствует ли содержание пособия целям дисциплины?</span>
+                                            </h3>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 collapse show ml-5" id="collapse-tutorial-content-correspond-goals">
+                                    <div class="col">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="tutorial-content-correspond-goals" name="tutorial-content-correspond-goals">
+                                            <label class="custom-control-label" for="tutorial-content-correspond-goals">Нет / Да</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 mt-3">
+                                    <div class="col">
+                                        <a data-toggle="collapse" href="#collapse-tutorial-content-correspond-tasks" aria-expanded="false" aria-controls="collapseExample">
+                                            <h3>
+                                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                <span>Соответствует ли содержание пособия задачам дисциплины?</span>
+                                            </h3>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 collapse show ml-5" id="collapse-tutorial-content-correspond-tasks">
+                                    <div class="col">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="tutorial-content-correspond-tasks" name="tutorial-content-correspond-tasks">
+                                            <label class="custom-control-label" for="tutorial-content-correspond-tasks">Нет / Да</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 mt-3">
+                                    <div class="col">
+                                        <a data-toggle="collapse" href="#collapse-tutorial-ensures-continuity-knowledge" aria-expanded="false" aria-controls="collapseExample">
+                                            <h3>
+                                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                <span>Обеспечивает преемственность знаний, умений и навыков, полученных при изучении предшествующих и последующих дисциплин?</span>
+                                            </h3>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 collapse show ml-5" id="collapse-tutorial-ensures-continuity-knowledge">
+                                    <div class="col">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="tutorial-ensures-continuity-knowledge" name="tutorial-ensures-continuity-knowledge">
+                                            <label class="custom-control-label" for="tutorial-ensures-continuity-knowledge">Нет / Да</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 mt-3">
+                                    <div class="col">
+                                        <a data-toggle="collapse" href="#collapse-tutorial-content-correspond-competencies" aria-expanded="false" aria-controls="collapseExample">
+                                            <h3>
+                                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                <span>Соответствует ли содержание пособия указанным компетенциям?</span>
+                                            </h3>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 collapse show ml-5" id="collapse-tutorial-content-correspond-competencies">
+                                    <div class="col">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="tutorial-content-correspond-competencies" name="tutorial-content-correspond-competencies">
+                                            <label class="custom-control-label" for="tutorial-content-correspond-competencies">Нет / Да</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 mt-3">
+                                    <div class="col">
+                                        <a data-toggle="collapse" href="#collapse-tutorial-content-correspond-knowledge" aria-expanded="false" aria-controls="collapseExample">
+                                            <h3>
+                                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                <span>Соответствует ли содержание пособия знаниям, умениям и навыкам (индикаторам достижения компетенций)?</span>
+                                            </h3>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 collapse show ml-5" id="collapse-tutorial-content-correspond-knowledge">
+                                    <div class="col">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="tutorial-content-correspond-knowledge" name="tutorial-content-correspond-knowledge">
+                                            <label class="custom-control-label" for="tutorial-content-correspond-knowledge">Нет / Да</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 mt-3">
+                                    <div class="col">
+                                        <a data-toggle="collapse" href="#collapse-tutorial-chapter-titles-correspond-section-names" aria-expanded="false" aria-controls="collapseExample">
+                                            <h3>
+                                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                <span>Соответствуют ли названия глав пособия названиям разделов дисциплины?</span>
+                                            </h3>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 collapse show ml-5" id="collapse-tutorial-chapter-titles-correspond-section-names">
+                                    <div class="col">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="tutorial-chapter-titles-correspond-section-names" name="tutorial-chapter-titles-correspond-section-names">
+                                            <label class="custom-control-label" for="tutorial-chapter-titles-correspond-section-names">Нет / Да</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 mt-3">
+                                    <div class="col">
+                                        <a data-toggle="collapse" href="#collapse-tutorial-volume-correspond-hours" aria-expanded="false" aria-controls="collapseExample">
+                                            <h3>
+                                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                <span>Соответствует ли объем глав пособия часам, отведенным на их изучение?</span>
+                                            </h3>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 collapse show ml-5" id="collapse-tutorial-volume-correspond-hours">
+                                    <div class="col">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="tutorial-volume-correspond-hours" name="tutorial-volume-correspond-hours">
+                                            <label class="custom-control-label" for="tutorial-volume-correspond-hours">Нет / Да</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 mt-3">
+                                    <div class="col">
+                                        <a data-toggle="collapse" href="#collapse-tutorial-in-references" aria-expanded="false" aria-controls="collapseExample">
+                                            <h3>
+                                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                <span>Есть ли пособие в списке литературы?</span>
+                                            </h3>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 collapse show ml-5" id="collapse-tutorial-in-references">
+                                    <div class="col">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="tutorial-in-references" name="tutorial-in-references">
+                                            <label class="custom-control-label" for="tutorial-in-references">Нет / Да</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tab-educational-methodical-manual" role="tabpanel" aria-labelledby="educational-methodical-manual-tab">
+                            <div class="container-fluid">
+                                <div class="row mb-3 mt-3">
+                                    <div class="col">
+                                        <a data-toggle="collapse" href="#collapse-educational-methodical-manual-content-correspond-goals" aria-expanded="false" aria-controls="collapseExample">
+                                            <h3>
+                                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                <span>Соответствует ли содержание пособия целям дисциплины?</span>
+                                            </h3>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 collapse show ml-5" id="collapse-educational-methodical-manual-content-correspond-goals">
+                                    <div class="col">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="educational-methodical-manual-content-correspond-goals" name="educational-methodical-manual-content-correspond-goals">
+                                            <label class="custom-control-label" for="educational-methodical-manual-content-correspond-goals">Нет / Да</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 mt-3">
+                                    <div class="col">
+                                        <a data-toggle="collapse" href="#collapse-educational-methodical-manual-content-correspond-tasks" aria-expanded="false" aria-controls="collapseExample">
+                                            <h3>
+                                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                <span>Соответствует ли содержание пособия задачам дисциплины?</span>
+                                            </h3>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 collapse show ml-5" id="collapse-educational-methodical-manual-content-correspond-tasks">
+                                    <div class="col">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="educational-methodical-manual-content-correspond-tasks" name="educational-methodical-manual-content-correspond-tasks">
+                                            <label class="custom-control-label" for="educational-methodical-manual-content-correspond-tasks">Нет / Да</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 mt-3">
+                                    <div class="col">
+                                        <a data-toggle="collapse" href="#collapse-educational-methodical-manual-content-correspond-competencies" aria-expanded="false" aria-controls="collapseExample">
+                                            <h3>
+                                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                <span>Соответствует ли содержание указаний указанным компетенциям?</span>
+                                            </h3>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 collapse show ml-5" id="collapse-educational-methodical-manual-content-correspond-competencies">
+                                    <div class="col">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="educational-methodical-manual-content-correspond-competencies" name="educational-methodical-manual-content-correspond-competencies">
+                                            <label class="custom-control-label" for="educational-methodical-manual-content-correspond-competencies">Нет / Да</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 mt-3">
+                                    <div class="col">
+                                        <a data-toggle="collapse" href="#collapse-educational-methodical-manual-content-correspond-knowledge" aria-expanded="false" aria-controls="collapseExample">
+                                            <h3>
+                                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                <span>Соответствует ли содержание указаний знаниям, умениям и навыкам (индикаторам достижения компетенций)?</span>
+                                            </h3>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 collapse show ml-5" id="collapse-educational-methodical-manual-content-correspond-knowledge">
+                                    <div class="col">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="educational-methodical-manual-content-correspond-knowledge" name="educational-methodical-manual-content-correspond-knowledge">
+                                            <label class="custom-control-label" for="educational-methodical-manual-content-correspond-knowledge">Нет / Да</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 mt-3">
+                                    <div class="col">
+                                        <a data-toggle="collapse" href="#collapse-educational-methodical-manual-in-references" aria-expanded="false" aria-controls="collapseExample">
+                                            <h3>
+                                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                <span>Есть ли пособие в списке литературы?</span>
+                                            </h3>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 collapse show ml-5" id="collapse-educational-methodical-manual-in-references">
+                                    <div class="col">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="educational-methodical-manual-in-references" name="educational-methodical-manual-in-references">
+                                            <label class="custom-control-label" for="educational-methodical-manual-in-references">Нет / Да</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 mt-3">
+                                    <div class="col">
+                                        <a data-toggle="collapse" href="#collapse-educational-methodical-manual-task-correspond-hours" aria-expanded="false" aria-controls="collapseExample">
+                                            <h3>
+                                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                <span>Соответствует ли задание на текстовую работу часам, отведенным на выполнение этой работы?</span>
+                                            </h3>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 collapse show ml-5" id="collapse-educational-methodical-manual-task-correspond-hours">
+                                    <div class="col">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="educational-methodical-manual-task-correspond-hours" name="educational-methodical-manual-task-correspond-hours">
+                                            <label class="custom-control-label" for="educational-methodical-manual-task-correspond-hours">Нет / Да</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 mt-3">
+                                    <div class="col">
+                                        <a data-toggle="collapse" href="#collapse-educational-methodical-manual-topics-correspond-rpd" aria-expanded="false" aria-controls="collapseExample">
+                                            <h3>
+                                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                <span>Соответствуют ли темы текстовых работ темам, указанным в аналогичных пунктах РПД?</span>
+                                            </h3>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 collapse show ml-5" id="collapse-educational-methodical-manual-topics-correspond-rpd">
+                                    <div class="col">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="educational-methodical-manual-topics-correspond-rpd" name="educational-methodical-manual-topics-correspond-rpd">
+                                            <label class="custom-control-label" for="educational-methodical-manual-topics-correspond-rpd">Нет / Да</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tab-guidelines" role="tabpanel" aria-labelledby="guidelines-tab">
+                            <div class="container-fluid">
+                                <div class="row mb-3 mt-3">
+                                    <div class="col">
+                                        <a data-toggle="collapse" href="#collapse-guidelines-content-correspond-goals" aria-expanded="false" aria-controls="collapseExample">
+                                            <h3>
+                                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                <span>Соответствует ли содержание пособия целям дисциплины?</span>
+                                            </h3>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 collapse show ml-5" id="collapse-guidelines-content-correspond-goals">
+                                    <div class="col">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="guidelines-content-correspond-goals" name="guidelines-content-correspond-goals">
+                                            <label class="custom-control-label" for="guidelines-content-correspond-goals">Нет / Да</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 mt-3">
+                                    <div class="col">
+                                        <a data-toggle="collapse" href="#collapse-guidelines-content-correspond-tasks" aria-expanded="false" aria-controls="collapseExample">
+                                            <h3>
+                                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                <span>Соответствует ли содержание пособия задачам дисциплины?</span>
+                                            </h3>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 collapse show ml-5" id="collapse-guidelines-content-correspond-tasks">
+                                    <div class="col">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="guidelines-content-correspond-tasks" name="guidelines-content-correspond-tasks">
+                                            <label class="custom-control-label" for="guidelines-content-correspond-tasks">Нет / Да</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 mt-3">
+                                    <div class="col">
+                                        <a data-toggle="collapse" href="#collapse-guidelines-content-correspond-competencies" aria-expanded="false" aria-controls="collapseExample">
+                                            <h3>
+                                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                <span>Соответствует ли содержание указаний указанным компетенциям?</span>
+                                            </h3>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 collapse show ml-5" id="collapse-guidelines-content-correspond-competencies">
+                                    <div class="col">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="guidelines-content-correspond-competencies" name="guidelines-content-correspond-competencies">
+                                            <label class="custom-control-label" for="guidelines-content-correspond-competencies">Нет / Да</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 mt-3">
+                                    <div class="col">
+                                        <a data-toggle="collapse" href="#collapse-guidelines-content-correspond-knowledge" aria-expanded="false" aria-controls="collapseExample">
+                                            <h3>
+                                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                <span>Соответствует ли содержание указаний знаниям, умениям и навыкам (индикаторам достижения компетенций)?</span>
+                                            </h3>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 collapse show ml-5" id="collapse-guidelines-content-correspond-knowledge">
+                                    <div class="col">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="guidelines-content-correspond-knowledge" name="guidelines-content-correspond-knowledge">
+                                            <label class="custom-control-label" for="guidelines-content-correspond-knowledge">Нет / Да</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 mt-3">
+                                    <div class="col">
+                                        <a data-toggle="collapse" href="#collapse-guidelines-task-correspond-hours" aria-expanded="false" aria-controls="collapseExample">
+                                            <h3>
+                                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                <span>Соответствует ли задание на текстовую работу часам, отведенным на выполнение этой работы?</span>
+                                            </h3>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 collapse show ml-5" id="collapse-guidelines-task-correspond-hours">
+                                    <div class="col">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="guidelines-task-correspond-hours" name="guidelines-task-correspond-hours">
+                                            <label class="custom-control-label" for="guidelines-task-correspond-hours">Нет / Да</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 mt-3">
+                                    <div class="col">
+                                        <a data-toggle="collapse" href="#collapse-guidelines-in-references" aria-expanded="false" aria-controls="collapseExample">
+                                            <h3>
+                                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                <span>Есть ли указания в списке литературы?</span>
+                                            </h3>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 collapse show ml-5" id="collapse-guidelines-in-references">
+                                    <div class="col">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="guidelines-in-references" name="guidelines-in-references">
+                                            <label class="custom-control-label" for="guidelines-in-references">Нет / Да</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 mt-3">
+                                    <div class="col">
+                                        <a data-toggle="collapse" href="#collapse-guidelines-topics-correspond-rpd" aria-expanded="false" aria-controls="collapseExample">
+                                            <h3>
+                                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                <span>Соответствуют ли темы текстовых работ темам, указанным в аналогичных пунктах РПД?</span>
+                                            </h3>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 collapse show ml-5" id="collapse-guidelines-topics-correspond-rpd">
+                                    <div class="col">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="guidelines-topics-correspond-rpd" name="guidelines-topics-correspond-rpd">
+                                            <label class="custom-control-label" for="guidelines-topics-correspond-rpd">Нет / Да</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 mt-3">
+                                    <div class="col">
+                                        <a data-toggle="collapse" href="#collapse-guidelines-po-correspond-mto" aria-expanded="false" aria-controls="collapseExample">
+                                            <h3>
+                                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                <span>Соответствует ли ПО из указаний МТО из РПД?</span>
+                                            </h3>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 collapse show ml-5" id="collapse-guidelines-po-correspond-mto">
+                                    <div class="col">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="guidelines-po-correspond-mto" name="guidelines-po-correspond-mto">
+                                            <label class="custom-control-label" for="guidelines-po-correspond-mto">Нет / Да</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="tab-test-bank" role="tabpanel" aria-labelledby="test-bank-tab">
+                            <div class="container-fluid">
+                                <div class="row mb-3 mt-3">
+                                    <div class="col">
+                                        <a data-toggle="collapse" href="#collapse-test-bank-checked-competencies-formulate" aria-expanded="false" aria-controls="collapseExample">
+                                            <h3>
+                                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                <span>Проверяют ли сформированность указанных компетенций?</span>
+                                            </h3>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 collapse show ml-5" id="collapse-test-bank-checked-competencies-formulate">
+                                    <div class="col">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="test-bank-checked-competencies-formulate" name="test-bank-checked-competencies-formulate">
+                                            <label class="custom-control-label" for="test-bank-checked-competencies-formulate">Нет / Да</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 mt-3">
+                                    <div class="col">
+                                        <a data-toggle="collapse" href="#collapse-test-bank-correspond-rpd" aria-expanded="false" aria-controls="collapseExample">
+                                            <h3>
+                                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                <span>Соответствуют ли тест.задания из банка тест.заданиям, указанным в аналогичных пунктах РПД?</span>
+                                            </h3>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 collapse show ml-5" id="collapse-test-bank-correspond-rpd">
+                                    <div class="col">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="test-bank-correspond-rpd" name="test-bank-correspond-rpd">
+                                            <label class="custom-control-label" for="test-bank-correspond-rpd">Нет / Да</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 mt-3">
+                                    <div class="col">
+                                        <a data-toggle="collapse" href="#collapse-test-bank-correspond-sections" aria-expanded="false" aria-controls="collapseExample">
+                                            <h3>
+                                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                                <span>Соответствуют ли тесты разделам дисциплины?</span>
+                                            </h3>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 collapse show ml-5" id="collapse-test-bank-correspond-sections">
+                                    <div class="col">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="test-bank-correspond-sections" name="test-bank-correspond-sections">
+                                            <label class="custom-control-label" for="test-bank-correspond-sections">Нет / Да</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
     	    	</div>
     	    </div>
