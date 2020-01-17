@@ -53,7 +53,7 @@
                                     <th scope="col">
                                         <!--<button type="button" class="btn btn-link" onclick="select()">Выбрать \ Снять выбор</button>-->
                                         <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="check-all">
+                                            <input type="checkbox" class="custom-control-input" id="check-all" checked>
                                             <label class="custom-control-label" for="check-all"></label>
                                         </div>
                                     </th>
@@ -74,8 +74,8 @@
                                         </th>-->
                                         <td class="align-middle">
                                             <div class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" name="modules" value="{{ module.id }}" id="module-{{ module.name }}" {% if not module.allowed_for_analysis %}disabled{% else %}checked{% endif %}>
-                                                <label class="custom-control-label" for="module-{{ module.name }}"></label>
+                                                <input type="checkbox" class="custom-control-input" name="modules" value="{{ module.id }}" id="module-{{ module.id }}" {% if not module.allowed_for_analysis %}disabled{% else %}checked{% endif %}>
+                                                <label class="custom-control-label" for="module-{{ module.id }}"></label>
                                             </div>
                                         </td>
                                         <td class="align-middle {% if not module.allowed_for_analysis %}disabled{% endif %}">

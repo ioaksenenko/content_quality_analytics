@@ -186,7 +186,7 @@ function select() {
             //}
         });
         check_all.prop('checked', true);
-        check_all.prop('indeterminate', checked.length !== checkboxes.length);
+        check_all.prop('indeterminate', false);
     } else {
         enabled.each(function (i, e) {
             $(e).prop('checked', false);
