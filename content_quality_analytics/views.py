@@ -25,12 +25,6 @@ class Analytics:
 
     @staticmethod
     def index(request):
-        models.Module.objects.all().delete()
-        models.File.objects.all().delete()
-        models.Scale.objects.all().delete()
-        models.Indicator.objects.all().delete()
-        models.Results.objects.all().delete()
-        models.Course.objects.all().delete()
         user = auth.get_user(request)
         request.session.create()
         if not os.path.exists(settings.MEDIA_ROOT):
