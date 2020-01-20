@@ -34,23 +34,31 @@ class File(models.Model):
 
 
 class Scale(models.Model):
-    name = models.CharField(max_length=255, primary_key=True)
-    type = models.CharField(max_length=255)
-    attr = models.CharField(max_length=255)
+    #identifier = models.CharField(max_length=255, primary_key=True)
+    name = models.CharField(max_length=255, default='')
+    type = models.CharField(max_length=255, default='')
+    attr = models.CharField(max_length=255, default='')
 
     def __str__(self):
-        return json.dumps({'name': self.name, 'type': self.type, 'attr': self.attr})
+        return json.dumps({
+            #'identifier': self.identifier,
+            'name': self.name,
+            'type': self.type,
+            'attr': self.attr
+        })
 
 
 class Indicator(models.Model):
-    name = models.CharField(max_length=255, primary_key=True)
-    type = models.CharField(max_length=255)
-    questions = models.CharField(max_length=255)
-    show = models.BooleanField()
+    #identifier = models.CharField(max_length=255, primary_key=True)
+    name = models.CharField(max_length=255, default='')
+    type = models.CharField(max_length=255, default='')
+    questions = models.CharField(max_length=255, default='')
+    show = models.BooleanField(default=True)
     description = models.CharField(max_length=255, default='')
 
     def __str__(self):
         return json.dumps({
+            #'identifier': self.identifier,
             'name': self.name,
             'type': self.type,
             'questions': self.questions,

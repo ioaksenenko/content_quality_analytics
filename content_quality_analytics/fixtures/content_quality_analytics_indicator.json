@@ -4,6 +4,7 @@
     "pk": "abstractness",
     "fields":
     {
+    	"name": "Абстрактность",
         "type": "auto-indicator",
         "questions": "",
         "show": true,
@@ -15,6 +16,7 @@
     "pk": "audio_file",
     "fields":
     {
+    	"name": "Аудио файлы",
         "type": "expert-indicator",
         "questions": "",
         "show": true,
@@ -26,6 +28,7 @@
     "pk": "audio_lecture",
     "fields":
     {
+    	"name": "Аудио лекции",
         "type": "expert-indicator",
         "questions": "",
         "show": true,
@@ -37,6 +40,7 @@
     "pk": "average_illustrations_number_per_page",
     "fields":
     {
+    	"name": "Среднее число иллюстраций на странице",
         "type": "auto-indicator",
         "questions": "",
         "show": true,
@@ -48,6 +52,7 @@
     "pk": "control_and_exam_tests",
     "fields":
     {
+    	"name": "Контрольные и экзаминационные работы",
         "type": "expert-indicator",
         "questions": "",
         "show": true,
@@ -59,6 +64,7 @@
     "pk": "creolization_background_color",
     "fields":
     {
+    	"name": "Выделение фоновым цветом",
         "type": "auto-indicator",
         "questions": "",
         "show": true,
@@ -70,6 +76,7 @@
     "pk": "creolization_bold",
     "fields":
     {
+    	"name": "Выделение жирным шрифтом",
         "type": "auto-indicator",
         "questions": "",
         "show": true,
@@ -81,6 +88,7 @@
     "pk": "creolization_border",
     "fields":
     {
+    	"name": "Выделение рамкой",
         "type": "auto-indicator",
         "questions": "",
         "show": true,
@@ -92,6 +100,7 @@
     "pk": "creolization_italics",
     "fields":
     {
+    	"name": "Выделение курсивом",
         "type": "auto-indicator",
         "questions": "",
         "show": true,
@@ -103,6 +112,7 @@
     "pk": "creolization_link",
     "fields":
     {
+    	"name": "Выделение ссылкой",
         "type": "auto-indicator",
         "questions": "",
         "show": true,
@@ -114,6 +124,7 @@
     "pk": "creolization_pictogram",
     "fields":
     {
+    	"name": "Выделение пиктограммой",
         "type": "auto-indicator",
         "questions": "",
         "show": true,
@@ -125,6 +136,7 @@
     "pk": "creolization_underline",
     "fields":
     {
+    	"name": "Выделение подчёркиванием",
         "type": "auto-indicator",
         "questions": "",
         "show": true,
@@ -136,6 +148,7 @@
     "pk": "has_abbreviations_list",
     "fields":
     {
+    	"name": "Имеется список сокращений",
         "type": "auto-indicator",
         "questions": "",
         "show": true,
@@ -147,6 +160,7 @@
     "pk": "has_bibliography",
     "fields":
     {
+    	"name": "Имеется список литературы",
         "type": "auto-indicator",
         "questions": "",
         "show": true,
@@ -158,6 +172,7 @@
     "pk": "has_chronological_index",
     "fields":
     {
+    	"name": "Имеется xронологический указатель",
         "type": "auto-indicator",
         "questions": "",
         "show": true,
@@ -169,6 +184,7 @@
     "pk": "has_conventions_list",
     "fields":
     {
+    	"name": "Имеются списки сокращений и условных обозначений",
         "type": "auto-indicator",
         "questions": "",
         "show": true,
@@ -180,6 +196,7 @@
     "pk": "has_formula",
     "fields":
     {
+    	"name": "Имеются формулы",
         "type": "auto-indicator",
         "questions": "",
         "show": true,
@@ -191,6 +208,7 @@
     "pk": "has_geographical_index",
     "fields":
     {
+    	"name": "Имеется географический указатель",
         "type": "auto-indicator",
         "questions": "",
         "show": true,
@@ -202,6 +220,7 @@
     "pk": "has_glossary",
     "fields":
     {
+    	"name": "Имеется глоссарий",
         "type": "auto-indicator",
         "questions": "",
         "show": true,
@@ -213,6 +232,7 @@
     "pk": "has_illustrations_list",
     "fields":
     {
+    	"name": "Имеется список иллюстраций",
         "type": "auto-indicator",
         "questions": "",
         "show": true,
@@ -224,6 +244,7 @@
     "pk": "has_links",
     "fields":
     {
+    	"name": "Имеется среда ссылок на разделы, (страницы, таблицы, рисунки (иллюстрации), формулы, литературу)",
         "type": "auto-indicator",
         "questions": "",
         "show": true,
@@ -235,6 +256,7 @@
     "pk": "has_name_index",
     "fields":
     {
+    	"name": "Имеется именной указатель",
         "type": "auto-indicator",
         "questions": "",
         "show": true,
@@ -246,6 +268,7 @@
     "pk": "has_subject_index",
     "fields":
     {
+    	"name": "Имеется предметный указатель",
         "type": "auto-indicator",
         "questions": "",
         "show": true,
@@ -257,6 +280,7 @@
     "pk": "has_tables_list",
     "fields":
     {
+    	"name": "Имеется список таблиц",
         "type": "auto-indicator",
         "questions": "",
         "show": true,
@@ -268,6 +292,7 @@
     "pk": "illustrations_area_percentage",
     "fields":
     {
+    	"name": "Процент иллюстраций занимаемой площади",
         "type": "auto-indicator",
         "questions": "",
         "show": false,
@@ -279,6 +304,7 @@
     "pk": "illustrations_number",
     "fields":
     {
+    	"name": "Число иллюстраций",
         "type": "auto-indicator",
         "questions": "",
         "show": true,
@@ -290,6 +316,7 @@
     "pk": "image_brightness",
     "fields":
     {
+    	"name": "Яркость изображения",
         "type": "auto-indicator",
         "questions": "",
         "show": true,
@@ -301,6 +328,7 @@
     "pk": "image_contrast",
     "fields":
     {
+    	"name": "Контраст изображения",
         "type": "auto-indicator",
         "questions": "",
         "show": true,
@@ -312,6 +340,7 @@
     "pk": "information_richness",
     "fields":
     {
+    	"name": "Информационная насыщенность",
         "type": "auto-indicator",
         "questions": "",
         "show": true,
@@ -323,6 +352,7 @@
     "pk": "keyword_density",
     "fields":
     {
+    	"name": "Плотность ключевых слов",
         "type": "auto-indicator",
         "questions": "",
         "show": true,
@@ -334,6 +364,7 @@
     "pk": "readability",
     "fields":
     {
+    	"name": "Удобочитаемость",
         "type": "auto-indicator",
         "questions": "",
         "show": true,
@@ -345,6 +376,7 @@
     "pk": "relative_image_brightness",
     "fields":
     {
+    	"name": "Относительная яркость изображения",
         "type": "auto-indicator",
         "questions": "",
         "show": true,
@@ -356,6 +388,7 @@
     "pk": "relative_image_contrast",
     "fields":
     {
+    	"name": "Относительный контраст изображения",
         "type": "auto-indicator",
         "questions": "",
         "show": true,
@@ -367,6 +400,7 @@
     "pk": "self_test",
     "fields":
     {
+    	"name": "Тесты для самопроверки",
         "type": "expert-indicator",
         "questions": "",
         "show": true,
@@ -378,6 +412,7 @@
     "pk": "video_file",
     "fields":
     {
+    	"name": "Видео файлы",
         "type": "expert-indicator",
         "questions": "",
         "show": true,
@@ -389,6 +424,7 @@
     "pk": "video_lecture",
     "fields":
     {
+    	"name": "Видео лекции",
         "type": "expert-indicator",
         "questions": "",
         "show": true,
@@ -400,6 +436,7 @@
     "pk": "water_content",
     "fields":
     {
+    	"name": "Водность",
         "type": "auto-indicator",
         "questions": "",
         "show": true,
@@ -411,6 +448,7 @@
     "pk": "webinar",
     "fields":
     {
+    	"name": "Вебинары",
         "type": "expert-indicator",
         "questions": "",
         "show": true,
