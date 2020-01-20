@@ -34,14 +34,14 @@ class File(models.Model):
 
 
 class Scale(models.Model):
-    #identifier = models.CharField(max_length=255, primary_key=True)
+    identifier = models.CharField(max_length=255, primary_key=True)
     name = models.CharField(max_length=255, default='')
     type = models.CharField(max_length=255, default='')
     attr = models.CharField(max_length=255, default='')
 
     def __str__(self):
         return json.dumps({
-            #'identifier': self.identifier,
+            'identifier': self.identifier,
             'name': self.name,
             'type': self.type,
             'attr': self.attr
@@ -49,7 +49,7 @@ class Scale(models.Model):
 
 
 class Indicator(models.Model):
-    #identifier = models.CharField(max_length=255, primary_key=True)
+    identifier = models.CharField(max_length=255, primary_key=True)
     name = models.CharField(max_length=255, default='')
     type = models.CharField(max_length=255, default='')
     questions = models.CharField(max_length=255, default='')
@@ -58,7 +58,7 @@ class Indicator(models.Model):
 
     def __str__(self):
         return json.dumps({
-            #'identifier': self.identifier,
+            'identifier': self.identifier,
             'name': self.name,
             'type': self.type,
             'questions': self.questions,
