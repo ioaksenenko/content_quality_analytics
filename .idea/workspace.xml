@@ -3,8 +3,43 @@
   <component name="ChangeListManager">
     <list default="true" id="cc8d65a7-0ad6-4cba-9c3a-e5bdd5e2cbc1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/modules.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/modules.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/modules.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/modules.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content_quality_analytics/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/content_quality_analytics/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content_quality_analytics/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/content_quality_analytics/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content_quality_analytics/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/content_quality_analytics/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/audio-file-analysis.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/audio-lecture-analysis.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/control-test-analysis.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/files.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/self-test-analysis.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/theory-analysis-results.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/uploaded-files.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/video-file-analysis.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/video-lecture-analysis.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/webinar-analysis.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/audio-file-analysis.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/audio-lecture-analysis.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/common.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/control-test-analysis.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/expert-analysis.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/expert-analysis.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/files.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/self-test-analysis.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/theory-analysis-results.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/uploaded-files.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/video-file-analysis.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/video-lecture-analysis.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/webinar-analysis.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin-settings.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin-settings.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/audio-file-analysis.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/audio-lecture-analysis.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/control-test-analysis.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/files.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/self-test-analysis.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/theory-analysis-results.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/uploaded-files.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/video-file-analysis.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/video-lecture-analysis.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/webinar-analysis.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +107,13 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="F:\py\dev\lismo\content_quality_analytics\.idea" />
+      </set>
+    </option>
+  </component>
   <component name="ProjectId" id="1W8qk35DjIqryHklEopMuq7QP4d" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -87,7 +129,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/content_quality_analytics/fixtures" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.stylelint" value="true" />
     <property name="node.js.path.for.package.stylelint" value="project" />
@@ -98,17 +140,17 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\py\dev\lismo\content_quality_analytics\content_quality_analytics" />
+      <recent name="F:\py\dev\lismo\content_quality_analytics" />
+      <recent name="F:\py\dev\lismo\content_quality_analytics\templates" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\py\dev\lismo\content_quality_analytics\content_quality_analytics\fixtures" />
       <recent name="F:\py\dev\lismo\content_quality_analytics\media\fglfvs4ge8k5rnujtgo4iio4uxegesoj" />
       <recent name="F:\py\dev\lismo\content_quality_analytics\media\o0vi823am48dyx5qj392x0c1ixhf8rsy" />
       <recent name="F:\py\dev\lismo\content_quality_analytics\media\wyay2ezk5whlifd8rirqt8aw4nvkq5is" />
       <recent name="F:\py\dev\lismo\content_quality_analytics\media\uqfszpfgbzxdqfvq99jtvmrogu67xkhj" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="F:\py\dev\lismo\content_quality_analytics\content_quality_analytics" />
-      <recent name="F:\py\dev\lismo\content_quality_analytics" />
-      <recent name="F:\py\dev\lismo\content_quality_analytics\templates" />
     </key>
   </component>
   <component name="RunManager">
@@ -230,7 +272,10 @@
       <workItem from="1578969241711" duration="15332000" />
       <workItem from="1579058502576" duration="17913000" />
       <workItem from="1579143127474" duration="15153000" />
-      <workItem from="1579237451204" duration="1517000" />
+      <workItem from="1579237451204" duration="2580000" />
+      <workItem from="1579245680190" duration="9979000" />
+      <workItem from="1579330651218" duration="5000" />
+      <workItem from="1579490955250" duration="7123000" />
     </task>
     <servers />
   </component>
@@ -246,22 +291,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="709" y="331" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1579073569361" />
-    <state width="1877" height="285" key="GridCell.Tab.0.bottom" timestamp="1579169538607">
+    <state x="690" y="271" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1579498553077">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1579169538607" />
-    <state width="1877" height="285" key="GridCell.Tab.0.center" timestamp="1579169538606">
+    <state x="690" y="271" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579498553077" />
+    <state width="1877" height="285" key="GridCell.Tab.0.bottom" timestamp="1579499451468">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1579169538606" />
-    <state width="1877" height="285" key="GridCell.Tab.0.left" timestamp="1579169538603">
+    <state width="1877" height="285" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1579499451468" />
+    <state width="1877" height="285" key="GridCell.Tab.0.center" timestamp="1579499451468">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1579169538603" />
-    <state width="1877" height="285" key="GridCell.Tab.0.right" timestamp="1579169538606">
+    <state width="1877" height="285" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1579499451468" />
+    <state width="1877" height="285" key="GridCell.Tab.0.left" timestamp="1579499451468">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1579169538606" />
+    <state width="1877" height="285" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1579499451468" />
+    <state width="1877" height="285" key="GridCell.Tab.0.right" timestamp="1579499451468">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="285" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1579499451468" />
     <state x="463" y="166" key="SettingsEditor" timestamp="1578541814795">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

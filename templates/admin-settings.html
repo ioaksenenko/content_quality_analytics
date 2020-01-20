@@ -47,7 +47,7 @@
                     <div class="container m-0 mt-3">
                         <div class="row">
                             <div class="col">
-                                {% if scales %}
+                                {% if scales and scales|length > 0 %}
                                     <table class="table">
                                         <thead>
                                             <tr>
@@ -210,7 +210,7 @@
                     <div class="container m-0 mt-3">
                         <div class="row">
                             <div class="col">
-                                {% if indicators %}
+                                {% if indicators and indicators|length > 0 %}
                                     <table class="table">
                                         <thead>
                                             <tr>

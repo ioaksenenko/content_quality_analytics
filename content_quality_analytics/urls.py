@@ -19,69 +19,38 @@ from . import views
 from . import settings
 from django.contrib.staticfiles.urls import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('', views.index, name='index'),
-    path('upload/', views.upload_file, name='upload'),
-    path('uploaded-files/', views.uploaded_files, name='uploaded-files'),
-    path('unpack-files/', views.unpack_files, name='unpack-files'),
-    path('delete-uploaded-file/', views.delete_uploaded_file, name='delete-uploaded-file'),
-    path('restore-deleted-uploaded-files/', views.restore_deleted_uploaded_files, name='restore-deleted-uploaded-files'),
-    path('indicators/', views.indicators, name='indicators'),
-    path('moodle/', views.moodle, name='moodle'),
-    path('move-files-to-tmp/', views.move_files_to_tmp, name='move-files-to-tmp'),
+    path('', views.Analytics.index, name='index'),
+    path('moodle/', views.Analytics.moodle, name='moodle'),
+    path('modules/', views.Analytics.modules, name='modules'),
+    path('indicators/', views.Analytics.indicators, name='indicators'),
+    path('theory-analysis-results/', views.Analytics.theory_analysis_results, name='theory-analysis-results'),
+    path('expert-analysis/', views.Analytics.expert_analysis, name='expert-analysis'),
+    path('results/', views.Analytics.results, name='results'),
+    path('course-rating/', views.Analytics.course_rating, name='course-rating'),
 
-    path('load/', views.load, name='load'),
-    path('unload/', views.unload, name='unload'),
-
-    path('files/', views.files, name='files'),
-    path('file-action/', views.file_action, name='file-action'),
-    path('join/', views.join, name='join'),
-    path('remove-selected-files/', views.remove_selected_files, name='remove-selected-files'),
-    path('del-last-module/', views.del_last_module, name='del-last-module'),
-    path('return-deleted-files/', views.return_deleted_files, name='return-deleted-files'),
-
-    path('modules/', views.modules, name='modules'),
-    path('theory-analysis-results/', views.theory_analysis_results, name='theory-analysis-results'),
-
-    path('self-test-analysis/', views.self_test_analysis, name='self-test-analysis'),
-    path('self-test-analysis-results/', views.self_test_analysis_results, name='self-test-analysis-results'),
-
-    path('control-test-analysis/', views.control_test_analysis, name='control-test-analysis'),
-    path('control-test-analysis-results/', views.control_test_analysis_results, name='control-test-analysis-results'),
-
-    path('video-file-analysis/', views.video_file_analysis, name='video-file-analysis'),
-    path('video-lecture-analysis/', views.video_lecture_analysis, name='video-lecture-analysis'),
-    path('audio-file-analysis/', views.audio_file_analysis, name='audio-file-analysis'),
-    path('audio-lecture-analysis/', views.audio_lecture_analysis, name='audio-lecture-analysis'),
-    path('webinar-analysis/', views.webinar_analysis, name='webinar-analysis'),
-    path('complete-analysis/', views.complete_analysis, name='complete-analysis'),
+    path('move-files-to-tmp/', views.Ajax.move_files_to_tmp, name='move-files-to-tmp'),
 
     path('auth/', include('userauth.urls')),
-    path('admin-settings/', views.admin_settings, name='admin-settings'),
-    path('add-scale/', views.add_scale, name='add-scale'),
-    path('check-scale-name/', views.check_scale_name, name='check-scale-name'),
-    path('get-scale/', views.get_scale, name='get-scale'),
-    path('delete-scale/', views.delete_scale, name='delete-scale'),
+    path('admin-settings/', views.Admin.admin_settings, name='admin-settings'),
+    path('add-scale/', views.Admin.add_scale, name='add-scale'),
+    path('check-scale-name/', views.Admin.check_scale_name, name='check-scale-name'),
+    path('get-scale/', views.Admin.get_scale, name='get-scale'),
+    path('delete-scale/', views.Admin.delete_scale, name='delete-scale'),
+    path('add-indicator/', views.Admin.add_indicator, name='add-indicator'),
+    path('delete-indicator/', views.Admin.delete_indicator, name='delete-indicator'),
+    path('hide-indicator/', views.Admin.hide_indicator, name='hide-indicator'),
+    path('show-indicator/', views.Admin.show_indicator, name='show-indicator'),
+    path('check-indicator-name/', views.Admin.check_indicator_name, name='check-indicator-name'),
 
-    path('add-indicator/', views.add_indicator, name='add-indicator'),
-    path('delete-indicator/', views.delete_indicator, name='delete-indicator'),
-    path('hide-indicator/', views.hide_indicator, name='hide-indicator'),
-    path('show-indicator/', views.show_indicator, name='show-indicator'),
-    path('check-indicator-name/', views.check_indicator_name, name='check-indicator-name'),
+    path('history/', views.History.history, name='history'),
+    path('show-course-result/', views.History.show_course_result, name='show-course-result'),
+    path('clear-history/', views.History.clear_history, name='clear-history'),
 
-    path('join-elements/', views.join_elements, name='join-elements'),
-    path('split-elements/', views.split_elements, name='split-elements'),
-    path('expert-analysis/', views.expert_analysis, name='expert-analysis'),
-    path('results/', views.results, name='results'),
-    path('course-rating/', views.course_rating, name='course-rating'),
-    path('history/', views.history, name='history'),
-    path('show-course-result/', views.show_course_result, name='show-course-result'),
-    path('clear-history/', views.clear_history, name='clear-history'),
-    path('log/', views.show_log, name='log'),
+    path('log/', views.Log.show_log, name='log'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

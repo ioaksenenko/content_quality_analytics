@@ -25,14 +25,6 @@ class Module(models.Model):
         })
 
 
-class Session(models.Model):
-    id = models.CharField(max_length=255, primary_key=True)
-    active = models.BooleanField()
-
-    def __str__(self):
-        return json.dumps({'id': self.id, 'active': self.active})
-
-
 class File(models.Model):
     uid = models.CharField(max_length=255)
     src = models.CharField(max_length=255)
@@ -64,19 +56,6 @@ class Indicator(models.Model):
             'questions': self.questions,
             'show': self.show,
             'description': self.description
-        })
-
-
-class Merged(models.Model):
-    uid = models.CharField(max_length=255)
-    name = models.CharField(max_length=255)
-    fragments = models.CharField(max_length=255)
-
-    def __str__(self):
-        return json.dumps({
-            'uid': self.uid,
-            'name': self.name,
-            'fragments': self.fragments,
         })
 
 

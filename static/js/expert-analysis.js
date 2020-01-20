@@ -88,7 +88,6 @@ $(document).ready(function () {
     });
 });
 
-
 function show_tooltip() {
     let element = $(this);
     element.tooltip('dispose');
