@@ -287,31 +287,31 @@ class Analytics:
                     mod['indicators'] = indicators.filter(type='auto-indicator')
                 elif file_type == 'self-test':
                     dst = os.path.join(self_test_path, module)
-                    mod['indicators'] = indicators.filter(name='self_test')
+                    mod['indicators'] = indicators.filter(identifier='self_test')
                 elif file_type == 'control-test':
                     dst = os.path.join(control_test_path, module)
-                    mod['indicators'] = indicators.filter(name='control_and_exam_tests')
+                    mod['indicators'] = indicators.filter(identifier='control_and_exam_tests')
                 elif file_type == 'exam-test':
                     dst = os.path.join(exam_test_path, module)
-                    mod['indicators'] = indicators.filter(name='control_and_exam_tests')
+                    mod['indicators'] = indicators.filter(identifier='control_and_exam_tests')
                 elif file_type == 'video-file':
                     dst = os.path.join(video_file_path, module)
-                    mod['indicators'] = indicators.filter(name='video_file')
+                    mod['indicators'] = indicators.filter(identifier='video_file')
                 elif file_type == 'video-lecture':
                     dst = os.path.join(video_lecture_path, module)
-                    mod['indicators'] = indicators.filter(name='video_lecture')
+                    mod['indicators'] = indicators.filter(identifier='video_lecture')
                 elif file_type == 'audio-file':
                     dst = os.path.join(audio_file_path, module)
-                    mod['indicators'] = indicators.filter(name='audio_file')
+                    mod['indicators'] = indicators.filter(identifier='audio_file')
                 elif file_type == 'audio-lecture':
                     dst = os.path.join(audio_lecture_path, module)
-                    mod['indicators'] = indicators.filter(name='audio_lecture')
+                    mod['indicators'] = indicators.filter(identifier='audio_lecture')
                 elif file_type == 'webinar':
                     dst = os.path.join(webinar_path, module)
-                    mod['indicators'] = indicators.filter(name='webinar')
+                    mod['indicators'] = indicators.filter(identifier='webinar')
                 elif file_type == 'presentation':
                     dst = os.path.join(presentation_path, module)
-                    mod['indicators'] = indicators.filter(name='presentation')
+                    mod['indicators'] = indicators.filter(identifier='presentation')
                 else:
                     dst = None
                     mod['indicators'] = []
@@ -1215,6 +1215,7 @@ class Admin:
         user = auth.get_user(request)
         context = {'username': user.username}
         if request.method == 'POST':
+            scale_id = request.POST.get('scale-id')
             scale_name = request.POST.get('scale-name')
             scale_type = request.POST.get('scale-type')
             if scale_type == 'ordinal-scale':
@@ -1232,6 +1233,7 @@ class Admin:
             else:
                 scale_attr = None
             scale = models.Scale(
+                identifier=scale_id,
                 name=scale_name,
                 type=scale_type,
                 attr=json.dumps(scale_attr)
@@ -1240,24 +1242,24 @@ class Admin:
         return render(request, 'add-scale.html', context)
 
     @staticmethod
-    def check_scale_name(request):
-        scale_name = request.POST.get('scale-name')
+    def check_scale_id(request):
+        scale_id = request.POST.get('scale-id')
         scales = models.Scale.objects.all()
         for scale in scales:
-            if scale.name == scale_name:
+            if scale.identifier == scale_id:
                 return JsonResponse({'res': True})
         return JsonResponse({'res': False})
 
     @staticmethod
     def get_scale(request):
-        scale_name = request.POST.get('scale-name')
-        scale = models.Scale.objects.get(name=scale_name)
+        scale_id = request.POST.get('scale-id')
+        scale = models.Scale.objects.get(identifier=scale_id)
         return JsonResponse(json.loads(str(scale)))
 
     @staticmethod
     def delete_scale(request):
-        scale_name = request.POST.get('scale-name')
-        scale = models.Scale.objects.get(name=scale_name)
+        scale_id = request.POST.get('scale-id')
+        scale = models.Scale.objects.get(identifier=scale_id)
         scale.delete()
         return JsonResponse({'res': True})
 
@@ -1266,11 +1268,13 @@ class Admin:
         user = auth.get_user(request)
         context = {'username': user.username}
         if request.method == 'POST':
+            indicator_id = request.POST.get('indicator-id')
             indicator_name = request.POST.get('indicator-name')
             indicator_type = request.POST.get('indicator-type')
             indicator_show = request.POST.get('indicator-show')
             indicator_description = request.POST.get('indicator-description')
             indicator = models.Indicator(
+                identifier=indicator_id,
                 name=indicator_name,
                 type=indicator_type,
                 show=True if indicator_show == 'on' else False,
@@ -1281,33 +1285,33 @@ class Admin:
 
     @staticmethod
     def delete_indicator(request):
-        indicator_name = request.POST.get('indicator-name')
-        indicator = models.Indicator.objects.get(name=indicator_name)
+        indicator_id = request.POST.get('indicator-id')
+        indicator = models.Indicator.objects.get(identifier=indicator_id)
         indicator.delete()
         return JsonResponse({'res': True})
 
     @staticmethod
     def hide_indicator(request):
-        indicator_name = request.POST.get('indicator-name')
-        indicator = models.Indicator.objects.get(name=indicator_name)
+        indicator_id = request.POST.get('indicator-id')
+        indicator = models.Indicator.objects.get(identifier=indicator_id)
         indicator.show = False
         indicator.save()
         return JsonResponse({'res': True})
 
     @staticmethod
     def show_indicator(request):
-        indicator_name = request.POST.get('indicator-name')
-        indicator = models.Indicator.objects.get(name=indicator_name)
+        indicator_id = request.POST.get('indicator-id')
+        indicator = models.Indicator.objects.get(identifier=indicator_id)
         indicator.show = True
         indicator.save()
         return JsonResponse({'res': True})
 
     @staticmethod
-    def check_indicator_name(request):
-        indicator_name = request.POST.get('indicator-name')
+    def check_indicator_id(request):
+        indicator_id = request.POST.get('indicator-id')
         indicators = models.Indicator.objects.all()
         for indicator in indicators:
-            if indicator.name == indicator_name:
+            if indicator.identifier == indicator_id:
                 return JsonResponse({'res': True})
         return JsonResponse({'res': False})
 

@@ -30,7 +30,7 @@ $(document).ready(function () {
             });
         }
     });
-    $('#scale-name').keyup(check_scale_name);
+    $('#scale-id').keyup(check_scale_id);
 });
 
 function add_field() {
@@ -60,7 +60,7 @@ function remove_field(id) {
     $('#' + id).parent().parent().parent().remove();
 }
 
-function check_scale_name() {
+function check_scale_id() {
     let csrftoken = Cookies.get('csrftoken');
     $.ajaxSetup({
         beforeSend: function (xhr, settings) {
@@ -69,29 +69,29 @@ function check_scale_name() {
             }
         }
     });
-    let scale_name = $('#scale-name');
-    let scale_name_val = scale_name.val();
+    let scale_id = $('#scale-id');
+    let scale_id_val = scale_id.val();
     $.ajax({
         dataType: "json",
         method: "POST",
-        url: "/check-scale-name/",
+        url: "/check-scale-id/",
         data: {
-            'scale-name': scale_name_val
+            'scale-id': scale_id_val
         }
     }).done(function (response) {
         if (!response['res']) {
-            scale_name.removeClass('is-invalid');
-            if (scale_name_val !== '') {
-                scale_name.addClass('is-valid');
+            scale_id.removeClass('is-invalid');
+            if (scale_id_val !== '') {
+                scale_id.addClass('is-valid');
             } else {
-                scale_name.removeClass('is-valid');
+                scale_id.removeClass('is-valid');
             }
         } else {
-            scale_name.removeClass('is-valid');
-            if (scale_name_val !== '') {
-                scale_name.addClass('is-invalid');
+            scale_id.removeClass('is-valid');
+            if (scale_id_val !== '') {
+                scale_id.addClass('is-invalid');
             } else {
-                scale_name.removeClass('is-invalid');
+                scale_id.removeClass('is-invalid');
             }
         }
     }).fail(function (response) {

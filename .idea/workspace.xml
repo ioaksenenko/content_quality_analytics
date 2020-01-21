@@ -2,10 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc8d65a7-0ad6-4cba-9c3a-e5bdd5e2cbc1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/expert-forms.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/c8c70341-53c1-4150-b972-076c787b74e1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/c8c70341-53c1-4150-b972-076c787b74e1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content_quality_analytics/fixtures/content_quality_analytics_indicator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/content_quality_analytics/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/content_quality_analytics/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content_quality_analytics/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/content_quality_analytics/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content_quality_analytics/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/content_quality_analytics/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/add-indicator.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/add-indicator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/add-scale.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/add-scale.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/admin-settings.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/admin-settings.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/add-indicator.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/add-indicator.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/add-scale.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/add-scale.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin-settings.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin-settings.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/indicators.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/indicators.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,17 +113,17 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="F:\py\dev\lismo\content_quality_analytics\content_quality_analytics" />
-      <recent name="F:\py\dev\lismo\content_quality_analytics" />
-      <recent name="F:\py\dev\lismo\content_quality_analytics\templates" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\py\dev\lismo\content_quality_analytics\content_quality_analytics\fixtures" />
       <recent name="F:\py\dev\lismo\content_quality_analytics\media\fglfvs4ge8k5rnujtgo4iio4uxegesoj" />
       <recent name="F:\py\dev\lismo\content_quality_analytics\media\o0vi823am48dyx5qj392x0c1ixhf8rsy" />
       <recent name="F:\py\dev\lismo\content_quality_analytics\media\wyay2ezk5whlifd8rirqt8aw4nvkq5is" />
       <recent name="F:\py\dev\lismo\content_quality_analytics\media\uqfszpfgbzxdqfvq99jtvmrogu67xkhj" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\py\dev\lismo\content_quality_analytics\content_quality_analytics" />
+      <recent name="F:\py\dev\lismo\content_quality_analytics" />
+      <recent name="F:\py\dev\lismo\content_quality_analytics\templates" />
     </key>
   </component>
   <component name="RunManager">
@@ -242,7 +249,8 @@
       <workItem from="1579245680190" duration="9979000" />
       <workItem from="1579330651218" duration="5000" />
       <workItem from="1579490955250" duration="8933000" />
-      <workItem from="1579513261680" duration="2530000" />
+      <workItem from="1579513261680" duration="7605000" />
+      <workItem from="1579574993957" duration="868000" />
     </task>
     <servers />
   </component>
@@ -258,26 +266,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="709" y="331" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1579073569361" />
-    <state x="690" y="271" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1579498553077">
+    <state x="690" y="271" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1579516959912">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="271" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579498553077" />
-    <state width="1877" height="285" key="GridCell.Tab.0.bottom" timestamp="1579516764770">
+    <state x="690" y="271" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579516959912" />
+    <state width="1877" height="285" key="GridCell.Tab.0.bottom" timestamp="1579523506625">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1579516764770" />
-    <state width="1877" height="285" key="GridCell.Tab.0.center" timestamp="1579516764770">
+    <state width="1877" height="285" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1579523506625" />
+    <state width="1877" height="285" key="GridCell.Tab.0.center" timestamp="1579523506625">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1579516764770" />
-    <state width="1877" height="285" key="GridCell.Tab.0.left" timestamp="1579516764770">
+    <state width="1877" height="285" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1579523506625" />
+    <state width="1877" height="285" key="GridCell.Tab.0.left" timestamp="1579523506625">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1579516764770" />
-    <state width="1877" height="285" key="GridCell.Tab.0.right" timestamp="1579516764770">
+    <state width="1877" height="285" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1579523506625" />
+    <state width="1877" height="285" key="GridCell.Tab.0.right" timestamp="1579523506625">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1579516764770" />
+    <state width="1877" height="285" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1579523506625" />
     <state x="463" y="166" key="SettingsEditor" timestamp="1578541814795">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

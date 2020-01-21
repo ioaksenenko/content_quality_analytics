@@ -1,13 +1,13 @@
 $(document).ready(function () {
-    $('[id^="scale-name-"]').each(function (i, e) {
-        let scale_name = $(e).val();
-        $('[type="radio"][name="scale-type-' + scale_name + '"]').change(function () {
-            let ordinal_scale_fields = $('#ordinal-scale-fields-' + scale_name);
-            let interval_scale_fields = $('#interval-scale-fields-' + scale_name);
-            let min_val = $('#min-val-' + scale_name);
-            let max_val = $('#max-val-' + scale_name);
-            let step = $('#step-' + scale_name);
-            let values = $('[name="values-' + scale_name + '"]');
+    $('[id^="scale-identifier-"]').each(function (i, e) {
+        let scale_identifier = $(e).val();
+        $('[type="radio"][name="scale-type-' + scale_identifier + '"]').change(function () {
+            let ordinal_scale_fields = $('#ordinal-scale-fields-' + scale_identifier);
+            let interval_scale_fields = $('#interval-scale-fields-' + scale_identifier);
+            let min_val = $('#min-val-' + scale_identifier);
+            let max_val = $('#max-val-' + scale_identifier);
+            let step = $('#step-' + scale_identifier);
+            let values = $('[name="values-' + scale_identifier + '"]');
             if (this.value === 'ordinal-scale') {
                 ordinal_scale_fields.removeClass('d-none');
                 if (!interval_scale_fields.hasClass('d-none')) {
@@ -32,11 +32,11 @@ $(document).ready(function () {
                 });
             }
         });
-        $('#scale-name-' + scale_name).keyup({scale_name: scale_name}, check_scale_name);
+        $('#scale-identifier-' + scale_identifier).keyup({scale_identifier: scale_identifier}, check_scale_identifier);
     });
-    $('[id^="indicator-name-"]').each(function (i, e) {
-        let indicator_name = $(e).val();
-        $('#indicator-name-' + indicator_name).keyup({indicator_name: indicator_name}, check_indicator_name);
+    $('[id^="indicator-identifier-"]').each(function (i, e) {
+        let indicator_identifier = $(e).val();
+        $('#indicator-identifier-' + indicator_identifier).keyup({indicator_identifier: indicator_identifier}, check_indicator_identifier);
     });
     $('[id^="indicator-show-"]').each(function (i, e) {
         $(e).click(function (e) {
@@ -46,35 +46,35 @@ $(document).ready(function () {
     });
 });
 
-function add_field(scale_name) {
-    let input = $('#interval-scale-fields-' + scale_name + '>.col>.row:last input');
+function add_field(scale_identifier) {
+    let input = $('#interval-scale-fields-' + scale_identifier + '>.col>.row:last input');
     let id = input.attr('id');
     let fragments = id.split('-');
     let n = parseInt(fragments[fragments.length - 1]) + 1;
 
-    $('#interval-scale-fields-' + scale_name + '>.col').append(
+    $('#interval-scale-fields-' + scale_identifier + '>.col').append(
         '<div class="row mt-3">' +
         '    <div class="col h-100">' +
         '        <div class="form-group h-100 w-100 p-0 m-0">' +
-        '            <label for="value-' + scale_name + '-' + n + '" class="d-none"></label>' +
-        '            <input type="text" class="form-control mt-auto mb-0" id="value-' + scale_name + '-' + n + '" name="values-' + scale_name + '" placeholder="' + n + '">' +
-        '            <div class="invalid-feedback" id="invalid-feedback-' + scale_name + '-' + n + '"></div>' +
+        '            <label for="value-' + scale_identifier + '-' + n + '" class="d-none"></label>' +
+        '            <input type="text" class="form-control mt-auto mb-0" id="value-' + scale_identifier + '-' + n + '" name="values-' + scale_identifier + '" placeholder="' + n + '">' +
+        '            <div class="invalid-feedback" id="invalid-feedback-' + scale_identifier + '-' + n + '"></div>' +
         '        </div>' +
         '    </div>' +
         '    <div class="col-auto p-0 m-0 h-100 mr-3 mt-1">' +
-        '        <a href="#" class="w-100 h-100 m-0 p-0" onclick="remove_field(\'value-' + scale_name + '-' + n + '\')"><i class="fas fa-minus-circle m-0 p-0 h-100" style="font-size: 2rem; cursor: pointer"></i></a>' +
+        '        <a href="#" class="w-100 h-100 m-0 p-0" onclick="remove_field(\'value-' + scale_identifier + '-' + n + '\')"><i class="fas fa-minus-circle m-0 p-0 h-100" style="font-size: 2rem; cursor: pointer"></i></a>' +
         '    </div>' +
         '</div>'
     );
 
-    $('#value-' + scale_name + '-' + n).attr('required', true);
+    $('#value-' + scale_identifier + '-' + n).attr('required', true);
 }
 
 function remove_field(id) {
     $('#' + id).parent().parent().parent().remove();
 }
 
-function check_scale_name(e) {
+function check_scale_identifier(e) {
     let csrftoken = Cookies.get('csrftoken');
     $.ajaxSetup({
         beforeSend: function (xhr, settings) {
@@ -83,29 +83,29 @@ function check_scale_name(e) {
             }
         }
     });
-    let scale_name = $('#scale-name-' + e.data.scale_name);
-    let scale_name_val = scale_name.val();
+    let scale_identifier = $('#scale-identifier-' + e.data.scale_identifier);
+    let scale_identifier_val = scale_identifier.val();
     $.ajax({
         dataType: "json",
         method: "POST",
-        url: "/check-scale-name/",
+        url: "/check-scale-id/",
         data: {
-            'scale-name': scale_name_val
+            'scale-id': scale_identifier_val
         }
     }).done(function (response) {
-        if (!response['res'] || e.data.scale_name === scale_name_val) {
-            scale_name.removeClass('is-invalid');
-            if (scale_name_val !== '') {
-                scale_name.addClass('is-valid');
+        if (!response['res'] || e.data.scale_identifier === scale_identifier_val) {
+            scale_identifier.removeClass('is-invalid');
+            if (scale_identifier_val !== '') {
+                scale_identifier.addClass('is-valid');
             } else {
-                scale_name.removeClass('is-valid');
+                scale_identifier.removeClass('is-valid');
             }
         } else {
-            scale_name.removeClass('is-valid');
-            if (scale_name_val !== '') {
-                scale_name.addClass('is-invalid');
+            scale_identifier.removeClass('is-valid');
+            if (scale_identifier_val !== '') {
+                scale_identifier.addClass('is-invalid');
             } else {
-                scale_name.removeClass('is-invalid');
+                scale_identifier.removeClass('is-invalid');
             }
         }
     }).fail(function (response) {
@@ -113,11 +113,11 @@ function check_scale_name(e) {
     });
 }
 
-function change_scale(scale_name) {
-    $('#modal-' + scale_name).modal('show');
+function change_scale(scale_identifier) {
+    $('#modal-' + scale_identifier).modal('show');
 }
 
-function save_scale(old_scale_name) {
+function save_scale(old_scale_identifier) {
     let csrftoken = Cookies.get('csrftoken');
     $.ajaxSetup({
         beforeSend: function (xhr, settings) {
@@ -127,18 +127,21 @@ function save_scale(old_scale_name) {
         }
     });
 
-    let scale_name_field = $('#scale-name-' + old_scale_name);
-    let scale_type_field = $('[name="scale-type-' + old_scale_name + '"]:checked');
-    let min_val_field = $('#min-val-' + old_scale_name);
-    let max_val_field = $('#max-val-' + old_scale_name);
-    let step_field = $('#step-' + old_scale_name);
-    let values_fields = $('[name="values-' + old_scale_name + '"]');
+    let scale_identifier_field = $('#scale-identifier-' + old_scale_identifier);
+    let scale_name_field = $('#scale-name-' + old_scale_identifier);
+    let scale_type_field = $('[name="scale-type-' + old_scale_identifier + '"]:checked');
+    let min_val_field = $('#min-val-' + old_scale_identifier);
+    let max_val_field = $('#max-val-' + old_scale_identifier);
+    let step_field = $('#step-' + old_scale_identifier);
+    let values_fields = $('[name="values-' + old_scale_identifier + '"]');
 
-    let invalid_feedback_name = $('#invalid-feedback-' + old_scale_name + '-name');
-    let invalid_feedback_min = $('#invalid-feedback-' + old_scale_name + '-min');
-    let invalid_feedback_max = $('#invalid-feedback-' + old_scale_name + '-max');
-    let invalid_feedback_step = $('#invalid-feedback-' + old_scale_name + '-step');
+    let invalid_feedback_identifier = $('#invalid-feedback-' + old_scale_identifier + '-identifier');
+    let invalid_feedback_name = $('#invalid-feedback-' + old_scale_identifier + '-name');
+    let invalid_feedback_min = $('#invalid-feedback-' + old_scale_identifier + '-min');
+    let invalid_feedback_max = $('#invalid-feedback-' + old_scale_identifier + '-max');
+    let invalid_feedback_step = $('#invalid-feedback-' + old_scale_identifier + '-step');
 
+    invalid_feedback_identifier.empty();
     invalid_feedback_name.empty();
     invalid_feedback_min.empty();
     invalid_feedback_max.empty();
@@ -151,6 +154,7 @@ function save_scale(old_scale_name) {
     step_field.removeClass('is-valid');
     step_field.removeClass('is-invalid');
 
+    let scale_identifier =  scale_identifier_field.val();
     let scale_name =  scale_name_field.val();
     let scale_type =  scale_type_field.val();
     let min_val =  min_val_field.val();
@@ -163,17 +167,17 @@ function save_scale(old_scale_name) {
         $(e).removeClass('is-invalid');
     });
 
-    let modal_body = $('#modal-' + old_scale_name + ' .modal-body');
-    let msg = $('[id^="msg-' + old_scale_name + '-"]');
+    let modal_body = $('#modal-' + old_scale_identifier + ' .modal-body');
+    let msg = $('[id^="msg-' + old_scale_identifier + '-"]');
     msg.each(function (i, e) {
         $(e).delete();
     });
-    let feedback = $('[id^="invalid-feedback-' + old_scale_name + '-"]');
+    let feedback = $('[id^="invalid-feedback-' + old_scale_identifier + '-"]');
     feedback.each(function (i, e) {
         $(e).empty();
     });
 
-    if (scale_name !== '' && !scale_name_field.hasClass('is-invalid')) {
+    if (scale_identifier !== '' && !scale_identifier_field.hasClass('is-invalid')) {
         if (scale_type === 'ordinal-scale') {
             if (min_val !== '' && max_val !== '' && step !== '') {
                 if (/^-?\d+([.,]\d+)?([eE][+-]\d+)?$/.test(min_val) && /^-?\d+([.,]\d+)?([eE][+-]\d+)?$/.test(max_val) && /^\d+([.,]\d+)?([eE][+-]\d+)?$/.test(step)) {
@@ -237,7 +241,7 @@ function save_scale(old_scale_name) {
             }
         } else if (scale_type === 'interval-scale') {
             values_fields.each(function (i, e) {
-                let feedback = $('#invalid-feedback-' + old_scale_name + '-' + i);
+                let feedback = $('#invalid-feedback-' + old_scale_identifier + '-' + i);
                 let value = $(e).val();
                 if (value === '') {
                     if (!$(e).hasClass('is-invalid')) {
@@ -255,20 +259,20 @@ function save_scale(old_scale_name) {
             });
         } else {
             modal_body.insertBefore(
-                '<div class="alert alert-danger" role="alert" id="msg-' + old_scale_name + '-type-none">' +
+                '<div class="alert alert-danger" role="alert" id="msg-' + old_scale_identifier + '-type-none">' +
                     'Необходимо выбрать тип шкалы.' +
                 '</div>'
             );
         }
     } else {
-        scale_name_field.removeClass('is-valid');
-        if (!scale_name_field.hasClass('is-invalid')) {
-            scale_name_field.addClass('is-invalid');
+        scale_identifier_field.removeClass('is-valid');
+        if (!scale_identifier_field.hasClass('is-invalid')) {
+            scale_identifier_field.addClass('is-invalid');
         }
-        invalid_feedback_name.append('<p>Необходимо указать валидное название шкалы.</p>');
+        invalid_feedback_identifier.append('<p>Необходимо указать валидный идентификатор шкалы.</p>');
     }
 
-    let is_valid = !scale_name_field.hasClass('is-invalid') &&
+    let is_valid = !scale_identifier_field.hasClass('is-invalid') &&
         msg.length === 0 &&
         !min_val_field.hasClass('is-invalid') &&
         !max_val_field.hasClass('is-invalid') &&
@@ -285,7 +289,7 @@ function save_scale(old_scale_name) {
             method: "POST",
             url: "/delete-scale/",
             data: {
-                'scale-name': old_scale_name
+                'scale-id': old_scale_identifier
             }
         }).done(function (response) {
             $.ajax({
@@ -293,6 +297,7 @@ function save_scale(old_scale_name) {
                 method: "POST",
                 url: "/add-scale/",
                 data: {
+                    'scale-id': scale_identifier,
                     'scale-name': scale_name,
                     'scale-type': scale_type,
                     'min-val': min_val,
@@ -301,7 +306,7 @@ function save_scale(old_scale_name) {
                     'values': values
                 }
             }).done(function (response) {
-                $('#modal-' + old_scale_name).modal('hide');
+                $('#modal-' + old_scale_identifier).modal('hide');
                 location.reload();
             }).fail(function (response) {
                 console.log('1541');
@@ -313,7 +318,7 @@ function save_scale(old_scale_name) {
     }
 }
 
-function delete_scale(scale_name) {
+function delete_scale(scale_identifier) {
     let csrftoken = Cookies.get('csrftoken');
     $.ajaxSetup({
         beforeSend: function (xhr, settings) {
@@ -327,7 +332,7 @@ function delete_scale(scale_name) {
         method: "POST",
         url: "/delete-scale/",
         data: {
-            'scale-name': scale_name
+            'scale-id': scale_identifier
         }
     }).done(function (response) {
         location.reload();
@@ -336,7 +341,7 @@ function delete_scale(scale_name) {
     });
 }
 
-function delete_indicator(indicator_name) {
+function delete_indicator(indicator_identifier) {
     let csrftoken = Cookies.get('csrftoken');
     $.ajaxSetup({
         beforeSend: function (xhr, settings) {
@@ -350,7 +355,7 @@ function delete_indicator(indicator_name) {
         method: "POST",
         url: "/delete-indicator/",
         data: {
-            'indicator-name': indicator_name
+            'indicator-id': indicator_identifier
         }
     }).done(function (response) {
         location.replace("?tab=indicators");
@@ -359,7 +364,7 @@ function delete_indicator(indicator_name) {
     });
 }
 
-function hide_indicator(indicator_name) {
+function hide_indicator(indicator_identifier) {
     let csrftoken = Cookies.get('csrftoken');
     $.ajaxSetup({
         beforeSend: function (xhr, settings) {
@@ -373,7 +378,7 @@ function hide_indicator(indicator_name) {
         method: "POST",
         url: "/hide-indicator/",
         data: {
-            'indicator-name': indicator_name
+            'indicator-id': indicator_identifier
         }
     }).done(function (response) {
         location.replace("?tab=indicators");
@@ -382,7 +387,7 @@ function hide_indicator(indicator_name) {
     });
 }
 
-function show_indicator(indicator_name) {
+function show_indicator(indicator_identifier) {
     let csrftoken = Cookies.get('csrftoken');
     $.ajaxSetup({
         beforeSend: function (xhr, settings) {
@@ -396,7 +401,7 @@ function show_indicator(indicator_name) {
         method: "POST",
         url: "/show-indicator/",
         data: {
-            'indicator-name': indicator_name
+            'indicator-id': indicator_identifier
         }
     }).done(function (response) {
         location.replace("?tab=indicators");
@@ -405,7 +410,7 @@ function show_indicator(indicator_name) {
     });
 }
 
-function check_indicator_name(e) {
+function check_indicator_identifier(e) {
     let csrftoken = Cookies.get('csrftoken');
     $.ajaxSetup({
         beforeSend: function (xhr, settings) {
@@ -414,29 +419,29 @@ function check_indicator_name(e) {
             }
         }
     });
-    let indicator_name = $('#indicator-name-' + e.data.indicator_name);
-    let indicator_name_val = indicator_name.val();
+    let indicator_identifier = $('#indicator-identifier-' + e.data.indicator_identifier);
+    let indicator_identifier_val = indicator_identifier.val();
     $.ajax({
         dataType: "json",
         method: "POST",
-        url: "/check-indicator-name/",
+        url: "/check-indicator-id/",
         data: {
-            'indicator-name': indicator_name_val
+            'indicator-id': indicator_identifier_val
         }
     }).done(function (response) {
-        if (!response['res'] || e.data.indicator_name === indicator_name_val) {
-            indicator_name.removeClass('is-invalid');
-            if (indicator_name_val !== '') {
-                indicator_name.addClass('is-valid');
+        if (!response['res'] || e.data.indicator_identifier === indicator_identifier_val) {
+            indicator_identifier.removeClass('is-invalid');
+            if (indicator_identifier_val !== '') {
+                indicator_identifier.addClass('is-valid');
             } else {
-                indicator_name.removeClass('is-valid');
+                indicator_identifier.removeClass('is-valid');
             }
         } else {
-            indicator_name.removeClass('is-valid');
-            if (indicator_name_val !== '') {
-                indicator_name.addClass('is-invalid');
+            indicator_identifier.removeClass('is-valid');
+            if (indicator_identifier_val !== '') {
+                indicator_identifier.addClass('is-invalid');
             } else {
-                indicator_name.removeClass('is-invalid');
+                indicator_identifier.removeClass('is-invalid');
             }
         }
     }).fail(function (response) {
@@ -444,11 +449,11 @@ function check_indicator_name(e) {
     });
 }
 
-function change_indicator(indicator_name) {
-    $('#modal-indicator-' + indicator_name).modal('show');
+function change_indicator(indicator_identifier) {
+    $('#modal-indicator-' + indicator_identifier).modal('show');
 }
 
-function save_indicator(old_indicator_name) {
+function save_indicator(old_indicator_identifier) {
     let csrftoken = Cookies.get('csrftoken');
     $.ajaxSetup({
         beforeSend: function (xhr, settings) {
@@ -458,49 +463,51 @@ function save_indicator(old_indicator_name) {
         }
     });
 
-    let indicator_name_field = $('#indicator-name-' + old_indicator_name);
-    let indicator_type_field = $('[name="indicator-type-' + old_indicator_name + '"]:checked');
-    let indicator_show_field = $('#indicator-show-' + old_indicator_name);
-    let indicator_description_field = $('#indicator-description-' + old_indicator_name);
+    let indicator_identifier_field = $('#indicator-identifier-' + old_indicator_identifier);
+    let indicator_name_field = $('#indicator-name-' + old_indicator_identifier);
+    let indicator_type_field = $('[name="indicator-type-' + old_indicator_identifier + '"]:checked');
+    let indicator_show_field = $('#indicator-show-' + old_indicator_identifier);
+    let indicator_description_field = $('#indicator-description-' + old_indicator_identifier);
 
-    let invalid_feedback_name = $('#invalid-feedback-' + old_indicator_name + '-name');
+    let invalid_feedback_identifier  = $('#invalid-feedback-' + old_indicator_identifier + '-identifier');
 
-    invalid_feedback_name.empty();
+    invalid_feedback_identifier.empty();
 
+    let indicator_identifier =  indicator_identifier_field.val();
     let indicator_name =  indicator_name_field.val();
     let indicator_type =  indicator_type_field.val();
     let indicator_show =  indicator_show_field.val();
     let indicator_description =  indicator_description_field.val();
 
-    let modal_body = $('#modal-indicator-' + old_indicator_name + ' .modal-body');
-    let msg = $('[id^="msg-indicator-' + old_indicator_name + '-"]');
+    let modal_body = $('#modal-indicator-' + old_indicator_identifier + ' .modal-body');
+    let msg = $('[id^="msg-indicator-' + old_indicator_identifier + '-"]');
     msg.each(function (i, e) {
         $(e).delete();
     });
-    let feedback = $('[id^="invalid-feedback-indicator-' + old_indicator_name + '-"]');
+    let feedback = $('[id^="invalid-feedback-indicator-' + old_indicator_identifier + '-"]');
     feedback.each(function (i, e) {
         $(e).empty();
     });
 
-    if (indicator_name !== '' && !indicator_name_field.hasClass('is-invalid')) {
+    if (indicator_identifier !== '' && !indicator_identifier_field.hasClass('is-invalid')) {
         if (indicator_type === 'auto-indicator') {
         } else if (indicator_type === 'expert-indicator') {
         } else {
             modal_body.insertBefore(
-                '<div class="alert alert-danger" role="alert" id="msg-indicator-' + old_indicator_name + '-type-none">' +
+                '<div class="alert alert-danger" role="alert" id="msg-indicator-' + old_indicator_identifier + '-type-none">' +
                     'Необходимо выбрать тип показателя.' +
                 '</div>'
             );
         }
     } else {
-        indicator_name_field.removeClass('is-valid');
-        if (!indicator_name_field.hasClass('is-invalid')) {
-            indicator_name_field.addClass('is-invalid');
+        indicator_identifier_field.removeClass('is-valid');
+        if (!indicator_identifier_field.hasClass('is-invalid')) {
+            indicator_identifier_field.addClass('is-invalid');
         }
-        invalid_feedback_name.append('<p>Необходимо указать валидное название показателя.</p>');
+        invalid_feedback_identifier.append('<p>Необходимо указать валидный идентификатор показателя.</p>');
     }
 
-    let is_valid = !indicator_name_field.hasClass('is-invalid') && msg.length === 0;
+    let is_valid = !indicator_identifier_field.hasClass('is-invalid') && msg.length === 0;
 
     if (is_valid) {
         $.ajax({
@@ -508,7 +515,7 @@ function save_indicator(old_indicator_name) {
             method: "POST",
             url: "/delete-indicator/",
             data: {
-                'indicator-name': old_indicator_name
+                'indicator-id': old_indicator_identifier
             }
         }).done(function (response) {
             $.ajax({
@@ -516,13 +523,14 @@ function save_indicator(old_indicator_name) {
                 method: "POST",
                 url: "/add-indicator/",
                 data: {
+                    'indicator-id': indicator_identifier,
                     'indicator-name': indicator_name,
                     'indicator-type': indicator_type,
                     'indicator-show': indicator_show,
                     'indicator-description': indicator_description
                 }
             }).done(function (response) {
-                $('#modal-indicator-' + old_indicator_name).modal('hide');
+                $('#modal-indicator-' + old_indicator_identifier).modal('hide');
                 location.reload();
             }).fail(function (response) {
                 console.log(response);
