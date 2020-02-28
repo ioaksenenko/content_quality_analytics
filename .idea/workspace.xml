@@ -3,18 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="cc8d65a7-0ad6-4cba-9c3a-e5bdd5e2cbc1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/add-indicator.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/add-indicator.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/add-scale.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/add-scale.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin-settings.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin-settings.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/common.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/common.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/expert-analysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/expert-analysis.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/history.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/history.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/indicators.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/indicators.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/log.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/log.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/modules.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/modules.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/results.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/results.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/expert-forms.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/expert-forms.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,6 +90,7 @@
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.console.LAST_STATE" value="false" />
@@ -253,7 +243,9 @@
       <workItem from="1579490955250" duration="8933000" />
       <workItem from="1579513261680" duration="7605000" />
       <workItem from="1579574993957" duration="2519000" />
-      <workItem from="1580698197018" duration="240000" />
+      <workItem from="1580698197018" duration="433000" />
+      <workItem from="1581306516327" duration="4063000" />
+      <workItem from="1582877296763" duration="235000" />
     </task>
     <servers />
   </component>
@@ -273,22 +265,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="271" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579516959912" />
-    <state width="1877" height="285" key="GridCell.Tab.0.bottom" timestamp="1580698433959">
+    <state x="740" y="279" key="FileChooserDialogImpl" timestamp="1581308663840">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1580698433959" />
-    <state width="1877" height="285" key="GridCell.Tab.0.center" timestamp="1580698433959">
+    <state x="740" y="279" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1581308663840" />
+    <state width="1877" height="285" key="GridCell.Tab.0.bottom" timestamp="1580698629522">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1580698433959" />
-    <state width="1877" height="285" key="GridCell.Tab.0.left" timestamp="1580698433959">
+    <state width="1877" height="285" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1580698629522" />
+    <state width="1877" height="285" key="GridCell.Tab.0.center" timestamp="1580698629522">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1580698433959" />
-    <state width="1877" height="285" key="GridCell.Tab.0.right" timestamp="1580698433959">
+    <state width="1877" height="285" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1580698629522" />
+    <state width="1877" height="285" key="GridCell.Tab.0.left" timestamp="1580698629522">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1580698433959" />
+    <state width="1877" height="285" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1580698629522" />
+    <state width="1877" height="285" key="GridCell.Tab.0.right" timestamp="1580698629522">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="285" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1580698629522" />
     <state x="463" y="166" key="SettingsEditor" timestamp="1578541814795">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

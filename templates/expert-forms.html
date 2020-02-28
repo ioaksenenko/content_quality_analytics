@@ -1,1151 +1,1111 @@
+{% extends "common.html" %}
 {% block expert-forms %}
     {% for name, content, section, questions in self_test_modules %}
-                            <div class="tab-pane fade {% if forloop.counter == 1 %} show active {% endif %}" id="tab-{{ name }}" role="tabpanel" aria-labelledby="{{ name }}-tab">
-                                <div class="container-fluid">
-                                    <!--<div class="row mb-3">
-                                        <div class="col">
-                                            <h3>Вопросы</h3>
+        <div class="tab-pane fade {% if forloop.counter == 1 %} show active {% endif %}" id="tab-{{ name }}" role="tabpanel" aria-labelledby="{{ name }}-tab">
+            <div class="container-fluid">
+                <div class="row mb-3">
+                    <div class="col">
+                        <a data-toggle="collapse" href="#collapse-self-test-diff-coef-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                            <h3>
+                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                <span>Коэффициент сложности вопроса или задания</span>
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="row collapse show ml-5" id="collapse-self-test-diff-coef-{{ name }}">
+                    <div class="col-auto">
+                        <table class="table">
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Текст вопроса</th>
+                                <th scope="col">Коэффициент сложности вопроса</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for question in questions %}
+                                <tr>
+                                    <td class="align-middle">{{ forloop.counter }}</td>
+                                    <td class="align-middle">{{ question }}</td>
+                                    <td class="align-middle">
+                                        <div class="form-group">
+                                            <label for="{{ name }}-self-test-difficulty-factor-{{ forloop.counter }}"></label>
+                                            <input type="range" class="form-control-range custom-range" id="{{ name }}-self-test-difficulty-factor-{{ forloop.counter }}" min="0" max="10" step="1" value="5" name="{{ name }}-self-test-difficulty-factor" data-toggle="tooltip" data-placement="top" title="5" required>
                                         </div>
-                                    </div>
-                                    {% for question in questions %}
-                                        <div class="row">
-                                            <div class="col">
-                                                <p>{{ forloop.counter }}. {{ question }}</p>
-                                            </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <a data-toggle="collapse" href="#collapse-self-test-completion-rate-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                            <h3>
+                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                <span>Коэффициент завершённости вопроса или задания</span>
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="row collapse show ml-5" id="collapse-self-test-completion-rate-{{ name }}">
+                    <div class="col-auto">
+                        <table class="table">
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col">№</th>
+                                <th scope="col">Текст вопроса</th>
+                                <th scope="col">Коэффициент завершённости вопроса</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for question in questions %}
+                                <tr>
+                                    <td class="align-middle">{{ forloop.counter }}</td>
+                                    <td class="align-middle">{{ question }}</td>
+                                    <td class="align-middle">
+                                        <div class="form-group">
+                                            <label for="{{ name }}-self-test-completion-rate-{{ forloop.counter }}"></label>
+                                            <input type="range" class="form-control-range custom-range" id="{{ name }}-self-test-completion-rate-{{ forloop.counter }}" min="0" max="100" step="1" value="50" name="{{ name }}-self-test-completion-rate" data-toggle="tooltip" data-placement="top" title="50" required>
                                         </div>
-                                    {% endfor %}-->
-                                    <div class="row mb-3">
-                                        <div class="col">
-                                            <a data-toggle="collapse" href="#collapse-self-test-diff-coef-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
-                                                <h3>
-                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
-                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                    <span>Коэффициент сложности вопроса или задания</span>
-                                                </h3>
-                                            </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <a data-toggle="collapse" href="#collapse-self-test-has-answers-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                            <h3>
+                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                <span>Имеются ли ответы или решения  на вопросы и задания?</span>
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="row collapse show ml-5" id="collapse-self-test-has-answers-{{ name }}">
+                    <div class="col-auto">
+                        <table class="table">
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col">№</th>
+                                <th scope="col">Текст вопроса</th>
+                                <th scope="col">Флаг</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for question in questions %}
+                                <tr>
+                                    <td class="align-middle">{{ forloop.counter }}</td>
+                                    <td class="align-middle">{{ question }}</td>
+                                    <td class="align-middle">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="{{ forloop.counter }}" id="{{ name }}-self-test-has-answers-{{ forloop.counter }}" name="{{ name }}-self-test-has-answers">
+                                            <label class="form-check-label" for="{{ name }}-self-test-has-answers-{{ forloop.counter }}"></label>
                                         </div>
-                                    </div>
-                                    <div class="row collapse show ml-5" id="collapse-self-test-diff-coef-{{ name }}">
-                                        <div class="col-auto">
-                                            <table class="table">
-    	    		                        	<thead class="thead-light">
-    	    		                        		<tr>
-    	    		                        			<th scope="col">#</th>
-                                                        <th scope="col">Текст вопроса</th>
-    	    		                        			<th scope="col">Коэффициент сложности вопроса</th>
-    	    		                        		</tr>
-    	    		                        	</thead>
-    	    		                        	<tbody>
-    	    		                        		{% for question in questions %}
-                                                        <tr>
-                                                            <td class="align-middle">{{ forloop.counter }}</td>
-                                                            <td class="align-middle">{{ question }}</td>
-                                                            <td class="align-middle">
-                                                                <div class="form-group">
-                                                                    <label for="{{ name }}-self-test-difficulty-factor-{{ forloop.counter }}"></label>
-                                                                    <input type="range" class="form-control-range custom-range" id="{{ name }}-self-test-difficulty-factor-{{ forloop.counter }}" min="0" max="10" step="1" value="5" name="{{ name }}-self-test-difficulty-factor" data-toggle="tooltip" data-placement="top" title="5" required>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                    {% endfor %}
-    	    		                        	</tbody>
-    	    		                        </table>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <a data-toggle="collapse" href="#collapse-self-test-has-links-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                            <h3>
+                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                <span>Имеются ли ссылки на источники с теорией или решением?</span>
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="row collapse show ml-5" id="collapse-self-test-has-links-{{ name }}">
+                    <div class="col-auto">
+                        <table class="table">
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col">№</th>
+                                <th scope="col">Текст вопроса</th>
+                                <th scope="col">Флаг</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for question in questions %}
+                                <tr>
+                                    <td class="align-middle">{{ forloop.counter }}</td>
+                                    <td class="align-middle">{{ question }}</td>
+                                    <td class="align-middle">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="{{ forloop.counter }}" id="{{ name }}-self-test-has-links-{{ forloop.counter }}" name="{{ name }}-self-test-has-links">
+                                            <label class="form-check-label" for="{{ name }}-self-test-has-links-{{ forloop.counter }}"></label>
                                         </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <div class="col">
-                                            <a data-toggle="collapse" href="#collapse-self-test-completion-rate-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
-                                                <h3>
-                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
-                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                    <span>Коэффициент завершённости вопроса или задания</span>
-                                                </h3>
-                                            </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <a data-toggle="collapse" href="#collapse-self-test-special-opinion-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                            <h3>
+                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                <span>Особое мнение</span>
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="row collapse show ml-5" id="collapse-self-test-special-opinion-{{ name }}">
+                    <div class="col-6">
+                        <label for="{{ name }}-self-test-special-opinion" class="d-none"></label>
+                        <textarea class="form-control" id="{{ name }}-self-test-special-opinion" placeholder="Введите своё мнение о вопросах или заданиях"  name="{{ name }}-self-test-special-opinion"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    {% for name, content, section, questions in control_and_exam_test_modules %}
+        <div class="tab-pane fade {% if self_test_modules|length == 0 and forloop.counter == 1 %} show active {% endif %}" id="tab-{{ name }}" role="tabpanel" aria-labelledby="{{ name }}-tab">
+            <div class="container-fluid">
+                <div class="row mb-3">
+                    <div class="col">
+                        <a data-toggle="collapse" href="#collapse-control-and-exam-test-volume-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                            <h3>
+                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                <span>Оценка объема тестовых вопросов или шаблонов</span>
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="row collapse show ml-5" id="collapse-control-and-exam-test-volume-{{ name }}">
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="{{ name }}-control-and-exam-test-volume"></label>
+                            <input type="range" class="form-control-range custom-range" id="{{ name }}-control-and-exam-test-volume" min="0" max="10" step="1" value="5" name="{{ name }}-control-and-exam-test-volume" data-toggle="tooltip" data-placement="top" title="5" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3 mt-3">
+                    <div class="col">
+                        <a data-toggle="collapse" href="#collapse-control-and-exam-test-generation-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                            <h3>
+                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                <span>Есть ли генерация вопросов?</span>
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="row collapse show ml-5" id="collapse-control-and-exam-test-generation-{{ name }}">
+                    <div class="col">
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="{{ name }}-control-and-exam-test-has-generation" name="{{ name }}-control-and-exam-test-has-generation">
+                            <label class="custom-control-label" for="{{ name }}-control-and-exam-test-has-generation">Да / Нет</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3 mt-3">
+                    <div class="col">
+                        <a data-toggle="collapse" href="#collapse-control-and-exam-test-tech-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                            <h3>
+                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                <span>Какие технологии тестирования используются?</span>
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="row collapse show ml-5" id="collapse-control-and-exam-test-tech-{{ name }}">
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="simple" id="{{ name }}-control-and-exam-test-testing-technology-simple" name="{{ name }}-control-and-exam-test-testing-technology">
+                            <label class="form-check-label" for="{{ name }}-control-and-exam-test-testing-technology-simple">Простое тестирование</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="adaptive" id="{{ name }}-control-and-exam-test-testing-technology-adaptive" name="{{ name }}-control-and-exam-test-testing-technology">
+                            <label class="form-check-label" for="{{ name }}-control-and-exam-test-testing-technology-adaptive">Адаптивное тестирование</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3 mt-3">
+                    <div class="col">
+                        <a data-toggle="collapse" href="#collapse-control-and-exam-test-codifier-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                            <h3>
+                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                <span>Присутствует ли кодификатор?</span>
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="row collapse show ml-5" id="collapse-control-and-exam-test-codifier-{{ name }}">
+                    <div class="col">
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="{{ name }}-control-and-exam-test-has-codifier" name="{{ name }}-control-and-exam-test-has-codifier">
+                            <label class="custom-control-label" for="{{ name }}-control-and-exam-test-has-codifier">Да / Нет</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3 mt-3">
+                    <div class="col">
+                        <a data-toggle="collapse" href="#collapse-control-and-exam-test-sections-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                            <h3>
+                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                <span>Укажите, к какому разделу курса относится каждый из данных вопросов</span>
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="row collapse show ml-5" id="collapse-control-and-exam-test-sections-{{ name }}">
+                    <div class="col-auto w-75">
+                        <table class="table">
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col">№</th>
+                                <th scope="col">Текст вопроса</th>
+                                <th scope="col">Список разделов</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for question in questions %}
+                                <tr>
+                                    <td class="align-middle">{{ forloop.counter }}</td>
+                                    <td class="align-middle">{% autoescape off %}{{ question }}{% endautoescape %}</td>
+                                    <td class="align-middle">
+                                        <div class="form-group">
+                                            <label for="{{ name }}-control-and-exam-test-course-section-{{ forloop.counter }}" class="d-none"></label>
+                                            <input type="text" class="form-control w-auto" id="{{ name }}-control-and-exam-test-course-section-{{ forloop.counter }}" placeholder="" value="1, 5, 7" name="{{ name }}-control-and-exam-test-course-section" required>
                                         </div>
-                                    </div>
-                                    <div class="row collapse show ml-5" id="collapse-self-test-completion-rate-{{ name }}">
-                                        <div class="col-auto">
-                                            <table class="table">
-    	    		                        	<thead class="thead-light">
-    	    		                        		<tr>
-    	    		                        			<th scope="col">№</th>
-                                                        <th scope="col">Текст вопроса</th>
-    	    		                        			<th scope="col">Коэффициент завершённости вопроса</th>
-    	    		                        		</tr>
-    	    		                        	</thead>
-    	    		                        	<tbody>
-    	    		                        		{% for question in questions %}
-                                                        <tr>
-                                                            <td class="align-middle">{{ forloop.counter }}</td>
-                                                            <td class="align-middle">{{ question }}</td>
-                                                            <td class="align-middle">
-                                                                <div class="form-group">
-                                                                    <label for="{{ name }}-self-test-completion-rate-{{ forloop.counter }}"></label>
-                                                                    <input type="range" class="form-control-range custom-range" id="{{ name }}-self-test-completion-rate-{{ forloop.counter }}" min="0" max="100" step="1" value="50" name="{{ name }}-self-test-completion-rate" data-toggle="tooltip" data-placement="top" title="50" required>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                    {% endfor %}
-    	    		                        	</tbody>
-    	    		                        </table>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row mb-3 mt-3">
+                    <div class="col">
+                        <a data-toggle="collapse" href="#collapse-control-and-exam-test-researches-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                            <h3>
+                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                <span>Проводилось ли исследование текста каждого из вопросов?</span>
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="row collapse show ml-5" id="collapse-control-and-exam-test-researches-{{ name }}">
+                    <div class="col-auto w-75">
+                        <table class="table">
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col">№</th>
+                                <th scope="col">Текст вопроса</th>
+                                <th scope="col">Тип исследования</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for question in questions %}
+                                <tr>
+                                    <td class="align-middle">{{ forloop.counter }}</td>
+                                    <td class="align-middle w-75">{% autoescape off %}{{ question }}{% endautoescape %}</td>
+                                    <td class="align-middle">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="{{ forloop.counter }}-validity" id="{{ name }}-control-and-exam-test-researches-validity-{{ forloop.counter }}" name="{{ name }}-control-and-exam-test-researches">
+                                            <label class="form-check-label" for="{{ name }}-control-and-exam-test-researches-validity-{{ forloop.counter }}">На валидность</label>
                                         </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <div class="col">
-                                            <a data-toggle="collapse" href="#collapse-self-test-has-answers-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
-                                                <h3>
-                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
-                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                    <span>Имеются ли ответы или решения  на вопросы и задания?</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="row collapse show ml-5" id="collapse-self-test-has-answers-{{ name }}">
-                                        <div class="col-auto">
-                                            <table class="table">
-    	    		                        	<thead class="thead-light">
-    	    		                        		<tr>
-    	    		                        			<th scope="col">№</th>
-                                                        <th scope="col">Текст вопроса</th>
-    	    		                        			<th scope="col">Флаг</th>
-    	    		                        		</tr>
-    	    		                        	</thead>
-    	    		                        	<tbody>
-    	    		                        		{% for question in questions %}
-                                                        <tr>
-                                                            <td class="align-middle">{{ forloop.counter }}</td>
-                                                            <td class="align-middle">{{ question }}</td>
-                                                            <td class="align-middle">
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input" type="checkbox" value="{{ forloop.counter }}" id="{{ name }}-self-test-has-answers-{{ forloop.counter }}" name="{{ name }}-self-test-has-answers">
-                                                                    <label class="form-check-label" for="{{ name }}-self-test-has-answers-{{ forloop.counter }}"></label>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                    {% endfor %}
-    	    		                        	</tbody>
-    	    		                        </table>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <div class="col">
-                                            <a data-toggle="collapse" href="#collapse-self-test-has-links-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
-                                                <h3>
-                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
-                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                    <span>Имеются ли ссылки на источники с теорией или решением?</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="row collapse show ml-5" id="collapse-self-test-has-links-{{ name }}">
-                                        <div class="col-auto">
-                                            <table class="table">
-    	    		                        	<thead class="thead-light">
-    	    		                        		<tr>
-    	    		                        			<th scope="col">№</th>
-                                                        <th scope="col">Текст вопроса</th>
-    	    		                        			<th scope="col">Флаг</th>
-    	    		                        		</tr>
-    	    		                        	</thead>
-    	    		                        	<tbody>
-    	    		                        		{% for question in questions %}
-                                                        <tr>
-                                                            <td class="align-middle">{{ forloop.counter }}</td>
-                                                            <td class="align-middle">{{ question }}</td>
-                                                            <td class="align-middle">
-                                                                <div class="form-check">
-                                                                    <input class="form-check-input" type="checkbox" value="{{ forloop.counter }}" id="{{ name }}-self-test-has-links-{{ forloop.counter }}" name="{{ name }}-self-test-has-links">
-                                                                    <label class="form-check-label" for="{{ name }}-self-test-has-links-{{ forloop.counter }}"></label>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                    {% endfor %}
-    	    		                        	</tbody>
-    	    		                        </table>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <div class="col">
-                                            <a data-toggle="collapse" href="#collapse-self-test-special-opinion-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
-                                                <h3>
-                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
-                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                    <span>Особое мнение</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="row collapse show ml-5" id="collapse-self-test-special-opinion-{{ name }}">
-                                        <div class="col-6">
-                                            <label for="{{ name }}-self-test-special-opinion" class="d-none"></label>
-                                            <textarea class="form-control" id="{{ name }}-self-test-special-opinion" placeholder="Введите своё мнение о вопросах или заданиях"  name="{{ name }}-self-test-special-opinion"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endfor %}
-                        {% for name, content, section, questions in control_and_exam_test_modules %}
-                            <div class="tab-pane fade {% if self_test_modules|length == 0 and forloop.counter == 1 %} show active {% endif %}" id="tab-{{ name }}" role="tabpanel" aria-labelledby="{{ name }}-tab">
-                                <div class="container-fluid">
-                                    <!--<div class="row">
-                                        <div class="col">
-                                            <h3>Вопросы</h3>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <table class="table">
-                                                <thead class="thead-light">
-                                                <tr>
-                                                    <th scope="col">№</th>
-                                                    <th scope="col">Текст вопроса</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                {% for question in questions %}
-                                                    <tr>
-                                                        <th scope="row">{{ forloop.counter }}</th>
-                                                        <td class="align-middle">{% autoescape off %}{{ question }}{% endautoescape %}</td>
-                                                    </tr>
-                                                {% endfor %}
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>-->
-                                    <div class="row mb-3">
-                                        <div class="col">
-                                            <a data-toggle="collapse" href="#collapse-control-and-exam-test-volume-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
-                                                <h3>
-                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
-                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                    <span>Оценка объема тестовых вопросов или шаблонов</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="row collapse show ml-5" id="collapse-control-and-exam-test-volume-{{ name }}">
-                                        <div class="col-4">
-                                            <div class="form-group">
-                                                <label for="{{ name }}-control-and-exam-test-volume"></label>
-                                                <input type="range" class="form-control-range custom-range" id="{{ name }}-control-and-exam-test-volume" min="0" max="10" step="1" value="5" name="{{ name }}-control-and-exam-test-volume" data-toggle="tooltip" data-placement="top" title="5" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 mt-3">
-                                        <div class="col">
-                                            <a data-toggle="collapse" href="#collapse-control-and-exam-test-generation-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
-                                                <h3>
-                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
-                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                    <span>Есть ли генерация вопросов?</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="row collapse show ml-5" id="collapse-control-and-exam-test-generation-{{ name }}">
-                                        <div class="col">
-                                            <div class="custom-control custom-switch">
-                                                <input type="checkbox" class="custom-control-input" id="{{ name }}-control-and-exam-test-has-generation" name="{{ name }}-control-and-exam-test-has-generation">
-                                                <label class="custom-control-label" for="{{ name }}-control-and-exam-test-has-generation">Да / Нет</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 mt-3">
-                                        <div class="col">
-                                            <a data-toggle="collapse" href="#collapse-control-and-exam-test-tech-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
-                                                <h3>
-                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
-                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                    <span>Какие технологии тестирования используются?</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="row collapse show ml-5" id="collapse-control-and-exam-test-tech-{{ name }}">
-                                        <div class="col">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="simple" id="{{ name }}-control-and-exam-test-testing-technology-simple" name="{{ name }}-control-and-exam-test-testing-technology">
-                                                <label class="form-check-label" for="{{ name }}-control-and-exam-test-testing-technology-simple">Простое тестирование</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="adaptive" id="{{ name }}-control-and-exam-test-testing-technology-adaptive" name="{{ name }}-control-and-exam-test-testing-technology">
-                                                <label class="form-check-label" for="{{ name }}-control-and-exam-test-testing-technology-adaptive">Адаптивное тестирование</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 mt-3">
-                                        <div class="col">
-                                            <a data-toggle="collapse" href="#collapse-control-and-exam-test-codifier-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
-                                                <h3>
-                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
-                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                    <span>Присутствует ли кодификатор?</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="row collapse show ml-5" id="collapse-control-and-exam-test-codifier-{{ name }}">
-                                        <div class="col">
-                                            <div class="custom-control custom-switch">
-                                                <input type="checkbox" class="custom-control-input" id="{{ name }}-control-and-exam-test-has-codifier" name="{{ name }}-control-and-exam-test-has-codifier">
-                                                <label class="custom-control-label" for="{{ name }}-control-and-exam-test-has-codifier">Да / Нет</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 mt-3">
-                                        <div class="col">
-                                            <a data-toggle="collapse" href="#collapse-control-and-exam-test-sections-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
-                                                <h3>
-                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
-                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                    <span>Укажите, к какому разделу курса относится каждый из данных вопросов</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="row collapse show ml-5" id="collapse-control-and-exam-test-sections-{{ name }}">
-                                        <div class="col-auto w-75">
-                                            <table class="table">
-                                                <thead class="thead-light">
-                                                    <tr>
-                                                        <th scope="col">№</th>
-                                                        <th scope="col">Текст вопроса</th>
-                                                        <th scope="col">Список разделов</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                {% for question in questions %}
-                                                    <tr>
-                                                        <td class="align-middle">{{ forloop.counter }}</td>
-                                                        <td class="align-middle">{% autoescape off %}{{ question }}{% endautoescape %}</td>
-                                                        <td class="align-middle">
-                                                            <div class="form-group">
-                                                                <label for="{{ name }}-control-and-exam-test-course-section-{{ forloop.counter }}" class="d-none"></label>
-                                                                <input type="text" class="form-control w-auto" id="{{ name }}-control-and-exam-test-course-section-{{ forloop.counter }}" placeholder="" value="1, 5, 7" name="{{ name }}-control-and-exam-test-course-section" required>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                {% endfor %}
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 mt-3">
-                                        <div class="col">
-                                            <a data-toggle="collapse" href="#collapse-control-and-exam-test-researches-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
-                                                <h3>
-                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
-                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                    <span>Проводилось ли исследование текста каждого из вопросов?</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="row collapse show ml-5" id="collapse-control-and-exam-test-researches-{{ name }}">
-                                        <div class="col-auto w-75">
-                                            <table class="table">
-                                                <thead class="thead-light">
-                                                <tr>
-                                                    <th scope="col">№</th>
-                                                    <th scope="col">Текст вопроса</th>
-                                                    <th scope="col">Тип исследования</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                {% for question in questions %}
-                                                    <tr>
-                                                        <td class="align-middle">{{ forloop.counter }}</td>
-                                                        <td class="align-middle w-75">{% autoescape off %}{{ question }}{% endautoescape %}</td>
-                                                        <td class="align-middle">
-                                                            <div class="form-check">
-                                                                <input class="form-check-input" type="checkbox" value="{{ forloop.counter }}-validity" id="{{ name }}-control-and-exam-test-researches-validity-{{ forloop.counter }}" name="{{ name }}-control-and-exam-test-researches">
-                                                                <label class="form-check-label" for="{{ name }}-control-and-exam-test-researches-validity-{{ forloop.counter }}">На валидность</label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                {% endfor %}
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 mt-3">
-                                        <div class="col">
-                                            <a data-toggle="collapse" href="#collapse-control-and-exam-test-opinion-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
-                                                <h3>
-                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
-                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                    <span>Особое мнение</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="row collapse show ml-5" id="collapse-control-and-exam-test-opinion-{{ name }}">
-                                        <div class="col-6">
-                                            <label for="{{ name }}-control-and-exam-test-special-opinion" class="d-none"></label>
-                                            <textarea class="form-control" id="{{ name }}-control-and-exam-test-special-opinion" placeholder="Введите своё мнение о вопросах или заданиях" name="{{ name }}-control-and-exam-test-special-opinion"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endfor %}
-                        {% for name, content, section, extension, src in video_file_modules %}
-                            <div class="tab-pane fade {% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and forloop.counter == 1 %} show active {% endif %}" id="tab-{{ name }}" role="tabpanel" aria-labelledby="{{ name }}-tab">
-                                <div class="container-fluid">
-                                    {% if src is not None %}
-                                        <div class="row mt-3 mb-3">
-                                            <div class="col-auto d-block mx-auto">
-                                                <video controls="controls" poster="" class="w-100">
-                                                    <source src="{{ src }}" type='video/{{ extension }}; codecs="avc1.42E01E, mp4a.40.2"'>
-                                                </video>
-                                            </div>
-                                        </div>
-                                    {% endif %}
-                                    <div class="row mb-3 mt-3">
-                                        <div class="col">
-                                            <a data-toggle="collapse" href="#collapse-video-file-target-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
-                                                <h3>
-                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
-                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                    <span>Цель видео?</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="row collapse show ml-5" id="collapse-video-file-target-{{ name }}">
-                                        <div class="col">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="introductory" id="{{ name }}-video-file-target-introductory" name="{{ name }}-video-file-target" required checked>
-                                                <label class="form-check-label" for="{{ name }}-video-file-target-introductory">Вводная</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="subsidiary" id="{{ name }}-video-file-target-subsidiary" name="{{ name }}-video-file-target" required>
-                                                <label class="form-check-label" for="{{ name }}-video-file-target-subsidiary">Вспомогательная</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="illustrative" id="{{ name }}-video-file-target-illustrative" name="{{ name }}-video-file-target" required>
-                                                <label class="form-check-label" for="{{ name }}-video-file-target-illustrative">Иллюстративная</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 mt-3">
-                                        <div class="col">
-                                            <a data-toggle="collapse" href="#collapse-video-file-duration-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
-                                                <h3>
-                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
-                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                    <span>Длительность учебного видео</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="row collapse show ml-5" id="collapse-video-file-duration-{{ name }}">
-                                        <div class="col">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="short" id="{{ name }}-video-file-duration-short" name="{{ name }}-video-file-duration" required checked>
-                                                <label class="form-check-label" for="{{ name }}-video-file-duration-short">Слишком короткое</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="normal" id="{{ name }}-video-file-duration-normal" name="{{ name }}-video-file-duration" required>
-                                                <label class="form-check-label" for="{{ name }}-video-file-duration-normal">Нормальное</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="long" id="{{ name }}-video-file-duration-long" name="{{ name }}-video-file-duration" required>
-                                                <label class="form-check-label" for="{{ name }}-video-file-duration-long">Слишком длинное</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 mt-3">
-                                        <div class="col">
-                                            <a data-toggle="collapse" href="#collapse-video-file-has-scenario-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
-                                                <h3>
-                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
-                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                    <span>Наличие сценария</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="row collapse show ml-5" id="collapse-video-file-has-scenario-{{ name }}">
-                                        <div class="col">
-                                            <div class="custom-control custom-switch">
-                                                <input type="checkbox" class="custom-control-input" id="{{ name }}-video-file-has-scenario" name="{{ name }}-video-file-has-scenario">
-                                                <label class="custom-control-label" for="{{ name }}-video-file-has-scenario">Нет / Есть</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 mt-3">
-                                        <div class="col">
-                                            <a data-toggle="collapse" href="#collapse-video-file-complexity-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
-                                                <h3>
-                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
-                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                    <span>Сложность</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="row collapse show ml-5" id="collapse-video-file-complexity-{{ name }}">
-                                        <div class="col">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="simple" id="{{ name }}-video-file-complexity-simple" name="{{ name }}-video-file-complexity" required checked>
-                                                <label class="form-check-label" for="{{ name }}-video-file-complexity-simple">Простое видео</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="interactive" id="{{ name }}-video-file-complexity-interactive" name="{{ name }}-video-file-complexity" required>
-                                                <label class="form-check-label" for="{{ name }}-video-file-complexity-interactive">Интерактивное видео</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 mt-3">
-                                        <div class="col">
-                                            <a data-toggle="collapse" href="#collapse-video-file-has-ticker-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
-                                                <h3>
-                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
-                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                    <span>Использование интерактивного текста (бегущая строка)</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="row collapse show ml-5" id="collapse-video-file-has-ticker-{{ name }}">
-                                        <div class="col">
-                                            <div class="custom-control custom-switch">
-                                                <input type="checkbox" class="custom-control-input" id="{{ name }}-video-file-has-ticker" name="{{ name }}-video-file-has-ticker">
-                                                <label class="custom-control-label" for="{{ name }}-video-file-has-ticker">Нет / Есть</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 mt-3">
-                                        <div class="col">
-                                            <a data-toggle="collapse" href="#collapse-video-file-quality-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
-                                                <h3>
-                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
-                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                    <span>Качество записи</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="row collapse show ml-5" id="collapse-video-file-quality-{{ name }}">
-                                        <div class="col">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="low" id="{{ name }}-video-file-recording-quality-low" name="{{ name }}-video-file-recording-quality" required checked>
-                                                <label class="form-check-label" for="{{ name }}-video-file-recording-quality-low">Плохое</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="normal" id="{{ name }}-video-file-recording-quality-normal" name="{{ name }}-video-file-recording-quality" required>
-                                                <label class="form-check-label" for="{{ name }}-video-file-recording-quality-normal">Нормальное</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="good" id="{{ name }}-video-file-recording-quality-good" name="{{ name }}-video-file-recording-quality" required>
-                                                <label class="form-check-label" for="{{ name }}-video-file-recording-quality-good">Хорошее</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="excellent" id="{{ name }}-video-file-recording-quality-excellent" name="{{ name }}-video-file-recording-quality" required>
-                                                <label class="form-check-label" for="{{ name }}-video-file-recording-quality-excellent">Отличное</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endfor %}
-                        {% for name, content, section, extension, src in video_lecture_modules %}
-                            <div class="tab-pane fade {% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and forloop.counter == 1 %} show active {% endif %}" id="tab-{{ name }}" role="tabpanel" aria-labelledby="{{ name }}-tab">
-                                <div class="container-fluid">
-                                    {% if src is not None %}
-                                        <div class="row mt-3 mb-3">
-                                            <div class="col-auto d-block mx-auto">
-                                                <video controls="controls" poster="" class="w-100">
-                                                    <source src="{{ src }}" type='video/{{ extension }}; codecs="avc1.42E01E, mp4a.40.2"'>
-                                                </video>
-                                            </div>
-                                        </div>
-                                    {% endif %}
-
-                                    <div class="row mb-3 mt-3">
-                                        <div class="col">
-                                            <a data-toggle="collapse" href="#collapse-video-lecture-target-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
-                                                <h3>
-                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
-                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                    <span>Цель видео?</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="row collapse show ml-5" id="collapse-video-lecture-target-{{ name }}">
-                                        <div class="col">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="introductory" id="{{ name }}-video-lecture-target-introductory" name="{{ name }}-video-lecture-target" required checked>
-                                                <label class="form-check-label" for="{{ name }}-video-lecture-target-introductory">Вводная</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="subsidiary" id="{{ name }}-video-lecture-target-subsidiary" name="{{ name }}-video-lecture-target" required>
-                                                <label class="form-check-label" for="{{ name }}-video-lecture-target-subsidiary">Вспомогательная</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="illustrative" id="{{ name }}-video-lecture-target-illustrative" name="{{ name }}-video-lecture-target" required>
-                                                <label class="form-check-label" for="{{ name }}-video-lecture-target-illustrative">Иллюстративная</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 mt-3">
-                                        <div class="col">
-                                            <a data-toggle="collapse" href="#collapse-video-lecture-duration-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
-                                                <h3>
-                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
-                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                    <span>Длительность учебного видео</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="row collapse show ml-5" id="collapse-video-lecture-duration-{{ name }}">
-                                        <div class="col">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="short" id="{{ name }}-video-lecture-duration-short" name="{{ name }}-video-lecture-duration" required checked>
-                                                <label class="form-check-label" for="{{ name }}-video-lecture-duration-short">Слишком короткое</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="normal" id="{{ name }}-video-lecture-duration-normal" name="{{ name }}-video-lecture-duration" required>
-                                                <label class="form-check-label" for="{{ name }}-video-lecture-duration-normal">Нормальное</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="long" id="{{ name }}-video-lecture-duration-long" name="{{ name }}-video-lecture-duration" required>
-                                                <label class="form-check-label" for="{{ name }}-video-lecture-duration-long">Слишком длинное</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 mt-3">
-                                        <div class="col">
-                                            <a data-toggle="collapse" href="#collapse-video-lecture-has-scenario-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
-                                                <h3>
-                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
-                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                    <span>Наличие сценария</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="row collapse show ml-5" id="collapse-video-lecture-has-scenario-{{ name }}">
-                                        <div class="col">
-                                            <div class="custom-control custom-switch">
-                                                <input type="checkbox" class="custom-control-input" id="{{ name }}-video-lecture-has-scenario" name="{{ name }}-video-lecture-has-scenario">
-                                                <label class="custom-control-label" for="{{ name }}-video-lecture-has-scenario">Нет / Есть</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 mt-3">
-                                        <div class="col">
-                                            <a data-toggle="collapse" href="#collapse-video-lecture-complexity-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
-                                                <h3>
-                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
-                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                    <span>Сложность</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="row collapse show ml-5" id="collapse-video-lecture-complexity-{{ name }}">
-                                        <div class="col">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="simple" id="{{ name }}-video-lecture-complexity-simple" name="{{ name }}-video-lecture-complexity" required checked>
-                                                <label class="form-check-label" for="{{ name }}-video-lecture-complexity-simple">Простое видео</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="interactive" id="{{ name }}-video-lecture-complexity-interactive" name="{{ name }}-video-lecture-complexity" required>
-                                                <label class="form-check-label" for="{{ name }}-video-lecture-complexity-interactive">Интерактивное видео</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 mt-3">
-                                        <div class="col">
-                                            <a data-toggle="collapse" href="#collapse-video-lecture-has-ticker-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
-                                                <h3>
-                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
-                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                    <span>Использование интерактивного текста (бегущая строка)</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="row collapse show ml-5" id="collapse-video-lecture-has-ticker-{{ name }}">
-                                        <div class="col">
-                                            <div class="custom-control custom-switch">
-                                                <input type="checkbox" class="custom-control-input" id="{{ name }}-video-lecture-has-ticker" name="{{ name }}-video-lecture-has-ticker">
-                                                <label class="custom-control-label" for="{{ name }}-video-lecture-has-ticker">Нет / Есть</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 mt-3">
-                                        <div class="col">
-                                            <a data-toggle="collapse" href="#collapse-video-lecture-quality-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
-                                                <h3>
-                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
-                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                    <span>Качество записи</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="row collapse show ml-5" id="collapse-video-lecture-quality-{{ name }}">
-                                        <div class="col">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="low" id="{{ name }}-video-lecture-recording-quality-low" name="{{ name }}-video-lecture-recording-quality" required checked>
-                                                <label class="form-check-label" for="{{ name }}-video-lecture-recording-quality-low">Плохое</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="normal" id="{{ name }}-video-lecture-recording-quality-normal" name="{{ name }}-video-lecture-recording-quality" required>
-                                                <label class="form-check-label" for="{{ name }}-video-lecture-recording-quality-normal">Нормальное</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="good" id="{{ name }}-video-lecture-recording-quality-good" name="{{ name }}-video-lecture-recording-quality" required>
-                                                <label class="form-check-label" for="{{ name }}-video-lecture-recording-quality-good">Хорошее</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="excellent" id="{{ name }}-video-lecture-recording-quality-excellent" name="{{ name }}-video-lecture-recording-quality" required>
-                                                <label class="form-check-label" for="{{ name }}-video-lecture-recording-quality-excellent">Отличное</label>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row mb-3 mt-3">
-                                        <div class="col">
-                                            <a data-toggle="collapse" href="#collapse-video-lecture-coverage-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
-                                                <h3>
-                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
-                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                    <span>Степень охвата элементов курса учебным видео?</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="row collapse show ml-5" id="collapse-video-lecture-coverage-{{ name }}">
-                                        <div class="col">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="weak" id="{{ name }}-video-lecture-coverage-weak" name="{{ name }}-video-lecture-coverage" required>
-                                                <label class="form-check-label" for="{{ name }}-video-lecture-coverage-weak">Слабая</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="normal" id="{{ name }}-video-lecture-coverage-normal" name="{{ name }}-video-lecture-coverage" checked required>
-                                                <label class="form-check-label" for="{{ name }}-video-lecture-coverage-normal">Нормальная</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="strong" id="{{ name }}-video-lecture-coverage-strong" name="{{ name }}-video-lecture-coverage" required>
-                                                <label class="form-check-label" for="{{ name }}-video-lecture-coverage-strong">Сильная</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 mt-3">
-                                        <div class="col">
-                                            <a data-toggle="collapse" href="#collapse-video-lecture-distribution-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
-                                                <h3>
-                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
-                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                    <span>Распределение учебного видео по темам и разделам курса</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="row collapse show ml-5" id="collapse-video-lecture-distribution-{{ name }}">
-                                        <div class="col-auto">
-                                            <table class="table">
-    	    		                        	<thead class="thead-light">
-    	    		                        		<tr>
-    	    		                        			<th scope="col">Название раздела</th>
-    	    		                        			<th scope="col">Процент видео, соответствующий данному разделу учебного курса</th>
-    	    		                        		</tr>
-    	    		                        	</thead>
-    	    		                        	<tbody>
-    	    		                        		{% if video_lecture_sections %}
-    	    		                        		    {% for section in video_lecture_sections %}
-    	    		                        		        <tr>
-    	    		                        			        <td class="align-middle">{{ section }}</td>
-                                                                <td class="align-middle">
-                                                                    <div class="input-group">
-                                                                        <input type="text" class="form-control" id="{{ name }}-video-lecture-distribution-{{ forloop.counter }}" placeholder="" value="{{ video_lecture_sections|length|get_percent }}" aria-label="{{ name }}-video-lecture-percent-section-{{ forloop.counter }}" aria-describedby="{{ name }}-video-lecture-percent-section-{{ forloop.counter }}" name="{{ name }}-video-lecture-distribution" required>
-                                                                        <div class="input-group-append">
-                                                                            <span class="input-group-text" id="{{ name }}-video-lecture-percent-section-{{ forloop.counter }}">%</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-    	    		                        		        </tr>
-    	    		                        		    {% endfor %}
-    	    		                        		{% endif %}
-    	    		                        	</tbody>
-    	    		                        </table>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 mt-3">
-                                        <div class="col">
-                                            <a data-toggle="collapse" href="#collapse-video-lecture-volume-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
-                                                <h3>
-                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
-                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                    <span>Общий объем видеолекций по отношению ко всему курсу, выраженный в часах</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 collapse show ml-5" id="collapse-video-lecture-volume-{{ name }}">
-                                        <div class="col-auto">
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row mb-3 mt-3">
+                    <div class="col">
+                        <a data-toggle="collapse" href="#collapse-control-and-exam-test-opinion-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                            <h3>
+                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                <span>Особое мнение</span>
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="row collapse show ml-5" id="collapse-control-and-exam-test-opinion-{{ name }}">
+                    <div class="col-6">
+                        <label for="{{ name }}-control-and-exam-test-special-opinion" class="d-none"></label>
+                        <textarea class="form-control" id="{{ name }}-control-and-exam-test-special-opinion" placeholder="Введите своё мнение о вопросах или заданиях" name="{{ name }}-control-and-exam-test-special-opinion"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    {% for name, content, section, extension, src in video_file_modules %}
+        <div class="tab-pane fade {% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and forloop.counter == 1 %} show active {% endif %}" id="tab-{{ name }}" role="tabpanel" aria-labelledby="{{ name }}-tab">
+            <div class="container-fluid">
+                {% if src is not None %}
+                    <div class="row mt-3 mb-3">
+                        <div class="col-auto d-block mx-auto">
+                            <video controls="controls" poster="" class="w-100">
+                                <source src="{{ src }}" type='video/{{ extension }}; codecs="avc1.42E01E, mp4a.40.2"'>
+                            </video>
+                        </div>
+                    </div>
+                {% endif %}
+                <div class="row mb-3 mt-3">
+                    <div class="col">
+                        <a data-toggle="collapse" href="#collapse-video-file-target-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                            <h3>
+                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                <span>Цель видео?</span>
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="row collapse show ml-5" id="collapse-video-file-target-{{ name }}">
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="introductory" id="{{ name }}-video-file-target-introductory" name="{{ name }}-video-file-target" required checked>
+                            <label class="form-check-label" for="{{ name }}-video-file-target-introductory">Вводная</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="subsidiary" id="{{ name }}-video-file-target-subsidiary" name="{{ name }}-video-file-target" required>
+                            <label class="form-check-label" for="{{ name }}-video-file-target-subsidiary">Вспомогательная</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="illustrative" id="{{ name }}-video-file-target-illustrative" name="{{ name }}-video-file-target" required>
+                            <label class="form-check-label" for="{{ name }}-video-file-target-illustrative">Иллюстративная</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3 mt-3">
+                    <div class="col">
+                        <a data-toggle="collapse" href="#collapse-video-file-duration-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                            <h3>
+                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                <span>Длительность учебного видео</span>
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="row collapse show ml-5" id="collapse-video-file-duration-{{ name }}">
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="short" id="{{ name }}-video-file-duration-short" name="{{ name }}-video-file-duration" required checked>
+                            <label class="form-check-label" for="{{ name }}-video-file-duration-short">Слишком короткое</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="normal" id="{{ name }}-video-file-duration-normal" name="{{ name }}-video-file-duration" required>
+                            <label class="form-check-label" for="{{ name }}-video-file-duration-normal">Нормальное</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="long" id="{{ name }}-video-file-duration-long" name="{{ name }}-video-file-duration" required>
+                            <label class="form-check-label" for="{{ name }}-video-file-duration-long">Слишком длинное</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3 mt-3">
+                    <div class="col">
+                        <a data-toggle="collapse" href="#collapse-video-file-has-scenario-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                            <h3>
+                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                <span>Наличие сценария</span>
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="row collapse show ml-5" id="collapse-video-file-has-scenario-{{ name }}">
+                    <div class="col">
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="{{ name }}-video-file-has-scenario" name="{{ name }}-video-file-has-scenario">
+                            <label class="custom-control-label" for="{{ name }}-video-file-has-scenario">Нет / Есть</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3 mt-3">
+                    <div class="col">
+                        <a data-toggle="collapse" href="#collapse-video-file-complexity-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                            <h3>
+                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                <span>Сложность</span>
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="row collapse show ml-5" id="collapse-video-file-complexity-{{ name }}">
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="simple" id="{{ name }}-video-file-complexity-simple" name="{{ name }}-video-file-complexity" required checked>
+                            <label class="form-check-label" for="{{ name }}-video-file-complexity-simple">Простое видео</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="interactive" id="{{ name }}-video-file-complexity-interactive" name="{{ name }}-video-file-complexity" required>
+                            <label class="form-check-label" for="{{ name }}-video-file-complexity-interactive">Интерактивное видео</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3 mt-3">
+                    <div class="col">
+                        <a data-toggle="collapse" href="#collapse-video-file-has-ticker-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                            <h3>
+                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                <span>Использование интерактивного текста (бегущая строка)</span>
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="row collapse show ml-5" id="collapse-video-file-has-ticker-{{ name }}">
+                    <div class="col">
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="{{ name }}-video-file-has-ticker" name="{{ name }}-video-file-has-ticker">
+                            <label class="custom-control-label" for="{{ name }}-video-file-has-ticker">Нет / Есть</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3 mt-3">
+                    <div class="col">
+                        <a data-toggle="collapse" href="#collapse-video-file-quality-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                            <h3>
+                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                <span>Качество записи</span>
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="row collapse show ml-5" id="collapse-video-file-quality-{{ name }}">
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="low" id="{{ name }}-video-file-recording-quality-low" name="{{ name }}-video-file-recording-quality" required checked>
+                            <label class="form-check-label" for="{{ name }}-video-file-recording-quality-low">Плохое</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="normal" id="{{ name }}-video-file-recording-quality-normal" name="{{ name }}-video-file-recording-quality" required>
+                            <label class="form-check-label" for="{{ name }}-video-file-recording-quality-normal">Нормальное</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="good" id="{{ name }}-video-file-recording-quality-good" name="{{ name }}-video-file-recording-quality" required>
+                            <label class="form-check-label" for="{{ name }}-video-file-recording-quality-good">Хорошее</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="excellent" id="{{ name }}-video-file-recording-quality-excellent" name="{{ name }}-video-file-recording-quality" required>
+                            <label class="form-check-label" for="{{ name }}-video-file-recording-quality-excellent">Отличное</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    {% for name, content, section, extension, src in video_lecture_modules %}
+        <div class="tab-pane fade {% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and forloop.counter == 1 %} show active {% endif %}" id="tab-{{ name }}" role="tabpanel" aria-labelledby="{{ name }}-tab">
+            <div class="container-fluid">
+                {% if src is not None %}
+                    <div class="row mt-3 mb-3">
+                        <div class="col-auto d-block mx-auto">
+                            <video controls="controls" poster="" class="w-100">
+                                <source src="{{ src }}" type='video/{{ extension }}; codecs="avc1.42E01E, mp4a.40.2"'>
+                            </video>
+                        </div>
+                    </div>
+                {% endif %}
+                <div class="row mb-3 mt-3">
+                    <div class="col">
+                        <a data-toggle="collapse" href="#collapse-video-lecture-target-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                            <h3>
+                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                <span>Цель видео?</span>
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="row collapse show ml-5" id="collapse-video-lecture-target-{{ name }}">
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="introductory" id="{{ name }}-video-lecture-target-introductory" name="{{ name }}-video-lecture-target" required checked>
+                            <label class="form-check-label" for="{{ name }}-video-lecture-target-introductory">Вводная</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="subsidiary" id="{{ name }}-video-lecture-target-subsidiary" name="{{ name }}-video-lecture-target" required>
+                            <label class="form-check-label" for="{{ name }}-video-lecture-target-subsidiary">Вспомогательная</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="illustrative" id="{{ name }}-video-lecture-target-illustrative" name="{{ name }}-video-lecture-target" required>
+                            <label class="form-check-label" for="{{ name }}-video-lecture-target-illustrative">Иллюстративная</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3 mt-3">
+                    <div class="col">
+                        <a data-toggle="collapse" href="#collapse-video-lecture-duration-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                            <h3>
+                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                <span>Длительность учебного видео</span>
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="row collapse show ml-5" id="collapse-video-lecture-duration-{{ name }}">
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="short" id="{{ name }}-video-lecture-duration-short" name="{{ name }}-video-lecture-duration" required checked>
+                            <label class="form-check-label" for="{{ name }}-video-lecture-duration-short">Слишком короткое</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="normal" id="{{ name }}-video-lecture-duration-normal" name="{{ name }}-video-lecture-duration" required>
+                            <label class="form-check-label" for="{{ name }}-video-lecture-duration-normal">Нормальное</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="long" id="{{ name }}-video-lecture-duration-long" name="{{ name }}-video-lecture-duration" required>
+                            <label class="form-check-label" for="{{ name }}-video-lecture-duration-long">Слишком длинное</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3 mt-3">
+                    <div class="col">
+                        <a data-toggle="collapse" href="#collapse-video-lecture-has-scenario-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                            <h3>
+                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                <span>Наличие сценария</span>
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="row collapse show ml-5" id="collapse-video-lecture-has-scenario-{{ name }}">
+                    <div class="col">
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="{{ name }}-video-lecture-has-scenario" name="{{ name }}-video-lecture-has-scenario">
+                            <label class="custom-control-label" for="{{ name }}-video-lecture-has-scenario">Нет / Есть</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3 mt-3">
+                    <div class="col">
+                        <a data-toggle="collapse" href="#collapse-video-lecture-complexity-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                            <h3>
+                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                <span>Сложность</span>
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="row collapse show ml-5" id="collapse-video-lecture-complexity-{{ name }}">
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="simple" id="{{ name }}-video-lecture-complexity-simple" name="{{ name }}-video-lecture-complexity" required checked>
+                            <label class="form-check-label" for="{{ name }}-video-lecture-complexity-simple">Простое видео</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="interactive" id="{{ name }}-video-lecture-complexity-interactive" name="{{ name }}-video-lecture-complexity" required>
+                            <label class="form-check-label" for="{{ name }}-video-lecture-complexity-interactive">Интерактивное видео</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3 mt-3">
+                    <div class="col">
+                        <a data-toggle="collapse" href="#collapse-video-lecture-has-ticker-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                            <h3>
+                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                <span>Использование интерактивного текста (бегущая строка)</span>
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="row collapse show ml-5" id="collapse-video-lecture-has-ticker-{{ name }}">
+                    <div class="col">
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="{{ name }}-video-lecture-has-ticker" name="{{ name }}-video-lecture-has-ticker">
+                            <label class="custom-control-label" for="{{ name }}-video-lecture-has-ticker">Нет / Есть</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3 mt-3">
+                    <div class="col">
+                        <a data-toggle="collapse" href="#collapse-video-lecture-quality-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                            <h3>
+                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                <span>Качество записи</span>
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="row collapse show ml-5" id="collapse-video-lecture-quality-{{ name }}">
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="low" id="{{ name }}-video-lecture-recording-quality-low" name="{{ name }}-video-lecture-recording-quality" required checked>
+                            <label class="form-check-label" for="{{ name }}-video-lecture-recording-quality-low">Плохое</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="normal" id="{{ name }}-video-lecture-recording-quality-normal" name="{{ name }}-video-lecture-recording-quality" required>
+                            <label class="form-check-label" for="{{ name }}-video-lecture-recording-quality-normal">Нормальное</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="good" id="{{ name }}-video-lecture-recording-quality-good" name="{{ name }}-video-lecture-recording-quality" required>
+                            <label class="form-check-label" for="{{ name }}-video-lecture-recording-quality-good">Хорошее</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="excellent" id="{{ name }}-video-lecture-recording-quality-excellent" name="{{ name }}-video-lecture-recording-quality" required>
+                            <label class="form-check-label" for="{{ name }}-video-lecture-recording-quality-excellent">Отличное</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3 mt-3">
+                    <div class="col">
+                        <a data-toggle="collapse" href="#collapse-video-lecture-coverage-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                            <h3>
+                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                <span>Степень охвата элементов курса учебным видео?</span>
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="row collapse show ml-5" id="collapse-video-lecture-coverage-{{ name }}">
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="weak" id="{{ name }}-video-lecture-coverage-weak" name="{{ name }}-video-lecture-coverage" required>
+                            <label class="form-check-label" for="{{ name }}-video-lecture-coverage-weak">Слабая</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="normal" id="{{ name }}-video-lecture-coverage-normal" name="{{ name }}-video-lecture-coverage" checked required>
+                            <label class="form-check-label" for="{{ name }}-video-lecture-coverage-normal">Нормальная</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="strong" id="{{ name }}-video-lecture-coverage-strong" name="{{ name }}-video-lecture-coverage" required>
+                            <label class="form-check-label" for="{{ name }}-video-lecture-coverage-strong">Сильная</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3 mt-3">
+                    <div class="col">
+                        <a data-toggle="collapse" href="#collapse-video-lecture-distribution-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                            <h3>
+                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                <span>Распределение учебного видео по темам и разделам курса</span>
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="row collapse show ml-5" id="collapse-video-lecture-distribution-{{ name }}">
+                    <div class="col-auto">
+                        <table class="table">
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col">Название раздела</th>
+                                <th scope="col">Процент видео, соответствующий данному разделу учебного курса</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% if video_lecture_sections %}
+                                {% for section in video_lecture_sections %}
+                                    <tr>
+                                        <td class="align-middle">{{ section }}</td>
+                                        <td class="align-middle">
                                             <div class="input-group">
-                                                <input type="text" class="form-control" id="{{ name }}-video-lecture-volume-{{ forloop.counter }}" placeholder="" value="3.5" aria-label="{{ name }}-video-lecture-hours-{{ forloop.counter }}" aria-describedby="{{ name }}-video-lecture-hours-{{ forloop.counter }}" name="{{ name }}-video-lecture-volume" required>
+                                                <input type="text" class="form-control" id="{{ name }}-video-lecture-distribution-{{ forloop.counter }}" placeholder="" value="{{ video_lecture_sections|length|get_percent }}" aria-label="{{ name }}-video-lecture-percent-section-{{ forloop.counter }}" aria-describedby="{{ name }}-video-lecture-percent-section-{{ forloop.counter }}" name="{{ name }}-video-lecture-distribution" required>
                                                 <div class="input-group-append">
-                                                    <span class="input-group-text" id="{{ name }}-video-lecture-hours-{{ forloop.counter }}">hours</span>
+                                                    <span class="input-group-text" id="{{ name }}-video-lecture-percent-section-{{ forloop.counter }}">%</span>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 mt-3">
-                                        <div class="col">
-                                            <a data-toggle="collapse" href="#collapse-video-lecture-navigation-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
-                                                <h3>
-                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
-                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                    <span>Система навигации и поиска в видеолекиях</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 collapse show ml-5" id="collapse-video-lecture-navigation-{{ name }}">
-                                        <div class="col">
-                                            <div class="custom-control custom-switch">
-                                                <input type="checkbox" class="custom-control-input" id="{{ name }}-video-lecture-has-navigation" name="{{ name }}-video-lecture-has-navigation">
-                                                <label class="custom-control-label" for="{{ name }}-video-lecture-has-navigation">Нет / Есть</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row mb-3 mt-3">
+                    <div class="col">
+                        <a data-toggle="collapse" href="#collapse-video-lecture-volume-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                            <h3>
+                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                <span>Общий объем видеолекций по отношению ко всему курсу, выраженный в часах</span>
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="row mb-3 collapse show ml-5" id="collapse-video-lecture-volume-{{ name }}">
+                    <div class="col-auto">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="{{ name }}-video-lecture-volume-{{ forloop.counter }}" placeholder="" value="3.5" aria-label="{{ name }}-video-lecture-hours-{{ forloop.counter }}" aria-describedby="{{ name }}-video-lecture-hours-{{ forloop.counter }}" name="{{ name }}-video-lecture-volume" required>
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="{{ name }}-video-lecture-hours-{{ forloop.counter }}">hours</span>
                             </div>
-                        {% endfor %}
-                        {% for name, content, section, extension, src in audio_file_modules %}
-                            <div class="tab-pane fade {% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and video_lecture_modules|length == 0 and forloop.counter == 1 %} show active {% endif %}" id="tab-{{ name }}" role="tabpanel" aria-labelledby="{{ name }}-tab">
-                                <div class="container-fluid">
-                                    {% if src is not None %}
-                                        <div class="row mt-3 mb-3">
-                                            <div class="col-auto">
-                                                <audio controls>
-                                                    <source src="{{ src }}" type="audio/{{ extension }}">
-                                                </audio>
-                                            </div>
-                                        </div>
-                                    {% endif %}
-                                    <div class="row mb-3 mt-3">
-                                        <div class="col">
-                                            <a data-toggle="collapse" href="#collapse-audio-file-target-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
-                                                <h3>
-                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
-                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                    <span>Цель аудио?</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="row collapse show ml-5" id="collapse-audio-file-target-{{ name }}">
-                                        <div class="col-auto">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="introductory" id="{{ name }}-audio-file-target-introductory" name="{{ name }}-audio-file-target">
-                                                <label class="form-check-label" for="{{ name }}-audio-file-target-introductory">Вводная</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="auxiliary" id="{{ name }}-audio-file-target-auxiliary" name="{{ name }}-audio-file-target">
-                                                <label class="form-check-label" for="{{ name }}-audio-file-target-auxiliary">Вспомогательная</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="illustrative" id="{{ name }}-audio-file-target-illustrative" name="{{ name }}-audio-file-target">
-                                                <label class="form-check-label" for="{{ name }}-audio-file-target-illustrative">Иллюстративная</label>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="{{ name }}-audio-file-target-own"></label>
-                                                <input type="text" class="form-control" id="{{ name }}-audio-file-target-own" placeholder="Свой вариант" name="{{ name }}-audio-file-target-own">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 mt-3">
-                                        <div class="col">
-                                            <a data-toggle="collapse" href="#collapse-audio-file-duration-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
-                                                <h3>
-                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
-                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                    <span>Длительность учебного аудио?</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="row collapse show ml-5" id="collapse-audio-file-duration-{{ name }}">
-                                        <div class="col-auto">
-                                            <div class="form-group">
-                                                <label for="{{ name }}-audio-file-duration" class="d-none"></label>
-                                                <input type="text" class="form-control" id="{{ name }}-audio-file-duration" value="00:40:02" name="{{ name }}-audio-file-duration" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 mt-3">
-                                        <div class="col">
-                                            <a data-toggle="collapse" href="#collapse-audio-file-quality-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
-                                                <h3>
-                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
-                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                    <span>Качество записи аудио?</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 collapse show ml-5" id="collapse-audio-file-quality-{{ name }}">
-                                        <div class="col">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="low" id="{{ name }}-audio-file-quality-low" name="{{ name }}-audio-file-quality" checked required>
-                                                <label class="form-check-label" for="{{ name }}-audio-file-quality-low">Низкое</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="normal" id="{{ name }}-audio-file-quality-normal" name="{{ name }}-audio-file-quality" required>
-                                                <label class="form-check-label" for="{{ name }}-audio-file-quality-normal">Среднее</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="high" id="{{ name }}-audio-file-quality-high" name="{{ name }}-audio-file-quality" required>
-                                                <label class="form-check-label" for="{{ name }}-audio-file-quality-high">Высокое</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 mt-3">
-                                        <div class="col">
-                                            <a data-toggle="collapse" href="#collapse-audio-file-format-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
-                                                <h3>
-                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
-                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                    <span>Формат записи?</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 collapse show ml-5" id="collapse-audio-file-format-{{ name }}">
-                                        <div class="col-auto">
-                                            <div class="form-group">
-                                                <label for="{{ name }}-audio-file-format" class="d-none"></label>
-                                                <input type="text" class="form-control" id="{{ name }}-audio-file-format" value="mp3" name="{{ name }}-audio-file-format" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3 mt-3">
+                    <div class="col">
+                        <a data-toggle="collapse" href="#collapse-video-lecture-navigation-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                            <h3>
+                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                <span>Система навигации и поиска в видеолекиях</span>
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="row mb-3 collapse show ml-5" id="collapse-video-lecture-navigation-{{ name }}">
+                    <div class="col">
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="{{ name }}-video-lecture-has-navigation" name="{{ name }}-video-lecture-has-navigation">
+                            <label class="custom-control-label" for="{{ name }}-video-lecture-has-navigation">Нет / Есть</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    {% for name, content, section, extension, src in audio_file_modules %}
+        <div class="tab-pane fade {% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and video_lecture_modules|length == 0 and forloop.counter == 1 %} show active {% endif %}" id="tab-{{ name }}" role="tabpanel" aria-labelledby="{{ name }}-tab">
+            <div class="container-fluid">
+                {% if src is not None %}
+                    <div class="row mt-3 mb-3">
+                        <div class="col-auto">
+                            <audio controls>
+                                <source src="{{ src }}" type="audio/{{ extension }}">
+                            </audio>
+                        </div>
+                    </div>
+                {% endif %}
+                <div class="row mb-3 mt-3">
+                    <div class="col">
+                        <a data-toggle="collapse" href="#collapse-audio-file-target-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                            <h3>
+                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                <span>Цель аудио?</span>
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="row collapse show ml-5" id="collapse-audio-file-target-{{ name }}">
+                    <div class="col-auto">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="introductory" id="{{ name }}-audio-file-target-introductory" name="{{ name }}-audio-file-target">
+                            <label class="form-check-label" for="{{ name }}-audio-file-target-introductory">Вводная</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="auxiliary" id="{{ name }}-audio-file-target-auxiliary" name="{{ name }}-audio-file-target">
+                            <label class="form-check-label" for="{{ name }}-audio-file-target-auxiliary">Вспомогательная</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="illustrative" id="{{ name }}-audio-file-target-illustrative" name="{{ name }}-audio-file-target">
+                            <label class="form-check-label" for="{{ name }}-audio-file-target-illustrative">Иллюстративная</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ name }}-audio-file-target-own"></label>
+                            <input type="text" class="form-control" id="{{ name }}-audio-file-target-own" placeholder="Свой вариант" name="{{ name }}-audio-file-target-own">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3 mt-3">
+                    <div class="col">
+                        <a data-toggle="collapse" href="#collapse-audio-file-duration-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                            <h3>
+                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                <span>Длительность учебного аудио?</span>
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="row collapse show ml-5" id="collapse-audio-file-duration-{{ name }}">
+                    <div class="col-auto">
+                        <div class="form-group">
+                            <label for="{{ name }}-audio-file-duration" class="d-none"></label>
+                            <input type="text" class="form-control" id="{{ name }}-audio-file-duration" value="00:40:02" name="{{ name }}-audio-file-duration" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3 mt-3">
+                    <div class="col">
+                        <a data-toggle="collapse" href="#collapse-audio-file-quality-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                            <h3>
+                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                <span>Качество записи аудио?</span>
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="row mb-3 collapse show ml-5" id="collapse-audio-file-quality-{{ name }}">
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="low" id="{{ name }}-audio-file-quality-low" name="{{ name }}-audio-file-quality" checked required>
+                            <label class="form-check-label" for="{{ name }}-audio-file-quality-low">Низкое</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="normal" id="{{ name }}-audio-file-quality-normal" name="{{ name }}-audio-file-quality" required>
+                            <label class="form-check-label" for="{{ name }}-audio-file-quality-normal">Среднее</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="high" id="{{ name }}-audio-file-quality-high" name="{{ name }}-audio-file-quality" required>
+                            <label class="form-check-label" for="{{ name }}-audio-file-quality-high">Высокое</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3 mt-3">
+                    <div class="col">
+                        <a data-toggle="collapse" href="#collapse-audio-file-format-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                            <h3>
+                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                <span>Формат записи?</span>
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="row mb-3 collapse show ml-5" id="collapse-audio-file-format-{{ name }}">
+                    <div class="col-auto">
+                        <div class="form-group">
+                            <label for="{{ name }}-audio-file-format" class="d-none"></label>
+                            <input type="text" class="form-control" id="{{ name }}-audio-file-format" value="mp3" name="{{ name }}-audio-file-format" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    {% for name, content, section, extension, src in audio_lecture_modules %}
+        <div class="tab-pane fade {% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and video_lecture_modules|length == 0 and audio_file_modules|length == 0 and forloop.counter == 1 %} show active {% endif %}" id="tab-{{ name }}" role="tabpanel" aria-labelledby="{{ name }}-tab">
+            <div class="container-fluid">
+                {% if src is not None %}
+                    <div class="row mt-3 mb-3">
+                        <div class="col-auto">
+                            <audio controls>
+                                <source src="{{ src }}" type="audio/{{ extension }}">
+                            </audio>
+                        </div>
+                    </div>
+                {% endif %}
+                <div class="row mb-3 mt-3">
+                    <div class="col">
+                        <a data-toggle="collapse" href="#collapse-audio-lecture-target-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                            <h3>
+                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                <span>Цель аудио?</span>
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="row collapse show ml-5" id="collapse-audio-lecture-target-{{ name }}">
+                    <div class="col-auto">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="introductory" id="{{ name }}-audio-lecture-target-introductory" name="{{ name }}-audio-lecture-target">
+                            <label class="form-check-label" for="{{ name }}-audio-lecture-target-introductory">Вводная</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="auxiliary" id="{{ name }}-audio-lecture-target-auxiliary" name="{{ name }}-audio-lecture-target">
+                            <label class="form-check-label" for="{{ name }}-audio-lecture-target-auxiliary">Вспомогательная</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="illustrative" id="{{ name }}-audio-lecture-target-illustrative" name="{{ name }}-audio-lecture-target">
+                            <label class="form-check-label" for="{{ name }}-audio-lecture-target-illustrative">Иллюстративная</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ name }}-audio-lecture-target-own"></label>
+                            <input type="text" class="form-control" id="{{ name }}-audio-lecture-target-own" placeholder="Свой вариант" name="{{ name }}-audio-lecture-target-own">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3 mt-3">
+                    <div class="col">
+                        <a data-toggle="collapse" href="#collapse-audio-lecture-duration-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                            <h3>
+                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                <span>Длительность учебного аудио?</span>
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="row collapse show ml-5" id="collapse-audio-lecture-duration-{{ name }}">
+                    <div class="col-auto">
+                        <div class="form-group">
+                            <label for="{{ name }}-audio-lecture-duration" class="d-none"></label>
+                            <input type="text" class="form-control" id="{{ name }}-audio-lecture-duration" value="00:40:02" name="{{ name }}-audio-lecture-duration" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3 mt-3">
+                    <div class="col">
+                        <a data-toggle="collapse" href="#collapse-audio-lecture-quality-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                            <h3>
+                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                <span>Качество записи аудио?</span>
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="row mb-3 collapse show ml-5" id="collapse-audio-lecture-quality-{{ name }}">
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="low" id="{{ name }}-audio-lecture-quality-low" name="{{ name }}-audio-lecture-quality" checked required>
+                            <label class="form-check-label" for="{{ name }}-audio-lecture-quality-low">Низкое</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="normal" id="{{ name }}-audio-lecture-quality-normal" name="{{ name }}-audio-lecture-quality" required>
+                            <label class="form-check-label" for="{{ name }}-audio-lecture-quality-normal">Среднее</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="high" id="{{ name }}-audio-lecture-quality-high" name="{{ name }}-audio-lecture-quality" required>
+                            <label class="form-check-label" for="{{ name }}-audio-lecture-quality-high">Высокое</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3 mt-3">
+                    <div class="col">
+                        <a data-toggle="collapse" href="#collapse-audio-lecture-format-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                            <h3>
+                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                <span>Формат записи?</span>
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="row mb-3 collapse show ml-5" id="collapse-audio-lecture-format-{{ name }}">
+                    <div class="col-auto">
+                        <div class="form-group">
+                            <label for="{{ name }}-audio-lecture-format" class="d-none"></label>
+                            <input type="text" class="form-control" id="{{ name }}-audio-lecture-format" value="mp3" name="{{ name }}-audio-lecture-format" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3 mt-3">
+                    <div class="col">
+                        <a data-toggle="collapse" href="#collapse-audio-lecture-coverage-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                            <h3>
+                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                <span>Степень охвата элементов курса учебным аудио?</span>
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="row collapse show ml-5" id="collapse-audio-lecture-coverage-{{ name }}">
+                    <div class="col-auto">
+                        <div class="input-group">
+                            <input type="text" class="form-control" value="50" aria-label="{{ name }}-audio-lecture-percent" aria-describedby="{{ name }}-audio-lecture-percent" name="{{ name }}-audio-lecture-coverage" id="{{ name }}-audio-lecture-coverage" required>
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="{{ name }}-audio-lecture-percent">%</span>
                             </div>
-                        {% endfor %}
-                        {% for name, content, section, extension, src in audio_lecture_modules %}
-                            <div class="tab-pane fade {% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and video_lecture_modules|length == 0 and audio_file_modules|length == 0 and forloop.counter == 1 %} show active {% endif %}" id="tab-{{ name }}" role="tabpanel" aria-labelledby="{{ name }}-tab">
-                                <div class="container-fluid">
-                                    {% if src is not None %}
-                                        <div class="row mt-3 mb-3">
-                                            <div class="col-auto">
-                                                <audio controls>
-                                                    <source src="{{ src }}" type="audio/{{ extension }}">
-                                                </audio>
-                                            </div>
-                                        </div>
-                                    {% endif %}
-
-                                    <div class="row mb-3 mt-3">
-                                        <div class="col">
-                                            <a data-toggle="collapse" href="#collapse-audio-lecture-target-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
-                                                <h3>
-                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
-                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                    <span>Цель аудио?</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="row collapse show ml-5" id="collapse-audio-lecture-target-{{ name }}">
-                                        <div class="col-auto">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="introductory" id="{{ name }}-audio-lecture-target-introductory" name="{{ name }}-audio-lecture-target">
-                                                <label class="form-check-label" for="{{ name }}-audio-lecture-target-introductory">Вводная</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="auxiliary" id="{{ name }}-audio-lecture-target-auxiliary" name="{{ name }}-audio-lecture-target">
-                                                <label class="form-check-label" for="{{ name }}-audio-lecture-target-auxiliary">Вспомогательная</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="illustrative" id="{{ name }}-audio-lecture-target-illustrative" name="{{ name }}-audio-lecture-target">
-                                                <label class="form-check-label" for="{{ name }}-audio-lecture-target-illustrative">Иллюстративная</label>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="{{ name }}-audio-lecture-target-own"></label>
-                                                <input type="text" class="form-control" id="{{ name }}-audio-lecture-target-own" placeholder="Свой вариант" name="{{ name }}-audio-lecture-target-own">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 mt-3">
-                                        <div class="col">
-                                            <a data-toggle="collapse" href="#collapse-audio-lecture-duration-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
-                                                <h3>
-                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
-                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                    <span>Длительность учебного аудио?</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="row collapse show ml-5" id="collapse-audio-lecture-duration-{{ name }}">
-                                        <div class="col-auto">
-                                            <div class="form-group">
-                                                <label for="{{ name }}-audio-lecture-duration" class="d-none"></label>
-                                                <input type="text" class="form-control" id="{{ name }}-audio-lecture-duration" value="00:40:02" name="{{ name }}-audio-lecture-duration" required>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 mt-3">
-                                        <div class="col">
-                                            <a data-toggle="collapse" href="#collapse-audio-lecture-quality-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
-                                                <h3>
-                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
-                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                    <span>Качество записи аудио?</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 collapse show ml-5" id="collapse-audio-lecture-quality-{{ name }}">
-                                        <div class="col">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="low" id="{{ name }}-audio-lecture-quality-low" name="{{ name }}-audio-lecture-quality" checked required>
-                                                <label class="form-check-label" for="{{ name }}-audio-lecture-quality-low">Низкое</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="normal" id="{{ name }}-audio-lecture-quality-normal" name="{{ name }}-audio-lecture-quality" required>
-                                                <label class="form-check-label" for="{{ name }}-audio-lecture-quality-normal">Среднее</label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="high" id="{{ name }}-audio-lecture-quality-high" name="{{ name }}-audio-lecture-quality" required>
-                                                <label class="form-check-label" for="{{ name }}-audio-lecture-quality-high">Высокое</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 mt-3">
-                                        <div class="col">
-                                            <a data-toggle="collapse" href="#collapse-audio-lecture-format-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
-                                                <h3>
-                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
-                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                    <span>Формат записи?</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 collapse show ml-5" id="collapse-audio-lecture-format-{{ name }}">
-                                        <div class="col-auto">
-                                            <div class="form-group">
-                                                <label for="{{ name }}-audio-lecture-format" class="d-none"></label>
-                                                <input type="text" class="form-control" id="{{ name }}-audio-lecture-format" value="mp3" name="{{ name }}-audio-lecture-format" required>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row mb-3 mt-3">
-                                        <div class="col">
-                                            <a data-toggle="collapse" href="#collapse-audio-lecture-coverage-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
-                                                <h3>
-                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
-                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                    <span>Степень охвата элементов курса учебным аудио?</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="row collapse show ml-5" id="collapse-audio-lecture-coverage-{{ name }}">
-                                        <div class="col-auto">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3 mt-3">
+                    <div class="col">
+                        <a data-toggle="collapse" href="#collapse-audio-lecture-distribution-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                            <h3>
+                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                <span>Распределение учебного аудио по темам и разделам курса.</span>
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="row collapse show ml-5" id="collapse-audio-lecture-distribution-{{ name }}">
+                    <div class="col-auto">
+                        <table class="table">
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col">Название раздела</th>
+                                <th scope="col">Процент аудио, соответствующий данному разделу учебного курса</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% if audio_lecture_sections %}
+                                {% for section in audio_lecture_sections %}
+                                    <tr>
+                                        <td class="align-middle">{{ section }}</td>
+                                        <td class="align-middle">
                                             <div class="input-group">
-                                                <input type="text" class="form-control" value="50" aria-label="{{ name }}-audio-lecture-percent" aria-describedby="{{ name }}-audio-lecture-percent" name="{{ name }}-audio-lecture-coverage" id="{{ name }}-audio-lecture-coverage" required>
+                                                <input type="text" class="form-control" id="{{ name }}-audio-lecture-distribution-{{ forloop.counter }}" value="{{ audio_lecture_sections|length|get_percent }}" aria-label="{{ name }}-audio-lecture-percent-section-{{ forloop.counter }}" aria-describedby="{{ name }}-audio-lecture-percent-section-{{ forloop.counter }}" name="{{ name }}-audio-lecture-distribution" required>
                                                 <div class="input-group-append">
-                                                    <span class="input-group-text" id="{{ name }}-audio-lecture-percent">%</span>
+                                                    <span class="input-group-text" id="{{ name }}-audio-lecture-percent-section-{{ forloop.counter }}">%</span>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 mt-3">
-                                        <div class="col">
-                                            <a data-toggle="collapse" href="#collapse-audio-lecture-distribution-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
-                                                <h3>
-                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
-                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                    <span>Распределение учебного аудио по темам и разделам курса.</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="row collapse show ml-5" id="collapse-audio-lecture-distribution-{{ name }}">
-                                        <div class="col-auto">
-                                            <table class="table">
-    	    		                        	<thead class="thead-light">
-    	    		                        		<tr>
-    	    		                        			<th scope="col">Название раздела</th>
-    	    		                        			<th scope="col">Процент аудио, соответствующий данному разделу учебного курса</th>
-    	    		                        		</tr>
-    	    		                        	</thead>
-    	    		                        	<tbody>
-    	    		                        		{% if audio_lecture_sections %}
-    	    		                        		    {% for section in audio_lecture_sections %}
-    	    		                        		        <tr>
-    	    		                        			        <td class="align-middle">{{ section }}</td>
-                                                                <td class="align-middle">
-                                                                    <div class="input-group">
-                                                                        <input type="text" class="form-control" id="{{ name }}-audio-lecture-distribution-{{ forloop.counter }}" value="{{ audio_lecture_sections|length|get_percent }}" aria-label="{{ name }}-audio-lecture-percent-section-{{ forloop.counter }}" aria-describedby="{{ name }}-audio-lecture-percent-section-{{ forloop.counter }}" name="{{ name }}-audio-lecture-distribution" required>
-                                                                        <div class="input-group-append">
-                                                                            <span class="input-group-text" id="{{ name }}-audio-lecture-percent-section-{{ forloop.counter }}">%</span>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-    	    		                        		        </tr>
-    	    		                        		    {% endfor %}
-    	    		                        		{% endif %}
-    	    		                        	</tbody>
-    	    		                        </table>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 mt-3">
-                                        <div class="col">
-                                            <a data-toggle="collapse" href="#collapse-audio-lecture-volume-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
-                                                <h3>
-                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
-                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                    <span>Общий объем аудиолекций по отношению ко всему курсу, выраженный в часах</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 collapse show ml-5" id="collapse-audio-lecture-volume-{{ name }}">
-                                        <div class="col-auto">
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" value="72" aria-label="{{ name }}-audio-lecture-hours" aria-describedby="{{ name }}-audio-lecture-hours" name="{{ name }}-audio-lecture-volume" id="{{ name }}-audio-lecture-volume" required>
-                                                <div class="input-group-append">
-                                                    <span class="input-group-text" id="{{ name }}-audio-lecture-hours">hh</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 mt-3">
-                                        <div class="col">
-                                            <a data-toggle="collapse" href="#collapse-audio-lecture-navigation-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
-                                                <h3>
-                                                    <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
-                                                    <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
-                                                    <span>Система навигации и поиска в аудиолекиях?</span>
-                                                </h3>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 collapse show ml-5" id="collapse-audio-lecture-navigation-{{ name }}">
-                                        <div class="col">
-                                            <div class="custom-control custom-switch">
-                                                <input type="checkbox" class="custom-control-input" id="{{ name }}-audio-lecture-has-navigation" name="{{ name }}-audio-lecture-has-navigation">
-                                                <label class="custom-control-label" for="{{ name }}-audio-lecture-has-navigation">Да / Нет</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row mb-3 mt-3">
+                    <div class="col">
+                        <a data-toggle="collapse" href="#collapse-audio-lecture-volume-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                            <h3>
+                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                <span>Общий объем аудиолекций по отношению ко всему курсу, выраженный в часах</span>
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="row mb-3 collapse show ml-5" id="collapse-audio-lecture-volume-{{ name }}">
+                    <div class="col-auto">
+                        <div class="input-group">
+                            <input type="text" class="form-control" value="72" aria-label="{{ name }}-audio-lecture-hours" aria-describedby="{{ name }}-audio-lecture-hours" name="{{ name }}-audio-lecture-volume" id="{{ name }}-audio-lecture-volume" required>
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="{{ name }}-audio-lecture-hours">hh</span>
                             </div>
-                        {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3 mt-3">
+                    <div class="col">
+                        <a data-toggle="collapse" href="#collapse-audio-lecture-navigation-{{ name }}" aria-expanded="false" aria-controls="collapseExample">
+                            <h3>
+                                <span class="show mr-3"><i class="fas fa-angle-down"></i></span>
+                                <span class="hide d-none mr-3"><i class="fas fa-angle-right"></i></span>
+                                <span>Система навигации и поиска в аудиолекиях?</span>
+                            </h3>
+                        </a>
+                    </div>
+                </div>
+                <div class="row mb-3 collapse show ml-5" id="collapse-audio-lecture-navigation-{{ name }}">
+                    <div class="col">
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="{{ name }}-audio-lecture-has-navigation" name="{{ name }}-audio-lecture-has-navigation">
+                            <label class="custom-control-label" for="{{ name }}-audio-lecture-has-navigation">Да / Нет</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
                         {% for name, content, section, videos, pictures, audios, presentations, documents, tables, pdfs, others in webinar_modules %}
                             <div class="tab-pane fade {% if self_test_modules|length == 0 and control_and_exam_test_modules|length == 0 and video_file_modules|length == 0 and video_lecture_modules|length == 0 and audio_file_modules|length == 0 and audio_lecture_modules|length == 0 and forloop.counter == 1 %} show active {% endif %}" id="tab-{{ name }}" role="tabpanel" aria-labelledby="{{ name }}-tab">
                                 <div class="container-fluid">
